@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
 
     public event Action<float> Changed;
 
+    public bool IsDead => Value <= 0;
+
     public void Lose(float damage)
     {
         Value = Mathf.Clamp(Value - damage, 0, MaxValue);
@@ -23,7 +25,7 @@ public class Health : MonoBehaviour
         Changed?.Invoke(Value);
     }
 
-    public void InitValue(float maxValue)
+    public void InitMaxValue(float maxValue)
     {
         MaxValue = maxValue;
         Value = MaxValue;

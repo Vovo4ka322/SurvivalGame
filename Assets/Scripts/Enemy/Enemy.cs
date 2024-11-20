@@ -9,6 +9,19 @@ public class Enemy : Character
     private EnemyData _data;
     private Transform _target;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out Weapon weapon))
+        {
+            Health.Lose(weapon.WeaponData.Damage);
+
+            if (Health.IsDead)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
     private void Update()
     {
         _movement.Move(_target, _data.MoveSpeed);
@@ -18,11 +31,11 @@ public class Enemy : Character
     {
         _target = target;
         _data = data;
-        Health.InitValue(data.MaxHealth);
+        Health.InitMaxValue(data.MaxHealth);
     }
 
-    public void SetDamage(Enemy enemy)//наношу кому-то урон
+    public float SetDamage()
     {
-        enemy.Health.Lose(_data.Damage);
+        return _data.Damage;
     }
 }
