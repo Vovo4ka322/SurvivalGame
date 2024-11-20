@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BuffHolder", menuName = "Buff/BuffHolder")]
-public class BaffHolder : ScriptableObject
+public class BuffHolder : ScriptableObject
 {
     private List<Buff> _baffs = new();
 

@@ -623,7 +623,7 @@ Transform:
   m_GameObject: {fileID: 1795307008}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.487, y: 0, z: 0.788}
+  m_LocalPosition: {x: 0.413, y: 0, z: 1.3}
   m_LocalScale: {x: 0.01, y: 1, z: 0.11}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1142,7 +1142,7 @@ MonoBehaviour:
   <Health>k__BackingField: {fileID: 2061752469}
   _weapon: {fileID: 1795307010}
   _characterType: {fileID: 11400000, guid: 817cfd024f70b554aac4d8165e1ceca1, type: 2}
-  _baff: {fileID: 11400000, guid: bc0215e6d69a51e45b54f995b2c6a6f5, type: 2}
+  _buffHolder: {fileID: 11400000, guid: bc0215e6d69a51e45b54f995b2c6a6f5, type: 2}
   _buff: {fileID: 11400000, guid: 1b8d4f8848fd5aa4a99a5047d1108aa4, type: 2}
 --- !u!114 &2061752469
 MonoBehaviour:

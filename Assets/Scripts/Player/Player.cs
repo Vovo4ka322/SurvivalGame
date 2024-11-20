@@ -6,7 +6,7 @@ public class Player : Character
 {
     [SerializeField] private Weapon _weapon;
     [SerializeField] private CharacterType _characterType;
-    [SerializeField] private BaffHolder _buffHolder;
+    [SerializeField] private BuffHolder _buffHolder;
 
     [SerializeField] private Buff _buff;//временно. Потом перенести в магазин
 
