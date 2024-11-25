@@ -1,0 +1,47 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{ 
+    private PlayerInput _playerInput;
+
+    public Vector2 Movement {  get; private set; }
+
+    public Vector2 Rotation {  get; private set; }
+
+    private void Awake()
+    {
+        _playerInput = new();
+    }
+
+    private void OnEnable()
+    {
+        _playerInput.Enable();
+        _playerInput.Player.Move.performed += OnMovedPerfomed;
+        _playerInput.Player.Look2.performed += OnLookPerfomed;
+        _playerInput.Player.Move.canceled += OnMovedPerfomed;
+        _playerInput.Player.Look2.canceled += OnLookPerfomed;
+    }
+
+
+    private void OnDisable()
+    {
+        _playerInput.Disable();
+        _playerInput.Player.Move.performed -= OnMovedPerfomed;
+        _playerInput.Player.Look2.performed -= OnLookPerfomed;
+        _playerInput.Player.Move.canceled -= OnMovedPerfomed;
+        _playerInput.Player.Look2.canceled -= OnLookPerfomed;
+    }
+
+    private void OnLookPerfomed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        Rotation = context.ReadValue<Vector2>();
+    }
+
+    private void OnMovedPerfomed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        Movement = context.ReadValue<Vector2>();
+    }
+}

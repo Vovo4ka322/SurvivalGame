@@ -14,6 +14,8 @@ public class Player : Character
 
     public int Armor { get; private set; }
 
+    private bool _isWorking;
+
     private void Awake()
     {
         _buffHolder.Add(_buff);// покупка бафов через магазин
@@ -38,11 +40,11 @@ public class Player : Character
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.TryGetComponent(out Enemy enemy))
+        if (collision.gameObject.TryGetComponent(out Enemy enemy))
         {
             Health.Lose(enemy.SetDamage());
 
-            if(Health.IsDead)
+            if (Health.IsDead)
             {
                 Destroy(gameObject);
             }

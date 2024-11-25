@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _turnSpeed;
+    [SerializeField] private PlayerController _controller;
 
     private Vector3 _moveDirection;
 
@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = _controller.Movement.x;
+        float vertical = _controller.Movement.y;
 
         _moveDirection = new Vector3(horizontal, 0, vertical).normalized;
         Matrix4x4 rotationMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void HandleRotation()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(_controller.Rotation);
         Plane plane = new(Vector3.up, Vector3.zero);
 
         if (plane.Raycast(ray, out float rayDistance))

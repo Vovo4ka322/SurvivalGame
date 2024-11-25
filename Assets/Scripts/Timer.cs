@@ -18,8 +18,6 @@ public class Timer : MonoBehaviour
     {
         if(_waveTime < Time.time)
             WaveChanged?.Invoke();     
-        
-        Debug.Log(Time.time - _startTime);
     }
 
     public void SetWaveTime(float waveTime)
