@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class BladeFuryUser : MonoBehaviour
 {
-    [SerializeField] private BladeFury _bladeFury;
+    private BladeFury _bladeFuryScr;
+
+    public void Upgrade(BladeFury bladeFury)
+    {
+        _bladeFuryScr = bladeFury;
+    }
 
     public IEnumerator UseAbility()
     {
-        if (Input.GetKeyDown(_bladeFury.KeyCode))
+        float duration = 0;
+
+        while (duration < _bladeFuryScr.Duration)
         {
-            float duration = 0;
+            transform.Rotate(Vector3.up, _bladeFuryScr.TurnSpeed * Time.deltaTime);
+            duration += Time.deltaTime;
 
-            while (duration < _bladeFury.Duration)
-            {
-                transform.Rotate(Vector3.up, _bladeFury.TurnSpeed * Time.deltaTime);
-                duration += Time.deltaTime;
-
-                yield return null;
-            }
+            yield return null;
         }
     }
 }

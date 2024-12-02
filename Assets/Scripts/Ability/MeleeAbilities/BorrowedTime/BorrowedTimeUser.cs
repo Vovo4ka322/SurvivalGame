@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class BorrowedTimeUser : MonoBehaviour
 {
-    [SerializeField] private BorrowedTime _borrowedTime;
+    private BorrowedTime _borrowedTime;
 
     public float Duration { get; private set; }
 
-    public bool IsWorking { get; private set; } = false;
+    public bool IsWorking { get; private set; }
 
-    public IEnumerator UseAbility(float enemyDamage, Player player)
+    public void Upgrade(BorrowedTime borrowedTime)
+    {
+        _borrowedTime = borrowedTime;
+    }
+
+    public IEnumerator UseAbility()
     {
         Duration = 0;
 
         while (Duration < _borrowedTime.Duration)
         {
-            player.Health.Add(enemyDamage);
             Duration += Time.deltaTime;
 
             yield return null;
@@ -25,5 +29,5 @@ public class BorrowedTimeUser : MonoBehaviour
         IsWorking = false;
     }
 
-    public bool True() => IsWorking = true;
+    public bool IsWorkingTrue() => IsWorking = true;
 }

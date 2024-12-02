@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class Player : Character
 {
     [SerializeField] private Weapon _weapon;
     [SerializeField] private CharacterType _characterType;
+    [SerializeField] private MeleeAbilityUser _meleeAbility;
     [SerializeField] private BuffHolder _buffHolder;
 
     [SerializeField] private Buff _buff;//временно. Потом перенести в магазин
@@ -13,8 +15,6 @@ public class Player : Character
     public int Power { get; private set; }
 
     public int Armor { get; private set; }
-
-    private bool _isWorking;
 
     private void Awake()
     {
@@ -42,6 +42,8 @@ public class Player : Character
     {
         if (collision.gameObject.TryGetComponent(out Enemy enemy))
         {
+            //_meleeAbility.ActivateBorrowedTime();
+
             Health.Lose(enemy.SetDamage());
 
             if (Health.IsDead)
