@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -253,7 +254,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 324453278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 992079599}
+        m_TargetAssemblyTypeName: MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UseSecondAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &324453278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +317,6 @@ GameObject:
   - component: {fileID: 382135226}
   - component: {fileID: 382135225}
   - component: {fileID: 382135224}
-  - component: {fileID: 382135227}
   m_Layer: 5
   m_Name: AbilityPanel
   m_TagString: Untagged
@@ -396,23 +408,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382135222}
   m_CullTransparentMesh: 1
---- !u!114 &382135227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382135222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfab08fec2c082545a2fc2fc4c703c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 712949401}
-  _borrowedTime: {fileID: 712949397}
-  _bladeFury: {fileID: 712949409}
-  _borrowedTimeScriptableObject: {fileID: 11400000, guid: c2524195209c1df4298a3ea08fbfb927, type: 2}
-  _bladeFuryScriptableObject: {fileID: 11400000, guid: 42261804051e36148a7b763a25a381c9, type: 2}
 --- !u!1 &577831053
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,18 +641,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2797217082484946439, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
   m_PrefabInstance: {fileID: 1200654391}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &712949397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712949396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41650866bfe649844a003774237a30bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &712949401 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
@@ -674,15 +657,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8217492577267183467, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
   m_PrefabInstance: {fileID: 1200654391}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &712949409 stripped
+--- !u!114 &712949417
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3074343335878579661, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
-  m_PrefabInstance: {fileID: 1200654391}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712949396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e54493e053d50840ad7303bd1473315, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ccf559523ac7414695c2b5794a8de25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &939437589 stripped
@@ -972,6 +956,7 @@ GameObject:
   - component: {fileID: 992079599}
   - component: {fileID: 992079598}
   - component: {fileID: 992079597}
+  - component: {fileID: 992079600}
   m_Layer: 0
   m_Name: AbilityUser
   m_TagString: Untagged
@@ -1030,11 +1015,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfab08fec2c082545a2fc2fc4c703c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _borrowedTime: {fileID: 0}
-  _bladeFury: {fileID: 0}
-  _borrowedTimeScriptableObject: {fileID: 0}
-  _bladeFuryScriptableObject: {fileID: 0}
+  _player: {fileID: 712949401}
+  _borrowedTime: {fileID: 992079597}
+  _bladeFury: {fileID: 992079598}
+  _borrowedTimeScriptableObject: {fileID: 11400000, guid: c2524195209c1df4298a3ea08fbfb927, type: 2}
+  _bladeFuryScriptableObject: {fileID: 11400000, guid: 42261804051e36148a7b763a25a381c9, type: 2}
+--- !u!114 &992079600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992079595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccf559523ac7414695c2b5794a8de25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1086431298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4636550293914080811, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: <_moveSpeed>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8217492577267183467, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1313,10 +1314,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _meleeAbility
+      value: 
+      objectReference: {fileID: 992079599}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
       propertyPath: _borrowedTimeUser
       value: 
-      objectReference: {fileID: 712949397}
-    m_RemovedComponents: []
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3074343335878579661, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8217492577267183467, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
@@ -1325,7 +1331,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2797217082484946439, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 712949397}
+      addedObject: {fileID: 712949417}
   m_SourcePrefab: {fileID: 100100000, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
 --- !u!1 &1347524055
 GameObject:
@@ -1663,7 +1669,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 382135227}
+      - m_Target: {fileID: 992079599}
         m_TargetAssemblyTypeName: MeleeAbilityUser, Assembly-CSharp
         m_MethodName: UseFirstAblitity
         m_Mode: 1

@@ -6,19 +6,25 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private PlayerController _controller;
 
+    [field: SerializeField] public float _moveSpeed { get; private set; }
+
     private Vector3 _moveDirection;
 
-    void Update()
+    private void Update()
     {
         HandleMovement();
         HandleRotation();
     }
 
-    void HandleMovement()
+    public void ChangeMoveSpeed(float amount)
+    {
+        _moveSpeed += amount;
+    }
+
+    private void HandleMovement()
     {
         float horizontal = _controller.Movement.x;
         float vertical = _controller.Movement.y;
@@ -30,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position += move;
     }
 
-    void HandleRotation()
+    private void HandleRotation()
     {
         Ray ray = Camera.main.ScreenPointToRay(_controller.Rotation);
         Plane plane = new(Vector3.up, Vector3.zero);

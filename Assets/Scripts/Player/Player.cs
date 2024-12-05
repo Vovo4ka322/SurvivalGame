@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
-public class Player : Character
+public class Player : Character, IHealable
 {
     [SerializeField] private Weapon _weapon;
     [SerializeField] private CharacterType _characterType;
-    [SerializeField] private MeleeAbilityUser _meleeAbility;
     [SerializeField] private BuffHolder _buffHolder;
 
     [SerializeField] private Buff _buff;//временно. Потом перенести в магазин
@@ -15,6 +15,8 @@ public class Player : Character
     public int Power { get; private set; }
 
     public int Armor { get; private set; }
+
+    public bool IsHealState { get; private set; }
 
     private void Awake()
     {
@@ -42,9 +44,14 @@ public class Player : Character
     {
         if (collision.gameObject.TryGetComponent(out Enemy enemy))
         {
-            //_meleeAbility.ActivateBorrowedTime();
-
-            Health.Lose(enemy.SetDamage());
+            if (IsHealState)
+            {
+                Health.Add(enemy.SetDamage());
+            }
+            else
+            {
+                Health.Lose(enemy.SetDamage());
+            }
 
             if (Health.IsDead)
             {
@@ -52,4 +59,16 @@ public class Player : Character
             }
         }
     }
+
+    public void SetState(bool state)
+    {
+        IsHealState = state;
+    }
+}
+
+public interface IHealable
+{
+    public bool IsHealState { get; }
+
+    public void SetState(bool state);
 }

@@ -2,25 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BladeFuryUser : MonoBehaviour
+public class BladeFuryUser : MonoBehaviour, ICooldownable
 {
-    private BladeFury _bladeFuryScr;
+    private BladeFury _bladeFuryScriptableObject;
+    private float _lastUsedTimer = 0;
+    private bool _canUseFirstTime = true;
+
+    public float CooldownTime {  get; private set; }
 
     public void Upgrade(BladeFury bladeFury)
     {
-        _bladeFuryScr = bladeFury;
+        _bladeFuryScriptableObject = bladeFury;
     }
 
-    public IEnumerator UseAbility()
+    public IEnumerator UseAbility(Transform player)
     {
         float duration = 0;
 
-        while (duration < _bladeFuryScr.Duration)
+        if (Time.time >= _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime || _canUseFirstTime)
         {
-            transform.Rotate(Vector3.up, _bladeFuryScr.TurnSpeed * Time.deltaTime);
-            duration += Time.deltaTime;
+            while (duration < _bladeFuryScriptableObject.Duration)
+            {
+                player.Rotate(Vector3.up, _bladeFuryScriptableObject.TurnSpeed * Time.deltaTime);
+                duration += Time.deltaTime;
+                _lastUsedTimer = Time.time;
+                _canUseFirstTime = false;
 
-            yield return null;
+                yield return null;
+            }
+
+            CooldownTime = _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time;
+        }
+        else
+        {
+            Debug.Log("Осталось " + (_lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time));
         }
     }
 }

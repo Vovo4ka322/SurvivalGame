@@ -15,18 +15,12 @@ public class MeleeAbilityUser : MonoBehaviour
     public void UseFirstAblitity()
     {
         _bladeFury.Upgrade(_bladeFuryScriptableObject);
-        StartCoroutine(_bladeFury.UseAbility());
+        StartCoroutine(_bladeFury.UseAbility(_player.transform));
     }
 
     public void UseSecondAbility()
     {
         _borrowedTime.Upgrade(_borrowedTimeScriptableObject);
-        //_borrowedTime.UseAbility();
-    }
-
-    public void ActivateBorrowedTime()
-    {
-        _borrowedTime.IsWorkingTrue();
-        _borrowedTime.UseAbility();
+        StartCoroutine(_borrowedTime.UseAbility(_player));
     }
 }
