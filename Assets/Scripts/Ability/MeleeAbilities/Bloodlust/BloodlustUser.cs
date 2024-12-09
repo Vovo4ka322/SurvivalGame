@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class BloodlustUser : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Bloodlust _bloodlust;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

@@ -9,8 +9,11 @@ public class Player : Character, IHealable
     [SerializeField] private Weapon _weapon;
     [SerializeField] private CharacterType _characterType;
     [SerializeField] private BuffHolder _buffHolder;
+    [SerializeField] private PlayerMovement _playerMovement;
 
     [SerializeField] private Buff _buff;//временно. ѕотом перенести в магазин
+
+    public float AttackSpeed { get; private set; }
 
     public int Power { get; private set; }
 
@@ -46,7 +49,7 @@ public class Player : Character, IHealable
         {
             if (IsHealState)
             {
-                Health.Add(enemy.SetDamage());
+                Health.Add(enemy.SetDamage());//потом сделать условие дл€ бойца дальнего бо€
             }
             else
             {
@@ -58,6 +61,12 @@ public class Player : Character, IHealable
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void UpgradeCharacteristikByBloodlust(Bloodlust bloodlust)
+    {
+        _playerMovement.ChangeMoveSpeed(bloodlust.MovementSpeed);
+        AttackSpeed += bloodlust.AttackSpeed;
     }
 
     public void SetState(bool state)

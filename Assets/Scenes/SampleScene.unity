@@ -669,6 +669,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccf559523ac7414695c2b5794a8de25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &712949420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4636550293914080811, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+  m_PrefabInstance: {fileID: 1200654391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712949396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0942e95eccb58cd42bc4b075d5c2c662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &939437589 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8834734170784175513, guid: bd6372cac36cf86438b3d3537ac67e40, type: 3}
@@ -1020,6 +1031,7 @@ MonoBehaviour:
   _bladeFury: {fileID: 992079598}
   _borrowedTimeScriptableObject: {fileID: 11400000, guid: c2524195209c1df4298a3ea08fbfb927, type: 2}
   _bladeFuryScriptableObject: {fileID: 11400000, guid: 42261804051e36148a7b763a25a381c9, type: 2}
+  _bloodlustScriptableObject: {fileID: 11400000, guid: cf30129e21387f04481e32e3e6558b6e, type: 2}
 --- !u!114 &992079600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,7 +1126,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1086431301}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 992079599}
+        m_TargetAssemblyTypeName: MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UseThirdAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1086431301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1318,6 +1342,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 992079599}
     - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _playerMovement
+      value: 
+      objectReference: {fileID: 712949420}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
       propertyPath: _borrowedTimeUser
       value: 
       objectReference: {fileID: 0}
@@ -1349,7 +1377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1347524056
 MonoBehaviour:
   m_ObjectHideFlags: 0

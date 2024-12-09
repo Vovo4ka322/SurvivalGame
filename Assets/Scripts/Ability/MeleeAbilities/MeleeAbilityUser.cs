@@ -11,6 +11,7 @@ public class MeleeAbilityUser : MonoBehaviour
     [Header("SO")]
     [SerializeField] private BorrowedTime _borrowedTimeScriptableObject;
     [SerializeField] private BladeFury _bladeFuryScriptableObject;
+    [SerializeField] private Bloodlust _bloodlustScriptableObject;
 
     public void UseFirstAblitity()
     {
@@ -22,5 +23,10 @@ public class MeleeAbilityUser : MonoBehaviour
     {
         _borrowedTime.Upgrade(_borrowedTimeScriptableObject);
         StartCoroutine(_borrowedTime.UseAbility(_player));
+    }
+
+    public void UseThirdAbility()
+    {
+        _player.UpgradeCharacteristikByBloodlust(_bloodlustScriptableObject);
     }
 }
