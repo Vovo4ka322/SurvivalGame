@@ -10,6 +10,7 @@ public class Player : Character, IHealable
     [SerializeField] private CharacterType _characterType;
     [SerializeField] private BuffHolder _buffHolder;
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerLevel _level;
 
     [SerializeField] private Buff _buff;//временно. Потом перенести в магазин
 
@@ -21,8 +22,11 @@ public class Player : Character, IHealable
 
     public bool IsHealState { get; private set; }
 
+    public PlayerLevel Level => _level;
+
     private void Awake()
     {
+        _level = new();
         _buffHolder.Add(_buff);// покупка бафов через магазин
         Init(_characterType);
     }
@@ -63,6 +67,13 @@ public class Player : Character, IHealable
         }
     }
 
+    public void GetExperience(int value)
+    {
+        _level.GainExperience(value);
+        Debug.Log(_level.Experience + " текущий опыт");
+        Debug.Log(_level.Level + " текущий lvl");
+    }
+
     public void UpgradeCharacteristikByBloodlust(Bloodlust bloodlust)
     {
         _playerMovement.ChangeMoveSpeed(bloodlust.MovementSpeed);
@@ -73,11 +84,4 @@ public class Player : Character, IHealable
     {
         IsHealState = state;
     }
-}
-
-public interface IHealable
-{
-    public bool IsHealState { get; }
-
-    public void SetState(bool state);
 }

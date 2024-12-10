@@ -85,7 +85,7 @@ namespace Enemies
 
             Enemy newEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
 
-            newEnemy.Init(_enemyTypeData[enemyType], _player.transform);
+            newEnemy.Init(_enemyTypeData[enemyType], _player);
 
             if (EnemyType.Boss == enemyType)
             {

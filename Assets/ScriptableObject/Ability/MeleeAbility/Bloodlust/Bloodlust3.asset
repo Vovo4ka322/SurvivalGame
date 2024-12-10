@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df297622e307fc54393c3c1944788ee2, type: 3}
-  m_Name: EasyEnemy
+  m_Script: {fileID: 11500000, guid: a770a9784f02244478e05c57b82024bc, type: 3}
+  m_Name: Bloodlust3
   m_EditorClassIdentifier: 
-  <EnemyType>k__BackingField: 0
-  <MoveSpeed>k__BackingField: 3
-  <Damage>k__BackingField: 10
-  <MaxHealth>k__BackingField: 100
-  <Experience>k__BackingField: 5
-  <Gold>k__BackingField: 0
+  <Name>k__BackingField: Bloodlust
+  <Description>k__BackingField: 
+  <CooldownTime>k__BackingField: 0
+  <MovementSpeed>k__BackingField: 15
+  <AttackSpeed>k__BackingField: 30

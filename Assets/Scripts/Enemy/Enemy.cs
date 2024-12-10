@@ -8,6 +8,7 @@ public class Enemy : Character
 
     private EnemyData _data;
     private Transform _target;
+    private Player _player;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +19,7 @@ public class Enemy : Character
             if (Health.IsDead)
             {
                 Destroy(gameObject);
+                _player.GetExperience(_data.Experience);
             }
         }
     }
@@ -27,10 +29,11 @@ public class Enemy : Character
         _movement.Move(_target, _data.MoveSpeed);
     }
 
-    public void Init(EnemyData data, Transform target)
+    public void Init(EnemyData data, Player player)
     {
-        _target = target;
+        _target = player.transform;
         _data = data;
+        _player = player;
         Health.InitMaxValue(data.MaxHealth);
     }
 

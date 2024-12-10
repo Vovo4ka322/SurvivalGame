@@ -17,6 +17,7 @@ public class BladeFuryUser : MonoBehaviour, ICooldownable
 
     public IEnumerator UseAbility(Transform player)
     {
+        Debug.Log(_bladeFuryScriptableObject.CooldownTime + " Cooldown");
         float duration = 0;
 
         if (Time.time >= _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime || _canUseFirstTime)
@@ -31,7 +32,7 @@ public class BladeFuryUser : MonoBehaviour, ICooldownable
                 yield return null;
             }
 
-            CooldownTime = _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time;
+            CooldownTime = _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time;//потом сделать визуализацию кулдауна
         }
         else
         {
