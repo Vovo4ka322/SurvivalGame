@@ -1,85 +1,125 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using MainPlayer;
+using System.Collections.Generic;
 
-public class MeleeAbilityUser : MonoBehaviour//преобразовать этот класс в нормальный вид
+namespace Abilities
 {
-    [SerializeField] private Player _player;
-    [SerializeField] private BorrowedTimeUser _borrowedTime;
-    [SerializeField] private BladeFuryUser _bladeFury;
-
-    [Header("Base scriptable object")]
-    [SerializeField] private BorrowedTime _borrowedTimeScriptableObject;
-    [SerializeField] private BladeFury _bladeFuryScriptableObject;
-    [SerializeField] private Bloodlust _bloodlustScriptableObject;
-
-    [Header("scriptable object lvl2")]
-    [SerializeField] private BorrowedTime _borrowedTimeScriptableObject2;
-    [SerializeField] private BladeFury _bladeFuryScriptableObject2;
-    [SerializeField] private Bloodlust _bloodlustScriptableObject2;
-
-    [Header("scriptable object lvl3")]
-    [SerializeField] private BorrowedTime _borrowedTimeScriptableObject3;
-    [SerializeField] private BladeFury _bladeFuryScriptableObject3;
-    [SerializeField] private Bloodlust _bloodlustScriptableObject3;
-
-    public event Action LevelChanged;
-    public event Action AbilityUpgraded;
-
-    private void Awake()
+    public class MeleeAbilityUser : MonoBehaviour
     {
-        _bladeFury.Upgrade(_bladeFuryScriptableObject);
-        _borrowedTime.Upgrade(_borrowedTimeScriptableObject);
-        _player.UpgradeCharacteristikByBloodlust(_bloodlustScriptableObject);
-    }
+        [SerializeField] private Player _player;
+        [SerializeField] private BorrowedTimeUser _borrowedTime;
+        [SerializeField] private BladeFuryUser _bladeFury;
 
-    private void OnEnable()//хз где, но где-то тут должно вылезать окошко, в котором мы выбираем что улучшить
-    {
-        _player.Level.LevelChanged += OpenUpgraderWindow;
-    }
+        [Header("Level of abilities")]
+        [SerializeField] private AbilityData _abilityDataFirstLevel;
+        [SerializeField] private AbilityData _abilityDataSecondLevel;
+        [SerializeField] private AbilityData _abilityDataThirdLevel;
 
-    private void OnDisable()
-    {
-        _player.Level.LevelChanged -= OpenUpgraderWindow;
-    }
+        private int _firstLevel = 1;
+        private int _secondLevel = 2;
+        private int _thirdLevel = 3;
 
-    public void OpenUpgraderWindow()//тут проблема, окошко не запускается
-    {
-        LevelChanged?.Invoke();
-        Debug.Log("Wokr");
-    }
+        private int _counterForBorrowedTime = 0;
+        private int _counterForBladeFury = 0;
+        private int _counterForBloodlust = 0;
 
-    public void UseFirstAblitity()
-    {
-        StartCoroutine(_bladeFury.UseAbility(_player.transform));
-    }
+        private int _firstUpgrade = 0;
+        private int _secondUpgrade = 1;
+        private int _thirdUpgrade = 2;
 
-    public void UseSecondAbility()
-    {
-        StartCoroutine(_borrowedTime.UseAbility(_player));
-    }
+        private Dictionary<int, AbilityData> _abilitiesDatas;
 
-    public void UseThirdAbility()
-    {
-        _player.UpgradeCharacteristikByBloodlust(_bloodlustScriptableObject);
-    }
+        public event Action LevelChanged;
+        public event Action AbilityUpgraded;
 
-    public void UpgradeFirstAbility()
-    {    
-        _bladeFury.Upgrade(_bladeFuryScriptableObject2);
-        AbilityUpgraded?.Invoke();
-    }
+        private void Awake()
+        {
+            _abilitiesDatas = new Dictionary<int, AbilityData>
+            {
+                { _firstLevel, _abilityDataFirstLevel },
+                { _secondLevel, _abilityDataSecondLevel },
+                { _thirdLevel, _abilityDataThirdLevel }
+            };
+        }
 
-    public void UpgradeSecondAbility()
-    {
-        _borrowedTime.Upgrade(_borrowedTimeScriptableObject2);
-        AbilityUpgraded?.Invoke();
-    }
+        private void OnEnable()
+        {
+            _player.Level.LevelChanged += OpenUpgraderWindow;
+        }
 
-    public void UpgradeThirdAbility()
-    {
-        _player.UpgradeCharacteristikByBloodlust(_bloodlustScriptableObject2);
-        AbilityUpgraded?.Invoke();
+        private void OnDisable()
+        {
+            _player.Level.LevelChanged -= OpenUpgraderWindow;
+        }
+
+        public void OpenUpgraderWindow()
+        {
+            LevelChanged?.Invoke();
+        }
+
+        public void UseBladeFury()
+        {
+            StartCoroutine(_bladeFury.UseAbility(_player.transform));
+        }
+
+        public void UseBorrowedTime()
+        {
+            StartCoroutine(_borrowedTime.UseAbility(_player));
+        }
+
+        public void UpgradeBladeFury()
+        {
+            if (IsTrue(_counterForBladeFury, _firstUpgrade))
+                UpgradeBladeFury(_firstLevel);
+            else if(IsTrue(_counterForBladeFury, _secondUpgrade))
+                UpgradeBladeFury(_secondLevel);
+            else if(IsTrue(_counterForBladeFury, _thirdUpgrade))
+                UpgradeBladeFury(_thirdLevel);
+        }
+
+        public void UpgradeBorrowedTime()
+        {
+            if (IsTrue(_counterForBorrowedTime, _firstUpgrade))
+                UpgradeBorrowedTime(_firstLevel);
+            else if (IsTrue(_counterForBorrowedTime, _secondUpgrade))
+                UpgradeBorrowedTime((_secondLevel));
+            else if (IsTrue(_counterForBorrowedTime, _thirdUpgrade))
+                UpgradeBorrowedTime(_thirdLevel);
+        }
+
+        public void UpgradeBloodlust()
+        {
+            if(IsTrue(_counterForBloodlust, _firstUpgrade))
+                UpgradeBloodlust(_firstLevel);
+            if(IsTrue(_counterForBloodlust, _secondUpgrade))
+                UpgradeBloodlust(_secondLevel);
+            if (IsTrue(_counterForBloodlust, _thirdLevel))
+                UpgradeBloodlust(_thirdLevel);
+        }
+
+        private bool IsTrue(int counter, int numberOfUpgrade) => counter == numberOfUpgrade;
+
+        private void UpgradeBladeFury(int level)
+        {
+            _bladeFury.Upgrade(_abilitiesDatas[level]._bladeFuryScriptableObject);
+            _counterForBladeFury++;
+            AbilityUpgraded?.Invoke();
+            Debug.Log(_counterForBladeFury + "123");
+        }
+
+        private void UpgradeBorrowedTime(int level)
+        {
+            _borrowedTime.Upgrade(_abilitiesDatas[level]._borrowedTimeScriptableObject);
+            _counterForBorrowedTime++;
+            AbilityUpgraded?.Invoke();
+        }
+
+        private void UpgradeBloodlust(int level)
+        {
+            _player.UpgradeCharacteristikByBloodlust(_abilitiesDatas[level]._bloodlustScriptableObject);
+            _counterForBloodlust++;
+            AbilityUpgraded?.Invoke();
+        }
     }
 }

@@ -1,42 +1,44 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BladeFuryUser : MonoBehaviour, ICooldownable
+namespace Abilities
 {
-    private BladeFury _bladeFuryScriptableObject;
-    private float _lastUsedTimer = 0;
-    private bool _canUseFirstTime = true;
-
-    public float CooldownTime {  get; private set; }
-
-    public void Upgrade(BladeFury bladeFury)
+    public class BladeFuryUser : MonoBehaviour, ICooldownable
     {
-        _bladeFuryScriptableObject = bladeFury;
-    }
+        private BladeFury _bladeFuryScriptableObject;
+        private float _lastUsedTimer = 0;
+        private bool _canUseFirstTime = true;
 
-    public IEnumerator UseAbility(Transform player)
-    {
-        Debug.Log(_bladeFuryScriptableObject.CooldownTime + " Cooldown");
-        float duration = 0;
+        public float CooldownTime { get; private set; }
 
-        if (Time.time >= _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime || _canUseFirstTime)
+        public void Upgrade(BladeFury bladeFury)
         {
-            while (duration < _bladeFuryScriptableObject.Duration)
-            {
-                player.Rotate(Vector3.up, _bladeFuryScriptableObject.TurnSpeed * Time.deltaTime);
-                duration += Time.deltaTime;
-                _lastUsedTimer = Time.time;
-                _canUseFirstTime = false;
-
-                yield return null;
-            }
-
-            CooldownTime = _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time;//потом сделать визуализацию кулдауна
+            _bladeFuryScriptableObject = bladeFury;
         }
-        else
+
+        public IEnumerator UseAbility(Transform player)
         {
-            Debug.Log("Осталось " + (_lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time));
+            Debug.Log(_bladeFuryScriptableObject.CooldownTime + " Cooldown");
+            float duration = 0;
+
+            if (Time.time >= _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime || _canUseFirstTime)
+            {
+                while (duration < _bladeFuryScriptableObject.Duration)
+                {
+                    player.Rotate(Vector3.up, _bladeFuryScriptableObject.TurnSpeed * Time.deltaTime);
+                    duration += Time.deltaTime;
+                    _lastUsedTimer = Time.time;
+                    _canUseFirstTime = false;
+
+                    yield return null;
+                }
+
+                CooldownTime = _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time;//потом сделать визуализацию кулдауна
+            }
+            else
+            {
+                Debug.Log("Осталось " + (_lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time));
+            }
         }
     }
 }

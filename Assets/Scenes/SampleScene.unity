@@ -390,8 +390,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 992079599}
-        m_TargetAssemblyTypeName: MeleeAbilityUser, Assembly-CSharp
-        m_MethodName: UseSecondAbility
+        m_TargetAssemblyTypeName: Abilities.MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UseBorrowedTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -626,8 +626,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 992079599}
-        m_TargetAssemblyTypeName: MeleeAbilityUser, Assembly-CSharp
-        m_MethodName: UpgradeSecondAbility
+        m_TargetAssemblyTypeName: Abilities.MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UpgradeBorrowedTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1430,15 +1430,9 @@ MonoBehaviour:
   _player: {fileID: 712949401}
   _borrowedTime: {fileID: 992079597}
   _bladeFury: {fileID: 992079598}
-  _borrowedTimeScriptableObject: {fileID: 11400000, guid: c2524195209c1df4298a3ea08fbfb927, type: 2}
-  _bladeFuryScriptableObject: {fileID: 11400000, guid: 42261804051e36148a7b763a25a381c9, type: 2}
-  _bloodlustScriptableObject: {fileID: 11400000, guid: cf30129e21387f04481e32e3e6558b6e, type: 2}
-  _borrowedTimeScriptableObject2: {fileID: 0}
-  _bladeFuryScriptableObject2: {fileID: 11400000, guid: 330a420058724c04d939de338da65f61, type: 2}
-  _bloodlustScriptableObject2: {fileID: 0}
-  _borrowedTimeScriptableObject3: {fileID: 0}
-  _bladeFuryScriptableObject3: {fileID: 0}
-  _bloodlustScriptableObject3: {fileID: 0}
+  _abilityDataFirstLevel: {fileID: 11400000, guid: 914ebbcaf88879749a0327284030706e, type: 2}
+  _abilityDataSecondLevel: {fileID: 11400000, guid: c2d0f8973b7ba7e48a9e2729409d6ab0, type: 2}
+  _abilityDataThirdLevel: {fileID: 11400000, guid: c6d704aa222d2814d98cbc632079fddd, type: 2}
 --- !u!114 &992079600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1548,8 +1542,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 992079599}
-        m_TargetAssemblyTypeName: MeleeAbilityUser, Assembly-CSharp
-        m_MethodName: UpgradeFirstAbility
+        m_TargetAssemblyTypeName: Abilities.MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UpgradeBladeFury
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1907,6 +1901,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
       propertyPath: _experience
       value: 
       objectReference: {fileID: 992079601}
@@ -1925,6 +1923,62 @@ PrefabInstance:
     - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
       propertyPath: _level.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._requireExperience
+      value: 
+      objectReference: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[0]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[1]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[2]
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[3]
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[4]
+      value: 390
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[5]
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[8]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[9]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[10]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392989794072672102, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+      propertyPath: _level._ints.Array.data[11]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3074343335878579661, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
@@ -2588,8 +2642,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 992079599}
-        m_TargetAssemblyTypeName: MeleeAbilityUser, Assembly-CSharp
-        m_MethodName: UseFirstAblitity
+        m_TargetAssemblyTypeName: Abilities.MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UseBladeFury
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

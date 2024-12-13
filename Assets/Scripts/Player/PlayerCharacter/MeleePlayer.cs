@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleePlayer : Player
+namespace MainPlayer
 {
+    public class MeleePlayer : Player
+    {
 
+    }
 }

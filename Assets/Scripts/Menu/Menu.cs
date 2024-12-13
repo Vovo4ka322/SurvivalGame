@@ -1,21 +1,22 @@
+using Abilities;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private Image _image;
-    [SerializeField] private MeleeAbilityUser _user;
+    [SerializeField] private MeleeAbilityUser _user;//временно тут
 
     private void OnEnable()
     {
         _user.LevelChanged += PressAbilityUpgrade;
-        _user.LevelChanged += CloseAbilityPanel;
+        _user.AbilityUpgraded += CloseAbilityPanel;
     }
 
     private void OnDisable()
     {
         _user.LevelChanged -= PressAbilityUpgrade;
-        _user.LevelChanged -= CloseAbilityPanel;
+        _user.AbilityUpgraded -= CloseAbilityPanel;
     }
 
     public void PressAbilityUpgrade()
