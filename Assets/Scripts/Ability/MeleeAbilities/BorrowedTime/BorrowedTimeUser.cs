@@ -9,10 +9,6 @@ namespace Abilities
         private float _lastUsedTimer = 0;
         private bool _canUseFirstTime = true;
 
-        public float Duration { get; private set; }
-
-        public bool IsWorking { get; private set; }
-
         public float CooldownTime { get; private set; }
 
         public void Upgrade(BorrowedTime borrowedTime)
@@ -22,16 +18,17 @@ namespace Abilities
 
         public IEnumerator UseAbility(IHealable healable)
         {
-            Duration = 0;
+            Debug.Log(_borrowedTimeScriptableObject.CooldownTime + " Cooldown");
+            float duration = 0;
 
             if (Time.time >= _lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime || _canUseFirstTime)
             {
-                healable.SetState(true);
-
-                while (Duration < _borrowedTimeScriptableObject.Duration)//где-то тут на время действия способности добавить партикл
+                while (duration < _borrowedTimeScriptableObject.Duration)//где-то тут на время действия способности добавить партикл
                 {
-                    IsWorking = true;
-                    Duration += Time.deltaTime;
+                    healable.SetState(true);
+                    duration += Time.deltaTime;
+                    _lastUsedTimer = Time.time;
+                    _canUseFirstTime = false;
 
                     yield return null;
                 }
@@ -40,10 +37,10 @@ namespace Abilities
 
                 CooldownTime = _lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime - Time.time;
             }
-
-            IsWorking = false;
+            else
+            {
+                Debug.Log("Осталось " + (_lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime - Time.time));
+            }
         }
-
-
     }
 }

@@ -1980,8 +1980,7 @@ PrefabInstance:
       propertyPath: _level._ints.Array.data[11]
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3074343335878579661, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8217492577267183467, guid: 68c452b35310eb646b4809ccf3ee4103, type: 3}
