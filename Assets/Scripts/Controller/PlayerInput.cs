@@ -15,10 +15,10 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class PlayerInput: IInputActionCollection2, IDisposable
+public partial class @PlayerInput: IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
-    public PlayerInput()
+    public @PlayerInput()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerInput"",
@@ -37,15 +37,6 @@ public partial class PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""4d3e48bb-b108-46ae-b4b7-85039db49873"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Look2"",
                     ""type"": ""Value"",
                     ""id"": ""7afec11f-3b35-40aa-bc3e-bb22c63f0a90"",
@@ -53,6 +44,24 @@ public partial class PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UseFirstAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""c687af4f-0513-4113-9c3f-3912ab6f46bb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseSecondAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""72c3425b-3bfa-4322-be03-b83b7593905b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -168,34 +177,45 @@ public partial class PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d6fbc380-87f0-4a3e-af73-5608f049dc58"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": ""NormalizeVector2"",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f7ca2a8c-c5c6-4e1c-80c6-83d8c1948ed9"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a2e3eb66-9c11-4a75-be64-ba3639902363"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88d9a953-55ca-4485-a024-5e6679a4d4e5"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64f0f31e-6e26-4091-8245-aca59e3c8af4"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": ""Press(pressPoint=0.1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseFirstAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec36bd1b-c68b-42c3-a990-9f80deee1132"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": ""Press(pressPoint=0.1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseSecondAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -235,11 +255,12 @@ public partial class PlayerInput: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Look2 = m_Player.FindAction("Look2", throwIfNotFound: true);
+        m_Player_UseFirstAbility = m_Player.FindAction("UseFirstAbility", throwIfNotFound: true);
+        m_Player_UseSecondAbility = m_Player.FindAction("UseSecondAbility", throwIfNotFound: true);
     }
 
-    ~PlayerInput()
+    ~@PlayerInput()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInput.Player.Disable() has not been called.");
     }
@@ -304,15 +325,17 @@ public partial class PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Look2;
+    private readonly InputAction m_Player_UseFirstAbility;
+    private readonly InputAction m_Player_UseSecondAbility;
     public struct PlayerActions
     {
-        private PlayerInput m_Wrapper;
-        public PlayerActions(PlayerInput wrapper) { m_Wrapper = wrapper; }
+        private @PlayerInput m_Wrapper;
+        public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Look2 => m_Wrapper.m_Player_Look2;
+        public InputAction @UseFirstAbility => m_Wrapper.m_Player_UseFirstAbility;
+        public InputAction @UseSecondAbility => m_Wrapper.m_Player_UseSecondAbility;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -325,12 +348,15 @@ public partial class PlayerInput: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Look.started += instance.OnLook;
-            @Look.performed += instance.OnLook;
-            @Look.canceled += instance.OnLook;
             @Look2.started += instance.OnLook2;
             @Look2.performed += instance.OnLook2;
             @Look2.canceled += instance.OnLook2;
+            @UseFirstAbility.started += instance.OnUseFirstAbility;
+            @UseFirstAbility.performed += instance.OnUseFirstAbility;
+            @UseFirstAbility.canceled += instance.OnUseFirstAbility;
+            @UseSecondAbility.started += instance.OnUseSecondAbility;
+            @UseSecondAbility.performed += instance.OnUseSecondAbility;
+            @UseSecondAbility.canceled += instance.OnUseSecondAbility;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -338,12 +364,15 @@ public partial class PlayerInput: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Look.started -= instance.OnLook;
-            @Look.performed -= instance.OnLook;
-            @Look.canceled -= instance.OnLook;
             @Look2.started -= instance.OnLook2;
             @Look2.performed -= instance.OnLook2;
             @Look2.canceled -= instance.OnLook2;
+            @UseFirstAbility.started -= instance.OnUseFirstAbility;
+            @UseFirstAbility.performed -= instance.OnUseFirstAbility;
+            @UseFirstAbility.canceled -= instance.OnUseFirstAbility;
+            @UseSecondAbility.started -= instance.OnUseSecondAbility;
+            @UseSecondAbility.performed -= instance.OnUseSecondAbility;
+            @UseSecondAbility.canceled -= instance.OnUseSecondAbility;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -382,7 +411,8 @@ public partial class PlayerInput: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
         void OnLook2(InputAction.CallbackContext context);
+        void OnUseFirstAbility(InputAction.CallbackContext context);
+        void OnUseSecondAbility(InputAction.CallbackContext context);
     }
 }

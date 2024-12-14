@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Abilities
 {
-    public class MeleeAbilityUser : MonoBehaviour
+    public class MeleeAbilityUser : MonoBehaviour, IAbilityUser
     {
         [SerializeField] private Player _player;
         [SerializeField] private BorrowedTimeUser _borrowedTime;
@@ -53,22 +53,24 @@ namespace Abilities
             _player.Level.LevelChanged -= OpenUpgraderWindow;
         }
 
+        public IAbilityUser Init() => this;
+
         public void OpenUpgraderWindow()
         {
             LevelChanged?.Invoke();
         }
 
-        public void UseBladeFury()
+        public void UseFirstAbility()
         {
             StartCoroutine(_bladeFury.UseAbility(_player.transform));
         }
 
-        public void UseBorrowedTime()
+        public void UseSecondAbility()
         {
             StartCoroutine(_borrowedTime.UseAbility(_player));
         }
 
-        public void UpgradeBladeFury()
+        public void UpgradeFirstAbility()
         {
             if (IsTrue(_counterForBladeFury, _firstUpgrade))
                 UpgradeBladeFury(_firstLevel);
@@ -78,7 +80,7 @@ namespace Abilities
                 UpgradeBladeFury(_thirdLevel);
         }
 
-        public void UpgradeBorrowedTime()
+        public void UpgradeSecondAbility()
         {
             if (IsTrue(_counterForBorrowedTime, _firstUpgrade))
                 UpgradeBorrowedTime(_firstLevel);
@@ -88,7 +90,7 @@ namespace Abilities
                 UpgradeBorrowedTime(_thirdLevel);
         }
 
-        public void UpgradeBloodlust()
+        public void UpgradeThirdAbility()
         {
             if(IsTrue(_counterForBloodlust, _firstUpgrade))
                 UpgradeBloodlust(_firstLevel);
@@ -105,7 +107,6 @@ namespace Abilities
             _bladeFury.Upgrade(_abilitiesDatas[level]._bladeFuryScriptableObject);
             _counterForBladeFury++;
             AbilityUpgraded?.Invoke();
-            Debug.Log(_counterForBladeFury + "123");
         }
 
         private void UpgradeBorrowedTime(int level)
