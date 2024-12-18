@@ -1,10 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BladeFury", menuName = "Ability/Melee/BladeFury")]
-public class BladeFury : Ability, IDamageCausable, IRadiusable, IDurationable, ICooldownable
+public class BladeFury : Ability, IRadiusable, IDurationable, ICooldownable
 {
-    [field: SerializeField] public float Damage {  get; private set; }
-
     [field: SerializeField] public float Radius {  get; private set; }
 
     [field: SerializeField] public float TurnSpeed { get; private set; }

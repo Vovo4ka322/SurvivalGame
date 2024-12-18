@@ -8,7 +8,7 @@ public class AbilityInput : MonoBehaviour//cделать так, чтобы отслеживались и сп
 {
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private MeleeAbilityUser _meleeAbilityUser;
-    
+    //Поле для лучника
 
     private IAbilityUser _abilityUser;
 
