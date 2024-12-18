@@ -12,4 +12,8 @@ public class EnemyData : ScriptableObject
     [field: SerializeField] public float Damage { get; private set; }
 
     [field: SerializeField] public float MaxHealth { get; private set; }
+
+    [field: SerializeField] public int Experience { get; private set; }
+
+    [field: SerializeField] public int Gold { get; private set; }
 }

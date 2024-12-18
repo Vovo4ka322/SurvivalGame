@@ -1,74 +1,87 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Enemies;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
-public class Player : Character, IHealable
+namespace MainPlayer
 {
-    [SerializeField] private Weapon _weapon;
-    [SerializeField] private CharacterType _characterType;
-    [SerializeField] private BuffHolder _buffHolder;
-
-    [SerializeField] private Buff _buff;//временно. Потом перенести в магазин
-
-    public int Power { get; private set; }
-
-    public int Armor { get; private set; }
-
-    public bool IsHealState { get; private set; }
-
-    private void Awake()
+    public class Player : Character, IHealable
     {
-        _buffHolder.Add(_buff);// покупка бафов через магазин
-        Init(_characterType);
-    }
+        [SerializeField] private Weapon _weapon;
+        [SerializeField] private CharacterType _characterType;
+        [SerializeField] private BuffHolder _buffHolder;
+        [SerializeField] private PlayerMovement _playerMovement;
+        [SerializeField] private PlayerLevel _level = new();
 
-    public void Init(ICharacteristicable characteristicable)
-    {
-        float health = characteristicable.MaxHealth;
-        Power = characteristicable.Power;
-        Armor = characteristicable.Armor;
+        [SerializeField] private Buff _buff;//временно. Потом перенести в магазин
 
-        foreach (var buff in _buffHolder.Baffs)
+        public float AttackSpeed { get; private set; }
+
+        public int Power { get; private set; }
+
+        public int Armor { get; private set; }
+
+        public bool IsHealState { get; private set; }
+
+        public PlayerLevel Level => _level;
+
+        private void Awake()
         {
-            Power += buff.Power;
-            Armor += buff.Armor;
-            health += buff.MaxHealth;
+            _level.Init();
+            _buffHolder.Add(_buff);// покупка бафов через магазин
+            Init(_characterType);
         }
 
-        Health.InitMaxValue(health);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.TryGetComponent(out Enemy enemy))
+        public void Init(ICharacteristicable characteristicable)
         {
-            if (IsHealState)
+            float health = characteristicable.MaxHealth;
+            Power = characteristicable.Power;
+            Armor = characteristicable.Armor;
+
+            foreach (var buff in _buffHolder.Baffs)
             {
-                Health.Add(enemy.SetDamage());
-            }
-            else
-            {
-                Health.Lose(enemy.SetDamage());
+                Power += buff.Power;
+                Armor += buff.Armor;
+                health += buff.MaxHealth;
             }
 
-            if (Health.IsDead)
+            Health.InitMaxValue(health);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.TryGetComponent(out Enemy enemy))
             {
-                Destroy(gameObject);
+                if (IsHealState)
+                {
+                    Health.Add(enemy.SetDamage());//потом сделать условие для бойца дальнего боя
+                }
+                else
+                {
+                    Health.Lose(enemy.SetDamage());
+                }
+
+                if (Health.IsDead)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
+
+        public void GetExperience(int value)
+        {
+            _level.GainExperience(value);
+            Debug.Log(_level.Experience + " текущий опыт");
+            Debug.Log(_level.Level + " текущий lvl");
+        }
+
+        public void UpgradeCharacteristikByBloodlust(Bloodlust bloodlust)
+        {
+            _playerMovement.ChangeMoveSpeed(bloodlust.MovementSpeed);
+            AttackSpeed += bloodlust.AttackSpeed;
+        }
+
+        public void SetState(bool state)
+        {
+            IsHealState = state;
+        }
     }
-
-    public void SetState(bool state)
-    {
-        IsHealState = state;
-    }
-}
-
-public interface IHealable
-{
-    public bool IsHealState { get; }
-
-    public void SetState(bool state);
 }

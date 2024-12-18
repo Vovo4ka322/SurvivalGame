@@ -1,26 +1,126 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using MainPlayer;
+using System.Collections.Generic;
 
-public class MeleeAbilityUser : MonoBehaviour
+namespace Abilities
 {
-    [SerializeField] private Player _player;
-    [SerializeField] private BorrowedTimeUser _borrowedTime;
-    [SerializeField] private BladeFuryUser _bladeFury;
-
-    [Header("SO")]
-    [SerializeField] private BorrowedTime _borrowedTimeScriptableObject;
-    [SerializeField] private BladeFury _bladeFuryScriptableObject;
-
-    public void UseFirstAblitity()
+    public class MeleeAbilityUser : MonoBehaviour, IAbilityUser
     {
-        _bladeFury.Upgrade(_bladeFuryScriptableObject);
-        StartCoroutine(_bladeFury.UseAbility(_player.transform));
-    }
+        [SerializeField] private Player _player;
+        [SerializeField] private BorrowedTimeUser _borrowedTime;
+        [SerializeField] private BladeFuryUser _bladeFury;
 
-    public void UseSecondAbility()
-    {
-        _borrowedTime.Upgrade(_borrowedTimeScriptableObject);
-        StartCoroutine(_borrowedTime.UseAbility(_player));
+        [Header("Level of abilities")]
+        [SerializeField] private AbilityData _abilityDataFirstLevel;
+        [SerializeField] private AbilityData _abilityDataSecondLevel;
+        [SerializeField] private AbilityData _abilityDataThirdLevel;
+
+        private int _firstLevel = 1;
+        private int _secondLevel = 2;
+        private int _thirdLevel = 3;
+
+        private int _counterForBorrowedTime = 0;
+        private int _counterForBladeFury = 0;
+        private int _counterForBloodlust = 0;
+
+        private int _firstUpgrade = 0;
+        private int _secondUpgrade = 1;
+        private int _thirdUpgrade = 2;
+
+        private Dictionary<int, AbilityData> _abilitiesDatas;
+
+        public event Action LevelChanged;
+        public event Action AbilityUpgraded;
+
+        private void Awake()
+        {
+            _abilitiesDatas = new Dictionary<int, AbilityData>
+            {
+                { _firstLevel, _abilityDataFirstLevel },
+                { _secondLevel, _abilityDataSecondLevel },
+                { _thirdLevel, _abilityDataThirdLevel }
+            };
+        }
+
+        private void OnEnable()
+        {
+            _player.Level.LevelChanged += OpenUpgraderWindow;
+        }
+
+        private void OnDisable()
+        {
+            _player.Level.LevelChanged -= OpenUpgraderWindow;
+        }
+
+        public IAbilityUser Init() => this;
+
+        public void OpenUpgraderWindow()
+        {
+            LevelChanged?.Invoke();
+        }
+
+        public void UseFirstAbility()
+        {
+            StartCoroutine(_bladeFury.UseAbility(_player.transform));
+        }
+
+        public void UseSecondAbility()
+        {
+            StartCoroutine(_borrowedTime.UseAbility(_player));
+        }
+
+        public void UpgradeFirstAbility()
+        {
+            if (IsTrue(_counterForBladeFury, _firstUpgrade))
+                UpgradeBladeFury(_firstLevel);
+            else if(IsTrue(_counterForBladeFury, _secondUpgrade))
+                UpgradeBladeFury(_secondLevel);
+            else if(IsTrue(_counterForBladeFury, _thirdUpgrade))
+                UpgradeBladeFury(_thirdLevel);
+        }
+
+        public void UpgradeSecondAbility()
+        {
+            if (IsTrue(_counterForBorrowedTime, _firstUpgrade))
+                UpgradeBorrowedTime(_firstLevel);
+            else if (IsTrue(_counterForBorrowedTime, _secondUpgrade))
+                UpgradeBorrowedTime((_secondLevel));
+            else if (IsTrue(_counterForBorrowedTime, _thirdUpgrade))
+                UpgradeBorrowedTime(_thirdLevel);
+        }
+
+        public void UpgradeThirdAbility()
+        {
+            if(IsTrue(_counterForBloodlust, _firstUpgrade))
+                UpgradeBloodlust(_firstLevel);
+            if(IsTrue(_counterForBloodlust, _secondUpgrade))
+                UpgradeBloodlust(_secondLevel);
+            if (IsTrue(_counterForBloodlust, _thirdLevel))
+                UpgradeBloodlust(_thirdLevel);
+        }
+
+        private bool IsTrue(int counter, int numberOfUpgrade) => counter == numberOfUpgrade;
+
+        private void UpgradeBladeFury(int level)
+        {
+            _bladeFury.Upgrade(_abilitiesDatas[level]._bladeFuryScriptableObject);
+            _counterForBladeFury++;
+            AbilityUpgraded?.Invoke();
+        }
+
+        private void UpgradeBorrowedTime(int level)
+        {
+            _borrowedTime.Upgrade(_abilitiesDatas[level]._borrowedTimeScriptableObject);
+            _counterForBorrowedTime++;
+            AbilityUpgraded?.Invoke();
+        }
+
+        private void UpgradeBloodlust(int level)
+        {
+            _player.UpgradeCharacteristikByBloodlust(_abilitiesDatas[level]._bloodlustScriptableObject);
+            _counterForBloodlust++;
+            AbilityUpgraded?.Invoke();
+        }
     }
 }

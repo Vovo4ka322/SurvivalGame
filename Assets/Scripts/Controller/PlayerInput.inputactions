@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Look",
-                    "type": "Value",
-                    "id": "4d3e48bb-b108-46ae-b4b7-85039db49873",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Look2",
                     "type": "Value",
                     "id": "7afec11f-3b35-40aa-bc3e-bb22c63f0a90",
@@ -31,6 +22,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "UseFirstAbility",
+                    "type": "Button",
+                    "id": "c687af4f-0513-4113-9c3f-3912ab6f46bb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseSecondAbility",
+                    "type": "Button",
+                    "id": "72c3425b-3bfa-4322-be03-b83b7593905b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -146,34 +155,45 @@
                 },
                 {
                     "name": "",
-                    "id": "d6fbc380-87f0-4a3e-af73-5608f049dc58",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "NormalizeVector2",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f7ca2a8c-c5c6-4e1c-80c6-83d8c1948ed9",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "a2e3eb66-9c11-4a75-be64-ba3639902363",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Look2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88d9a953-55ca-4485-a024-5e6679a4d4e5",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64f0f31e-6e26-4091-8245-aca59e3c8af4",
+                    "path": "<Keyboard>/1",
+                    "interactions": "Press(pressPoint=0.1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseFirstAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec36bd1b-c68b-42c3-a990-9f80deee1132",
+                    "path": "<Keyboard>/2",
+                    "interactions": "Press(pressPoint=0.1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseSecondAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

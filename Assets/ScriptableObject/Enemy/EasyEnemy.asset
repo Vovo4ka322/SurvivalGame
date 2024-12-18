@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df297622e307fc54393c3c1944788ee2, type: 3}
   m_Name: EasyEnemy
   m_EditorClassIdentifier: 
-  _enemyType: 0
+  <EnemyType>k__BackingField: 0
   <MoveSpeed>k__BackingField: 3
   <Damage>k__BackingField: 10
   <MaxHealth>k__BackingField: 100
+  <Experience>k__BackingField: 100
+  <Gold>k__BackingField: 0

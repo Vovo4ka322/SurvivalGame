@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Buff", menuName = "Buff/Buff")]
-public class Buff : ScriptableObject, ICharacteristicable
+public class Buff : ScriptableObject, ICharacteristicable//для улучшения скинов
 {
     [field: SerializeField] public int Power { get; private set; }
 

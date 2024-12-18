@@ -1,7 +1,5 @@
-public interface IWeaponable
+public interface IWeaponable: IDamageCausable
 {
-    public int Damage { get; }
-
     public int AttackSpeed { get; }
 
     public float AttackRadius { get; }

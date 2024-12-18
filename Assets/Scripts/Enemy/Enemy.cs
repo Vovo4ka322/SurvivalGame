@@ -1,41 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
+using MainPlayer;
 using UnityEngine;
 
-public class Enemy : Character
+namespace Enemies
 {
-    [SerializeField] private EnemyMovement _movement;
-
-    private EnemyData _data;
-    private Transform _target;
-
-    private void OnTriggerEnter(Collider other)
+    public class Enemy : Character
     {
-        if (other.gameObject.TryGetComponent(out Weapon weapon))
-        {
-            Health.Lose(weapon.WeaponData.Damage);
+        [SerializeField] private EnemyMovement _movement;
 
-            if (Health.IsDead)
+        private EnemyData _data;
+        private Transform _target;
+        private Player _player;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out Weapon weapon))
             {
-                Destroy(gameObject);
+                Health.Lose(weapon.WeaponData.Damage);
+
+                if (Health.IsDead)
+                {
+                    Destroy(gameObject);
+                    _player.GetExperience(_data.Experience);
+                }
             }
         }
-    }
 
-    private void Update()
-    {
-        _movement.Move(_target, _data.MoveSpeed);
-    }
+        private void Update()
+        {
+            if (_target != null)
+                _movement.Move(_target, _data.MoveSpeed);
+        }
 
-    public void Init(EnemyData data, Transform target)
-    {
-        _target = target;
-        _data = data;
-        Health.InitMaxValue(data.MaxHealth);
-    }
+        public void Init(EnemyData data, Player player)
+        {
+            _target = player.transform;
+            _data = data;
+            _player = player;
+            Health.InitMaxValue(data.MaxHealth);
+        }
 
-    public float SetDamage()
-    {
-        return _data.Damage;
+        public float SetDamage()
+        {
+            return _data.Damage;
+        }
     }
 }
