@@ -9,7 +9,7 @@ namespace Enemies
 
         private EnemyData _data;
         private Transform _target;
-        private Player _player;
+        private Player.Player _player;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -31,7 +31,7 @@ namespace Enemies
                 _movement.Move(_target, _data.MoveSpeed);
         }
 
-        public void Init(EnemyData data, Player player)
+        public void Init(EnemyData data, Player.Player player)
         {
             _target = player.transform;
             _data = data;

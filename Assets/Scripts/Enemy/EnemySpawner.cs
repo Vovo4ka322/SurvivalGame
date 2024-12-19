@@ -8,7 +8,7 @@ namespace Enemies
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private List<EnemyWave> _waves = new();
-        [SerializeField] private Player _player;
+        [SerializeField] private Player.Player _player;
         [SerializeField] private Timer _timer;
         [SerializeField] private List<EnemyData> _enemiesData = new();
 
@@ -90,7 +90,7 @@ namespace Enemies
 
             if (EnemyType.Boss == enemyType)
             {
-                //Будет логика сражения с боссом. (Отдаем боссу того, кому он скажет, что умер).
+                //????? ?????? ???????? ? ??????. (?????? ????? ????, ???? ?? ??????, ??? ????).
             }
         }
 

@@ -1,6 +1,6 @@
+using MainPlayer;
 using UnityEngine;
-
-namespace MainPlayer
+namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -39,14 +39,12 @@ namespace MainPlayer
             Ray ray = Camera.main.ScreenPointToRay(_controller.Rotation);
             Plane plane = new(Vector3.up, Vector3.zero);
 
-            if (plane.Raycast(ray, out float rayDistance))
-            {
+            if(plane.Raycast(ray, out float rayDistance)) {
                 Vector3 point = ray.GetPoint(rayDistance);
                 Vector3 direction = point - transform.position;
                 direction.y = 0;
 
-                if (direction != Vector3.zero)
-                {
+                if(direction != Vector3.zero) {
                     Quaternion rotation = Quaternion.LookRotation(direction);
                     transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * _turnSpeed);
                 }
