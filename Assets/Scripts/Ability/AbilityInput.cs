@@ -14,7 +14,7 @@ public class AbilityInput : MonoBehaviour//cделать так, чтобы отслеживались и сп
 
     private void Awake()
     {
-        _abilityUser = _meleeAbilityUser.Init();
+        //_abilityUser = _meleeAbilityUser.Init();
     }
 
     private void Update()

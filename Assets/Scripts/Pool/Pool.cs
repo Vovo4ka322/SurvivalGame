@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool<T> : MonoBehaviour where T : MonoBehaviour
+public class Pool<T> : MonoBehaviour, IPoolReciver<T> where T : MonoBehaviour
 {
     [SerializeField] private T _object;
 
@@ -16,7 +16,7 @@ public class Pool<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    public T Get()
+    public T Get(Transform transform)
     {
         if(_objectStorage.Count != 0)
         {
@@ -26,11 +26,11 @@ public class Pool<T> : MonoBehaviour where T : MonoBehaviour
             return firstElement;
         }
 
-        T objectForReturn = CreateObject(_object);
+        T objectForReturn = CreateObject(_object, transform);
         objectForReturn.gameObject.SetActive(false);
 
         return objectForReturn;
     }
 
-    private T CreateObject(T objectCreator) => Instantiate(objectCreator);
+    private T CreateObject(T objectCreator, Transform transform) => Instantiate(objectCreator, transform.position, Quaternion.identity);
 }

@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6c04b200ec77414690f58034355bf34, type: 3}
-  m_Name: Bow
+  m_Script: {fileID: 11500000, guid: 534cd002b60edb849bef19632701b133, type: 3}
+  m_Name: Arrow
   m_EditorClassIdentifier: 
   <WeaponType>k__BackingField: 0
-  <Damage>k__BackingField: 5
-  <AttackSpeed>k__BackingField: 1
+  <Damage>k__BackingField: 100
+  <ArrowFlightSpeed>k__BackingField: 15
+  <AttackRadius>k__BackingField: 15

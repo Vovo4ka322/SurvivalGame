@@ -1,19 +1,43 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    private float _speed = 10f;
+    private Vector3 _direction;
+    private IPoolReciver<Arrow> _poolReciver;
+    private Coroutine _coroutine;
+    private float _speedFlight;
+    private float _radius;
 
-    public void Fly()
+    public void StartFly(Vector3 direction, Vector3 position)
     {
-        transform.parent = null;
-        transform.Translate(Vector3.right * _speed * Time.deltaTime);
+        transform.position = position;
+        _direction = direction.normalized;
+        transform.forward = _direction;
+
+        _coroutine = StartCoroutine(Fly());
     }
 
-    public void SetParent(Transform parent)
+    private IEnumerator Fly()
     {
-        transform.SetParent(parent);
+        float distanceTravelled = 0;
+
+        while (distanceTravelled < _radius)
+        {
+            float step = _speedFlight * Time.deltaTime;
+            transform.position += _direction * step;
+            distanceTravelled += step;
+
+            yield return null;
+        }
+
+        _poolReciver.Release(this);
+    }
+
+    public void Init(float speedFlight, float radius, IPoolReciver<Arrow> arrowPool)
+    {
+        _speedFlight = speedFlight;
+        _radius = radius;
+        _poolReciver = arrowPool;
     }
 }
