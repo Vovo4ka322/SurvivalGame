@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6c04b200ec77414690f58034355bf34, type: 3}
-  m_Name: Bow
+  m_Script: {fileID: 11500000, guid: 37fb8f4366030a645ad21a04b0a63c3a, type: 3}
+  m_Name: Multishot
   m_EditorClassIdentifier: 
-  <WeaponType>k__BackingField: 0
-  <Damage>k__BackingField: 5
-  <AttackSpeed>k__BackingField: 1.5
+  <Name>k__BackingField: Multishot
+  <Description>k__BackingField: 
+  <CooldownTime>k__BackingField: 10
+  <Duration>k__BackingField: 3

@@ -16,7 +16,7 @@ public class Pool<T> : MonoBehaviour, IPoolReciver<T> where T : MonoBehaviour
         }
     }
 
-    public T Get(Transform transform)
+    public T Get(Transform transform, Quaternion quaternion)
     {
         if(_objectStorage.Count != 0)
         {
@@ -26,11 +26,11 @@ public class Pool<T> : MonoBehaviour, IPoolReciver<T> where T : MonoBehaviour
             return firstElement;
         }
 
-        T objectForReturn = CreateObject(_object, transform);
+        T objectForReturn = CreateObject(_object, transform, quaternion);
         objectForReturn.gameObject.SetActive(false);
 
         return objectForReturn;
     }
 
-    private T CreateObject(T objectCreator, Transform transform) => Instantiate(objectCreator, transform.position, Quaternion.identity);
+    private T CreateObject(T objectCreator, Transform transform, Quaternion quaternion) => Instantiate(objectCreator, transform.position, quaternion);
 }

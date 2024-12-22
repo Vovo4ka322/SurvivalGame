@@ -22,7 +22,7 @@ public class Bow : MonoBehaviour
 
         while (IsActive == false)
         { 
-            Arrow arrow = _arrowSpawner.Spawn(transform);
+            Arrow arrow = _arrowSpawner.Spawn(transform, Quaternion.identity);
             arrow.StartFly(transform.forward, transform.position);
 
             yield return timeToSpawn;
