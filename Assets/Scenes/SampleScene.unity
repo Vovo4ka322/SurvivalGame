@@ -2330,8 +2330,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MeleeAbilityUser, Assembly-CSharp
+      - m_Target: {fileID: 1269088974}
+        m_TargetAssemblyTypeName: ArcherAbilityUser, Assembly-CSharp
         m_MethodName: UseSecondAbility
         m_Mode: 1
         m_Arguments:
@@ -10454,6 +10454,10 @@ PrefabInstance:
       propertyPath: _multishotScriptableObject
       value: 
       objectReference: {fileID: 11400000, guid: de050334db0e89e45ab45154a1f6ec2b, type: 2}
+    - target: {fileID: 5024150925759034294, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
+      propertyPath: _archerAbilityUser
+      value: 
+      objectReference: {fileID: 1269088974}
     - target: {fileID: 8035040673795931915, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
       propertyPath: m_LocalPosition.x
       value: 187.02
@@ -12154,8 +12158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f2e07343f2e71458ed8b704c569945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _arrowPrefab: {fileID: 3087641465047530294, guid: 2e6436e57429931489b6e226c3606507, type: 3}
   _arrowSpawner: {fileID: 1526769731}
+  _bow: {fileID: 1526769733}
+  _arrow: {fileID: 3087641465047530294, guid: 2e6436e57429931489b6e226c3606507, type: 3}
 --- !u!4 &1269722782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1621495262321268264, guid: a6dccea81e1455d4491d73f1d0e6d0ce, type: 3}
@@ -14383,6 +14388,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d0681fe42f949f49b73bb025d5ced16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1526769733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6970868367497888277, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
+  m_PrefabInstance: {fileID: 1052929861}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e23a9ec1307f5641afe4ec9c38e5025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1536723926

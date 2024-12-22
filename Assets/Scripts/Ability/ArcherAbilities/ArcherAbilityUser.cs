@@ -18,7 +18,7 @@ public class ArcherAbilityUser : MonoBehaviour, IAbilityUser
 
     public void OpenUpgraderWindow()
     {
-        
+
     }
 
     public void UpgradeFirstAbility()
@@ -28,12 +28,12 @@ public class ArcherAbilityUser : MonoBehaviour, IAbilityUser
 
     public void UpgradeSecondAbility()
     {
-        
+
     }
 
     public void UpgradeThirdAbility()
     {
-        
+
     }
 
     public void UseFirstAbility()
@@ -43,6 +43,6 @@ public class ArcherAbilityUser : MonoBehaviour, IAbilityUser
 
     public void UseSecondAbility()
     {
-        
+        _multishot.CalculateArrowFlight();
     }
 }
