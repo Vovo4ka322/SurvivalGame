@@ -1,6 +1,9 @@
-﻿public interface IHealable
+﻿namespace Player
 {
-    public bool IsHealState { get; }
+    public interface IHealable
+    {
+        public bool IsHealState { get; }
 
-    public void SetState(bool state);
+        public void SetState(bool state);
+    }
 }

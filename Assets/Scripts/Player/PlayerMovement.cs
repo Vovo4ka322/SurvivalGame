@@ -1,15 +1,21 @@
+using Controller;
 using UnityEngine;
 
-namespace MainPlayer
+namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float _turnSpeed;
         [SerializeField] private PlayerController _controller;
-
-        [field: SerializeField] public float _moveSpeed { get; private set; }
+        [SerializeField] private float _turnSpeed;
+        [SerializeField] private float _moveSpeed;
 
         private Vector3 _moveDirection;
+        private Transform _cameraTransform;
+
+        private void Awake()
+        {
+            _cameraTransform = Camera.main.transform;
+        }
 
         private void Update()
         {
@@ -24,32 +30,34 @@ namespace MainPlayer
 
         private void HandleMovement()
         {
+            if(_cameraTransform == null) 
+            {
+                return;
+            }
+            
             float horizontal = _controller.Movement.x;
             float vertical = _controller.Movement.y;
-
-            _moveDirection = new Vector3(horizontal, 0, vertical).normalized;
-            Matrix4x4 rotationMatrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
-            Vector3 rotatedDirection = rotationMatrix.MultiplyPoint3x4(_moveDirection);
-            Vector3 move = rotatedDirection * _moveSpeed * Time.deltaTime;
+            
+            Vector3 forward = _cameraTransform.forward;
+            Vector3 right = _cameraTransform.right;
+            
+            forward.y = 0f;
+            right.y = 0f;
+            forward.Normalize();
+            right.Normalize();
+            
+            _moveDirection = forward * vertical + right * horizontal;
+            _moveDirection = _moveDirection.normalized;
+            Vector3 move = _moveDirection * _moveSpeed * Time.deltaTime;
             transform.position += move;
         }
 
         private void HandleRotation()
         {
-            Ray ray = Camera.main.ScreenPointToRay(_controller.Rotation);
-            Plane plane = new(Vector3.up, Vector3.zero);
-
-            if (plane.Raycast(ray, out float rayDistance))
+            if (_moveDirection != Vector3.zero)
             {
-                Vector3 point = ray.GetPoint(rayDistance);
-                Vector3 direction = point - transform.position;
-                direction.y = 0;
-
-                if (direction != Vector3.zero)
-                {
-                    Quaternion rotation = Quaternion.LookRotation(direction);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * _turnSpeed);
-                }
+                Quaternion targetRotation = Quaternion.LookRotation(_moveDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _turnSpeed);
             }
         }
     }

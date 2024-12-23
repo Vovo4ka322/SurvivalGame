@@ -1,13 +1,12 @@
 using System;
 using UnityEngine;
-using MainPlayer;
 using System.Collections.Generic;
 
 namespace Abilities
 {
     public class MeleeAbilityUser : MonoBehaviour, IAbilityUser
     {
-        [SerializeField] private Player _player;
+        [SerializeField] private Player.Player _player;
         [SerializeField] private BorrowedTimeUser _borrowedTime;
         [SerializeField] private BladeFuryUser _bladeFury;
 
