@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4525433942773134}
   - component: {fileID: 33091478825383130}
   - component: {fileID: 23802807888390510}
-  - component: {fileID: 975853531882175432}
+  - component: {fileID: 5894405372723473707}
   m_Layer: 0
   m_Name: SM_Prop_Spike_Wall_03
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &975853531882175432
+--- !u!65 &5894405372723473707
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

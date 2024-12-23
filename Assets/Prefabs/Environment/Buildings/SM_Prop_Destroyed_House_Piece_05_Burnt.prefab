@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4843457258161240}
   - component: {fileID: 33882709585230782}
   - component: {fileID: 23327861233184606}
-  - component: {fileID: 4178998619381724455}
+  - component: {fileID: 6393452686784591217}
   m_Layer: 0
   m_Name: SM_Prop_Destroyed_House_Piece_05_Burnt
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4178998619381724455
+--- !u!65 &6393452686784591217
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 4174202966241354}
   - component: {fileID: 33844700905675530}
   - component: {fileID: 23797247229835666}
-  - component: {fileID: 64056944958991974}
+  - component: {fileID: 3058410318764974986}
+  - component: {fileID: 2027841957045100841}
   m_Layer: 0
   m_Name: SM_Bld_Preset_House_07_Optimized
   m_TagString: Untagged
@@ -168,8 +169,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64056944958991974
-MeshCollider:
+--- !u!65 &3058410318764974986
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -186,7 +187,27 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: d5a93e2755d560445bdf382c9ede0211, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 6.0911193, y: 10.907462, z: 10.456448}
+  m_Center: {x: -2.6785223, y: 2.941648, z: -4.1337023}
+--- !u!65 &2027841957045100841
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904262631371420}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.1758018, y: 10.907462, z: 8.76638}
+  m_Center: {x: 2.940695, y: 2.941648, z: -4.978736}

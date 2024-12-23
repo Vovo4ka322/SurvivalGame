@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using MainPlayer;
 using System.Collections.Generic;
 
 namespace Abilities

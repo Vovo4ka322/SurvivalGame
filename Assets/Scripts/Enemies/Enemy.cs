@@ -1,4 +1,3 @@
-using MainPlayer;
 using UnityEngine;
 
 namespace Enemies

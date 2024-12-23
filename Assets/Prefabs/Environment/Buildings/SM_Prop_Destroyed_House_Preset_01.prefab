@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4344213923423146}
   - component: {fileID: 33893667446756158}
   - component: {fileID: 23911882728836684}
-  - component: {fileID: 8326146010600111154}
+  - component: {fileID: 3714196417335364642}
   m_Layer: 0
   m_Name: SM_Prop_Destroyed_House_Preset_01
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8326146010600111154
+--- !u!65 &3714196417335364642
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

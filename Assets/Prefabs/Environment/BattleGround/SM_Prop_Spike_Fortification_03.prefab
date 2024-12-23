@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4794155538418086}
   - component: {fileID: 33055730052150030}
   - component: {fileID: 23402854970004400}
-  - component: {fileID: 2639798786894405779}
+  - component: {fileID: 7286821100673744589}
   m_Layer: 0
   m_Name: SM_Prop_Spike_Fortification_03
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2639798786894405779
+--- !u!65 &7286821100673744589
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -1,17 +1,14 @@
 using UnityEngine;
 
-namespace MainPlayer
+namespace Controller
 {
     public class PlayerController : MonoBehaviour
     {
         private PlayerInput _playerInput;
 
         public Vector2 Movement { get; private set; }
-
         public Vector2 Rotation { get; private set; }
-
         public bool FirstAbilityKeyPressed { get; private set; }
-
         public bool SecondAbilityKeyPressed { get; private set; }
 
         private void Awake()
