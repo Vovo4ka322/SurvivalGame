@@ -104,21 +104,21 @@ namespace Abilities
 
         private void UpgradeBladeFury(int level)
         {
-            _bladeFury.Upgrade(_abilitiesDatas[level]._bladeFuryScriptableObject);
+            _bladeFury.Upgrade(_abilitiesDatas[level].BladeFuryScriptableObject);
             _counterForBladeFury++;
             AbilityUpgraded?.Invoke();
         }
 
         private void UpgradeBorrowedTime(int level)
         {
-            _borrowedTime.Upgrade(_abilitiesDatas[level]._borrowedTimeScriptableObject);
+            _borrowedTime.Upgrade(_abilitiesDatas[level].BorrowedTimeScriptableObject);
             _counterForBorrowedTime++;
             AbilityUpgraded?.Invoke();
         }
 
         private void UpgradeBloodlust(int level)
         {
-            _player.UpgradeCharacteristikByBloodlust(_abilitiesDatas[level]._bloodlustScriptableObject);
+            _player.UpgradeCharacteristikByBloodlust(_abilitiesDatas[level].BloodlustScriptableObject);
             _counterForBloodlust++;
             AbilityUpgraded?.Invoke();
         }

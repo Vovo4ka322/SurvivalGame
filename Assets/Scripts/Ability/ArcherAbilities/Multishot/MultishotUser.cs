@@ -9,13 +9,11 @@ public class MultishotUser : MonoBehaviour, ICooldownable
     [SerializeField] private ArrowSpawner _arrowSpawner;
     [SerializeField] private Bow _bow;
     [SerializeField] private Arrow _arrow;
+    [SerializeField] private Cooldown _cooldown;
 
     private Multishot _multishotScriptableObject;
     private float _lastUsedTimer = 0;
     private bool _canUseFirstTime = true;
-    private int _numberOfArrows = 5;
-    private float _spreadAngle = 60f;
-    private bool _isWorking = false;
 
     public float CooldownTime { get; private set; }
 
@@ -24,7 +22,7 @@ public class MultishotUser : MonoBehaviour, ICooldownable
         _multishotScriptableObject = multishot;
     }
 
-    public IEnumerator UseAbility()
+    public IEnumerator UseAbility(IActivable activable)
     {
         Debug.Log(_multishotScriptableObject.CooldownTime + " Cooldown");
         float duration = 0;
@@ -33,13 +31,13 @@ public class MultishotUser : MonoBehaviour, ICooldownable
         {
             while (duration < _multishotScriptableObject.Duration)
             {
-                _isWorking = true;
+                activable.SetState(true);
 
-                while (_isWorking)//переделать, работает неккоректно. Нужно сделать небольшую задержку между выстрелов, а также отключить обычную атаку во время использования способности
+                while (_cooldown.CanUse)
                 {
                     CalculateArrowFlight();
 
-                    yield return new WaitForSeconds(0.5f);
+                    _cooldown.LaunchTimer(_multishotScriptableObject.Delay);
                 }
 
                 duration += Time.deltaTime;
@@ -49,7 +47,9 @@ public class MultishotUser : MonoBehaviour, ICooldownable
                 yield return null;
             }
 
-            _isWorking = false;
+            activable.SetState(false);
+            _bow.StartShoot();
+
             CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;//потом сделать визуализацию кулдауна
         }
         else
@@ -60,25 +60,18 @@ public class MultishotUser : MonoBehaviour, ICooldownable
 
     public void CalculateArrowFlight()
     {
-        float facingRotation = Mathf.Atan2(_bow.transform.position.y, _bow.transform.position.x) * Mathf.Rad2Deg;
-        float startRotation = facingRotation + _spreadAngle / 2;
-        float angleIncrease = _spreadAngle / ((float)_numberOfArrows - 1);
+        int coefficient = 2;
+        int oneArrow = 1;
 
-        for (int i = 0; i < _numberOfArrows; i++)
+        float facingRotation = Mathf.Atan2(_bow.transform.position.y, _bow.transform.position.x) * Mathf.Rad2Deg;
+        float startRotation = facingRotation + _multishotScriptableObject.SpreadAngle / coefficient;
+        float angleIncrease = _multishotScriptableObject.SpreadAngle / (_multishotScriptableObject.ArrowCount - oneArrow);
+
+        for (int i = 0; i < _multishotScriptableObject.ArrowCount; i++)
         {
             float tempRotation = startRotation - angleIncrease * i;
-            Arrow arrow = _arrowSpawner.Spawn(transform, Quaternion.Euler(0, 0, tempRotation));
+            Arrow arrow = _arrowSpawner.Spawn(_bow.transform, Quaternion.Euler(0, 0, tempRotation));
             arrow.StartFly(Quaternion.Euler(0, tempRotation, 0) * _bow.transform.forward, _bow.transform.position);
-        }
-    }
-
-    private IEnumerator Fly()
-    {
-        while (_isWorking)
-        {
-            CalculateArrowFlight();
-
-            yield return new WaitForSeconds(0.5f);
         }
     }
 }

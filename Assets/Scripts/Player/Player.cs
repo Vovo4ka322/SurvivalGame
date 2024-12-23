@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace MainPlayer
 {
-    public class Player : Character, IHealable
+    public class Player : Character, IActivable, IVampirismable
     {
         [SerializeField] private Weapon _weapon;
         [SerializeField] private CharacterType _characterType;
@@ -13,13 +13,17 @@ namespace MainPlayer
 
         [SerializeField] private Buff _buff;//временно. Потом перенести в магазин
 
+        public float WeaponDamage { get; private set; }
+
         public float AttackSpeed { get; private set; }
 
         public int Power { get; private set; }
 
         public int Armor { get; private set; }
 
-        public bool IsHealState { get; private set; }
+        public bool IsActiveState { get; private set; }
+
+        public bool IsVampirismWorking { get; private set; }
 
         public PlayerLevel Level => _level;
 
@@ -28,17 +32,18 @@ namespace MainPlayer
             _level.Init();
             _buffHolder.Add(_buff);// покупка бафов через магазин
             Init(_characterType);
+            WeaponDamage = _weapon.WeaponData.Damage;
         }
 
         public void Init(ICharacteristicable characteristicable)
         {
             float health = characteristicable.MaxHealth;
-            Power = characteristicable.Power;
+            Power = characteristicable.Damage;
             Armor = characteristicable.Armor;
 
             foreach (var buff in _buffHolder.Baffs)
             {
-                Power += buff.Power;
+                Power += buff.Damage;
                 Armor += buff.Armor;
                 health += buff.MaxHealth;
             }
@@ -50,9 +55,16 @@ namespace MainPlayer
         {
             if (collision.gameObject.TryGetComponent(out Enemy enemy))
             {
-                if (IsHealState)
+                if (IsActiveState)
                 {
-                    Health.Add(enemy.SetDamage());//потом сделать условие для бойца дальнего боя
+                    if (IsVampirismWorking)
+                    {
+                        Health.Add(WeaponDamage);
+                    }
+                    else
+                    {
+                        Health.Add(enemy.SetDamage());//потом сделать условие для бойца дальнего боя
+                    }
                 }
                 else
                 {
@@ -64,6 +76,11 @@ namespace MainPlayer
                     Destroy(gameObject);
                 }
             }
+        }
+
+        public void SetWeaponeDamage()
+        {
+            WeaponDamage = _weapon.WeaponData.Damage;
         }
 
         public void GetExperience(int value)
@@ -81,7 +98,19 @@ namespace MainPlayer
 
         public void SetState(bool state)
         {
-            IsHealState = state;
+            IsActiveState = state;
+        }
+
+        public void SetVampirismState(bool state)
+        {
+            IsVampirismWorking = state;
         }
     }
+}
+
+public interface IVampirismable
+{
+    public bool IsVampirismWorking { get; }
+
+    public void SetVampirismState(bool state);
 }

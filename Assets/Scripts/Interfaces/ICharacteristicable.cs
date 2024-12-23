@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ICharacteristicable
 {
-    public int Power { get; }
+    public int Damage { get; }
 
     public int Armor { get; }
 

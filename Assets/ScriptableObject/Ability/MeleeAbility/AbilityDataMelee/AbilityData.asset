@@ -12,15 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4c476308865614f954bb09f5221983, type: 3}
   m_Name: AbilityData
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  <_borrowedTimeScriptableObject>k__BackingField: {fileID: 11400000, guid: c2524195209c1df4298a3ea08fbfb927, type: 2}
-  <_bladeFuryScriptableObject>k__BackingField: {fileID: 11400000, guid: 42261804051e36148a7b763a25a381c9, type: 2}
-  <_bloodlustScriptableObject>k__BackingField: {fileID: 11400000, guid: cf30129e21387f04481e32e3e6558b6e, type: 2}
+  <BorrowedTimeScriptableObject>k__BackingField: {fileID: 11400000, guid: c2524195209c1df4298a3ea08fbfb927, type: 2}
+  <BladeFuryScriptableObject>k__BackingField: {fileID: 11400000, guid: 42261804051e36148a7b763a25a381c9, type: 2}
+  <BloodlustScriptableObject>k__BackingField: {fileID: 11400000, guid: cf30129e21387f04481e32e3e6558b6e, type: 2}

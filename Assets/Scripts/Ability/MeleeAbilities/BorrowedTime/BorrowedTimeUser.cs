@@ -16,7 +16,7 @@ namespace Abilities
             _borrowedTimeScriptableObject = borrowedTime;
         }
 
-        public IEnumerator UseAbility(IHealable healable)
+        public IEnumerator UseAbility(IActivable healable)
         {
             Debug.Log(_borrowedTimeScriptableObject.CooldownTime + " Cooldown");
             float duration = 0;
