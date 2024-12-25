@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4843457258161240}
   - component: {fileID: 33882709585230782}
   - component: {fileID: 23327861233184606}
-  - component: {fileID: 6393452686784591217}
+  - component: {fileID: 8370714782345342627}
+  - component: {fileID: -3256185456441476612}
   m_Layer: 0
   m_Name: SM_Prop_Destroyed_House_Piece_05_Burnt
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6393452686784591217
+--- !u!65 &8370714782345342627
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.85252684, y: 4.1951933, z: 8.363671}
   m_Center: {x: -0.0000036656857, y: 0.84230834, z: 3.7499998}
+--- !u!114 &-3256185456441476612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665650092703894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

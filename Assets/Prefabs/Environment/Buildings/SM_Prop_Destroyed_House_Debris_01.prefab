@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4978474012538640}
   - component: {fileID: 33479962963749518}
   - component: {fileID: 23084356837667564}
-  - component: {fileID: 5924595484619087024}
+  - component: {fileID: 3810722520509001435}
+  - component: {fileID: 3553770686212663310}
   m_Layer: 0
   m_Name: SM_Prop_Destroyed_House_Debris_01
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5924595484619087024
+--- !u!65 &3810722520509001435
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.8734403, y: 1.332766, z: 4.44046}
   m_Center: {x: -0.071832836, y: 0.4997963, z: -0.013872504}
+--- !u!114 &3553770686212663310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396640304073870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

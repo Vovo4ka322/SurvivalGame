@@ -1,7 +1,5 @@
 using Abilities;
-using System.Collections;
-using System.Collections.Generic;
-using Controller;
+using Player.Controller;
 using UnityEngine;
 
 public class AbilityInput : MonoBehaviour//cделать так, чтобы отслеживались и способности персонажа дальнего боя

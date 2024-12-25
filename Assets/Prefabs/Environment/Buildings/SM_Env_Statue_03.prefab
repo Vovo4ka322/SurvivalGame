@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3349134}
   - component: {fileID: 2315880}
   - component: {fileID: 3654126172460808112}
+  - component: {fileID: 8934308811750952930}
   m_Layer: 0
   m_Name: SM_Env_Statue_03
   m_TagString: Untagged
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.134673, y: 3.319249, z: 1.4113464}
   m_Center: {x: -0.00000047683716, y: 1.6596245, z: 0.0000076293945}
+--- !u!114 &8934308811750952930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
