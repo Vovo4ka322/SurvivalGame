@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4537870369339434}
   - component: {fileID: 33481510530231850}
   - component: {fileID: 23794300747646900}
-  - component: {fileID: 2804443262407697186}
-  - component: {fileID: 2147152548572120242}
+  - component: {fileID: 3118909386561835310}
+  - component: {fileID: 7977010755648292003}
   m_Layer: 0
   m_Name: SM_Bld_Preset_Church_01_A_Optimized
   m_TagString: Untagged
@@ -86,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2804443262407697186
+--- !u!65 &3118909386561835310
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,29 +105,20 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.4481564, y: 11.739724, z: 8.496624}
-  m_Center: {x: -1.25, y: 3.357779, z: -5.033993}
---- !u!65 &2147152548572120242
-BoxCollider:
+  m_Size: {x: 6.4481564, y: 11.739724, z: 10.917368}
+  m_Center: {x: -1.25, y: 3.357779, z: -3.8199031}
+--- !u!114 &7977010755648292003
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257024709312140}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.3130772, y: 11.739724, z: 2.4317536}
-  m_Center: {x: -1.2709004, y: 3.357779, z: 0.42290425}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1768155363841784
 GameObject:
   m_ObjectHideFlags: 0

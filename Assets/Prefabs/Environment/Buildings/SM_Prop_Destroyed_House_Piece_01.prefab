@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4767487339894532}
   - component: {fileID: 33271511278950362}
   - component: {fileID: 23144915236184600}
-  - component: {fileID: 6308591791625168608}
+  - component: {fileID: -5194446868858228543}
+  - component: {fileID: 4525133416989695087}
   m_Layer: 0
   m_Name: SM_Prop_Destroyed_House_Piece_01
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6308591791625168608
+--- !u!65 &-5194446868858228543
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.426293, y: 4.628952, z: 3.3637118}
   m_Center: {x: -2.286884, y: 0.6254288, z: 1.2500196}
+--- !u!114 &4525133416989695087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628843013408196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3301008}
   - component: {fileID: 2382310}
   - component: {fileID: 8374051596504674544}
+  - component: {fileID: 6532866775838915707}
   m_Layer: 0
   m_Name: SM_Env_Pillar_Broken_01
   m_TagString: Untagged
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.62291527, y: 0.9589604, z: 0.6199951}
   m_Center: {x: -0.0000009536743, y: 0.4794802, z: -0.0000009536743}
+--- !u!114 &6532866775838915707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

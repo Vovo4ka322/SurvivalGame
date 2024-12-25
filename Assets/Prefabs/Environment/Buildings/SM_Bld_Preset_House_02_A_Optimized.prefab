@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4257262165249590}
   - component: {fileID: 33092567246222836}
   - component: {fileID: 23912218381099542}
-  - component: {fileID: 1596414342887259439}
-  - component: {fileID: 4774462408893738024}
+  - component: {fileID: 675629534277840141}
+  - component: {fileID: 4314076523117497506}
   m_Layer: 0
   m_Name: SM_Bld_Preset_House_02_A_Optimized
   m_TagString: Untagged
@@ -86,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1596414342887259439
+--- !u!65 &675629534277840141
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,29 +105,20 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.448156, y: 9.239724, z: 5.964374}
-  m_Center: {x: -2.5000002, y: 2.1077795, z: -2.5282824}
---- !u!65 &4774462408893738024
-BoxCollider:
+  m_Size: {x: 6.448156, y: 9.239724, z: 8.073177}
+  m_Center: {x: -2.5000002, y: 2.1077795, z: -1.5753336}
+--- !u!114 &4314076523117497506
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310738999662834}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.6944282, y: 9.239724, z: 1.0729849}
-  m_Center: {x: -1.7729274, y: 2.1077795, z: 0.97787726}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1876224201922204
 GameObject:
   m_ObjectHideFlags: 0
