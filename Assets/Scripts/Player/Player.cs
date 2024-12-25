@@ -10,6 +10,8 @@ namespace MainPlayer
         [SerializeField] private BuffHolder _buffHolder;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerLevel _level = new();
+        [SerializeField] private Bow _bow;
+        [SerializeField] private Sword _sword;
 
         [SerializeField] private Buff _buff;//временно. ѕотом перенести в магазин
 
@@ -17,13 +19,15 @@ namespace MainPlayer
 
         public float AttackSpeed { get; private set; }
 
-        public int Power { get; private set; }
+        public int Damage { get; private set; }
 
         public int Armor { get; private set; }
 
         public bool IsActiveState { get; private set; }
 
-        public bool IsVampirismWorking { get; private set; }
+        public bool IsWorking { get; private set; }
+
+        public float Coefficient { get; private set; }
 
         public PlayerLevel Level => _level;
 
@@ -32,18 +36,37 @@ namespace MainPlayer
             _level.Init();
             _buffHolder.Add(_buff);// покупка бафов через магазин
             Init(_characterType);
+
             WeaponDamage = _weapon.WeaponData.Damage;
+        }
+
+        private void OnEnable()
+        {
+            _bow.ArrowTouched += OnHealthRestored;
+        }
+
+        private void OnDisable()
+        {
+            _bow.ArrowTouched -= OnHealthRestored;
+        }
+
+        private void OnHealthRestored()
+        {
+            if (IsWorking)
+            {
+                Health.Add(WeaponDamage * Coefficient);
+            }
         }
 
         public void Init(ICharacteristicable characteristicable)
         {
             float health = characteristicable.MaxHealth;
-            Power = characteristicable.Damage;
+            Damage = characteristicable.Damage;
             Armor = characteristicable.Armor;
 
             foreach (var buff in _buffHolder.Baffs)
             {
-                Power += buff.Damage;
+                Damage += buff.Damage;
                 Armor += buff.Armor;
                 health += buff.MaxHealth;
             }
@@ -56,20 +79,9 @@ namespace MainPlayer
             if (collision.gameObject.TryGetComponent(out Enemy enemy))
             {
                 if (IsActiveState)
-                {
-                    if (IsVampirismWorking)
-                    {
-                        Health.Add(WeaponDamage);
-                    }
-                    else
-                    {
-                        Health.Add(enemy.SetDamage());//потом сделать условие дл€ бойца дальнего бо€
-                    }
-                }
+                    Health.Add(enemy.SetDamage());
                 else
-                {
                     Health.Lose(enemy.SetDamage());
-                }
 
                 if (Health.IsDead)
                 {
@@ -86,8 +98,8 @@ namespace MainPlayer
         public void GetExperience(int value)
         {
             _level.GainExperience(value);
-            Debug.Log(_level.Experience + " текущий опыт");
-            Debug.Log(_level.Level + " текущий lvl");
+            //Debug.Log(_level.Experience + " текущий опыт");
+            //Debug.Log(_level.Level + " текущий lvl");
         }
 
         public void UpgradeCharacteristikByBloodlust(Bloodlust bloodlust)
@@ -103,14 +115,23 @@ namespace MainPlayer
 
         public void SetVampirismState(bool state)
         {
-            IsVampirismWorking = state;
+            IsWorking = state;
+        }
+
+        public void SetCoefficient(float value)
+        {
+            Coefficient = value;
         }
     }
 }
 
 public interface IVampirismable
 {
-    public bool IsVampirismWorking { get; }
+    public float Coefficient { get; }
+
+    public bool IsWorking { get; }
 
     public void SetVampirismState(bool state);
+
+    public void SetCoefficient(float value);
 }

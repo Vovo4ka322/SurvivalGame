@@ -1,15 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bow : MonoBehaviour, IActivable
+public class Bow : Weapon, IActivable
 {
     [SerializeField] private ArrowSpawner _arrowSpawner;
     [SerializeField] private BowData _bowData;
 
+    private Arrow _arrow;
     private Coroutine _arrowCreatorCoroutine;
 
-    public bool IsActiveState {  get; private set; }
+    public event Action ArrowTouched;
+
+    public BowData BowData => _bowData;
+
+    public bool IsActiveState { get; private set; }
 
     private void Start()
     {
@@ -26,12 +32,23 @@ public class Bow : MonoBehaviour, IActivable
         WaitForSeconds timeToSpawn = new(_bowData.AttackSpeed);
 
         while (IsActiveState == false)
-        { 
+        {
             yield return timeToSpawn;
 
-            Arrow arrow = _arrowSpawner.Spawn(transform, Quaternion.identity);
+            if (_arrow != null)
+                _arrow.Touched -= OnTouched;
+
+            Arrow arrow = _arrowSpawner.Spawn(transform, Quaternion.identity, _bowData.ArrowFlightSpeed, _bowData.AttackRadius);
             arrow.StartFly(transform.forward, transform.position);
+            _arrow = arrow;
+            _arrow.Touched += OnTouched;
         }
+
+    }
+
+    public void OnTouched()
+    {
+        ArrowTouched?.Invoke();
     }
 
     public void SetState(bool state)

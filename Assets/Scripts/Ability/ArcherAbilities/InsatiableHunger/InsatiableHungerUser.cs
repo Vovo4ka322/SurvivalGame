@@ -1,29 +1,29 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class InsatiableHungerUser : MonoBehaviour
 {
-    private Multishot _insatiableHunger;
+    private InsatiableHunger _insatiableHunger;
     private float _lastUsedTimer = 0;
     private bool _canUseFirstTime = true;
 
     public float CooldownTime { get; private set; }
 
-    public void Upgrade(Multishot multishot)
+    public void Upgrade(InsatiableHunger insatiableHunger)
     {
-        _insatiableHunger = multishot;
+        _insatiableHunger = insatiableHunger;
     }
 
     public IEnumerator UseAbility(IActivable activable, IVampirismable vampirismable)
     {
-        Debug.Log(_insatiableHunger.CooldownTime + " Cooldown");
+        //Debug.Log(_insatiableHunger.CooldownTime + " Cooldown");
         float duration = 0;
+        vampirismable.SetCoefficient(_insatiableHunger.Vampirism);
+        //Debug.Log(_insatiableHunger.Vampirism + " Vampirism");
 
         if (Time.time >= _lastUsedTimer + _insatiableHunger.CooldownTime || _canUseFirstTime)
         {
-            while (duration < _insatiableHunger.Duration)
+            while (duration < _insatiableHunger.Duration)//доделать
             {
                 activable.SetState(true);
                 vampirismable.SetVampirismState(true);
@@ -41,7 +41,7 @@ public class InsatiableHungerUser : MonoBehaviour
         }
         else
         {
-            Debug.Log("Осталось " + (_lastUsedTimer + _insatiableHunger.CooldownTime - Time.time));
+            //Debug.Log("Осталось " + (_lastUsedTimer + _insatiableHunger.CooldownTime - Time.time));
         }
     }
 }

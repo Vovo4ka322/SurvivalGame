@@ -1,3 +1,5 @@
+using Enemies;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,6 +10,14 @@ public class Arrow : MonoBehaviour
     private Coroutine _coroutine;
     private float _speedFlight;
     private float _radius;
+
+    public event Action Touched;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out Enemy _))
+            Touched?.Invoke();
+    }
 
     public void StartFly(Vector3 direction, Vector3 position)
     {

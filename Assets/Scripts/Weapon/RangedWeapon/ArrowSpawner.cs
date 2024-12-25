@@ -3,13 +3,12 @@ using UnityEngine;
 public class ArrowSpawner : MonoBehaviour
 {
     [SerializeField] private Pool<Arrow> _pool;
-    [SerializeField] private ArrowData _arrowData;
 
-    public Arrow Spawn(Transform transform, Quaternion quaternion)
+    public Arrow Spawn(Transform transform, Quaternion quaternion, float arrowFlightSpeed, float flightRadius)
     {
         Arrow arrow = _pool.Get(transform, quaternion);
         arrow.gameObject.SetActive(true);
-        arrow.Init(_arrowData.ArrowFlightSpeed, _arrowData.AttackRadius, _pool);
+        arrow.Init(arrowFlightSpeed, flightRadius, _pool);
 
         return arrow;
     }

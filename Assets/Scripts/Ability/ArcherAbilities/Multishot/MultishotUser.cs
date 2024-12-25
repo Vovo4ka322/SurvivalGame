@@ -8,7 +8,6 @@ public class MultishotUser : MonoBehaviour, ICooldownable
 {
     [SerializeField] private ArrowSpawner _arrowSpawner;
     [SerializeField] private Bow _bow;
-    [SerializeField] private Arrow _arrow;
     [SerializeField] private Cooldown _cooldown;
 
     private Multishot _multishotScriptableObject;
@@ -70,7 +69,7 @@ public class MultishotUser : MonoBehaviour, ICooldownable
         for (int i = 0; i < _multishotScriptableObject.ArrowCount; i++)
         {
             float tempRotation = startRotation - angleIncrease * i;
-            Arrow arrow = _arrowSpawner.Spawn(_bow.transform, Quaternion.Euler(0, 0, tempRotation));
+            Arrow arrow = _arrowSpawner.Spawn(_bow.transform, Quaternion.Euler(0, 0, tempRotation), _bow.BowData.ArrowFlightSpeed, _bow.BowData.AttackRadius);
             arrow.StartFly(Quaternion.Euler(0, tempRotation, 0) * _bow.transform.forward, _bow.transform.position);
         }
     }

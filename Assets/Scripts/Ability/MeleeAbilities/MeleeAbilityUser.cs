@@ -12,9 +12,9 @@ namespace Abilities
         [SerializeField] private BladeFuryUser _bladeFury;
 
         [Header("Level of abilities")]
-        [SerializeField] private AbilityData _abilityDataFirstLevel;
-        [SerializeField] private AbilityData _abilityDataSecondLevel;
-        [SerializeField] private AbilityData _abilityDataThirdLevel;
+        [SerializeField] private MeleeAbilityData _abilityDataFirstLevel;
+        [SerializeField] private MeleeAbilityData _abilityDataSecondLevel;
+        [SerializeField] private MeleeAbilityData _abilityDataThirdLevel;
 
         private int _firstLevel = 1;
         private int _secondLevel = 2;
@@ -28,14 +28,14 @@ namespace Abilities
         private int _secondUpgrade = 1;
         private int _thirdUpgrade = 2;
 
-        private Dictionary<int, AbilityData> _abilitiesDatas;
+        private Dictionary<int, MeleeAbilityData> _abilitiesDatas;
 
         public event Action LevelChanged;
         public event Action AbilityUpgraded;
 
         private void Awake()
         {
-            _abilitiesDatas = new Dictionary<int, AbilityData>
+            _abilitiesDatas = new Dictionary<int, MeleeAbilityData>
             {
                 { _firstLevel, _abilityDataFirstLevel },
                 { _secondLevel, _abilityDataSecondLevel },
@@ -74,9 +74,9 @@ namespace Abilities
         {
             if (IsTrue(_counterForBladeFury, _firstUpgrade))
                 UpgradeBladeFury(_firstLevel);
-            else if(IsTrue(_counterForBladeFury, _secondUpgrade))
+            else if (IsTrue(_counterForBladeFury, _secondUpgrade))
                 UpgradeBladeFury(_secondLevel);
-            else if(IsTrue(_counterForBladeFury, _thirdUpgrade))
+            else if (IsTrue(_counterForBladeFury, _thirdUpgrade))
                 UpgradeBladeFury(_thirdLevel);
         }
 
@@ -92,9 +92,9 @@ namespace Abilities
 
         public void UpgradeThirdAbility()
         {
-            if(IsTrue(_counterForBloodlust, _firstUpgrade))
+            if (IsTrue(_counterForBloodlust, _firstUpgrade))
                 UpgradeBloodlust(_firstLevel);
-            if(IsTrue(_counterForBloodlust, _secondUpgrade))
+            if (IsTrue(_counterForBloodlust, _secondUpgrade))
                 UpgradeBloodlust(_secondLevel);
             if (IsTrue(_counterForBloodlust, _thirdLevel))
                 UpgradeBloodlust(_thirdLevel);

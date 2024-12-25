@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6c04b200ec77414690f58034355bf34, type: 3}
-  m_Name: Bow
+  m_Script: {fileID: 11500000, guid: 28141b4941ffb3248bdb18b1c0618537, type: 3}
+  m_Name: InsatiableHunger2
   m_EditorClassIdentifier: 
-  <WeaponType>k__BackingField: 0
-  <Damage>k__BackingField: 100
-  <AttackSpeed>k__BackingField: 1.5
-  <ArrowFlightSpeed>k__BackingField: 15
-  <AttackRadius>k__BackingField: 20
+  <Name>k__BackingField: InsatiableHunger
+  <Description>k__BackingField: 
+  <CooldownTime>k__BackingField: 16
+  <Vampirism>k__BackingField: 0.2
+  <Duration>k__BackingField: 5

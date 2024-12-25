@@ -10455,13 +10455,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1269088976}
     - target: {fileID: 1631190390561914526, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
+      propertyPath: _insatiableHunger
+      value: 
+      objectReference: {fileID: 1269088980}
+    - target: {fileID: 1631190390561914526, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
+      propertyPath: _abilityDataFirstLevel
+      value: 
+      objectReference: {fileID: 11400000, guid: b4a7139fe38b3af4e9372cf0564a2e54, type: 2}
+    - target: {fileID: 1631190390561914526, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
+      propertyPath: _abilityDataThirdLevel
+      value: 
+      objectReference: {fileID: 11400000, guid: 57706fafe4a52bf4984a76a470f93f37, type: 2}
+    - target: {fileID: 1631190390561914526, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
+      propertyPath: _abilityDataSecondLevel
+      value: 
+      objectReference: {fileID: 11400000, guid: a639916da716fa24d8b16739f2a6c1fe, type: 2}
+    - target: {fileID: 1631190390561914526, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
       propertyPath: _multishotScriptableObject
       value: 
       objectReference: {fileID: 11400000, guid: de050334db0e89e45ab45154a1f6ec2b, type: 2}
+    - target: {fileID: 1742689612400726415, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
+      propertyPath: _bow
+      value: 
+      objectReference: {fileID: 1526769733}
+    - target: {fileID: 1742689612400726415, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 1526769733}
     - target: {fileID: 5024150925759034294, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
       propertyPath: _archerAbilityUser
       value: 
       objectReference: {fileID: 1269088974}
+    - target: {fileID: 6970868367497888277, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
+      propertyPath: <WeaponData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f9129e463406ae42ba136861b885994, type: 2}
     - target: {fileID: 8035040673795931915, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
       propertyPath: m_LocalPosition.x
       value: 187.02
@@ -10516,6 +10544,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3831573742770416296, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1269088979}
+    - targetCorrespondingSourceObject: {fileID: 3831573742770416296, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1269088980}
   m_SourcePrefab: {fileID: 100100000, guid: 88c823d58e811fd419207aed946b0cda, type: 3}
 --- !u!4 &1056180782 stripped
 Transform:
@@ -12167,7 +12198,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _arrowSpawner: {fileID: 1526769731}
   _bow: {fileID: 1526769733}
-  _arrow: {fileID: 3087641465047530294, guid: 2e6436e57429931489b6e226c3606507, type: 3}
   _cooldown: {fileID: 1269088979}
 --- !u!114 &1269088979
 MonoBehaviour:
@@ -12179,6 +12209,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ccf559523ac7414695c2b5794a8de25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1269088980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269088972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf48749ce25c2e449b17bbb4af6945c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1269722782 stripped
@@ -12656,7 +12698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1347524056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12676,24 +12718,8 @@ MonoBehaviour:
     - <EnemyType>k__BackingField: 0
       <EnemyPrefab>k__BackingField: {fileID: 1210994171473730213, guid: fb53789846edd2c4988f770e02ea1262, type: 3}
     <SpawnInterval>k__BackingField: 2
-    <MaxEnemyCount>k__BackingField: 10
-    <WaveTime>k__BackingField: 10
-  - _groups:
-    - <EnemyType>k__BackingField: 1
-      <EnemyPrefab>k__BackingField: {fileID: 8546682319873836714, guid: 82746bb0a4ecc1040b9057e3cc2546bc, type: 3}
-    - <EnemyType>k__BackingField: 1
-      <EnemyPrefab>k__BackingField: {fileID: 8135722545862628498, guid: ffc5c295a9ab95d429ba28ab51547343, type: 3}
-    <SpawnInterval>k__BackingField: 1
-    <MaxEnemyCount>k__BackingField: 20
-    <WaveTime>k__BackingField: 25
-  - _groups:
-    - <EnemyType>k__BackingField: 2
-      <EnemyPrefab>k__BackingField: {fileID: -8340148033917812159, guid: 76098e716a894434aa291214df876a34, type: 3}
-    - <EnemyType>k__BackingField: 2
-      <EnemyPrefab>k__BackingField: {fileID: -892602680445977889, guid: 1f494de9f843a64439e2e120014c2f15, type: 3}
-    <SpawnInterval>k__BackingField: 2
-    <MaxEnemyCount>k__BackingField: 5
-    <WaveTime>k__BackingField: 5
+    <MaxEnemyCount>k__BackingField: 2
+    <WaveTime>k__BackingField: 100
   _player: {fileID: 1823508819}
   _timer: {fileID: 956056774}
   _enemiesData:

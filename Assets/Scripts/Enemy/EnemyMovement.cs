@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+namespace Enemies
 {
-    public void Move(Transform target, float moveSpeed)
+    public class EnemyMovement : MonoBehaviour
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        public void Move(Transform target, float moveSpeed)
+        {
+            //transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        }
     }
 }
