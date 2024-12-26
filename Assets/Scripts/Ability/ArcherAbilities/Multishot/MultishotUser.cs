@@ -22,7 +22,7 @@ public class MultishotUser : MonoBehaviour, ICooldownable
         _multishotScriptableObject = multishot;
     }
 
-    public IEnumerator UseAbility(IActivable activable)
+    public IEnumerator UseAbility()
     {
         Debug.Log(_multishotScriptableObject.CooldownTime + " Cooldown");
         float duration = 0;
@@ -31,7 +31,7 @@ public class MultishotUser : MonoBehaviour, ICooldownable
         {
             while (duration < _multishotScriptableObject.Duration)
             {
-                activable.SetState(true);
+                _bow.SetTrueActiveState();
 
                 while (_cooldown.CanUse)
                 {
@@ -47,7 +47,7 @@ public class MultishotUser : MonoBehaviour, ICooldownable
                 yield return null;
             }
 
-            activable.SetState(false);
+            _bow.SetFalseActiveState();
             _bow.StartShoot();
 
             CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;//потом сделать визуализацию кулдауна

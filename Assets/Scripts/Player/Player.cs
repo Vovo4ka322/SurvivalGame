@@ -90,12 +90,10 @@ namespace MainPlayer
                     if (TryDodge())
                     {
                         Physics.IgnoreCollision(_collider, enemy.Collider);
-                        Debug.Log("Увернулся");
                     }
                     else
                     {
                         Health.Lose(enemy.SetDamage());
-                        Debug.Log("Не увернулся");
                     }
                 }
 
@@ -124,42 +122,18 @@ namespace MainPlayer
             AttackSpeed += bloodlust.AttackSpeed;
         }
 
-        public float SetEvasion(Blur blur)
-        {
-            return _evasionChance = blur.Evasion;
-        }
+        public float SetEvasion(Blur blur) => _evasionChance = blur.Evasion;
 
-        public void SetState(bool state)
-        {
-            IsActiveState = state;
-        }
+        public bool SetTrueActiveState() => IsActiveState = true;
 
-        public void SetVampirismState(bool state)
-        {
-            IsWorking = state;
-        }
+        public bool SetFalseActiveState() => IsActiveState = false;
 
-        public void SetCoefficient(float value)
-        {
-            Coefficient = value;
-        }
+        public bool SetTrueVampirismState() => IsWorking = true;
+
+        public bool SetFalseVampirismState() => IsWorking = false;
+
+        public void SetCoefficient(float value) => Coefficient = value;
 
         public bool TryDodge() => Random.value <= _evasionChance;
     }
-}
-
-public interface IEvasionable
-{
-    public bool TryDodge();
-}
-
-public interface IVampirismable
-{
-    public float Coefficient { get; }
-
-    public bool IsWorking { get; }
-
-    public void SetVampirismState(bool state);
-
-    public void SetCoefficient(float value);
 }

@@ -14,7 +14,7 @@ public class InsatiableHungerUser : MonoBehaviour
         _insatiableHunger = insatiableHunger;
     }
 
-    public IEnumerator UseAbility(IActivable activable, IVampirismable vampirismable)
+    public IEnumerator UseAbility(IVampirismable vampirismable)
     {
         //Debug.Log(_insatiableHunger.CooldownTime + " Cooldown");
         float duration = 0;
@@ -25,8 +25,7 @@ public class InsatiableHungerUser : MonoBehaviour
         {
             while (duration < _insatiableHunger.Duration)//доделать
             {
-                activable.SetState(true);
-                vampirismable.SetVampirismState(true);
+                vampirismable.SetTrueVampirismState();
                 duration += Time.deltaTime;
                 _lastUsedTimer = Time.time;
                 _canUseFirstTime = false;
@@ -34,8 +33,7 @@ public class InsatiableHungerUser : MonoBehaviour
                 yield return null;
             }
 
-            vampirismable.SetVampirismState(false);
-            activable.SetState(false);
+            vampirismable.SetFalseVampirismState();
 
             CooldownTime = _lastUsedTimer + _insatiableHunger.CooldownTime - Time.time;//потом сделать визуализацию кулдауна
         }

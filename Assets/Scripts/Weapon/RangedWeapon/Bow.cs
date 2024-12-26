@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bow : Weapon, IActivable
@@ -51,8 +50,7 @@ public class Bow : Weapon, IActivable
         ArrowTouched?.Invoke();
     }
 
-    public void SetState(bool state)
-    {
-        IsActiveState = state;
-    }
+    public bool SetTrueActiveState() => IsActiveState = true;
+
+    public bool SetFalseActiveState() => IsActiveState = false;
 }
