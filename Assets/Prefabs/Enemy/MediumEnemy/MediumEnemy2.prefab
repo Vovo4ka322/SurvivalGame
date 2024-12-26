@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: {fileID: -486252797012448416}
   _movement: {fileID: -9086733101315721379}
+  <Collider>k__BackingField: {fileID: 2542289249916481232}
 --- !u!114 &-9086733101315721379
 MonoBehaviour:
   m_ObjectHideFlags: 0

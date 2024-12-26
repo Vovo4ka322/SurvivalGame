@@ -13,6 +13,7 @@ public class MultishotUser : MonoBehaviour, ICooldownable
     private Multishot _multishotScriptableObject;
     private float _lastUsedTimer = 0;
     private bool _canUseFirstTime = true;
+    private Arrow _arrow;
 
     public float CooldownTime { get; private set; }
 
@@ -59,6 +60,9 @@ public class MultishotUser : MonoBehaviour, ICooldownable
 
     public void CalculateArrowFlight()
     {
+        if(_arrow != null)
+            _arrow.Touched -= _bow.OnTouched;
+
         int coefficient = 2;
         int oneArrow = 1;
 
@@ -71,6 +75,8 @@ public class MultishotUser : MonoBehaviour, ICooldownable
             float tempRotation = startRotation - angleIncrease * i;
             Arrow arrow = _arrowSpawner.Spawn(_bow.transform, Quaternion.Euler(0, 0, tempRotation), _bow.BowData.ArrowFlightSpeed, _bow.BowData.AttackRadius);
             arrow.StartFly(Quaternion.Euler(0, tempRotation, 0) * _bow.transform.forward, _bow.transform.position);
+            _arrow = arrow;
+            _arrow.Touched += _bow.OnTouched;
         }
     }
 }

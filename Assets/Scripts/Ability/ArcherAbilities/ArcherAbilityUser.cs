@@ -41,9 +41,6 @@ public class ArcherAbilityUser : MonoBehaviour, IAbilityUser
                 { _secondLevel, _abilityDataSecondLevel },
                 { _thirdLevel, _abilityDataThirdLevel }
             };
-
-        _multishot.Upgrade(_abilitiesDatas[_firstLevel].Multishot);
-        _insatiableHunger.Upgrade(_abilitiesDatas[_firstLevel].InsatiableHunger);
     }
 
     private void OnEnable()
@@ -85,7 +82,12 @@ public class ArcherAbilityUser : MonoBehaviour, IAbilityUser
 
     public void UpgradeThirdAbility()
     {
-
+        if (IsTrue(_counterForBlur, _firstUpgrade))
+            UpgradeBlur(_firstLevel);
+        else if (IsTrue(_counterForBlur, _secondUpgrade))
+            UpgradeBlur(_secondLevel);
+        else if (IsTrue(_counterForBlur, _thirdUpgrade))
+            UpgradeBlur(_thirdLevel);
     }
 
     public void UseFirstAbility()
@@ -116,7 +118,7 @@ public class ArcherAbilityUser : MonoBehaviour, IAbilityUser
 
     private void UpgradeBlur(int level)
     {
-        //_player.UpgradeCharacteristikByBloodlust(_abilitiesDatas[level].BloodlustScriptableObject);
+        _player.SetEvasion(_abilitiesDatas[level].Blur);
         _counterForBlur++;
         AbilityUpgraded?.Invoke();
     }

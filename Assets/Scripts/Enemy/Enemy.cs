@@ -11,6 +11,8 @@ namespace Enemies
         private Transform _target;
         private Player _player;
 
+        [field:SerializeField] public Collider Collider {  get; private set; }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out Weapon weapon))

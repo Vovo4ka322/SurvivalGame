@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace MainPlayer
 {
-    public class Player : Character, IActivable, IVampirismable
+    public class Player : Character, IActivable, IVampirismable, IEvasionable
     {
+        [SerializeField] private Collider _collider;
         [SerializeField] private Weapon _weapon;
         [SerializeField] private CharacterType _characterType;
         [SerializeField] private BuffHolder _buffHolder;
@@ -14,6 +15,8 @@ namespace MainPlayer
         [SerializeField] private Sword _sword;
 
         [SerializeField] private Buff _buff;//временно. Потом перенести в магазин
+
+        private float _evasionChance;
 
         public float WeaponDamage { get; private set; }
 
@@ -79,9 +82,22 @@ namespace MainPlayer
             if (collision.gameObject.TryGetComponent(out Enemy enemy))
             {
                 if (IsActiveState)
+                {
                     Health.Add(enemy.SetDamage());
+                }
                 else
-                    Health.Lose(enemy.SetDamage());
+                {
+                    if (TryDodge())
+                    {
+                        Physics.IgnoreCollision(_collider, enemy.Collider);
+                        Debug.Log("Увернулся");
+                    }
+                    else
+                    {
+                        Health.Lose(enemy.SetDamage());
+                        Debug.Log("Не увернулся");
+                    }
+                }
 
                 if (Health.IsDead)
                 {
@@ -108,6 +124,11 @@ namespace MainPlayer
             AttackSpeed += bloodlust.AttackSpeed;
         }
 
+        public float SetEvasion(Blur blur)
+        {
+            return _evasionChance = blur.Evasion;
+        }
+
         public void SetState(bool state)
         {
             IsActiveState = state;
@@ -122,7 +143,14 @@ namespace MainPlayer
         {
             Coefficient = value;
         }
+
+        public bool TryDodge() => Random.value <= _evasionChance;
     }
+}
+
+public interface IEvasionable
+{
+    public bool TryDodge();
 }
 
 public interface IVampirismable
