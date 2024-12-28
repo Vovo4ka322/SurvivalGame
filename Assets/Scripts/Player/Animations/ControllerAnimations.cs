@@ -12,19 +12,16 @@ namespace Player.Animations
             _animator = GetComponent<Animator>();
         }
         
-        public void UpdateAnimations(float movementMagnitude, Vector3 moveDirection)
+        public void PlayMove(Vector3 moveDirection)
         {
-            _animator.SetFloat(AnimationDataParams.Params.Forward, movementMagnitude);
+            Vector3 relativeDirection = transform.InverseTransformDirection(moveDirection);
+            SetMoveParams(relativeDirection.x, relativeDirection.z);
+        }
 
-            if(movementMagnitude > 0.1) 
-            {
-                float angle = Vector3.SignedAngle(transform.forward, moveDirection, Vector3.up);
-                _animator.SetFloat(AnimationDataParams.Params.Angle, angle);
-            } 
-            else 
-            {
-                _animator.SetFloat(AnimationDataParams.Params.Angle, 0);
-            }
+        private void SetMoveParams(float horizontal, float vertical)
+        {
+            _animator.SetFloat(AnimationDataParams.Params.HorizontalHash, horizontal);
+            _animator.SetFloat(AnimationDataParams.Params.VerticalHash, vertical);
         }
     }
 }
