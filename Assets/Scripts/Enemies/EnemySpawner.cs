@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PlayerComponents;
 using UnityEngine;
 
 namespace Enemies
@@ -7,7 +8,7 @@ namespace Enemies
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private List<EnemyWave> _waves = new();
-        [SerializeField] private Player.Player _player;
+        [SerializeField] private Player _player;
         [SerializeField] private Timer _timer;
         [SerializeField] private List<EnemyData> _enemiesData = new();
 

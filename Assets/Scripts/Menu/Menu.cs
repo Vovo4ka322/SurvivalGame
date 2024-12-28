@@ -1,4 +1,4 @@
-using Abilities;
+using Ability.MeleeAbilities;
 using UnityEngine;
 using UnityEngine.UI;
 

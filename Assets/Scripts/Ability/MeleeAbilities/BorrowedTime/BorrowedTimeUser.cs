@@ -1,8 +1,6 @@
 using System.Collections;
-using Player;
 using UnityEngine;
-
-namespace Abilities
+namespace Ability.MeleeAbilities.BorrowedTime
 {
     public class BorrowedTimeUser : MonoBehaviour, ICooldownable
     {
@@ -17,7 +15,7 @@ namespace Abilities
             _borrowedTimeScriptableObject = borrowedTime;
         }
 
-        public IEnumerator UseAbility(IHealable healable)
+        public IEnumerator UseAbility(IActivable healable)
         {
             Debug.Log(_borrowedTimeScriptableObject.CooldownTime + " Cooldown");
             float duration = 0;
@@ -26,7 +24,7 @@ namespace Abilities
             {
                 while (duration < _borrowedTimeScriptableObject.Duration)//где-то тут на время действия способности добавить партикл
                 {
-                    healable.SetState(true);
+                    healable.SetTrueActiveState();
                     duration += Time.deltaTime;
                     _lastUsedTimer = Time.time;
                     _canUseFirstTime = false;
@@ -34,7 +32,7 @@ namespace Abilities
                     yield return null;
                 }
 
-                healable.SetState(false);
+                healable.SetFalseActiveState();
 
                 CooldownTime = _lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime - Time.time;
             }

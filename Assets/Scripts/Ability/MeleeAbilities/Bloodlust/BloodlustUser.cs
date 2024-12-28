@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BloodlustUser : MonoBehaviour
+namespace Ability.MeleeAbilities.Bloodlust
 {
-    private Bloodlust _bloodlust;
+    public class BloodlustUser : MonoBehaviour
+    {
+        private Bloodlust _bloodlust;
 
 
+    }
 }

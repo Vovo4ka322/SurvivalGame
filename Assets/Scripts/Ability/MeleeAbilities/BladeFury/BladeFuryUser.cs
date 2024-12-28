@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
-namespace Abilities
+namespace Ability.MeleeAbilities.BladeFury
 {
     public class BladeFuryUser : MonoBehaviour, ICooldownable
     {
