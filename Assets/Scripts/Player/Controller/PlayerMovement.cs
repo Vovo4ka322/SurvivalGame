@@ -6,9 +6,9 @@ namespace Player.Controller
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private PlayerController _controller;
+        [SerializeField] private ControllerAnimations _controllerAnimations;
         [SerializeField] private float _turnSpeed;
         [SerializeField] private float _moveSpeed;
-        [SerializeField] private ControllerAnimations _controllerAnimations;
         
         private Camera _camera;
         private Vector3 _moveDirection;
@@ -18,16 +18,16 @@ namespace Player.Controller
             _camera = Camera.main;
         }
         
-        private void Start()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
         private void FixedUpdate()
         {
             HandleMovement();
             HandleRotation();
+        }
+        
+        private void Start()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         public void ChangeMoveSpeed(float amount)
@@ -54,7 +54,7 @@ namespace Player.Controller
             float speedDelta = _moveSpeed * Time.deltaTime;
             transform.position += _moveDirection * speedDelta;
             
-            _controllerAnimations.UpdateAnimations(_moveDirection.magnitude, _moveDirection);
+            _controllerAnimations.PlayMove(_moveDirection);
         }
 
         private void HandleRotation()
