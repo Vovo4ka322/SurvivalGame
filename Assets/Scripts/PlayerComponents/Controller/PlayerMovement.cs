@@ -5,17 +5,18 @@ namespace PlayerComponents.Controller
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private PlayerController _controller;
         [SerializeField] private ControllerAnimations _controllerAnimations;
         [SerializeField] private float _turnSpeed;
         [SerializeField] private float _moveSpeed;
         
         private Camera _camera;
+        private PlayerInput _playerInput;
         private Vector3 _moveDirection;
 
         private void Awake()
         {
             _camera = Camera.main;
+            _playerInput = new PlayerInput();
         }
         
         private void FixedUpdate()
@@ -23,7 +24,17 @@ namespace PlayerComponents.Controller
             HandleMovement();
             HandleRotation();
         }
-        
+
+        private void OnEnable()
+        {
+            _playerInput.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _playerInput.Disable();
+        }
+
         private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -37,8 +48,9 @@ namespace PlayerComponents.Controller
 
         private void HandleMovement()
         {
-            float horizontal = _controller.Movement.x;
-            float vertical = _controller.Movement.y;
+            Vector2 input = _playerInput.Player.Move.ReadValue<Vector2>();
+            float horizontal = input.x;
+            float vertical = input.y;
             
             Vector3 forward = _camera.transform.forward;
             Vector3 right = _camera.transform.right;

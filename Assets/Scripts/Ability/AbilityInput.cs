@@ -1,16 +1,15 @@
 using Ability.ArcherAbilities;
 using Ability.MeleeAbilities;
-using PlayerComponents.Controller;
 using UnityEngine;
 
 namespace Ability
 {
-    public class AbilityInput : MonoBehaviour//cделать так, чтобы отслеживались и способности персонажа дальнего боя
+    public class AbilityInput : MonoBehaviour//cпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
     {
-        [SerializeField] private PlayerController _playerController;
+        [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private MeleeAbilityUser _meleeAbilityUser;
         [SerializeField] private ArcherAbilityUser _archerAbilityUser;
-        //Поле для лучника
+        //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
         private IAbilityUser _abilityUser;
 
@@ -22,9 +21,9 @@ namespace Ability
 
         private void Update()
         {
-            if(_playerController.FirstAbilityKeyPressed)//дополнить условие кнопкой на канвасе
+            if(_playerInput.Player.UseFirstAbility.triggered)//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 _abilityUser.UseFirstAbility();
-            else if(_playerController.SecondAbilityKeyPressed)
+            else if(_playerInput.Player.UseSecondAbility.triggered)
                 _abilityUser.UseSecondAbility();
         }
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -554,6 +554,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 1313079975868441659, guid: f2cf6e3c9afcc42b1bb5d38aacca12c9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2115829330592821500, guid: f2cf6e3c9afcc42b1bb5d38aacca12c9, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
@@ -684,7 +688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0942e95eccb58cd42bc4b075d5c2c662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 1600924063}
   _controllerAnimations: {fileID: 1600924066}
   _turnSpeed: 5
   _moveSpeed: 5
@@ -776,7 +779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1608901804690004, guid: 7e9d925b528c27d4dacfe7501007c6ea, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1645914477663368, guid: 7e9d925b528c27d4dacfe7501007c6ea, type: 3}
       propertyPath: m_IsActive
@@ -1144,6 +1147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3384846362283121868, guid: e9a6a9c91b822c04381cbefe687aa7fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5918158832144665827, guid: e9a6a9c91b822c04381cbefe687aa7fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1287,7 +1294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 830443151710425993, guid: 159c7751f33034d6a8f2423a497b632b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7977397042431641136, guid: 159c7751f33034d6a8f2423a497b632b, type: 3}
       propertyPath: m_LocalPosition.x
