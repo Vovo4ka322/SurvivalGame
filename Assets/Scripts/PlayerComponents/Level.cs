@@ -7,6 +7,6 @@ namespace PlayerComponents
     {
         [SerializeField] private List<int> _requireExperiences = new();
 
-        public IReadOnlyList<int> ExperienceQunttity => _requireExperiences;
+        public IReadOnlyList<int> ExperienceQuntity => _requireExperiences;
     }
 }

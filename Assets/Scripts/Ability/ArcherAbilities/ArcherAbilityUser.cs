@@ -35,6 +35,10 @@ namespace Ability.ArcherAbilities
         public event Action LevelChanged;
         public event Action AbilityUpgraded;
 
+        public MultishotUser MultishotUser => _multishot;
+
+        public InsatiableHungerUser InsatiableHunger => _insatiableHunger;
+
         private void Awake()
         {
             _abilitiesDatas = new Dictionary<int, RangeAbilityData>

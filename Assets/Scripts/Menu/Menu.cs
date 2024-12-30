@@ -1,3 +1,4 @@
+using Ability.ArcherAbilities;
 using Ability.MeleeAbilities;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     [SerializeField] private Image _image;
-    [SerializeField] private MeleeAbilityUser _user;//временно тут
+    [SerializeField] private ArcherAbilityUser _user;//временно тут
 
     private void OnEnable()
     {

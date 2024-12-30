@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91fae18e6a5b4a74e8408fc5405aab1e, type: 3}
-  m_Name: PlayerLevel
+  m_Script: {fileID: 11500000, guid: 09e06240fe114874491abe9f02ebf0b7, type: 3}
+  m_Name: CooldownImageRange
   m_EditorClassIdentifier: 
-  _requireExperiences: f4010000bc020000840300004c04000046050000400600003a07000034080000600900008c0a00001c0c0000ac0d0000
+  _firstCooldownImage: {fileID: 0}
+  _secondCooldownImage: {fileID: 0}

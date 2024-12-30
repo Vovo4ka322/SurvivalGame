@@ -15,6 +15,7 @@ namespace Ability
 
         private void Awake()
         {
+            _playerInput = new();
             //_abilityUser = _meleeAbilityUser.Init();
             _abilityUser = _archerAbilityUser.Init();
         }
