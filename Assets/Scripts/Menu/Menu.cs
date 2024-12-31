@@ -11,13 +11,17 @@ public class Menu : MonoBehaviour
     private void OnEnable()
     {
         _user.LevelChanged += PressAbilityUpgrade;
-        _user.AbilityUpgraded += CloseAbilityPanel;
+        _user.MultishotUpgraded += CloseAbilityPanel;
+        _user.InsatiableHungerUpgraded += CloseAbilityPanel;
+        _user.BlurUpgraded += CloseAbilityPanel;
     }
 
     private void OnDisable()
     {
         _user.LevelChanged -= PressAbilityUpgrade;
-        _user.AbilityUpgraded -= CloseAbilityPanel;
+        _user.MultishotUpgraded -= CloseAbilityPanel;
+        _user.InsatiableHungerUpgraded -= CloseAbilityPanel;
+        _user.BlurUpgraded -= CloseAbilityPanel;
     }
 
     public void PressAbilityUpgrade()

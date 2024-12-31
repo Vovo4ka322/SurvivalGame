@@ -6,46 +6,82 @@ using UnityEngine.UI;
 public class RangeAbilityViewer : MonoBehaviour
 {
     [SerializeField] private ArcherAbilityUser _archerAbilityUser;
-    [SerializeField] private CooldownAbilityImage _cooldownAbilityImage;
-    [SerializeField] private Image _image;
 
-    private Dictionary<int, Image> _cooldownImages;
+    [Header("CooldownImages")]
+    [SerializeField] private Image _firstAbility;
+    [SerializeField] private Image _secondAbility;
 
-    private void Awake()
-    {
-        _cooldownImages = new Dictionary<int, Image>
-        {
-            { _cooldownAbilityImage.FirstAbility, _cooldownAbilityImage.FirstImage },
-            { _cooldownAbilityImage.SecondAbility, _cooldownAbilityImage.SecondImage },
-        };
+    [Header("UpgradeImages")]
+    [SerializeField] private List<Image> _firstAbilityImprovements;
+    [SerializeField] private List<Image> _secondAbilityImprovements;
+    [SerializeField] private List<Image> _thirdAbilityImprovements;
 
-        //_cooldownAbilityImage.Init();
-    }
+    private int _multishotImprovment = 0;
+    private int _insatiableHungerImprovment = 0;
+    private int _blurImprovment = 0;
 
-    private void OnEnable()
+    private void OnEnable()//Улучшения отображаются неккоректно, переделать
     {
         _archerAbilityUser.MultishotUser.Used += OnMultishotChanged;
+        _archerAbilityUser.InsatiableHunger.Used += OnInsatiableHungerChanged;
+        _archerAbilityUser.MultishotUpgraded += OnMultishotUpgraded;
+        _archerAbilityUser.InsatiableHungerUpgraded += OnInsatiableHungerUpgraded;
+        _archerAbilityUser.BlurUpgraded += OnBlurUpgraded;
     }
 
     private void OnDisable()
     {
         _archerAbilityUser.MultishotUser.Used -= OnMultishotChanged;
+        _archerAbilityUser.InsatiableHunger.Used -= OnInsatiableHungerChanged;
+        _archerAbilityUser.MultishotUpgraded -= OnMultishotUpgraded;
+        _archerAbilityUser.InsatiableHungerUpgraded -= OnInsatiableHungerUpgraded;
+        _archerAbilityUser.BlurUpgraded -= OnBlurUpgraded;
     }
 
     private void OnMultishotChanged(float value)
     {
-        //_cooldownAbilityImage.CooldownImages.TryGetValue(_cooldownAbilityImage.FirstAbility, out Image image);
-        //if (_cooldownImages.TryGetValue(_cooldownAbilityImage.FirstAbility, out Image image))
-        //    image.fillAmount = Mathf.InverseLerp(0, _archerAbilityUser.MultishotUser.Multishot.CooldownTime, value);
-        //_cooldownAbilityImage.FirstElement().fillAmount = Mathf.InverseLerp(0, _archerAbilityUser.MultishotUser.Multishot.CooldownTime, value);
-        _image.fillAmount = Mathf.InverseLerp(0, _archerAbilityUser.MultishotUser.Multishot.CooldownTime, value);
-
-        //Debug.Log(_cooldownImages.Count + " _cooldownImages.Count");
-        //_cooldownImages[_cooldownAbilityImage.FirstAbility].fillAmount = Mathf.InverseLerp(0, _archerAbilityUser.MultishotUser.Multishot.CooldownTime, value);
+        Change(_firstAbility, _archerAbilityUser.MultishotUser.Multishot.CooldownTime, value);
     }
 
     private void OnInsatiableHungerChanged(float value)
     {
+        Change(_secondAbility, _archerAbilityUser.InsatiableHunger.InsatiableHunger.CooldownTime, value);
+    }
 
+    private void Change(Image image, float cooldown, float value)
+    {
+        image.fillAmount = Mathf.InverseLerp(0, cooldown, value);
+    }
+
+    private void Upgrade(List<Image> images, int index)
+    {
+        images[index].gameObject.SetActive(true);
+    }
+
+    private void OnMultishotUpgraded()
+    {
+        if(_multishotImprovment == _archerAbilityUser.MaxValue)
+            return;
+
+        Upgrade(_firstAbilityImprovements, _multishotImprovment);
+        _multishotImprovment++;
+    }
+
+    private void OnInsatiableHungerUpgraded()
+    {
+        if(_insatiableHungerImprovment == _archerAbilityUser.MaxValue)
+            return;
+
+        Upgrade(_secondAbilityImprovements, _insatiableHungerImprovment);
+        _insatiableHungerImprovment++;
+    }
+
+    private void OnBlurUpgraded()
+    {
+        if (_blurImprovment == _archerAbilityUser.MaxValue)
+            return;
+
+        Upgrade(_thirdAbilityImprovements, _blurImprovment);
+        _blurImprovment++;
     }
 }
