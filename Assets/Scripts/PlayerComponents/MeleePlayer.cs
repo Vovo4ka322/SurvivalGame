@@ -3,15 +3,12 @@ using Enemies;
 using PlayerComponents;
 using PlayerComponents.Controller;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleePlayer : Player, IActivable//доделать разделение player на два класса
+public class MeleePlayer : Player, IActivable
 {
     [SerializeField] private PlayerMovement _playerMovement;
-
-    public event Action<float> HealthChanged;
+    [SerializeField] private Sword _sword;
 
     public bool IsActiveState { get; private set; }
 
@@ -23,13 +20,11 @@ public class MeleePlayer : Player, IActivable//доделать разделение player на два
         {
             if (IsActiveState)
             {
-                Health.Add(enemy.SetDamage());
-                HealthChanged?.Invoke(Health.Value);
+                AddHealth(enemy.SetDamage());
             }
             else
             {
-                Health.Lose(enemy.SetDamage());
-                HealthChanged?.Invoke(Health.Value);
+                LoseHealth(enemy.SetDamage());
             }
 
             if (Health.IsDead)

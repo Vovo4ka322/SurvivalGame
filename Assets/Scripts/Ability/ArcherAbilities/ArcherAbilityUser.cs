@@ -107,7 +107,7 @@ namespace Ability.ArcherAbilities
 
         public void UseSecondAbility()
         {
-            StartCoroutine(_insatiableHunger.UseAbility(_player));
+            //StartCoroutine(_insatiableHunger.UseAbility(_player));
         }
 
         private bool IsMaxValue(int value) => value == MaxValue;
@@ -139,7 +139,7 @@ namespace Ability.ArcherAbilities
             if(IsMaxValue(_counterForBlur))
                 return;
 
-            _player.SetEvasion(_abilitiesDatas[level].Blur);
+            //_player.SetEvasion(_abilitiesDatas[level].Blur);
             _counterForBlur++;
             BlurUpgraded?.Invoke();
         }
