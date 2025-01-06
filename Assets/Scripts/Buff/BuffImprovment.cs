@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,6 +32,10 @@ public class BuffImprovment : MonoBehaviour
     private Dictionary<int, BuffKeeper> _buffkeepers;
 
     public event Action HealthUpgraded;
+    public event Action ArmorUpgraded;
+    public event Action DamageUpgraded;
+    public event Action AttackSpeedUpgraded;
+    public event Action MovementSpeedUpgraded;
 
     public int MaxValue { get; private set; } = 5;
 
@@ -46,7 +49,7 @@ public class BuffImprovment : MonoBehaviour
 
     public AttackSpeedBuff AttackSpeedBuff { get; private set; }
 
-    private void Awake()//Доделать остальные улучшения, кроме хп
+    private void Awake()
     {
         _buffkeepers = new Dictionary<int, BuffKeeper>
         {
@@ -58,7 +61,7 @@ public class BuffImprovment : MonoBehaviour
         };
     }
 
-    public void UpgradeHealth()//Добавить сюда систему с золотом, т.е. если достаточно монет, то можно улучшить показатель
+    public void UpgradeHealth()
     {
         if (IsTrue(_counterForHealthBuff, _firstUpgrade))
             InitHealth(_firstLevel);
@@ -70,6 +73,102 @@ public class BuffImprovment : MonoBehaviour
             InitHealth(_fourthLevel);
         else if (IsTrue(_counterForHealthBuff, _fifthUpgrade))
             InitHealth(_fifthLevel);
+    }
+
+    public void UpgradeArmor()
+    {
+        if (IsTrue(_counterForHealthBuff, _firstUpgrade))
+            InitArmor(_firstLevel);
+        else if (IsTrue(_counterForHealthBuff, _secondUpgrade))
+            InitArmor(_secondLevel);
+        else if (IsTrue(_counterForHealthBuff, _thirdUpgrade))
+            InitArmor(_thirdLevel);
+        else if (IsTrue(_counterForHealthBuff, _fourthUpgrade))
+            InitArmor(_fourthLevel);
+        else if (IsTrue(_counterForHealthBuff, _fifthUpgrade))
+            InitArmor(_fifthLevel);
+    }
+
+    public void UpgradeDamage()
+    {
+        if (IsTrue(_counterForHealthBuff, _firstUpgrade))
+            InitDamage(_firstLevel);
+        else if (IsTrue(_counterForHealthBuff, _secondUpgrade))
+            InitDamage(_secondLevel);
+        else if (IsTrue(_counterForHealthBuff, _thirdUpgrade))
+            InitDamage(_thirdLevel);
+        else if (IsTrue(_counterForHealthBuff, _fourthUpgrade))
+            InitDamage(_fourthLevel);
+        else if (IsTrue(_counterForHealthBuff, _fifthUpgrade))
+            InitDamage(_fifthLevel);
+    }
+
+    public void UpgradeAttackSpeed()
+    {
+        if (IsTrue(_counterForHealthBuff, _firstUpgrade))
+            InitAttackSpeed(_firstLevel);
+        else if (IsTrue(_counterForHealthBuff, _secondUpgrade))
+            InitAttackSpeed(_secondLevel);
+        else if (IsTrue(_counterForHealthBuff, _thirdUpgrade))
+            InitAttackSpeed(_thirdLevel);
+        else if (IsTrue(_counterForHealthBuff, _fourthUpgrade))
+            InitAttackSpeed(_fourthLevel);
+        else if (IsTrue(_counterForHealthBuff, _fifthUpgrade))
+            InitAttackSpeed(_fifthLevel);
+    }
+
+    public void UpgradeMovementSpeed()
+    {
+        if (IsTrue(_counterForHealthBuff, _firstUpgrade))
+            InitMovementSpeed(_firstLevel);
+        else if (IsTrue(_counterForHealthBuff, _secondUpgrade))
+            InitMovementSpeed(_secondLevel);
+        else if (IsTrue(_counterForHealthBuff, _thirdUpgrade))
+            InitMovementSpeed(_thirdLevel);
+        else if (IsTrue(_counterForHealthBuff, _fourthUpgrade))
+            InitMovementSpeed(_fourthLevel);
+        else if (IsTrue(_counterForHealthBuff, _fifthUpgrade))
+            InitMovementSpeed(_fifthLevel);
+    }
+
+    private void InitArmor(int level)
+    {
+        if (IsMaxValue(_counterForArmorBuff))
+            return;
+
+        ArmorBuff = _buffkeepers[level].ArmorBuffScriptableObject;
+        _counterForArmorBuff++;
+        ArmorUpgraded?.Invoke();
+    }
+
+    private void InitDamage(int level)
+    {
+        if (IsMaxValue(_counterForDamageBuff))
+            return;
+
+        DamageBuff = _buffkeepers[level].DamageBuffScriptableObject;
+        _counterForDamageBuff++;
+        DamageUpgraded?.Invoke();
+    }
+
+    private void InitMovementSpeed(int level)
+    {
+        if (IsMaxValue(_counterForMovementSpeedBuff))
+            return;
+
+        MovementSpeedBuff = _buffkeepers[level].MovementSpeedBuffScriptableObject;
+        _counterForMovementSpeedBuff++;
+        MovementSpeedUpgraded?.Invoke();
+    }
+
+    private void InitAttackSpeed(int level)
+    {
+        if (IsMaxValue(_counterForAttackSpeedBuff))
+            return;
+
+        AttackSpeedBuff = _buffkeepers[level].AttackSpeedBuffScriptableObject;
+        _counterForAttackSpeedBuff++;
+        AttackSpeedUpgraded?.Invoke();
     }
 
     private void InitHealth(int level)
