@@ -110,7 +110,7 @@ namespace Ability.ArcherAbilities
             StartCoroutine(_insatiableHunger.UseAbility(_player));
         }
 
-        public bool IsMaxValue(int value) => value == MaxValue;
+        private bool IsMaxValue(int value) => value == MaxValue;
 
         private bool IsTrue(int counter, int numberOfUpgrade) => counter == numberOfUpgrade;
 

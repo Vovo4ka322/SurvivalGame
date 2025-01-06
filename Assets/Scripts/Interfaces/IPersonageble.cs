@@ -1,0 +1,1 @@
+﻿public interface IPersonageble : IDamageCausable, IAttackSpeedable, IMoveSpeedable, IHealthable, IArmorable { }

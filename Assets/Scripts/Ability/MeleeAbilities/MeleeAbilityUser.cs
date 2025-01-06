@@ -33,7 +33,15 @@ namespace Ability.MeleeAbilities
         private Dictionary<int, MeleeAbilityData> _abilitiesDatas;
 
         public event Action LevelChanged;
-        public event Action AbilityUpgraded;
+        public event Action BladeFuryUpgraded;
+        public event Action BorrowedTimeIUpgraded;
+        public event Action BloodlustIUpgraded;
+
+        public int MaxValue { get; private set; } = 3;
+
+        public BorrowedTimeUser BorrowedTime => _borrowedTime;
+
+        public BladeFuryUser BladeFury => _bladeFury;
 
         private void Awake()
         {
@@ -104,25 +112,36 @@ namespace Ability.MeleeAbilities
 
         private bool IsTrue(int counter, int numberOfUpgrade) => counter == numberOfUpgrade;
 
+        public bool IsMaxValue(int value) => value == MaxValue;
+
         private void UpgradeBladeFury(int level)
         {
+            if (IsMaxValue(_counterForBladeFury))
+                return;
+
             _bladeFury.Upgrade(_abilitiesDatas[level].BladeFuryScriptableObject);
             _counterForBladeFury++;
-            AbilityUpgraded?.Invoke();
+            BladeFuryUpgraded?.Invoke();
         }
 
         private void UpgradeBorrowedTime(int level)
         {
+            if (IsMaxValue(_counterForBorrowedTime))
+                return;
+
             _borrowedTime.Upgrade(_abilitiesDatas[level].BorrowedTimeScriptableObject);
             _counterForBorrowedTime++;
-            AbilityUpgraded?.Invoke();
+            BorrowedTimeIUpgraded?.Invoke();
         }
 
         private void UpgradeBloodlust(int level)
         {
+            if (IsMaxValue(_counterForBloodlust))
+                return;
+
             _player.UpgradeCharacteristikByBloodlust(_abilitiesDatas[level].BloodlustScriptableObject);
             _counterForBloodlust++;
-            AbilityUpgraded?.Invoke();
+            BloodlustIUpgraded?.Invoke();
         }
     }
 }
