@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27f3a2c3997842469786b9b97dbdb0b, type: 3}
+  m_Name: BuffKeeper 3
+  m_EditorClassIdentifier: 
+  <ArmorBuffScriptableObject>k__BackingField: {fileID: 11400000, guid: cdb67e60bd8d44345b8fdf78750abcc2, type: 2}
+  <HealthBuffScriptableObject>k__BackingField: {fileID: 11400000, guid: 05e7ba21b5f4de040ac21c0cb3c0a11b, type: 2}
+  <DamageBuffScriptableObject>k__BackingField: {fileID: 11400000, guid: 7144dc01b86858b4085dadbdd7646c3a, type: 2}
+  <AttackSpeedBuffScriptableObject>k__BackingField: {fileID: 11400000, guid: e7fb439020fd637449ef17830c0a12ed, type: 2}
+  <MovementSpeedBuffScriptableObject>k__BackingField: {fileID: 11400000, guid: ef234e281ed755448a43d34f2ebf1795, type: 2}

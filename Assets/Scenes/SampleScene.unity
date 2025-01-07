@@ -471,11 +471,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c624982f54bdc44a009ced1c779c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buffKeeperFirstLevel: {fileID: 0}
-  _buffKeeperSecondLevel: {fileID: 0}
-  _buffKeeperThirdLevel: {fileID: 0}
-  _buffKeeperFourthLevel: {fileID: 0}
-  _buffKeeperFifthLevel: {fileID: 0}
+  _buffKeeperFirstLevel: {fileID: 11400000, guid: 13243de06420d44489012d0eed3be34e, type: 2}
+  _buffKeeperSecondLevel: {fileID: 11400000, guid: a7388d6ae4fe47943a2fcfbc1ef68f0d, type: 2}
+  _buffKeeperThirdLevel: {fileID: 11400000, guid: 6bd057550d2568449a99dd85651451c2, type: 2}
+  _buffKeeperFourthLevel: {fileID: 11400000, guid: f95073aa86e18694f96f00098c9ecd32, type: 2}
+  _buffKeeperFifthLevel: {fileID: 11400000, guid: 5fb9873984e000b41b0ecf4e2a04fbe8, type: 2}
 --- !u!114 &1247322571
 MonoBehaviour:
   m_ObjectHideFlags: 0

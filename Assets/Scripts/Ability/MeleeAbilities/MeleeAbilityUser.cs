@@ -9,7 +9,7 @@ namespace Ability.MeleeAbilities
 {
     public class MeleeAbilityUser : MonoBehaviour, IAbilityUser
     {
-        [SerializeField] private Player _player;
+        [SerializeField] private MeleePlayer _player;
         [SerializeField] private BorrowedTimeUser _borrowedTime;
         [SerializeField] private BladeFuryUser _bladeFury;
 
@@ -77,7 +77,7 @@ namespace Ability.MeleeAbilities
 
         public void UseSecondAbility()
         {
-            //StartCoroutine(_borrowedTime.UseAbility(_player));
+            StartCoroutine(_borrowedTime.UseAbility(_player));
         }
 
         public void UpgradeFirstAbility()
@@ -139,7 +139,7 @@ namespace Ability.MeleeAbilities
             if (IsMaxValue(_counterForBloodlust))
                 return;
 
-            //_player.UpgradeCharacteristikByBloodlust(_abilitiesDatas[level].BloodlustScriptableObject);
+            _player.UpgradeCharacteristikByBloodlust(_abilitiesDatas[level].BloodlustScriptableObject);
             _counterForBloodlust++;
             BloodlustIUpgraded?.Invoke();
         }
