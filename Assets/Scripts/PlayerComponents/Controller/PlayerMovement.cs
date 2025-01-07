@@ -37,8 +37,8 @@ namespace PlayerComponents.Controller
 
         private void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
         }
 
         public void ChangeMoveSpeed(float amount)
@@ -66,7 +66,7 @@ namespace PlayerComponents.Controller
             float speedDelta = _moveSpeed * Time.deltaTime;
             transform.position += _moveDirection * speedDelta;
             
-            _controllerAnimations.PlayMove(_moveDirection);
+            //_controllerAnimations.PlayMove(_moveDirection);
         }
 
         private void HandleRotation()

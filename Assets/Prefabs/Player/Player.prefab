@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 4636550293914080811}
   - component: {fileID: 8392989794072672102}
   - component: {fileID: 4251635654719782755}
-  - component: {fileID: 710455260944671540}
   - component: {fileID: 4800780704723873143}
   m_Layer: 0
   m_Name: Player
@@ -155,9 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0942e95eccb58cd42bc4b075d5c2c662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controllerAnimations: {fileID: 0}
   _turnSpeed: 8
-  _controller: {fileID: 710455260944671540}
-  <_moveSpeed>k__BackingField: 10
+  _moveSpeed: 0
 --- !u!114 &8392989794072672102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: {fileID: 4251635654719782755}
+  _collider: {fileID: 0}
   _weapon: {fileID: 182124619904838600}
   _characterType: {fileID: 11400000, guid: 817cfd024f70b554aac4d8165e1ceca1, type: 2}
   _buffHolder: {fileID: 11400000, guid: bc0215e6d69a51e45b54f995b2c6a6f5, type: 2}
@@ -179,6 +179,8 @@ MonoBehaviour:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
     <Level>k__BackingField: 0
     <Experience>k__BackingField: 0
+  _bow: {fileID: 0}
+  _sword: {fileID: 0}
   _buff: {fileID: 11400000, guid: 1b8d4f8848fd5aa4a99a5047d1108aa4, type: 2}
 --- !u!114 &4251635654719782755
 MonoBehaviour:
@@ -193,18 +195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Value>k__BackingField: 0
---- !u!114 &710455260944671540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2797217082484946439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5961cf745af674c8510e898d321986, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4800780704723873143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,5 +537,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41a9cc928cab7a489a43d20900de604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerController: {fileID: 710455260944671540}
   _meleeAbilityUser: {fileID: 3780305776601067459}
+  _archerAbilityUser: {fileID: 0}

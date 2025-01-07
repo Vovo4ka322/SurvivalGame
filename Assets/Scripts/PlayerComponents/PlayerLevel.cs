@@ -20,9 +20,9 @@ namespace PlayerComponents
         {
             _levelRequirements = new Dictionary<int, int>();
 
-            for (int i = 0; i < _requireExperience.ExperienceQunttity.Count; i++)
+            for (int i = 0; i < _requireExperience.ExperienceQuntity.Count; i++)
             {
-                _levelRequirements.Add(i + 1, _requireExperience.ExperienceQunttity[i]);
+                _levelRequirements.Add(i + 1, _requireExperience.ExperienceQuntity[i]);
             }
         }
 
@@ -39,6 +39,7 @@ namespace PlayerComponents
                 while (Experience >= requiredExperience)
                 {
                     Level++;
+                    Experience = 0;
                     LevelChanged?.Invoke();
                     requiredExperience = _levelRequirements[Level + 1];
                 }
