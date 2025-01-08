@@ -6,39 +6,22 @@ namespace PlayerComponents.Controller
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private ControllerAnimations _controllerAnimations;
+        [SerializeField] private PlayerController _controller;
         [SerializeField] private float _turnSpeed;
         [SerializeField] private float _moveSpeed;
         
         private Camera _camera;
-        private PlayerInput _playerInput;
         private Vector3 _moveDirection;
 
         private void Awake()
         {
             _camera = Camera.main;
-            _playerInput = new PlayerInput();
         }
         
-        private void FixedUpdate()
+        private void Update()
         {
             HandleMovement();
             HandleRotation();
-        }
-
-        private void OnEnable()
-        {
-            _playerInput.Enable();
-        }
-
-        private void OnDisable()
-        {
-            _playerInput.Disable();
-        }
-
-        private void Start()
-        {
-            //Cursor.lockState = CursorLockMode.Locked;
-            //Cursor.visible = false;
         }
 
         public void ChangeMoveSpeed(float amount)
@@ -48,13 +31,12 @@ namespace PlayerComponents.Controller
 
         private void HandleMovement()
         {
-            Vector2 input = _playerInput.Player.Move.ReadValue<Vector2>();
-            float horizontal = input.x;
-            float vertical = input.y;
-            
+            float horizontal = _controller.Movement.x;
+            float vertical = _controller.Movement.y;
+
             Vector3 forward = _camera.transform.forward;
             Vector3 right = _camera.transform.right;
-            
+
             forward.y = 0f;
             right.y = 0f;
             forward.Normalize();
@@ -66,12 +48,12 @@ namespace PlayerComponents.Controller
             float speedDelta = _moveSpeed * Time.deltaTime;
             transform.position += _moveDirection * speedDelta;
             
-            //_controllerAnimations.PlayMove(_moveDirection);
+            _controllerAnimations.PlayMove(_moveDirection);
         }
 
         private void HandleRotation()
         {
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = _camera.ScreenPointToRay(_controller.Rotation);
             Plane plane = new Plane(Vector3.up, Vector3.zero);
 
             if (plane.Raycast(ray, out float rayDistance))

@@ -35,7 +35,7 @@ namespace Enemies
 
         public void Init(EnemyData data, Player player)
         {
-            _target = player.transform;
+            _target = player.Position;
             _data = data;
             _player = player;
             Health.InitMaxValue(data.MaxHealth);

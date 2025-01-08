@@ -10,7 +10,7 @@ public class EntryPoint : MonoBehaviour
 
     private void Awake()
     {
-        _player.Init(_finalValue.CalculateDamage(), _finalValue.CalculateHealth(), 
-            _finalValue.CalculateArmor(), _finalValue.CalculateAttackSpeed(), _finalValue.CalculateMovementSpeed());
+        //_player.Init(_finalValue.CalculateDamage(), _finalValue.CalculateHealth(), 
+            //_finalValue.CalculateArmor(), _finalValue.CalculateAttackSpeed(), _finalValue.CalculateMovementSpeed());
     }
 }
