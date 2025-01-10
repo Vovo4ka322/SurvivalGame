@@ -9,11 +9,11 @@ public class MeleeAbilityViewer : MonoBehaviour
 {
     [SerializeField] private MeleeAbilityUser _meleeAbilityUser;
 
-    [Header("CooldownImages")]
+    [Header("Cooldown Images")]
     [SerializeField] private Image _firstAbility;
     [SerializeField] private Image _secondAbility;
 
-    [Header("UpgradeImages")]
+    [Header("Upgrade Images")]
     [SerializeField] private List<Image> _firstAbilityImprovements;
     [SerializeField] private List<Image> _secondAbilityImprovements;
     [SerializeField] private List<Image> _thirdAbilityImprovements;
