@@ -1,11 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CalculationFinalValue : MonoBehaviour
 {
     [SerializeField] private BuffImprovment _buffImprovment;
-    [SerializeField] private Skin _skin;
+
+    private Skin _skin;
+
+    public Skin Skin => _skin;
+
+    public void Init(Skin skin)
+    {
+        _skin = skin;
+    }
 
     public float CalculateHealth() => _buffImprovment.HealthBuff.Value + _skin.Personage.Health;
 
