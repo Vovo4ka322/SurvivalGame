@@ -9,8 +9,6 @@ namespace PlayerComponents.Controller
         [SerializeField] private PlayerController _controller;
         [SerializeField] private float _turnSpeed;
         [SerializeField] private float _moveSpeed;
-
-        public float MoveSpeed => _moveSpeed;
         
         private Camera _camera;
         private Vector3 _moveDirection;
