@@ -9,6 +9,9 @@ public class MeleePlayer : Player, IActivable
 {
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private Sword _sword;
+    [SerializeField] private AnimatorState _animatorState;
+
+    private float _movementVisualizationCoefficient = 0.2f;
 
     public bool IsActiveState { get; private set; }
 
@@ -38,6 +41,10 @@ public class MeleePlayer : Player, IActivable
     {
         _playerMovement.ChangeMoveSpeed(bloodlust.MovementSpeed);
         AttackSpeed += bloodlust.AttackSpeed;
+
+        _animatorState.SetFloatValue(_animatorState.Speed, AttackSpeed);
+        _animatorState.SetFloatValue(_animatorState.MovementSpeed, _movementVisualizationCoefficient);
+        _movementVisualizationCoefficient += _movementVisualizationCoefficient;
     }
 
     public bool SetTrueActiveState() => IsActiveState = true;

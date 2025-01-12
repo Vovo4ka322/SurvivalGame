@@ -104,9 +104,9 @@ namespace Ability.MeleeAbilities
         {
             if (IsTrue(_counterForBloodlust, _firstUpgrade))
                 UpgradeBloodlust(_firstLevel);
-            if (IsTrue(_counterForBloodlust, _secondUpgrade))
+            else if (IsTrue(_counterForBloodlust, _secondUpgrade))
                 UpgradeBloodlust(_secondLevel);
-            if (IsTrue(_counterForBloodlust, _thirdLevel))
+            else if (IsTrue(_counterForBloodlust, _thirdUpgrade))
                 UpgradeBloodlust(_thirdLevel);
         }
 

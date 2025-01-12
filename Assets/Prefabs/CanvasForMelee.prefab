@@ -441,7 +441,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2216619450353847547}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Ability.MeleeAbilities.MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UpgradeFirstAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &137586371937523391
 GameObject:
   m_ObjectHideFlags: 0
@@ -4808,7 +4820,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1964896930943891222}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Ability.MeleeAbilities.MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UpgradeSecondAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3236242540682094478
 GameObject:
   m_ObjectHideFlags: 0
@@ -7047,7 +7071,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2736985855470048698}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Ability.MeleeAbilities.MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UpgradeThirdAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4438980326229556121
 GameObject:
   m_ObjectHideFlags: 0
@@ -9734,7 +9770,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2581311038566606732}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Ability.MeleeAbilities.MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UseFirstAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7104605932004144303
 GameObject:
   m_ObjectHideFlags: 0
@@ -11434,7 +11482,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9166602811558164027}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Ability.MeleeAbilities.MeleeAbilityUser, Assembly-CSharp
+        m_MethodName: UseSecondAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8491225783504900038
 GameObject:
   m_ObjectHideFlags: 0
