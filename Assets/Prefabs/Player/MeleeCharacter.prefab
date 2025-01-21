@@ -923,7 +923,6 @@ GameObject:
   - component: {fileID: 2115829330592821500}
   - component: {fileID: 6232123673608192267}
   - component: {fileID: 4315089198175944915}
-  - component: {fileID: 6823420774607506318}
   - component: {fileID: 8538221139762822503}
   - component: {fileID: 8241914687732629572}
   - component: {fileID: 6870032757716501712}
@@ -1029,18 +1028,6 @@ CapsuleCollider:
   m_Height: 1.923357
   m_Direction: 1
   m_Center: {x: 0, y: 0.9647083, z: 0}
---- !u!114 &6823420774607506318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1313079975868441659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5961cf745af674c8510e898d321986, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8538221139762822503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,8 +1052,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0942e95eccb58cd42bc4b075d5c2c662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 6823420774607506318}
   _controllerAnimations: {fileID: 8538221139762822503}
+  _controller: {fileID: 0}
   _turnSpeed: 5
   _moveSpeed: 5
 --- !u!114 &6870032757716501712
