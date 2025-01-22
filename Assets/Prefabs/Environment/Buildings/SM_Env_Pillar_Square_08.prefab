@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 454048}
   - component: {fileID: 3346522}
   - component: {fileID: 2322498}
-  - component: {fileID: 7531473386734547876}
-  - component: {fileID: -1677480097561906252}
+  - component: {fileID: 8193929939598766810}
+  - component: {fileID: 2790303170459414925}
   m_Layer: 0
   m_Name: SM_Env_Pillar_Square_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &454048
 Transform:
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7531473386734547876
+--- !u!65 &8193929939598766810
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,9 +104,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6525955, y: 0.8193594, z: 0.65229225}
-  m_Center: {x: 0, y: 0.4096797, z: 0}
---- !u!114 &-1677480097561906252
+  m_Size: {x: 0.6, y: 0.8, z: 0.6}
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!114 &2790303170459414925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

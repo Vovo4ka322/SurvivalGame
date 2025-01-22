@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 992844947712920255}
   - component: {fileID: 4208772926619993370}
   - component: {fileID: 2129190955296207312}
-  - component: {fileID: 2179092935582880561}
+  - component: {fileID: 5532723898670279016}
   - component: {fileID: 550128875694200725}
   m_Layer: 0
   m_Name: SM_Env_Ground_Cliff_Large_02
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2179092935582880561
+--- !u!64 &5532723898670279016
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 3398666}
   - component: {fileID: 2303236}
   - component: {fileID: 65952194506493392}
-  - component: {fileID: -5576837967549195173}
+  - component: {fileID: 3810999683664584539}
   m_Layer: 0
   m_Name: SM_Env_Tiles_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &450008
 Transform:
@@ -104,9 +104,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.000002, y: 0.09791671, z: 4.999999}
-  m_Center: {x: -2.500001, y: 0.045907862, z: 2.4999995}
---- !u!114 &-5576837967549195173
+  m_Size: {x: 5, y: 0.1, z: 5}
+  m_Center: {x: -2.5, y: 0.04, z: 2.4999995}
+--- !u!114 &3810999683664584539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

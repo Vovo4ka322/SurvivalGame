@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 490044}
   - component: {fileID: 3301008}
   - component: {fileID: 2382310}
-  - component: {fileID: 8374051596504674544}
-  - component: {fileID: 6532866775838915707}
+  - component: {fileID: 673415482660515799}
+  - component: {fileID: -3423159618775808860}
   m_Layer: 0
   m_Name: SM_Env_Pillar_Broken_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &490044
 Transform:
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8374051596504674544
+--- !u!65 &673415482660515799
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,9 +104,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.62291527, y: 0.9589604, z: 0.6199951}
-  m_Center: {x: -0.0000009536743, y: 0.4794802, z: -0.0000009536743}
---- !u!114 &6532866775838915707
+  m_Size: {x: 0.6, y: 1, z: 0.6}
+  m_Center: {x: -9.5, y: 0.5, z: -9.5}
+--- !u!114 &-3423159618775808860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -4,6 +4,7 @@ using Ability.ArcherAbilities.InsatiableHunger;
 using Ability.ArcherAbilities.Multishot;
 using PlayerComponents;
 using UnityEngine;
+using Weapons.RangedWeapon;
 namespace Ability.ArcherAbilities
 {
     public class ArcherAbilityUser : MonoBehaviour, IAbilityUser

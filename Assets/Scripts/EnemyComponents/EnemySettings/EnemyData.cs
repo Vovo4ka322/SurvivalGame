@@ -1,0 +1,49 @@
+using UnityEngine;
+using EnemyComponents.EnemySettings.Effects;
+using EnemyComponents.EnemySettings.EnemyAttackType;
+
+namespace EnemyComponents.EnemySettings
+{
+    [CreateAssetMenu(fileName = "Enemy", menuName = "Enemy/Create New Enemy")]
+    public class EnemyData : ScriptableObject
+    {
+        [SerializeField] private Enemy _enemyPrefab;
+        
+        [Header("Setting type")]
+        [SerializeField] private EnemyType _enemyType;
+        [SerializeReference] private BaseEnemyAttackType _baseAttackType;
+
+        [Header("Setting parameters")] 
+        [SerializeField] private float _maxHealth;
+        [SerializeField] private float _damage;
+        [SerializeField] private float _attackCooldown;
+        [SerializeField] private float _attackRange;
+        [SerializeField] private float _moveSpeed;
+        [SerializeField] private float _rotationSpeed;
+        [SerializeField] private int _experience;
+        [SerializeField] private int _gold;
+        
+        [Header("Effects")]
+        [SerializeField] private EffectData _spawnEffect;
+        [SerializeField] private EffectData _hitEffect;
+        [SerializeField] private EffectData _deathEffect;
+        
+        public EnemyType EnemyType => _enemyType;
+        public Enemy EnemyPrefab => _enemyPrefab;
+        public BaseEnemyAttackType BaseAttackType => _baseAttackType;
+        
+        public float MoveSpeed => _moveSpeed;
+        public float RotationSpeed => _rotationSpeed;
+        public float Damage => _damage;
+        public float MaxHealth => _maxHealth;
+        public float AttackCooldown => _attackCooldown;
+        public float AttackRange => _attackRange;
+        
+        public int Experience => _experience;
+        public int Gold => _gold;
+        
+        public EffectData SpawnEffect => _spawnEffect;
+        public EffectData HitEffect => _hitEffect;
+        public EffectData DeathEffect => _deathEffect;
+    }
+}

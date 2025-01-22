@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3247474872940375630}
   - component: {fileID: 1927121338637558251}
   - component: {fileID: 4420975641873208609}
-  - component: {fileID: -4807356282813230547}
   - component: {fileID: -6867184366226603857}
+  - component: {fileID: 2705155860753036413}
   m_Layer: 0
   m_Name: SM_Bld_Stone_Cabin_01
   m_TagString: Untagged
@@ -85,8 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-4807356282813230547
-MeshCollider:
+--- !u!114 &-6867184366226603857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763672626335216884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &2705155860753036413
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,19 +115,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6993348459113955287, guid: 3b300618946b45a48abefeea349d4e89, type: 3}
---- !u!114 &-6867184366226603857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2763672626335216884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 3
+  m_Size: {x: 6, y: 4, z: 8}
+  m_Center: {x: 0, y: 2, z: 0}
