@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 472312}
   - component: {fileID: 3371272}
   - component: {fileID: 2347494}
-  - component: {fileID: 350585563177722682}
-  - component: {fileID: 4519747361573924397}
+  - component: {fileID: 8467695526320828572}
+  - component: {fileID: -3493989580749836658}
   m_Layer: 0
   m_Name: SM_Env_Entrance_Crypt_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &472312
 Transform:
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &350585563177722682
+--- !u!65 &8467695526320828572
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,9 +104,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.885222, y: 4.7400236, z: 1.9850998}
-  m_Center: {x: 0, y: 2.3700118, z: 0}
---- !u!114 &4519747361573924397
+  m_Size: {x: 3.8, y: 4.7, z: 2}
+  m_Center: {x: 0, y: 2.4, z: 0}
+--- !u!114 &-3493989580749836658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

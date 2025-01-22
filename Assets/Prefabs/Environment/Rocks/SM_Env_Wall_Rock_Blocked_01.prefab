@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 483570}
   - component: {fileID: 3321468}
   - component: {fileID: 2334440}
-  - component: {fileID: 5671231149453340460}
-  - component: {fileID: 5996748206933588635}
+  - component: {fileID: 1258427338719656058}
+  - component: {fileID: -361954009617988185}
   m_Layer: 0
   m_Name: SM_Env_Wall_Rock_Blocked_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &483570
 Transform:
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5671231149453340460
+--- !u!65 &1258427338719656058
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,9 +104,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.5889435, y: 3.5251606, z: 1.8404703}
-  m_Center: {x: 0, y: 1.7625803, z: -0.73986745}
---- !u!114 &5996748206933588635
+  m_Size: {x: 2.6, y: 3.5, z: 1.8}
+  m_Center: {x: 0, y: 1.7, z: -0.7}
+--- !u!114 &-361954009617988185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

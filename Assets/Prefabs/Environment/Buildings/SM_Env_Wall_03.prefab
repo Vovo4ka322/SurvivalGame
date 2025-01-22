@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 3366708}
   - component: {fileID: 2370236}
   - component: {fileID: 65082234430034430}
-  - component: {fileID: 4706619107571443818}
+  - component: {fileID: 1214271903095044831}
   m_Layer: 0
   m_Name: SM_Env_Wall_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &446176
 Transform:
@@ -104,9 +104,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.1782913, y: 5.1280828, z: 0.42949295}
-  m_Center: {x: -2.4718971, y: 2.5222666, z: 0.057518005}
---- !u!114 &4706619107571443818
+  m_Size: {x: 5.1, y: 5.1, z: 0.4}
+  m_Center: {x: -2.4, y: 2.5, z: 0.05}
+--- !u!114 &1214271903095044831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

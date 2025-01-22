@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using Weapons.RangedWeapon;
 
 namespace Ability.ArcherAbilities.Multishot
 {
@@ -60,11 +60,11 @@ namespace Ability.ArcherAbilities.Multishot
                 _bow.StartShoot();
 
 
-                //CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;//потом сделать визуализацию кулдауна
+                //CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             }
             else
             {
-                //Debug.Log("Осталось " + (_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time));
+                //Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + (_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time));
                 //CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;
                 //Used?.Invoke(CooldownTime);
                 //Debug.Log((_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time) + " Cooldown");

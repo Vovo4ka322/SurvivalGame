@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7329472036660721771}
   - component: {fileID: 5915575343080355790}
   - component: {fileID: 8501862780155839236}
-  - component: {fileID: -229476392489816978}
+  - component: {fileID: -4531724069396760953}
   - component: {fileID: -9098275403303082870}
   m_Layer: 0
   m_Name: SM_Env_Ground_Mound_Large_03
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-229476392489816978
+--- !u!64 &-4531724069396760953
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

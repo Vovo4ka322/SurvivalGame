@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 400616}
   - component: {fileID: 3346856}
   - component: {fileID: 2389588}
-  - component: {fileID: 3604982326188456535}
-  - component: {fileID: -2368073198368582974}
+  - component: {fileID: 8887378954964692892}
+  - component: {fileID: -2492870427280942033}
   m_Layer: 0
   m_Name: SM_Env_Wall_Culled_01_Alt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &400616
 Transform:
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3604982326188456535
+--- !u!65 &8887378954964692892
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,9 +104,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.269392, y: 5.302386, z: 0.24419515}
-  m_Center: {x: -2.469616, y: 2.513326, z: 0.13405275}
---- !u!114 &-2368073198368582974
+  m_Size: {x: 5.2, y: 5.3, z: 0.2}
+  m_Center: {x: -2.5, y: 2.5, z: 0.1}
+--- !u!114 &-2492870427280942033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
