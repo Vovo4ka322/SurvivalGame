@@ -1,9 +1,9 @@
 using Ability.MeleeAbilities.Bloodlust;
-using Enemies;
 using PlayerComponents;
 using PlayerComponents.Controller;
-using System;
+using EnemyComponents;
 using UnityEngine;
+using Weapons.MeleeWeapon;
 
 public class MeleePlayer : Player, IActivable
 {

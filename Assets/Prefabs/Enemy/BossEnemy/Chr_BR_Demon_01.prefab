@@ -1423,7 +1423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleEffectsPoolSettings:
-    _collectionCheck: 1
+    _collectionCheck: 0
     _initialCapacity: 10
     _maxPoolSize: 20
 --- !u!1 &1325891465491314
