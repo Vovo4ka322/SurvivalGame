@@ -1,7 +1,8 @@
 using Ability.ArcherAbilities.Blur;
-using Enemies;
+using EnemyComponents;
 using PlayerComponents;
 using UnityEngine;
+using Weapons.RangedWeapon;
 
 public class RangePlayer : Player, IVampirismable, IEvasionable
 {
