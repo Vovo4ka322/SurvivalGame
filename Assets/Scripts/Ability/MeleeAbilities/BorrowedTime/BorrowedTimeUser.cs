@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 namespace Ability.MeleeAbilities.BorrowedTime
@@ -8,7 +9,11 @@ namespace Ability.MeleeAbilities.BorrowedTime
         private float _lastUsedTimer = 0;
         private bool _canUseFirstTime = true;
 
+        public event Action<float> Used;
+
         public float CooldownTime { get; private set; }
+
+        public BorrowedTime BorrowedTime => _borrowedTimeScriptableObject;
 
         public void Upgrade(BorrowedTime borrowedTime)
         {
@@ -32,13 +37,25 @@ namespace Ability.MeleeAbilities.BorrowedTime
                     yield return null;
                 }
 
+                StartCoroutine(StartCooldown());
                 healable.SetFalseActiveState();
-
-                CooldownTime = _lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime - Time.time;
             }
             else
             {
                 Debug.Log("Осталось " + (_lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime - Time.time));
+            }
+        }
+
+        private IEnumerator StartCooldown()
+        {
+            CooldownTime = _lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime - Time.time;
+
+            while (CooldownTime > 0)
+            {
+                CooldownTime = _lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime - Time.time;
+                Used?.Invoke(CooldownTime);
+
+                yield return null;
             }
         }
     }

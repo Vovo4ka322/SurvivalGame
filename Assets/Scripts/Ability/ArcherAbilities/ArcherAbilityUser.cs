@@ -34,7 +34,15 @@ namespace Ability.ArcherAbilities
         private Dictionary<int, RangeAbilityData> _abilitiesDatas;
 
         public event Action LevelChanged;
-        public event Action AbilityUpgraded;
+        public event Action MultishotUpgraded;
+        public event Action InsatiableHungerUpgraded;
+        public event Action BlurUpgraded;
+
+        public int MaxValue { get; private set; } = 3;
+
+        public MultishotUser MultishotUser => _multishot;
+
+        public InsatiableHungerUser InsatiableHunger => _insatiableHunger;
 
         private void Awake()
         {
@@ -100,30 +108,41 @@ namespace Ability.ArcherAbilities
 
         public void UseSecondAbility()
         {
-            StartCoroutine(_insatiableHunger.UseAbility(_player));
+            //StartCoroutine(_insatiableHunger.UseAbility(_player));
         }
+
+        private bool IsMaxValue(int value) => value == MaxValue;
 
         private bool IsTrue(int counter, int numberOfUpgrade) => counter == numberOfUpgrade;
 
         private void UpgradeMultishot(int level)
         {
+            if (IsMaxValue(_counterForMultishot))
+                return;
+
             _multishot.Upgrade(_abilitiesDatas[level].Multishot);
             _counterForMultishot++;
-            AbilityUpgraded?.Invoke();
+            MultishotUpgraded?.Invoke();
         }
 
         private void UpgradeInsatiableHunger(int level)
         {
+            if (IsMaxValue(_counterForInsatiableHunger))
+                return;
+
             _insatiableHunger.Upgrade(_abilitiesDatas[level].InsatiableHunger);
             _counterForInsatiableHunger++;
-            AbilityUpgraded?.Invoke();
+            InsatiableHungerUpgraded?.Invoke();
         }
 
         private void UpgradeBlur(int level)
         {
-            _player.SetEvasion(_abilitiesDatas[level].Blur);
+            if(IsMaxValue(_counterForBlur))
+                return;
+
+            //_player.SetEvasion(_abilitiesDatas[level].Blur);
             _counterForBlur++;
-            AbilityUpgraded?.Invoke();
+            BlurUpgraded?.Invoke();
         }
     }
 }

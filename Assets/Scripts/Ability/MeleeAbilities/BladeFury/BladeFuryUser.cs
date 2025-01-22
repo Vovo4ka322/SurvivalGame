@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 namespace Ability.MeleeAbilities.BladeFury
 {
     public class BladeFuryUser : MonoBehaviour, ICooldownable
@@ -8,7 +10,11 @@ namespace Ability.MeleeAbilities.BladeFury
         private float _lastUsedTimer = 0;
         private bool _canUseFirstTime = true;
 
+        public event Action<float> Used;
+
         public float CooldownTime { get; private set; }
+
+        public BladeFury BladeFury => _bladeFuryScriptableObject;
 
         public void Upgrade(BladeFury bladeFury)
         {
@@ -32,11 +38,24 @@ namespace Ability.MeleeAbilities.BladeFury
                     yield return null;
                 }
 
-                CooldownTime = _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time;//потом сделать визуализацию кулдауна
+                StartCoroutine(StartCooldown());
             }
             else
             {
                 Debug.Log("Осталось " + (_lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time));
+            }
+        }
+
+        private IEnumerator StartCooldown()
+        {
+            CooldownTime = _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time;
+
+            while (CooldownTime > 0)
+            {
+                CooldownTime = _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time;
+                Used?.Invoke(CooldownTime);
+
+                yield return null;
             }
         }
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Bow", menuName = "WeaponType/Archer/Bow")]
-public class BowData : WeaponData, ISpeedable
+public class BowData : WeaponData, IAttackSpeedable
 {
     [field: SerializeField] public float AttackSpeed {  get; private set; }
 

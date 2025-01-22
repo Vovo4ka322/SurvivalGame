@@ -15,6 +15,10 @@ namespace Ability.ArcherAbilities.Multishot
         private bool _canUseFirstTime = true;
         private Arrow _arrow;
 
+        public event Action<float> Used;
+
+        public Multishot Multishot => _multishotScriptableObject;
+
         public float CooldownTime { get; private set; }
 
         public void Upgrade(Multishot multishot)
@@ -24,7 +28,7 @@ namespace Ability.ArcherAbilities.Multishot
 
         public IEnumerator UseAbility()
         {
-            Debug.Log(_multishotScriptableObject.CooldownTime + " Cooldown");
+            //Debug.Log(_multishotScriptableObject.CooldownTime + " Cooldown");
             float duration = 0;
 
             if (Time.time >= _lastUsedTimer + _multishotScriptableObject.CooldownTime || _canUseFirstTime)
@@ -43,24 +47,46 @@ namespace Ability.ArcherAbilities.Multishot
                     duration += Time.deltaTime;
                     _lastUsedTimer = Time.time;
                     _canUseFirstTime = false;
+                    //CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;
+                    //Used?.Invoke(CooldownTime);
+                    //Debug.Log((_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time) + " Cooldown");
+
 
                     yield return null;
                 }
 
+                StartCoroutine(StartCooldown());
                 _bow.SetFalseActiveState();
                 _bow.StartShoot();
 
-                CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;//����� ������� ������������ ��������
+
+                //CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;//����� ������� ������������ ��������
             }
             else
             {
-                Debug.Log("�������� " + (_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time));
+                //Debug.Log("�������� " + (_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time));
+                //CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;
+                //Used?.Invoke(CooldownTime);
+                //Debug.Log((_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time) + " Cooldown");
             }
         }
 
-        public void CalculateArrowFlight()
+        private IEnumerator StartCooldown()
         {
-            if(_arrow != null)
+            CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;
+
+            while (CooldownTime > 0)
+            {
+                CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;
+                Used?.Invoke(CooldownTime);
+
+                yield return null;
+            }
+        }
+
+        private void CalculateArrowFlight()
+        {
+            if (_arrow != null)
                 _arrow.Touched -= _bow.OnTouched;
 
             int coefficient = 2;
@@ -74,7 +100,7 @@ namespace Ability.ArcherAbilities.Multishot
             {
                 float tempRotation = startRotation - angleIncrease * i;
                 Arrow arrow = _arrowSpawner.Spawn(_bow.transform, Quaternion.Euler(0, 0, tempRotation), _bow.BowData.ArrowFlightSpeed, _bow.BowData.AttackRadius);
-                arrow.StartFly(Quaternion.Euler(0, tempRotation, 0) * _bow.transform.forward, _bow.transform.position);
+                arrow.StartFly(Quaternion.Euler(0, tempRotation, 0) * -_bow.transform.forward, _bow.transform.position);
                 _arrow = arrow;
                 _arrow.Touched += _bow.OnTouched;
             }
