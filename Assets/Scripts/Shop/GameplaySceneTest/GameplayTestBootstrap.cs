@@ -1,11 +1,15 @@
+using PlayerComponents;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameplayTestBootstrap : MonoBehaviour
 {
     [SerializeField] private Transform _characterSpawnPoint;
-    [SerializeField] private Transform _mazeCellSpawnPoint;
-    [SerializeField] private MeleePlayerFactory _characterFactory;
-    [SerializeField] private RangePlayerFactory _mazeCellFactory;
+    [SerializeField] private CalculationFinalValue _finalValue;
+    [SerializeField] private MeleePlayerFactory _meleeCharacterFactory;
+    [SerializeField] private RangePlayerFactory _rangeCharacterFactory;
+
+    private Player _player;
 
     private IDataProvider _dataProvider;
     private IPersistentData _persistentPlayerData;
@@ -14,14 +18,22 @@ public class GameplayTestBootstrap : MonoBehaviour
     {
         InitializeData();
 
-        //DoTestSpawn();
+        DoTestSpawn();
     }
 
     private void DoTestSpawn()
     {
-        Character character = _characterFactory.Get(_persistentPlayerData.PlayerData.SelectedMeleeCharacterSkin, _characterSpawnPoint.position);
+        
+        _player = _meleeCharacterFactory.Get(_persistentPlayerData.PlayerData.SelectedMeleeCharacterSkin, _characterSpawnPoint.position);
+        //_player = _rangeCharacterFactory.Get(_persistentPlayerData.PlayerData.SelectedRangeCharacterSkin, _characterSpawnPoint.position);
 
-        Debug.Log($"«аспавнили персонажа {_persistentPlayerData.PlayerData.SelectedMeleeCharacterSkin} и клетку лабиринта {_persistentPlayerData.PlayerData.SelectedRangeCharacterSkin}");
+        InitPlayer();
+    }
+
+    private void InitPlayer()
+    {
+        _player.Init(_finalValue.CalculateDamage(), _finalValue.CalculateHealth(),
+        _finalValue.CalculateArmor(), _finalValue.CalculateAttackSpeed(), _finalValue.CalculateMovementSpeed());
     }
 
     private void InitializeData()

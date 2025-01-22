@@ -2521,8 +2521,52 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4853297963322132799, guid: 05239aed800b891488062339890266cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1271412792}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6893355184589033533, guid: 05239aed800b891488062339890266cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7056398083076319534}
   m_SourcePrefab: {fileID: 100100000, guid: 05239aed800b891488062339890266cf, type: 3}
+--- !u!114 &7056398083076319531 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3040517707146653786, guid: 05239aed800b891488062339890266cf, type: 3}
+  m_PrefabInstance: {fileID: 7056398083076319530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7056398083076319532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8971839745303367250, guid: 05239aed800b891488062339890266cf, type: 3}
+  m_PrefabInstance: {fileID: 7056398083076319530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7056398083076319533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6893355184589033533, guid: 05239aed800b891488062339890266cf, type: 3}
+  m_PrefabInstance: {fileID: 7056398083076319530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7056398083076319534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7056398083076319533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcc2f54542c59947840ba9ac3bfa501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meleeCharacter: {fileID: 7056398083076319532}
+  _rangeCharacter: {fileID: 7056398083076319531}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

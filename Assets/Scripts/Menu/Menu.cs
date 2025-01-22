@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
@@ -20,9 +21,6 @@ public class Menu : MonoBehaviour
     [Header("Description panels")]
     [SerializeField] private Image _meleePlayerGame;
     [SerializeField] private Image _rangePlayerGame;
-
-    [Header("Play")]
-    [SerializeField] private List<Button> _playButtons;
 
     [Header("Shop")]
     [SerializeField] private GameObject _shop;
@@ -80,9 +78,6 @@ public class Menu : MonoBehaviour
         _menu.gameObject.SetActive(true);
 
         _shop.gameObject.SetActive(false);
-       // _skinPlacement.gameObject.SetActive(false);
-
-        //_skinPlacement.DestroyModel();
     }
 
     private void ComeBackToChoicePlayer()
@@ -106,10 +101,5 @@ public class Menu : MonoBehaviour
         _menu.gameObject.SetActive(false);
         _shop.gameObject.SetActive(true);
         _skinPlacement.gameObject.SetActive(true);
-    }
-
-    private void StartGame()
-    {
-
     }
 }
