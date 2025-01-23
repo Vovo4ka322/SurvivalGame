@@ -11,4 +11,8 @@ public class SkinUnlocker : IShopItemVisitor
 
     public void Visit(RangeCharacterSkinItem mazeSkinItem) 
         => _persistentData.PlayerData.OpenRangeCharacterSkin(mazeSkinItem.SkinType);
+
+    //q
+    public void Visit(CharacterSkinItem characterSkinItem)
+        => _persistentData.PlayerData.OpenCharacterSkin(characterSkinItem.SkinType);
 }

@@ -368,6 +368,7 @@ MonoBehaviour:
   _finalValue: {fileID: 711138506}
   _meleeCharacterFactory: {fileID: 11400000, guid: 38d64cd0095550d499e25274437eaf53, type: 2}
   _rangeCharacterFactory: {fileID: 0}
+  _generalPlayerFactory: {fileID: 11400000, guid: 011a1be98cd46d0438aea2b7f0e598ef, type: 2}
 --- !u!1 &956056773
 GameObject:
   m_ObjectHideFlags: 0

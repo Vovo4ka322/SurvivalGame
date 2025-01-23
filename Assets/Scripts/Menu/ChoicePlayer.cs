@@ -1,3 +1,4 @@
+using PlayerComponents;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,8 +14,8 @@ public class ChoicePlayer : MonoBehaviour
     [SerializeField] private Button _meleeCharacter;
     [SerializeField] private Button _rangeCharacter;
 
-    public event Action MeleePlayerChosen;
-    public event Action RangePlayerChosen;
+    private IDataProvider _dataProvider;
+    private IPersistentData _persistentPlayerData;
 
     private void OnEnable()
     {
@@ -30,18 +31,35 @@ public class ChoicePlayer : MonoBehaviour
 
     public void OnMeleeCharacterChosen()
     {
+        
+
         ChangeScene();
-        MeleePlayerChosen?.Invoke();
+
+       
     }
 
     public void OnRangeCharacterChosen()
     {
         ChangeScene();
-        RangePlayerChosen?.Invoke();
+
     }
 
     private void ChangeScene()
     {
         SceneManager.LoadScene(0);
     }
+
+    //private void InitializeData()
+    //{
+    //    _persistentPlayerData = new PersistentData();
+    //    _dataProvider = new DataLocalProvider(_persistentPlayerData);
+
+    //    LoadDataOrInit();
+    //}
+
+    //private void LoadDataOrInit()
+    //{
+    //    if (_dataProvider.TryLoad() == false)
+    //        _persistentPlayerData.PlayerData = new PlayerData();
+    //}
 }

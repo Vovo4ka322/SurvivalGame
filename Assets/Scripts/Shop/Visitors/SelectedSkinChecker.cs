@@ -13,4 +13,8 @@ public class SelectedSkinChecker : IShopItemVisitor
 
     public void Visit(RangeCharacterSkinItem mazeSkinItem) 
         => IsSelected = _persistentData.PlayerData.SelectedRangeCharacterSkin == mazeSkinItem.SkinType;
+
+    //q
+    public void Visit(CharacterSkinItem characterSkinItem)
+        => IsSelected = _persistentData.PlayerData.SelectedCharacterSkin == characterSkinItem.SkinType;
 }

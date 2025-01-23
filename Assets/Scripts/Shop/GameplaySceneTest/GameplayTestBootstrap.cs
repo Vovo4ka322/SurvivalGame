@@ -9,6 +9,9 @@ public class GameplayTestBootstrap : MonoBehaviour
     [SerializeField] private MeleePlayerFactory _meleeCharacterFactory;
     [SerializeField] private RangePlayerFactory _rangeCharacterFactory;
 
+    //q
+    [SerializeField] private GeneralPlayerFactory _generalPlayerFactory;
+
     private Player _player;
 
     private IDataProvider _dataProvider;
@@ -23,9 +26,7 @@ public class GameplayTestBootstrap : MonoBehaviour
 
     private void DoTestSpawn()
     {
-        
-        _player = _meleeCharacterFactory.Get(_persistentPlayerData.PlayerData.SelectedMeleeCharacterSkin, _characterSpawnPoint.position);
-        //_player = _rangeCharacterFactory.Get(_persistentPlayerData.PlayerData.SelectedRangeCharacterSkin, _characterSpawnPoint.position);
+        _player = _generalPlayerFactory.Get(_persistentPlayerData.PlayerData.SelectedCharacterSkin, _characterSpawnPoint.position);
 
         InitPlayer();
     }
@@ -49,4 +50,5 @@ public class GameplayTestBootstrap : MonoBehaviour
         if (_dataProvider.TryLoad() == false)
             _persistentPlayerData.PlayerData = new PlayerData();
     }
+
 }

@@ -9,6 +9,9 @@ public class Shop : MonoBehaviour
     [SerializeField] private ShopCategoryButton _meleeCharacterSkinsButton;
     [SerializeField] private ShopCategoryButton _rangeCharacterSkinsButton;
 
+    //q
+    [SerializeField] private ShopCategoryButton _characterSkinsButton;
+
     [SerializeField] private BuyButton _buyButton;
     [SerializeField] private Button _selectionButton;
     [SerializeField] private Image _selectedText;
@@ -40,6 +43,9 @@ public class Shop : MonoBehaviour
 
         _buyButton.Click += OnBuyButtonClick;
         _selectionButton.onClick.AddListener(OnSelectionButtonClick);
+
+        //q
+        _characterSkinsButton.Click += OnCharacterSkinsButtonClick;
     }
 
     private void OnDisable()
@@ -50,6 +56,9 @@ public class Shop : MonoBehaviour
 
         _buyButton.Click -= OnBuyButtonClick;
         _selectionButton.onClick.RemoveListener(OnSelectionButtonClick);
+
+        //q
+        _characterSkinsButton.Click -= OnCharacterSkinsButtonClick;
     }
 
     public void Initialize(IDataProvider dataProvider, Wallet wallet, OpenSkinsChecker openSkinsChecker, SelectedSkinChecker selectedSkinChecker, SkinSelector skinSelector, SkinUnlocker skinUnlocker)
@@ -66,7 +75,10 @@ public class Shop : MonoBehaviour
 
         _shopPanel.ItemViewClicked += OnItemViewClicked;
 
-        OnMeleeCharacterSkinsButtonClick();
+        //OnMeleeCharacterSkinsButtonClick();
+
+        //q
+        OnCharacterSkinsButtonClick();
     }
 
     private void OnItemViewClicked(ShopItemView item)
@@ -182,4 +194,17 @@ public class Shop : MonoBehaviour
     private void HideBuyButton() => _buyButton.gameObject.SetActive(false);
     private void HideSelectionButton() => _selectionButton.gameObject.SetActive(false);
     private void HideSelectedText() => _selectedText.gameObject.SetActive(false);
+
+    //q
+    private void OnCharacterSkinsButtonClick()
+    {
+        _characterSkinsButton.Select();
+        _rangeCharacterSkinsButton.Unselect();
+        _meleeCharacterSkinsButton.Unselect();
+
+        //UpdateCameraTransform(_mazeCategoryCameraPosition);
+        UpdateCameraTransform(_characterCategoryCameraPosition);
+
+        _shopPanel.Show(_contentItems.CharacterSkinItems.Cast<ShopItem>());
+    }
 }

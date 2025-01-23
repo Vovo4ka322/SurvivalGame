@@ -1,6 +1,6 @@
-using PlayerComponents;
 using System;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 [CreateAssetMenu(fileName = "MeleeCharactersFactory", menuName = "GameplayExample/MeleeCharactersFactory")]
 public class MeleePlayerFactory : ScriptableObject
@@ -26,7 +26,7 @@ public class MeleePlayerFactory : ScriptableObject
                 return _secondMeleeSkin;
             case MeleeCharacterSkins.ThirdMeleeSkin:
                 return _thirdMeleeSkin;
-            
+
             default:
                 throw new ArgumentException(nameof(skinType));
         }

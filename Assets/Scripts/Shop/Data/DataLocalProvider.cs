@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataLocalProvider : IDataProvider
 {
-    private const string FileName = "PlayerSave1";
+    private const string FileName = "PlayerSave2";
     private const string SaveFileExtension = ".json";
 
     private IPersistentData _persistentData;

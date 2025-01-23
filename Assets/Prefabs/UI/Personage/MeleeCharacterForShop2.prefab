@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1028048899831848719}
   - component: {fileID: 5567217364515435154}
   - component: {fileID: 8886993060278109272}
+  - component: {fileID: 2153084410953870744}
   m_Layer: 0
   m_Name: MeleeCharacterForShop2
   m_TagString: Untagged
@@ -105,3 +106,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2153084410953870744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767704069033751074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9fa845ccdb6e94da4611e1b1a6d30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Health>k__BackingField: {fileID: 0}
+  _level:
+    _requireExperience: {fileID: 0}
+  <Position>k__BackingField: {fileID: 0}
+  _playerMovement: {fileID: 0}
+  _sword: {fileID: 0}
+  _animatorState: {fileID: 0}

@@ -11,4 +11,8 @@ public class SkinSelector : IShopItemVisitor
 
     public void Visit(RangeCharacterSkinItem mazeSkinItem) 
         => _persistentData.PlayerData.SelectedRangeCharacterSkin = mazeSkinItem.SkinType;
+
+    //q
+    public void Visit(CharacterSkinItem characterSkinItem)
+        => _persistentData.PlayerData.SelectedCharacterSkin = characterSkinItem.SkinType;
 }

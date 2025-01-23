@@ -1,6 +1,6 @@
 public interface IGameplayVisitor
 {
-    public void Visit(MeleePlayerFactory meleePlayerFactory);
+    public void Visit(MeleePlayer meleePlayerFactory);
 
-    public void Visit(RangePlayerFactory rangePlayerFactory);
+    public void Visit(RangePlayer rangePlayerFactory);
 }
