@@ -6,13 +6,11 @@ public class GameplayTestBootstrap : MonoBehaviour
 {
     [SerializeField] private Transform _characterSpawnPoint;
     [SerializeField] private CalculationFinalValue _finalValue;
-    [SerializeField] private MeleePlayerFactory _meleeCharacterFactory;
-    [SerializeField] private RangePlayerFactory _rangeCharacterFactory;
-
-    //q
     [SerializeField] private GeneralPlayerFactory _generalPlayerFactory;
+    [SerializeField] private CanvasFactory _canvasFactory;
 
     private Player _player;
+    private Canvas _canvas;
 
     private IDataProvider _dataProvider;
     private IPersistentData _persistentPlayerData;
@@ -27,6 +25,7 @@ public class GameplayTestBootstrap : MonoBehaviour
     private void DoTestSpawn()
     {
         _player = _generalPlayerFactory.Get(_persistentPlayerData.PlayerData.SelectedCharacterSkin, _characterSpawnPoint.position);
+        _canvas = _canvasFactory.Get(_player.CharacterType);
 
         InitPlayer();
     }

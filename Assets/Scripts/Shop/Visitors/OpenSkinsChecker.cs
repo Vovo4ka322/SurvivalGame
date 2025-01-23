@@ -10,13 +10,6 @@ public class OpenSkinsChecker : IShopItemVisitor
 
     public void Visit(ShopItem shopItem) => Visit((dynamic)shopItem);
 
-    public void Visit(MeleeCharacterSkinItem meleeCharacterSkinItem) 
-        => IsOpened = _persistentData.PlayerData.OpenMeleeCharacterSkins.Contains(meleeCharacterSkinItem.SkinType);
-
-    public void Visit(RangeCharacterSkinItem rangeCharacterSkinItem) 
-        => IsOpened = _persistentData.PlayerData.OpenRangeCharacterSkins.Contains(rangeCharacterSkinItem.SkinType);
-
-    //q
     public void Visit(CharacterSkinItem characterSkinItem)
         => IsOpened = _persistentData.PlayerData.OpenCharacterSkins.Contains(characterSkinItem.SkinType);
 }

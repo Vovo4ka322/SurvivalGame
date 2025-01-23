@@ -6,10 +6,6 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private ShopContent _contentItems;
 
-    [SerializeField] private ShopCategoryButton _meleeCharacterSkinsButton;
-    [SerializeField] private ShopCategoryButton _rangeCharacterSkinsButton;
-
-    //q
     [SerializeField] private ShopCategoryButton _characterSkinsButton;
 
     [SerializeField] private BuyButton _buyButton;
@@ -37,27 +33,21 @@ public class Shop : MonoBehaviour
 
     private void OnEnable()
     {
-        _meleeCharacterSkinsButton.Click += OnMeleeCharacterSkinsButtonClick;
-        _rangeCharacterSkinsButton.Click += OnRangeCharacterSkinsButtonClick;
         _shopPanel.ItemViewClicked += OnItemViewClicked;
 
         _buyButton.Click += OnBuyButtonClick;
         _selectionButton.onClick.AddListener(OnSelectionButtonClick);
 
-        //q
         _characterSkinsButton.Click += OnCharacterSkinsButtonClick;
     }
 
     private void OnDisable()
     {
-        _meleeCharacterSkinsButton.Click -= OnMeleeCharacterSkinsButtonClick;
-        _rangeCharacterSkinsButton.Click -= OnRangeCharacterSkinsButtonClick;
         _shopPanel.ItemViewClicked -= OnItemViewClicked;
 
         _buyButton.Click -= OnBuyButtonClick;
         _selectionButton.onClick.RemoveListener(OnSelectionButtonClick);
 
-        //q
         _characterSkinsButton.Click -= OnCharacterSkinsButtonClick;
     }
 
@@ -129,27 +119,6 @@ public class Shop : MonoBehaviour
         _dataProvider.Save();
     }
 
-    private void OnRangeCharacterSkinsButtonClick()
-    {
-        _rangeCharacterSkinsButton.Select();
-        _meleeCharacterSkinsButton.Unselect();
-
-        //UpdateCameraTransform(_mazeCategoryCameraPosition);
-        UpdateCameraTransform(_characterCategoryCameraPosition);
-
-        _shopPanel.Show(_contentItems.RangeCharacterSkinItems.Cast<ShopItem>());
-    }
-
-    private void OnMeleeCharacterSkinsButtonClick()
-    {
-        _rangeCharacterSkinsButton.Unselect();
-        _meleeCharacterSkinsButton.Select();
-
-        UpdateCameraTransform(_characterCategoryCameraPosition);
-
-        _shopPanel.Show(_contentItems.MeleeCharacterSkinItems.Cast<ShopItem>());
-    }
-
     private void UpdateCameraTransform(Transform transform)
     {
         _modelCamera.transform.position = transform.position;
@@ -199,10 +168,7 @@ public class Shop : MonoBehaviour
     private void OnCharacterSkinsButtonClick()
     {
         _characterSkinsButton.Select();
-        _rangeCharacterSkinsButton.Unselect();
-        _meleeCharacterSkinsButton.Unselect();
 
-        //UpdateCameraTransform(_mazeCategoryCameraPosition);
         UpdateCameraTransform(_characterCategoryCameraPosition);
 
         _shopPanel.Show(_contentItems.CharacterSkinItems.Cast<ShopItem>());

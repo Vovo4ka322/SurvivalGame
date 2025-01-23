@@ -1,7 +1,7 @@
 ﻿using PlayerComponents;
 using System;
 using UnityEngine;
-//q
+
 [CreateAssetMenu(fileName = "CharactersFactory", menuName = "GameplayExample/CharactersFactory")]
 public class GeneralPlayerFactory : ScriptableObject
 {
