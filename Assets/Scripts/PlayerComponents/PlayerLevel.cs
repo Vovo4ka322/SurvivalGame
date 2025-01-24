@@ -12,9 +12,9 @@ namespace PlayerComponents
 
         public event Action LevelChanged;
 
-        [field: SerializeField] public int Level { get; private set; }
+        public int Level { get; private set; }
 
-        [field: SerializeField] public int Experience { get; private set; }
+        public int Experience { get; private set; }
 
         public void Init()
         {

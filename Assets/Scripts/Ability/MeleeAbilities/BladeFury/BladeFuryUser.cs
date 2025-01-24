@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
+
 namespace Ability.MeleeAbilities.BladeFury
 {
     public class BladeFuryUser : MonoBehaviour, ICooldownable
     {
+        [SerializeField] private AnimatorState _animator;
+
         private BladeFury _bladeFuryScriptableObject;
         private float _lastUsedTimer = 0;
         private bool _canUseFirstTime = true;
@@ -30,6 +32,9 @@ namespace Ability.MeleeAbilities.BladeFury
             {
                 while (duration < _bladeFuryScriptableObject.Duration)
                 {
+                    _animator.SetTrueBoolState(_animator.CanUseSkill1Hash);
+                    _animator.SetFalseBoolState(_animator.IsAttack);
+
                     player.Rotate(Vector3.up, _bladeFuryScriptableObject.TurnSpeed * Time.deltaTime);
                     duration += Time.deltaTime;
                     _lastUsedTimer = Time.time;
@@ -37,6 +42,9 @@ namespace Ability.MeleeAbilities.BladeFury
 
                     yield return null;
                 }
+
+                _animator.SetFalseBoolState(_animator.CanUseSkill1Hash);
+                _animator.SetTrueBoolState(_animator.IsAttack);
 
                 StartCoroutine(StartCooldown());
             }

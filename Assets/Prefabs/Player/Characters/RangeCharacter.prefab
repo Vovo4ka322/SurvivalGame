@@ -43280,6 +43280,8 @@ GameObject:
   - component: {fileID: 7232797218316804709}
   - component: {fileID: 6122662214143506408}
   - component: {fileID: 8051973692745619179}
+  - component: {fileID: 5393207456860953534}
+  - component: {fileID: 8911867772302185996}
   m_Layer: 0
   m_Name: RangeCharacter
   m_TagString: Untagged
@@ -43401,8 +43403,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controllerAnimations: {fileID: 6122662214143506408}
+  _controller: {fileID: 0}
   _turnSpeed: 5
   _moveSpeed: 5
+--- !u!114 &5393207456860953534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608901804690004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bcf377bd2546104c8d09dbf58f52b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Personage>k__BackingField: {fileID: 0}
+--- !u!114 &8911867772302185996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608901804690004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae18a8005b555ba4993b7d1ff32bc04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Health>k__BackingField: {fileID: 0}
+  _level:
+    _requireExperience: {fileID: 0}
+  <Position>k__BackingField: {fileID: 0}
+  <CharacterType>k__BackingField: 1
+  _collider: {fileID: 0}
+  _bow: {fileID: 0}
 --- !u!1 &1610740975148162
 GameObject:
   m_ObjectHideFlags: 0
