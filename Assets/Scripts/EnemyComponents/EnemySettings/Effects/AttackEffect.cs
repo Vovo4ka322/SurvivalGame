@@ -1,4 +1,5 @@
 using System;
+using EnemyComponents.Interfaces;
 using UnityEngine;
 using Pools;
 
@@ -8,9 +9,9 @@ namespace EnemyComponents.EnemySettings.Effects
     {
         private readonly BaseEffectsEnemy[] _effects;
         
-        public AttackEffect(MonoBehaviour owner, EffectData[] attackEffects, PoolSettings poolSettings)
+        public AttackEffect(ICoroutineRunner coroutineRunner, EffectData[] attackEffects, EffectsPool pool)
         {
-            if(attackEffects == null) 
+            if(attackEffects == null || attackEffects.Length == 0) 
             {
                 _effects = Array.Empty<BaseEffectsEnemy>();
                 
@@ -21,18 +22,18 @@ namespace EnemyComponents.EnemySettings.Effects
             
             for(int i = 0; i < attackEffects.Length; i++)
             {
-                _effects[i] = new SimpleEffect(owner, attackEffects[i], poolSettings);
+                _effects[i] = new SimpleEffect(coroutineRunner, attackEffects[i], pool);
             }
         }
         
-        public void Attack(int numberEffect)
+        public void Attack(int numberEffect, Transform ownerTransform)
         {
             if(numberEffect < 0 || numberEffect >= _effects.Length)
             {
                 return;
             }
             
-            _effects[numberEffect].Play();
+            _effects[numberEffect].Play(ownerTransform);
         }
     }
 }

@@ -93769,7 +93769,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 3.7666667
-    functionName: OnAttackAnimationEnd
+    functionName: AttackAnimationEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

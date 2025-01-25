@@ -7,10 +7,7 @@ using UnityEngine;
 using System.Collections;
 
 // 必要なコンポーネントの列記
-[RequireComponent(typeof (Animator))]
-[RequireComponent(typeof (CapsuleCollider))]
-[RequireComponent(typeof (Rigidbody))]
-
+[RequireComponent(typeof (Animator), typeof(CapsuleCollider), typeof(Rigidbody))]
 public class UnityChanControlScriptWithRgidBody : MonoBehaviour
 {
 

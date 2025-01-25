@@ -328,15 +328,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look2;
     private readonly InputAction m_Player_UseFirstAbility;
     private readonly InputAction m_Player_UseSecondAbility;
-    
     public struct PlayerActions
     {
-        private PlayerInput m_Wrapper;
+        private @PlayerInput m_Wrapper;
         public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction Move => m_Wrapper.m_Player_Move;
-        public InputAction Look2 => m_Wrapper.m_Player_Look2;
-        public InputAction UseFirstAbility => m_Wrapper.m_Player_UseFirstAbility;
-        public InputAction UseSecondAbility => m_Wrapper.m_Player_UseSecondAbility;
+        public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Look2 => m_Wrapper.m_Player_Look2;
+        public InputAction @UseFirstAbility => m_Wrapper.m_Player_UseFirstAbility;
+        public InputAction @UseSecondAbility => m_Wrapper.m_Player_UseSecondAbility;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -390,7 +389,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             AddCallbacks(instance);
         }
     }
-    public PlayerActions Player => new PlayerActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
     private int m_KeyboardandmouseSchemeIndex = -1;
     public InputControlScheme KeyboardandmouseScheme
     {

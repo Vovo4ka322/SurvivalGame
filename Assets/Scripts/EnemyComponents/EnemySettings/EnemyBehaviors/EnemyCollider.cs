@@ -1,10 +1,11 @@
 using UnityEngine;
+using EnemyComponents.Interfaces;
 using PlayerComponents;
 using Weapons;
 
 namespace EnemyComponents.EnemySettings.EnemyBehaviors
 {
-    public class EnemyCollider
+    public class EnemyCollider : IEnemyCollider
     {
         private readonly Enemy _enemy;
         private readonly Player _player;
@@ -20,11 +21,11 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
             if (other.gameObject.TryGetComponent(out Weapon weapon))
             {
                 _enemy.Health.Lose(weapon.WeaponData.Damage);
-                _enemy.AnimationController.TakeHit();
+                _enemy.AnimationAnimationController.TakeHit();
 
                 if (_enemy.Health.IsDead)
                 {
-                    _enemy.AnimationController.Death();
+                    _enemy.AnimationAnimationController.Death();
                     _player.GetExperience(_enemy.Data.Experience);
                 }
             }

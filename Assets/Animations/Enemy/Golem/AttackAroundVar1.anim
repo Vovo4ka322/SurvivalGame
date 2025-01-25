@@ -93092,7 +93092,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 3.3666666
-    functionName: OnAttackAnimationEnd
+    functionName: AttackAnimationEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

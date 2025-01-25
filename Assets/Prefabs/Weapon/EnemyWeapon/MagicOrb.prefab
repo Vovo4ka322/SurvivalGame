@@ -4939,7 +4939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 198372953003977786}
   _speed: 10
-  _lifetime: 10
+  _lifetime: 5
 --- !u!1 &1352871303294362
 GameObject:
   m_ObjectHideFlags: 0
