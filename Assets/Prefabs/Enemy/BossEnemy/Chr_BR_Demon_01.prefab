@@ -1291,9 +1291,8 @@ GameObject:
   - component: {fileID: 95779955075033070}
   - component: {fileID: -7480304964569940299}
   - component: {fileID: 353068189125618667}
-  - component: {fileID: 7612184552034956001}
   - component: {fileID: 6114635430829285973}
-  - component: {fileID: 6326431711785024077}
+  - component: {fileID: 7612184552034956001}
   m_Layer: 7
   m_Name: Chr_BR_Demon_01
   m_TagString: Untagged
@@ -1382,22 +1381,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: a8500f0cd850e4097a5a083f92b3c215, type: 2}
---- !u!114 &7612184552034956001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314014854321362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dbb649e71e844a3ac75989a1eba5648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _particleEffectsPoolSettings:
-    _collectionCheck: 1
-    _initialCapacity: 10
-    _maxPoolSize: 20
 --- !u!114 &6114635430829285973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1410,7 +1393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df8a6f06d8f83145bb35f456ccc40a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6326431711785024077
+--- !u!114 &7612184552034956001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1422,10 +1405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbb649e71e844a3ac75989a1eba5648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleEffectsPoolSettings:
-    _collectionCheck: 0
-    _initialCapacity: 10
-    _maxPoolSize: 20
 --- !u!1 &1325891465491314
 GameObject:
   m_ObjectHideFlags: 0

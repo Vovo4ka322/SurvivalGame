@@ -5,7 +5,7 @@ namespace Pools
 {
     public abstract class BasePool<T> where T : Component
     {
-        private readonly Queue<T> _pool = new Queue<T>();
+        private readonly Stack<T> _pool = new Stack<T>();
         private readonly T _prefab;
         private readonly Transform _container;
         private readonly int _maxPoolSize;
@@ -29,7 +29,7 @@ namespace Pools
 
             if(_pool.Count > 0)
             {
-                instance = _pool.Dequeue();
+                instance = _pool.Pop();
             }
             else
             {
@@ -59,14 +59,16 @@ namespace Pools
                 return;
             }
         
-            _pool.Enqueue(instance);
+            _pool.Push(instance);
         }
         
         private T CreateNewInstance()
         {
-            T instance = UnityEngine.Object.Instantiate(_prefab, _container);
+            T instance = Object.Instantiate(_prefab, _container);
+            
             instance.gameObject.SetActive(false);
             _countAll++;
+            
             return instance;
         }
         

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 8263795329232751876, guid: 6c9ef63b0962d4510b30bc543ee27c70, type: 3}
   _speed: 20
-  _lifetime: 10
+  _lifetime: 5
 --- !u!1 &4719217599839562871
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,10 +2,11 @@ using UnityEngine;
 using PlayerComponents;
 using EnemyComponents.Animations;
 using EnemyComponents.EnemySettings.EnemyAttackType;
+using EnemyComponents.Interfaces;
 
 namespace EnemyComponents.EnemySettings.EnemyBehaviors
 {
-    public class EnemyAttack
+    public class EnemyAttack : IEnemyAttack
     {
         private readonly EnemyAnimationController _animationController;
         private readonly BaseEnemyAttackType _attackType;
@@ -28,7 +29,7 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
             _attackType = attackType;
             _attackVariants = attackVariants;
         }
-
+        
         public void TryAttack()
         {
             if(_animationController.IsAttacking)

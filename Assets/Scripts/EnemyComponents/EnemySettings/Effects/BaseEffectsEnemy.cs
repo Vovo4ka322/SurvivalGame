@@ -1,4 +1,5 @@
 using System.Collections;
+using EnemyComponents.Interfaces;
 using UnityEngine;
 using Pools;
 
@@ -6,85 +7,68 @@ namespace EnemyComponents.EnemySettings.Effects
 {
     public class BaseEffectsEnemy
     {
-        private readonly MonoBehaviour _owner;
+        private readonly ICoroutineRunner _coroutineRunner;
         private readonly EffectData _effectData;
-        private readonly ParticleSystemPool _pool;
-        private readonly PoolSettings _poolSettings;
+        private readonly EffectsPool _pool;
         
         private ParticleSystem _currentEffect;
         private Coroutine _currentCoroutine;
         
-        public BaseEffectsEnemy(MonoBehaviour owner, EffectData effectData, PoolSettings poolSettings)
+        public BaseEffectsEnemy(ICoroutineRunner coroutineRunner, EffectData effectData, EffectsPool pool)
         {
-            _owner = owner;
+            _coroutineRunner = coroutineRunner;
             _effectData = effectData;
-            _poolSettings = poolSettings;
-            _pool = TryCreatePool(effectData);
+            _pool = pool;
         }
         
-        public void Play()
+        public void Play(Transform ownerTransform)
         {
-            _currentEffect = Create();
-            
-            if(_currentEffect != null)
+            if(_effectData.EffectPrefab == null || _pool == null)
             {
-                _currentCoroutine = _owner.StartCoroutine(WaitAndReturn(_currentEffect));
+                return;
+            }
+            
+            Vector3 position = ownerTransform.transform.position + ownerTransform.transform.TransformDirection(_effectData.PositionOffset);
+            Quaternion rotation = ownerTransform.transform.rotation * Quaternion.Euler(_effectData.RotationOffset);
+            ParticleSystem effectInstance = _pool.Get(_effectData.EffectPrefab, position, rotation);
+            
+            if (effectInstance != null)
+            {
+                effectInstance.transform.localScale = _effectData.Scale;
+                _currentEffect = effectInstance;
+                _currentCoroutine = _coroutineRunner.StartCoroutine(WaitAndReturn(effectInstance));
             }
         }
-
+        
         public void Stop()
         {
             if(_currentCoroutine != null)
             {
-                _owner.StopCoroutine(_currentCoroutine);
+                _coroutineRunner.StopCoroutine(_currentCoroutine);
                 _currentCoroutine = null;
             }
             
             if(_currentEffect != null)
             {
-                StopAndReturn(_currentEffect);
+                StopAndReturn();
                 _currentEffect = null;
             }
         }
-
-        private ParticleSystem Create()
-        {
-            if(_effectData == null || _pool == null) return null;
         
-            Vector3 position = _owner.transform.position + _owner.transform.TransformDirection(_effectData.PositionOffset);
-            Quaternion rotation = _owner.transform.rotation * Quaternion.Euler(_effectData.RotationOffset);
-            
-            ParticleSystem effectInstance = _pool.Get(position, rotation);
-            effectInstance.transform.localScale = _effectData.Scale;
-            
-            return effectInstance;
+        private IEnumerator WaitAndReturn(ParticleSystem effectInstance)
+        {
+            yield return new WaitWhile(() => effectInstance.IsAlive(true));
+            StopAndReturn();
         }
         
-        private ParticleSystemPool TryCreatePool(EffectData data)
+        private void StopAndReturn()
         {
-            if(data != null && data.EffectPrefab != null)
-            {
-                return new ParticleSystemPool(data.EffectPrefab, _poolSettings, _owner.transform);
-            }
-            
-            return null;
-        }
-
-        private IEnumerator WaitAndReturn(ParticleSystem effect)
-        {
-            yield return new WaitWhile(() => effect.IsAlive(true));
-            
-            StopAndReturn(effect);
-        }
-
-        private void StopAndReturn(ParticleSystem effect)
-        {
-            if(effect == null || _pool == null)
+            if(_currentEffect == null || _effectData.EffectPrefab == null || _pool == null)
             {
                 return;
             }
             
-            _pool.Release(effect);
+            _pool.Release(_effectData.EffectPrefab, _currentEffect);
         }
     }
 }

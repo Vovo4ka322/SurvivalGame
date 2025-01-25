@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 1d2a4914505bf4da4aed0586932c8386, type: 2}
+  _projectileSpawner: {fileID: 8763234152963870760}
 --- !u!114 &99771341567068999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,10 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbb649e71e844a3ac75989a1eba5648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleEffectsPoolSettings:
-    _collectionCheck: 0
-    _initialCapacity: 10
-    _maxPoolSize: 20
 --- !u!114 &8763234152963870760
 MonoBehaviour:
   m_ObjectHideFlags: 0

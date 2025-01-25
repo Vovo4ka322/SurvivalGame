@@ -5,8 +5,10 @@ using EnemyComponents.EnemySettings;
 using EnemyComponents.EnemySettings.Effects;
 using EnemyComponents.EnemySettings.EnemyAttackType;
 using EnemyComponents.EnemySettings.EnemyBehaviors;
+using EnemyComponents.Interfaces;
 using EnemyComponents.Projectiles;
 using PlayerComponents;
+using Pools;
 
 namespace EnemyComponents
 {
@@ -19,19 +21,30 @@ namespace EnemyComponents
         
         private Player _player;
         private Animator _animator;
-        private EnemyMovement _movement;
-        private EnemyRotation _rotation;
-        private EnemyAttack _enemyAttack;
-        private EnemyCollider _enemyCollider;
-        private EnemyEffects _enemyEffects;
+        private Collider _collider;
+        private EnemyAnimationController _animationController;
+        private PlayerNavigator _playerNavigator;
+        
+        private IAttackBehavior _attackBehavior;
+        private IEnemyMovement _movement;
+        private IEnemyRotation _rotation;
+        private IEnemyAttack _enemyAttack;
+        private IEnemyCollider _enemyCollider;
+        private IEnemyEffects _enemyEffects;
+        
         private BaseProjectileSpawner _projectileSpawner;
         private RangedProjectileSpawner _rangedSpawner;
         private HybridProjectileSpawner _hybridSpawner;
         
+        private bool _spawnCompleted = false;
+        
         public EnemyData Data => _data;
-        public Collider Collider { get; private set; }
-        public EnemyAnimationController AnimationController { get; private set; }
-
+        public Collider Collider => _collider;
+        public EnemyAnimationController AnimationAnimationController => _animationController;
+        public PlayerNavigator PlayerNavigator => _playerNavigator;
+        public IEnemyAttack EnemyAttack => _enemyAttack;
+        public IEnemyMovement Movement => _movement;
+        
         public event Action<Enemy> Dead;
         public event Action<Enemy> Enabled;
 
@@ -39,8 +52,8 @@ namespace EnemyComponents
         {
             _animator = GetComponent<Animator>();
             _enemyEffects = GetComponent<EnemyEffects>();
-            Collider = GetComponent<Collider>();
-            
+            _collider = GetComponent<Collider>();
+            _animationController = new EnemyAnimationController(_animator, _data.EnemyType);
             _rangedSpawner = GetComponent<RangedProjectileSpawner>();
             _hybridSpawner = GetComponent<HybridProjectileSpawner>();
         }
@@ -51,6 +64,7 @@ namespace EnemyComponents
             {
                 Health.Death += Death;
             }
+            
             Enabled?.Invoke(this);
         }
 
@@ -66,32 +80,18 @@ namespace EnemyComponents
         
         private void Update()
         {
-            if(_player == null) return;
-            
-            float distance = Vector3.Distance(transform.position, _player.transform.position);
-            
-            if(distance > 50f)
-            {
-                SimpleBehavior();
-                if(Collider.enabled) Collider.enabled = false;
-            }
-            else
-            {
-                MovementAndAttack();
-                _rotation.RotateTowards(_player.transform.position);
-                if(!Collider.enabled) Collider.enabled = true;
-            }
+            MovementAndAttack();
         }
 
-        public void InitializeComponents(Player player, EnemyData enemyData)
+        public void InitializeComponents(Player player, EnemyData enemyData, EffectsPool pool, PoolManager poolManager, ICoroutineRunner coroutineRunner)
         {
             _player = player;
             _data = enemyData;
+            
             _enemyCollider = new EnemyCollider(this, _player);
-            AnimationController = new EnemyAnimationController(_animator, _data.EnemyType);
-            _movement = new EnemyMovement(transform, _data.MoveSpeed, AnimationController, _data.RotationSpeed);
+            _movement = new EnemyMovement(transform, _data.MoveSpeed, AnimationAnimationController, _data.RotationSpeed);
             _rotation = new EnemyRotation(transform, _data.RotationSpeed);
-            _enemyEffects.InitializeParticle(_data);
+            _enemyEffects.Initialize(_data, pool, coroutineRunner);
             
             if(_data.BaseAttackType.Type == AttackType.Ranged)
             {
@@ -102,27 +102,31 @@ namespace EnemyComponents
                 _projectileSpawner = _hybridSpawner;
             }
             
-            _projectileSpawner?.Initialize(_data, _player);
+            _projectileSpawner?.Initialize(_data, _player, poolManager);
             
-            _enemyAttack = new EnemyAttack(AnimationController, transform, _player, _data.AttackCooldown, _data.BaseAttackType, AnimationController.AttackVariantsCount);
+            _enemyAttack = new EnemyAttack(AnimationAnimationController, transform, _player, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationController.AttackVariantsCount);
+            _playerNavigator = new PlayerNavigator(_movement, _player.transform);
+            
+            SetAttackBehavior();
+            
+            _spawnCompleted = false;
+            AnimationAnimationController.Spawn();
             //Health.InitMaxValue(_data.MaxHealth);
         }
         
-        private void SimpleBehavior()
-        {
-            if(_movement != null && _player != null)
-            {
-                _movement.Move(_player.transform.position);
-            }
-        }
         public float SetDamage()
         {
             return Data.Damage;
         }
-
-        public void OnAttackAnimationEnd()
+        
+        public void SpawnAnimationEnd()
         {
-            AnimationController?.ResetAttackState();
+            _spawnCompleted = true;
+        }
+
+        public void AttackAnimationEnd()
+        {
+            AnimationAnimationController?.ResetAttackState();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -132,84 +136,54 @@ namespace EnemyComponents
 
         private void Death()
         {
-            AnimationController.Death();
+            AnimationAnimationController.Death();
             Dead?.Invoke(this);
         }
-
+        
+        private void SetAttackBehavior()
+        {
+            switch (_data.BaseAttackType.Type)
+            {
+                case AttackType.Hybrid:
+                    HybridEnemyAttackType hybridAttackType = _data.BaseAttackType as HybridEnemyAttackType;
+                    
+                    if (hybridAttackType != null)
+                    {
+                        _attackBehavior = new HybridAttack(this, hybridAttackType);
+                    }
+                    else
+                    {
+                        _attackBehavior = new MeleeAttack(this);
+                    }
+                    break;
+                
+                case AttackType.Ranged:
+                    _attackBehavior = new RangedAttack(this);
+                    break;
+                
+                default:
+                    _attackBehavior = new MeleeAttack(this);
+                    break;
+            }
+        }
+        
         private void MovementAndAttack()
         {
-            if(_player == null)
+            _rotation.RotateTowards(_player.transform.position);
+            
+            if (!_spawnCompleted || _player == null)
             {
-                _movement.PlayMove();
-                _movement.Move(transform.position);
-
                 return;
             }
 
-            if(AnimationController.IsAttacking)
+            if (AnimationAnimationController.IsAttacking)
             {
                 _movement.StopMove();
-
                 return;
             }
 
             float distance = Vector3.Distance(transform.position, _player.transform.position);
-            AttackType currentAttackType = _data.BaseAttackType.Type;
-
-            if(currentAttackType == AttackType.Hybrid)
-            {
-                HybridEnemyAttackType hybrid = (HybridEnemyAttackType)_data.BaseAttackType;
-
-                if(distance > hybrid.RangedRange)
-                {
-                    _movement.PlayMove();
-                    _movement.Move(_player.transform.position);
-                }
-                else if(distance > hybrid.MeleeRange)
-                {
-                    if(_enemyAttack.IsHybridProjectileReady(hybrid, distance))
-                    {
-                        _movement.StopMove();
-                        _enemyAttack.TryAttack();
-                    }
-                    else
-                    {
-                        _movement.PlayMove();
-                        _movement.Move(_player.transform.position);
-                    }
-                }
-                else
-                {
-                    _movement.StopMove();
-                    _enemyAttack.TryAttack();
-                }
-            }
-            else if(currentAttackType == AttackType.Ranged)
-            {
-                if(distance > _data.AttackRange)
-                {
-                    _movement.PlayMove();
-                    _movement.Move(_player.transform.position);
-                }
-                else
-                {
-                    _movement.StopMove();
-                    _enemyAttack.TryAttack();
-                }
-            }
-            else
-            {
-                if(distance > Data.AttackRange)
-                {
-                    _movement.PlayMove();
-                    _movement.Move(_player.transform.position);
-                }
-                else
-                {
-                    _movement.StopMove();
-                    _enemyAttack.TryAttack();
-                }
-            }
+            _attackBehavior.HandleAttack(distance);
         }
 
         private void OnDrawGizmosSelected()
