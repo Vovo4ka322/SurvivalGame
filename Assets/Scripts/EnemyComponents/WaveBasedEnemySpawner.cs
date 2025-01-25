@@ -1,7 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using EnemyComponents.EnemySettings;
+using EnemyComponents.Interfaces;
 using PlayerComponents;
+using Pools;
 
 namespace EnemyComponents
 {
@@ -22,57 +24,27 @@ namespace EnemyComponents
         [SerializeField] private float _startDelayEasyWave = 0f;
         [SerializeField] private float _startDelayMediumWave = 7f * 60f;
         [SerializeField] private float _startDelayHardWave = 14f * 60f;
-        
-        [Header("Spawn Interval for Regular Waves")]
+        [SerializeField] private float _bossSpawnDelay = 19f * 60f;
         [SerializeField] private float _spawnInterval = 5f;
         
-        [Header("Boss Settings")] [SerializeField]
-        private float _bossSpawnDelay = 19f * 60f;
-
         [Header("Spawn References")]
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Transform _bossSpawnPoint;
         [SerializeField] private Collider _spawnZone;
-        [SerializeField] private EnemyFactory _enemyFactory;
+        [SerializeField] private Player _player;
+        [SerializeField] private PoolManager _poolManager;
         
         private Coroutine _easyWaveCoroutine;
         private Coroutine _mediumWaveCoroutine;
         private Coroutine _hardWaveCoroutine;
         private Coroutine _bossCoroutine;
+        private ICoroutineRunner _coroutineRunner;
         
         private bool _playerInZone;
         
-        private void Start()
+        private void Awake()
         {
-            
-            if(_easyEnemyDatas != null)
-            {
-                foreach(EnemyData data in _easyEnemyDatas)
-                {
-                    _enemyFactory.InitializePool(data);
-                }
-            }
-            
-            if(_mediumEnemyDatas != null)
-            {
-                foreach(EnemyData data in _mediumEnemyDatas)
-                {
-                    _enemyFactory.InitializePool(data);
-                }
-            }
-            
-            if(_hardEnemyDatas != null)
-            {
-                foreach(EnemyData data in _hardEnemyDatas)
-                {
-                    _enemyFactory.InitializePool(data);
-                }
-            }
-            
-            if(_bossEnemyData != null)
-            {
-                _enemyFactory.InitializePool(_bossEnemyData, isBoss: true);
-            }
+            _coroutineRunner = _poolManager.GetComponent<ICoroutineRunner>();
         }
         
         private void OnTriggerEnter(Collider other)
@@ -81,10 +53,10 @@ namespace EnemyComponents
             {
                 _playerInZone = true;
                 
-                _easyWaveCoroutine = StartCoroutine(CreateWave(_easyEnemyDatas, _startDelayEasyWave, _easyWaveDuration));
-                _mediumWaveCoroutine = StartCoroutine(CreateWave(_mediumEnemyDatas, _startDelayMediumWave, _mediumWaveDuration));
-                _hardWaveCoroutine = StartCoroutine(CreateWave(_hardEnemyDatas, _startDelayHardWave, _hardWaveDuration));
-                _bossCoroutine = StartCoroutine(CreateBoss(_bossSpawnDelay));
+                _easyWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_easyEnemyDatas, _startDelayEasyWave, _easyWaveDuration));
+                _mediumWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_mediumEnemyDatas, _startDelayMediumWave, _mediumWaveDuration));
+                _hardWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_hardEnemyDatas, _startDelayHardWave, _hardWaveDuration));
+                _bossCoroutine = _coroutineRunner.StartCoroutine(CreateBoss(_bossSpawnDelay));
             }
         }
         
@@ -94,10 +66,14 @@ namespace EnemyComponents
             {
                 _playerInZone = false;
                 
-                if(_easyWaveCoroutine != null) StopCoroutine(_easyWaveCoroutine);
-                if(_mediumWaveCoroutine != null) StopCoroutine(_mediumWaveCoroutine);
-                if(_hardWaveCoroutine != null) StopCoroutine(_hardWaveCoroutine);
-                if(_bossCoroutine != null) StopCoroutine(_bossCoroutine);
+                if (_easyWaveCoroutine != null)
+                    _coroutineRunner.StopCoroutine(_easyWaveCoroutine);
+                if (_mediumWaveCoroutine != null)
+                    _coroutineRunner.StopCoroutine(_mediumWaveCoroutine);
+                if (_hardWaveCoroutine != null)
+                    _coroutineRunner.StopCoroutine(_hardWaveCoroutine);
+                if (_bossCoroutine != null)
+                    _coroutineRunner.StopCoroutine(_bossCoroutine);
                 
                 _easyWaveCoroutine = null;
                 _mediumWaveCoroutine = null;
@@ -112,9 +88,9 @@ namespace EnemyComponents
             
             float elapsed = 0f;
             
-            while(elapsed < waveDuration)
+            while (elapsed < waveDuration)
             {
-                while(!_enemyFactory.CanSpawnMore)
+                while (!_poolManager.EnemyFactory.CanSpawnMore)
                 {
                     yield return null;
                 }
@@ -123,9 +99,10 @@ namespace EnemyComponents
                 Vector3 spawnPos = GetRandomSpawnPosition();
                 Quaternion spawnRot = Quaternion.identity;
                 
-                _enemyFactory.SpawnEnemy(randomData, spawnPos, spawnRot);
+                _poolManager.EnemyFactory.SpawnEnemy(randomData, spawnPos, spawnRot, _player);
                 
                 yield return new WaitForSeconds(_spawnInterval);
+                
                 elapsed += _spawnInterval;
             }
         }
@@ -134,9 +111,9 @@ namespace EnemyComponents
         {
             yield return new WaitForSeconds(delay);
             
-            if(_bossSpawnPoint != null && _bossEnemyData != null)
+            if (_bossSpawnPoint != null && _bossEnemyData != null)
             {
-                _enemyFactory.SpawnEnemy(_bossEnemyData, _bossSpawnPoint.position, _bossSpawnPoint.rotation);
+                _poolManager.EnemyFactory.SpawnEnemy(_bossEnemyData, _bossSpawnPoint.position, _bossSpawnPoint.rotation, _player);
             }
         }
         

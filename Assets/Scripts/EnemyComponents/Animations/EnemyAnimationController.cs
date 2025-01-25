@@ -9,9 +9,7 @@ namespace EnemyComponents.Animations
     {
         private readonly Animator _animator;
         private readonly EnemyType _enemyType;
-        
-        private bool _isAttacking = false;
-        private Dictionary<EnemyType, Dictionary<int, int>> _attackMappings = new()
+        private readonly Dictionary<EnemyType, Dictionary<int, int>> _attackMappings = new()
         {
             {
                 EnemyType.Easy, new Dictionary<int, int>
@@ -47,6 +45,9 @@ namespace EnemyComponents.Animations
                 }
             }
         };
+        
+        private bool _isAttacking = false;
+        private bool _isSpawning = true;
         
         public EnemyAnimationController(Animator animator, EnemyType enemyType)
         {
@@ -99,6 +100,16 @@ namespace EnemyComponents.Animations
         public void ResetAttackState()
         {
             _isAttacking = false;
+        }
+        
+        public void OnSpawnAnimationStart()
+        {
+            _isSpawning = true;
+        }
+        
+        public void OnSpawnAnimationEnd()
+        {
+            _isSpawning = false;
         }
     }
 }

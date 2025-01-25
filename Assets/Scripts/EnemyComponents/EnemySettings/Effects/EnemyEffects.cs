@@ -1,42 +1,49 @@
 using UnityEngine;
 using EnemyComponents.EnemySettings.EnemyAttackType;
+using EnemyComponents.Interfaces;
 using Pools;
 
 namespace EnemyComponents.EnemySettings.Effects
 {
-    public class EnemyEffects : MonoBehaviour
+    public class EnemyEffects : MonoBehaviour, IEnemyEffects
     {
-        [SerializeField] private PoolSettings _particleEffectsPoolSettings;
-        
         private BaseEffectsEnemy _spawnEffect;
         private BaseEffectsEnemy _hitEffect;
         private BaseEffectsEnemy _deathEffect;
         private BaseEffectsEnemy _reloadEffect;
         private AttackEffect _attackEffect;
+        private ICoroutineRunner _coroutineRunner;
         
         private readonly int _maxCountEffects = 3;
         
-        public void InitializeParticle(EnemyData data)
+        public void Initialize(EnemyData data, EffectsPool pool, ICoroutineRunner coroutineRunner)
         {
             if(data == null)
             {
                 return;
             }
             
-            _spawnEffect = new SimpleEffect(this, data.SpawnEffect, _particleEffectsPoolSettings);
-            _hitEffect   = new SimpleEffect(this, data.HitEffect,   _particleEffectsPoolSettings);
-            _deathEffect = new SimpleEffect(this, data.DeathEffect, _particleEffectsPoolSettings);
+            _coroutineRunner = coroutineRunner;
+            _spawnEffect = new SimpleEffect(_coroutineRunner, data.SpawnEffect, pool);
+            _hitEffect = new SimpleEffect(_coroutineRunner, data.HitEffect, pool);
+            _deathEffect = new SimpleEffect(_coroutineRunner, data.DeathEffect, pool);
             
             switch(data.BaseAttackType.Type)
             {
                 case AttackType.Melee:
                     MeleeEnemyAttackType melee = data.BaseAttackType as MeleeEnemyAttackType;
-                    _attackEffect = new AttackEffect(this, melee?.AttackEffects, _particleEffectsPoolSettings);
+                    _attackEffect = new AttackEffect(_coroutineRunner, melee?.AttackEffects, pool);
                     break;
                 
                 case AttackType.Ranged:
                     RangedEnemyAttackType ranged = data.BaseAttackType as RangedEnemyAttackType;
-                    _reloadEffect = new SimpleEffect(this, ranged?.ReloadEffect, _particleEffectsPoolSettings);
+
+                    if(ranged?.ReloadEffect != null)
+                    {
+                        _reloadEffect = new SimpleEffect(_coroutineRunner, ranged.ReloadEffect, pool);
+                        
+                    }
+                    
                     break;
                 
                 case AttackType.Hybrid:
@@ -51,26 +58,26 @@ namespace EnemyComponents.EnemySettings.Effects
                             hybrid.AttackEffects[2]
                         };
                         
-                        _attackEffect = new AttackEffect(this, attackEffects, _particleEffectsPoolSettings);
-                        _reloadEffect = new SimpleEffect(this, hybrid.AttackEffects[3], _particleEffectsPoolSettings);
+                        _attackEffect = new AttackEffect(_coroutineRunner, attackEffects, pool);
+                        _reloadEffect = new SimpleEffect(_coroutineRunner, hybrid.AttackEffects[3], pool);
                     }
                     
                     break;
             }
         }
         
-        public void Spawn() => _spawnEffect?.Play();
+        public void Spawn() => _spawnEffect?.Play(transform);
         
         public void StopSpawn() => _spawnEffect?.Stop();
         
-        public void Hit() => _hitEffect?.Play();
+        public void Hit() => _hitEffect?.Play(transform);
         
-        public void Dead() => _deathEffect?.Play();
+        public void Death() => _deathEffect?.Play(transform);
         
-        public void Reload() => _reloadEffect?.Play();
+        public void Reload() => _reloadEffect?.Play(transform);
         
         public void StopReload() => _reloadEffect?.Stop();
         
-        public void Attack(int numberEffect) => _attackEffect?.Attack(numberEffect);
+        public void Attack(int numberEffect) => _attackEffect?.Attack(numberEffect, transform);
     }
 }

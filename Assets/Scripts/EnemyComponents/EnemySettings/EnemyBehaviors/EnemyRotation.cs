@@ -1,8 +1,9 @@
 using UnityEngine;
+using EnemyComponents.Interfaces;
 
 namespace EnemyComponents.EnemySettings.EnemyBehaviors
 {
-    public class EnemyRotation
+    public class EnemyRotation : IEnemyRotation
     {
         private readonly Transform _transform;
         private readonly float _rotationSpeed;
@@ -20,8 +21,7 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
             if(direction != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
-                float t = 1f - Mathf.Exp(-_rotationSpeed * Time.deltaTime);
-                _transform.rotation = Quaternion.Slerp(_transform.rotation, targetRotation, t);
+                _transform.rotation = Quaternion.Slerp(_transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
             }
         }
     }

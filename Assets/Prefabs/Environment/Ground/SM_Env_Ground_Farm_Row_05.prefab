@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 4522619871334788}
   - component: {fileID: 33185002694050238}
   - component: {fileID: 23572509079714240}
-  - component: {fileID: 7059914420609413184}
   - component: {fileID: -3983978924271728100}
   m_Layer: 0
   m_Name: SM_Env_Ground_Farm_Row_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &4522619871334788
 Transform:
@@ -85,27 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7059914420609413184
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1936517851879680}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.4, y: 0.4, z: 16}
-  m_Center: {x: 0.8, y: 0.2, z: -0.08}
 --- !u!114 &-3983978924271728100
 MonoBehaviour:
   m_ObjectHideFlags: 0

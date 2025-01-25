@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 465198}
   - component: {fileID: 3308132}
   - component: {fileID: 2384982}
-  - component: {fileID: 9129335576915644892}
   - component: {fileID: -299674294034987867}
+  - component: {fileID: 4360927452906475872}
   m_Layer: 0
   m_Name: SM_Env_RockPile_Square_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 4
   m_IsActive: 1
 --- !u!4 &465198
 Transform:
@@ -85,7 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9129335576915644892
+--- !u!114 &-299674294034987867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &4360927452906475872
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,17 +116,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.2, y: 2.2, z: 1.8}
-  m_Center: {x: 1.2, y: 1.1, z: -2.3}
---- !u!114 &-299674294034987867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Size: {x: 2.1898353, y: 2.2047634, z: 1.8777795}
+  m_Center: {x: 0.00000011920929, y: 1.1023817, z: -0.00000023841858}

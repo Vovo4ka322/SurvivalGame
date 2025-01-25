@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bd7baccd48ba89c4fae0f3bff540a867, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -74,7 +74,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd7baccd48ba89c4fae0f3bff540a867, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -765535246407780189}
+      addedObject: {fileID: 1435714590298539525}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd7baccd48ba89c4fae0f3bff540a867, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1177566740667729518}
@@ -84,7 +84,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bd7baccd48ba89c4fae0f3bff540a867, type: 3}
   m_PrefabInstance: {fileID: 3864909254163794758}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &-765535246407780189
+--- !u!65 &1435714590298539525
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,8 +103,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.4, y: 1.5, z: 2}
-  m_Center: {x: -0.01, y: 0.6, z: -0.01}
+  m_Size: {x: 2.442832, y: 1.4890631, z: 1.9987366}
+  m_Center: {x: -0.012316287, y: 0.6176984, z: -0.0022795498}
 --- !u!114 &-1177566740667729518
 MonoBehaviour:
   m_ObjectHideFlags: 0

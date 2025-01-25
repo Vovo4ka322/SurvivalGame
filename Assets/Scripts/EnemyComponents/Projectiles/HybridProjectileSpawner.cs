@@ -6,7 +6,7 @@ namespace EnemyComponents.Projectiles
     
         public void PrepareStone()
         {
-            _currentProjectile = SpawnProjectile();
+            _currentProjectile = Create();
             
             if(_currentProjectile == null)
             {

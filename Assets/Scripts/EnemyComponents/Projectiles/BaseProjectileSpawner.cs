@@ -9,52 +9,64 @@ namespace EnemyComponents.Projectiles
     public class BaseProjectileSpawner : MonoBehaviour
     {
         [SerializeField] private Transform _projectileSpawnPoint;
-        [SerializeField] private PoolSettings _projectilePoolSettings;
         
-        private ProjectilePool<BaseProjectile> _projectilePool;
         private Player _player;
         private EnemyData _enemyData;
+        private PoolManager _poolManager;
         
-        public BaseProjectile SpawnProjectile()
+        public Player Player => _player;
+        public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
+        public ProjectilePool<BaseProjectile> ProjectilePool => _poolManager.GetProjectilePool(GetPrefabFromEnemyData(_enemyData));
+        
+        public void Initialize(EnemyData data, Player player, PoolManager poolManager)
         {
-            if(ProjectilePool == null || ProjectileSpawnPoint == null)
+            _enemyData = data;
+            _player = player;
+            _poolManager = poolManager;
+        }
+        
+        public BaseProjectile Create()
+        {
+            if(_poolManager == null || _projectileSpawnPoint == null)
             {
                 return null;
             }
             
-            BaseProjectile projectile = ProjectilePool.Get();
-            projectile.transform.SetParent(null);
-            projectile.transform.position = ProjectileSpawnPoint.position;
+            BaseProjectile projectilePrefab = GetPrefabFromEnemyData(_enemyData);
+            var pool = _poolManager.GetProjectilePool(projectilePrefab);
+            
+            if(projectilePrefab == null || pool == null)
+            {
+                return null;
+            }
+            
+            BaseProjectile projectile = pool.Get();
+            
+            if (projectile == null)
+            {
+                return null;
+            }
+            
+            projectile.transform.position = _projectileSpawnPoint.position;
+            projectile.transform.rotation = _projectileSpawnPoint.rotation;
+            projectile.gameObject.SetActive(true);
             
             return projectile;
         }
         
-        public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
-        public ProjectilePool<BaseProjectile> ProjectilePool => _projectilePool;
-        public Player Player => _player;
-        
-        public void Initialize(EnemyData data, Player player)
+        private BaseProjectile GetPrefabFromEnemyData(EnemyData data)
         {
-            _enemyData = data;
-            _player = player;
-            
-            BaseProjectile projectilePrefab = null;
-            
-            if(data.BaseAttackType.Type == AttackType.Ranged) 
+            if(data.BaseAttackType is RangedEnemyAttackType ranged)
             {
-                RangedEnemyAttackType ranged = data.BaseAttackType as RangedEnemyAttackType;
-                projectilePrefab = ranged?.ProjectilePrefab;
-            }
-            else if(data.BaseAttackType.Type == AttackType.Hybrid) 
-            {
-                HybridEnemyAttackType hybrid = data.BaseAttackType as HybridEnemyAttackType;
-                projectilePrefab = hybrid?.ProjectilePrefab;
+                return ranged.ProjectilePrefab;
             }
             
-            if(projectilePrefab != null)
+            if(data.BaseAttackType is HybridEnemyAttackType hybrid)
             {
-                _projectilePool = new ProjectilePool<BaseProjectile>(projectilePrefab, _projectilePoolSettings, container: transform);
+                return hybrid.ProjectilePrefab;
             }
+            
+            return null;
         }
     }
 }
