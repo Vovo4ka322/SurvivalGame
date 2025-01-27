@@ -926,6 +926,8 @@ GameObject:
   - component: {fileID: 8538221139762822503}
   - component: {fileID: 8241914687732629572}
   - component: {fileID: 6870032757716501712}
+  - component: {fileID: -1833258928419871705}
+  - component: {fileID: -8415726687034501112}
   m_Layer: 8
   m_Name: MeleeCharacter
   m_TagString: Untagged
@@ -1088,6 +1090,34 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
     m_Visible: 1
+--- !u!114 &-1833258928419871705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313079975868441659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df8a6f06d8f83145bb35f456ccc40a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8415726687034501112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313079975868441659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9fa845ccdb6e94da4611e1b1a6d30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CharacterType>k__BackingField: 0
+  _playerMovement: {fileID: 0}
+  _sword: {fileID: 0}
+  _animatorState: {fileID: 0}
 --- !u!1 &1351265140599744493
 GameObject:
   m_ObjectHideFlags: 0

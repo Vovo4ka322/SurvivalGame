@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuffImprovment : MonoBehaviour
+public class BuffImprovment : MonoBehaviour//Исправить
 {
     [Header("BuffKeeperLevel")]
     [SerializeField] private BuffKeeper _buffKeeperFirstLevel;
@@ -30,12 +30,6 @@ public class BuffImprovment : MonoBehaviour
     private int _counterForAttackSpeedBuff = 0;
 
     private Dictionary<int, BuffKeeper> _buffkeepers;
-
-    public event Action HealthUpgraded;
-    public event Action ArmorUpgraded;
-    public event Action DamageUpgraded;
-    public event Action AttackSpeedUpgraded;
-    public event Action MovementSpeedUpgraded;
 
     public int MaxValue { get; private set; } = 5;
 
@@ -77,57 +71,57 @@ public class BuffImprovment : MonoBehaviour
 
     public void UpgradeArmor()
     {
-        if (IsTrue(_counterForHealthBuff, _firstUpgrade))
+        if (IsTrue(_counterForArmorBuff, _firstUpgrade))
             InitArmor(_firstLevel);
-        else if (IsTrue(_counterForHealthBuff, _secondUpgrade))
+        else if (IsTrue(_counterForArmorBuff, _secondUpgrade))
             InitArmor(_secondLevel);
-        else if (IsTrue(_counterForHealthBuff, _thirdUpgrade))
+        else if (IsTrue(_counterForArmorBuff, _thirdUpgrade))
             InitArmor(_thirdLevel);
-        else if (IsTrue(_counterForHealthBuff, _fourthUpgrade))
+        else if (IsTrue(_counterForArmorBuff, _fourthUpgrade))
             InitArmor(_fourthLevel);
-        else if (IsTrue(_counterForHealthBuff, _fifthUpgrade))
+        else if (IsTrue(_counterForArmorBuff, _fifthUpgrade))
             InitArmor(_fifthLevel);
     }
 
     public void UpgradeDamage()
     {
-        if (IsTrue(_counterForHealthBuff, _firstUpgrade))
+        if (IsTrue(_counterForDamageBuff, _firstUpgrade))
             InitDamage(_firstLevel);
-        else if (IsTrue(_counterForHealthBuff, _secondUpgrade))
+        else if (IsTrue(_counterForDamageBuff, _secondUpgrade))
             InitDamage(_secondLevel);
-        else if (IsTrue(_counterForHealthBuff, _thirdUpgrade))
+        else if (IsTrue(_counterForDamageBuff, _thirdUpgrade))
             InitDamage(_thirdLevel);
-        else if (IsTrue(_counterForHealthBuff, _fourthUpgrade))
+        else if (IsTrue(_counterForDamageBuff, _fourthUpgrade))
             InitDamage(_fourthLevel);
-        else if (IsTrue(_counterForHealthBuff, _fifthUpgrade))
+        else if (IsTrue(_counterForDamageBuff, _fifthUpgrade))
             InitDamage(_fifthLevel);
     }
 
     public void UpgradeAttackSpeed()
     {
-        if (IsTrue(_counterForHealthBuff, _firstUpgrade))
+        if (IsTrue(_counterForAttackSpeedBuff, _firstUpgrade))
             InitAttackSpeed(_firstLevel);
-        else if (IsTrue(_counterForHealthBuff, _secondUpgrade))
+        else if (IsTrue(_counterForAttackSpeedBuff, _secondUpgrade))
             InitAttackSpeed(_secondLevel);
-        else if (IsTrue(_counterForHealthBuff, _thirdUpgrade))
+        else if (IsTrue(_counterForAttackSpeedBuff, _thirdUpgrade))
             InitAttackSpeed(_thirdLevel);
-        else if (IsTrue(_counterForHealthBuff, _fourthUpgrade))
+        else if (IsTrue(_counterForAttackSpeedBuff, _fourthUpgrade))
             InitAttackSpeed(_fourthLevel);
-        else if (IsTrue(_counterForHealthBuff, _fifthUpgrade))
+        else if (IsTrue(_counterForAttackSpeedBuff, _fifthUpgrade))
             InitAttackSpeed(_fifthLevel);
     }
 
     public void UpgradeMovementSpeed()
     {
-        if (IsTrue(_counterForHealthBuff, _firstUpgrade))
+        if (IsTrue(_counterForMovementSpeedBuff, _firstUpgrade))
             InitMovementSpeed(_firstLevel);
-        else if (IsTrue(_counterForHealthBuff, _secondUpgrade))
+        else if (IsTrue(_counterForMovementSpeedBuff, _secondUpgrade))
             InitMovementSpeed(_secondLevel);
-        else if (IsTrue(_counterForHealthBuff, _thirdUpgrade))
+        else if (IsTrue(_counterForMovementSpeedBuff, _thirdUpgrade))
             InitMovementSpeed(_thirdLevel);
-        else if (IsTrue(_counterForHealthBuff, _fourthUpgrade))
+        else if (IsTrue(_counterForMovementSpeedBuff, _fourthUpgrade))
             InitMovementSpeed(_fourthLevel);
-        else if (IsTrue(_counterForHealthBuff, _fifthUpgrade))
+        else if (IsTrue(_counterForMovementSpeedBuff, _fifthUpgrade))
             InitMovementSpeed(_fifthLevel);
     }
 
@@ -138,7 +132,6 @@ public class BuffImprovment : MonoBehaviour
 
         ArmorBuff = _buffkeepers[level].ArmorBuffScriptableObject;
         _counterForArmorBuff++;
-        ArmorUpgraded?.Invoke();
     }
 
     private void InitDamage(int level)
@@ -148,7 +141,6 @@ public class BuffImprovment : MonoBehaviour
 
         DamageBuff = _buffkeepers[level].DamageBuffScriptableObject;
         _counterForDamageBuff++;
-        DamageUpgraded?.Invoke();
     }
 
     private void InitMovementSpeed(int level)
@@ -158,7 +150,6 @@ public class BuffImprovment : MonoBehaviour
 
         MovementSpeedBuff = _buffkeepers[level].MovementSpeedBuffScriptableObject;
         _counterForMovementSpeedBuff++;
-        MovementSpeedUpgraded?.Invoke();
     }
 
     private void InitAttackSpeed(int level)
@@ -168,7 +159,6 @@ public class BuffImprovment : MonoBehaviour
 
         AttackSpeedBuff = _buffkeepers[level].AttackSpeedBuffScriptableObject;
         _counterForAttackSpeedBuff++;
-        AttackSpeedUpgraded?.Invoke();
     }
 
     private void InitHealth(int level)
@@ -178,7 +168,6 @@ public class BuffImprovment : MonoBehaviour
 
         HealthBuff = _buffkeepers[level].HealthBuffScriptableObject;
         _counterForHealthBuff++;
-        HealthUpgraded?.Invoke();
     }
 
     private bool IsMaxValue(int value) => value == MaxValue;

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-//q
+
 [CreateAssetMenu(fileName = "CharacterSkinItem", menuName = "Shop/CharacterSkinItem")]
 public class CharacterSkinItem : ShopItem
 {

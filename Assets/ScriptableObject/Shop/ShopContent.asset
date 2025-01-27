@@ -12,14 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 858fab48ff9155e498043ec70438dd5d, type: 3}
   m_Name: ShopContent
   m_EditorClassIdentifier: 
-  _meleeCharacterSkinItems:
-  - {fileID: 11400000, guid: 26d6d5af139d6f345bfdcb35102ecead, type: 2}
-  - {fileID: 11400000, guid: a778e8ff367880f4699cee05abd29513, type: 2}
-  _rangeCharacterSkinItems:
-  - {fileID: 11400000, guid: b9629280cf91c3c428b394471dedb86c, type: 2}
-  - {fileID: 11400000, guid: a50d9a636ae31c14c975b53b9af958d1, type: 2}
   _characterSkinItems:
   - {fileID: 11400000, guid: a7606e0372a979b43805db87e3fe109c, type: 2}
-  - {fileID: 11400000, guid: 1a3097284a3c83c47ad0b557fc068a0f, type: 2}
   - {fileID: 11400000, guid: 46629e8c4d6525f46b9dd4193ad99922, type: 2}
-  - {fileID: 11400000, guid: b6d4035245d700e4aa017e07b57af0cc, type: 2}

@@ -1,6 +1,4 @@
-﻿
-//q
-public enum CharacterSkins
+﻿public enum CharacterSkins
 {
-    FirstRangeSkin, SecondRangeSkin, ThirdRangeSkin, FirstMeleeSkin, SecondMeleeSkin, ThirdMeleeSkin
+    FirstRangeSkin, FirstMeleeSkin
 }
