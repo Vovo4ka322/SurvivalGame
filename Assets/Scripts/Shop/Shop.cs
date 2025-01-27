@@ -18,7 +18,11 @@ public class Shop : MonoBehaviour
 
     [SerializeField] private Camera _modelCamera;
     [SerializeField] private Transform _characterCategoryCameraPosition;
-    //[SerializeField] private Transform _mazeCategoryCameraPosition;
+
+    [SerializeField] private GameObject _meleeDescription;
+    [SerializeField] private GameObject _rangeDescription;
+
+    [SerializeField] private BuffShop _buffShop;
 
     private IDataProvider _dataProvider;
 
@@ -39,6 +43,9 @@ public class Shop : MonoBehaviour
         _selectionButton.onClick.AddListener(OnSelectionButtonClick);
 
         _characterSkinsButton.Click += OnCharacterSkinsButtonClick;
+
+        _openSkinsChecker.RangeCharacterOpened += ShowRangeDesctiprion;
+        _openSkinsChecker.MeleeCharacterOpened += ShowMeleeDescription;
     }
 
     private void OnDisable()
@@ -49,12 +56,15 @@ public class Shop : MonoBehaviour
         _selectionButton.onClick.RemoveListener(OnSelectionButtonClick);
 
         _characterSkinsButton.Click -= OnCharacterSkinsButtonClick;
+
+        _openSkinsChecker.RangeCharacterOpened -= ShowRangeDesctiprion;
+        _openSkinsChecker.MeleeCharacterOpened -= ShowMeleeDescription;
     }
 
     public void Initialize(IDataProvider dataProvider, Wallet wallet, OpenSkinsChecker openSkinsChecker, SelectedSkinChecker selectedSkinChecker, SkinSelector skinSelector, SkinUnlocker skinUnlocker)
     {
         _wallet = wallet;
-        _openSkinsChecker = openSkinsChecker;   
+        _openSkinsChecker = openSkinsChecker;
         _selectedSkinChecker = selectedSkinChecker;
         _skinSelector = skinSelector;
         _skinUnlocker = skinUnlocker;
@@ -65,10 +75,21 @@ public class Shop : MonoBehaviour
 
         _shopPanel.ItemViewClicked += OnItemViewClicked;
 
-        //OnMeleeCharacterSkinsButtonClick();
+        _buffShop.Init(_wallet, _dataProvider);
 
-        //q
         OnCharacterSkinsButtonClick();
+    }
+
+    private void ShowMeleeDescription()
+    {
+        _rangeDescription.SetActive(false);
+        _meleeDescription.SetActive(true);
+    }
+
+    private void ShowRangeDesctiprion()
+    {
+        _meleeDescription.SetActive(false);
+        _rangeDescription.SetActive(true);
     }
 
     private void OnItemViewClicked(ShopItemView item)
@@ -164,7 +185,6 @@ public class Shop : MonoBehaviour
     private void HideSelectionButton() => _selectionButton.gameObject.SetActive(false);
     private void HideSelectedText() => _selectedText.gameObject.SetActive(false);
 
-    //q
     private void OnCharacterSkinsButtonClick()
     {
         _characterSkinsButton.Select();

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class SelectedSkinChecker : IShopItemVisitor
 {
     private IPersistentData _persistentData;
@@ -9,5 +11,7 @@ public class SelectedSkinChecker : IShopItemVisitor
     public void Visit(ShopItem shopItem) => Visit((dynamic)shopItem);
 
     public void Visit(CharacterSkinItem characterSkinItem)
-        => IsSelected = _persistentData.PlayerData.SelectedCharacterSkin == characterSkinItem.SkinType;
+    {
+        IsSelected = _persistentData.PlayerData.SelectedCharacterSkin == characterSkinItem.SkinType;
+    }
 }
