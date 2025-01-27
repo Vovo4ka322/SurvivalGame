@@ -9,6 +9,7 @@ public class BuffShop : MonoBehaviour
     [SerializeField] private BuffImprovment _buffImprovment;
     [SerializeField] private Image _buffPanel;
     [SerializeField] private Button _openerPanelButton;
+    [SerializeField] private Button _leaverPanelButton;
 
     [Header("Buffs buttons")]
     [SerializeField] private Button _healthBuffButton;
@@ -81,6 +82,7 @@ public class BuffShop : MonoBehaviour
         _movementSpeedBuffPurchaseButton.onClick.AddListener(OnBuyMovementSpeedBuff);
 
         _openerPanelButton.onClick.AddListener(OnBuffPanelOpened);
+        _leaverPanelButton.onClick.AddListener(OnBuffPanelClosed);
     }
 
     private void OnDisable()
@@ -98,6 +100,7 @@ public class BuffShop : MonoBehaviour
         _movementSpeedBuffPurchaseButton.onClick.RemoveListener(OnBuyMovementSpeedBuff);
 
         _openerPanelButton.onClick.RemoveListener(OnBuffPanelOpened);
+        _leaverPanelButton.onClick.RemoveListener(OnBuffPanelClosed);
     }
 
     public void Init(Wallet wallet, IDataProvider dataProvider)
@@ -129,6 +132,11 @@ public class BuffShop : MonoBehaviour
         _buffPanel.gameObject.SetActive(true);
     }
 
+    private void OnBuffPanelClosed()
+    {
+        _buffPanel.gameObject.SetActive(false);
+    }
+
     private void OnBuyDamageBuff()
     {
         if (IsEnough(DamageBuffPrice) && _buffImprovment.MaxValue != _damageBuffCounter)
@@ -151,7 +159,9 @@ public class BuffShop : MonoBehaviour
             HealthBuffPrice += _sumForNextPrice;
             _healthBuffCounter++;
             HealthUpgraded?.Invoke();
-            //_dataProvider.Save();
+            _dataProvider.Save();
+
+            Debug.Log(_buffImprovment.HealthBuff.Value);
         }
     }
 
