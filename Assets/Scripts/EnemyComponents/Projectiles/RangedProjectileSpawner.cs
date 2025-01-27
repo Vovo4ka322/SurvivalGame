@@ -9,7 +9,7 @@ namespace EnemyComponents.Projectiles
                 return;
             }
             
-            BaseProjectile projectile = SpawnProjectile();
+            BaseProjectile projectile = Create();
 
             if(projectile == null)
             {

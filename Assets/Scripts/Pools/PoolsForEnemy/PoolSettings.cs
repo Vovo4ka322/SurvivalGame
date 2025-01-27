@@ -9,7 +9,6 @@ namespace Pools
         [SerializeField] private bool _collectionCheck = false;
         [SerializeField][Min(0)] private int _initialCapacity = 10;
         [SerializeField][Min(0)] private int _maxPoolSize = 100;
-
         
         public PoolSettings(int initialCapacity, int maxPoolSize, bool collectionCheck)
         {

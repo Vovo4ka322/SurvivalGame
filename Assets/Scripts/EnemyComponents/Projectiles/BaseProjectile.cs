@@ -11,6 +11,7 @@ namespace EnemyComponents.Projectiles
         
         private ProjectilePool<BaseProjectile> _pool;
         private IProjectileMovement _movementStrategy;
+        
         private float _lifeTimer;
         
         public float Speed => _speed;
@@ -51,17 +52,17 @@ namespace EnemyComponents.Projectiles
             ReturnToPool();
         }
         
-        public void SetPool(ProjectilePool<BaseProjectile> pool)
-        {
-            _pool = pool;
-        }
-        
         public void PlayEffects()
         {
             if (_particleSystem != null)
             {
                 _particleSystem.Play();
             }
+        }
+        
+        private void SetPool(ProjectilePool<BaseProjectile> pool)
+        {
+            _pool = pool;
         }
         
         private void ReturnToPool()

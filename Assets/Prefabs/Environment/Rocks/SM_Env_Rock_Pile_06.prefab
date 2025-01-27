@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 00c4f41824ff13f45a8812ef9853ceea, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -77,7 +77,7 @@ PrefabInstance:
       addedObject: {fileID: 807825684980905031}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 00c4f41824ff13f45a8812ef9853ceea, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7720836149255204609}
+      addedObject: {fileID: 8921385596241468825}
   m_SourcePrefab: {fileID: 100100000, guid: 00c4f41824ff13f45a8812ef9853ceea, type: 3}
 --- !u!1 &2256525659426997430 stripped
 GameObject:
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &7720836149255204609
+--- !u!65 &8921385596241468825
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,5 +115,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.9, y: 3.6, z: 4.6}
-  m_Center: {x: 5.9, y: 0.5, z: -2.2}
+  m_Size: {x: 7.91978, y: 3.6445165, z: 4.624839}
+  m_Center: {x: 0.00000059604645, y: 0.5094752, z: -0.0000022649765}

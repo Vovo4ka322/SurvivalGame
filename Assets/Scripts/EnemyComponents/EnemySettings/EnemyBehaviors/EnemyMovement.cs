@@ -1,9 +1,10 @@
 using UnityEngine;
 using EnemyComponents.Animations;
+using EnemyComponents.Interfaces;
 
 namespace EnemyComponents.EnemySettings.EnemyBehaviors
 {
-    public class EnemyMovement
+    public class EnemyMovement : IEnemyMovement
     {
         private readonly EnemyAnimationController _animationController;
         private readonly EnemyRotation _rotation;

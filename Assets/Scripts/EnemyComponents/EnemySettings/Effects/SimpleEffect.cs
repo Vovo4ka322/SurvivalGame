@@ -1,11 +1,11 @@
-using UnityEngine;
+using EnemyComponents.Interfaces;
 using Pools;
 
 namespace EnemyComponents.EnemySettings.Effects
 {
     public class SimpleEffect : BaseEffectsEnemy
     {
-        public SimpleEffect(MonoBehaviour owner, EffectData effectData, PoolSettings poolSettings) : base(owner, effectData, poolSettings)
+        public SimpleEffect(ICoroutineRunner coroutineRunner, EffectData effectData, EffectsPool pool) : base(coroutineRunner, effectData, pool)
         {
         }
     }

@@ -12,7 +12,7 @@ namespace EnemyComponents.EnemySettings
         [Header("Setting type")]
         [SerializeField] private EnemyType _enemyType;
         [SerializeReference] private BaseEnemyAttackType _baseAttackType;
-
+        
         [Header("Setting parameters")] 
         [SerializeField] private float _maxHealth;
         [SerializeField] private float _damage;
@@ -30,20 +30,17 @@ namespace EnemyComponents.EnemySettings
         
         public EnemyType EnemyType => _enemyType;
         public Enemy EnemyPrefab => _enemyPrefab;
+        public EffectData SpawnEffect => _spawnEffect;
+        public EffectData HitEffect => _hitEffect;
+        public EffectData DeathEffect => _deathEffect;
         public BaseEnemyAttackType BaseAttackType => _baseAttackType;
-        
         public float MoveSpeed => _moveSpeed;
         public float RotationSpeed => _rotationSpeed;
         public float Damage => _damage;
         public float MaxHealth => _maxHealth;
         public float AttackCooldown => _attackCooldown;
         public float AttackRange => _attackRange;
-        
         public int Experience => _experience;
         public int Gold => _gold;
-        
-        public EffectData SpawnEffect => _spawnEffect;
-        public EffectData HitEffect => _hitEffect;
-        public EffectData DeathEffect => _deathEffect;
     }
 }
