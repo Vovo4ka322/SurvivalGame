@@ -4366,6 +4366,7 @@ MonoBehaviour:
   _buffKeeperThirdLevel: {fileID: 11400000, guid: 6bd057550d2568449a99dd85651451c2, type: 2}
   _buffKeeperFourthLevel: {fileID: 11400000, guid: f95073aa86e18694f96f00098c9ecd32, type: 2}
   _buffKeeperFifthLevel: {fileID: 11400000, guid: 5fb9873984e000b41b0ecf4e2a04fbe8, type: 2}
+  _counterForHealthBuff: 0
 --- !u!114 &774485110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8024,6 +8025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shop: {fileID: 2105060735}
   _walletView: {fileID: 1417906641}
+  _improvmentViewer: {fileID: 774485110}
 --- !u!224 &1304256753 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 573329617953717451, guid: d2267b3ed06f90d44ab7a0276eb4e506, type: 3}
@@ -12629,11 +12631,11 @@ MonoBehaviour:
   _attackSpeedBuffDescription: {fileID: 318554144}
   _movementSpeedBuffPurchaseButton: {fileID: 811040266}
   _movementSpeedBuffDescription: {fileID: 62752112}
-  <HealthBuffPrice>k__BackingField: 200
-  <ArmorBuffPrice>k__BackingField: 200
-  <DamageBuffPrice>k__BackingField: 200
-  <AttackSpeedBuffPrice>k__BackingField: 200
-  <MovementSpeedBuffPrice>k__BackingField: 200
+  _healthBuffPrice: 300
+  _armorBuffPrice: 200
+  _damageBuffPrice: 400
+  _attackSpeedBuffPrice: 300
+  _movementSpeedBuffPrice: 300
 --- !u!1 &2129767021
 GameObject:
   m_ObjectHideFlags: 0

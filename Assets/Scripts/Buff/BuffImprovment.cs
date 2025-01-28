@@ -23,7 +23,7 @@ public class BuffImprovment : MonoBehaviour//Исправить
     private int _fourthUpgrade = 3;
     private int _fifthUpgrade = 4;
 
-    private int _counterForHealthBuff = 0;
+    public int _counterForHealthBuff;
     private int _counterForArmorBuff = 0;
     private int _counterForDamageBuff = 0;
     private int _counterForMovementSpeedBuff = 0;
@@ -54,6 +54,16 @@ public class BuffImprovment : MonoBehaviour//Исправить
             { _fifthLevel, _buffKeeperFifthLevel },
         };
     }
+
+    public void InitHealthLevel(int healthLevel) => _counterForHealthBuff = healthLevel;
+
+    public void InitAramorLevel(int armorLevel) => _counterForArmorBuff = armorLevel;
+
+    public void InitDamageLevel(int damageLevel) => _counterForDamageBuff = damageLevel;
+
+    public void InitAttackSpeedLevel(int attackSpeedLevel) => _counterForAttackSpeedBuff = attackSpeedLevel;
+
+    public void InitMovementSpeedLevel(int movementSpeedLevel) => _counterForMovementSpeedBuff = movementSpeedLevel;
 
     public void UpgradeHealth()
     {

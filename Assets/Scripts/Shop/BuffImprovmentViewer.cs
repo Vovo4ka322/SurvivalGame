@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuffImprovmentViewer: MonoBehaviour
+public class BuffImprovmentViewer : MonoBehaviour
 {
     [SerializeField] private BuffShop _buffShop;
 
@@ -12,11 +12,7 @@ public class BuffImprovmentViewer: MonoBehaviour
     [SerializeField] private List<Image> _attackSpeedBuffUpgraders;
     [SerializeField] private List<Image> _movementSpeedBuffUpgraders;
 
-    private int _healthBuffUpgraderCount = 0;
-    private int _armorBuffUpgraderCount = 0;
-    private int _damageBuffUpgraderCount = 0;
-    private int _attackSpeedBuffUpgraderCount = 0;
-    private int _movementSpeedBuffUpgraderCount = 0;
+    private CalculationFinalValue _calculationFinalValue;
 
     private void OnEnable()
     {
@@ -36,49 +32,63 @@ public class BuffImprovmentViewer: MonoBehaviour
         _buffShop.MovementSpeedUpgraded -= OnMovementSpeedBuffUpgraded;
     }
 
+    public void Init(CalculationFinalValue calculationFinalValue)
+    {
+        _calculationFinalValue = calculationFinalValue;
+
+        UpdateValue(_healthBuffUpgraders, _calculationFinalValue.HealthLevelImprovment);
+        UpdateValue(_armorBuffUpgraders, _calculationFinalValue.AttackSpeedLevelImprovment);
+        UpdateValue(_damageBuffUpgraders, _calculationFinalValue.DamageLevelImprovment);
+        UpdateValue(_attackSpeedBuffUpgraders, _calculationFinalValue.AttackSpeedLevelImprovment);
+        UpdateValue(_movementSpeedBuffUpgraders, _calculationFinalValue.MovementSpeedLevelImprovment);
+    }
+
+    private void UpdateValue(List<Image> image, int value)
+    {
+        for (int i = 0; i < value; i++)
+        {
+            Upgrade(image, i);
+        }
+    }
+
     private void OnHealthBuffUpgraded()
     {
-        if(IsFull(_healthBuffUpgraderCount))
+        if (IsFull(_calculationFinalValue.HealthLevelImprovment))
             return;
 
-        Upgrade(_healthBuffUpgraders, _healthBuffUpgraderCount);
-        _healthBuffUpgraderCount++;
+        Upgrade(_healthBuffUpgraders, _calculationFinalValue.HealthLevelImprovment);
     }
 
     private void OnArmorBuffUpgraded()
     {
-        if(IsFull(_armorBuffUpgraderCount)) 
+        if (IsFull(_calculationFinalValue.ArmorLevelImprovment))
             return;
 
-        Upgrade(_armorBuffUpgraders, _armorBuffUpgraderCount);
-        _armorBuffUpgraderCount++;
+        Upgrade(_armorBuffUpgraders, _calculationFinalValue.ArmorLevelImprovment);
     }
 
     private void OnDamageBuffUpgraded()
     {
-        if (IsFull(_damageBuffUpgraderCount)) 
+        if (IsFull(_calculationFinalValue.DamageLevelImprovment))
             return;
 
-        Upgrade(_damageBuffUpgraders, _damageBuffUpgraderCount);
-        _damageBuffUpgraderCount++;
+        Upgrade(_damageBuffUpgraders, _calculationFinalValue.DamageLevelImprovment);
     }
 
     private void OnAttackSpeedBuffUpgraded()
     {
-        if( IsFull(_attackSpeedBuffUpgraderCount))
+        if (IsFull(_calculationFinalValue.AttackSpeedLevelImprovment))
             return;
 
-        Upgrade(_attackSpeedBuffUpgraders, _attackSpeedBuffUpgraderCount);
-        _attackSpeedBuffUpgraderCount++;
+        Upgrade(_attackSpeedBuffUpgraders, _calculationFinalValue.AttackSpeedLevelImprovment);
     }
 
     private void OnMovementSpeedBuffUpgraded()
     {
-        if(IsFull(_movementSpeedBuffUpgraderCount))
+        if (IsFull(_calculationFinalValue.MovementSpeedLevelImprovment))
             return;
 
-        Upgrade(_movementSpeedBuffUpgraders, _movementSpeedBuffUpgraderCount);
-        _movementSpeedBuffUpgraderCount++;
+        Upgrade(_movementSpeedBuffUpgraders, _calculationFinalValue.MovementSpeedLevelImprovment);
     }
 
     private bool IsFull(int value) => _buffShop.MaxCount == value;

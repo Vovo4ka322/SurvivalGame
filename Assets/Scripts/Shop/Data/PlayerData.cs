@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using UnityEngine;
 
 public class PlayerData
 {
@@ -10,9 +11,13 @@ public class PlayerData
 
     private int _money;
 
+    private CalculationFinalValue _calculationFinalValue;
+
     public PlayerData()
     {
         _money = 30000;
+
+        _calculationFinalValue = new CalculationFinalValue();
 
         _selectedCharacterSkins = CharacterSkins.FirstMeleeSkin;
 
@@ -20,12 +25,20 @@ public class PlayerData
     }
 
     [JsonConstructor]
-    public PlayerData(int money, CharacterSkins characterSkins, List<CharacterSkins> openCharacterSkins)
+    public PlayerData(int money, CharacterSkins characterSkins, List<CharacterSkins> openCharacterSkins, CalculationFinalValue calculationFinalValue)
     {
         Money = money;
 
         _selectedCharacterSkins = characterSkins;
         _openCharacterSkins = new(openCharacterSkins);
+        _calculationFinalValue = calculationFinalValue;
+
+        Debug.Log(money);
+        Debug.Log(calculationFinalValue.Health);
+        Debug.Log(calculationFinalValue.Armor);
+        Debug.Log(calculationFinalValue.Damage);
+        Debug.Log(calculationFinalValue.AttackSpeed);
+        Debug.Log(calculationFinalValue.MovementSpeed);
     }
 
     public int Money
@@ -50,6 +63,8 @@ public class PlayerData
     }
 
     public IEnumerable<CharacterSkins> OpenCharacterSkins => _openCharacterSkins;
+
+    public CalculationFinalValue CalculationFinalValue => _calculationFinalValue;
 
     public CharacterSkins SelectedCharacterSkin
     {

@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class GameplayTestBootstrap : MonoBehaviour
 {
     [SerializeField] private Transform _characterSpawnPoint;
-    [SerializeField] private CalculationFinalValue _finalValue;
     [SerializeField] private GeneralPlayerFactory _generalPlayerFactory;
     [SerializeField] private CanvasFactory _canvasFactory;
 
+    private CalculationFinalValue _finalValue;
     private Player _player;
     private Canvas _canvas;
 
@@ -32,8 +32,8 @@ public class GameplayTestBootstrap : MonoBehaviour
 
     private void InitPlayer()
     {
-        _player.Init(_finalValue.CalculateDamage(), _finalValue.CalculateHealth(),
-        _finalValue.CalculateArmor(), _finalValue.CalculateAttackSpeed(), _finalValue.CalculateMovementSpeed());
+        //_player.Init(_finalValue.CalculateDamage(), _finalValue.CalculateHealth(),
+        //_finalValue.CalculateArmor(), _finalValue.CalculateAttackSpeed(), _finalValue.CalculateMovementSpeed());
     }
 
     private void InitializeData()
