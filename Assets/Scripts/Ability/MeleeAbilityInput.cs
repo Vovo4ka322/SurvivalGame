@@ -6,8 +6,9 @@ namespace Ability
 {
     public class MeleeAbilityInput : MonoBehaviour
     {
-        [SerializeField] private MeleeAbilityUser _meleeAbilityUser;
-        [SerializeField] private PlayerController _playerController;
+        //[SerializeField] private MeleeAbilityUser _meleeAbilityUser;
+        private PlayerController _playerController;
+        private IAbilityUser _meleeAbilityUser;
 
         [Header("Subscribe to use buttons")]
         [SerializeField] private Button _firstAbilityUse;
@@ -42,6 +43,12 @@ namespace Ability
             _firstUpgradeButton.onClick.RemoveListener(_meleeAbilityUser.UpgradeFirstAbility);
             _secondUpgradeButton.onClick.RemoveListener(_meleeAbilityUser.UpgradeSecondAbility);
             _thirdUpgradeButton.onClick.RemoveListener(_meleeAbilityUser.UpgradeThirdAbility);
+        }
+
+        public void Init(IAbilityUser abilityUser, PlayerController playerController)
+        {
+            _meleeAbilityUser = abilityUser;
+            _playerController = playerController;
         }
     }
 }

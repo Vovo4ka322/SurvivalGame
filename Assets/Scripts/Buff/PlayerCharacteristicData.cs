@@ -1,5 +1,5 @@
 [System.Serializable]
-public class CalculationFinalValue
+public class PlayerCharacteristicData
 {
     public float Health;
 

@@ -1280,7 +1280,6 @@ GameObject:
   - component: {fileID: 4082098165231016479}
   - component: {fileID: 2078077444473133153}
   - component: {fileID: 8722816938695530582}
-  - component: {fileID: 7334943756622903604}
   m_Layer: 0
   m_Name: MeleeCharacter 1
   m_TagString: Untagged
@@ -1457,7 +1456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df8a6f06d8f83145bb35f456ccc40a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Value>k__BackingField: 1000
 --- !u!114 &4082098165231016479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1470,10 +1468,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9fa845ccdb6e94da4611e1b1a6d30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: {fileID: 8414275217322049249}
+  _baseHealth: 100
+  _baseArmor: 30
+  _baseDamage: 5
+  _baseAttackSpeed: 2
+  _baseMoveSpeed: 10
   _level:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
-  <Position>k__BackingField: {fileID: 8589541562802923144}
+  <CharacterType>k__BackingField: 0
+  <GeneralHealth>k__BackingField: 0
+  <GeneralArmor>k__BackingField: 0
+  <GeneralDamage>k__BackingField: 0
+  <GeneralAttackSpeed>k__BackingField: 0
+  <GeneralMovementSpeed>k__BackingField: 0
   _playerMovement: {fileID: 7251575310826222448}
   _sword: {fileID: 801207087793865037}
   _animatorState: {fileID: 8722816938695530582}
@@ -1502,19 +1509,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 5299836252073893894}
---- !u!114 &7334943756622903604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393333058280246948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bcf377bd2546104c8d09dbf58f52b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Personage>k__BackingField: {fileID: 0}
 --- !u!1 &2422080884879617379
 GameObject:
   m_ObjectHideFlags: 0

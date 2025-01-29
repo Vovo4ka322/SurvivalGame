@@ -39,7 +39,7 @@ public class BuffShop : MonoBehaviour
 
     private Wallet _wallet;
     private IDataProvider _dataProvider;
-    private CalculationFinalValue _calculationFinalValue;
+    private PlayerCharacteristicData _calculationFinalValue;
 
     private int _healthBuffCounter;
     private int _armorBuffCounter;

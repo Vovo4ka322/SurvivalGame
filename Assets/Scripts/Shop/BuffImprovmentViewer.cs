@@ -12,7 +12,7 @@ public class BuffImprovmentViewer : MonoBehaviour
     [SerializeField] private List<Image> _attackSpeedBuffUpgraders;
     [SerializeField] private List<Image> _movementSpeedBuffUpgraders;
 
-    private CalculationFinalValue _calculationFinalValue;
+    private PlayerCharacteristicData _calculationFinalValue;
 
     private void OnEnable()
     {
@@ -32,7 +32,7 @@ public class BuffImprovmentViewer : MonoBehaviour
         _buffShop.MovementSpeedUpgraded -= OnMovementSpeedBuffUpgraded;
     }
 
-    public void Init(CalculationFinalValue calculationFinalValue)
+    public void Init(PlayerCharacteristicData calculationFinalValue)
     {
         _calculationFinalValue = calculationFinalValue;
 

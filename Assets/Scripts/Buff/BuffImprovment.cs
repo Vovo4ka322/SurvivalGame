@@ -23,11 +23,11 @@ public class BuffImprovment : MonoBehaviour//Исправить
     private int _fourthUpgrade = 3;
     private int _fifthUpgrade = 4;
 
-    public int _counterForHealthBuff;
-    private int _counterForArmorBuff = 0;
-    private int _counterForDamageBuff = 0;
-    private int _counterForMovementSpeedBuff = 0;
-    private int _counterForAttackSpeedBuff = 0;
+    private int _counterForHealthBuff;
+    private int _counterForArmorBuff;
+    private int _counterForDamageBuff;
+    private int _counterForMovementSpeedBuff;
+    private int _counterForAttackSpeedBuff;
 
     private Dictionary<int, BuffKeeper> _buffkeepers;
 

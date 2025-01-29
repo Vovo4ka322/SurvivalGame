@@ -10,7 +10,7 @@ public class ShopBootstrap : MonoBehaviour
     private IPersistentData _persistentPlayerData;
 
     private Wallet _wallet;
-    private CalculationFinalValue _calculationFinalValue;
+    private PlayerCharacteristicData _calculationFinalValue;
 
     public void Awake()
     {

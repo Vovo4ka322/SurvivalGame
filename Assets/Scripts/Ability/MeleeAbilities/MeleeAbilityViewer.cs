@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class MeleeAbilityViewer : MonoBehaviour
 {
-    [SerializeField] private MeleeAbilityUser _meleeAbilityUser;
-
     [Header("Cooldown Images")]
     [SerializeField] private Image _firstAbility;
     [SerializeField] private Image _secondAbility;
@@ -17,6 +15,8 @@ public class MeleeAbilityViewer : MonoBehaviour
     [SerializeField] private List<Image> _firstAbilityImprovements;
     [SerializeField] private List<Image> _secondAbilityImprovements;
     [SerializeField] private List<Image> _thirdAbilityImprovements;
+
+    private MeleeAbilityUser _meleeAbilityUser;
 
     private int _bladeFuryImprovment = 0;
     private int _borrowedTimeImprovment = 0;
@@ -38,6 +38,11 @@ public class MeleeAbilityViewer : MonoBehaviour
         _meleeAbilityUser.BladeFuryUpgraded -= OnBladeFuryUpgraded;
         _meleeAbilityUser.BorrowedTimeIUpgraded -= OnBorrowedTimeUpgraded;
         _meleeAbilityUser.BloodlustIUpgraded -= OnBloodlustUpgraded;
+    }
+
+    public void Init(MeleeAbilityUser meleeAbilityUser)
+    {
+        _meleeAbilityUser = meleeAbilityUser;
     }
 
     private void OnBladeFuryChanged(float value)

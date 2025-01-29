@@ -11,13 +11,13 @@ public class PlayerData
 
     private int _money;
 
-    private CalculationFinalValue _calculationFinalValue;
+    private PlayerCharacteristicData _calculationFinalValue;
 
     public PlayerData()
     {
         _money = 30000;
 
-        _calculationFinalValue = new CalculationFinalValue();
+        _calculationFinalValue = new PlayerCharacteristicData();
 
         _selectedCharacterSkins = CharacterSkins.FirstMeleeSkin;
 
@@ -25,7 +25,7 @@ public class PlayerData
     }
 
     [JsonConstructor]
-    public PlayerData(int money, CharacterSkins characterSkins, List<CharacterSkins> openCharacterSkins, CalculationFinalValue calculationFinalValue)
+    public PlayerData(int money, CharacterSkins characterSkins, List<CharacterSkins> openCharacterSkins, PlayerCharacteristicData calculationFinalValue)
     {
         Money = money;
 
@@ -64,7 +64,7 @@ public class PlayerData
 
     public IEnumerable<CharacterSkins> OpenCharacterSkins => _openCharacterSkins;
 
-    public CalculationFinalValue CalculationFinalValue => _calculationFinalValue;
+    public PlayerCharacteristicData CalculationFinalValue => _calculationFinalValue;
 
     public CharacterSkins SelectedCharacterSkin
     {

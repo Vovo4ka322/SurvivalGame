@@ -6,7 +6,7 @@ using UnityEngine;
 public class EntryPoint : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private CalculationFinalValue _finalValue;
+    [SerializeField] private PlayerCharacteristicData _finalValue;
 
     private void Awake()
     {
