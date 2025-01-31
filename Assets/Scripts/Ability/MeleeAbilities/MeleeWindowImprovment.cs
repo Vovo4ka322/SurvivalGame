@@ -1,37 +1,44 @@
 using Ability.MeleeAbilities;
-using System.Collections;
-using System.Collections.Generic;
+using PlayerComponents;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MeleeWindowImprovment : MonoBehaviour
 {
     [SerializeField] private Image _abilityPanel;
-    [SerializeField] private MeleeAbilityUser _player;
 
-    private void OnEnable()
-    {
-        _player.LevelChanged += PressAbilityUpgrade;
-        _player.BladeFuryUpgraded += CloseAbilityPanel;
-        _player.BorrowedTimeIUpgraded += CloseAbilityPanel;
-        _player.BloodlustIUpgraded += CloseAbilityPanel;
-    }
+    private MeleeAbilityUser _meleeAbilityUser;
 
     private void OnDisable()
     {
-        _player.LevelChanged -= PressAbilityUpgrade;
-        _player.BladeFuryUpgraded -= CloseAbilityPanel;
-        _player.BorrowedTimeIUpgraded -= CloseAbilityPanel;
-        _player.BloodlustIUpgraded -= CloseAbilityPanel;
+        _meleeAbilityUser.LevelChanged -= PressAbilityUpgrade;
+        _meleeAbilityUser.BladeFuryUpgraded -= CloseAbilityPanel;
+        _meleeAbilityUser.BorrowedTimeIUpgraded -= CloseAbilityPanel;
+        _meleeAbilityUser.BloodlustIUpgraded -= CloseAbilityPanel;
     }
 
-    public void PressAbilityUpgrade()
+    public void Init(Player player)
+    {
+        _meleeAbilityUser = player.GetComponentInChildren<MeleeAbilityUser>();
+
+        SubscribeToEvents();
+    }
+
+    private void SubscribeToEvents()
+    {
+        _meleeAbilityUser.LevelChanged += PressAbilityUpgrade;
+        _meleeAbilityUser.BladeFuryUpgraded += CloseAbilityPanel;
+        _meleeAbilityUser.BorrowedTimeIUpgraded += CloseAbilityPanel;
+        _meleeAbilityUser.BloodlustIUpgraded += CloseAbilityPanel;
+    }
+
+    private void PressAbilityUpgrade()
     {
         Time.timeScale = 0f;
         _abilityPanel.gameObject.SetActive(true);
     }
 
-    public void CloseAbilityPanel()
+    private void CloseAbilityPanel()
     {
         Time.timeScale = 1f;
         _abilityPanel.gameObject.SetActive(false);

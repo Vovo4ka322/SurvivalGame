@@ -1,3 +1,4 @@
+using Cinemachine;
 using PlayerComponents;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ public class GameplayTestBootstrap : MonoBehaviour
     [SerializeField] private Transform _characterSpawnPoint;
     [SerializeField] private GeneralPlayerFactory _generalPlayerFactory;
     [SerializeField] private CanvasFactory _canvasFactory;
+    [SerializeField] private CinemachineVirtualCamera _virtualCamera;
 
     private Player _player;
     private Canvas _canvas;
@@ -24,7 +26,9 @@ public class GameplayTestBootstrap : MonoBehaviour
     private void DoTestSpawn()
     {
         _player = _generalPlayerFactory.Get(_persistentPlayerData.PlayerData.SelectedCharacterSkin, _characterSpawnPoint.position);
-        _canvas = _canvasFactory.Get(_player.CharacterType);
+
+        _virtualCamera.Follow = _player.transform;
+        _virtualCamera.LookAt = _player.transform;
 
         InitPlayerCharacteristics();
     }
@@ -33,12 +37,13 @@ public class GameplayTestBootstrap : MonoBehaviour
     {
         _player.Init(_persistentPlayerData.PlayerData.CalculationFinalValue.Health, _persistentPlayerData.PlayerData.CalculationFinalValue.Armor,
         _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed, _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed);
+        _canvas = _canvasFactory.Create(_player.CharacterType, _player);
 
-        Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.Health + " health при спавне");
-        Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.Armor + " armor при спавне");
-        Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.Damage + " damage при спавне");
-        Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed + " attack при спавне");
-        Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed + " movement при спавне");
+        //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.Health + " health при спавне");
+        //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.Armor + " armor при спавне");
+        //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.Damage + " damage при спавне");
+        //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed + " attack при спавне");
+        //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed + " movement при спавне");
     }
 
     private void InitializeData()

@@ -1,7 +1,5 @@
 public interface IAbilityUser
 {
-    public IAbilityUser Init();
-
     public void OpenUpgraderWindow();
 
     public void UseFirstAbility();

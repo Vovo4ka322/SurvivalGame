@@ -1468,6 +1468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9fa845ccdb6e94da4611e1b1a6d30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Health>k__BackingField: {fileID: 8414275217322049249}
   _baseHealth: 100
   _baseArmor: 30
   _baseDamage: 5
@@ -1633,11 +1634,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meleeAbilityUser: {fileID: 5315304360336446636}
   _playerController: {fileID: 2078077444473133153}
-  _firstAbilityUse: {fileID: 0}
-  _secondAbilityUse: {fileID: 0}
-  _firstUpgradeButton: {fileID: 0}
-  _secondUpgradeButton: {fileID: 0}
-  _thirdUpgradeButton: {fileID: 0}
 --- !u!1 &2506046537321798664
 GameObject:
   m_ObjectHideFlags: 0

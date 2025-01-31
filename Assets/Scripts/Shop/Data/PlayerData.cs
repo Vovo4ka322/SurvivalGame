@@ -33,12 +33,12 @@ public class PlayerData
         _openCharacterSkins = new(openCharacterSkins);
         _calculationFinalValue = calculationFinalValue;
 
-        Debug.Log(money);
-        Debug.Log(calculationFinalValue.Health);
-        Debug.Log(calculationFinalValue.Armor);
-        Debug.Log(calculationFinalValue.Damage);
-        Debug.Log(calculationFinalValue.AttackSpeed);
-        Debug.Log(calculationFinalValue.MovementSpeed);
+        //Debug.Log(money);
+        //Debug.Log(calculationFinalValue.Health);
+        //Debug.Log(calculationFinalValue.Armor);
+        //Debug.Log(calculationFinalValue.Damage);
+        //Debug.Log(calculationFinalValue.AttackSpeed);
+        //Debug.Log(calculationFinalValue.MovementSpeed);
     }
 
     public int Money

@@ -6,20 +6,16 @@ namespace Ability
 {
     public class MeleeAbilityInput : MonoBehaviour
     {
-        //[SerializeField] private MeleeAbilityUser _meleeAbilityUser;
-        private PlayerController _playerController;
-        private IAbilityUser _meleeAbilityUser;
+        [SerializeField] private MeleeAbilityUser _meleeAbilityUser;
+        [SerializeField] private PlayerController _playerController;
 
-        [Header("Subscribe to use buttons")]
-        [SerializeField] private Button _firstAbilityUse;
-        [SerializeField] private Button _secondAbilityUse;
+        private Button _firstAbilityUse;
+        private Button _secondAbilityUse;
+        private Button _firstUpgradeButton;
+        private Button _secondUpgradeButton;
+        private Button _thirdUpgradeButton;
 
-        [Header("Subscribe to upgrade buttons")]
-        [SerializeField] private Button _firstUpgradeButton;
-        [SerializeField] private Button _secondUpgradeButton;
-        [SerializeField] private Button _thirdUpgradeButton;
-
-        private void Awake()
+        private void Start()
         {
             _firstAbilityUse.onClick.AddListener(_meleeAbilityUser.UseFirstAbility);
             _secondAbilityUse.onClick.AddListener(_meleeAbilityUser.UseSecondAbility);
@@ -30,9 +26,9 @@ namespace Ability
 
         private void Update()
         {
-            if(_playerController.FirstAbilityKeyPressed)
+            if (_playerController.FirstAbilityKeyPressed)
                 _meleeAbilityUser.UseFirstAbility();
-            else if(_playerController.SecondAbilityKeyPressed)
+            else if (_playerController.SecondAbilityKeyPressed)
                 _meleeAbilityUser.UseSecondAbility();
         }
 
@@ -45,10 +41,13 @@ namespace Ability
             _thirdUpgradeButton.onClick.RemoveListener(_meleeAbilityUser.UpgradeThirdAbility);
         }
 
-        public void Init(IAbilityUser abilityUser, PlayerController playerController)
+        public void Init(Button firstAbilityUse, Button secondAbilityUse, Button firstUpgradeButton, Button secondUpgradeButton, Button thirdUpgradeButton)
         {
-            _meleeAbilityUser = abilityUser;
-            _playerController = playerController;
+            _firstAbilityUse = firstAbilityUse;
+            _secondAbilityUse = secondAbilityUse;
+            _firstUpgradeButton = firstUpgradeButton;
+            _secondUpgradeButton = secondUpgradeButton;
+            _thirdUpgradeButton = thirdUpgradeButton;
         }
     }
 }

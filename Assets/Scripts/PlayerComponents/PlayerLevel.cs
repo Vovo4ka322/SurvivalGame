@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace PlayerComponents
 {
     [Serializable]
@@ -8,11 +9,10 @@ namespace PlayerComponents
     {
         [SerializeField] private Level _requireExperience;
 
+        private int _level;
         private Dictionary<int, int> _levelRequirements;
 
         public event Action LevelChanged;
-
-        public int Level { get; private set; }
 
         public int Experience { get; private set; }
 
@@ -34,14 +34,14 @@ namespace PlayerComponents
 
         private void UpLevel()
         {
-            if (_levelRequirements.TryGetValue(Level + 1, out int requiredExperience))
+            if (_levelRequirements.TryGetValue(_level + 1, out int requiredExperience))
             {
                 while (Experience >= requiredExperience)
                 {
-                    Level++;
+                    _level++;
                     Experience = 0;
                     LevelChanged?.Invoke();
-                    requiredExperience = _levelRequirements[Level + 1];
+                    requiredExperience = _levelRequirements[_level + 1];
                 }
             }
         }

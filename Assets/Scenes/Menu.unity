@@ -4366,7 +4366,6 @@ MonoBehaviour:
   _buffKeeperThirdLevel: {fileID: 11400000, guid: 6bd057550d2568449a99dd85651451c2, type: 2}
   _buffKeeperFourthLevel: {fileID: 11400000, guid: f95073aa86e18694f96f00098c9ecd32, type: 2}
   _buffKeeperFifthLevel: {fileID: 11400000, guid: 5fb9873984e000b41b0ecf4e2a04fbe8, type: 2}
-  _counterForHealthBuff: 0
 --- !u!114 &774485110
 MonoBehaviour:
   m_ObjectHideFlags: 0

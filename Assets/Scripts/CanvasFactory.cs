@@ -1,8 +1,8 @@
+using Ability.ArcherAbilities;
+using Ability.MeleeAbilities;
+using PlayerComponents;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 [CreateAssetMenu(fileName = "CanvasFactory", menuName = "CanvasFactory")]
 public class CanvasFactory : ScriptableObject
@@ -10,9 +10,28 @@ public class CanvasFactory : ScriptableObject
     [SerializeField] private Canvas _meleeCanvas;
     [SerializeField] private Canvas _rangeCanvas;
 
-    public Canvas Get(CharacterType characterType)
+    public Canvas Create(CharacterType characterType, Player player)
     {
         Canvas canvas = Instantiate(GetPrefab(characterType));
+
+        canvas.GetComponent<PlayerHealthAndExperienceViewer>().Init(player);
+
+        if (characterType == CharacterType.Melee)
+        {
+            canvas.GetComponent<MeleeWindowImprovment>().Init(player);
+            canvas.GetComponent<MeleeAbilityViewer>().Init(player);
+            canvas.GetComponent<MeleeCanvasInitialization>().InitButtons(player);
+
+            Debug.Log("Melee");
+        }
+        else if (characterType == CharacterType.Range)
+        {
+            canvas.GetComponent<RangeWindowImprovment>().Init(player);
+            canvas.GetComponent<RangeAbilityViewer>().Init(player);
+            canvas.GetComponent<RangeCanvasInitialization>().InitButtons(player);
+
+            Debug.Log("Range");
+        }
 
         return canvas;
     }

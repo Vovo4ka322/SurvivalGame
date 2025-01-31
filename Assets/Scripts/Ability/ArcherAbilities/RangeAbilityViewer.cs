@@ -1,11 +1,12 @@
 using Ability.ArcherAbilities;
+using PlayerComponents;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RangeAbilityViewer : MonoBehaviour
 {
-    [SerializeField] private ArcherAbilityUser _archerAbilityUser;
+    private ArcherAbilityUser _archerAbilityUser;
 
     [Header("CooldownImages")]
     [SerializeField] private Image _firstAbility;
@@ -20,15 +21,6 @@ public class RangeAbilityViewer : MonoBehaviour
     private int _insatiableHungerImprovment = 0;
     private int _blurImprovment = 0;
 
-    private void OnEnable()//Улучшения отображаются неккоректно, переделать
-    {
-        _archerAbilityUser.MultishotUser.Used += OnMultishotChanged;
-        _archerAbilityUser.InsatiableHunger.Used += OnInsatiableHungerChanged;
-        _archerAbilityUser.MultishotUpgraded += OnMultishotUpgraded;
-        _archerAbilityUser.InsatiableHungerUpgraded += OnInsatiableHungerUpgraded;
-        _archerAbilityUser.BlurUpgraded += OnBlurUpgraded;
-    }
-
     private void OnDisable()
     {
         _archerAbilityUser.MultishotUser.Used -= OnMultishotChanged;
@@ -36,6 +28,22 @@ public class RangeAbilityViewer : MonoBehaviour
         _archerAbilityUser.MultishotUpgraded -= OnMultishotUpgraded;
         _archerAbilityUser.InsatiableHungerUpgraded -= OnInsatiableHungerUpgraded;
         _archerAbilityUser.BlurUpgraded -= OnBlurUpgraded;
+    }
+
+    public void Init(Player player)
+    {
+        _archerAbilityUser = player.GetComponentInChildren<ArcherAbilityUser>();
+
+        SubscribeToEvents();
+    }
+
+    private void SubscribeToEvents()
+    {
+        _archerAbilityUser.MultishotUser.Used += OnMultishotChanged;
+        _archerAbilityUser.InsatiableHunger.Used += OnInsatiableHungerChanged;
+        _archerAbilityUser.MultishotUpgraded += OnMultishotUpgraded;
+        _archerAbilityUser.InsatiableHungerUpgraded += OnInsatiableHungerUpgraded;
+        _archerAbilityUser.BlurUpgraded += OnBlurUpgraded;
     }
 
     private void OnMultishotChanged(float value)

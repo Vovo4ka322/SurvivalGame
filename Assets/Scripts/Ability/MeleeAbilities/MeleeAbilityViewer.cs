@@ -1,5 +1,6 @@
 using Ability.ArcherAbilities;
 using Ability.MeleeAbilities;
+using PlayerComponents;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,15 +23,6 @@ public class MeleeAbilityViewer : MonoBehaviour
     private int _borrowedTimeImprovment = 0;
     private int _bloodlustImprovment = 0;
 
-    private void OnEnable()
-    {
-        _meleeAbilityUser.BladeFury.Used += OnBladeFuryChanged;
-        _meleeAbilityUser.BorrowedTime.Used += OnBorrowedTimeChanged;
-        _meleeAbilityUser.BladeFuryUpgraded += OnBladeFuryUpgraded;
-        _meleeAbilityUser.BorrowedTimeIUpgraded += OnBorrowedTimeUpgraded;
-        _meleeAbilityUser.BloodlustIUpgraded += OnBloodlustUpgraded;
-    }
-
     private void OnDisable()
     {
         _meleeAbilityUser.BladeFury.Used -= OnBladeFuryChanged;
@@ -40,9 +32,20 @@ public class MeleeAbilityViewer : MonoBehaviour
         _meleeAbilityUser.BloodlustIUpgraded -= OnBloodlustUpgraded;
     }
 
-    public void Init(MeleeAbilityUser meleeAbilityUser)
+    public void Init(Player player)
     {
-        _meleeAbilityUser = meleeAbilityUser;
+        _meleeAbilityUser = player.GetComponentInChildren<MeleeAbilityUser>();
+
+        SubscribeToEvents();
+    }
+
+    private void SubscribeToEvents()
+    {
+        _meleeAbilityUser.BladeFury.Used += OnBladeFuryChanged;
+        _meleeAbilityUser.BorrowedTime.Used += OnBorrowedTimeChanged;
+        _meleeAbilityUser.BladeFuryUpgraded += OnBladeFuryUpgraded;
+        _meleeAbilityUser.BorrowedTimeIUpgraded += OnBorrowedTimeUpgraded;
+        _meleeAbilityUser.BloodlustIUpgraded += OnBloodlustUpgraded;
     }
 
     private void OnBladeFuryChanged(float value)
