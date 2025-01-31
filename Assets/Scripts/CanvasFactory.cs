@@ -21,16 +21,12 @@ public class CanvasFactory : ScriptableObject
             canvas.GetComponent<MeleeWindowImprovment>().Init(player);
             canvas.GetComponent<MeleeAbilityViewer>().Init(player);
             canvas.GetComponent<MeleeCanvasInitialization>().InitButtons(player);
-
-            Debug.Log("Melee");
         }
         else if (characterType == CharacterType.Range)
         {
             canvas.GetComponent<RangeWindowImprovment>().Init(player);
             canvas.GetComponent<RangeAbilityViewer>().Init(player);
             canvas.GetComponent<RangeCanvasInitialization>().InitButtons(player);
-
-            Debug.Log("Range");
         }
 
         return canvas;
