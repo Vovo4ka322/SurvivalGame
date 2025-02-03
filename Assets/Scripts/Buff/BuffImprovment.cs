@@ -31,6 +31,18 @@ public class BuffImprovment : MonoBehaviour//Исправить
 
     private Dictionary<int, BuffKeeper> _buffkeepers;
 
+    public event Action<float> HealthValueChanged;
+
+    public BuffKeeper BuffKeeperFirstLevel => _buffKeeperFirstLevel;
+
+    public BuffKeeper BuffKeeperSecondLevel => _buffKeeperSecondLevel;
+
+    public BuffKeeper BuffKeeperThirdLevel => _buffKeeperThirdLevel;
+
+    public BuffKeeper BuffKeeperFourthLevel => _buffKeeperFourthLevel;
+
+    public BuffKeeper BuffKeeperFifthLevel => _buffKeeperFifthLevel;
+
     public int MaxValue { get; private set; } = 5;
 
     public HealthBuff HealthBuff {  get; private set; }
@@ -178,6 +190,7 @@ public class BuffImprovment : MonoBehaviour//Исправить
 
         HealthBuff = _buffkeepers[level].HealthBuffScriptableObject;
         _counterForHealthBuff++;
+        HealthValueChanged?.Invoke(HealthBuff.Value);
     }
 
     private bool IsMaxValue(int value) => value == MaxValue;
