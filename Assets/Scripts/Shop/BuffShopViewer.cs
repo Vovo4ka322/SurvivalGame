@@ -74,13 +74,6 @@ public class BuffShopViewer : MonoBehaviour
             { _attackSpeedKey, _attackSpeedBuffDescription },
             { _movementSpeedKey, _movementSpeedBuffDescription }
         };
-
-        CallEventHealthBuffPurchase();
-    }
-
-    private void CallEventHealthBuffPurchase()
-    {
-        _healthBuffDescription.text = $"Стоимость - {_buffShop.HealthBuffPrice} монет. \n Изменяет количество здоровья на {_buffImprovment.HealthBuff.Value} единиц.";
     }
 
     private void OnDamageBuffClick()

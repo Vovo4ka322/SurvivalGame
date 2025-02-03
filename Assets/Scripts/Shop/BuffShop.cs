@@ -30,16 +30,11 @@ public class BuffShop : MonoBehaviour
     [SerializeField] private Button _movementSpeedBuffPurchaseButton;
     [SerializeField] private TextMeshProUGUI _movementSpeedBuffDescription;
 
-    [field: SerializeField] public int HealthBuffPrice {  get; private set; }
-
-    [field: SerializeField] public int ArmorBuffPrice { get; private set; }
-
-    [field: SerializeField] public int DamageBuffPrice { get; private set; }
-
-    [field: SerializeField] public int AttackSpeedBuffPrice { get; private set; }
-
-    [field: SerializeField] public int MovementSpeedBuffPrice { get; private set; }
-
+    [SerializeField] private int _healthBuffPrice;
+    [SerializeField] private int _armorBuffPrice;
+    [SerializeField] private int _damageBuffPrice; 
+    [SerializeField] private int _attackSpeedBuffPrice;
+    [SerializeField] private int _movementSpeedBuffPrice;
 
     private Wallet _wallet;
     private IDataProvider _dataProvider;
@@ -128,8 +123,6 @@ public class BuffShop : MonoBehaviour
             { _attackSpeedKey, _attackSpeedBuffDescription },
             { _movementSpeedKey, _movementSpeedBuffDescription }
         };
-
-        //_healthBuffDescription.text = $"Стоимость - {HealthBuffPrice} монет. \nИзменяет количество здоровья на {_buffImprovment.HealthBuff.Value} единиц.";
     }
 
     private void OnBuffPanelOpened()
@@ -147,11 +140,11 @@ public class BuffShop : MonoBehaviour
         if(_calculationFinalValue.DamageLevelImprovment != 0)
             _damageBuffCounter = _calculationFinalValue.DamageLevelImprovment;
 
-        if (IsEnough(DamageBuffPrice) && _buffImprovment.MaxValue != _damageBuffCounter)
+        if (IsEnough(_damageBuffPrice) && _buffImprovment.MaxValue != _damageBuffCounter)
         {
             _buffImprovment.InitDamageLevel(_damageBuffCounter);
             _buffImprovment.UpgradeDamage();
-            SpendMoney(DamageBuffPrice);
+            SpendMoney(_damageBuffPrice);
             _damageBuffCounter++;
             DamageUpgraded?.Invoke();
             _calculationFinalValue.InitLevelDamage(_damageBuffCounter);
@@ -165,11 +158,11 @@ public class BuffShop : MonoBehaviour
         if (_calculationFinalValue.HealthLevelImprovment != 0)
             _healthBuffCounter = _calculationFinalValue.HealthLevelImprovment;
 
-        if (IsEnough(HealthBuffPrice) && _buffImprovment.MaxValue != _healthBuffCounter)
+        if (IsEnough(_healthBuffPrice) && _buffImprovment.MaxValue != _healthBuffCounter)
         {
             _buffImprovment.InitHealthLevel(_healthBuffCounter);
             _buffImprovment.UpgradeHealth();
-            SpendMoney(HealthBuffPrice);
+            SpendMoney(_healthBuffPrice);
             _healthBuffCounter++;
             HealthUpgraded?.Invoke();
             _calculationFinalValue.InitLevelHealth(_healthBuffCounter);
@@ -183,11 +176,11 @@ public class BuffShop : MonoBehaviour
         if (_calculationFinalValue.ArmorLevelImprovment != 0)
             _armorBuffCounter = _calculationFinalValue.ArmorLevelImprovment;
 
-        if (IsEnough(ArmorBuffPrice) && _buffImprovment.MaxValue != _armorBuffCounter)
+        if (IsEnough(_armorBuffPrice) && _buffImprovment.MaxValue != _armorBuffCounter)
         {
             _buffImprovment.InitAramorLevel(_armorBuffCounter);
             _buffImprovment.UpgradeArmor();
-            SpendMoney(ArmorBuffPrice);
+            SpendMoney(_armorBuffPrice);
             _armorBuffCounter++;
             ArmorUpgraded?.Invoke();
             _calculationFinalValue.InitLevelArmor(_armorBuffCounter);
@@ -201,11 +194,11 @@ public class BuffShop : MonoBehaviour
         if (_calculationFinalValue.AttackSpeedLevelImprovment != 0)
             _attackSpeedBuffCounter = _calculationFinalValue.AttackSpeedLevelImprovment;
 
-        if (IsEnough(AttackSpeedBuffPrice) && _buffImprovment.MaxValue != _attackSpeedBuffCounter)
+        if (IsEnough(_attackSpeedBuffPrice) && _buffImprovment.MaxValue != _attackSpeedBuffCounter)
         {
             _buffImprovment.InitAttackSpeedLevel(_attackSpeedBuffCounter);
             _buffImprovment.UpgradeAttackSpeed();
-            SpendMoney(AttackSpeedBuffPrice);
+            SpendMoney(_attackSpeedBuffPrice);
             _attackSpeedBuffCounter++;
             AttackSpeedUpgraded?.Invoke();
             _calculationFinalValue.InitLevelAttackSpeed(_attackSpeedBuffCounter);
@@ -219,11 +212,11 @@ public class BuffShop : MonoBehaviour
         if (_calculationFinalValue.MovementSpeedLevelImprovment != 0)
             _movementSpeedBuffCounter = _calculationFinalValue.MovementSpeedLevelImprovment;
 
-        if (IsEnough(MovementSpeedBuffPrice) && _buffImprovment.MaxValue != _movementSpeedBuffCounter)
+        if (IsEnough(_movementSpeedBuffPrice) && _buffImprovment.MaxValue != _movementSpeedBuffCounter)
         {
             _buffImprovment.InitMovementSpeedLevel(_movementSpeedBuffCounter);
             _buffImprovment.UpgradeMovementSpeed();
-            SpendMoney(MovementSpeedBuffPrice);
+            SpendMoney(_movementSpeedBuffPrice);
             _movementSpeedBuffCounter++;
             MovementSpeedUpgraded?.Invoke();
             _calculationFinalValue.InitLevelMovementSpeed(_movementSpeedBuffCounter);
