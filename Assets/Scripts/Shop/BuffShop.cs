@@ -30,15 +30,26 @@ public class BuffShop : MonoBehaviour
     [SerializeField] private Button _movementSpeedBuffPurchaseButton;
     [SerializeField] private TextMeshProUGUI _movementSpeedBuffDescription;
 
+    [field: SerializeField] public int HealthBuffPrice {  get; private set; }
+
+    [field: SerializeField] public int ArmorBuffPrice { get; private set; }
+
+    [field: SerializeField] public int DamageBuffPrice { get; private set; }
+
+    [field: SerializeField] public int AttackSpeedBuffPrice { get; private set; }
+
+    [field: SerializeField] public int MovementSpeedBuffPrice { get; private set; }
+
+
     private Wallet _wallet;
     private IDataProvider _dataProvider;
-    private int _sumForNextPrice = 200;
+    private PlayerCharacteristicData _calculationFinalValue;
 
-    private int _healthBuffCounter = 0;
-    private int _armorBuffCounter = 0;
-    private int _damageBuffCounter = 0;
-    private int _attackSpeedBuffCounter = 0;
-    private int _movementSpeedBuffCounter = 0;
+    private int _healthBuffCounter;
+    private int _armorBuffCounter;
+    private int _damageBuffCounter;
+    private int _attackSpeedBuffCounter;
+    private int _movementSpeedBuffCounter;
 
     private int _healthKey = 0;
     private int _armorKey = 1;
@@ -54,16 +65,6 @@ public class BuffShop : MonoBehaviour
     public event Action DamageUpgraded;
     public event Action AttackSpeedUpgraded;
     public event Action MovementSpeedUpgraded;
-
-    [field: SerializeField] public int HealthBuffPrice { get; private set; }
-
-    [field: SerializeField] public int ArmorBuffPrice { get; private set; }
-
-    [field: SerializeField] public int DamageBuffPrice { get; private set; }
-
-    [field: SerializeField] public int AttackSpeedBuffPrice { get; private set; }
-
-    [field: SerializeField] public int MovementSpeedBuffPrice { get; private set; }
 
     public int MaxCount { get; private set; } = 5;
 
@@ -103,10 +104,12 @@ public class BuffShop : MonoBehaviour
         _leaverPanelButton.onClick.RemoveListener(OnBuffPanelClosed);
     }
 
-    public void Init(Wallet wallet, IDataProvider dataProvider)
+    public void Init(Wallet wallet, IDataProvider dataProvider, IPersistentData persistentData)
     {
         _wallet = wallet;
         _dataProvider = dataProvider;
+
+        _calculationFinalValue = persistentData.PlayerData.CalculationFinalValue;
 
         _purchaseButtons = new()
         {
@@ -125,6 +128,8 @@ public class BuffShop : MonoBehaviour
             { _attackSpeedKey, _attackSpeedBuffDescription },
             { _movementSpeedKey, _movementSpeedBuffDescription }
         };
+
+        //_healthBuffDescription.text = $"Стоимость - {HealthBuffPrice} монет. \nИзменяет количество здоровья на {_buffImprovment.HealthBuff.Value} единиц.";
     }
 
     private void OnBuffPanelOpened()
@@ -139,68 +144,91 @@ public class BuffShop : MonoBehaviour
 
     private void OnBuyDamageBuff()
     {
+        if(_calculationFinalValue.DamageLevelImprovment != 0)
+            _damageBuffCounter = _calculationFinalValue.DamageLevelImprovment;
+
         if (IsEnough(DamageBuffPrice) && _buffImprovment.MaxValue != _damageBuffCounter)
         {
+            _buffImprovment.InitDamageLevel(_damageBuffCounter);
             _buffImprovment.UpgradeDamage();
             SpendMoney(DamageBuffPrice);
-            DamageBuffPrice += _sumForNextPrice;
             _damageBuffCounter++;
             DamageUpgraded?.Invoke();
-            //_dataProvider.Save();
+            _calculationFinalValue.InitLevelDamage(_damageBuffCounter);
+            _calculationFinalValue.InitDamage(_buffImprovment.DamageBuff.Value);
+            _dataProvider.Save();
         }
     }
 
     private void OnBuyHealthBuff()
     {
+        if (_calculationFinalValue.HealthLevelImprovment != 0)
+            _healthBuffCounter = _calculationFinalValue.HealthLevelImprovment;
+
         if (IsEnough(HealthBuffPrice) && _buffImprovment.MaxValue != _healthBuffCounter)
         {
+            _buffImprovment.InitHealthLevel(_healthBuffCounter);
             _buffImprovment.UpgradeHealth();
             SpendMoney(HealthBuffPrice);
-            HealthBuffPrice += _sumForNextPrice;
             _healthBuffCounter++;
             HealthUpgraded?.Invoke();
+            _calculationFinalValue.InitLevelHealth(_healthBuffCounter);
+            _calculationFinalValue.InitHealth(_buffImprovment.HealthBuff.Value);
             _dataProvider.Save();
-
-            Debug.Log(_buffImprovment.HealthBuff.Value);
         }
     }
 
     private void OnBuyArmorBuff()
     {
+        if (_calculationFinalValue.ArmorLevelImprovment != 0)
+            _armorBuffCounter = _calculationFinalValue.ArmorLevelImprovment;
+
         if (IsEnough(ArmorBuffPrice) && _buffImprovment.MaxValue != _armorBuffCounter)
         {
+            _buffImprovment.InitAramorLevel(_armorBuffCounter);
             _buffImprovment.UpgradeArmor();
             SpendMoney(ArmorBuffPrice);
-            ArmorBuffPrice += _sumForNextPrice;
             _armorBuffCounter++;
             ArmorUpgraded?.Invoke();
-            //_dataProvider.Save();
+            _calculationFinalValue.InitLevelArmor(_armorBuffCounter);
+            _calculationFinalValue.InitArmor(_buffImprovment.ArmorBuff.Value);
+            _dataProvider.Save();
         }
     }
 
     private void OnBuyAttackSpeedBuff()
     {
+        if (_calculationFinalValue.AttackSpeedLevelImprovment != 0)
+            _attackSpeedBuffCounter = _calculationFinalValue.AttackSpeedLevelImprovment;
+
         if (IsEnough(AttackSpeedBuffPrice) && _buffImprovment.MaxValue != _attackSpeedBuffCounter)
         {
+            _buffImprovment.InitAttackSpeedLevel(_attackSpeedBuffCounter);
             _buffImprovment.UpgradeAttackSpeed();
             SpendMoney(AttackSpeedBuffPrice);
-            AttackSpeedBuffPrice += _sumForNextPrice;
             _attackSpeedBuffCounter++;
             AttackSpeedUpgraded?.Invoke();
-            //_dataProvider.Save();
+            _calculationFinalValue.InitLevelAttackSpeed(_attackSpeedBuffCounter);
+            _calculationFinalValue.InitAttackSpeed(_buffImprovment.AttackSpeedBuff.Value);
+            _dataProvider.Save();
         }
     }
 
     private void OnBuyMovementSpeedBuff()
     {
+        if (_calculationFinalValue.MovementSpeedLevelImprovment != 0)
+            _movementSpeedBuffCounter = _calculationFinalValue.MovementSpeedLevelImprovment;
+
         if (IsEnough(MovementSpeedBuffPrice) && _buffImprovment.MaxValue != _movementSpeedBuffCounter)
         {
+            _buffImprovment.InitMovementSpeedLevel(_movementSpeedBuffCounter);
             _buffImprovment.UpgradeMovementSpeed();
             SpendMoney(MovementSpeedBuffPrice);
-            MovementSpeedBuffPrice += _sumForNextPrice;
             _movementSpeedBuffCounter++;
             MovementSpeedUpgraded?.Invoke();
-            //_dataProvider.Save();
+            _calculationFinalValue.InitLevelMovementSpeed(_movementSpeedBuffCounter);
+            _calculationFinalValue.InitMovementSpeed(_buffImprovment.MovementSpeedBuff.Value);
+            _dataProvider.Save();
         }
     }
 

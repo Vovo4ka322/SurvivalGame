@@ -4,17 +4,21 @@ public class ShopBootstrap : MonoBehaviour
 {
     [SerializeField] private Shop _shop;
     [SerializeField] private WalletView _walletView;
+    [SerializeField] private BuffImprovmentViewer _improvmentViewer;
 
     private IDataProvider _dataProvider;
     private IPersistentData _persistentPlayerData;
 
     private Wallet _wallet;
+    private PlayerCharacteristicData _calculationFinalValue;
 
     public void Awake()
     {
         InitializeData();
 
         InitializeWallet();
+
+        InitializeImprovmentViewer();
 
         InitializeShop();
     }
@@ -34,6 +38,13 @@ public class ShopBootstrap : MonoBehaviour
         _walletView.Initialize(_wallet);
     }
 
+    private void InitializeImprovmentViewer()
+    {
+        _calculationFinalValue = _persistentPlayerData.PlayerData.CalculationFinalValue;
+
+        _improvmentViewer.Init(_calculationFinalValue);
+    }
+
     private void InitializeShop()
     {
         OpenSkinsChecker openSkinsChecker = new OpenSkinsChecker(_persistentPlayerData);
@@ -41,7 +52,7 @@ public class ShopBootstrap : MonoBehaviour
         SkinSelector skinSelector = new SkinSelector(_persistentPlayerData);
         SkinUnlocker skinUnlocker = new SkinUnlocker(_persistentPlayerData);
 
-        _shop.Initialize(_dataProvider, _wallet, openSkinsChecker, selectedSkinChecker, skinSelector, skinUnlocker);
+        _shop.Initialize(_dataProvider, _wallet, openSkinsChecker, selectedSkinChecker, skinSelector, skinUnlocker, _persistentPlayerData);
     }
 
     private void LoadDataOrInit()
