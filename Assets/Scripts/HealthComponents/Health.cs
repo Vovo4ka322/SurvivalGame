@@ -15,9 +15,7 @@ namespace HealthComponents
         public void Lose(float damage)
         {
             if(IsDead)
-            {
                 return;
-            }
         
             Value = Mathf.Clamp(Value - damage, 0, MaxValue);
             Changed?.Invoke(Value);
@@ -31,9 +29,7 @@ namespace HealthComponents
         public void Add(float value)
         {
             if(IsDead)
-            {
                 return;
-            }
         
             Value = Mathf.Clamp(Value + value, 0, MaxValue);
             Changed?.Invoke(Value);
