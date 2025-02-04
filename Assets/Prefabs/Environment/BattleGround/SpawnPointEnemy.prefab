@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1229855588047674926}
   - component: {fileID: 5948976930361127604}
   - component: {fileID: 6645291076378532225}
-  m_Layer: 0
+  - component: {fileID: 306503413611440382}
+  m_Layer: 10
   m_Name: SM_Env_RockPile_Square_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,6 +97,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &306503413611440382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742041825782149521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &743791532906447627
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +128,8 @@ GameObject:
   - component: {fileID: 5324376193646949532}
   - component: {fileID: 1515351390436922757}
   - component: {fileID: 5623097157691221979}
-  m_Layer: 0
+  - component: {fileID: 1189175892446979339}
+  m_Layer: 10
   m_Name: SM_Env_RockPile_Square_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,6 +213,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1189175892446979339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743791532906447627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &873393091694394160
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +244,8 @@ GameObject:
   - component: {fileID: 1986249069844499384}
   - component: {fileID: 5714222175565632806}
   - component: {fileID: 119421787432700733}
-  m_Layer: 0
+  - component: {fileID: 2368163033393127238}
+  m_Layer: 10
   m_Name: SM_Env_RockPile_Square_01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,6 +329,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2368163033393127238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873393091694394160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &1134965508207309102
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +360,8 @@ GameObject:
   - component: {fileID: 2062132507192436010}
   - component: {fileID: 5168517625881038542}
   - component: {fileID: 8996869331775152825}
-  m_Layer: 0
+  - component: {fileID: 6582909492100103130}
+  m_Layer: 10
   m_Name: SM_Env_Entrance_Crypt_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,6 +445,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6582909492100103130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134965508207309102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &1605177512556120152
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3247752919534563013}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnPointEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +513,8 @@ GameObject:
   - component: {fileID: 8732516315073333278}
   - component: {fileID: 5998212761978050376}
   - component: {fileID: 6640584272811017365}
-  m_Layer: 0
+  - component: {fileID: 8354390476886547441}
+  m_Layer: 10
   m_Name: SM_Env_RockPile_Square_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,6 +598,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8354390476886547441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2666049094311527329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &2913154802201365343
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +629,8 @@ GameObject:
   - component: {fileID: 9145712945035858054}
   - component: {fileID: 8287293045088011990}
   - component: {fileID: 5201898092294384289}
-  m_Layer: 0
+  - component: {fileID: 4776278152513909891}
+  m_Layer: 10
   m_Name: SM_Env_RockPile_Square_01 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,6 +714,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4776278152513909891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913154802201365343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &3309375779431412269
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +746,8 @@ GameObject:
   - component: {fileID: 7590846549482199953}
   - component: {fileID: 1453853046933951256}
   - component: {fileID: 1961927106253079787}
-  m_Layer: 0
+  - component: {fileID: 9179141252190199266}
+  m_Layer: 10
   m_Name: SM_Env_RockPile_Square_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,6 +852,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9179141252190199266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309375779431412269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &3614389226169762574
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +883,8 @@ GameObject:
   - component: {fileID: 5746406956856765732}
   - component: {fileID: 1090221718068619219}
   - component: {fileID: 7087049152009190917}
-  m_Layer: 0
+  - component: {fileID: 1388507959115680811}
+  m_Layer: 10
   m_Name: SM_Env_RockPile_Square_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -827,6 +968,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1388507959115680811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3614389226169762574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &4517085238963192548
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +999,8 @@ GameObject:
   - component: {fileID: 228274289976837154}
   - component: {fileID: 5469363958861886032}
   - component: {fileID: 4595151073046532032}
-  m_Layer: 0
+  - component: {fileID: 6479120353913397302}
+  m_Layer: 10
   m_Name: SM_Env_RockPile_Square_05 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,6 +1084,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6479120353913397302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517085238963192548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &4973730113589256720
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +1115,8 @@ GameObject:
   - component: {fileID: 3924174998511774370}
   - component: {fileID: 40290459863882911}
   - component: {fileID: 2966805394151169076}
-  m_Layer: 0
+  - component: {fileID: 524068230395775577}
+  m_Layer: 10
   m_Name: SM_Env_RockPile_Square_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,6 +1200,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &524068230395775577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4973730113589256720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &7788879530549345288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,7 +1228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4475529155027520333}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1069,7 +1269,8 @@ GameObject:
   - component: {fileID: 8310790357471323930}
   - component: {fileID: 138473763958357519}
   - component: {fileID: 5378666393785932783}
-  m_Layer: 0
+  - component: {fileID: 5987747078326293627}
+  m_Layer: 10
   m_Name: SM_Env_RockPile_Square_06 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1153,6 +1354,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5987747078326293627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8469443275977307866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
 --- !u!1 &8549139227514724017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,7 +1382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2397399356444572984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
