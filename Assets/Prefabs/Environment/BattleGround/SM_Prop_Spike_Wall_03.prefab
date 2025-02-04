@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4525433942773134}
   - component: {fileID: 33091478825383130}
   - component: {fileID: 23802807888390510}
-  - component: {fileID: -6062784997584116255}
   - component: {fileID: 8938313886743674816}
-  m_Layer: 0
+  - component: {fileID: -6062784997584116255}
+  - component: {fileID: 5042789708428941367}
+  m_Layer: 10
   m_Name: SM_Prop_Spike_Wall_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,18 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-6062784997584116255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441339372891006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &8938313886743674816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -118,3 +107,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.004004, y: 2.9446247, z: 0.5248394}
   m_Center: {x: 5.003395, y: 1.4427925, z: 0.000000014901161}
+--- !u!114 &-6062784997584116255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441339372891006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5042789708428941367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441339372891006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 2
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1

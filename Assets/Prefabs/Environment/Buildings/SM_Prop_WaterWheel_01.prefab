@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4180250140441279266, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4180250140441279266, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7366720450262467374, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7366720450262467374, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -102,6 +102,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7171598933427809005}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7476355985463195614}
     - targetCorrespondingSourceObject: {fileID: 7366720450262467374, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8071621397792190361}
@@ -170,3 +173,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7476355985463195614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6457015051466870481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
