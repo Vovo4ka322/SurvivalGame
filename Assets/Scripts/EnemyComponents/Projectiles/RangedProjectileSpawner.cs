@@ -2,6 +2,8 @@ namespace EnemyComponents.Projectiles
 {
     public class RangedProjectileSpawner : BaseProjectileSpawner
     {
+        private BaseProjectile _currentProjectile;
+        
         public void SpawnMagic()
         {
             if(Player == null)
@@ -9,14 +11,14 @@ namespace EnemyComponents.Projectiles
                 return;
             }
             
-            BaseProjectile projectile = Create();
+            _currentProjectile = Create();
 
-            if(projectile == null)
+            if(_currentProjectile == null)
             {
                 return;
             }
             
-            projectile.Launch(Player.transform.position, ProjectilePool);
+            _currentProjectile.Launch(Player.transform.position, ProjectilePool);
         }
     }
 }

@@ -23,5 +23,10 @@ namespace EnemyComponents.Projectiles
                 projectile.transform.Translate(_targetDirection * deltaSpeed, Space.World);
             }
         }
+        
+        public void Stop()
+        {
+            _targetDirection = Vector3.zero;
+        }
     }
 }

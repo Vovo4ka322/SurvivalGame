@@ -4937,9 +4937,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52c6b517869a483580057be01767ffef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 198372953003977786}
+  _projectileEffectPrefab: {fileID: 198372953003977786}
+  _explosionPrefab: {fileID: 1004229041087787910, guid: e6eb729988ef2f349a24b0b4ae8fea47, type: 3}
   _speed: 10
   _lifetime: 5
+  _damage: 5
 --- !u!1 &1352871303294362
 GameObject:
   m_ObjectHideFlags: 0

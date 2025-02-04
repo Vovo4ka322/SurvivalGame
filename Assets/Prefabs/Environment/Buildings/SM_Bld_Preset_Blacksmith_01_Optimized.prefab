@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 23690450219553976}
   - component: {fileID: 2752979993169770983}
   - component: {fileID: -8028526910547628713}
-  m_Layer: 0
+  - component: {fileID: 4138163269741009111}
+  m_Layer: 10
   m_Name: SM_Bld_Preset_Blacksmith_01_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,3 +119,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4138163269741009111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134997539092316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1073741824
+  dynamic: 1
+  solid: 0
+  geometrySource: 1
+  includeInScan: 0
+  surfaceID: 1
+  mode: 1
