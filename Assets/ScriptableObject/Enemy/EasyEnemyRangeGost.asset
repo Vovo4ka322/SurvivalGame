@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df297622e307fc54393c3c1944788ee2, type: 3}
   m_Name: EasyEnemyRangeGost
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: -6408416753206661803, guid: b0297681c8568974da8dc86f4cdc853c, type: 3}
+  _enemyPrefab: {fileID: 1012465906298291168, guid: c3e685015c6b04f8abaaf3708f00a926, type: 3}
   _enemyType: 0
   _baseAttackType:
     rid: 4171440971992006658

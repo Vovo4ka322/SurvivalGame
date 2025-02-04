@@ -47,6 +47,7 @@ namespace EnemyComponents.Projectiles
                 return null;
             }
             
+            projectile.SetPoolManager(_poolManager);
             projectile.transform.position = _projectileSpawnPoint.position;
             projectile.transform.rotation = _projectileSpawnPoint.rotation;
             projectile.gameObject.SetActive(true);
