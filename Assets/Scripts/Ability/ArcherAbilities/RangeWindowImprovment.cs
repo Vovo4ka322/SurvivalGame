@@ -1,37 +1,44 @@
 using Ability.ArcherAbilities;
-using System.Collections;
-using System.Collections.Generic;
+using PlayerComponents;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RangeWindowImprovment : MonoBehaviour
 {
     [SerializeField] private Image _image;
-    [SerializeField] private ArcherAbilityUser _user;
 
-    private void OnEnable()
-    {
-        _user.LevelChanged += PressAbilityUpgrade;
-        _user.MultishotUpgraded += CloseAbilityPanel;
-        _user.InsatiableHungerUpgraded += CloseAbilityPanel;
-        _user.BlurUpgraded += CloseAbilityPanel;
-    }
+    private ArcherAbilityUser _archerAbilityUser;
 
     private void OnDisable()
     {
-        _user.LevelChanged -= PressAbilityUpgrade;
-        _user.MultishotUpgraded -= CloseAbilityPanel;
-        _user.InsatiableHungerUpgraded -= CloseAbilityPanel;
-        _user.BlurUpgraded -= CloseAbilityPanel;
+        _archerAbilityUser.LevelChanged -= PressAbilityUpgrade;
+        _archerAbilityUser.MultishotUpgraded -= CloseAbilityPanel;
+        _archerAbilityUser.InsatiableHungerUpgraded -= CloseAbilityPanel;
+        _archerAbilityUser.BlurUpgraded -= CloseAbilityPanel;
     }
 
-    public void PressAbilityUpgrade()
+    public void Init(Player player)
+    {
+        _archerAbilityUser = player.GetComponentInChildren<ArcherAbilityUser>();
+
+        SubscribeToEvents();
+    }
+
+    private void SubscribeToEvents()
+    {
+        _archerAbilityUser.LevelChanged += PressAbilityUpgrade;
+        _archerAbilityUser.MultishotUpgraded += CloseAbilityPanel;
+        _archerAbilityUser.InsatiableHungerUpgraded += CloseAbilityPanel;
+        _archerAbilityUser.BlurUpgraded += CloseAbilityPanel;
+    }
+
+    private void PressAbilityUpgrade()
     {
         Time.timeScale = 0f;
         _image.gameObject.SetActive(true);
     }
 
-    public void CloseAbilityPanel()
+    private void CloseAbilityPanel()
     {
         Time.timeScale = 1f;
         _image.gameObject.SetActive(false);

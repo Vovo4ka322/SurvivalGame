@@ -1,5 +1,6 @@
 using Ability.ArcherAbilities;
 using Ability.MeleeAbilities;
+using PlayerComponents;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,6 @@ using UnityEngine.UI;
 
 public class MeleeAbilityViewer : MonoBehaviour
 {
-    [SerializeField] private MeleeAbilityUser _meleeAbilityUser;
-
     [Header("Cooldown Images")]
     [SerializeField] private Image _firstAbility;
     [SerializeField] private Image _secondAbility;
@@ -18,18 +17,11 @@ public class MeleeAbilityViewer : MonoBehaviour
     [SerializeField] private List<Image> _secondAbilityImprovements;
     [SerializeField] private List<Image> _thirdAbilityImprovements;
 
+    private MeleeAbilityUser _meleeAbilityUser;
+
     private int _bladeFuryImprovment = 0;
     private int _borrowedTimeImprovment = 0;
     private int _bloodlustImprovment = 0;
-
-    private void OnEnable()
-    {
-        _meleeAbilityUser.BladeFury.Used += OnBladeFuryChanged;
-        _meleeAbilityUser.BorrowedTime.Used += OnBorrowedTimeChanged;
-        _meleeAbilityUser.BladeFuryUpgraded += OnBladeFuryUpgraded;
-        _meleeAbilityUser.BorrowedTimeIUpgraded += OnBorrowedTimeUpgraded;
-        _meleeAbilityUser.BloodlustIUpgraded += OnBloodlustUpgraded;
-    }
 
     private void OnDisable()
     {
@@ -38,6 +30,22 @@ public class MeleeAbilityViewer : MonoBehaviour
         _meleeAbilityUser.BladeFuryUpgraded -= OnBladeFuryUpgraded;
         _meleeAbilityUser.BorrowedTimeIUpgraded -= OnBorrowedTimeUpgraded;
         _meleeAbilityUser.BloodlustIUpgraded -= OnBloodlustUpgraded;
+    }
+
+    public void Init(Player player)
+    {
+        _meleeAbilityUser = player.GetComponentInChildren<MeleeAbilityUser>();
+
+        SubscribeToEvents();
+    }
+
+    private void SubscribeToEvents()
+    {
+        _meleeAbilityUser.BladeFury.Used += OnBladeFuryChanged;
+        _meleeAbilityUser.BorrowedTime.Used += OnBorrowedTimeChanged;
+        _meleeAbilityUser.BladeFuryUpgraded += OnBladeFuryUpgraded;
+        _meleeAbilityUser.BorrowedTimeIUpgraded += OnBorrowedTimeUpgraded;
+        _meleeAbilityUser.BloodlustIUpgraded += OnBloodlustUpgraded;
     }
 
     private void OnBladeFuryChanged(float value)

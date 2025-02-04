@@ -61,7 +61,7 @@ public class Shop : MonoBehaviour
         _openSkinsChecker.MeleeCharacterOpened -= ShowMeleeDescription;
     }
 
-    public void Initialize(IDataProvider dataProvider, Wallet wallet, OpenSkinsChecker openSkinsChecker, SelectedSkinChecker selectedSkinChecker, SkinSelector skinSelector, SkinUnlocker skinUnlocker)
+    public void Initialize(IDataProvider dataProvider, Wallet wallet, OpenSkinsChecker openSkinsChecker, SelectedSkinChecker selectedSkinChecker, SkinSelector skinSelector, SkinUnlocker skinUnlocker, IPersistentData persistentData)
     {
         _wallet = wallet;
         _openSkinsChecker = openSkinsChecker;
@@ -75,7 +75,7 @@ public class Shop : MonoBehaviour
 
         _shopPanel.ItemViewClicked += OnItemViewClicked;
 
-        _buffShop.Init(_wallet, _dataProvider);
+        _buffShop.Init(_wallet, _dataProvider, persistentData);
 
         OnCharacterSkinsButtonClick();
     }

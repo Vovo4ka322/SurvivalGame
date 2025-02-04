@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataLocalProvider : IDataProvider
 {
-    private const string FileName = "PlayerSave2";
+    private const string FileName = "PlayerSave10";
     private const string SaveFileExtension = ".json";
 
     private IPersistentData _persistentData;
@@ -20,6 +20,7 @@ public class DataLocalProvider : IDataProvider
             return false;
 
         _persistentData.PlayerData = JsonConvert.DeserializeObject<PlayerData>(File.ReadAllText(FullPath));
+
         return true;
     }
 
