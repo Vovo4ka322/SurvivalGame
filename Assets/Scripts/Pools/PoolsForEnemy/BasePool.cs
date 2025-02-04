@@ -52,13 +52,14 @@ namespace Pools
                 return;
             }
             
+            instance.transform.SetParent(_container, false);
             instance.gameObject.SetActive(false);
             
             if(_collectionCheck && _pool.Contains(instance))
             {
                 return;
             }
-        
+            
             _pool.Push(instance);
         }
         

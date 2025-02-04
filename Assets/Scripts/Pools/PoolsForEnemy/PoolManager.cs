@@ -9,6 +9,7 @@ namespace Pools
     public class PoolManager : MonoBehaviour
     {
         [SerializeField] private CoroutineRunner _coroutineRunner;
+        [SerializeField] private EnemyFactory _enemyFactory;
         
         [Header("Pool Settings")]
         [SerializeField] private PoolSettings _defaultPoolSettings;
@@ -18,12 +19,12 @@ namespace Pools
         [SerializeField] private List<BaseProjectile> _projectilePrefabs;
         [SerializeField] private List<ParticleSystem> _effectPrefabs;
         
-        private EnemyFactory _enemyFactory;
         private EffectsPool _effectsPool;
         private Dictionary<BaseProjectile, ProjectilePool<BaseProjectile>> _projectilePools;
 
         public EnemyFactory EnemyFactory => _enemyFactory;
         public EffectsPool EffectsPool => _effectsPool;
+        public CoroutineRunner CoroutineRunner => _coroutineRunner;
 
         private void Awake()
         {
@@ -53,7 +54,6 @@ namespace Pools
 
         private void InitializeEnemyFactory()
         {
-            _enemyFactory = gameObject.AddComponent<EnemyFactory>();
             _enemyFactory.Initialize(_enemyDatas, _defaultPoolSettings, _effectsPool, transform, this, _coroutineRunner);
         }
 

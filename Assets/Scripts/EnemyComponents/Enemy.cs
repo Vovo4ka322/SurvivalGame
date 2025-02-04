@@ -60,7 +60,7 @@ namespace EnemyComponents
         {
             if(Health != null)
             {
-                Health.Death += Death;
+                Health.Death += OnDeath;
             }
             
             Enabled?.Invoke(this);
@@ -70,7 +70,7 @@ namespace EnemyComponents
         {
             if(Health != null)
             {
-                Health.Death -= Death;
+                Health.Death -= OnDeath;
             }
             
             Dead?.Invoke(this);
@@ -132,7 +132,7 @@ namespace EnemyComponents
             _enemyCollider.HandleCollision(other);
         }
 
-        private void Death()
+        private void OnDeath()
         {
             AnimationAnimationController.Death();
             Dead?.Invoke(this);
