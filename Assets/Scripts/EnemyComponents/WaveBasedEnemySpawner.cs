@@ -31,9 +31,9 @@ namespace EnemyComponents
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Transform _bossSpawnPoint;
         [SerializeField] private Collider _spawnZone;
-        [SerializeField] private Player _player;
         [SerializeField] private PoolManager _poolManager;
         
+        private Player _player;
         private Coroutine _easyWaveCoroutine;
         private Coroutine _mediumWaveCoroutine;
         private Coroutine _hardWaveCoroutine;
@@ -41,12 +41,7 @@ namespace EnemyComponents
         private ICoroutineRunner _coroutineRunner;
         
         private bool _playerInZone;
-        
-        private void Awake()
-        {
-            _coroutineRunner = _poolManager.GetComponent<ICoroutineRunner>();
-        }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if(other.TryGetComponent(out Player _) && !_playerInZone)
@@ -80,6 +75,13 @@ namespace EnemyComponents
                 _hardWaveCoroutine = null;
                 _bossCoroutine = null;
             }
+        }
+
+
+        public void Init(Player player)
+        {
+            _player = player;
+            _coroutineRunner = _poolManager.GetComponent<ICoroutineRunner>();
         }
         
         private IEnumerator CreateWave(EnemyData[] enemyDatas, float startDelay, float waveDuration)
