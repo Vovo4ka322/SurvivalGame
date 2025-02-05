@@ -12,7 +12,9 @@ using Pools;
 
 namespace EnemyComponents
 {
-    [RequireComponent(typeof(Animator), typeof(Collider), typeof(EnemyEffects))]
+    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(EnemyEffects))]
     public class Enemy : Character
     {
         [SerializeField] private EnemyData _data;
@@ -87,7 +89,8 @@ namespace EnemyComponents
             _data = enemyData;
             
             _enemyCollider = new EnemyCollider(this, _player);
-            _movement = new EnemyMovement(transform, _data.MoveSpeed, AnimationAnimationController, _data.RotationSpeed);
+            _movement = new EnemyMovement(transform, _data.MoveSpeed, AnimationAnimationController);
+            //_movement = new EnemyAStarMovement(transform, _data.MoveSpeed, _data.RotationSpeed, AnimationAnimationController);
             _rotation = new EnemyRotation(transform, _data.RotationSpeed);
             _enemyEffects.Initialize(_data, pool, coroutineRunner);
             
@@ -182,6 +185,25 @@ namespace EnemyComponents
 
             float distance = Vector3.Distance(transform.position, _player.transform.position);
             _attackBehavior.HandleAttack(distance);
+            
+            /*if (!_spawnCompleted || _player == null)
+            {
+                return;
+            }
+            
+            float distance = Vector3.Distance(transform.position, _player.transform.position);
+            
+            if (AnimationAnimationController.IsAttacking || distance <= _data.AttackRange * 0.9f)
+            {
+                _movement.StopMove();
+                _rotation.RotateTowards(_player.transform.position);
+            }
+            else
+            {
+                _movement.Move(_player.transform.position);
+            }
+        
+            _attackBehavior.HandleAttack(distance);*/
         }
 
         private void OnDrawGizmosSelected()
