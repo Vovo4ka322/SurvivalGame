@@ -3361,6 +3361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd268bc35c2abcd46b4af542840766bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Health>k__BackingField: {fileID: 0}
   _data: {fileID: 11400000, guid: 66fe777a9c42db8489800d8c69715a9d, type: 2}
 --- !u!114 &7001653542990124429
 MonoBehaviour:
@@ -3386,10 +3387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbb649e71e844a3ac75989a1eba5648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleEffectsPoolSettings:
-    _collectionCheck: 0
-    _initialCapacity: 10
-    _maxPoolSize: 20
 --- !u!1 &8242836457588732605
 GameObject:
   m_ObjectHideFlags: 0
