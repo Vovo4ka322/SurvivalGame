@@ -1,4 +1,5 @@
 using Cinemachine;
+using EnemyComponents;
 using PlayerComponents;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class GameplayTestBootstrap : MonoBehaviour
     [SerializeField] private GeneralPlayerFactory _generalPlayerFactory;
     [SerializeField] private CanvasFactory _canvasFactory;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
+    [SerializeField] private WaveBasedEnemySpawner _enemySpawner;
 
     private Player _player;
     private Canvas _canvas;
@@ -21,6 +23,8 @@ public class GameplayTestBootstrap : MonoBehaviour
         InitializeData();
 
         DoTestSpawn();
+
+        _enemySpawner.Init(_player);
     }
 
     private void DoTestSpawn()
