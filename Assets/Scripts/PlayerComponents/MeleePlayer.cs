@@ -7,7 +7,6 @@ using Weapons.MeleeWeapon;
 
 public class MeleePlayer : Player, IActivable
 {
-    [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private Sword _sword;
     [SerializeField] private AnimatorState _animatorState;
 
@@ -39,7 +38,7 @@ public class MeleePlayer : Player, IActivable
 
     public void UpgradeCharacteristikByBloodlust(Bloodlust bloodlust)
     {
-        _playerMovement.ChangeMoveSpeed(bloodlust.MovementSpeed);
+        PlayerMovement.ChangeMoveSpeed(bloodlust.MovementSpeed);
         AttackSpeed += bloodlust.AttackSpeed;
 
         _animatorState.SetFloatValue(_animatorState.Speed, AttackSpeed);

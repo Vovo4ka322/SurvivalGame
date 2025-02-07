@@ -35223,15 +35223,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494556418215564}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5785476, y: 0.63248575, z: -0.35251346, w: -0.37547135}
-  m_LocalPosition: {x: -5.8011727, y: -4.1914477, z: -7.447154}
+  m_LocalRotation: {x: -0.27567008, y: 0.7195479, z: -0.63733906, w: 0.007469639}
+  m_LocalPosition: {x: -11.6, y: -3.8, z: -20.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4170255737818738}
   - {fileID: 4104729697580350}
   m_Father: {fileID: 4144006004637464}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 114.06601, y: -62.628998, z: 95.01}
 --- !u!1 &1497941553490318
 GameObject:
   m_ObjectHideFlags: 0
@@ -52184,15 +52184,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752025966273578}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.63248575, y: 0.5785476, z: 0.37547135, w: -0.35251346}
-  m_LocalPosition: {x: -5.801534, y: -4.191418, z: 7.44715}
+  m_LocalRotation: {x: 0.7129042, y: 0.22475591, z: -0.062357396, w: -0.661335}
+  m_LocalPosition: {x: -11.6, y: -3.7, z: 21.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4980379805817710}
   - {fileID: 4633099301148690}
   m_Father: {fileID: 4144006004637464}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -113.808, y: 73.078, z: -86.55701}
 --- !u!1 &1753869943905188
 GameObject:
   m_ObjectHideFlags: 0
@@ -69302,13 +69302,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4122615271389566279}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5144657, y: -0.39986798, z: 0.41527712, w: 0.6348036}
-  m_LocalPosition: {x: -8.1, y: -2.7, z: 0.6}
+  m_LocalRotation: {x: -0.4619716, y: -0.45950973, z: 0.48945254, w: 0.5795422}
+  m_LocalPosition: {x: -13, y: -1.6, z: 0.6}
   m_LocalScale: {x: 100, y: 100.00003, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4605247587618390}
-  m_LocalEulerAnglesHint: {x: -18.727, y: -80.834, z: 82.37}
+  m_LocalEulerAnglesHint: {x: -4.913, y: -81.291, z: 84.584}
 --- !u!33 &4127805255177898069
 MeshFilter:
   m_ObjectHideFlags: 0

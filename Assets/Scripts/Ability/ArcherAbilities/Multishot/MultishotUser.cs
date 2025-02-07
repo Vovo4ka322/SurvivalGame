@@ -29,7 +29,6 @@ namespace Ability.ArcherAbilities.Multishot
 
         public IEnumerator UseAbility()
         {
-            //Debug.Log(_multishotScriptableObject.CooldownTime + " Cooldown");
             float duration = 0;
 
             if (Time.time >= _lastUsedTimer + _multishotScriptableObject.CooldownTime || _canUseFirstTime)
@@ -48,10 +47,6 @@ namespace Ability.ArcherAbilities.Multishot
                     duration += Time.deltaTime;
                     _lastUsedTimer = Time.time;
                     _canUseFirstTime = false;
-                    //CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;
-                    //Used?.Invoke(CooldownTime);
-                    //Debug.Log((_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time) + " Cooldown");
-
 
                     yield return null;
                 }

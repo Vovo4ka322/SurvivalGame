@@ -25,7 +25,8 @@ namespace Weapons.RangedWeapon
 
         public void StartShoot()
         {
-            _arrowCreatorCoroutine = StartCoroutine(Shoot());
+            Shoot2();
+            //_arrowCreatorCoroutine = StartCoroutine(Shoot());
         }
 
         private IEnumerator Shoot()
@@ -44,7 +45,20 @@ namespace Weapons.RangedWeapon
                 _arrow = arrow;
                 _arrow.Touched += OnTouched;
             }
+        }
 
+        public void Shoot2()
+        {
+            if (IsActiveState == false)
+            {
+                if (_arrow != null)
+                    _arrow.Touched -= OnTouched;
+
+                Arrow arrow = _arrowSpawner.Spawn(transform, Quaternion.identity, _bowData.ArrowFlightSpeed, _bowData.AttackRadius);
+                arrow.StartFly(transform.forward, transform.position);
+                _arrow = arrow;
+                _arrow.Touched += OnTouched;
+            }
         }
 
         public void OnTouched()

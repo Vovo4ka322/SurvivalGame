@@ -43406,8 +43406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controllerAnimations: {fileID: 6122662214143506408}
   _controller: {fileID: -3785646820089685502}
-  _turnSpeed: 5
-  _moveSpeed: 5
+  _turnSpeed: 10
 --- !u!114 &8911867772302185996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43429,6 +43428,7 @@ MonoBehaviour:
   _level:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
   <CharacterType>k__BackingField: 1
+  <PlayerMovement>k__BackingField: {fileID: 8051973692745619179}
   <GeneralHealth>k__BackingField: 0
   <GeneralArmor>k__BackingField: 0
   <GeneralDamage>k__BackingField: 0

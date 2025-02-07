@@ -8,10 +8,8 @@ namespace PlayerComponents.Controller
         [SerializeField] private ControllerAnimations _controllerAnimations;
         [SerializeField] private PlayerController _controller;
         [SerializeField] private float _turnSpeed;
-        [SerializeField] private float _moveSpeed;
 
-        public float MoveSpeed => _moveSpeed;
-        
+        private float _moveSpeed;
         private Camera _camera;
         private Vector3 _moveDirection;
 
@@ -24,6 +22,11 @@ namespace PlayerComponents.Controller
         {
             HandleMovement();
             HandleRotation();
+        }
+
+        public void Init(float movementSpeed)
+        {
+            _moveSpeed = movementSpeed;
         }
 
         public void ChangeMoveSpeed(float amount)
@@ -55,7 +58,7 @@ namespace PlayerComponents.Controller
 
         private void HandleRotation()
         {
-            Ray ray = _camera.ScreenPointToRay(_controller.Rotation);
+            Ray ray = _camera.ScreenPointToRay(_controller.Rotation);            
             Plane plane = new Plane(Vector3.up, Vector3.zero);
 
             if (plane.Raycast(ray, out float rayDistance))

@@ -1410,8 +1410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controllerAnimations: {fileID: 7892667571848754847}
   _controller: {fileID: 2078077444473133153}
-  _turnSpeed: 8
-  _moveSpeed: 10
+  _turnSpeed: 10
 --- !u!114 &3564160453716166515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1477,12 +1476,12 @@ MonoBehaviour:
   _level:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
   <CharacterType>k__BackingField: 0
+  <PlayerMovement>k__BackingField: {fileID: 7251575310826222448}
   <GeneralHealth>k__BackingField: 0
   <GeneralArmor>k__BackingField: 0
   <GeneralDamage>k__BackingField: 0
   <GeneralAttackSpeed>k__BackingField: 0
   <GeneralMovementSpeed>k__BackingField: 0
-  _playerMovement: {fileID: 7251575310826222448}
   _sword: {fileID: 801207087793865037}
   _animatorState: {fileID: 8722816938695530582}
 --- !u!114 &2078077444473133153

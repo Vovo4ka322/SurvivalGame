@@ -17,6 +17,8 @@ public class RangePlayer : Player, IVampirismable, IEvasionable
 
     public bool IsWorking { get; private set; }
 
+    public Bow Bow => _bow;
+
     private void OnEnable()
     {
         _bow.ArrowTouched += OnHealthRestored;
@@ -45,6 +47,12 @@ public class RangePlayer : Player, IVampirismable, IEvasionable
                 Destroy(gameObject);
             }
         }
+    }
+
+
+    public void Shoot()
+    {
+        _bow.StartShoot();
     }
 
     public float SetEvasion(Blur blur) => _evasionChance = blur.Evasion;
