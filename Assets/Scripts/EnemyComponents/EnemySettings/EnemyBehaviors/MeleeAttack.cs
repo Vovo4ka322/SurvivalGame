@@ -15,11 +15,11 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
         {
             if (distance > _enemy.Data.AttackRange)
             {
-                _enemy.PlayerNavigator.MoveTowardsPlayer();
+                _enemy.Movement.CanMove(true);
             }
             else
             {
-                _enemy.Movement.StopMove();
+                _enemy.Movement.CanMove(false);
                 _enemy.EnemyAttack.TryAttack();
             }
         }

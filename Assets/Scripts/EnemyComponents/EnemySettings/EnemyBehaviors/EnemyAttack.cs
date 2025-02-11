@@ -97,28 +97,31 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
         
         private int GetAttackVariant()
         {
-            if (_attackVariants == 2)
+            if (_attackVariants <= 1)
             {
-                _lastAttackVariant = (_lastAttackVariant == 1) ? 2 : 1;
+                _lastAttackVariant = 1;
+                
+                return 1;
+            }
+            
+            if (_lastAttackVariant < 1 || _lastAttackVariant > _attackVariants)
+            {
+                _lastAttackVariant = Random.Range(1, _attackVariants + 1);
                 
                 return _lastAttackVariant;
             }
-            else if (_attackVariants > 2)
+            
+            int randomIndex = Random.Range(0, _attackVariants - 1);
+            int newVariant = randomIndex + 1;
+            
+            if (newVariant >= _lastAttackVariant)
             {
-                int variant;
-                
-                do
-                {
-                    variant = Random.Range(1, _attackVariants + 1);
-                } 
-                while(variant == _lastAttackVariant);
-                
-                _lastAttackVariant = variant;
-                
-                return variant;
+                newVariant++;
             }
             
-            return 1;
+            _lastAttackVariant = newVariant;
+            
+            return newVariant;
         }
     }
 }

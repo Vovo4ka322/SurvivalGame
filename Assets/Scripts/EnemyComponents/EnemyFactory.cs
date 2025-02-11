@@ -50,7 +50,7 @@ namespace EnemyComponents
             
             if (!_enemyPools.TryGetValue(enemyData, out var pool))
             {
-                pool = new EnemyPool(enemyData.EnemyPrefab, _poolSettings, container: null);
+                pool = new EnemyPool(enemyData.EnemyPrefab, _poolSettings, _container);
                 _enemyPools.Add(enemyData, pool);
             }
             
@@ -64,7 +64,6 @@ namespace EnemyComponents
             enemyInstance.transform.position = position;
             enemyInstance.transform.rotation = rotation;
             enemyInstance.InitializeComponents(player, enemyData, _effectsPool, _poolManager, _coroutineRunner);
-            
             enemyInstance.Enabled += OnEnemyEnabled;
             enemyInstance.Dead += OnEnemyDisabled;
         }

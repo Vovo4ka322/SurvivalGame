@@ -1,8 +1,8 @@
 using System.Collections.Generic;
+using UnityEngine;
 using EnemyComponents;
 using EnemyComponents.EnemySettings;
 using EnemyComponents.Projectiles;
-using UnityEngine;
 
 namespace Pools
 {

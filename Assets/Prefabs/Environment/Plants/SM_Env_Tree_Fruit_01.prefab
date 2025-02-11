@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 3831198495985503783}
   - component: {fileID: 8595585094576364543}
   - component: {fileID: 6962542459512288726}
+  - component: {fileID: 3875889042694175570}
   m_Layer: 10
   m_Name: SM_Env_Tree_Fruit_01_LOD0
   m_TagString: Untagged
@@ -193,3 +194,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3875889042694175570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2657905270868901799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

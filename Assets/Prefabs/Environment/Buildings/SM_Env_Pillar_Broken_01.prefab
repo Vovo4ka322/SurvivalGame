@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2382310}
   - component: {fileID: 673415482660515799}
   - component: {fileID: -3423159618775808860}
-  - component: {fileID: -278134651110300888}
   m_Layer: 10
   m_Name: SM_Env_Pillar_Broken_01
   m_TagString: Untagged
@@ -119,22 +118,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-278134651110300888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1073741824
-  dynamic: 1
-  solid: 0
-  geometrySource: 1
-  includeInScan: 0
-  surfaceID: 1
-  mode: 1

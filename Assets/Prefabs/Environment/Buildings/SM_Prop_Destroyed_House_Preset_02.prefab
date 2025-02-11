@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 23056592649061588}
   - component: {fileID: 9156143474649062359}
   - component: {fileID: 3942462409556322796}
-  - component: {fileID: -6197100356359134921}
   m_Layer: 10
   m_Name: SM_Prop_Destroyed_House_Preset_02
   m_TagString: Untagged
@@ -119,22 +118,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-6197100356359134921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700303635221434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1073741824
-  dynamic: 1
-  solid: 0
-  geometrySource: 1
-  includeInScan: 0
-  surfaceID: 1
-  mode: 1

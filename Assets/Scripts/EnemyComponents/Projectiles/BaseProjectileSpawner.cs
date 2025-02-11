@@ -50,6 +50,7 @@ namespace EnemyComponents.Projectiles
             projectile.SetPoolManager(_poolManager);
             projectile.transform.position = _projectileSpawnPoint.position;
             projectile.transform.rotation = _projectileSpawnPoint.rotation;
+            projectile.transform.localScale = _projectileSpawnPoint.localScale;
             projectile.gameObject.SetActive(true);
             
             return projectile;
