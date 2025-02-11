@@ -3119,6 +3119,7 @@ Transform:
   - {fileID: 4215652371030262}
   - {fileID: 9193520323196252369}
   - {fileID: 2883657770953529763}
+  - {fileID: 3379362817362937308}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &95708184720012434
@@ -4977,14 +4978,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4122615271389566279}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5144657, y: -0.39986798, z: 0.41527712, w: 0.6348036}
+  m_LocalRotation: {x: -0.46019873, y: -0.50492936, z: 0.48395, w: 0.54686}
   m_LocalPosition: {x: -8.1, y: -2.7, z: 0.6}
   m_LocalScale: {x: 100, y: 100.00003, z: 100}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3379362817362937308}
+  m_Children: []
   m_Father: {fileID: 4605247587618390}
-  m_LocalEulerAnglesHint: {x: -18.727, y: -80.834, z: 82.37}
+  m_LocalEulerAnglesHint: {x: -0.837, y: -86.185, z: 83.798}
 --- !u!33 &4127805255177898069
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5072,6 +5072,7 @@ MonoBehaviour:
   <WeaponData>k__BackingField: {fileID: 11400000, guid: 1f9129e463406ae42ba136861b885994, type: 2}
   _arrowSpawner: {fileID: 1770254185345992599}
   _bowData: {fileID: 11400000, guid: 1f9129e463406ae42ba136861b885994, type: 2}
+  <StartPointToFly>k__BackingField: {fileID: 3379362817362937308}
 --- !u!1 &8410195475089030610
 GameObject:
   m_ObjectHideFlags: 0
@@ -5099,11 +5100,11 @@ Transform:
   m_GameObject: {fileID: 8410195475089030610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.094, y: 1.366, z: 1.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4116658008509581283}
+  m_Father: {fileID: 4564317467790780}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1770254185345992599
 MonoBehaviour:

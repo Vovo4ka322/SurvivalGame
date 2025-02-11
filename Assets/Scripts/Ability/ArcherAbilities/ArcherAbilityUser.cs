@@ -9,7 +9,7 @@ namespace Ability.ArcherAbilities
 {
     public class ArcherAbilityUser : MonoBehaviour, IAbilityUser
     {
-        [SerializeField] private Player _player;
+        [SerializeField] private RangePlayer _player;
         [SerializeField] private Bow _bow;
         [SerializeField] private MultishotUser _multishot;
         [SerializeField] private InsatiableHungerUser _insatiableHunger;
@@ -108,7 +108,7 @@ namespace Ability.ArcherAbilities
 
         public void UseSecondAbility()
         {
-            //StartCoroutine(_insatiableHunger.UseAbility(_player));
+            StartCoroutine(_insatiableHunger.UseAbility(_player));
         }
 
         private bool IsMaxValue(int value) => value == MaxValue;
@@ -140,7 +140,7 @@ namespace Ability.ArcherAbilities
             if(IsMaxValue(_counterForBlur))
                 return;
 
-            //_player.SetEvasion(_abilitiesDatas[level].Blur);
+            _player.SetEvasion(_abilitiesDatas[level].Blur);
             _counterForBlur++;
             BlurUpgraded?.Invoke();
         }

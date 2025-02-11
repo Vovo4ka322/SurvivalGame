@@ -16,6 +16,9 @@ namespace Pools
                 _objectStorage.Add(@object);
                 @object.gameObject.SetActive(false);
             }
+
+            @object.transform.position = Vector3.zero;
+            @object.transform.rotation = Quaternion.identity;
         }
 
         public T Get(Transform spawnTransform, Quaternion spawnRotation)
@@ -27,6 +30,7 @@ namespace Pools
 
                 firstElement.transform.position = spawnTransform.position;
                 firstElement.transform.rotation = spawnRotation;
+
                 return firstElement;
             }
 

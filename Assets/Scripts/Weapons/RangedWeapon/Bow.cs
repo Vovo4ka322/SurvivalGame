@@ -14,6 +14,8 @@ namespace Weapons.RangedWeapon
 
         public event Action ArrowTouched;
 
+        [field: SerializeField] public Transform StartPointToFly {  get; private set; }
+
         public BowData BowData => _bowData;
 
         public bool IsActiveState { get; private set; }
@@ -25,37 +27,18 @@ namespace Weapons.RangedWeapon
 
         public void StartShoot()
         {
-            Shoot2();
-            //_arrowCreatorCoroutine = StartCoroutine(Shoot());
+            Shoot();
         }
 
-        private IEnumerator Shoot()
-        {
-            WaitForSeconds timeToSpawn = new(_bowData.AttackSpeed);
-
-            while (IsActiveState == false)
-            {
-                yield return timeToSpawn;
-
-                if (_arrow != null)
-                    _arrow.Touched -= OnTouched;
-
-                Arrow arrow = _arrowSpawner.Spawn(transform, Quaternion.identity, _bowData.ArrowFlightSpeed, _bowData.AttackRadius);
-                arrow.StartFly(transform.forward, transform.position);
-                _arrow = arrow;
-                _arrow.Touched += OnTouched;
-            }
-        }
-
-        public void Shoot2()
+        private void Shoot()
         {
             if (IsActiveState == false)
             {
                 if (_arrow != null)
                     _arrow.Touched -= OnTouched;
 
-                Arrow arrow = _arrowSpawner.Spawn(transform, Quaternion.identity, _bowData.ArrowFlightSpeed, _bowData.AttackRadius);
-                arrow.StartFly(transform.forward, transform.position);
+                Arrow arrow = _arrowSpawner.Spawn(_bowData.ArrowFlightSpeed, _bowData.AttackRadius);
+                arrow.StartFly(StartPointToFly.forward, StartPointToFly.position);
                 _arrow = arrow;
                 _arrow.Touched += OnTouched;
             }

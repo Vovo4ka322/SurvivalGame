@@ -25,7 +25,6 @@ namespace Ability.MeleeAbilities.BladeFury
 
         public IEnumerator UseAbility(Transform player)
         {
-            Debug.Log(_bladeFuryScriptableObject.CooldownTime + " Cooldown");
             float duration = 0;
 
             if (Time.time >= _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime || _canUseFirstTime)
@@ -47,10 +46,6 @@ namespace Ability.MeleeAbilities.BladeFury
                 _animator.SetTrueBoolState(_animator.IsAttack);
 
                 StartCoroutine(StartCooldown());
-            }
-            else
-            {
-                Debug.Log("Осталось " + (_lastUsedTimer + _bladeFuryScriptableObject.CooldownTime - Time.time));
             }
         }
 
