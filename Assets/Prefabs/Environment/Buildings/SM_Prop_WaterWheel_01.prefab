@@ -98,16 +98,19 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8401625860932120379}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7171598933427809005}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -7476355985463195614}
+      addedObject: {fileID: 1116561235928615254}
+    - targetCorrespondingSourceObject: {fileID: 4180250140441279266, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 774082702920470418}
     - targetCorrespondingSourceObject: {fileID: 7366720450262467374, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8071621397792190361}
+    - targetCorrespondingSourceObject: {fileID: 7366720450262467374, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1137811140889988130}
   m_SourcePrefab: {fileID: 100100000, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
 --- !u!1 &3702341607186870446 stripped
 GameObject:
@@ -135,12 +138,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.4015384, y: 3.6009974, z: 3.6055925}
   m_Center: {x: 0.08511561, y: 0.000000059604645, z: 0}
+--- !u!114 &1137811140889988130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3702341607186870446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6457015051466870481 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
   m_PrefabInstance: {fileID: 6150374662468907904}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &8401625860932120379
+--- !u!114 &7171598933427809005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6457015051466870481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1116561235928615254
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,36 +186,22 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3, y: 2.3, z: 1.6}
-  m_Center: {x: -3, y: 1.1, z: 0.02}
---- !u!114 &7171598933427809005
+  m_Size: {x: 1.2936888, y: 2.365749, z: 1.6034096}
+  m_Center: {x: -0.000000029802322, y: 1.1754465, z: 0.02413249}
+--- !u!1 &8023653606718884002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4180250140441279266, guid: 8147e7d3466b25c4e802c0d9749aeb4e, type: 3}
+  m_PrefabInstance: {fileID: 6150374662468907904}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &774082702920470418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6457015051466870481}
+  m_GameObject: {fileID: 8023653606718884002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-7476355985463195614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6457015051466870481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1073741824
-  dynamic: 1
-  solid: 0
-  geometrySource: 1
-  includeInScan: 0
-  surfaceID: 1
-  mode: 1

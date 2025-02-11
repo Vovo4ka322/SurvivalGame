@@ -19,6 +19,8 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
             _animationController = animator;
         }
         
+        public bool IsMoveAllowed => _canMove;
+        
         public void Move(Vector3 targetPosition)
         {
             if(!_canMove)
@@ -38,6 +40,11 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
             {
                 StopMove();
             }
+        }
+        
+        public void CanMove(bool value)
+        {
+            _canMove = value;
         }
 
         public void PlayMove()

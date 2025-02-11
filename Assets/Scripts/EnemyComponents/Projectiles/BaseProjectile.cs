@@ -20,6 +20,7 @@ namespace EnemyComponents.Projectiles
         
         private float _lifeTimer;
         private bool _hasCollided;
+        private bool _isLaunched;
         
         public float Speed => _speed;
         public float AimHeight { get; private set; } = 1.5f;
@@ -34,10 +35,11 @@ namespace EnemyComponents.Projectiles
         {
             _lifeTimer = _lifetime;
             _hasCollided = false;
+            _isLaunched = false;
             _collider.enabled = true;
         }
         
-        public virtual void Update()
+        private void Update()
         {
             _movementStrategy?.Move(this);
             
@@ -58,6 +60,20 @@ namespace EnemyComponents.Projectiles
             _pool = pool;
         }
         
+        public void LaunchProjectile(IProjectileMovement movement, Vector3 targetPosition, ProjectilePool<BaseProjectile> pool)
+        {
+            InitializeMovement(movement, pool);
+            
+            _isLaunched = true;
+            
+            if (_collider != null)
+            {
+                _collider.enabled = true;
+            }
+            
+            ExecuteLaunch(targetPosition);
+        }
+        
         public void ExecuteLaunch(Vector3 targetPosition)
         {
             _movementStrategy?.Launch(this, targetPosition);
@@ -76,15 +92,21 @@ namespace EnemyComponents.Projectiles
             }
         }
         
-        private void HandleCollision(Collider collider)
+        private void HandleCollision(Collider other)
         {
-            if (_hasCollided)
+            if(_hasCollided || !_isLaunched)
+            {
                 return;
+            }
             
             _hasCollided = true;
-            _collider.enabled = false;
             
-            if (collider.TryGetComponent(out Player player))
+            if (_collider != null)
+            {
+                _collider.enabled = false;
+            }
+            
+            if (other.TryGetComponent(out Player player))
             { 
                 //player.TakeDamage(_projectile.Damage);
             }
@@ -111,15 +133,17 @@ namespace EnemyComponents.Projectiles
                 
                 if (explosion != null)
                 {
-                    _poolManager.CoroutineRunner.StartCoroutine(ReturnEffectToPoolWhenFinished(explosion));
+                    _poolManager.CoroutineRunner.StartCoroutine(ReturnEffectToPool(explosion));
                 }
             }
         }
         
-        private IEnumerator ReturnEffectToPoolWhenFinished(ParticleSystem effect)
+        private IEnumerator ReturnEffectToPool(ParticleSystem effect)
         {
-            if (effect == null)
+            if(effect == null)
+            {
                 yield break;
+            }
             
             yield return new WaitWhile(() => effect.IsAlive(true));
     
@@ -130,6 +154,7 @@ namespace EnemyComponents.Projectiles
         {
             _projectileEffectPrefab.Stop();
             _movementStrategy.Stop();
+            transform.localScale = Vector3.one;
             _pool.Release(this);
         }
     }

@@ -16,7 +16,6 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
 
         public void MoveTowardsPlayer()
         {
-            _movement.PlayMove();
             _movement.Move(_playerTransform.position);
         }
     }

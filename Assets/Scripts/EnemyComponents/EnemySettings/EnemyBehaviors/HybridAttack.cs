@@ -18,23 +18,23 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
         {
             if (distance > _hybridAttackType.RangedRange)
             {
-                _enemy.PlayerNavigator.MoveTowardsPlayer();
+                _enemy.Movement.CanMove(true);
             }
             else if (distance > _hybridAttackType.MeleeRange)
             {
                 if (_enemy.EnemyAttack.IsHybridProjectileReady(_hybridAttackType, distance))
                 {
-                    _enemy.Movement.StopMove();
+                    _enemy.Movement.CanMove(false);
                     _enemy.EnemyAttack.TryAttack();
                 }
                 else
                 {
-                    _enemy.PlayerNavigator.MoveTowardsPlayer();
+                    _enemy.Movement.CanMove(true);
                 }
             }
             else
             {
-                _enemy.Movement.StopMove();
+                _enemy.Movement.CanMove(false);
                 _enemy.EnemyAttack.TryAttack();
             }
         }

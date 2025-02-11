@@ -34,11 +34,11 @@ namespace EnemyComponents
         [SerializeField] private Player _player;
         [SerializeField] private PoolManager _poolManager;
         
+        private ICoroutineRunner _coroutineRunner;
         private Coroutine _easyWaveCoroutine;
         private Coroutine _mediumWaveCoroutine;
         private Coroutine _hardWaveCoroutine;
         private Coroutine _bossCoroutine;
-        private ICoroutineRunner _coroutineRunner;
         
         private bool _playerInZone;
         
@@ -65,15 +65,26 @@ namespace EnemyComponents
             if(other.TryGetComponent(out Player _))
             {
                 _playerInZone = false;
-                
-                if (_easyWaveCoroutine != null)
+
+                if(_easyWaveCoroutine != null)
+                {
                     _coroutineRunner.StopCoroutine(_easyWaveCoroutine);
-                if (_mediumWaveCoroutine != null)
+                }
+
+                if(_mediumWaveCoroutine != null)
+                {
                     _coroutineRunner.StopCoroutine(_mediumWaveCoroutine);
-                if (_hardWaveCoroutine != null)
+                }
+
+                if(_hardWaveCoroutine != null)
+                {
                     _coroutineRunner.StopCoroutine(_hardWaveCoroutine);
-                if (_bossCoroutine != null)
+                }
+
+                if(_bossCoroutine != null)
+                {
                     _coroutineRunner.StopCoroutine(_bossCoroutine);
+                }
                 
                 _easyWaveCoroutine = null;
                 _mediumWaveCoroutine = null;
@@ -129,6 +140,7 @@ namespace EnemyComponents
             if(_spawnZone != null)
             {
                 Bounds bounds = _spawnZone.bounds;
+                
                 float x = Random.Range(bounds.min.x, bounds.max.x);
                 float z = Random.Range(bounds.min.z, bounds.max.z);
                 float y = bounds.min.y;

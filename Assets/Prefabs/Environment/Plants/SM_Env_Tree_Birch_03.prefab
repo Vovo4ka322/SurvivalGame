@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8911422083760331283}
   - component: {fileID: 263677817198163755}
   - component: {fileID: 2717107148358060581}
+  - component: {fileID: 8479979674503199908}
   m_Layer: 10
   m_Name: SM_Env_Tree_Birch_03_LOD0
   m_TagString: Untagged
@@ -83,6 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8479979674503199908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664842145925842826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3298165907711742831
 GameObject:
   m_ObjectHideFlags: 0
