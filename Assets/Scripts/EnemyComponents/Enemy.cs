@@ -171,39 +171,40 @@ namespace EnemyComponents
         private void MovementAndAttack()
         {
             _rotation.RotateTowards(_player.transform.position);
-            
+
+            //if (!_spawnCompleted || _player == null)
+            //{
+            //    return;
+            //}
+
+            //if (AnimationAnimationController.IsAttacking)
+            //{
+            //    _movement.StopMove();
+            //    return;
+            //}
+
+            //float distance = Vector3.Distance(transform.position, _player.transform.position);
+            //_attackBehavior.HandleAttack(distance);
+
             if (!_spawnCompleted || _player == null)
             {
                 return;
             }
 
-            if (AnimationAnimationController.IsAttacking)
-            {
-                _movement.StopMove();
-                return;
-            }
+            float distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            float distance = Vector3.Distance(transform.position, _player.transform.position);
-            _attackBehavior.HandleAttack(distance);
-            
-            /*if (!_spawnCompleted || _player == null)
-            {
-                return;
-            }
-            
-            float distance = Vector3.Distance(transform.position, _player.transform.position);
-            
             if (AnimationAnimationController.IsAttacking || distance <= _data.AttackRange * 0.9f)
             {
                 _movement.StopMove();
                 _rotation.RotateTowards(_player.transform.position);
+                _attackBehavior.HandleAttack(distance);
             }
             else
             {
                 _movement.Move(_player.transform.position);
             }
-        
-            _attackBehavior.HandleAttack(distance);*/
+
+            //_attackBehavior.HandleAttack(distance);
         }
 
         private void OnDrawGizmosSelected()
