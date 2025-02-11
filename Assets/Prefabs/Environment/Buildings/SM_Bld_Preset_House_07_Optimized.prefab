@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 4679334078928310}
   - component: {fileID: 33718524546884870}
   - component: {fileID: 23188942012594328}
-  - component: {fileID: 9092423006425878666}
   m_Layer: 10
   m_Name: SM_Bld_Preset_House_07_Glass_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4679334078928310
 Transform:
@@ -84,18 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &9092423006425878666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028288942207772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1904262631371420
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,13 +95,12 @@ GameObject:
   - component: {fileID: 33844700905675530}
   - component: {fileID: 23797247229835666}
   - component: {fileID: 2482082070263661316}
-  - component: {fileID: 3256885152115033466}
   m_Layer: 10
   m_Name: SM_Bld_Preset_House_07_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4174202966241354
 Transform:
@@ -203,15 +189,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11, y: 11, z: 10}
   m_Center: {x: -0.1, y: 3, z: -4}
---- !u!114 &3256885152115033466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904262631371420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

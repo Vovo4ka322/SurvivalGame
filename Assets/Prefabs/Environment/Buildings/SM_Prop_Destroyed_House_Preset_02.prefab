@@ -12,13 +12,12 @@ GameObject:
   - component: {fileID: 33930739307853882}
   - component: {fileID: 23056592649061588}
   - component: {fileID: 9156143474649062359}
-  - component: {fileID: 3942462409556322796}
   m_Layer: 10
   m_Name: SM_Prop_Destroyed_House_Preset_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4036223267291652
 Transform:
@@ -106,15 +105,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8.3, y: 5.1, z: 5.8}
   m_Center: {x: -3.7, y: 0.9, z: 2.5}
---- !u!114 &3942462409556322796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700303635221434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

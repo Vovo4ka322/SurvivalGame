@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9fa845ccdb6e94da4611e1b1a6d30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: {fileID: 0}
+  <Health>k__BackingField: {fileID: 5836170873408538237}
   _baseHealth: 0
   _baseArmor: 0
   _baseDamage: 0
@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3716abfac2deaa543ad43750551d11a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: {fileID: 0}
+  <Health>k__BackingField: {fileID: 5836170873408538237}
   _baseHealth: 0
   _baseArmor: 0
   _baseDamage: 0

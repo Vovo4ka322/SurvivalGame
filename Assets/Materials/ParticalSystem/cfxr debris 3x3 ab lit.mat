@@ -8,8 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: cfxr debris 3x3 ab lit
-  m_Shader: {fileID: -6465566751694194690, guid: 1a29b4d27eb8b04479ef89c00dea533d,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 2b11f9b8f9c2547378ac545434181c1e, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHABLEND_ON
   - _ALPHATEST_ON
@@ -18,6 +19,7 @@ Material:
   m_InvalidKeywords:
   - _CFXR_AMBIENT_LIGHTING
   - _CFXR_DITHERED_SHADOWS_OFF
+  - _CFXR_GLOW_POW_P0
   - _CFXR_OVERLAYBLEND_RGB
   - _CFXR_OVERLAYTEX_OFF
   - _CFXR_SINGLE_CHANNEL
@@ -29,6 +31,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -88,6 +91,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ScreenDistortionTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SecondColorTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -101,9 +108,11 @@ Material:
     - _BlendingType: 0
     - _BumpScale: 1
     - _CFXR_DITHERED_SHADOWS: 0
+    - _CFXR_GLOW_POW: 0
     - _CFXR_OVERLAYBLEND: 1
     - _CFXR_OVERLAYTEX: 0
     - _Cutoff: 0.5
+    - _DebugVisualize: 0
     - _DetailNormalMapScale: 1
     - _DirLightScreenAtten: 1
     - _DirectLightingMix: 0.6
@@ -121,11 +130,14 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _GlowMax: 1
+    - _GlowMin: 0
     - _HdrBoost: 0
     - _HdrMultiply: 0
     - _IndirectLightingMix: 1
     - _InvertDissolveTex: 0
     - _LightingWorldPosStrength: 0.2
+    - _MaxValue: 10
     - _Metallic: 0
     - _Mode: 0
     - _OVERLAYBLEND: 0
@@ -133,6 +145,8 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _ReceivedShadowsStrength: 0.5
+    - _RingTopOffset: 0.05
+    - _ScreenDistortionScale: 0.1
     - _SecondColorSmooth: 0.2
     - _ShadowStrength: 1
     - _SingleChannel: 1
@@ -155,10 +169,12 @@ Material:
     - _UseLighting: 3
     - _UseLightingWorldPosOffset: 0
     - _UseNormalMap: 1
+    - _UseRadialUV: 0
     - _UseSP: 0
     - _UseSecondColor: 0
     - _UseUV2Distortion: 0
     - _UseUVDistortion: 0
+    - _WorldSpaceRing: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

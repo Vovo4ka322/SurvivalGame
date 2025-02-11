@@ -12,13 +12,12 @@ GameObject:
   - component: {fileID: 33481510530231850}
   - component: {fileID: 23794300747646900}
   - component: {fileID: 432490311398610403}
-  - component: {fileID: -4853059398625979994}
   m_Layer: 10
   m_Name: SM_Bld_Preset_Church_01_A_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4537870369339434
 Transform:
@@ -107,18 +106,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.4, y: 11.7, z: 10.9}
   m_Center: {x: -1.25, y: 3.3, z: -3.8}
---- !u!114 &-4853059398625979994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257024709312140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1768155363841784
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,13 +117,12 @@ GameObject:
   - component: {fileID: 4230296294669084}
   - component: {fileID: 33512386563307074}
   - component: {fileID: 23069043736918696}
-  - component: {fileID: 5349741374271938904}
   m_Layer: 10
   m_Name: SM_Bld_Preset_Church_01_A_Glass_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4230296294669084
 Transform:
@@ -203,15 +189,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5349741374271938904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768155363841784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

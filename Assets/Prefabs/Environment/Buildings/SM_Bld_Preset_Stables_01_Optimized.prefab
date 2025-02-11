@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 4586819814088098}
   - component: {fileID: 33649762883894250}
   - component: {fileID: 23641728394476780}
-  - component: {fileID: 5811389455538272988}
   m_Layer: 10
   m_Name: SM_Bld_Preset_Stables_01_Optimized_Piece_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4586819814088098
 Transform:
@@ -84,18 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5811389455538272988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045630029927026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1307161115059926
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,13 +94,12 @@ GameObject:
   - component: {fileID: 4769694096291760}
   - component: {fileID: 33850746716318616}
   - component: {fileID: 23328681930933750}
-  - component: {fileID: 4954064762150446341}
   m_Layer: 10
   m_Name: SM_Bld_Preset_Stables_01_Optimized_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4769694096291760
 Transform:
@@ -180,18 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4954064762150446341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307161115059926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1428951525696302
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,13 +178,12 @@ GameObject:
   - component: {fileID: 33332171401892198}
   - component: {fileID: 23444547407952622}
   - component: {fileID: 6436927682507051126}
-  - component: {fileID: -1707028481477082276}
   m_Layer: 10
   m_Name: SM_Bld_Preset_Stables_01_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4657260702397742
 Transform:
@@ -300,15 +273,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.62826, y: 10.5, z: 8.497427}
   m_Center: {x: 1.1858702, y: 2.6999998, z: -1.2512867}
---- !u!114 &-1707028481477082276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428951525696302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
