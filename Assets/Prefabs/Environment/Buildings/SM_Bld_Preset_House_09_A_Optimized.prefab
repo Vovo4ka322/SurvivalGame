@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4117594481888938
 Transform:
@@ -95,13 +95,12 @@ GameObject:
   - component: {fileID: 33439336608258744}
   - component: {fileID: 23626087711531378}
   - component: {fileID: 750867742471643401}
-  - component: {fileID: 1323762059637206078}
   m_Layer: 10
   m_Name: SM_Bld_Preset_House_09_A_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4064253928706500
 Transform:
@@ -190,15 +189,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8.5, y: 11, z: 8.6}
   m_Center: {x: -1, y: 3, z: -2.6}
---- !u!114 &1323762059637206078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739242526329770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

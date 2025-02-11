@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6935681791040004696}
   - component: {fileID: 5375700036036190582}
   - component: {fileID: 5647308905781157451}
-  - component: {fileID: 4504819748918821499}
   m_Layer: 10
   m_Name: SM_Env_RockPile_Square_05 (3)
   m_TagString: Untagged
@@ -84,18 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4504819748918821499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189478137095340346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1804223452848532843
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +355,6 @@ GameObject:
   - component: {fileID: 3480140651533655489}
   - component: {fileID: 3480140651536507593}
   - component: {fileID: 3480140651535550715}
-  - component: {fileID: 4984350769172183201}
   m_Layer: 10
   m_Name: SM_Env_Tiles_Pentagram_01
   m_TagString: Untagged
@@ -441,18 +427,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4984350769172183201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3480140651533273067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5477068645993744732
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +470,6 @@ GameObject:
   - component: {fileID: 1191202732784440479}
   - component: {fileID: 7397264480013804517}
   - component: {fileID: 3451369481787197363}
-  - component: {fileID: 2128470377574448810}
   m_Layer: 10
   m_Name: SM_Env_RockPile_Square_06 (3)
   m_TagString: Untagged
@@ -569,18 +542,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2128470377574448810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5535022704204328760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5889705490166250459
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +554,6 @@ GameObject:
   - component: {fileID: 5889705490169422703}
   - component: {fileID: 5889705490168360841}
   - component: {fileID: 4491802088101012147}
-  - component: {fileID: 7715835940033007376}
   m_Layer: 10
   m_Name: SM_Env_Statue_03
   m_TagString: Untagged
@@ -688,18 +648,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1, y: 4.480406, z: 1.4}
   m_Center: {x: 0, y: 1.1097969, z: 0}
---- !u!114 &7715835940033007376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5889705490166250459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6313619712110033039
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +659,6 @@ GameObject:
   - component: {fileID: 6902301087827776836}
   - component: {fileID: 850294527250120725}
   - component: {fileID: 6068388623019690439}
-  - component: {fileID: 3495000346409928220}
   m_Layer: 10
   m_Name: SM_Env_RockPile_Square_01 (7)
   m_TagString: Untagged
@@ -784,18 +731,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3495000346409928220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6313619712110033039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6905028536480233003
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +778,6 @@ GameObject:
   - component: {fileID: 4589016296729299474}
   - component: {fileID: 3856180493465338588}
   - component: {fileID: 5007565033452311431}
-  - component: {fileID: 2156316729711480026}
   m_Layer: 10
   m_Name: SM_Env_RockPile_Square_01 (6)
   m_TagString: Untagged
@@ -916,18 +850,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2156316729711480026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7562172729552373150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7917758470126277395
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,7 +862,6 @@ GameObject:
   - component: {fileID: 7917758470123031463}
   - component: {fileID: 7917758470124095297}
   - component: {fileID: 147491391112415867}
-  - component: {fileID: 6289786472911169496}
   m_Layer: 10
   m_Name: SM_Env_Statue_03 (1)
   m_TagString: Untagged
@@ -1035,18 +956,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1, y: 4.60756, z: 1.4}
   m_Center: {x: 0, y: 1.0462197, z: 0}
---- !u!114 &6289786472911169496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7917758470126277395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8259346884708798175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,7 +967,6 @@ GameObject:
   - component: {fileID: 4994189868802787706}
   - component: {fileID: 2633693576441469666}
   - component: {fileID: 2706815238735365199}
-  - component: {fileID: 806990038940928036}
   m_Layer: 10
   m_Name: SM_Env_RockPile_Square_01 (8)
   m_TagString: Untagged
@@ -1131,18 +1039,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &806990038940928036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8259346884708798175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8373157308955672322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1085,6 @@ GameObject:
   - component: {fileID: 8456583133343893213}
   - component: {fileID: 8456583133344899889}
   - component: {fileID: 1470457649979803873}
-  - component: {fileID: 6403271079568632950}
   m_Layer: 10
   m_Name: SM_Env_Stone_Vessel_01 (1)
   m_TagString: Untagged
@@ -1284,18 +1179,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4, y: 1.35, z: 1.2}
   m_Center: {x: 0, y: 0.7, z: 0}
---- !u!114 &6403271079568632950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8456583133347162715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8648853121420639750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1190,6 @@ GameObject:
   - component: {fileID: 865753125342340634}
   - component: {fileID: 8295704769957202648}
   - component: {fileID: 7170064389012481267}
-  - component: {fileID: 2154555385730149414}
   - component: {fileID: 1241854727986304991}
   m_Layer: 10
   m_Name: SM_Env_RockPile_Square_02 (3)
@@ -1381,18 +1263,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2154555385730149414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8648853121420639750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1241854727986304991
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1426,7 +1296,6 @@ GameObject:
   - component: {fileID: 9186241855918617566}
   - component: {fileID: 9186241855917545010}
   - component: {fileID: 2184204806666730978}
-  - component: {fileID: 5979437650797861237}
   m_Layer: 10
   m_Name: SM_Env_Stone_Vessel_01
   m_TagString: Untagged
@@ -1521,18 +1390,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4, y: 1.35, z: 1.2}
   m_Center: {x: 0, y: 0.7, z: 0}
---- !u!114 &5979437650797861237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9186241855919546200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4076078534128879747
 PrefabInstance:
   m_ObjectHideFlags: 0

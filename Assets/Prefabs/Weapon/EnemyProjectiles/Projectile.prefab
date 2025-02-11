@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileEffectPrefab: {fileID: 8534990135004221716}
-  _explosionPrefab: {fileID: 198477826158454734, guid: 800cddb992d3f5e4eb2348b90447f4a7, type: 3}
+  _explosionPrefab: {fileID: 5567487543081949024, guid: 399dd9eb690984764bafb98571a7b002, type: 3}
   _speed: 20
   _lifetime: 5
   _damage: 10
@@ -762,7 +762,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 1
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 1
     rotation3D: 0

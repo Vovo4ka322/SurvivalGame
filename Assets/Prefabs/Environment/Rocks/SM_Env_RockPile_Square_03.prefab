@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 450998}
   - component: {fileID: 3307092}
   - component: {fileID: 2395026}
-  - component: {fileID: 868007700496432070}
   - component: {fileID: 573175704041732721}
   m_Layer: 10
   m_Name: SM_Env_RockPile_Square_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &450998
 Transform:
@@ -85,18 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &868007700496432070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &573175704041732721
 BoxCollider:
   m_ObjectHideFlags: 0
