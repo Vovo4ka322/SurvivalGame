@@ -1,3 +1,4 @@
+using Cinemachine;
 using PlayerComponents.Animations;
 using UnityEngine;
 
@@ -58,13 +59,11 @@ namespace PlayerComponents.Controller
 
         private void HandleRotation()
         {
-            Ray ray = _camera.ScreenPointToRay(_controller.Rotation);            
-            Plane plane = new Plane(Vector3.up, Vector3.zero);
+            Ray ray = _camera.ScreenPointToRay(_controller.Rotation);
 
-            if (plane.Raycast(ray, out float rayDistance))
+            if (Physics.Raycast(ray, out RaycastHit hitInfo))
             {
-                Vector3 point = ray.GetPoint(rayDistance);
-                Vector3 direction = point - transform.position;
+                Vector3 direction = hitInfo.point - transform.position;
                 direction.y = 0;
 
                 if (direction != Vector3.zero)
