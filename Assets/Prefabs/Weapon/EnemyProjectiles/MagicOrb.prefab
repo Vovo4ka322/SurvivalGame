@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 199610180894210660}
   - component: {fileID: 135187156854092900}
   - component: {fileID: -3327770458923923890}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MagicOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4952,7 +4952,7 @@ GameObject:
   - component: {fileID: 4366912051360190}
   - component: {fileID: 198692940710500382}
   - component: {fileID: 199205060469912400}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Electricy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9792,7 +9792,7 @@ GameObject:
   - component: {fileID: 4106549369329498}
   - component: {fileID: 198194833413760700}
   - component: {fileID: 199193693930752760}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ElectroCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
