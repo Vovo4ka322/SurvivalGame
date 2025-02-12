@@ -31,9 +31,9 @@ namespace EnemyComponents
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Transform _bossSpawnPoint;
         [SerializeField] private Collider _spawnZone;
-        [SerializeField] private Player _player;
         [SerializeField] private PoolManager _poolManager;
         
+        private Player _player;
         private ICoroutineRunner _coroutineRunner;
         private Coroutine _easyWaveCoroutine;
         private Coroutine _mediumWaveCoroutine;
@@ -93,6 +93,11 @@ namespace EnemyComponents
             }
         }
         
+        public void Init(Player player)
+        {
+            _player = player;
+        }
+
         private IEnumerator CreateWave(EnemyData[] enemyDatas, float startDelay, float waveDuration)
         {
             yield return new WaitForSeconds(startDelay);
