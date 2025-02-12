@@ -1,6 +1,6 @@
 using System.Collections;
-using EnemyComponents.Interfaces;
 using UnityEngine;
+using EnemyComponents.Interfaces;
 
 namespace EnemyComponents.EnemySettings
 {

@@ -31,17 +31,22 @@ namespace EnemyComponents
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Transform _bossSpawnPoint;
         [SerializeField] private Collider _spawnZone;
+        [SerializeField] private Player _player;
         [SerializeField] private PoolManager _poolManager;
         
-        private Player _player;
+        private ICoroutineRunner _coroutineRunner;
         private Coroutine _easyWaveCoroutine;
         private Coroutine _mediumWaveCoroutine;
         private Coroutine _hardWaveCoroutine;
         private Coroutine _bossCoroutine;
-        private ICoroutineRunner _coroutineRunner;
         
         private bool _playerInZone;
-
+        
+        private void Awake()
+        {
+            _coroutineRunner = _poolManager.GetComponent<ICoroutineRunner>();
+        }
+        
         private void OnTriggerEnter(Collider other)
         {
             if(other.TryGetComponent(out Player _) && !_playerInZone)
@@ -60,28 +65,32 @@ namespace EnemyComponents
             if(other.TryGetComponent(out Player _))
             {
                 _playerInZone = false;
-                
-                if (_easyWaveCoroutine != null)
+
+                if(_easyWaveCoroutine != null)
+                {
                     _coroutineRunner.StopCoroutine(_easyWaveCoroutine);
-                if (_mediumWaveCoroutine != null)
+                }
+
+                if(_mediumWaveCoroutine != null)
+                {
                     _coroutineRunner.StopCoroutine(_mediumWaveCoroutine);
-                if (_hardWaveCoroutine != null)
+                }
+
+                if(_hardWaveCoroutine != null)
+                {
                     _coroutineRunner.StopCoroutine(_hardWaveCoroutine);
-                if (_bossCoroutine != null)
+                }
+
+                if(_bossCoroutine != null)
+                {
                     _coroutineRunner.StopCoroutine(_bossCoroutine);
+                }
                 
                 _easyWaveCoroutine = null;
                 _mediumWaveCoroutine = null;
                 _hardWaveCoroutine = null;
                 _bossCoroutine = null;
             }
-        }
-
-
-        public void Init(Player player)
-        {
-            _player = player;
-            _coroutineRunner = _poolManager.GetComponent<ICoroutineRunner>();
         }
         
         private IEnumerator CreateWave(EnemyData[] enemyDatas, float startDelay, float waveDuration)
@@ -131,6 +140,7 @@ namespace EnemyComponents
             if(_spawnZone != null)
             {
                 Bounds bounds = _spawnZone.bounds;
+                
                 float x = Random.Range(bounds.min.x, bounds.max.x);
                 float z = Random.Range(bounds.min.z, bounds.max.z);
                 float y = bounds.min.y;

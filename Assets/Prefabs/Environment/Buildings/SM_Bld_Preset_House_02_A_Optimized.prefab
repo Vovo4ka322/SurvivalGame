@@ -12,14 +12,12 @@ GameObject:
   - component: {fileID: 33092567246222836}
   - component: {fileID: 23912218381099542}
   - component: {fileID: 422310823025307369}
-  - component: {fileID: -7487417884609605904}
-  - component: {fileID: -996528306333103584}
   m_Layer: 10
   m_Name: SM_Bld_Preset_House_02_A_Optimized
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4257262165249590
 Transform:
@@ -108,37 +106,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.4, y: 9.2, z: 8.1}
   m_Center: {x: -2.5000002, y: 2.1, z: -1.6}
---- !u!114 &-7487417884609605904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310738999662834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-996528306333103584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310738999662834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1073741824
-  dynamic: 1
-  solid: 0
-  geometrySource: 1
-  includeInScan: 0
-  surfaceID: 1
-  mode: 1
 --- !u!1 &1876224201922204
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +122,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4546184678170574
 Transform:

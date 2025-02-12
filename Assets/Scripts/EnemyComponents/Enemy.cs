@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using EnemyComponents.Animations;
 using EnemyComponents.EnemySettings;
@@ -36,12 +37,14 @@ namespace EnemyComponents
         private RangedProjectileSpawner _rangedSpawner;
         private HybridProjectileSpawner _hybridSpawner;
         
+        private ICoroutineRunner _coroutineRunner;
+        private Coroutine _movementCoroutine;
+        
         private bool _spawnCompleted = false;
         
         public EnemyData Data => _data;
         public Collider Collider => _collider;
         public EnemyAnimationController AnimationAnimationController => _animationController;
-        public PlayerNavigator PlayerNavigator => _playerNavigator;
         public IEnemyAttack EnemyAttack => _enemyAttack;
         public IEnemyMovement Movement => _movement;
         
@@ -65,6 +68,11 @@ namespace EnemyComponents
                 Health.Death += OnDeath;
             }
             
+            if (_coroutineRunner != null && _movementCoroutine == null)
+            {
+                _movementCoroutine = _coroutineRunner.StartCoroutine(AttackCoroutine());
+            }
+            
             Enabled?.Invoke(this);
         }
 
@@ -75,22 +83,33 @@ namespace EnemyComponents
                 Health.Death -= OnDeath;
             }
             
+            if (_coroutineRunner != null && _movementCoroutine != null)
+            {
+                _coroutineRunner.StopCoroutine(_movementCoroutine);
+                _movementCoroutine = null;
+            }
+            
             Dead?.Invoke(this);
         }
         
         private void Update()
         {
-            MovementAndAttack();
+            MoveAndRotate();
         }
 
         public void InitializeComponents(Player player, EnemyData enemyData, EffectsPool pool, PoolManager poolManager, ICoroutineRunner coroutineRunner)
         {
             _player = player;
             _data = enemyData;
+            _coroutineRunner = coroutineRunner;
+            
+            if (_animationController == null)
+            {
+                _animationController = new EnemyAnimationController(_animator, _data.EnemyType);
+            }
             
             _enemyCollider = new EnemyCollider(this, _player);
             _movement = new EnemyMovement(transform, _data.MoveSpeed, AnimationAnimationController);
-            //_movement = new EnemyAStarMovement(transform, _data.MoveSpeed, _data.RotationSpeed, AnimationAnimationController);
             _rotation = new EnemyRotation(transform, _data.RotationSpeed);
             _enemyEffects.Initialize(_data, pool, coroutineRunner);
             
@@ -113,6 +132,11 @@ namespace EnemyComponents
             _spawnCompleted = false;
             AnimationAnimationController.Spawn();
             //Health.InitMaxValue(_data.MaxHealth);
+            
+            if (_coroutineRunner != null && _movementCoroutine == null && gameObject.activeInHierarchy)
+            {
+                _movementCoroutine = _coroutineRunner.StartCoroutine(AttackCoroutine());
+            }
         }
         
         public float SetDamage()
@@ -139,6 +163,29 @@ namespace EnemyComponents
         {
             AnimationAnimationController.Death();
             Dead?.Invoke(this);
+        }
+        
+        private void MoveAndRotate()
+        {
+            if (_player == null)
+                return;
+            
+            _rotation.RotateTowards(_player.transform.position);
+            
+            if (!_spawnCompleted || AnimationAnimationController.IsAttacking)
+            {
+                _movement.StopMove();
+                return;
+            }
+            
+            if (_movement.IsMoveAllowed)
+            {
+                _playerNavigator.MoveTowardsPlayer();
+            }
+            else
+            {
+                _movement.StopMove();
+            }
         }
         
         private void SetAttackBehavior()
@@ -168,43 +215,20 @@ namespace EnemyComponents
             }
         }
         
-        private void MovementAndAttack()
+        private IEnumerator AttackCoroutine()
         {
-            _rotation.RotateTowards(_player.transform.position);
-
-            //if (!_spawnCompleted || _player == null)
-            //{
-            //    return;
-            //}
-
-            //if (AnimationAnimationController.IsAttacking)
-            //{
-            //    _movement.StopMove();
-            //    return;
-            //}
-
-            //float distance = Vector3.Distance(transform.position, _player.transform.position);
-            //_attackBehavior.HandleAttack(distance);
-
-            if (!_spawnCompleted || _player == null)
+            float updateInterval = 0.1f;
+        
+            while (true)
             {
-                return;
+                if(_player != null && _spawnCompleted && !AnimationAnimationController.IsAttacking)
+                {
+                    float distance = Vector3.Distance(transform.position, _player.transform.position);
+                    _attackBehavior.HandleAttack(distance);
+                }
+            
+                yield return new WaitForSeconds(updateInterval);
             }
-
-            float distance = Vector3.Distance(transform.position, _player.transform.position);
-
-            if (AnimationAnimationController.IsAttacking || distance <= _data.AttackRange * 0.9f)
-            {
-                _movement.StopMove();
-                _rotation.RotateTowards(_player.transform.position);
-                _attackBehavior.HandleAttack(distance);
-            }
-            else
-            {
-                _movement.Move(_player.transform.position);
-            }
-
-            //_attackBehavior.HandleAttack(distance);
         }
 
         private void OnDrawGizmosSelected()

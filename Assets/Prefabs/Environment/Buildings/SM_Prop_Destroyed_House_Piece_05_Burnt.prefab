@@ -11,15 +11,13 @@ GameObject:
   - component: {fileID: 4843457258161240}
   - component: {fileID: 33882709585230782}
   - component: {fileID: 23327861233184606}
-  - component: {fileID: 5019226903646212151}
-  - component: {fileID: 2800593082092657228}
-  - component: {fileID: 7500679947374489844}
+  - component: {fileID: 284356193336012592}
   m_Layer: 10
   m_Name: SM_Prop_Destroyed_House_Piece_05_Burnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4843457258161240
 Transform:
@@ -86,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5019226903646212151
+--- !u!65 &284356193336012592
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,36 +103,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8, y: 4.2, z: 8.3}
-  m_Center: {x: -3.6, y: 0.8, z: 3.7499998}
---- !u!114 &2800593082092657228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665650092703894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ef57f8f2b3c41498639759e072e0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7500679947374489844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665650092703894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 220345cbaa167417bbe806f230f68615, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1073741824
-  dynamic: 1
-  solid: 0
-  geometrySource: 1
-  includeInScan: 0
-  surfaceID: 1
-  mode: 1
+  m_Size: {x: 0.85252684, y: 4.1951933, z: 8.363671}
+  m_Center: {x: -0.0000036656857, y: 0.84230834, z: 3.7499998}

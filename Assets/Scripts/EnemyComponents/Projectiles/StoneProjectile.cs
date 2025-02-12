@@ -9,8 +9,7 @@ namespace EnemyComponents.Projectiles
         
         public override void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool)
         {
-            InitializeMovement(_movement, pool);
-            ExecuteLaunch(targetPosition);
+            LaunchProjectile(_movement, targetPosition, pool);
         }
     }
 }
