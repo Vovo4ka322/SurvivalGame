@@ -190,7 +190,6 @@ namespace EnemyComponents
 
             if (_agent.isActiveAndEnabled)
             {
-                //_agent.SetDestination(_player.transform.position);
                 _movement.Move(_player.transform.position);
                 _movement.PlayMove();
             }
