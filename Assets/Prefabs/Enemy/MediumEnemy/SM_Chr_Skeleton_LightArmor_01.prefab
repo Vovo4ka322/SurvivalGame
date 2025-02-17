@@ -948,6 +948,7 @@ GameObject:
   - component: {fileID: -39876608066141403}
   - component: {fileID: 5320582100275162021}
   - component: {fileID: 1736271219173936535}
+  - component: {fileID: 6926486979198626995}
   m_Layer: 7
   m_Name: SM_Chr_Skeleton_LightArmor_01
   m_TagString: Untagged
@@ -1054,6 +1055,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbb649e71e844a3ac75989a1eba5648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &6926486979198626995
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4151270308924995188}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4337714178344870160
 GameObject:
   m_ObjectHideFlags: 0

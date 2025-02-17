@@ -10,6 +10,7 @@ using EnemyComponents.Interfaces;
 using EnemyComponents.Projectiles;
 using PlayerComponents;
 using Pools;
+using UnityEngine.AI;
 
 namespace EnemyComponents
 {
@@ -24,7 +25,6 @@ namespace EnemyComponents
         private Animator _animator;
         private Collider _collider;
         private EnemyAnimationController _animationController;
-        private PlayerNavigator _playerNavigator;
         
         private IAttackBehavior _attackBehavior;
         private IEnemyMovement _movement;
@@ -38,10 +38,10 @@ namespace EnemyComponents
         private HybridProjectileSpawner _hybridSpawner;
         
         private ICoroutineRunner _coroutineRunner;
-        private Coroutine _movementCoroutine;
-        
+        private Coroutine _movementCoroutine;     
         private bool _spawnCompleted = false;
-        
+        private NavMeshAgent _agent;
+
         public EnemyData Data => _data;
         public Collider Collider => _collider;
         public EnemyAnimationController AnimationAnimationController => _animationController;
@@ -59,6 +59,7 @@ namespace EnemyComponents
             _animationController = new EnemyAnimationController(_animator, _data.EnemyType);
             _rangedSpawner = GetComponent<RangedProjectileSpawner>();
             _hybridSpawner = GetComponent<HybridProjectileSpawner>();
+            _agent = GetComponent<NavMeshAgent>();
         }
 
         private void OnEnable()
@@ -91,7 +92,12 @@ namespace EnemyComponents
             
             Dead?.Invoke(this);
         }
-        
+
+        private void Start()
+        {
+            _agent.enabled = true;
+        }
+
         private void Update()
         {
             MoveAndRotate();
@@ -109,11 +115,11 @@ namespace EnemyComponents
             }
             
             _enemyCollider = new EnemyCollider(this, _player);
-            _movement = new EnemyMovement(transform, _data.MoveSpeed, AnimationAnimationController);
+            _movement = new EnemyMovement(transform, _data.MoveSpeed, AnimationAnimationController, _agent);
             _rotation = new EnemyRotation(transform, _data.RotationSpeed);
             _enemyEffects.Initialize(_data, pool, coroutineRunner);
-            
-            if(_data.BaseAttackType.Type == AttackType.Ranged)
+
+            if (_data.BaseAttackType.Type == AttackType.Ranged)
             {
                 _projectileSpawner = _rangedSpawner;
             }
@@ -125,7 +131,6 @@ namespace EnemyComponents
             _projectileSpawner?.Initialize(_data, _player, poolManager);
             
             _enemyAttack = new EnemyAttack(AnimationAnimationController, transform, _player, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationController.AttackVariantsCount);
-            _playerNavigator = new PlayerNavigator(_movement, _player.transform);
             
             SetAttackBehavior();
             
@@ -169,18 +174,25 @@ namespace EnemyComponents
         {
             if (_player == null)
                 return;
-            
+
+            if (_agent.isActiveAndEnabled == false)
+            {
+                return;
+            }
+
             _rotation.RotateTowards(_player.transform.position);
-            
+
             if (!_spawnCompleted || AnimationAnimationController.IsAttacking)
             {
                 _movement.StopMove();
                 return;
             }
-            
-            if (_movement.IsMoveAllowed)
+
+            if (_agent.isActiveAndEnabled)
             {
-                _playerNavigator.MoveTowardsPlayer();
+                //_agent.SetDestination(_player.transform.position);
+                _movement.Move(_player.transform.position);
+                _movement.PlayMove();
             }
             else
             {

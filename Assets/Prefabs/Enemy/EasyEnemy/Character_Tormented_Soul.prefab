@@ -1519,6 +1519,7 @@ GameObject:
   - component: {fileID: 5788345710386418345}
   - component: {fileID: 1012465906298291168}
   - component: {fileID: 6202073512084129998}
+  - component: {fileID: -6465538631191842184}
   m_Layer: 0
   m_Name: Character_Tormented_Soul
   m_TagString: Untagged
@@ -1638,6 +1639,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileSpawnPoint: {fileID: 2264618058810475835}
+--- !u!195 &-6465538631191842184
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763379251990446391}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7943300254859540886
 GameObject:
   m_ObjectHideFlags: 0

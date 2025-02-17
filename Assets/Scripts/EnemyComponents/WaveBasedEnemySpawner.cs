@@ -46,11 +46,23 @@ namespace EnemyComponents
         {
             _coroutineRunner = _poolManager.GetComponent<ICoroutineRunner>();
         }
-        
+
+        private void Start()
+        {
+            _easyWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_easyEnemyDatas, _startDelayEasyWave, _easyWaveDuration));
+            _mediumWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_mediumEnemyDatas, _startDelayMediumWave, _mediumWaveDuration));
+            _hardWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_hardEnemyDatas, _startDelayHardWave, _hardWaveDuration));
+            _bossCoroutine = _coroutineRunner.StartCoroutine(CreateBoss(_bossSpawnDelay));
+        }
+
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log("Enter1");
+
             if(other.TryGetComponent(out Player _) && !_playerInZone)
             {
+                Debug.Log("Enter2");
+
                 _playerInZone = true;
                 
                 _easyWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_easyEnemyDatas, _startDelayEasyWave, _easyWaveDuration));

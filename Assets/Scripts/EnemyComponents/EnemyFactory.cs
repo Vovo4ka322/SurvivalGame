@@ -4,6 +4,7 @@ using EnemyComponents.EnemySettings;
 using EnemyComponents.Interfaces;
 using PlayerComponents;
 using Pools;
+using UnityEngine.AI;
 
 namespace EnemyComponents
 {
@@ -17,8 +18,7 @@ namespace EnemyComponents
         private EffectsPool _effectsPool;
         private PoolSettings _poolSettings;
         private Transform _container;
-        private Player _player;
-        
+
         private int _activeEnemiesCount = 0;
         
         public bool CanSpawnMore => _maxEnemiesInScene <= 0 || _activeEnemiesCount < _maxEnemiesInScene;
@@ -60,8 +60,10 @@ namespace EnemyComponents
             {
                 return;
             }
-            
-            enemyInstance.transform.position = position;
+
+            NavMesh.SamplePosition(position, out NavMeshHit hit, float.MaxValue, NavMesh.AllAreas);
+
+            enemyInstance.transform.position = hit.position;
             enemyInstance.transform.rotation = rotation;
             enemyInstance.InitializeComponents(player, enemyData, _effectsPool, _poolManager, _coroutineRunner);
             enemyInstance.Enabled += OnEnemyEnabled;

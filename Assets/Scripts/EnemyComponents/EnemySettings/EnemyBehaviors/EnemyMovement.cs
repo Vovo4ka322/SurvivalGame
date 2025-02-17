@@ -1,6 +1,10 @@
 using UnityEngine;
 using EnemyComponents.Animations;
 using EnemyComponents.Interfaces;
+using UnityEngine.AI;
+using PlayerComponents;
+using Unity.Transforms;
+using System.Collections;
 
 namespace EnemyComponents.EnemySettings.EnemyBehaviors
 {
@@ -9,39 +13,59 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
         private readonly EnemyAnimationController _animationController;
         private readonly Transform _transform;
         private readonly float _moveSpeed;
-        
+
+        private NavMeshAgent _agent;
         private bool _canMove = true;
-        
-        public EnemyMovement(Transform transform, float moveSpeed, EnemyAnimationController animator)
+
+        public float MovementPredictionThreshold { get; private set; } = 0;
+
+        public float MovementPredictionTime { get; private set; } = 1f;
+
+        public bool UseMovementPrediction { get; private set; }
+
+        public EnemyMovement(Transform transform, float moveSpeed, EnemyAnimationController animator, NavMeshAgent agent)
         {
             _transform = transform;
             _moveSpeed = moveSpeed;
             _animationController = animator;
+            _agent = agent;
+
+            _agent.speed = _moveSpeed;
         }
-        
+
         public bool IsMoveAllowed => _canMove;
-        
+
         public void Move(Vector3 targetPosition)
         {
-            if(!_canMove)
+            if (!_canMove)
             {
                 return;
             }
-            
-            Vector3 oldPosition = _transform.position;
-            _transform.position = Vector3.MoveTowards(_transform.position, targetPosition, _moveSpeed * Time.deltaTime);
-            Vector3 direction = _transform.position - oldPosition;
-            
-            if (direction.sqrMagnitude > Mathf.Epsilon)
-            {
-                PlayMove();
-            }
-            else
-            {
-                StopMove();
-            }
+
+            _agent.SetDestination(targetPosition);
         }
-        
+
+        //public void Move(Vector3 targetPosition)
+        //{
+        //    if (!_canMove)
+        //    {
+        //        return;
+        //    }
+
+        //    Vector3 oldPosition = _transform.position;
+        //    _transform.position = Vector3.MoveTowards(_transform.position, targetPosition, _moveSpeed * Time.deltaTime);
+        //    Vector3 direction = _transform.position - oldPosition;
+
+        //    if (direction.sqrMagnitude > Mathf.Epsilon)
+        //    {
+        //        PlayMove();
+        //    }
+        //    else
+        //    {
+        //        StopMove();
+        //    }
+        //}
+
         public void CanMove(bool value)
         {
             _canMove = value;

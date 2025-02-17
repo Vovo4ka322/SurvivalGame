@@ -1,5 +1,6 @@
 using Cinemachine;
 using PlayerComponents.Animations;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayerComponents.Controller
@@ -9,6 +10,7 @@ namespace PlayerComponents.Controller
         [SerializeField] private ControllerAnimations _controllerAnimations;
         [SerializeField] private PlayerController _controller;
         [SerializeField] private float _turnSpeed;
+        [SerializeField] private LayerMask _layerMask;
 
         private float _moveSpeed;
         private Camera _camera;
@@ -57,14 +59,18 @@ namespace PlayerComponents.Controller
             _controllerAnimations.PlayMove(_moveDirection);
         }
 
+        Vector3 _dir;
+
         private void HandleRotation()
         {
             Ray ray = _camera.ScreenPointToRay(_controller.Rotation);
 
-            if (Physics.Raycast(ray, out RaycastHit hitInfo))
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, _layerMask))
             {
                 Vector3 direction = hitInfo.point - transform.position;
                 direction.y = 0;
+
+                _dir = hitInfo.point;
 
                 if (direction != Vector3.zero)
                 {
@@ -72,6 +78,12 @@ namespace PlayerComponents.Controller
                     transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _turnSpeed);
                 }
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(_dir, 0.5f);
         }
     }
 }
