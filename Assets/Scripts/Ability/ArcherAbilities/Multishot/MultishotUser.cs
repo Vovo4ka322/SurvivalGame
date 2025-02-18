@@ -29,7 +29,6 @@ namespace Ability.ArcherAbilities.Multishot
 
         public IEnumerator UseAbility()
         {
-            //Debug.Log(_multishotScriptableObject.CooldownTime + " Cooldown");
             float duration = 0;
 
             if (Time.time >= _lastUsedTimer + _multishotScriptableObject.CooldownTime || _canUseFirstTime)
@@ -48,10 +47,6 @@ namespace Ability.ArcherAbilities.Multishot
                     duration += Time.deltaTime;
                     _lastUsedTimer = Time.time;
                     _canUseFirstTime = false;
-                    //CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;
-                    //Used?.Invoke(CooldownTime);
-                    //Debug.Log((_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time) + " Cooldown");
-
 
                     yield return null;
                 }
@@ -59,16 +54,6 @@ namespace Ability.ArcherAbilities.Multishot
                 StartCoroutine(StartCooldown());
                 _bow.SetFalseActiveState();
                 _bow.StartShoot();
-
-
-                //CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;//����� ������� ������������ ��������
-            }
-            else
-            {
-                //Debug.Log("�������� " + (_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time));
-                //CooldownTime = _lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time;
-                //Used?.Invoke(CooldownTime);
-                //Debug.Log((_lastUsedTimer + _multishotScriptableObject.CooldownTime - Time.time) + " Cooldown");
             }
         }
 
@@ -100,8 +85,8 @@ namespace Ability.ArcherAbilities.Multishot
             for (int i = 0; i < _multishotScriptableObject.ArrowCount; i++)
             {
                 float tempRotation = startRotation - angleIncrease * i;
-                Arrow arrow = _arrowSpawner.Spawn(_bow.transform, Quaternion.Euler(0, 0, tempRotation), _bow.BowData.ArrowFlightSpeed, _bow.BowData.AttackRadius);
-                arrow.StartFly(Quaternion.Euler(0, tempRotation, 0) * -_bow.transform.forward, _bow.transform.position);
+                Arrow arrow = _arrowSpawner.Spawn(_bow.BowData.ArrowFlightSpeed, _bow.BowData.AttackRadius);
+                arrow.StartFly(Quaternion.Euler(0, tempRotation, 0) * -_bow.StartPointToFly.forward, _bow.StartPointToFly.position);
                 _arrow = arrow;
                 _arrow.Touched += _bow.OnTouched;
             }

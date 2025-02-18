@@ -23,14 +23,12 @@ namespace Ability.ArcherAbilities.InsatiableHunger
 
         public IEnumerator UseAbility(IVampirismable vampirismable)
         {
-            //Debug.Log(_insatiableHunger.CooldownTime + " Cooldown");
             float duration = 0;
             vampirismable.SetCoefficient(_insatiableHunger.Vampirism);
-            //Debug.Log(_insatiableHunger.Vampirism + " Vampirism");
 
             if (Time.time >= _lastUsedTimer + _insatiableHunger.CooldownTime || _canUseFirstTime)
             {
-                while (duration < _insatiableHunger.Duration)//доделать
+                while (duration < _insatiableHunger.Duration)
                 {
                     vampirismable.SetTrueVampirismState();
                     duration += Time.deltaTime;
@@ -42,12 +40,6 @@ namespace Ability.ArcherAbilities.InsatiableHunger
 
                 StartCoroutine(StartCooldown());
                 vampirismable.SetFalseVampirismState();
-
-                CooldownTime = _lastUsedTimer + _insatiableHunger.CooldownTime - Time.time;//потом сделать визуализацию кулдауна
-            }
-            else
-            {
-                //Debug.Log("Осталось " + (_lastUsedTimer + _insatiableHunger.CooldownTime - Time.time));
             }
         }
 
