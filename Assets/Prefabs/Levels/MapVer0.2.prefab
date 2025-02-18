@@ -4661,7 +4661,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TunnelStones
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6067693847571701611, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 3440334924158156445, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 2576634285403014808, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 5082618346577306419, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 5993333270863057672, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 2751370322766694766, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 2597234200510417436, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 3760973717273473120, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 7107735416755150748, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 6489095277066001254, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 4721637078771213287, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 6851210496402276987, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 4932950261215866114, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
+    - {fileID: 7704365929081655838, guid: 6cfd1e77f9bac4bc3a2959fef3ff32a7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
