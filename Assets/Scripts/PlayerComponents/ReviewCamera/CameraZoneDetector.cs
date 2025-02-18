@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace PlayerComponents.ReviewCamera
 {
     public class CameraZoneDetector : MonoBehaviour

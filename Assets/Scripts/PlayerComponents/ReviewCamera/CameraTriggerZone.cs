@@ -1,4 +1,5 @@
 using UnityEngine;
+
 namespace PlayerComponents.ReviewCamera
 {
     [RequireComponent(typeof(Collider))]
