@@ -11,6 +11,7 @@ using EnemyComponents.Projectiles;
 using PlayerComponents;
 using Pools;
 using UnityEngine.AI;
+using Weapons;
 
 namespace EnemyComponents
 {
@@ -93,6 +94,35 @@ namespace EnemyComponents
             Dead?.Invoke(this);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            //if (other.gameObject.TryGetComponent(out Weapon weapon))
+            //{
+            //    Health.Lose(weapon.WeaponData.Damage);
+
+            //    if (Health.IsDead)
+            //    {
+            //        Destroy(gameObject);
+            //        _player.GetExperience(_data.Experience);
+            //    }
+            //}
+
+            Debug.Log("1");
+
+            if (other.gameObject.TryGetComponent(out Weapon weapon))
+            {
+                Health.Lose(weapon.WeaponData.Damage);
+                AnimationAnimationController.TakeHit();
+
+                if (Health.IsDead)
+                {
+                    AnimationAnimationController.Death();
+                    _player.GetExperience(Data.Experience);
+                    Destroy(gameObject);
+                }
+            }
+        }
+
         private void Start()
         {
             _agent.enabled = true;
@@ -136,7 +166,7 @@ namespace EnemyComponents
             
             _spawnCompleted = false;
             AnimationAnimationController.Spawn();
-            //Health.InitMaxValue(_data.MaxHealth);
+            Health.InitMaxValue(_data.MaxHealth);
             
             if (_coroutineRunner != null && _movementCoroutine == null && gameObject.activeInHierarchy)
             {
@@ -159,10 +189,10 @@ namespace EnemyComponents
             AnimationAnimationController?.ResetAttackState();
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            _enemyCollider.HandleCollision(other);
-        }
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    _enemyCollider.HandleCollision(other);
+        //}
 
         private void OnDeath()
         {
