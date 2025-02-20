@@ -65,60 +65,44 @@ namespace EnemyComponents
 
         private void OnEnable()
         {
-            if(Health != null)
+            if (Health != null)
             {
                 Health.Death += OnDeath;
             }
-            
+
             if (_coroutineRunner != null && _movementCoroutine == null)
             {
                 _movementCoroutine = _coroutineRunner.StartCoroutine(AttackCoroutine());
             }
-            
+
             Enabled?.Invoke(this);
         }
 
         private void OnDisable()
         {
-            if(Health != null)
+            if (Health != null)
             {
                 Health.Death -= OnDeath;
             }
-            
+
             if (_coroutineRunner != null && _movementCoroutine != null)
             {
                 _coroutineRunner.StopCoroutine(_movementCoroutine);
                 _movementCoroutine = null;
             }
-            
-            Dead?.Invoke(this);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            //if (other.gameObject.TryGetComponent(out Weapon weapon))
-            //{
-            //    Health.Lose(weapon.WeaponData.Damage);
-
-            //    if (Health.IsDead)
-            //    {
-            //        Destroy(gameObject);
-            //        _player.GetExperience(_data.Experience);
-            //    }
-            //}
-
-            Debug.Log("1");
-
             if (other.gameObject.TryGetComponent(out Weapon weapon))
             {
                 Health.Lose(weapon.WeaponData.Damage);
-                AnimationAnimationController.TakeHit();
 
                 if (Health.IsDead)
                 {
-                    AnimationAnimationController.Death();
                     _player.GetExperience(Data.Experience);
-                    Destroy(gameObject);
+                    _player.GetMoney(Data.Money);
+                    _enemyEffects.Death();
                 }
             }
         }
@@ -188,11 +172,6 @@ namespace EnemyComponents
         {
             AnimationAnimationController?.ResetAttackState();
         }
-
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    _enemyCollider.HandleCollision(other);
-        //}
 
         private void OnDeath()
         {

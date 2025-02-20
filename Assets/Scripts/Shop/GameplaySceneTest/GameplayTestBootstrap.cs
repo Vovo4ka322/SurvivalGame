@@ -14,6 +14,7 @@ public class GameplayTestBootstrap : MonoBehaviour
 
     private Player _player;
     private Canvas _canvas;
+    private Wallet _wallet;
 
     private IDataProvider _dataProvider;
     private IPersistentData _persistentPlayerData;
@@ -29,6 +30,7 @@ public class GameplayTestBootstrap : MonoBehaviour
 
     private void DoTestSpawn()
     {
+        _wallet = new(_persistentPlayerData);
         _player = _generalPlayerFactory.Get(_persistentPlayerData.PlayerData.SelectedCharacterSkin, _characterSpawnPoint.position);
 
         _virtualCamera.Follow = _player.transform;
@@ -40,7 +42,8 @@ public class GameplayTestBootstrap : MonoBehaviour
     private void InitPlayerCharacteristics()
     {
         _player.Init(_persistentPlayerData.PlayerData.CalculationFinalValue.Health, _persistentPlayerData.PlayerData.CalculationFinalValue.Armor,
-        _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed, _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed);
+        _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed, 
+        _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet);
         _canvas = _canvasFactory.Create(_player.CharacterType, _player);
 
         //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.Health + " health при спавне");

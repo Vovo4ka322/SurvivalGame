@@ -1,4 +1,5 @@
 using PlayerComponents;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,12 +11,15 @@ public class PlayerHealthAndExperienceViewer : MonoBehaviour
     [SerializeField] private Button _getExp;
     [SerializeField] private Button _loseHP;
 
+    [SerializeField] private TextMeshProUGUI _moneyText;
+
     private Player _player;
 
     private void OnDisable()
     {
         _player.HealthChanged -= OnHealthChanged;
         _player.ExperienceChanged -= OnExperienceChanged;
+        _player.MoneyChanged -= OnMoneyChanged;
     }
 
     public void Init(Player player)
@@ -29,19 +33,10 @@ public class PlayerHealthAndExperienceViewer : MonoBehaviour
     {
         _player.HealthChanged += OnHealthChanged;
         _player.ExperienceChanged += OnExperienceChanged;
-        _getExp.onClick.AddListener(GetExp);
-        _loseHP.onClick.AddListener(LoseHealth);
+        _player.MoneyChanged += OnMoneyChanged;
     }
 
-    private void LoseHealth()
-    {
-        _player.LoseHealth(50);
-    }
-
-    private void GetExp()
-    {
-        _player.GetExperience(50);
-    }
+    private void OnMoneyChanged(int value) => _moneyText.text = value.ToString();
 
     private void OnHealthChanged(float value) =>
         _healthValueImage.fillAmount = Mathf.InverseLerp(0, _player.Health.MaxValue, value);
