@@ -657,6 +657,7 @@ GameObject:
   - component: {fileID: 6217055319895036100}
   - component: {fileID: 670632561277343192}
   - component: {fileID: 3458271535283400292}
+  - component: {fileID: -8766585432511719656}
   m_Layer: 7
   m_Name: Character_BR_ElementalGolem_01
   m_TagString: Untagged
@@ -776,6 +777,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileSpawnPoint: {fileID: 3291716166857420315}
+--- !u!195 &-8766585432511719656
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334977650429898}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1363942222743436
 GameObject:
   m_ObjectHideFlags: 0

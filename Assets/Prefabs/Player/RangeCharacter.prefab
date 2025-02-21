@@ -3094,7 +3094,6 @@ GameObject:
   - component: {fileID: 8911867772302185996}
   - component: {fileID: 6053994036522528684}
   - component: {fileID: -3785646820089685502}
-  - component: {fileID: -2198338077509112229}
   m_Layer: 0
   m_Name: RangeCharacter
   m_TagString: Untagged
@@ -3220,6 +3219,9 @@ MonoBehaviour:
   _controllerAnimations: {fileID: 6122662214143506408}
   _controller: {fileID: -3785646820089685502}
   _turnSpeed: 10
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!114 &8911867772302185996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3273,28 +3275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179d521c94c608e4ab985014e7113a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!195 &-2198338077509112229
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608901804690004}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &1613399997110604
 GameObject:
   m_ObjectHideFlags: 0
@@ -4763,7 +4743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9193520323196252369
 Transform:
   m_ObjectHideFlags: 0
@@ -5100,7 +5080,7 @@ Transform:
   m_GameObject: {fileID: 8410195475089030610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.094, y: 1.366, z: 1.02}
+  m_LocalPosition: {x: -0.219, y: 1.366, z: 1.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5131,4 +5111,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383af357c62a4e34dbdc32a811c68867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: {fileID: 3087641465047530294, guid: 2e6436e57429931489b6e226c3606507, type: 3}
+  _object: {fileID: -8698979764503146078, guid: 3328d5d74c357064087a925505b79caf, type: 3}

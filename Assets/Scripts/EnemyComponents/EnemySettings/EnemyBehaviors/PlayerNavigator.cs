@@ -3,7 +3,7 @@ using EnemyComponents.Interfaces;
 
 namespace EnemyComponents.EnemySettings.EnemyBehaviors
 {
-    public class PlayerNavigator
+    public class PlayerNavigator//delete
     {
         private readonly IEnemyMovement _movement;
         private readonly Transform _playerTransform;
