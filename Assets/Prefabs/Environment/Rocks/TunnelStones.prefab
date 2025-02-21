@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 151262420677203513}
   - component: {fileID: 3870491810557827484}
   - component: {fileID: 1320197365705698646}
-  - component: {fileID: 3440334924158156445}
   m_Layer: 10
   m_Name: SM_Env_Rock_04 (1)
   m_TagString: Untagged
@@ -84,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3440334924158156445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671798247498763395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &1112385923055709457
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +94,6 @@ GameObject:
   - component: {fileID: 298413739018893227}
   - component: {fileID: 3714332950706141198}
   - component: {fileID: 1472397159064063172}
-  - component: {fileID: 6067693847571701611}
   m_Layer: 10
   m_Name: SM_Env_Rock_Cliff_03
   m_TagString: Untagged
@@ -182,20 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6067693847571701611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112385923055709457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &1549745358692624321
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +177,6 @@ GameObject:
   - component: {fileID: 2218618329929579899}
   - component: {fileID: 2983008068038587102}
   - component: {fileID: 1045170745572886036}
-  - component: {fileID: 5082618346577306419}
   m_Layer: 10
   m_Name: SM_Env_Rock_02 (1)
   m_TagString: Untagged
@@ -280,20 +249,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5082618346577306419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549745358692624321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &2042202297013744825
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +260,6 @@ GameObject:
   - component: {fileID: 1665360477197037059}
   - component: {fileID: 2356322767353340326}
   - component: {fileID: 529067796061099372}
-  - component: {fileID: 4932950261215866114}
   m_Layer: 10
   m_Name: SM_Env_Rock_Cliff_02
   m_TagString: Untagged
@@ -378,20 +332,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4932950261215866114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042202297013744825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &3622254645094110200
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +343,6 @@ GameObject:
   - component: {fileID: 4111511328016271682}
   - component: {fileID: 1054086755003172583}
   - component: {fileID: 2973546838243177005}
-  - component: {fileID: 6851210496402276987}
   m_Layer: 10
   m_Name: SM_Env_Rock_Pile_06
   m_TagString: Untagged
@@ -476,20 +415,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6851210496402276987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3622254645094110200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &4010467208551280717
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +426,6 @@ GameObject:
   - component: {fileID: 4387590160351324919}
   - component: {fileID: 814027369318868306}
   - component: {fileID: 3218093365818200472}
-  - component: {fileID: 2751370322766694766}
   m_Layer: 10
   m_Name: SM_Env_Rock_04
   m_TagString: Untagged
@@ -574,20 +498,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2751370322766694766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4010467208551280717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &4330036239781832212
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +509,6 @@ GameObject:
   - component: {fileID: 3989258706573589678}
   - component: {fileID: 68515230044189451}
   - component: {fileID: 2816893217619576769}
-  - component: {fileID: 5993333270863057672}
   m_Layer: 10
   m_Name: SM_Env_Rock_06 (1)
   m_TagString: Untagged
@@ -672,20 +581,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5993333270863057672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4330036239781832212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &4340052176917187143
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +592,6 @@ GameObject:
   - component: {fileID: 3995017059204272381}
   - component: {fileID: 62765947881004888}
   - component: {fileID: 2826582736500747154}
-  - component: {fileID: 7107735416755150748}
   m_Layer: 10
   m_Name: SM_Env_Rock_Round_01
   m_TagString: Untagged
@@ -770,20 +664,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7107735416755150748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4340052176917187143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &5293473795784475602
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +675,6 @@ GameObject:
   - component: {fileID: 4773220715856058728}
   - component: {fileID: 8471896962863322829}
   - component: {fileID: 5942163460681703943}
-  - component: {fileID: 7704365929081655838}
   m_Layer: 10
   m_Name: SM_Env_Rock_Pile_07
   m_TagString: Untagged
@@ -868,20 +747,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7704365929081655838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5293473795784475602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &5640634533806337776
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,7 +758,6 @@ GameObject:
   - component: {fileID: 4975456784138613834}
   - component: {fileID: 8260591280349559791}
   - component: {fileID: 6145006974644539173}
-  - component: {fileID: 2576634285403014808}
   m_Layer: 10
   m_Name: SM_Env_Rock_Pile_05 (1)
   m_TagString: Untagged
@@ -966,20 +830,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2576634285403014808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5640634533806337776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &5800392687498296955
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +841,6 @@ GameObject:
   - component: {fileID: 6572144690515911873}
   - component: {fileID: 7825894214962817892}
   - component: {fileID: 5440311081739509678}
-  - component: {fileID: 4721637078771213287}
   m_Layer: 10
   m_Name: SM_Env_Rock_Pile_06 (1)
   m_TagString: Untagged
@@ -1064,20 +913,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4721637078771213287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5800392687498296955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &6071952543269776203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +924,6 @@ GameObject:
   - component: {fileID: 6847784833854190065}
   - component: {fileID: 7541246322597215828}
   - component: {fileID: 5711431682531281566}
-  - component: {fileID: 3760973717273473120}
   m_Layer: 10
   m_Name: SM_Env_Rock_06
   m_TagString: Untagged
@@ -1162,20 +996,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3760973717273473120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6071952543269776203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &8138433977198745137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,7 +1007,6 @@ GameObject:
   - component: {fileID: 8915533217903594635}
   - component: {fileID: 5482443895064871726}
   - component: {fileID: 7778133155550672868}
-  - component: {fileID: 2597234200510417436}
   m_Layer: 10
   m_Name: SM_Env_Rock_02
   m_TagString: Untagged
@@ -1260,20 +1079,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2597234200510417436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8138433977198745137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &8167007628543493115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,7 +1090,6 @@ GameObject:
   - component: {fileID: 8799148043108473153}
   - component: {fileID: 5598819943899649764}
   - component: {fileID: 7662864161018356270}
-  - component: {fileID: 6489095277066001254}
   m_Layer: 10
   m_Name: SM_Env_Rock_Pile_05
   m_TagString: Untagged
@@ -1358,20 +1162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6489095277066001254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8167007628543493115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af0ce8540a3b40868a60a046ef559ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeSpeed: 5
-  _targetAlpha: 0.3
 --- !u!1 &9139171398025907809
 GameObject:
   m_ObjectHideFlags: 0
