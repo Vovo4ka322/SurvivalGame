@@ -107,14 +107,24 @@ namespace EnemyComponents
             }
         }
 
-        private void Start()
-        {
-            _agent.enabled = true;
-        }
+        //private void Start()
+        //{
+        //    _agent.enabled = true;
+        //}
 
         private void Update()
         {
             MoveAndRotate();
+        }
+
+        public void TurnOnAgent()
+        {
+            _agent.enabled = true;
+        }
+
+        public void TurnOffAgent()
+        {
+            _agent.enabled = false;
         }
 
         public void InitializeComponents(Player player, EnemyData enemyData, EffectsPool pool, PoolManager poolManager, ICoroutineRunner coroutineRunner)
@@ -176,6 +186,7 @@ namespace EnemyComponents
         private void OnDeath()
         {
             AnimationAnimationController.Death();
+            //_hybridSpawner.SetStateProjectile(null);
             Dead?.Invoke(this);
         }
         

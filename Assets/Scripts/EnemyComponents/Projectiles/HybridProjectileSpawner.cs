@@ -1,9 +1,13 @@
+using UnityEngine;
+
 namespace EnemyComponents.Projectiles
 {
     public class HybridProjectileSpawner : BaseProjectileSpawner
     {
         private BaseProjectile _currentProjectile;
-    
+
+        public BaseProjectile BaseProjectile => _currentProjectile;
+
         public void PrepareStone()
         {
             _currentProjectile = Create();
@@ -13,7 +17,7 @@ namespace EnemyComponents.Projectiles
                 return;
             }
             
-            _currentProjectile.transform.SetParent(ProjectileSpawnPoint);
+            SetStateProjectile(ProjectileSpawnPoint);
         }
     
         public void ThrowStone()
@@ -23,9 +27,14 @@ namespace EnemyComponents.Projectiles
                 return;
             }
             
-            _currentProjectile.transform.SetParent(null);
+            SetStateProjectile(null);
             _currentProjectile.Launch(Player.transform.position, ProjectilePool);
             _currentProjectile = null;
+        }
+
+        public void SetStateProjectile(Transform transform)
+        {
+            _currentProjectile.transform.SetParent(transform);
         }
     }
 }

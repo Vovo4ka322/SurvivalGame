@@ -18,7 +18,6 @@ namespace EnemyComponents
         private EffectsPool _effectsPool;
         private PoolSettings _poolSettings;
         private Transform _container;
-        private EnemyPool _pool;
 
         private int _activeEnemiesCount = 0;
 
@@ -64,13 +63,12 @@ namespace EnemyComponents
                 return;
             }
 
-            _pool = pool;
-
             NavMesh.SamplePosition(position, out NavMeshHit hit, float.MaxValue, NavMesh.AllAreas);
 
             enemyInstance.transform.position = hit.position;
             enemyInstance.transform.rotation = rotation;
             enemyInstance.InitializeComponents(player, enemyData, _effectsPool, _poolManager, _coroutineRunner);
+            enemyInstance.TurnOnAgent();
             enemyInstance.Enabled += OnEnemyEnabled;
             enemyInstance.Dead += OnEnemyDisabled;
         }
@@ -84,6 +82,7 @@ namespace EnemyComponents
         {
             enemy.Enabled -= OnEnemyEnabled;
             enemy.Dead -= OnEnemyDisabled;
+
             _activeEnemiesCount--;
 
             if (_activeEnemiesCount < 0)
@@ -91,7 +90,11 @@ namespace EnemyComponents
                 _activeEnemiesCount = 0;
             }
 
-            _pool.Release(enemy);
+            if(_enemyPools.TryGetValue(enemy.Data, out EnemyPool pool))
+            {
+                pool.Release(enemy);
+                enemy.TurnOffAgent();
+            }
         }
     }
 }

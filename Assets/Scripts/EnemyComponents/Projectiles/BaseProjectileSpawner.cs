@@ -55,7 +55,7 @@ namespace EnemyComponents.Projectiles
             
             return projectile;
         }
-        
+
         private BaseProjectile GetPrefabFromEnemyData(EnemyData data)
         {
             if(data.BaseAttackType is RangedEnemyAttackType ranged)
