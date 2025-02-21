@@ -22,6 +22,7 @@ namespace EnemyComponents.EnemySettings
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private int _experience;
         [SerializeField] private int _gold;
+        [SerializeField] private int _points;
         
         [Header("Effects")]
         [SerializeField] private EffectData _spawnEffect;
@@ -41,6 +42,8 @@ namespace EnemyComponents.EnemySettings
         public float AttackCooldown => _attackCooldown;
         public float AttackRange => _attackRange;
         public int Experience => _experience;
-        public int Gold => _gold;
+        public int Money => _gold;
+
+        public int Points => _points;
     }
 }

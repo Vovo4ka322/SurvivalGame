@@ -57,12 +57,8 @@ namespace EnemyComponents
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Enter1");
-
             if(other.TryGetComponent(out Player _) && !_playerInZone)
             {
-                Debug.Log("Enter2");
-
                 _playerInZone = true;
                 
                 _easyWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_easyEnemyDatas, _startDelayEasyWave, _easyWaveDuration));
