@@ -2,6 +2,7 @@ using Ability.ArcherAbilities;
 using Ability.MeleeAbilities;
 using PlayerComponents;
 using System;
+using MenuComponents.ShopComponents.SkinComponents;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CanvasFactory", menuName = "CanvasFactory")]

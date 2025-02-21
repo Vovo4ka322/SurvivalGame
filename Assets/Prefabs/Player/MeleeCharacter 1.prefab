@@ -1145,7 +1145,6 @@ GameObject:
   - component: {fileID: 5315304360336446636}
   - component: {fileID: 9096345332668607195}
   - component: {fileID: 7269811979942552190}
-  - component: {fileID: 1428420853946387937}
   m_Layer: 0
   m_Name: Ability
   m_TagString: Untagged
@@ -1211,20 +1210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41650866bfe649844a003774237a30bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1428420853946387937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2454682146683568299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41a9cc928cab7a489a43d20900de604, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _meleeAbilityUser: {fileID: 5315304360336446636}
-  _playerController: {fileID: 2078077444473133153}
 --- !u!1 &2521104793886357630
 GameObject:
   m_ObjectHideFlags: 0
