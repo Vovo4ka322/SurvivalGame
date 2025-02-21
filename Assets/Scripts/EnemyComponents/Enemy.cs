@@ -11,6 +11,7 @@ using EnemyComponents.Projectiles;
 using PlayerComponents;
 using Pools;
 using UnityEngine.AI;
+using Weapons;
 
 namespace EnemyComponents
 {
@@ -64,43 +65,66 @@ namespace EnemyComponents
 
         private void OnEnable()
         {
-            if(Health != null)
+            if (Health != null)
             {
                 Health.Death += OnDeath;
             }
-            
+
             if (_coroutineRunner != null && _movementCoroutine == null)
             {
                 _movementCoroutine = _coroutineRunner.StartCoroutine(AttackCoroutine());
             }
-            
+
             Enabled?.Invoke(this);
         }
 
         private void OnDisable()
         {
-            if(Health != null)
+            if (Health != null)
             {
                 Health.Death -= OnDeath;
             }
-            
+
             if (_coroutineRunner != null && _movementCoroutine != null)
             {
                 _coroutineRunner.StopCoroutine(_movementCoroutine);
                 _movementCoroutine = null;
             }
-            
-            Dead?.Invoke(this);
         }
 
-        private void Start()
+        private void OnTriggerEnter(Collider other)
         {
-            _agent.enabled = true;
+            if (other.gameObject.TryGetComponent(out Weapon weapon))
+            {
+                Health.Lose(weapon.WeaponData.Damage);
+
+                if (Health.IsDead)
+                {
+                    _player.GetExperience(Data.Experience);
+                    _player.GetMoney(Data.Money);
+                    _enemyEffects.Death();
+                }
+            }
         }
+
+        //private void Start()
+        //{
+        //    _agent.enabled = true;
+        //}
 
         private void Update()
         {
             MoveAndRotate();
+        }
+
+        public void TurnOnAgent()
+        {
+            _agent.enabled = true;
+        }
+
+        public void TurnOffAgent()
+        {
+            _agent.enabled = false;
         }
 
         public void InitializeComponents(Player player, EnemyData enemyData, EffectsPool pool, PoolManager poolManager, ICoroutineRunner coroutineRunner)
@@ -136,7 +160,7 @@ namespace EnemyComponents
             
             _spawnCompleted = false;
             AnimationAnimationController.Spawn();
-            //Health.InitMaxValue(_data.MaxHealth);
+            Health.InitMaxValue(_data.MaxHealth);
             
             if (_coroutineRunner != null && _movementCoroutine == null && gameObject.activeInHierarchy)
             {
@@ -159,14 +183,10 @@ namespace EnemyComponents
             AnimationAnimationController?.ResetAttackState();
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            _enemyCollider.HandleCollision(other);
-        }
-
         private void OnDeath()
         {
             AnimationAnimationController.Death();
+            //_hybridSpawner.SetStateProjectile(null);
             Dead?.Invoke(this);
         }
         

@@ -42,6 +42,8 @@ namespace EnemyComponents.EnemySettings.EnemyBehaviors
                 return;
             }
 
+
+
             _agent.SetDestination(targetPosition);
         }
 

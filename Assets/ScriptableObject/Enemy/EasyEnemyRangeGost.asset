@@ -22,8 +22,9 @@ MonoBehaviour:
   _attackRange: 15
   _moveSpeed: 7
   _rotationSpeed: 100
-  _experience: 10
-  _gold: 5
+  _experience: 50
+  _gold: 2
+  _points: 0
   _spawnEffect:
     _effect: {fileID: 130371810037123618, guid: 98783eafbabdb99478e8001a6ea75f2c, type: 3}
     _positionOffset: {x: 0, y: 0, z: 0}
