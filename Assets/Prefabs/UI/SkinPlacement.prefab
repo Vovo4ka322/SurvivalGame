@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3493553843389995674}
   - component: {fileID: 2517410180514298808}
-  - component: {fileID: 5175515912026964199}
+  - component: {fileID: 5263530362206894024}
   m_Layer: 0
   m_Name: SkinPlacement
   m_TagString: Untagged
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 10
---- !u!114 &5175515912026964199
+--- !u!114 &5263530362206894024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,7 +55,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3467097847734651686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 477a16ae4fbc7ea4697afd6415996dc6, type: 3}
+  m_Script: {fileID: 11500000, guid: ac504fc8ee51092449e521ef515a6d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rotator: {fileID: 2517410180514298808}
