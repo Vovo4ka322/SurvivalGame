@@ -1,8 +1,5 @@
 using Cinemachine;
 using EnemyComponents;
-using MenuComponents.ShopComponents.Data;
-using MenuComponents.ShopComponents.GameplaySceneTest;
-using MenuComponents.ShopComponents.WalletComponents;
 using PlayerComponents;
 using UnityEngine;
 using UnityEngine.UI;

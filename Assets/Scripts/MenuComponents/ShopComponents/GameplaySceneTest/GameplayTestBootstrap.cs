@@ -2,7 +2,6 @@ using UnityEngine;
 using Cinemachine;
 using EnemyComponents;
 using MenuComponents.ShopComponents.Data;
-using MenuComponents.ShopComponents.WalletComponents;
 using PlayerComponents;
 
 namespace MenuComponents.ShopComponents.GameplaySceneTest
@@ -17,7 +16,6 @@ namespace MenuComponents.ShopComponents.GameplaySceneTest
 
         private Player _player;
         private Canvas _canvas;
-        private Wallet _wallet;
 
         private IDataProvider _dataProvider;
         private IPersistentData _persistentPlayerData;
@@ -33,7 +31,6 @@ namespace MenuComponents.ShopComponents.GameplaySceneTest
 
         private void DoTestSpawn()
         {
-            _wallet = new(_persistentPlayerData);
             _player = _generalPlayerFactory.Get(_persistentPlayerData.PlayerData.SelectedCharacterSkin, _characterSpawnPoint.position);
 
             _virtualCamera.Follow = _player.transform;
@@ -45,7 +42,7 @@ namespace MenuComponents.ShopComponents.GameplaySceneTest
         private void InitPlayerCharacteristics()
         {
             _player.Init(_persistentPlayerData.PlayerData.CalculationFinalValue.Health, _persistentPlayerData.PlayerData.CalculationFinalValue.Armor,
-                _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed, _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet);
+                _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed, _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed);
 
             _canvas = _canvasFactory.Create(_player.CharacterType, _player);
 
