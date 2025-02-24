@@ -27,6 +27,8 @@ namespace MenuComponents.ShopComponents.SkinComponents
             {
                 item.gameObject.layer = LayerMask.NameToLayer(RenderLayer);
             }
+            
+            _currentModel.PlayIdle();
         }
         
         public void DestroyModel()
