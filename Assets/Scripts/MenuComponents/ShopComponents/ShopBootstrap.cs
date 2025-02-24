@@ -3,6 +3,7 @@ using MenuComponents.ShopComponents.Data;
 using MenuComponents.ShopComponents.Viewers;
 using MenuComponents.ShopComponents.Visitors;
 using MenuComponents.ShopComponents.WalletComponents;
+using Music;
 
 namespace MenuComponents.ShopComponents
 {
@@ -11,21 +12,32 @@ namespace MenuComponents.ShopComponents
         [SerializeField] private Shop _shop;
         [SerializeField] private WalletView _walletView;
         [SerializeField] private BuffImprovmentViewer _improvmentViewer;
-    
+        [SerializeField] private SoundMixerSettings _soundMixerSettings;
+
         private IDataProvider _dataProvider;
         private IPersistentData _persistentPlayerData;
     
         private Wallet _wallet;
         private PlayerCharacteristicData _calculationFinalValue;
     
-        public void Awake()
+        private void Awake()
         {
             InitializeData();
             InitializeWallet();
             InitializeImprovmentViewer();
             InitializeShop();
         }
-    
+
+        private void Start()
+        {
+            InitializeSound();
+        }
+
+        private void InitializeSound()
+        {
+            _soundMixerSettings.Initialize();
+        }
+
         private void InitializeData()
         {
             _persistentPlayerData = new PersistentData();

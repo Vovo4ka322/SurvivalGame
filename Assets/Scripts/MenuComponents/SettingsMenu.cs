@@ -8,7 +8,6 @@ namespace MenuComponents
     {
         [SerializeField] private MainMenu _mainMenu;
         [SerializeField] private Button _returnToMainMenuButton;
-        [SerializeField] private SoundMixerSettings _soundMixerSettings;
         
         private void OnEnable()
         {
@@ -18,11 +17,6 @@ namespace MenuComponents
         private void OnDisable()
         {
             _returnToMainMenuButton.onClick.RemoveListener(ReturnToMainMenu);
-        }
-        
-        private void Start()
-        {
-            _soundMixerSettings.Initialize();
         }
         
         public void Show()
