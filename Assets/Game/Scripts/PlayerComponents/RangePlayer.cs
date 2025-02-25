@@ -8,6 +8,7 @@ public class RangePlayer : Player, IVampirismable, IEvasionable
 {
     [SerializeField] private Collider _collider;
     [SerializeField] private Bow _bow;
+    [SerializeField] private AnimatorState _animatorState;
 
     private float _evasionChance;
 
@@ -49,6 +50,10 @@ public class RangePlayer : Player, IVampirismable, IEvasionable
         }
     }
 
+    private void Start()
+    {
+        _animatorState.SetFloatValue(_animatorState.Speed, GeneralAttackSpeed);
+    }
 
     public void Shoot()
     {
