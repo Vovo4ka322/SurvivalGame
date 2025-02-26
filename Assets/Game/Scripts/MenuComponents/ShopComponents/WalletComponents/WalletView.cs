@@ -1,11 +1,11 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MenuComponents.ShopComponents.WalletComponents
 {
     public class WalletView : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _value;
+        [SerializeField] private Text _value;
         
         private Wallet _wallet;
         

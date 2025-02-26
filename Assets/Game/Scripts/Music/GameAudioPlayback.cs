@@ -24,6 +24,7 @@ namespace Music
 
             _audioMixer.SetFloat(parameterName, dbVolume);
             PlayerPrefs.SetFloat(parameterName, volume);
+            PlayerPrefs.Save(); 
         }
     }
 }

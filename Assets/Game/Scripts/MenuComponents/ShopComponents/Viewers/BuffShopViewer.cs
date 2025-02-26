@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 namespace MenuComponents.ShopComponents.Viewers
 {
@@ -16,15 +15,15 @@ namespace MenuComponents.ShopComponents.Viewers
 
         [Header("Text and button of purchase of every buffs buttons")]
         [SerializeField] private Button _healthBuffPurchaseButton;
-        [SerializeField] private TextMeshProUGUI _healthBuffDescription;
+        [SerializeField] private Text _healthBuffDescription;
         [SerializeField] private Button _armorBuffPurchaseButton;
-        [SerializeField] private TextMeshProUGUI _armorBuffDescription;
+        [SerializeField] private Text _armorBuffDescription;
         [SerializeField] private Button _damageBuffPurchaseButton;
-        [SerializeField] private TextMeshProUGUI _damageBuffDescription;
+        [SerializeField] private Text _damageBuffDescription;
         [SerializeField] private Button _attackSpeedBuffPurchaseButton;
-        [SerializeField] private TextMeshProUGUI _attackSpeedBuffDescription;
+        [SerializeField] private Text _attackSpeedBuffDescription;
         [SerializeField] private Button _movementSpeedBuffPurchaseButton;
-        [SerializeField] private TextMeshProUGUI _movementSpeedBuffDescription;
+        [SerializeField] private Text _movementSpeedBuffDescription;
         
         private readonly int _healthKey = 0;
         private readonly int _armorKey = 1;
@@ -33,7 +32,7 @@ namespace MenuComponents.ShopComponents.Viewers
         private readonly int _movementSpeedKey = 4;
         
         private Dictionary<int, Button> _purchaseButtons;
-        private Dictionary<int, TextMeshProUGUI> _purchaseTexts;
+        private Dictionary<int, Text> _purchaseTexts;
         
         private BuffImprovment _buffImprovment;
         private BuffShop _buffShop;
@@ -107,13 +106,13 @@ namespace MenuComponents.ShopComponents.Viewers
             Activate(_movementSpeedBuffPurchaseButton, _movementSpeedBuffDescription);
         }
         
-        private void Activate(Button button, TextMeshProUGUI text)
+        private void Activate(Button button, Text text)
         {
             button.gameObject.SetActive(true);
             text.gameObject.SetActive(true);
         }
         
-        private void Deactivate(Button button, TextMeshProUGUI text)
+        private void Deactivate(Button button, Text text)
         {
             button.gameObject.SetActive(false);
             text.gameObject.SetActive(false);

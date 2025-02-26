@@ -21,7 +21,12 @@ namespace Music
         private float _prevGeneralVolume;
         private float _prevMusicVolume;
         private float _prevEffectVolume;
-        
+
+        private void Awake()
+        {
+            Initialize();
+        }
+
         private void OnDestroy()
         {
             _muteToggle.onValueChanged.RemoveListener(OnMuteToggleChanged);

@@ -1,5 +1,4 @@
 using PlayerComponents;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +7,7 @@ public class PlayerHealthAndExperienceViewer : MonoBehaviour
     [SerializeField] private Image _healthValueImage;
     [SerializeField] private Image _ExpValueImage;
 
-    [SerializeField] private TextMeshProUGUI _moneyText;
+    [SerializeField] private Text _moneyText;
 
     private Player _player;
 
