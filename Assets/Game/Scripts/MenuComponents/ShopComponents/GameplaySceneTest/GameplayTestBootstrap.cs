@@ -40,20 +40,20 @@ namespace MenuComponents.ShopComponents.GameplaySceneTest
             _virtualCamera.LookAt = _player.transform;
 
             InitPlayerCharacteristics();
+            InitUserInterface();
         }
 
         private void InitPlayerCharacteristics()
         {
             _player.Init(_persistentPlayerData.PlayerData.CalculationFinalValue.Health, _persistentPlayerData.PlayerData.CalculationFinalValue.Armor,
-                _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed, _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet);
+            _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed,
+            _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet);
+        }
 
+        private void InitUserInterface()
+        {
             _canvas = _canvasFactory.Create(_player.CharacterType, _player);
-
-            //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.Health + " health при спавне");
-            //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.Armor + " armor при спавне");
-            //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.Damage + " damage при спавне");
-            //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed + " attack при спавне");
-            //Debug.Log(_persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed + " movement при спавне");
+            _canvas.GetComponent<GameplayMenu>().Init(_player);
         }
 
         private void InitializeData()
@@ -66,7 +66,7 @@ namespace MenuComponents.ShopComponents.GameplaySceneTest
 
         private void LoadDataOrInit()
         {
-            if(_dataProvider.TryLoad() == false)
+            if (_dataProvider.TryLoad() == false)
                 _persistentPlayerData.PlayerData = new PlayerData();
         }
     }
