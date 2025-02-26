@@ -12,6 +12,7 @@ namespace MenuComponents
         [SerializeField] private Button _choicePlayerButton;
         [SerializeField] private Button _settingsButton;
         [SerializeField] private GameAudioPlayback _gameAudioPlayback;
+
         private void Awake()
         {
             _menuCanvas.gameObject.SetActive(true);

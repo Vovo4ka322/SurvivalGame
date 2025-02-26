@@ -12,7 +12,6 @@ namespace MenuComponents.ShopComponents
         [SerializeField] private Shop _shop;
         [SerializeField] private WalletView _walletView;
         [SerializeField] private BuffImprovmentViewer _improvmentViewer;
-        [SerializeField] private SoundMixerSettings _soundMixerSettings;
 
         private IDataProvider _dataProvider;
         private IPersistentData _persistentPlayerData;
@@ -26,16 +25,6 @@ namespace MenuComponents.ShopComponents
             InitializeWallet();
             InitializeImprovmentViewer();
             InitializeShop();
-        }
-
-        private void Start()
-        {
-            InitializeSound();
-        }
-
-        private void InitializeSound()
-        {
-            _soundMixerSettings.Initialize();
         }
 
         private void InitializeData()
