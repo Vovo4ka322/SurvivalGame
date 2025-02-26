@@ -7,9 +7,6 @@ public class PlayerHealthAndExperienceViewer : MonoBehaviour
     [SerializeField] private Image _healthValueImage;
     [SerializeField] private Image _ExpValueImage;
 
-    [SerializeField] private Button _getExp;
-    [SerializeField] private Button _loseHP;
-
     [SerializeField] private Text _moneyText;
 
     private Player _player;
