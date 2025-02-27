@@ -14,10 +14,9 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Button _continueButton;
         [SerializeField] private Image _pausePanel;
         [SerializeField] private Image _defeatPanel;
-        [SerializeField] private Player _player;
-        
-        private bool _isPlayerDead = false;
-        
+
+        private Player _player;
+
         private void OnEnable()
         {
             if(_pauseButton != null)
@@ -77,7 +76,6 @@ namespace Game.Scripts.MenuComponents
 
         private void OnPlayerDeath()
         {
-            _isPlayerDead = true;
             Time.timeScale = 0;
 
             if (_defeatPanel != null)
@@ -100,7 +98,7 @@ namespace Game.Scripts.MenuComponents
                 _pausePanel.gameObject.SetActive(true);
             }
             
-            if (!_isPlayerDead && _continueButton != null)
+            if (_continueButton != null)
             {
                 _continueButton.interactable = true;
             }
@@ -108,14 +106,11 @@ namespace Game.Scripts.MenuComponents
         
         private void OnContinueButtonClicked()
         {
-            if (!_isPlayerDead)
-            {
-                Time.timeScale = 1.0f;
+            Time.timeScale = 1.0f;
                 
-                if (_pausePanel != null)
-                {
-                    _pausePanel.gameObject.SetActive(false);
-                }
+            if (_pausePanel != null)
+            {
+                _pausePanel.gameObject.SetActive(false);
             }
         }
     }
