@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
-using PlayerComponents;
-using Pools;
+using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.PoolComponents;
+using Game.Scripts.PlayerComponents;
 
-namespace EnemyComponents.Projectiles
+namespace Game.Scripts.EnemyComponents.Projectiles
 {
     public abstract class BaseProjectile : MonoBehaviour
     {

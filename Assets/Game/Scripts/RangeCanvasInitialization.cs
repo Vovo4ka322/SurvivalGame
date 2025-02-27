@@ -1,6 +1,6 @@
-﻿using PlayerComponents;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using Game.Scripts.PlayerComponents;
 
 public class RangeCanvasInitialization : MonoBehaviour
 {

@@ -1,7 +1,7 @@
 using UnityEngine;
-using EnemyComponents.Interfaces;
+using Game.Scripts.EnemyComponents.Interfaces;
 
-namespace EnemyComponents.EnemySettings.EnemyBehaviors
+namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 {
     public class EnemyRotation : IEnemyRotation
     {

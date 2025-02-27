@@ -1,9 +1,9 @@
 using System;
-using EnemyComponents.Interfaces;
 using UnityEngine;
-using Pools;
+using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.PoolComponents;
 
-namespace EnemyComponents.EnemySettings.Effects
+namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
 {
     public class AttackEffect
     {

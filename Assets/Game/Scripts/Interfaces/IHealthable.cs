@@ -1,4 +1,7 @@
-public interface IHealthable
+namespace Game.Scripts.Interfaces
 {
-    public float Health { get; }
+    public interface IHealthable
+    {
+        public float Health { get; }
+    }
 }

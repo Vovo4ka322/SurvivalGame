@@ -1,12 +1,12 @@
 using UnityEngine.InputSystem;
 
-namespace Interfaces
+namespace Game.Scripts.Interfaces
 {
     public interface IPlayerActions
     {
-        void OnMove(InputAction.CallbackContext context);
-        void OnLook2(InputAction.CallbackContext context);
-        void OnUseFirstAbility(InputAction.CallbackContext context);
-        void OnUseSecondAbility(InputAction.CallbackContext context);
+        public void OnMove(InputAction.CallbackContext context);
+        public void OnLook2(InputAction.CallbackContext context);
+        public void OnUseFirstAbility(InputAction.CallbackContext context);
+        public void OnUseSecondAbility(InputAction.CallbackContext context);
     }
 }

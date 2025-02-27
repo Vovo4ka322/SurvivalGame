@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-namespace MenuComponents.ShopComponents.Buttons
+namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
 {
     public class BuyButton : MonoBehaviour
     {

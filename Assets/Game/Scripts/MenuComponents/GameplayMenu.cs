@@ -1,10 +1,10 @@
-using PlayerComponents;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Game.Scripts.PlayerComponents;
 
-namespace MenuComponents
+namespace Game.Scripts.MenuComponents
 {
     public class GameplayMenu : MonoBehaviour
     {

@@ -1,6 +1,7 @@
 using UnityEngine;
+using Game.Scripts.EnemyComponents.Projectiles;
 
-namespace EnemyComponents.Projectiles
+namespace Game.Scripts.EnemyComponents.Interfaces
 {
     public interface IProjectileMovement
     {

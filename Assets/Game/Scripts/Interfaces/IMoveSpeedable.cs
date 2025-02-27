@@ -1,4 +1,7 @@
-public interface IMoveSpeedable
+namespace Game.Scripts.Interfaces
 {
-    public float MovementSpeed { get; }
+    public interface IMoveSpeedable
+    {
+        public float MovementSpeed { get; }
+    }
 }

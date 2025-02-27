@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Ability.ArcherAbilities.InsatiableHunger;
 using Ability.ArcherAbilities.Multishot;
-using PlayerComponents;
-using UnityEngine;
+using Game.Scripts.Interfaces;
+using Game.Scripts.PlayerComponents;
 using Weapons.RangedWeapon;
+
 namespace Ability.ArcherAbilities
 {
     public class ArcherAbilityUser : MonoBehaviour, IAbilityUser

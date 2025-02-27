@@ -1,9 +1,6 @@
-using Ability.ArcherAbilities;
-using Ability.MeleeAbilities;
-using PlayerComponents;
 using System;
-using MenuComponents.ShopComponents.SkinComponents;
 using UnityEngine;
+using Game.Scripts.PlayerComponents;
 
 [CreateAssetMenu(fileName = "CanvasFactory", menuName = "CanvasFactory")]
 public class CanvasFactory : ScriptableObject

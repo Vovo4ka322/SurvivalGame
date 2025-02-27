@@ -1,6 +1,6 @@
-using EnemyComponents.EnemySettings.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
 
-namespace EnemyComponents.Interfaces
+namespace Game.Scripts.EnemyComponents.Interfaces
 {
     public interface IEnemyAttack
     {

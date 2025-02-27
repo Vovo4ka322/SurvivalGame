@@ -1,5 +1,6 @@
 using UnityEngine;
-namespace PlayerComponents.Animations
+
+namespace Game.Scripts.PlayerComponents.Animations
 {
     public static class AnimationDataParams
     {

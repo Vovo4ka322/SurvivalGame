@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
-using EnemyComponents.EnemySettings.Effects;
-using EnemyComponents.Projectiles;
+using Game.Scripts.EnemyComponents.EnemySettings.Effects;
+using Game.Scripts.EnemyComponents.Projectiles;
 
-namespace EnemyComponents.EnemySettings.EnemyAttackType
+namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType
 {
     [Serializable]
     public class RangedEnemyAttackType : BaseEnemyAttackType

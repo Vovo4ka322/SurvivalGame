@@ -1,4 +1,7 @@
-﻿public interface IAttackSpeedable
+﻿namespace Game.Scripts.Interfaces
 {
-    public float AttackSpeed { get; }
+    public interface IAttackSpeedable
+    {
+        public float AttackSpeed { get; }
+    }
 }

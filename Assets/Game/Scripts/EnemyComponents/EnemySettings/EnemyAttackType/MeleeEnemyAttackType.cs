@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using EnemyComponents.EnemySettings.Effects;
+using Game.Scripts.EnemyComponents.EnemySettings.Effects;
 
-namespace EnemyComponents.EnemySettings.EnemyAttackType
+namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType
 {
     [Serializable]
     public class MeleeEnemyAttackType : BaseEnemyAttackType

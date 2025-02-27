@@ -1,8 +1,8 @@
 using UnityEngine;
-using EnemyComponents.EnemySettings.Effects;
-using EnemyComponents.EnemySettings.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.Effects;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
 
-namespace EnemyComponents.EnemySettings
+namespace Game.Scripts.EnemyComponents.EnemySettings
 {
     [CreateAssetMenu(fileName = "Enemy", menuName = "Enemy/Create New Enemy")]
     public class EnemyData : ScriptableObject

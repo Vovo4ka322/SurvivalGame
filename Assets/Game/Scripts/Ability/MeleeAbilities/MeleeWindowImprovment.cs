@@ -1,7 +1,7 @@
-using Ability.MeleeAbilities;
-using PlayerComponents;
 using UnityEngine;
 using UnityEngine.UI;
+using Ability.MeleeAbilities;
+using Game.Scripts.PlayerComponents;
 
 public class MeleeWindowImprovment : MonoBehaviour
 {

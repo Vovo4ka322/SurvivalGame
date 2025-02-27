@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Music
+namespace Game.Scripts.MusicComponents
 {
     public class SoundMixerSettings : MonoBehaviour
     {

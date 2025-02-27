@@ -1,8 +1,8 @@
-using PlayerComponents;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerExperienceViewer : MonoBehaviour
+namespace Game.Scripts.PlayerComponents
 {
-
+    public class PlayerExperienceViewer : MonoBehaviour
+    {
+    }
 }

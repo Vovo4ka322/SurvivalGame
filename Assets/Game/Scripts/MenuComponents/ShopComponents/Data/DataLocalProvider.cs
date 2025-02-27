@@ -2,7 +2,7 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 
-namespace MenuComponents.ShopComponents.Data
+namespace Game.Scripts.MenuComponents.ShopComponents.Data
 {
     public class DataLocalProvider : IDataProvider
     {

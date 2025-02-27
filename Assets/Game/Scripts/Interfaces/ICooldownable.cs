@@ -1,4 +1,7 @@
-public interface ICooldownable
+namespace Game.Scripts.Interfaces
 {
-    public float CooldownTime { get;  }
+    public interface ICooldownable
+    {
+        public float CooldownTime { get;  }
+    }
 }

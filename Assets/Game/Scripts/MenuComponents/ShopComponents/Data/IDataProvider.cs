@@ -1,4 +1,4 @@
-namespace MenuComponents.ShopComponents.Data
+namespace Game.Scripts.MenuComponents.ShopComponents.Data
 {
     public interface IDataProvider
     {

@@ -1,7 +1,7 @@
-using EnemyComponents.EnemySettings;
-using Pools;
+using Game.Scripts.EnemyComponents.EnemySettings;
+using Game.Scripts.PoolComponents;
 
-namespace EnemyComponents.Interfaces
+namespace Game.Scripts.EnemyComponents.Interfaces
 {
     public interface IEnemyEffects
     {

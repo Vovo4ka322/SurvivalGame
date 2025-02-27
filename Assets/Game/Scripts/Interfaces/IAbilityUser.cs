@@ -1,14 +1,17 @@
-public interface IAbilityUser
+namespace Game.Scripts.Interfaces
 {
-    public void OpenUpgraderWindow();
+    public interface IAbilityUser
+    {
+        public void OpenUpgraderWindow();
 
-    public void UseFirstAbility();
+        public void UseFirstAbility();
 
-    public void UseSecondAbility();
+        public void UseSecondAbility();
 
-    public void UpgradeFirstAbility();
+        public void UpgradeFirstAbility();
 
-    public void UpgradeSecondAbility();
+        public void UpgradeSecondAbility();
 
-    public void UpgradeThirdAbility();
+        public void UpgradeThirdAbility();
+    }
 }

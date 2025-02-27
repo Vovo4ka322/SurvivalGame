@@ -1,6 +1,7 @@
 using UnityEngine;
+using Game.Scripts.MenuComponents.ShopComponents.Common;
 
-namespace MenuComponents.ShopComponents.SkinComponents
+namespace Game.Scripts.MenuComponents.ShopComponents.SkinComponents
 {
     public class SkinPlacement : MonoBehaviour
     {

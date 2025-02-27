@@ -1,7 +1,7 @@
-using EnemyComponents.Interfaces;
-using Pools;
+using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.PoolComponents;
 
-namespace EnemyComponents.EnemySettings.Effects
+namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
 {
     public class SimpleEffect : BaseEffectsEnemy
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlayerComponents
+namespace Game.Scripts.PlayerComponents
 {
     [Serializable]
     public class PlayerLevel

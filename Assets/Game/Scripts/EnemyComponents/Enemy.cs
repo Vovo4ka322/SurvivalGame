@@ -1,19 +1,19 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using EnemyComponents.Animations;
-using EnemyComponents.EnemySettings;
-using EnemyComponents.EnemySettings.Effects;
-using EnemyComponents.EnemySettings.EnemyAttackType;
-using EnemyComponents.EnemySettings.EnemyBehaviors;
-using EnemyComponents.Interfaces;
-using EnemyComponents.Projectiles;
-using PlayerComponents;
-using Pools;
 using UnityEngine.AI;
+using Game.Scripts.EnemyComponents.Animations;
+using Game.Scripts.EnemyComponents.EnemySettings;
+using Game.Scripts.EnemyComponents.EnemySettings.Effects;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors;
+using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.EnemyComponents.Projectiles;
+using Game.Scripts.PoolComponents;
+using Game.Scripts.PlayerComponents;
 using Weapons;
 
-namespace EnemyComponents
+namespace Game.Scripts.EnemyComponents
 {
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Animator))]

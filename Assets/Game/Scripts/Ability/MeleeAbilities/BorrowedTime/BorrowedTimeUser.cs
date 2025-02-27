@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Game.Scripts.Interfaces;
+
 namespace Ability.MeleeAbilities.BorrowedTime
 {
     public class BorrowedTimeUser : MonoBehaviour, ICooldownable

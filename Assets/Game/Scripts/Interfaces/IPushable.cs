@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IPushable
+namespace Game.Scripts.Interfaces
 {
-    public KeyCode KeyCode { get; }
+    public interface IPushable
+    {
+        public KeyCode KeyCode { get; }
+    }
 }

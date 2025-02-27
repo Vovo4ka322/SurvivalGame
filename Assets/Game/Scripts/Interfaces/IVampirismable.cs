@@ -1,12 +1,15 @@
-﻿public interface IVampirismable
+﻿namespace Game.Scripts.Interfaces
 {
-    public float Coefficient { get; }
+    public interface IVampirismable
+    {
+        public float Coefficient { get; }
 
-    public bool IsWorking { get; }
+        public bool IsWorking { get; }
 
-    public bool SetTrueVampirismState();
+        public bool SetTrueVampirismState();
 
-    public bool SetFalseVampirismState();
+        public bool SetFalseVampirismState();
 
-    public void SetCoefficient(float value);
+        public void SetCoefficient(float value);
+    }
 }

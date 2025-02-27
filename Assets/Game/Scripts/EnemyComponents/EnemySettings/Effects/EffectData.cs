@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace EnemyComponents.EnemySettings.Effects
+namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
 {
     [Serializable]
     public struct EffectData

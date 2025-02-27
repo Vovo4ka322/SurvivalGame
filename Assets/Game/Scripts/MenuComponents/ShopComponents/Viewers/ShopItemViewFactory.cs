@@ -1,8 +1,8 @@
 using UnityEngine;
-using MenuComponents.ShopComponents.SkinComponents;
-using MenuComponents.ShopComponents.Visitors;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
+using Game.Scripts.MenuComponents.ShopComponents.Visitors;
 
-namespace MenuComponents.ShopComponents.Viewers
+namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
 {
     [CreateAssetMenu(fileName = "ShopItemViewFactory", menuName = "Shop/ShopItemViewFactory")]
     public class ShopItemViewFactory : ScriptableObject
@@ -31,9 +31,18 @@ namespace MenuComponents.ShopComponents.Viewers
 
             public ShopItemView Prefab { get; private set; }
 
-            public void Visit(ShopItem shopItem) => Visit((dynamic)shopItem);
+            public void Visit(ShopItem shopItem)
+            {
+                if (shopItem is CharacterSkinItem characterSkinItem)
+                {
+                    Visit(characterSkinItem);
+                }
+            }
 
-            public void Visit(CharacterSkinItem characterSkinItem) => Prefab = _characterSkinItemPrefab;
+            public void Visit(CharacterSkinItem characterSkinItem)
+            {
+                Prefab = _characterSkinItemPrefab;
+            }
         }
     }
 }

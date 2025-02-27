@@ -1,9 +1,7 @@
-using Cinemachine;
-using PlayerComponents.Animations;
-using System.Collections.Generic;
 using UnityEngine;
+using Game.Scripts.PlayerComponents.Animations;
 
-namespace PlayerComponents.Controller
+namespace Game.Scripts.PlayerComponents.Controller
 {
     public class PlayerMovement : MonoBehaviour
     {

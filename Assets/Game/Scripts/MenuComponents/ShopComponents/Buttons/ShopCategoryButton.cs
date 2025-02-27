@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MenuComponents.ShopComponents.Buttons
+namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
 {
     public class ShopCategoryButton : MonoBehaviour
     {

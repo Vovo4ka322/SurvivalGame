@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PlayerComponents.ReviewCamera
+namespace Game.Scripts.PlayerComponents.ReviewCamera
 {
     [RequireComponent(typeof(Collider))]
     public class CameraTriggerZone : MonoBehaviour

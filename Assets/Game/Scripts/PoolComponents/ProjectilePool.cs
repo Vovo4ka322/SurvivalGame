@@ -1,7 +1,7 @@
 using UnityEngine;
-using EnemyComponents.Projectiles;
+using Game.Scripts.EnemyComponents.Projectiles;
 
-namespace Pools
+namespace Game.Scripts.PoolComponents
 {
     public class ProjectilePool<T> : BasePool<T> 
         where T : BaseProjectile

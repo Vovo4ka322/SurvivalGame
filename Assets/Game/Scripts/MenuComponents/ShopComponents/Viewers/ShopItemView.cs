@@ -2,9 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using MenuComponents.ShopComponents.SkinComponents;
+using Game.Scripts.MenuComponents.ShopComponents.Common;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 
-namespace MenuComponents.ShopComponents.Viewers
+namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
 {
     [RequireComponent(typeof(Image))]
     public class ShopItemView : MonoBehaviour, IPointerClickHandler

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace  Settings
+namespace Game.Scripts.SettingsComponents
 {
     [RequireComponent(typeof(MeshRenderer))]
     public class GpuInctancingEnabler : MonoBehaviour

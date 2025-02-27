@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LeaderboardComponents
+namespace Game.Scripts.LeaderboardComponents
 {
     public class PlayerData : MonoBehaviour
     {

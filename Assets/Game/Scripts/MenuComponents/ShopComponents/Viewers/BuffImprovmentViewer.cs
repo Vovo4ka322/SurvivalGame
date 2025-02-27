@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MenuComponents.ShopComponents.Viewers
+namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
 {
     public class BuffImprovmentViewer : MonoBehaviour
     {

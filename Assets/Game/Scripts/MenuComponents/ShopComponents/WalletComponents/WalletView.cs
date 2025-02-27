@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MenuComponents.ShopComponents.WalletComponents
+namespace Game.Scripts.MenuComponents.ShopComponents.WalletComponents
 {
     public class WalletView : MonoBehaviour
     {

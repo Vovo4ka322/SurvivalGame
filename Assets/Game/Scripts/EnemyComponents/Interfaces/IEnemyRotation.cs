@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace EnemyComponents.Interfaces
+namespace Game.Scripts.EnemyComponents.Interfaces
 {
     public interface IEnemyRotation
     {
