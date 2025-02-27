@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using EnemyComponents.EnemySettings;
-using EnemyComponents.Interfaces;
-using PlayerComponents;
-using Pools;
 using UnityEngine.AI;
+using Game.Scripts.EnemyComponents.EnemySettings;
+using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.PoolComponents;
+using Game.Scripts.PlayerComponents;
 
-namespace EnemyComponents
+namespace Game.Scripts.EnemyComponents
 {
     public class EnemyFactory : MonoBehaviour
     {

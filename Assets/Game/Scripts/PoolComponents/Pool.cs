@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Scripts.Interfaces;
 
-namespace Pools
+namespace Game.Scripts.PoolComponents
 {
     public class Pool<T> : MonoBehaviour, IPoolReciver<T> where T : MonoBehaviour
     {

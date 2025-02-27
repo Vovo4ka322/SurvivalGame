@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Game.Scripts.PlayerComponents.Controller
+{
+    public class PlayerController : MonoBehaviour
 {
     private PlayerInput _playerInput;
 
@@ -62,4 +64,5 @@ public class PlayerController : MonoBehaviour
     {
         SecondAbilityKeyPressed = context.ReadValueAsButton();
     }
+}
 }

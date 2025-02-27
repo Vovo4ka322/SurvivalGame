@@ -1,7 +1,7 @@
-using Ability;
-using PlayerComponents;
 using UnityEngine;
 using UnityEngine.UI;
+using Ability;
+using Game.Scripts.PlayerComponents;
 
 public class MeleeCanvasInitialization : MonoBehaviour
 {

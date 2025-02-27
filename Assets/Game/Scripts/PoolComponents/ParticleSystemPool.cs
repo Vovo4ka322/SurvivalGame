@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pools
+namespace Game.Scripts.PoolComponents
 {
     public class ParticleSystemPool<T> : BasePool<T>
         where T : Component

@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Game.Scripts.Interfaces;
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "Weapon")]
 public class WeaponData : ScriptableObject, IDamageCausable

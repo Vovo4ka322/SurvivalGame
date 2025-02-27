@@ -1,5 +1,5 @@
-using HealthComponents;
 using UnityEngine;
+using Game.Scripts.HealthComponents;
 
 [RequireComponent(typeof(Health))]
 public abstract class Character : MonoBehaviour

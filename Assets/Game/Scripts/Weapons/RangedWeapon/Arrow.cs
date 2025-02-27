@@ -1,7 +1,8 @@
 using System;
 using System.Collections;
-using EnemyComponents;
 using UnityEngine;
+using Game.Scripts.EnemyComponents;
+using Game.Scripts.Interfaces;
 
 public class Arrow : MonoBehaviour
 {

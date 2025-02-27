@@ -1,11 +1,10 @@
 using UnityEngine;
-using MenuComponents.ShopComponents.Data;
-using MenuComponents.ShopComponents.Viewers;
-using MenuComponents.ShopComponents.Visitors;
-using MenuComponents.ShopComponents.WalletComponents;
-using Music;
+using Game.Scripts.MenuComponents.ShopComponents.Data;
+using Game.Scripts.MenuComponents.ShopComponents.Viewers;
+using Game.Scripts.MenuComponents.ShopComponents.Visitors;
+using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
 
-namespace MenuComponents.ShopComponents
+namespace Game.Scripts.MenuComponents.ShopComponents
 {
     public class ShopBootstrap : MonoBehaviour
     {

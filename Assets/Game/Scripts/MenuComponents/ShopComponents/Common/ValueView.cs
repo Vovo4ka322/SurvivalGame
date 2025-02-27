@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MenuComponents.ShopComponents.Common
+namespace Game.Scripts.MenuComponents.ShopComponents.Common
 {
     public class ValueView<T> : MonoBehaviour where T : IConvertible
     {

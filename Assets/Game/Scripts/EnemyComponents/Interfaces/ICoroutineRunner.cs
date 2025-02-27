@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace EnemyComponents.Interfaces
+namespace Game.Scripts.EnemyComponents.Interfaces
 {
     public interface ICoroutineRunner
     {

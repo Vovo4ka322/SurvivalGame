@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Music
+namespace Game.Scripts.MusicComponents
 {
     [RequireComponent(typeof(AudioSource))]
     public class ButtonMusic : MonoBehaviour

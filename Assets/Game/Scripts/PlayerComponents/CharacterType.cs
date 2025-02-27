@@ -1,4 +1,4 @@
-﻿namespace PlayerComponents
+﻿namespace Game.Scripts.PlayerComponents
 {
     public enum CharacterType
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using EnemyComponents.EnemySettings;
 using UnityEngine;
+using Game.Scripts.EnemyComponents.EnemySettings;
 
-namespace EnemyComponents.Animations
+namespace Game.Scripts.EnemyComponents.Animations
 {
     public class EnemyAnimationController
     {

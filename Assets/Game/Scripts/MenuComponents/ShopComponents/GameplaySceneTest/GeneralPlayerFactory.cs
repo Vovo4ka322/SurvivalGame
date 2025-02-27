@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
-using PlayerComponents;
-using MenuComponents.ShopComponents.SkinComponents;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
+using Game.Scripts.PlayerComponents;
 
-namespace MenuComponents.ShopComponents.GameplaySceneTest
+namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {
     [CreateAssetMenu(fileName = "CharactersFactory", menuName = "GameplayExample/CharactersFactory")]
     public class GeneralPlayerFactory : ScriptableObject

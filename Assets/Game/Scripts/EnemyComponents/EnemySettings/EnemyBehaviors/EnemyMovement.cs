@@ -1,12 +1,9 @@
 using UnityEngine;
-using EnemyComponents.Animations;
-using EnemyComponents.Interfaces;
 using UnityEngine.AI;
-using PlayerComponents;
-using Unity.Transforms;
-using System.Collections;
+using Game.Scripts.EnemyComponents.Animations;
+using Game.Scripts.EnemyComponents.Interfaces;
 
-namespace EnemyComponents.EnemySettings.EnemyBehaviors
+namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 {
     public class EnemyMovement : IEnemyMovement
     {

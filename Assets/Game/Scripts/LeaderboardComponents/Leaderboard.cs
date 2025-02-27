@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using YG;
 using YG.Utils.LB;
 
-namespace LeaderboardComponents
+namespace Game.Scripts.LeaderboardComponents
 {
     public class Leaderboard : MonoBehaviour
     {
@@ -15,7 +15,7 @@ namespace LeaderboardComponents
         private const string AnonimDataRu = "??? ??????";
         private const string AnonimDataEn = "No data";
         private const string AnonimDataTr = "Veri yok";
-        private const string AnonimNameRu = "??????";
+        private const string AnonimNameRu = "?????????";
         private const string AnonimNameEn = "Anonymous";
         private const string AnonimNameTr = "Anonim";
         
@@ -71,7 +71,7 @@ namespace LeaderboardComponents
                 _currentPlayerEntry = null;
             }
             
-            if (lbData.entries == AnonimDataEn)
+            if (lbData.entries == null || lbData.entries.Length == 0)
             {
                 string noDataMessage = YandexGame.savesData.language switch
                 {
@@ -95,10 +95,9 @@ namespace LeaderboardComponents
                     LBPlayerData player = players[i];
                     PlayerData playerData = Instantiate(_playerData, _gridLayout.transform);
                     
-                    string playerName = string.IsNullOrEmpty(player.name) ? GetAnonimName() : player.name;
+                    string playerName = string.IsNullOrEmpty(player.name) ? GetAnonimName() : LBMethods.AnonimName(player.name);
                     bool isCurrentUser = player.uniqueID == YandexGame.playerId;
                     
-                    playerName = LBMethods.AnonimName(playerName);
                     playerData.SetData(player.rank.ToString(), playerName, player.score.ToString(), isCurrentUser);
                     playerData.UpdateEntries();
                     

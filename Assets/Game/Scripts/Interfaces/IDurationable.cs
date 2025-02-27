@@ -1,4 +1,7 @@
-public interface IDurationable
+namespace Game.Scripts.Interfaces
 {
-    public float Duration { get; }
+    public interface IDurationable
+    {
+        public float Duration { get; }
+    }
 }

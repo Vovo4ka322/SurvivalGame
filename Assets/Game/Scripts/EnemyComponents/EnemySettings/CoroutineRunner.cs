@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
-using EnemyComponents.Interfaces;
+using Game.Scripts.EnemyComponents.Interfaces;
 
-namespace EnemyComponents.EnemySettings
+namespace Game.Scripts.EnemyComponents.EnemySettings
 {
     public class CoroutineRunner : MonoBehaviour, ICoroutineRunner
     {

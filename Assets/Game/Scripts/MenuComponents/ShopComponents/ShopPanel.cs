@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using MenuComponents.ShopComponents.Viewers;
-using MenuComponents.ShopComponents.Visitors;
+using Game.Scripts.MenuComponents.ShopComponents.Viewers;
+using Game.Scripts.MenuComponents.ShopComponents.Visitors;
 
-namespace MenuComponents.ShopComponents
+namespace Game.Scripts.MenuComponents.ShopComponents
 {
     public class ShopPanel : MonoBehaviour
     {

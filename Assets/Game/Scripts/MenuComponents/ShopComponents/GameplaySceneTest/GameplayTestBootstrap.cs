@@ -1,11 +1,11 @@
 using UnityEngine;
 using Cinemachine;
-using EnemyComponents;
-using MenuComponents.ShopComponents.Data;
-using MenuComponents.ShopComponents.WalletComponents;
-using PlayerComponents;
+using Game.Scripts.EnemyComponents;
+using Game.Scripts.MenuComponents.ShopComponents.Data;
+using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
+using Game.Scripts.PlayerComponents;
 
-namespace MenuComponents.ShopComponents.GameplaySceneTest
+namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {
     public class GameplayTestBootstrap : MonoBehaviour
     {

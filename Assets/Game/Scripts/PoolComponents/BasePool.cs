@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Pools
+namespace Game.Scripts.PoolComponents
 {
     public abstract class BasePool<T> where T : Component
     {

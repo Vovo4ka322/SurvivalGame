@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using MenuComponents.ShopComponents.SkinComponents;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 
-namespace MenuComponents.ShopComponents
+namespace Game.Scripts.MenuComponents.ShopComponents
 {
     [CreateAssetMenu(fileName = "ShopContent", menuName = "Shop/ShopContent")]
     public class ShopContent : ScriptableObject

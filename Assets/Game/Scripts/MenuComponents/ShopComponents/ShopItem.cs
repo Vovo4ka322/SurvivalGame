@@ -1,7 +1,7 @@
 using UnityEngine;
-using MenuComponents.ShopComponents.SkinComponents;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 
-namespace MenuComponents.ShopComponents
+namespace Game.Scripts.MenuComponents.ShopComponents
 {
     public abstract class ShopItem : ScriptableObject
     {

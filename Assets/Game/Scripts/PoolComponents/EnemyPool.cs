@@ -1,7 +1,7 @@
 using UnityEngine;
-using EnemyComponents;
+using Game.Scripts.EnemyComponents;
 
-namespace Pools
+namespace Game.Scripts.PoolComponents
 {
     public class EnemyPool : BasePool<Enemy>
     {

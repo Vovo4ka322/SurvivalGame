@@ -1,8 +1,8 @@
-using Ability.ArcherAbilities;
-using PlayerComponents;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Ability.ArcherAbilities;
+using Game.Scripts.PlayerComponents;
 
 public class RangeAbilityViewer : MonoBehaviour
 {

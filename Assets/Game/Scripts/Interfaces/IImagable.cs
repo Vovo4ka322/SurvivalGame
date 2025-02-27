@@ -1,6 +1,9 @@
 using UnityEngine.UI;
 
-public interface IImagable
+namespace Game.Scripts.Interfaces
 {
-    public Image Image {  get; }
+    public interface IImagable
+    {
+        public Image Image {  get; }
+    }
 }

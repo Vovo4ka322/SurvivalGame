@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Game.Scripts.Interfaces;
 using Weapons.RangedWeapon;
 
 namespace Ability.ArcherAbilities.Multishot

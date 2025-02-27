@@ -1,10 +1,10 @@
 using UnityEngine;
-using EnemyComponents.EnemySettings;
-using EnemyComponents.EnemySettings.EnemyAttackType;
-using PlayerComponents;
-using Pools;
+using Game.Scripts.EnemyComponents.EnemySettings;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
+using Game.Scripts.PoolComponents;
+using Game.Scripts.PlayerComponents;
 
-namespace EnemyComponents.Projectiles
+namespace Game.Scripts.EnemyComponents.Projectiles
 {
     public class BaseProjectileSpawner : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MenuComponents.ShopComponents.SkinComponents
+namespace Game.Scripts.MenuComponents.ShopComponents.SkinComponents
 {
     [CreateAssetMenu(fileName = "CharacterSkinItem", menuName = "Shop/CharacterSkinItem")]
     public class CharacterSkinItem : ShopItem

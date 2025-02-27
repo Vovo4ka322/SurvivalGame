@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-namespace PlayerComponents
+
+namespace Game.Scripts.PlayerComponents
 {
     [CreateAssetMenu(fileName = "PlayerLevel")]
     public class Level : ScriptableObject

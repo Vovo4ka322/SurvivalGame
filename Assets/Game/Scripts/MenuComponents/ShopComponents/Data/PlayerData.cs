@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using MenuComponents.ShopComponents.SkinComponents;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 using Newtonsoft.Json;
 
-namespace MenuComponents.ShopComponents.Data
+namespace Game.Scripts.MenuComponents.ShopComponents.Data
 {
     public class PlayerData
 {

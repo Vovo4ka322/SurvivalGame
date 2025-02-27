@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace MenuComponents
+namespace Game.Scripts.MenuComponents
 {
     public class PreGameMenu : MonoBehaviour
     {

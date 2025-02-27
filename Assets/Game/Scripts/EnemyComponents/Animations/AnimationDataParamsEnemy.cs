@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace EnemyComponents.Animations
+namespace Game.Scripts.EnemyComponents.Animations
 {
     public static class AnimationDataParamsEnemy
     {

@@ -1,7 +1,7 @@
 using System;
-using MenuComponents.ShopComponents.Data;
+using Game.Scripts.MenuComponents.ShopComponents.Data;
 
-namespace MenuComponents.ShopComponents.WalletComponents
+namespace Game.Scripts.MenuComponents.ShopComponents.WalletComponents
 {
     public class Wallet
     {

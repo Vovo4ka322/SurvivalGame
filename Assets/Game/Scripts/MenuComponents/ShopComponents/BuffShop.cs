@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using MenuComponents.ShopComponents.Data;
-using MenuComponents.ShopComponents.WalletComponents;
+using Game.Scripts.MenuComponents.ShopComponents.Data;
+using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
 
-namespace MenuComponents.ShopComponents
+namespace Game.Scripts.MenuComponents.ShopComponents
 {
     public class BuffShop : MonoBehaviour
     {

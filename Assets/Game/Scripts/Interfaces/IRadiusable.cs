@@ -1,4 +1,7 @@
-public interface IRadiusable
+namespace Game.Scripts.Interfaces
 {
-    public float Radius { get; }
+    public interface IRadiusable
+    {
+        public float Radius { get; }
+    }
 }

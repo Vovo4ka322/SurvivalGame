@@ -1,28 +1,31 @@
 using UnityEngine;
 
-public class AnimatorState : MonoBehaviour
+namespace Game.Scripts.PlayerComponents.Animations
 {
-    [SerializeField] private Animator _animator;
-
-    public readonly int CanUseSkill1Hash = Animator.StringToHash("canUseSkill1");
-    public readonly int IsAttack = Animator.StringToHash("isAttack");
-    public readonly int Speed = Animator.StringToHash("Speed");
-    public readonly int MovementSpeed = Animator.StringToHash("MovementSpeed");
-
-    private float _baseValue = 1f;
-
-    public void SetTrueBoolState(int id)
+    public class AnimatorState : MonoBehaviour
     {
-        _animator.SetBool(id, true);
-    }
+        [SerializeField] private Animator _animator;
 
-    public void SetFalseBoolState(int id)
-    {
-        _animator.SetBool(id, false);
-    }
+        public readonly int CanUseSkill1Hash = Animator.StringToHash("canUseSkill1");
+        public readonly int IsAttack = Animator.StringToHash("isAttack");
+        public readonly int Speed = Animator.StringToHash("Speed");
+        public readonly int MovementSpeed = Animator.StringToHash("MovementSpeed");
 
-    public void SetFloatValue(int id, float value)
-    {
-        _animator.SetFloat(id, _baseValue + value);
+        private readonly float _baseValue = 1f;
+
+        public void SetTrueBoolState(int id)
+        {
+            _animator.SetBool(id, true);
+        }
+
+        public void SetFalseBoolState(int id)
+        {
+            _animator.SetBool(id, false);
+        }
+
+        public void SetFloatValue(int id, float value)
+        {
+            _animator.SetFloat(id, _baseValue + value);
+        }
     }
 }

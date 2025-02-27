@@ -1,14 +1,14 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using MenuComponents.ShopComponents.Buttons;
-using MenuComponents.ShopComponents.Data;
-using MenuComponents.ShopComponents.SkinComponents;
-using MenuComponents.ShopComponents.Viewers;
-using MenuComponents.ShopComponents.Visitors;
-using MenuComponents.ShopComponents.WalletComponents;
+using Game.Scripts.MenuComponents.ShopComponents.Buttons;
+using Game.Scripts.MenuComponents.ShopComponents.Data;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
+using Game.Scripts.MenuComponents.ShopComponents.Viewers;
+using Game.Scripts.MenuComponents.ShopComponents.Visitors;
+using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
 
-namespace MenuComponents.ShopComponents
+namespace Game.Scripts.MenuComponents.ShopComponents
 {
     public class Shop : MonoBehaviour
     {

@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Ability.MeleeAbilities.BladeFury;
 using Ability.MeleeAbilities.BorrowedTime;
-using PlayerComponents;
-using UnityEngine;
+using Game.Scripts.Interfaces;
+using Game.Scripts.PlayerComponents;
 
 namespace Ability.MeleeAbilities
 {

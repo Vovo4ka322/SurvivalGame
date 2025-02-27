@@ -1,6 +1,6 @@
-using MenuComponents.ShopComponents.SkinComponents;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 
-namespace MenuComponents.ShopComponents.Visitors
+namespace Game.Scripts.MenuComponents.ShopComponents.Visitors
 {
     public interface IShopItemVisitor
     {

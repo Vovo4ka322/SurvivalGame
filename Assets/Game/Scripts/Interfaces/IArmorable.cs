@@ -1,4 +1,7 @@
-public interface IArmorable
+namespace Game.Scripts.Interfaces
 {
-    public float Armor {  get; }
+    public interface IArmorable
+    {
+        public float Armor {  get; }
+    }
 }

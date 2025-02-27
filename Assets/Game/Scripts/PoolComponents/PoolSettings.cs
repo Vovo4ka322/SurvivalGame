@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Pools
+namespace Game.Scripts.PoolComponents
 {
     [Serializable]
     public class PoolSettings

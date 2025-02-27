@@ -1,4 +1,5 @@
 using UnityEngine;
+using Game.Scripts.Interfaces;
 
 [CreateAssetMenu(fileName = "Bow", menuName = "WeaponType/Archer/Bow")]
 public class BowData : WeaponData, IAttackSpeedable

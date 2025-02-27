@@ -1,8 +1,8 @@
-using Music;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.Scripts.MusicComponents;
 
-namespace MenuComponents
+namespace Game.Scripts.MenuComponents
 {
     public class MainMenu : MonoBehaviour
     {
@@ -16,11 +16,6 @@ namespace MenuComponents
         private void Awake()
         {
             _menuCanvas.gameObject.SetActive(true);
-
-            if(_gameAudioPlayback != null)
-            {
-                _gameAudioPlayback.PlayBackgroundMusic();
-            }
         }
         
         private void OnEnable()
@@ -33,6 +28,14 @@ namespace MenuComponents
         {
             _choicePlayerButton.onClick.RemoveListener(OpenPreGameMenu);
             _settingsButton.onClick.RemoveListener(OpenSettingsMenu);
+        }
+
+        private void Start()
+        {
+            if(_gameAudioPlayback != null)
+            {
+                _gameAudioPlayback.PlayBackgroundMusic();
+            }
         }
         
         private void OpenPreGameMenu()

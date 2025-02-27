@@ -1,7 +1,10 @@
-﻿public interface IActivable
+﻿namespace Game.Scripts.Interfaces
 {
-    public bool IsActiveState { get; }
+    public interface IActivable
+    {
+        public bool IsActiveState { get; }
 
-    public bool SetTrueActiveState();
-    public bool SetFalseActiveState();
+        public bool SetTrueActiveState();
+        public bool SetFalseActiveState();
+    }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
+using Game.Scripts.EnemyComponents.Interfaces;
 
-namespace EnemyComponents.Projectiles
+namespace Game.Scripts.EnemyComponents.Projectiles
 {
     public class MagicMovement : IProjectileMovement
     {

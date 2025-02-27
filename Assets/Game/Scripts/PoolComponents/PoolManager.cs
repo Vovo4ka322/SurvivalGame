@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using EnemyComponents;
-using EnemyComponents.EnemySettings;
-using EnemyComponents.Projectiles;
+using Game.Scripts.EnemyComponents;
+using Game.Scripts.EnemyComponents.EnemySettings;
+using Game.Scripts.EnemyComponents.Projectiles;
 
-namespace Pools
+namespace Game.Scripts.PoolComponents
 {
     public class PoolManager : MonoBehaviour
     {

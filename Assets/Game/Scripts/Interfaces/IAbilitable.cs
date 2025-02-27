@@ -1,8 +1,9 @@
-using UnityEngine;
-
-public interface IAbilitable
+namespace Game.Scripts.Interfaces
 {
-    public string Name { get; }
+    public interface IAbilitable
+    {
+        public string Name { get; }
 
-    public string Description { get; }
+        public string Description { get; }
+    }
 }

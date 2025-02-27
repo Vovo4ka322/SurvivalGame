@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace EnemyComponents.Projectiles
+namespace Game.Scripts.EnemyComponents.Projectiles
 {
     public class HybridProjectileSpawner : BaseProjectileSpawner
     {

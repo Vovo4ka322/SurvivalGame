@@ -1,9 +1,9 @@
 using UnityEngine;
-using EnemyComponents.Interfaces;
-using PlayerComponents;
+using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.PlayerComponents;
 using Weapons;
 
-namespace EnemyComponents.EnemySettings.EnemyBehaviors
+namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 {
     public class EnemyCollider : IEnemyCollider
     {

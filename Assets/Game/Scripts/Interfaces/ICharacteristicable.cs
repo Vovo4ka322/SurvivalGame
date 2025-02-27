@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface ICharacteristicable
+namespace Game.Scripts.Interfaces
 {
-    public int Damage { get; }
+    public interface ICharacteristicable
+    {
+        public int Damage { get; }
 
-    public int Armor { get; }
+        public int Armor { get; }
 
-    public int MaxHealth { get; }
+        public int MaxHealth { get; }
+    }
 }

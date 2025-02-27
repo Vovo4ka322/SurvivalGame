@@ -1,4 +1,7 @@
-﻿public interface IEvasionable
+﻿namespace Game.Scripts.Interfaces
 {
-    public bool TryDodge();
+    public interface IEvasionable
+    {
+        public bool TryDodge();
+    }
 }

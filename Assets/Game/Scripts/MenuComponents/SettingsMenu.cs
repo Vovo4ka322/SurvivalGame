@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Music;
 
-namespace MenuComponents
+namespace Game.Scripts.MenuComponents
 {
     public class SettingsMenu : MonoBehaviour
     {

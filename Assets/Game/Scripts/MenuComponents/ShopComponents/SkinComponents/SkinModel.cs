@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MenuComponents.ShopComponents.SkinComponents
+namespace Game.Scripts.MenuComponents.ShopComponents.SkinComponents
 {
     [RequireComponent(typeof(Animator))]
     public class SkinModel : MonoBehaviour

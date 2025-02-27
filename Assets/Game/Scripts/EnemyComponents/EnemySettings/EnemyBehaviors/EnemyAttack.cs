@@ -1,10 +1,10 @@
 using UnityEngine;
-using PlayerComponents;
-using EnemyComponents.Animations;
-using EnemyComponents.EnemySettings.EnemyAttackType;
-using EnemyComponents.Interfaces;
+using Game.Scripts.EnemyComponents.Animations;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
+using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.PlayerComponents;
 
-namespace EnemyComponents.EnemySettings.EnemyBehaviors
+namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 {
     public class EnemyAttack : IEnemyAttack
     {

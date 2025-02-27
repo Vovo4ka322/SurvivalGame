@@ -1,5 +1,5 @@
-using Pools;
 using UnityEngine;
+using Game.Scripts.PoolComponents;
 
 namespace Weapons.RangedWeapon
 {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PlayerComponents.ReviewCamera
+namespace Game.Scripts.PlayerComponents.ReviewCamera
 {
     public class CameraFollower : MonoBehaviour
     {

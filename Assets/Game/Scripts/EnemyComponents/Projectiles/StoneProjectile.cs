@@ -1,7 +1,8 @@
 using UnityEngine;
-using Pools;
+using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.PoolComponents;
 
-namespace EnemyComponents.Projectiles
+namespace Game.Scripts.EnemyComponents.Projectiles
 {
     public class StoneProjectile : BaseProjectile
     {

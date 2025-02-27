@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public interface IPoolReciver<T> where T: MonoBehaviour
+namespace Game.Scripts.Interfaces
 {
-    public void Release(T obj);
+    public interface IPoolReciver<T> where T: MonoBehaviour
+    {
+        public void Release(T obj);
+    }
 }
