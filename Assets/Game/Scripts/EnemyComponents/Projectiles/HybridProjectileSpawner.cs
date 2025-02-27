@@ -1,3 +1,4 @@
+using Game.Scripts.PoolComponents;
 using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.Projectiles
@@ -5,8 +6,6 @@ namespace Game.Scripts.EnemyComponents.Projectiles
     public class HybridProjectileSpawner : BaseProjectileSpawner
     {
         private BaseProjectile _currentProjectile;
-
-        public BaseProjectile BaseProjectile => _currentProjectile;
 
         public void PrepareStone()
         {
@@ -31,10 +30,27 @@ namespace Game.Scripts.EnemyComponents.Projectiles
             _currentProjectile.Launch(Player.transform.position, ProjectilePool);
             _currentProjectile = null;
         }
-
-        public void SetStateProjectile(Transform transform)
+        
+        public void ResetProjectile()
         {
-            _currentProjectile.transform.SetParent(transform);
+            if(_currentProjectile != null)
+            {
+                _currentProjectile.transform.SetParent(null);
+                
+                ProjectilePool<BaseProjectile> pool = PoolManager.GetProjectilePool(_currentProjectile);
+
+                if(pool != null)
+                {
+                    pool.Release(_currentProjectile);
+                }
+
+                _currentProjectile = null;
+            }
+        }
+        
+        private void SetStateProjectile(Transform projectileSpawnPoint)
+        {
+            _currentProjectile.transform.SetParent(projectileSpawnPoint);
         }
     }
 }
