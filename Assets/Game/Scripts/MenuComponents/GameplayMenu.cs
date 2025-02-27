@@ -16,7 +16,7 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Image _pausePanel;
         [SerializeField] private Image _defeatPanel;
 
-        [SerializeField] private Player _player;
+        private Player _player;
 
         private void OnEnable()
         {
