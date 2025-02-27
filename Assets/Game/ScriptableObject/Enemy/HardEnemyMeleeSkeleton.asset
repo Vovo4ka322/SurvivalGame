@@ -15,7 +15,7 @@ MonoBehaviour:
   _enemyPrefab: {fileID: -3602751106421749685, guid: 7472f1051c156254781f50ed411e09f1, type: 3}
   _enemyType: 2
   _baseAttackType:
-    rid: 4171440971992006660
+    rid: 2883479761949294596
   _maxHealth: 150
   _damage: 15
   _attackCooldown: 1
@@ -43,16 +43,16 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4171440971992006660
-      type: {class: MeleeEnemyAttackType, ns: EnemyComponents.EnemySettings.EnemyAttackType, asm: Assembly-CSharp}
+    - rid: 2883479761949294596
+      type: {class: MeleeEnemyAttackType, ns: Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType, asm: Assembly-CSharp}
       data:
         _attackEffect1:
           _effect: {fileID: 1638138782272764808, guid: f2a257c0fc6374907bf1a8d7df4a0ac6, type: 3}
-          _positionOffset: {x: 0.26, y: 0.84, z: -0.18}
+          _positionOffset: {x: 0.14, y: 1, z: -0.3}
           _scale: {x: 1, y: 1, z: 1}
-          _rotationOffset: {x: -87, y: 65, z: -90}
+          _rotationOffset: {x: -73, y: -15.5, z: -3}
         _attackEffect2:
           _effect: {fileID: 1638138782272764808, guid: f2a257c0fc6374907bf1a8d7df4a0ac6, type: 3}
-          _positionOffset: {x: 0.23, y: 1, z: 0}
+          _positionOffset: {x: 0.14, y: 1.16, z: -0.3}
           _scale: {x: 1, y: 1, z: 1}
-          _rotationOffset: {x: -18, y: 3, z: -68}
+          _rotationOffset: {x: -18, y: 25, z: -70}

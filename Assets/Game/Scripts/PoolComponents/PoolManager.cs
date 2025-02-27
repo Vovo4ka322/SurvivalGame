@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Scripts.EnemyComponents;
@@ -8,6 +9,8 @@ namespace Game.Scripts.PoolComponents
 {
     public class PoolManager : MonoBehaviour
     {
+        private const string CoroutineRunnerName = "CoroutineRunner";
+        
         [SerializeField] private CoroutineRunner _coroutineRunner;
         [SerializeField] private EnemyFactory _enemyFactory;
         
@@ -30,7 +33,7 @@ namespace Game.Scripts.PoolComponents
         {
             if (_coroutineRunner == null)
             {
-                GameObject coroutineRunnerObj = new GameObject("CoroutineRunner");
+                GameObject coroutineRunnerObj = new GameObject(CoroutineRunnerName);
                 _coroutineRunner = coroutineRunnerObj.AddComponent<CoroutineRunner>();
                 
                 DontDestroyOnLoad(coroutineRunnerObj);
@@ -43,6 +46,11 @@ namespace Game.Scripts.PoolComponents
 
         public ProjectilePool<BaseProjectile> GetProjectilePool(BaseProjectile prefab)
         {
+            if (prefab == null)
+            {
+                throw new ArgumentException("GetProjectilePool was called with a null prefab.");
+            }
+            
             return _projectilePools.GetValueOrDefault(prefab);
         }
         

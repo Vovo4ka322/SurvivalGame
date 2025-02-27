@@ -1646,8 +1646,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthValueImage: {fileID: 500357325974780966}
   _ExpValueImage: {fileID: 8933344855287180374}
-  _getExp: {fileID: 0}
-  _loseHP: {fileID: 0}
   _moneyText: {fileID: 8718815138781720685}
 --- !u!114 &6385914019593804719
 MonoBehaviour:
@@ -1679,9 +1677,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseButton: {fileID: 2857003212332724719}
-  _menuButton: {fileID: 2952894838669436588}
-  _continuationButton: {fileID: 5399777413254988963}
+  _menuBackButton: {fileID: 2952894838669436588}
+  _continueButton: {fileID: 5399777413254988963}
   _pausePanel: {fileID: 1003476131214072812}
+  _defeatPanel: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!1 &3411915640753771531
 GameObject:
   m_ObjectHideFlags: 0
@@ -4729,6 +4729,10 @@ PrefabInstance:
     - target: {fileID: 9200683830841455342, guid: 1a3178d519a3c6c47a16700670149e15, type: 3}
       propertyPath: m_Name
       value: PausePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200683830841455342, guid: 1a3178d519a3c6c47a16700670149e15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

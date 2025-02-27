@@ -4053,8 +4053,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthValueImage: {fileID: 7247967931854310252}
   _ExpValueImage: {fileID: 3820730876755949381}
-  _getExp: {fileID: 0}
-  _loseHP: {fileID: 0}
   _moneyText: {fileID: 2703741581608681104}
 --- !u!114 &4518054763076055092
 MonoBehaviour:
@@ -4086,9 +4084,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseButton: {fileID: 8675039492139334772}
-  _menuButton: {fileID: 7009516518264658946}
-  _continuationButton: {fileID: 239773687478353421}
+  _menuBackButton: {fileID: 7009516518264658946}
+  _continueButton: {fileID: 239773687478353421}
   _pausePanel: {fileID: 4922738058950156610}
+  _defeatPanel: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!1 &8406732688223620408
 GameObject:
   m_ObjectHideFlags: 0

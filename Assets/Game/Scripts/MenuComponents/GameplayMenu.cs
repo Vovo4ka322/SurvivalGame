@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,68 +7,116 @@ namespace Game.Scripts.MenuComponents
 {
     public class GameplayMenu : MonoBehaviour
     {
-        private const string Menu = nameof(Menu);
+        private const string MenuSceneName = "Menu";
 
         [SerializeField] private Button _pauseButton;
-        [SerializeField] private List<Button> _menuButton;
-        [SerializeField] private Button _continuationButton;
+        [SerializeField] private Button _menuBackButton;
+        [SerializeField] private Button _continueButton;
         [SerializeField] private Image _pausePanel;
         [SerializeField] private Image _defeatPanel;
-
         [SerializeField] private Player _player;
-
+        
+        private bool _isPlayerDead = false;
+        
         private void OnEnable()
         {
-            _pauseButton.onClick.AddListener(Pause);
-            _continuationButton.onClick.AddListener(ContinueGame);
-
-            for (int i = 0; i < _menuButton.Count; i++)
+            if(_pauseButton != null)
             {
-                _menuButton[i].onClick.AddListener(ExitToMenu);
+                _pauseButton.onClick.AddListener(OnPauseButtonClicked);
+            }
+
+            if(_continueButton != null)
+            {
+                _continueButton.onClick.AddListener(OnContinueButtonClicked);
+            }
+
+            if (_menuBackButton != null)
+            {
+                _menuBackButton.onClick.AddListener(ExitToMenu);
             }
         }
 
         private void OnDisable()
         {
-            _pauseButton.onClick.RemoveListener(Pause);
-            _continuationButton.onClick.RemoveListener(ContinueGame);
-
-            for (int i = 0; i < _menuButton.Count; i++)
+            if(_pauseButton != null)
             {
-                _menuButton[i].onClick.RemoveListener(ExitToMenu);
+                _pauseButton.onClick.RemoveListener(OnPauseButtonClicked);
             }
 
-            _player.Death -= Lost;
+            if(_continueButton != null)
+            {
+                _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
+            }
+
+            if(_menuBackButton != null)
+            {
+                _menuBackButton.onClick.AddListener(ExitToMenu);
+            }
+
+            if(_player != null)
+            {
+                _player.Death -= OnPlayerDeath;
+            }
         }
 
         public void Init(Player player)
         {
             _player = player;
-            _player.Death += Lost;
+
+            if(_player != null)
+            {
+                _player.Death += OnPlayerDeath;
+            }
         }
 
         private void ExitToMenu()
         {
-            SceneManager.LoadScene(Menu);
             Time.timeScale = 1.0f;
+            SceneManager.LoadScene(MenuSceneName);
         }
 
-        private void Lost()
+        private void OnPlayerDeath()
+        {
+            _isPlayerDead = true;
+            Time.timeScale = 0;
+
+            if (_defeatPanel != null)
+            {
+                _defeatPanel.gameObject.SetActive(true);
+            }
+            
+            if (_continueButton != null)
+            {
+                _continueButton.interactable = false;
+            }
+        }
+        
+        private void OnPauseButtonClicked()
         {
             Time.timeScale = 0;
-            _defeatPanel.gameObject.SetActive(true);
+            
+            if (_pausePanel != null)
+            {
+                _pausePanel.gameObject.SetActive(true);
+            }
+            
+            if (!_isPlayerDead && _continueButton != null)
+            {
+                _continueButton.interactable = true;
+            }
         }
-
-        private void Pause()
+        
+        private void OnContinueButtonClicked()
         {
-            Time.timeScale = 0;
-            _pausePanel.gameObject.SetActive(true);
-        }
-
-        private void ContinueGame()
-        {
-            Time.timeScale = 1.0f;
-            _pausePanel.gameObject.SetActive(false);
+            if (!_isPlayerDead)
+            {
+                Time.timeScale = 1.0f;
+                
+                if (_pausePanel != null)
+                {
+                    _pausePanel.gameObject.SetActive(false);
+                }
+            }
         }
     }
 }
