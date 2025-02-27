@@ -35,7 +35,13 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         {
             _wallet = new(_persistentPlayerData);
             _player = _generalPlayerFactory.Get(_persistentPlayerData.PlayerData.SelectedCharacterSkin, _characterSpawnPoint.position);
-
+            
+            if (_player == null)
+            {
+                Debug.LogError("The player is not created! Check GeneralPlayerFactory and PersistentData.");
+                return;
+            }
+            
             _virtualCamera.Follow = _player.transform;
             _virtualCamera.LookAt = _player.transform;
 
@@ -52,8 +58,24 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 
         private void InitUserInterface()
         {
+            if (_canvasFactory == null)
+            {
+                Debug.LogError("CanvasFactory is not appointed at GameplayTestbootstrap.");
+                return;
+            }
+
             _canvas = _canvasFactory.Create(_player.CharacterType, _player);
-            _canvas.GetComponent<GameplayMenu>().Init(_player);
+            if (_canvas == null)
+            {
+                Debug.LogError("The creation of Canvas ended with an error.");
+                return;
+            }
+
+            GameplayMenu menu = _canvas.GetComponent<GameplayMenu>();
+            if (menu != null)
+                menu.Init(_player);
+            else
+                Debug.LogError("The GameplayMenu component was not found on the created canvas.");
         }
 
         private void InitializeData()

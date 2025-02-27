@@ -43,7 +43,6 @@ namespace Game.Scripts.EnemyComponents.EnemySettings
         public float AttackRange => _attackRange;
         public int Experience => _experience;
         public int Money => _gold;
-
         public int Points => _points;
     }
 }

@@ -12,28 +12,28 @@ namespace Game.Scripts.EnemyComponents.Projectiles
         
         private Player _player;
         private EnemyData _enemyData;
-        private PoolManager _poolManager;
+        protected PoolManager PoolManager;
         
         public Player Player => _player;
         public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
-        public ProjectilePool<BaseProjectile> ProjectilePool => _poolManager.GetProjectilePool(GetPrefabFromEnemyData(_enemyData));
+        public ProjectilePool<BaseProjectile> ProjectilePool => PoolManager.GetProjectilePool(GetPrefabFromEnemyData(_enemyData));
         
         public void Initialize(EnemyData data, Player player, PoolManager poolManager)
         {
             _enemyData = data;
             _player = player;
-            _poolManager = poolManager;
+            PoolManager = poolManager;
         }
         
         public BaseProjectile Create()
         {
-            if(_poolManager == null || _projectileSpawnPoint == null)
+            if(PoolManager == null || _projectileSpawnPoint == null)
             {
                 return null;
             }
             
             BaseProjectile projectilePrefab = GetPrefabFromEnemyData(_enemyData);
-            var pool = _poolManager.GetProjectilePool(projectilePrefab);
+            var pool = PoolManager.GetProjectilePool(projectilePrefab);
             
             if(projectilePrefab == null || pool == null)
             {
@@ -47,11 +47,12 @@ namespace Game.Scripts.EnemyComponents.Projectiles
                 return null;
             }
             
-            projectile.SetPoolManager(_poolManager);
+            projectile.SetPoolManager(PoolManager);
             projectile.transform.position = _projectileSpawnPoint.position;
             projectile.transform.rotation = _projectileSpawnPoint.rotation;
             projectile.transform.localScale = _projectileSpawnPoint.localScale;
             projectile.gameObject.SetActive(true);
+            projectile.transform.SetParent(null);
             
             return projectile;
         }

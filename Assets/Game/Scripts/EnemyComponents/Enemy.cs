@@ -23,9 +23,11 @@ namespace Game.Scripts.EnemyComponents
         [SerializeField] private EnemyData _data;
         
         private Player _player;
+        private Vector3 _targetPosition;
+        
         private Animator _animator;
-        private Collider _collider;
         private EnemyAnimationController _animationController;
+        private Collider _collider;
         
         private IAttackBehavior _attackBehavior;
         private IEnemyMovement _movement;
@@ -40,10 +42,12 @@ namespace Game.Scripts.EnemyComponents
         
         private ICoroutineRunner _coroutineRunner;
         private Coroutine _movementCoroutine;     
-        private bool _spawnCompleted = false;
         private NavMeshAgent _agent;
+        
+        private bool _spawnCompleted = false;
 
         public EnemyData Data => _data;
+        public Player Player => _player;
         public Collider Collider => _collider;
         public EnemyAnimationController AnimationAnimationController => _animationController;
         public IEnemyAttack EnemyAttack => _enemyAttack;
@@ -74,7 +78,7 @@ namespace Game.Scripts.EnemyComponents
             {
                 _movementCoroutine = _coroutineRunner.StartCoroutine(AttackCoroutine());
             }
-
+            
             Enabled?.Invoke(this);
         }
 
@@ -90,41 +94,16 @@ namespace Game.Scripts.EnemyComponents
                 _coroutineRunner.StopCoroutine(_movementCoroutine);
                 _movementCoroutine = null;
             }
-        }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.TryGetComponent(out Weapon weapon))
+            if(_hybridSpawner != null)
             {
-                Health.Lose(weapon.WeaponData.Damage);
-
-                if (Health.IsDead)
-                {
-                    _player.GetExperience(Data.Experience);
-                    _player.GetMoney(Data.Money);
-                    _enemyEffects.Death();
-                }
+                _hybridSpawner.ResetProjectile();
             }
         }
-
-        //private void Start()
-        //{
-        //    _agent.enabled = true;
-        //}
 
         private void Update()
         {
             MoveAndRotate();
-        }
-
-        public void TurnOnAgent()
-        {
-            _agent.enabled = true;
-        }
-
-        public void TurnOffAgent()
-        {
-            _agent.enabled = false;
         }
 
         public void InitializeComponents(Player player, EnemyData enemyData, EffectsPool pool, PoolManager poolManager, ICoroutineRunner coroutineRunner)
@@ -133,14 +112,11 @@ namespace Game.Scripts.EnemyComponents
             _data = enemyData;
             _coroutineRunner = coroutineRunner;
             
-            if (_animationController == null)
-            {
-                _animationController = new EnemyAnimationController(_animator, _data.EnemyType);
-            }
-            
+            _animationController = new EnemyAnimationController(_animator, _data.EnemyType);
             _enemyCollider = new EnemyCollider(this, _player);
             _movement = new EnemyMovement(transform, _data.MoveSpeed, AnimationAnimationController, _agent);
             _rotation = new EnemyRotation(transform, _data.RotationSpeed);
+            
             _enemyEffects.Initialize(_data, pool, coroutineRunner);
 
             if (_data.BaseAttackType.Type == AttackType.Ranged)
@@ -158,14 +134,32 @@ namespace Game.Scripts.EnemyComponents
             
             SetAttackBehavior();
             
+            _targetPosition = _player.transform.position;
             _spawnCompleted = false;
+            
             AnimationAnimationController.Spawn();
+            SpawnAnimationEnd();
             Health.InitMaxValue(_data.MaxHealth);
             
             if (_coroutineRunner != null && _movementCoroutine == null && gameObject.activeInHierarchy)
             {
                 _movementCoroutine = _coroutineRunner.StartCoroutine(AttackCoroutine());
             }
+        }
+        
+        public void SetTargetPosition(Vector3 target)
+        {
+            _targetPosition = target;
+        }
+        
+        public void TurnOnAgent()
+        {
+            _agent.enabled = true;
+        }
+
+        public void TurnOffAgent()
+        {
+            _agent.enabled = false;
         }
         
         public float SetDamage()
@@ -182,11 +176,26 @@ namespace Game.Scripts.EnemyComponents
         {
             AnimationAnimationController?.ResetAttackState();
         }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out Weapon weapon))
+            {
+                Health.Lose(weapon.WeaponData.Damage);
+
+                if (Health.IsDead)
+                {
+                    _player.GetExperience(Data.Experience);
+                    _player.GetMoney(Data.Money);
+                    _enemyEffects.Death();
+                }
+            }
+        }
 
         private void OnDeath()
         {
             AnimationAnimationController.Death();
-            //_hybridSpawner.SetStateProjectile(null);
+            _hybridSpawner?.ResetProjectile();
             Dead?.Invoke(this);
         }
         
@@ -207,10 +216,12 @@ namespace Game.Scripts.EnemyComponents
                 _movement.StopMove();
                 return;
             }
-
+            
+            Vector3 targetPos = (_targetPosition == Vector3.zero) ? _player.transform.position : _targetPosition;
+            
             if (_agent.isActiveAndEnabled)
             {
-                _movement.Move(_player.transform.position);
+                _movement.Move(targetPos);
                 _movement.PlayMove();
             }
             else
