@@ -45,6 +45,7 @@ namespace Game.Scripts.EnemyComponents
         private NavMeshAgent _agent;
         
         private bool _spawnCompleted = false;
+        private bool _isDying = false;
 
         public EnemyData Data => _data;
         public Player Player => _player;
@@ -71,7 +72,7 @@ namespace Game.Scripts.EnemyComponents
         {
             if (Health != null)
             {
-                Health.Death += OnDeath;
+                Health.Death += OnDead;
             }
 
             if (_coroutineRunner != null && _movementCoroutine == null)
@@ -86,18 +87,13 @@ namespace Game.Scripts.EnemyComponents
         {
             if (Health != null)
             {
-                Health.Death -= OnDeath;
+                Health.Death -= OnDead;
             }
 
             if (_coroutineRunner != null && _movementCoroutine != null)
             {
                 _coroutineRunner.StopCoroutine(_movementCoroutine);
                 _movementCoroutine = null;
-            }
-
-            if(_hybridSpawner != null)
-            {
-                _hybridSpawner.ResetProjectile();
             }
         }
 
@@ -136,6 +132,7 @@ namespace Game.Scripts.EnemyComponents
             
             _targetPosition = _player.transform.position;
             _spawnCompleted = false;
+            _isDying = false;
             
             AnimationAnimationController.Spawn();
             SpawnAnimationEnd();
@@ -177,6 +174,16 @@ namespace Game.Scripts.EnemyComponents
             AnimationAnimationController?.ResetAttackState();
         }
         
+        public void OnDeathAnimationEvent()
+        {
+            _enemyEffects.Death();
+        }
+        
+        public void DeathAnimationEnd()
+        {
+            Dead?.Invoke(this);
+        }
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out Weapon weapon))
@@ -187,16 +194,22 @@ namespace Game.Scripts.EnemyComponents
                 {
                     _player.GetExperience(Data.Experience);
                     _player.GetMoney(Data.Money);
-                    _enemyEffects.Death();
                 }
             }
         }
 
-        private void OnDeath()
+        private void OnDead()
         {
+            if(_isDying)
+            {
+                return;
+            }
+            
+            _isDying = true;
+            _movement.StopMove();
+            _agent.enabled = false;
+            
             AnimationAnimationController.Death();
-            _hybridSpawner?.ResetProjectile();
-            Dead?.Invoke(this);
         }
         
         private void MoveAndRotate()
@@ -204,7 +217,7 @@ namespace Game.Scripts.EnemyComponents
             if (_player == null)
                 return;
 
-            if (_agent.isActiveAndEnabled == false)
+            if (!_agent.isActiveAndEnabled)
             {
                 return;
             }
@@ -217,7 +230,7 @@ namespace Game.Scripts.EnemyComponents
                 return;
             }
             
-            Vector3 targetPos = (_targetPosition == Vector3.zero) ? _player.transform.position : _targetPosition;
+            Vector3 targetPos = (_data.BaseAttackType.Type == AttackType.Hybrid) ? _player.transform.position : (_targetPosition == Vector3.zero ? _player.transform.position : _targetPosition);
             
             if (_agent.isActiveAndEnabled)
             {

@@ -62,12 +62,13 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
                         int meleeVariant = Random.Range(3, 5);
                         PerformMeleeAttack(meleeVariant);
                     }
-                    else if(distance <= hybridType.RangedRange && distance > hybridType.MeleeRange)
+                    else if(distance <= hybridType.RangedRange)
                     {
                         if(Time.time >= _lastRangedAttackTime + hybridType.ReloadTimeProjectile)
                         {
                             _lastRangedAttackTime = Time.time;
                             int rangedAttackVariant = 5;
+                            _lastAttackTime = Time.time;
                             PerformRangedAttack(rangedAttackVariant);
                         }
                     }

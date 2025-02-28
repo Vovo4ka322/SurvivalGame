@@ -48,11 +48,11 @@ namespace Game.Scripts.EnemyComponents.Projectiles
             }
             
             projectile.SetPoolManager(PoolManager);
+            projectile.SetPool(pool);
             projectile.transform.position = _projectileSpawnPoint.position;
             projectile.transform.rotation = _projectileSpawnPoint.rotation;
             projectile.transform.localScale = _projectileSpawnPoint.localScale;
             projectile.gameObject.SetActive(true);
-            projectile.transform.SetParent(null);
             
             return projectile;
         }
