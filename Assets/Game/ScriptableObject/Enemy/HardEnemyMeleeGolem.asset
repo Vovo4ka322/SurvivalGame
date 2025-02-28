@@ -68,5 +68,5 @@ MonoBehaviour:
           _rotationOffset: {x: -90, y: 0, z: 0}
         _projectilePrefab: {fileID: 2900653260687765090, guid: 61fee2faf5a7642b59c439a9bc4d6ff9, type: 3}
         _meleeRange: 3
-        _rangedRange: 6
-        _reloadTimeProjectile: 3
+        _rangedRange: 15
+        _reloadTimeProjectile: 30

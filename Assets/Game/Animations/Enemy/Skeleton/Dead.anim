@@ -83404,14 +83404,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 2.1333334
-    functionName: Death
+    functionName: OnDeathAnimationEvent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.1666667
-    functionName: OnDeath
+  - time: 2.3
+    functionName: DeathAnimationEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

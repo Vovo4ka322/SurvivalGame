@@ -9,9 +9,9 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
     {
         private readonly EnemyAnimationController _animationController;
         private readonly Transform _transform;
+        private readonly NavMeshAgent _agent;
         private readonly float _moveSpeed;
-
-        private NavMeshAgent _agent;
+        
         private bool _canMove = true;
 
         public float MovementPredictionThreshold { get; private set; } = 0;
@@ -26,7 +26,6 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
             _moveSpeed = moveSpeed;
             _animationController = animator;
             _agent = agent;
-
             _agent.speed = _moveSpeed;
         }
 
@@ -38,9 +37,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
             {
                 return;
             }
-
-
-
+            
             _agent.SetDestination(targetPosition);
         }
 
