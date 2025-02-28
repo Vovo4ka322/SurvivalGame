@@ -16,8 +16,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Visitors
 
         public OpenSkinsChecker(IPersistentData persistentData) => _persistentData = persistentData;
 
-        public void Visit(ShopItem shopItem) => Visit((dynamic)shopItem);
-
         public void Visit(CharacterSkinItem characterSkinItem)
         {
             IsOpened = _persistentData.PlayerData.OpenCharacterSkins.Contains(characterSkinItem.SkinType);

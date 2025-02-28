@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Game.Scripts.MenuComponents.ShopComponents.Viewers;
 using Game.Scripts.MenuComponents.ShopComponents.Visitors;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents
 {
@@ -28,7 +29,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         {
             Clear();
             
-            foreach(ShopItem item in items)
+            foreach(CharacterSkinItem item in items)
             {
                 ShopItemView spawnedItem = _shopItemViewFactory.Get(item, _itemsParent);
                 

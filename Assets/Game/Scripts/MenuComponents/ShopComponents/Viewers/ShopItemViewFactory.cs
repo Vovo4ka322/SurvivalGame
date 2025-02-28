@@ -9,7 +9,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
     {
         [SerializeField] private ShopItemView _characterSkinItemPrefab;
 
-        public ShopItemView Get(ShopItem shopItem, Transform parent)
+        public ShopItemView Get(CharacterSkinItem shopItem, Transform parent)
         {
             ShopItemVisitor visitor = new ShopItemVisitor(_characterSkinItemPrefab);
             visitor.Visit(shopItem);
@@ -30,14 +30,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
             }
 
             public ShopItemView Prefab { get; private set; }
-
-            public void Visit(ShopItem shopItem)
-            {
-                if (shopItem is CharacterSkinItem characterSkinItem)
-                {
-                    Visit(characterSkinItem);
-                }
-            }
 
             public void Visit(CharacterSkinItem characterSkinItem)
             {

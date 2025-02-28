@@ -19,14 +19,14 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
 
         private Image _backgroundImage;
         
-        public ShopItem Item { get; private set; }
+        public CharacterSkinItem Item { get; private set; }
         public bool IsLock { get; private set; }
         public int Price => Item.Price;
         public SkinModel Model => Item.Model;
         
         public event Action<ShopItemView> Click;
 
-        public void Initialize(ShopItem item)
+        public void Initialize(CharacterSkinItem item)
         {
             _backgroundImage = GetComponent<Image>();
             
