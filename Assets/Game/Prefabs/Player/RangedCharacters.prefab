@@ -942,7 +942,6 @@ GameObject:
   - component: {fileID: 7179899692534510351}
   - component: {fileID: 3079715987955815982}
   - component: {fileID: 9066256784059066620}
-  - component: {fileID: 5793647862731461580}
   - component: {fileID: 642284079440058142}
   m_Layer: 0
   m_Name: Bow
@@ -1016,28 +1015,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5793647862731461580
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4173543858394198118}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43570866314192290, guid: bac1edb628ab47d4497d7ca6902743e6, type: 2}
 --- !u!114 &642284079440058142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1411,9 +1388,9 @@ MonoBehaviour:
   <GeneralDamage>k__BackingField: 0
   <GeneralAttackSpeed>k__BackingField: 0
   <GeneralMovementSpeed>k__BackingField: 0
+  <TotalDamage>k__BackingField: 0
   _collider: {fileID: 5434420615157604619}
   _bow: {fileID: 642284079440058142}
-  _animatorState: {fileID: -1600266406523707398}
 --- !u!114 &-1600266406523707398
 MonoBehaviour:
   m_ObjectHideFlags: 0

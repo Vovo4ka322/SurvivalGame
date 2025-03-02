@@ -13,12 +13,15 @@ namespace Game.Scripts.PlayerComponents
 
         private float _movementVisualizationCoefficient = 0.2f;
         private float _attackSpeed;
+        private float _damage;
 
         public bool IsActiveState { get; private set; }
 
         private void Start()
         {
             ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
+            _damage = GeneralDamage + _sword.WeaponData.Damage;
+            SetTotalDamage(_damage);
         }
 
         private void OnCollisionEnter(Collision collision)

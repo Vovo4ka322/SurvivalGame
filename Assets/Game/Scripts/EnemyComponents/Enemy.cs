@@ -82,6 +82,21 @@ namespace Game.Scripts.EnemyComponents
             Enabled?.Invoke(this);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.TryGetComponent(out Player player))
+            {
+                Health.Lose(player.TotalDamage);
+
+                if (Health.IsDead)
+                {
+                    _player.GetExperience(Data.Experience);
+                    _player.GetMoney(Data.Money);
+                    _enemyEffects.Death();
+                }
+            }
+        }
+
         private void OnDisable()
         {
             if (Health != null)
@@ -177,21 +192,6 @@ namespace Game.Scripts.EnemyComponents
             AnimationAnimationController?.ResetAttackState();
         }
         
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.TryGetComponent(out Weapon weapon))
-            {
-                Health.Lose(weapon.WeaponData.Damage);
-
-                if (Health.IsDead)
-                {
-                    _player.GetExperience(Data.Experience);
-                    _player.GetMoney(Data.Money);
-                    _enemyEffects.Death();
-                }
-            }
-        }
-
         private void OnDeath()
         {
             AnimationAnimationController.Death();

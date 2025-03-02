@@ -10,7 +10,6 @@ namespace Weapons.RangedWeapon
         [SerializeField] private BowData _bowData;
 
         private Arrow _arrow;
-        private Coroutine _arrowCreatorCoroutine;
 
         public event Action ArrowTouched;
 
@@ -19,11 +18,6 @@ namespace Weapons.RangedWeapon
         public BowData BowData => _bowData;
 
         public bool IsActiveState { get; private set; }
-
-        private void Start()
-        {
-            StartShoot();
-        }
 
         public void StartShoot()
         {
