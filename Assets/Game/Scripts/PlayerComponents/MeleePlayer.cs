@@ -57,5 +57,9 @@ namespace Game.Scripts.PlayerComponents
         public bool SetTrueActiveState() => IsActiveState = true;
 
         public bool SetFalseActiveState() => IsActiveState = false;
+
+        public void SetSwordColliderTrue() => _sword.MeshCollider.enabled = true;
+
+        public void SetSwordColliderFalse() => _sword.MeshCollider.enabled = false;
     }
 }
