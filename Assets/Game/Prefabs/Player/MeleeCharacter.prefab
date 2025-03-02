@@ -638,7 +638,9 @@ MonoBehaviour:
   _baseMoveSpeed: 8
   _level:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
+    <Experience>k__BackingField: 0
   <CharacterType>k__BackingField: 0
+  <AnimatorState>k__BackingField: {fileID: 9203238919027719053}
   <PlayerMovement>k__BackingField: {fileID: 4510874001069546984}
   <GeneralHealth>k__BackingField: 0
   <GeneralArmor>k__BackingField: 0
@@ -646,7 +648,6 @@ MonoBehaviour:
   <GeneralAttackSpeed>k__BackingField: 0
   <GeneralMovementSpeed>k__BackingField: 0
   _sword: {fileID: 537856223859781045}
-  _animatorState: {fileID: 9203238919027719053}
 --- !u!114 &9203238919027719053
 MonoBehaviour:
   m_ObjectHideFlags: 0

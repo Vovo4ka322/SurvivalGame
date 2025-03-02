@@ -6,7 +6,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
 {
     public class DataLocalProvider : IDataProvider
     {
-        private const string FileName = "PlayerSave20";
+        private const string FileName = "PlayerSave22";
         private const string SaveFileExtension = ".json";
 
         private IPersistentData _persistentData;

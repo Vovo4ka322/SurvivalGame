@@ -834,7 +834,7 @@ Transform:
   m_GameObject: {fileID: 3795698046052768557}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.302, z: 0.562}
+  m_LocalPosition: {x: 0, y: 1.302, z: 0.675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1404,6 +1404,7 @@ MonoBehaviour:
   _level:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
   <CharacterType>k__BackingField: 1
+  <AnimatorState>k__BackingField: {fileID: -1600266406523707398}
   <PlayerMovement>k__BackingField: {fileID: 7069792902265588062}
   <GeneralHealth>k__BackingField: 0
   <GeneralArmor>k__BackingField: 0

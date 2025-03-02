@@ -14,6 +14,7 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Button _continueButton;
         [SerializeField] private Image _pausePanel;
         [SerializeField] private Image _defeatPanel;
+        [SerializeField] private Text _defeatText;
 
         private Player _player;
 
@@ -87,6 +88,9 @@ namespace Game.Scripts.MenuComponents
             {
                 _continueButton.interactable = false;
             }
+
+            _continueButton.gameObject.SetActive(false);
+            _defeatText.gameObject.SetActive(true);
         }
         
         private void OnPauseButtonClicked()

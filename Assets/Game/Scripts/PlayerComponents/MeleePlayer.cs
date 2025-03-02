@@ -10,13 +10,16 @@ namespace Game.Scripts.PlayerComponents
     public class MeleePlayer : Player, IActivable
     {
         [SerializeField] private Sword _sword;
-        [SerializeField] private AnimatorState _animatorState;
 
         private float _movementVisualizationCoefficient = 0.2f;
+        private float _attackSpeed;
 
         public bool IsActiveState { get; private set; }
 
-        public float AttackSpeed { get; private set; }
+        private void Start()
+        {
+            ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
+        }
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -41,10 +44,10 @@ namespace Game.Scripts.PlayerComponents
         public void UpgradeCharacteristikByBloodlust(Bloodlust bloodlust)
         {
             PlayerMovement.ChangeMoveSpeed(bloodlust.MovementSpeed);
-            AttackSpeed += bloodlust.AttackSpeed;
+            _attackSpeed = bloodlust.AttackSpeed + GeneralAttackSpeed;
 
-            _animatorState.SetFloatValue(_animatorState.Speed, AttackSpeed);
-            _animatorState.SetFloatValue(_animatorState.MovementSpeed, _movementVisualizationCoefficient);
+            ChangeAttackAnimationSpeed(AnimatorState.Speed, _attackSpeed);
+            ChangeMovementAnimationSpeed(AnimatorState.MovementSpeed, _movementVisualizationCoefficient);
             _movementVisualizationCoefficient += _movementVisualizationCoefficient;
         }
 
