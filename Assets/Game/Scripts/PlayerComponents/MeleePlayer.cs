@@ -21,7 +21,7 @@ namespace Game.Scripts.PlayerComponents
         {
             ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
             _damage = GeneralDamage + _sword.WeaponData.Damage;
-            SetTotalDamage(_damage);
+            _sword.SetTotalDamage(_damage);
         }
 
         private void OnCollisionEnter(Collision collision)

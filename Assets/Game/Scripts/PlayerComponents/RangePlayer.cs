@@ -29,7 +29,7 @@ namespace Game.Scripts.PlayerComponents
             _bow.StartShoot();
             ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
             _damage = GeneralDamage + _bow.WeaponData.Damage;
-            SetTotalDamage(_damage);
+            _bow.SetTotalDamage(_damage);
         }
     
         private void OnDisable()

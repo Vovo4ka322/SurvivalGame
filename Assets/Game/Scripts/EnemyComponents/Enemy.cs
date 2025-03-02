@@ -82,11 +82,11 @@ namespace Game.Scripts.EnemyComponents
             Enabled?.Invoke(this);
         }
 
-        private void OnTriggerEnter(Collider other)//don't work. Need fix
+        private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out Player player))
+            if (other.gameObject.TryGetComponent(out Weapon weapon))
             {
-                Health.Lose(player.TotalDamage);
+                Health.Lose(weapon.TotalDamage);
 
                 if (Health.IsDead)
                 {
