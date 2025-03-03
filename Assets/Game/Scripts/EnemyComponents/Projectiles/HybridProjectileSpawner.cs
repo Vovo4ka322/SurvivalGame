@@ -1,4 +1,3 @@
-using Game.Scripts.PoolComponents;
 using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.Projectiles
@@ -27,11 +26,17 @@ namespace Game.Scripts.EnemyComponents.Projectiles
             }
             
             SetStateProjectile(null);
+            
+            if(TryGetComponent(out Enemy enemy))
+            {
+                _currentProjectile.SetOwner(enemy);
+            }
+            
             _currentProjectile.Launch(Player.transform.position, ProjectilePool);
             _currentProjectile = null;
         }
         
-        public void ResetProjectile()
+        /*public void ResetProjectile()
         {
             if(_currentProjectile != null)
             {
@@ -46,7 +51,7 @@ namespace Game.Scripts.EnemyComponents.Projectiles
 
                 _currentProjectile = null;
             }
-        }
+        }*/
         
         private void SetStateProjectile(Transform projectileSpawnPoint)
         {

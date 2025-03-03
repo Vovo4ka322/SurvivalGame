@@ -24,8 +24,9 @@ namespace Game.Scripts.EnemyComponents.Projectiles
         private bool _isLaunched;
 
         public float Speed => _speed;
-        public float AimHeight { get; private set; } = 1.5f;
         public int Damage => _damage;
+        public float AimHeight { get; private set; } = 1.5f;
+        public Enemy Owner { get; private set; }
 
         private void Awake()
         {
@@ -42,6 +43,13 @@ namespace Game.Scripts.EnemyComponents.Projectiles
 
         private void Update()
         {
+            if (_isLaunched && Owner != null && Owner.Health != null && Owner.Health.IsDead)
+            {
+                Explode();
+                ReturnToPool();
+                return;
+            }
+            
             _movementStrategy?.Move(this);
 
             _lifeTimer -= Time.deltaTime;
@@ -55,15 +63,9 @@ namespace Game.Scripts.EnemyComponents.Projectiles
 
         public abstract void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool);
 
-        public void InitializeMovement(IProjectileMovement movementStrategy, ProjectilePool<BaseProjectile> pool)
-        {
-            _movementStrategy = movementStrategy;
-            _pool = pool;
-        }
-
         public void LaunchProjectile(IProjectileMovement movement, Vector3 targetPosition, ProjectilePool<BaseProjectile> pool)
         {
-            InitializeMovement(movement, pool);
+            Initialize(movement, pool);
 
             _isLaunched = true;
 
@@ -74,12 +76,17 @@ namespace Game.Scripts.EnemyComponents.Projectiles
 
             ExecuteLaunch(targetPosition);
         }
-
-        public void ExecuteLaunch(Vector3 targetPosition)
+        
+        public void SetOwner(Enemy owner)
         {
-            _movementStrategy?.Launch(this, targetPosition);
+            Owner = owner;
         }
-
+        
+        public void SetPool(ProjectilePool<BaseProjectile> pool)
+        {
+            _pool = pool;
+        }
+        
         public void SetPoolManager(PoolManager poolManager)
         {
             _poolManager = poolManager;
@@ -92,7 +99,18 @@ namespace Game.Scripts.EnemyComponents.Projectiles
                 _projectileEffectPrefab.Play();
             }
         }
-
+        
+        private void Initialize(IProjectileMovement movementStrategy, ProjectilePool<BaseProjectile> pool)
+        {
+            _movementStrategy = movementStrategy;
+            _pool = pool;
+        }
+        
+        private void ExecuteLaunch(Vector3 targetPosition)
+        {
+            _movementStrategy?.Launch(this, targetPosition);
+        }
+        
         private void HandleCollision(Collider other)
         {
             if (_hasCollided || !_isLaunched)
@@ -109,7 +127,7 @@ namespace Game.Scripts.EnemyComponents.Projectiles
 
             if (other.TryGetComponent(out Player player))
             {
-                //player.TakeDamage(_projectile.Damage);
+                player.LoseHealth(Damage);
             }
 
             Explode();
@@ -156,7 +174,20 @@ namespace Game.Scripts.EnemyComponents.Projectiles
             _projectileEffectPrefab.Stop();
             _movementStrategy?.Stop();
             transform.localScale = Vector3.one;
-            _pool.Release(this);
+            
+            if (_pool != null)
+            {
+                _pool.Release(this);
+            }
+            else if (_poolManager != null)
+            {
+                var pool = _poolManager.GetProjectilePool(this);
+                
+                if (pool != null)
+                {
+                    pool.Release(this);
+                }
+            }
         }
     }
 }

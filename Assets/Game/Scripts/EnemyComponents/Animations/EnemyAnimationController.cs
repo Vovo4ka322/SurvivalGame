@@ -47,7 +47,7 @@ namespace Game.Scripts.EnemyComponents.Animations
         };
         
         private bool _isAttacking = false;
-        private bool _isSpawning = true;
+        //private bool _isSpawning = true;
         
         public EnemyAnimationController(Animator animator, EnemyType enemyType)
         {
@@ -102,7 +102,7 @@ namespace Game.Scripts.EnemyComponents.Animations
             _isAttacking = false;
         }
         
-        public void OnSpawnAnimationStart()
+        /*public void OnSpawnAnimationStart()
         {
             _isSpawning = true;
         }
@@ -110,6 +110,6 @@ namespace Game.Scripts.EnemyComponents.Animations
         public void OnSpawnAnimationEnd()
         {
             _isSpawning = false;
-        }
+        }*/
     }
 }
