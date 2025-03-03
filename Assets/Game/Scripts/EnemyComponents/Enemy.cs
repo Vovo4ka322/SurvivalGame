@@ -188,7 +188,7 @@ namespace Game.Scripts.EnemyComponents
         {
             if (other.gameObject.TryGetComponent(out Weapon weapon))
             {
-                Health.Lose(weapon.WeaponData.Damage);
+                Health.Lose(weapon.TotalDamage);
 
                 if (Health.IsDead)
                 {
