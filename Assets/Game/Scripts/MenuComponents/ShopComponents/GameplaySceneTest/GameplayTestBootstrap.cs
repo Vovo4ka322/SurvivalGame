@@ -20,6 +20,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         private Player _player;
         private Canvas _canvas;
         private Wallet _wallet;
+        private WalletView _walletView;
 
         private IDataProvider _dataProvider;
         private IPersistentData _persistentPlayerData;
@@ -56,7 +57,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             _player.SetPoolManager(_pool);
             _player.Init(_persistentPlayerData.PlayerData.CalculationFinalValue.Health, _persistentPlayerData.PlayerData.CalculationFinalValue.Armor,
             _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed,
-            _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet);
+            _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet, _dataProvider);
         }
 
         private void InitUserInterface()
@@ -79,6 +80,9 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
                 menu.Init(_player);
             else
                 Debug.LogError("The GameplayMenu component was not found on the created canvas.");
+
+            _walletView = _canvas.GetComponentInChildren<WalletView>();
+            _walletView.Initialize(_wallet);
         }
 
         private void InitializeData()

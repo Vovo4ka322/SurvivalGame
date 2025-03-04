@@ -11,8 +11,6 @@ namespace Game.Scripts.PlayerComponents.Animations
         public readonly int Speed = Animator.StringToHash("Speed");
         public readonly int MovementSpeed = Animator.StringToHash("MovementSpeed");
 
-        private readonly float _baseValue = 1f;
-
         public void SetTrueBoolState(int id)
         {
             _animator.SetBool(id, true);
@@ -25,7 +23,7 @@ namespace Game.Scripts.PlayerComponents.Animations
 
         public void SetFloatValue(int id, float value)
         {
-            _animator.SetFloat(id, _baseValue + value);
+            _animator.SetFloat(id, value);
         }
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Game.Scripts.PlayerComponents;
+using System.Collections.Generic;
 
 namespace Game.Scripts.MenuComponents
 {
@@ -10,7 +11,7 @@ namespace Game.Scripts.MenuComponents
         private const string MenuSceneName = "Menu";
 
         [SerializeField] private Button _pauseButton;
-        [SerializeField] private Button _menuBackButton;
+        [SerializeField] private List<Button> _menuBackButton;
         [SerializeField] private Button _continueButton;
         [SerializeField] private Image _pausePanel;
         [SerializeField] private Image _defeatPanel;
@@ -19,40 +20,46 @@ namespace Game.Scripts.MenuComponents
 
         private void OnEnable()
         {
-            if(_pauseButton != null)
+            if (_pauseButton != null)
             {
                 _pauseButton.onClick.AddListener(OnPauseButtonClicked);
             }
 
-            if(_continueButton != null)
+            if (_continueButton != null)
             {
                 _continueButton.onClick.AddListener(OnContinueButtonClicked);
             }
 
             if (_menuBackButton != null)
             {
-                _menuBackButton.onClick.AddListener(ExitToMenu);
+                for (int i = 0; i < _menuBackButton.Count; i++)
+                {
+                    _menuBackButton[i].onClick.AddListener(ExitToMenu);
+                }
             }
         }
 
         private void OnDisable()
         {
-            if(_pauseButton != null)
+            if (_pauseButton != null)
             {
                 _pauseButton.onClick.RemoveListener(OnPauseButtonClicked);
             }
 
-            if(_continueButton != null)
+            if (_continueButton != null)
             {
                 _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
             }
 
-            if(_menuBackButton != null)
+            if (_menuBackButton != null)
             {
-                _menuBackButton.onClick.AddListener(ExitToMenu);
+                for (int i = 0; i < _menuBackButton.Count; i++)
+                {
+                    _menuBackButton[i].onClick.RemoveListener(ExitToMenu);
+                }
             }
 
-            if(_player != null)
+            if (_player != null)
             {
                 _player.Death -= OnPlayerDeath;
             }
@@ -62,7 +69,7 @@ namespace Game.Scripts.MenuComponents
         {
             _player = player;
 
-            if(_player != null)
+            if (_player != null)
             {
                 _player.Death += OnPlayerDeath;
             }
@@ -82,32 +89,32 @@ namespace Game.Scripts.MenuComponents
             {
                 _defeatPanel.gameObject.SetActive(true);
             }
-            
+
             if (_continueButton != null)
             {
                 _continueButton.interactable = false;
             }
         }
-        
+
         private void OnPauseButtonClicked()
         {
             Time.timeScale = 0;
-            
+
             if (_pausePanel != null)
             {
                 _pausePanel.gameObject.SetActive(true);
             }
-            
+
             if (_continueButton != null)
             {
                 _continueButton.interactable = true;
             }
         }
-        
+
         private void OnContinueButtonClicked()
         {
             Time.timeScale = 1.0f;
-                
+
             if (_pausePanel != null)
             {
                 _pausePanel.gameObject.SetActive(false);

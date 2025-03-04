@@ -21,11 +21,6 @@ namespace Weapons.RangedWeapon
         public BowData BowData => _bowData;
         public bool IsActiveState { get; private set; }
 
-        private void Start()
-        {
-            StartShoot();
-        }
-
         public void StartShoot()
         {
             Shoot();

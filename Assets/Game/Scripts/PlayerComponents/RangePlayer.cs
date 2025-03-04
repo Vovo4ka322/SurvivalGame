@@ -11,18 +11,25 @@ namespace Game.Scripts.PlayerComponents
     {
         [SerializeField] private Collider _collider;
         [SerializeField] private Bow _bow;
-        [SerializeField] private AnimatorState _animatorState;
-    
+
+        private float _damage;
         private float _evasionChance;
     
         public float Damage { get; private set; }
         public float Coefficient { get; private set; }
         public bool IsWorking { get; private set; }
-        public Bow Bow => _bow;
-    
+
         private void OnEnable()
         {
             _bow.ArrowTouched += OnHealthRestored;
+        }
+
+        private void Start()
+        {
+            _bow.StartShoot();
+            ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
+            _damage = GeneralDamage + _bow.WeaponData.Damage;
+            _bow.SetTotalDamage(_damage);
         }
     
         private void OnDisable()
@@ -50,11 +57,6 @@ namespace Game.Scripts.PlayerComponents
             }
         }
     
-        private void Start()
-        {
-            _animatorState.SetFloatValue(_animatorState.Speed, GeneralAttackSpeed);
-        }
-    
         public void Shoot()
         {
             _bow.StartShoot();
@@ -74,7 +76,7 @@ namespace Game.Scripts.PlayerComponents
         {
             if (IsWorking)
             {
-                AddHealth(Damage * Coefficient);
+                AddHealth(_damage * Coefficient);
             }
         }
     }

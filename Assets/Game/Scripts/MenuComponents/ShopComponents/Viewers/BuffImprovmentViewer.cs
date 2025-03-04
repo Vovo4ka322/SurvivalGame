@@ -39,7 +39,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
             _calculationFinalValue = calculationFinalValue;
 
             UpdateValue(_healthBuffUpgraders, _calculationFinalValue.HealthLevelImprovment);
-            UpdateValue(_armorBuffUpgraders, _calculationFinalValue.AttackSpeedLevelImprovment);
+            UpdateValue(_armorBuffUpgraders, _calculationFinalValue.ArmorLevelImprovment);
             UpdateValue(_damageBuffUpgraders, _calculationFinalValue.DamageLevelImprovment);
             UpdateValue(_attackSpeedBuffUpgraders, _calculationFinalValue.AttackSpeedLevelImprovment);
             UpdateValue(_movementSpeedBuffUpgraders, _calculationFinalValue.MovementSpeedLevelImprovment);

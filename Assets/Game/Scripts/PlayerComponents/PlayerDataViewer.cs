@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Game.Scripts.PlayerComponents
 {
-    public class PlayerHealthAndExperienceViewer : MonoBehaviour
+    public class PlayerDataViewer : MonoBehaviour
     {
         [SerializeField] private Image _healthValueImage;
         [SerializeField] private Image _ExpValueImage;

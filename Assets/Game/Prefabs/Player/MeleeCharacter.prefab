@@ -639,14 +639,15 @@ MonoBehaviour:
   _level:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
   <CharacterType>k__BackingField: 0
+  <AnimatorState>k__BackingField: {fileID: 9203238919027719053}
   <PlayerMovement>k__BackingField: {fileID: 4510874001069546984}
   <GeneralHealth>k__BackingField: 0
   <GeneralArmor>k__BackingField: 0
   <GeneralDamage>k__BackingField: 0
   <GeneralAttackSpeed>k__BackingField: 0
   <GeneralMovementSpeed>k__BackingField: 0
+  <TotalDamage>k__BackingField: 0
   _sword: {fileID: 537856223859781045}
-  _animatorState: {fileID: 9203238919027719053}
 --- !u!114 &9203238919027719053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1870,6 +1871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <WeaponData>k__BackingField: {fileID: 11400000, guid: 5262a1d6a1831c2458aa1aa43dfa8d7c, type: 2}
+  <MeshCollider>k__BackingField: {fileID: 1593887930896173103}
 --- !u!64 &1593887930896173103
 MeshCollider:
   m_ObjectHideFlags: 0

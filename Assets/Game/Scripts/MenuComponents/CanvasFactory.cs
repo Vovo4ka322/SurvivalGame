@@ -20,7 +20,7 @@ namespace Game.Scripts.MenuComponents
             }
 
             Canvas canvas = Instantiate(prefab);
-            PlayerHealthAndExperienceViewer healthViewer = canvas.GetComponent<PlayerHealthAndExperienceViewer>();
+            PlayerDataViewer healthViewer = canvas.GetComponent<PlayerDataViewer>();
 
             healthViewer.Init(player);
 
