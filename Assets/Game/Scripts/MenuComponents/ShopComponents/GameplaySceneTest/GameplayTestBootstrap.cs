@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Cinemachine;
 using Game.Scripts.EnemyComponents;
@@ -41,8 +42,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             
             if (_player == null)
             {
-                Debug.LogError("The player is not created! Check GeneralPlayerFactory and PersistentData.");
-                return;
+                throw new ArgumentException("The player is not created! Check GeneralPlayerFactory and PersistentData.");
             }
             
             _virtualCamera.Follow = _player.transform;
@@ -64,22 +64,25 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         {
             if (_canvasFactory == null)
             {
-                Debug.LogError("CanvasFactory is not appointed at GameplayTestbootstrap.");
-                return;
+                throw new ArgumentException("CanvasFactory is not appointed at GameplayTestbootstrap.");
             }
 
             _canvas = _canvasFactory.Create(_player.CharacterType, _player);
             if (_canvas == null)
             {
-                Debug.LogError("The creation of Canvas ended with an error.");
-                return;
+                throw new ArgumentException("The creation of Canvas ended with an error.");
             }
 
             GameplayMenu menu = _canvas.GetComponent<GameplayMenu>();
+
             if (menu != null)
+            {
                 menu.Init(_player);
+            }
             else
-                Debug.LogError("The GameplayMenu component was not found on the created canvas.");
+            {
+                throw new ArgumentException("The GameplayMenu component was not found on the created canvas.");
+            }
 
             _walletView = _canvas.GetComponentInChildren<WalletView>();
             _walletView.Initialize(_wallet);
