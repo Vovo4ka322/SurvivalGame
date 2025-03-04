@@ -1,9 +1,9 @@
 using UnityEngine;
-using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
 
-namespace Game.Scripts.EnemyComponents.Projectiles
+namespace Game.Scripts.ProjectileComponents
 {
-    public class MagicMovement : IProjectileMovement
+    public class StoneMovement : IProjectileMovement
     {
         private Vector3 _targetDirection;
         
@@ -11,18 +11,22 @@ namespace Game.Scripts.EnemyComponents.Projectiles
         {
             Vector3 aimOffset = new Vector3(0, projectile.AimHeight, 0);
             Vector3 direction = (targetPosition + aimOffset) - projectile.transform.position;
-            _targetDirection = direction.normalized;
+            
+            if(direction != Vector3.zero)
+            {
+                _targetDirection = direction.normalized * projectile.Speed;
+            } 
+            else
+            {
+                _targetDirection = Vector3.up * projectile.Speed;
+            }
             
             projectile.PlayEffects();
         }
         
         public void Move(BaseProjectile projectile)
         {
-            if(_targetDirection != Vector3.zero)
-            {
-                float deltaSpeed = projectile.Speed * Time.deltaTime;
-                projectile.transform.Translate(_targetDirection * deltaSpeed, Space.World);
-            }
+            projectile.transform.position += _targetDirection * Time.deltaTime;
         }
         
         public void Stop()

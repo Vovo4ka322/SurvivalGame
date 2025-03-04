@@ -8,7 +8,7 @@ namespace Ability.MeleeAbilities.BladeFury
 {
     public class BladeFuryUser : MonoBehaviour, ICooldownable
     {
-        [SerializeField] private AnimatorState _animator;
+        [SerializeField] private AnimatorStatePlayer _animator;
 
         private BladeFury _bladeFuryScriptableObject;
         private float _lastUsedTimer = 0;

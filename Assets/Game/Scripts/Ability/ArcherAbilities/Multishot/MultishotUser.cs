@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Game.Scripts.Interfaces;
+using Game.Scripts.PoolComponents;
+using Game.Scripts.ProjectileComponents;
 using Weapons.RangedWeapon;
 
 namespace Ability.ArcherAbilities.Multishot
@@ -13,15 +15,16 @@ namespace Ability.ArcherAbilities.Multishot
         [SerializeField] private Cooldown _cooldown;
 
         private Multishot _multishotScriptableObject;
+        private ArrowProjectile _arrowProjectile;
+        
         private float _lastUsedTimer = 0;
         private bool _canUseFirstTime = true;
-        private Arrow _arrow;
 
         public event Action<float> Used;
-
-        public Multishot Multishot => _multishotScriptableObject;
-
+        
         public float CooldownTime { get; private set; }
+        public PoolManager PoolManager { get; set; }
+        public Multishot Multishot => _multishotScriptableObject;
 
         public void Upgrade(Multishot multishot)
         {
@@ -73,8 +76,10 @@ namespace Ability.ArcherAbilities.Multishot
 
         private void CalculateArrowFlight()
         {
-            if (_arrow != null)
-                _arrow.Touched -= _bow.OnTouched;
+            if(_arrowProjectile != null)
+            {
+                _arrowProjectile.Touched -= _bow.OnTouched;
+            }
 
             int coefficient = 2;
             int oneArrow = 1;
@@ -86,10 +91,20 @@ namespace Ability.ArcherAbilities.Multishot
             for (int i = 0; i < _multishotScriptableObject.ArrowCount; i++)
             {
                 float tempRotation = startRotation - angleIncrease * i;
-                Arrow arrow = _arrowSpawner.Spawn(_bow.BowData.ArrowFlightSpeed, _bow.BowData.AttackRadius);
-                arrow.StartFly(Quaternion.Euler(0, tempRotation, 0) * -_bow.StartPointToFly.forward, _bow.StartPointToFly.position);
-                _arrow = arrow;
-                _arrow.Touched += _bow.OnTouched;
+                Vector3 direction = Quaternion.Euler(0, tempRotation, 0) * _bow.StartPointToFly.forward;
+                ArrowProjectile arrowProjectile = _arrowSpawner.Spawn();
+                
+                if (arrowProjectile != null)
+                {
+                    Vector3 targetPos = _bow.StartPointToFly.position + direction * _bow.BowData.AttackRadius;
+                    ProjectilePool<BaseProjectile> pool = PoolManager.GetProjectilePool(arrowProjectile);
+                    
+                    arrowProjectile.Launch(targetPos, pool, null);
+                    
+                    _arrowProjectile = arrowProjectile;
+                    
+                    _arrowProjectile.Touched += _bow.OnTouched;
+                }
             }
         }
     }

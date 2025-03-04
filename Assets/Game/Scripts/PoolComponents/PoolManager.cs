@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.EnemyComponents.EnemySettings;
-using Game.Scripts.EnemyComponents.Projectiles;
+using Game.Scripts.ProjectileComponents;
 
 namespace Game.Scripts.PoolComponents
 {

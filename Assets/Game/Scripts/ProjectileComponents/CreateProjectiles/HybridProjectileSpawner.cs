@@ -1,6 +1,8 @@
 using UnityEngine;
+using Game.Scripts.EnemyComponents;
+using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
 
-namespace Game.Scripts.EnemyComponents.Projectiles
+namespace Game.Scripts.ProjectileComponents.CreateProjectiles
 {
     public class HybridProjectileSpawner : BaseProjectileSpawner
     {
@@ -32,26 +34,11 @@ namespace Game.Scripts.EnemyComponents.Projectiles
                 _currentProjectile.SetOwner(enemy);
             }
             
-            _currentProjectile.Launch(Player.transform.position, ProjectilePool);
+            IExplosionHandler explosionHandler = CreateExplosionHandler();
+            
+            _currentProjectile.Launch(Player.transform.position, ProjectilePool, explosionHandler);
             _currentProjectile = null;
         }
-        
-        /*public void ResetProjectile()
-        {
-            if(_currentProjectile != null)
-            {
-                _currentProjectile.transform.SetParent(null);
-                
-                ProjectilePool<BaseProjectile> pool = PoolManager.GetProjectilePool(_currentProjectile);
-
-                if(pool != null)
-                {
-                    pool.Release(_currentProjectile);
-                }
-
-                _currentProjectile = null;
-            }
-        }*/
         
         private void SetStateProjectile(Transform projectileSpawnPoint)
         {
