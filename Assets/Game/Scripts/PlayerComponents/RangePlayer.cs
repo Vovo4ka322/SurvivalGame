@@ -26,7 +26,7 @@ namespace Game.Scripts.PlayerComponents
 
         private void Start()
         {
-            _bow.StartShoot();
+            Shoot();
             ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
             _damage = GeneralDamage + _bow.WeaponData.Damage;
             _bow.SetTotalDamage(_damage);
