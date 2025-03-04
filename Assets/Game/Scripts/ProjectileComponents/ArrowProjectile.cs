@@ -1,13 +1,33 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using Game.Scripts.EnemyComponents;
-using Game.Scripts.Interfaces;
+using Game.Scripts.PoolComponents;
+using Game.Scripts.ProjectileComponents;
+using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
 
-public class Arrow : MonoBehaviour
+public class ArrowProjectile : BaseProjectile
 {
-    private Vector3 _direction;
-    private IPoolReciver<Arrow> _poolReciver;
+    private readonly IProjectileMovement _movement = new ArrowMovement();
+    
+    public event Action Touched;
+    
+    public override void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler)
+    {
+        Pool = pool;
+        
+        InitializeProjectile(_movement, pool, explosionHandler, ConfiguredLifetime);
+        LaunchProjectile(targetPosition);
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Enemy _))
+        {
+            Touched?.Invoke();
+        }
+    }
+    /*private Vector3 _direction;
+    private IPoolReciver<ArrowProjectile> _poolReciver;
     private Coroutine _coroutine;
     private float _speedFlight;
     private float _radius;
@@ -45,10 +65,10 @@ public class Arrow : MonoBehaviour
         _poolReciver.Release(this);
     }
 
-    public void Init(float speedFlight, float radius, IPoolReciver<Arrow> arrowPool)
+    public void Init(float speedFlight, float radius, IPoolReciver<ArrowProjectile> arrowPool)
     {
         _speedFlight = speedFlight;
         _radius = radius;
         _poolReciver = arrowPool;
-    }
+    }*/
 }

@@ -8,9 +8,9 @@ using Game.Scripts.EnemyComponents.EnemySettings.Effects;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors;
 using Game.Scripts.EnemyComponents.Interfaces;
-using Game.Scripts.EnemyComponents.Projectiles;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
+using Game.Scripts.ProjectileComponents.CreateProjectiles;
 using Weapons;
 
 namespace Game.Scripts.EnemyComponents

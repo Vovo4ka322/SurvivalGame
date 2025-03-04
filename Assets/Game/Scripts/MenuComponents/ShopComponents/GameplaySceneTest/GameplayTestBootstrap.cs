@@ -4,6 +4,7 @@ using Game.Scripts.EnemyComponents;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
 using Game.Scripts.PlayerComponents;
+using Game.Scripts.PoolComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {
@@ -14,7 +15,8 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private CanvasFactory _canvasFactory;
         [SerializeField] private CinemachineVirtualCamera _virtualCamera;
         [SerializeField] private WaveBasedEnemySpawner _enemySpawner;
-
+        [SerializeField] private PoolManager _pool;
+        
         private Player _player;
         private Canvas _canvas;
         private Wallet _wallet;
@@ -51,6 +53,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 
         private void InitPlayerCharacteristics()
         {
+            _player.SetPoolManager(_pool);
             _player.Init(_persistentPlayerData.PlayerData.CalculationFinalValue.Health, _persistentPlayerData.PlayerData.CalculationFinalValue.Armor,
             _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed,
             _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet);

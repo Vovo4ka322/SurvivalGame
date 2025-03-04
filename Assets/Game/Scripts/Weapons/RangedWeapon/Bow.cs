@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using Game.Scripts.Interfaces;
+using Game.Scripts.PoolComponents;
+using Game.Scripts.ProjectileComponents;
 
 namespace Weapons.RangedWeapon
 {
@@ -9,15 +11,14 @@ namespace Weapons.RangedWeapon
         [SerializeField] private ArrowSpawner _arrowSpawner;
         [SerializeField] private BowData _bowData;
 
-        private Arrow _arrow;
+        private ArrowProjectile _arrowProjectile;
         private Coroutine _arrowCreatorCoroutine;
 
         public event Action ArrowTouched;
 
         [field: SerializeField] public Transform StartPointToFly {  get; private set; }
-
+        public PoolManager PoolManager { get; set; }
         public BowData BowData => _bowData;
-
         public bool IsActiveState { get; private set; }
 
         private void Start()
@@ -32,15 +33,26 @@ namespace Weapons.RangedWeapon
 
         private void Shoot()
         {
-            if (IsActiveState == false)
+            if (!IsActiveState)
             {
-                if (_arrow != null)
-                    _arrow.Touched -= OnTouched;
+                if(_arrowProjectile != null)
+                {
+                    _arrowProjectile.Touched -= OnTouched;
+                }
 
-                Arrow arrow = _arrowSpawner.Spawn(_bowData.ArrowFlightSpeed, _bowData.AttackRadius);
-                arrow.StartFly(StartPointToFly.forward, StartPointToFly.position);
-                _arrow = arrow;
-                _arrow.Touched += OnTouched;
+                ArrowProjectile arrowProjectile = _arrowSpawner.Spawn();
+                
+                if (arrowProjectile != null)
+                {
+                    Vector3 targetPos = StartPointToFly.position + StartPointToFly.forward * _bowData.AttackRadius;
+                    ProjectilePool<BaseProjectile> pool = PoolManager.GetProjectilePool(arrowProjectile);
+                    
+                    arrowProjectile.Launch(targetPos, pool, null);
+                    
+                    _arrowProjectile = arrowProjectile;
+                    
+                    _arrowProjectile.Touched += OnTouched;
+                }
             }
         }
 

@@ -966,6 +966,7 @@ MonoBehaviour:
   _canvasFactory: {fileID: 11400000, guid: da0cb25e88cd9a646a7ed5db7f9b9168, type: 2}
   _virtualCamera: {fileID: 600381777}
   _enemySpawner: {fileID: 1347524059}
+  _pool: {fileID: 402861274}
 --- !u!4 &1266305342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4892733386000982, guid: 951659d72043e7843aad08d3ddc3012a, type: 3}

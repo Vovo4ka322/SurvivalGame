@@ -777,6 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileSpawnPoint: {fileID: 3291716166857420315}
+  _explosionPrefab: {fileID: 5567487543081949024, guid: 399dd9eb690984764bafb98571a7b002, type: 3}
 --- !u!195 &-8766585432511719656
 NavMeshAgent:
   m_ObjectHideFlags: 0
