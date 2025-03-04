@@ -46,7 +46,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         private readonly int _movementSpeedKey = 4;
         
         private Wallet _wallet;
-        private IDataProvider _dataProvider;
+        private IDataSaver _iDataSaver;
         private PlayerCharacteristicData _calculationFinalValue;
         private Dictionary<int, Button> _purchaseButtons;
         private Dictionary<int, Text> _purchaseTexts;
@@ -97,10 +97,10 @@ namespace Game.Scripts.MenuComponents.ShopComponents
             _leaverPanelButton.onClick.RemoveListener(OnBuffPanelClosed);
         }
         
-        public void Init(Wallet wallet, IDataProvider dataProvider, IPersistentData persistentData)
+        public void Init(Wallet wallet, IDataSaver iDataSaver, IPersistentData persistentData)
         {
             _wallet = wallet;
-            _dataProvider = dataProvider;
+            _iDataSaver = iDataSaver;
             _calculationFinalValue = persistentData.PlayerData.CalculationFinalValue;
             
             _purchaseButtons = new()
@@ -148,7 +148,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
                 DamageUpgraded?.Invoke();
                 _calculationFinalValue.InitLevelDamage(_damageBuffCounter);
                 _calculationFinalValue.InitDamage(_buffImprovment.DamageBuff.Value);
-                _dataProvider.Save();
+                _iDataSaver.Save();
             }
         }
         
@@ -168,7 +168,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
                 HealthUpgraded?.Invoke();
                 _calculationFinalValue.InitLevelHealth(_healthBuffCounter);
                 _calculationFinalValue.InitHealth(_buffImprovment.HealthBuff.Value);
-                _dataProvider.Save();
+                _iDataSaver.Save();
             }
         }
         
@@ -188,7 +188,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
                 ArmorUpgraded?.Invoke();
                 _calculationFinalValue.InitLevelArmor(_armorBuffCounter);
                 _calculationFinalValue.InitArmor(_buffImprovment.ArmorBuff.Value);
-                _dataProvider.Save();
+                _iDataSaver.Save();
             }
         }
         
@@ -208,7 +208,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
                 AttackSpeedUpgraded?.Invoke();
                 _calculationFinalValue.InitLevelAttackSpeed(_attackSpeedBuffCounter);
                 _calculationFinalValue.InitAttackSpeed(_buffImprovment.AttackSpeedBuff.Value);
-                _dataProvider.Save();
+                _iDataSaver.Save();
             }
         }
         
@@ -228,7 +228,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
                 MovementSpeedUpgraded?.Invoke();
                 _calculationFinalValue.InitLevelMovementSpeed(_movementSpeedBuffCounter);
                 _calculationFinalValue.InitMovementSpeed(_buffImprovment.MovementSpeedBuff.Value);
-                _dataProvider.Save();
+                _iDataSaver.Save();
             }
         }
         

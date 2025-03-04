@@ -1,6 +1,6 @@
 namespace Game.Scripts.MenuComponents.ShopComponents.Data
 {
-    public interface IDataProvider
+    public interface IDataSaver
     {
         public void Save();
 

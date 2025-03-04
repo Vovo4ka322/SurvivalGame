@@ -22,7 +22,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         private Wallet _wallet;
         private WalletView _walletView;
 
-        private IDataProvider _dataProvider;
+        private IDataSaver _iDataSaver;
         private IPersistentData _persistentPlayerData;
 
         private void Awake()
@@ -57,7 +57,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             _player.SetPoolManager(_pool);
             _player.Init(_persistentPlayerData.PlayerData.CalculationFinalValue.Health, _persistentPlayerData.PlayerData.CalculationFinalValue.Armor,
             _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed,
-            _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet, _dataProvider);
+            _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet, _iDataSaver);
         }
 
         private void InitUserInterface()
@@ -88,14 +88,14 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         private void InitializeData()
         {
             _persistentPlayerData = new PersistentData();
-            _dataProvider = new DataLocalProvider(_persistentPlayerData);
+            _iDataSaver = new IDataLocalSaver(_persistentPlayerData);
 
             LoadDataOrInit();
         }
 
         private void LoadDataOrInit()
         {
-            if (_dataProvider.TryLoad() == false)
+            if (_iDataSaver.TryLoad() == false)
                 _persistentPlayerData.PlayerData = new PlayerData();
         }
     }

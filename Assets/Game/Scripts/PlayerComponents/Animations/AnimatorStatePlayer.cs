@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.Scripts.PlayerComponents.Animations
 {
-    public class AnimatorState : MonoBehaviour
+    public class AnimatorStatePlayer : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
 
