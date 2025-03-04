@@ -30,7 +30,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         [SerializeField] private Camera _modelCamera;
         [SerializeField] private Transform _characterCategoryCameraPosition;
 
-        private IDataProvider _dataProvider;
+        private IDataSaver _iDataSaver;
         private ShopItemView _previewedItem;
         private Wallet _wallet;
 
@@ -61,18 +61,18 @@ namespace Game.Scripts.MenuComponents.ShopComponents
             _openSkinsChecker.MeleeCharacterOpened -= ShowMeleeDescription;
         }
 
-        public void Initialize(IDataProvider dataProvider, Wallet wallet, OpenSkinsChecker openSkinsChecker, SelectedSkinChecker selectedSkinChecker, SkinSelector skinSelector, SkinUnlocker skinUnlocker, IPersistentData persistentData)
+        public void Initialize(IDataSaver iDataSaver, Wallet wallet, OpenSkinsChecker openSkinsChecker, SelectedSkinChecker selectedSkinChecker, SkinSelector skinSelector, SkinUnlocker skinUnlocker, IPersistentData persistentData)
         {
             _wallet = wallet;
             _openSkinsChecker = openSkinsChecker;
             _selectedSkinChecker = selectedSkinChecker;
             _skinSelector = skinSelector;
             _skinUnlocker = skinUnlocker;
-            _dataProvider = dataProvider;
+            _iDataSaver = iDataSaver;
 
             _shopPanel.Initialize(openSkinsChecker, selectedSkinChecker);
             _shopPanel.ItemViewClicked += OnItemViewClicked;
-            _buffShop.Init(_wallet, _dataProvider, persistentData);
+            _buffShop.Init(_wallet, _iDataSaver, persistentData);
 
             OnCharacterSkinsButtonClick();
         }
@@ -124,7 +124,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
                 SelectSkin();
 
                 _previewedItem.Unlock();
-                _dataProvider.Save();
+                _iDataSaver.Save();
             }
         }
 
@@ -132,7 +132,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         {
             SelectSkin();
 
-            _dataProvider.Save();
+            _iDataSaver.Save();
         }
 
         private void UpdateCameraTransform(Transform transform)

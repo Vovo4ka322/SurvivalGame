@@ -12,7 +12,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         [SerializeField] private WalletView _walletView;
         [SerializeField] private BuffImprovmentViewer _improvmentViewer;
 
-        private IDataProvider _dataProvider;
+        private IDataSaver _iDataSaver;
         private IPersistentData _persistentPlayerData;
     
         private Wallet _wallet;
@@ -29,7 +29,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         private void InitializeData()
         {
             _persistentPlayerData = new PersistentData();
-            _dataProvider = new DataLocalProvider(_persistentPlayerData);
+            _iDataSaver = new IDataLocalSaver(_persistentPlayerData);
     
             LoadDataOrInit();
         }
@@ -55,12 +55,12 @@ namespace Game.Scripts.MenuComponents.ShopComponents
             SkinSelector skinSelector = new SkinSelector(_persistentPlayerData);
             SkinUnlocker skinUnlocker = new SkinUnlocker(_persistentPlayerData);
     
-            _shop.Initialize(_dataProvider, _wallet, openSkinsChecker, selectedSkinChecker, skinSelector, skinUnlocker, _persistentPlayerData);
+            _shop.Initialize(_iDataSaver, _wallet, openSkinsChecker, selectedSkinChecker, skinSelector, skinUnlocker, _persistentPlayerData);
         }
     
         private void LoadDataOrInit()
         {
-            if(_dataProvider.TryLoad() == false)
+            if(_iDataSaver.TryLoad() == false)
             {
                 _persistentPlayerData.PlayerData = new PlayerData();
             }

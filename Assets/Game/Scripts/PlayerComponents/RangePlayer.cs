@@ -15,8 +15,8 @@ namespace Game.Scripts.PlayerComponents
         private float _damage;
         private float _evasionChance;
     
+        public float Damage { get; private set; }
         public float Coefficient { get; private set; }
-    
         public bool IsWorking { get; private set; }
 
         private void OnEnable()

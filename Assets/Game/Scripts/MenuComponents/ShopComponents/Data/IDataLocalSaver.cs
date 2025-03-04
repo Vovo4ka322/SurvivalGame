@@ -4,14 +4,14 @@ using Newtonsoft.Json;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.Data
 {
-    public class DataLocalProvider : IDataProvider
+    public class IDataLocalSaver : IDataSaver
     {
         private const string FileName = "PlayerSave23";
         private const string SaveFileExtension = ".json";
 
         private IPersistentData _persistentData;
 
-        public DataLocalProvider(IPersistentData persistentData) => _persistentData = persistentData;
+        public IDataLocalSaver(IPersistentData persistentData) => _persistentData = persistentData;
 
         private string SavePath => Application.persistentDataPath;
         private string FullPath => Path.Combine(SavePath, $"{FileName}{SaveFileExtension}");

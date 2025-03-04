@@ -3,37 +3,40 @@ using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
+using Game.Scripts.ProjectileComponents.CollisionComponents;
+using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
 
-namespace Game.Scripts.EnemyComponents.Projectiles
+namespace Game.Scripts.ProjectileComponents.CreateProjectiles
 {
     public class BaseProjectileSpawner : MonoBehaviour
     {
         [SerializeField] private Transform _projectileSpawnPoint;
+        [SerializeField] private ParticleSystem _explosionPrefab;
         
         private Player _player;
         private EnemyData _enemyData;
-        protected PoolManager PoolManager;
+        private PoolManager _poolManager;
         
         public Player Player => _player;
         public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
-        public ProjectilePool<BaseProjectile> ProjectilePool => PoolManager.GetProjectilePool(GetPrefabFromEnemyData(_enemyData));
+        public ProjectilePool<BaseProjectile> ProjectilePool => _poolManager.GetProjectilePool(GetPrefabFromEnemyData(_enemyData));
         
         public void Initialize(EnemyData data, Player player, PoolManager poolManager)
         {
             _enemyData = data;
             _player = player;
-            PoolManager = poolManager;
+            _poolManager = poolManager;
         }
         
         public BaseProjectile Create()
         {
-            if(PoolManager == null || _projectileSpawnPoint == null)
+            if(_poolManager == null || _projectileSpawnPoint == null)
             {
                 return null;
             }
             
             BaseProjectile projectilePrefab = GetPrefabFromEnemyData(_enemyData);
-            var pool = PoolManager.GetProjectilePool(projectilePrefab);
+            ProjectilePool<BaseProjectile> pool = _poolManager.GetProjectilePool(projectilePrefab);
             
             if(projectilePrefab == null || pool == null)
             {
@@ -47,8 +50,6 @@ namespace Game.Scripts.EnemyComponents.Projectiles
                 return null;
             }
             
-            projectile.SetPoolManager(PoolManager);
-            projectile.SetPool(pool);
             projectile.transform.position = _projectileSpawnPoint.position;
             projectile.transform.rotation = _projectileSpawnPoint.rotation;
             projectile.transform.localScale = _projectileSpawnPoint.localScale;
@@ -70,6 +71,11 @@ namespace Game.Scripts.EnemyComponents.Projectiles
             }
             
             return null;
+        }
+        
+        public IExplosionHandler CreateExplosionHandler()
+        {
+            return new ExplosionHandler(_poolManager, _explosionPrefab);
         }
     }
 }

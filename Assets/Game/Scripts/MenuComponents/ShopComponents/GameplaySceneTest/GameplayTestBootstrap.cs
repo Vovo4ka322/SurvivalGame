@@ -4,6 +4,7 @@ using Game.Scripts.EnemyComponents;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
 using Game.Scripts.PlayerComponents;
+using Game.Scripts.PoolComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {
@@ -14,13 +15,14 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private CanvasFactory _canvasFactory;
         [SerializeField] private CinemachineVirtualCamera _virtualCamera;
         [SerializeField] private WaveBasedEnemySpawner _enemySpawner;
-
+        [SerializeField] private PoolManager _pool;
+        
         private Player _player;
         private Canvas _canvas;
         private Wallet _wallet;
         private WalletView _walletView;
 
-        private IDataProvider _dataProvider;
+        private IDataSaver _iDataSaver;
         private IPersistentData _persistentPlayerData;
 
         private void Awake()
@@ -52,9 +54,10 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 
         private void InitPlayerCharacteristics()
         {
+            _player.SetPoolManager(_pool);
             _player.Init(_persistentPlayerData.PlayerData.CalculationFinalValue.Health, _persistentPlayerData.PlayerData.CalculationFinalValue.Armor,
             _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed,
-            _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet, _dataProvider);
+            _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet, _iDataSaver);
         }
 
         private void InitUserInterface()
@@ -85,14 +88,14 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         private void InitializeData()
         {
             _persistentPlayerData = new PersistentData();
-            _dataProvider = new DataLocalProvider(_persistentPlayerData);
+            _iDataSaver = new IDataLocalSaver(_persistentPlayerData);
 
             LoadDataOrInit();
         }
 
         private void LoadDataOrInit()
         {
-            if (_dataProvider.TryLoad() == false)
+            if (_iDataSaver.TryLoad() == false)
                 _persistentPlayerData.PlayerData = new PlayerData();
         }
     }

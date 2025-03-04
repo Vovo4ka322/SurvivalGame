@@ -1,5 +1,5 @@
 using UnityEngine;
-using Game.Scripts.EnemyComponents.Projectiles;
+using Game.Scripts.ProjectileComponents;
 
 namespace Game.Scripts.PoolComponents
 {
