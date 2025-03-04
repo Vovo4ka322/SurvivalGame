@@ -12,7 +12,6 @@ namespace Weapons.RangedWeapon
         [SerializeField] private BowData _bowData;
 
         private ArrowProjectile _arrowProjectile;
-        private Coroutine _arrowCreatorCoroutine;
 
         public event Action ArrowTouched;
 
