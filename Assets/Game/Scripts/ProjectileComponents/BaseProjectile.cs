@@ -38,7 +38,7 @@ namespace Game.Scripts.ProjectileComponents
             Owner = owner;
         }
 
-        public void InitializeProjectile(IProjectileMovement movement, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler, float lifetime)
+        protected void InitializeProjectile(IProjectileMovement movement, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler, float lifetime)
         {
             _movementStrategy = movement;
             Pool = pool;
@@ -48,7 +48,7 @@ namespace Game.Scripts.ProjectileComponents
             _projectileCollision.Initialize(this);
         }
         
-        public void LaunchProjectile(Vector3 targetPosition)
+        protected void LaunchProjectile(Vector3 targetPosition)
         {
             _movementStrategy?.Launch(this, targetPosition);
             PlayEffects();
@@ -65,7 +65,7 @@ namespace Game.Scripts.ProjectileComponents
             ReturnToPool();
         }
         
-        public void ReturnToPool()
+        private void ReturnToPool()
         {
             _projectileEffectPrefab.Stop();
             _movementStrategy?.Stop();
