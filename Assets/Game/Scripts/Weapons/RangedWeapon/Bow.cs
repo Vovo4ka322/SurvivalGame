@@ -17,10 +17,19 @@ namespace Weapons.RangedWeapon
         public event Action ArrowTouched;
 
         [field: SerializeField] public Transform StartPointToFly {  get; private set; }
-        public PoolManager PoolManager { get; set; }
+        public PoolManager PoolManager { get; private set; }
         public BowData BowData => _bowData;
         public bool IsActiveState { get; private set; }
-
+        
+        public void SetPoolManager(PoolManager poolManager)
+        {
+            PoolManager = poolManager;
+            if (_arrowSpawner != null)
+            {
+                _arrowSpawner.PoolManager = poolManager;
+            }
+        }
+        
         public void StartShoot()
         {
             Shoot();

@@ -817,7 +817,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2926935389670697166}
   - component: {fileID: 7610228124961361861}
-  - component: {fileID: 7800523450797167329}
   m_Layer: 0
   m_Name: ArrowSpawner
   m_TagString: Untagged
@@ -853,19 +852,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arrowPrefab: {fileID: -8698979764503146078, guid: 3328d5d74c357064087a925505b79caf, type: 3}
---- !u!114 &7800523450797167329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3795698046052768557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383af357c62a4e34dbdc32a811c68867, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _object: {fileID: -8698979764503146078, guid: 3328d5d74c357064087a925505b79caf, type: 3}
 --- !u!1 &4061726420257293740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,7 +1374,6 @@ MonoBehaviour:
   <GeneralDamage>k__BackingField: 0
   <GeneralAttackSpeed>k__BackingField: 0
   <GeneralMovementSpeed>k__BackingField: 0
-  <TotalDamage>k__BackingField: 0
   _collider: {fileID: 5434420615157604619}
   _bow: {fileID: 642284079440058142}
 --- !u!114 &-1600266406523707398
