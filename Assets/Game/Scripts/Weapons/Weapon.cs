@@ -1,3 +1,4 @@
+using Game.Scripts.ProjectileComponents;
 using UnityEngine;
 
 namespace  Weapons
@@ -9,5 +10,7 @@ namespace  Weapons
         public float TotalDamage { get; private set; } 
 
         public void SetTotalDamage(float totalDamage) => TotalDamage = totalDamage;
+
+        private BaseProjectile _projectile;
     }
 } 
