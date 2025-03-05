@@ -26,7 +26,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
             
             if (other.gameObject.TryGetComponent(out Weapon weapon))
             {
-                _enemy.Health.Lose(weapon.WeaponData.Damage);
+                _enemy.Health.Lose(weapon.TotalDamage);
 
                 if (_enemy.Health.IsDead)
                 {
