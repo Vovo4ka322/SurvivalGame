@@ -1,42 +1,19 @@
-using System;
 using UnityEngine;
 using Game.Scripts.PoolComponents;
-using Game.Scripts.ProjectileComponents;
 
 namespace Weapons.RangedWeapon
 {
     public class ArrowSpawner : MonoBehaviour
     {
-        [SerializeField] private ArrowProjectile _arrowPrefab;
+        [SerializeField] private Pool<Arrow> _pool;
 
-        private ProjectilePool<BaseProjectile> _pool;
-
-        public PoolManager PoolManager { get; set; }
-        
-        public ArrowProjectile Spawn()
+        public Arrow Spawn(float arrowFlightSpeed, float flightRadius)
         {
-            if (PoolManager == null)
-            {
-                throw new ArgumentException("PoolManager is not specified in Arrowspawner.");
-            }
-            
-            ProjectilePool<BaseProjectile> pool = PoolManager.GetProjectilePool(_arrowPrefab);
-            ArrowProjectile arrow = pool.Get() as ArrowProjectile;
-            _pool = pool;
-            
-            if (arrow != null)
-            {
-                arrow.transform.position = transform.position;
-                arrow.transform.rotation = transform.rotation;
-                arrow.gameObject.SetActive(true);
-            }
-            
+            Arrow arrow = _pool.Get(transform, transform.rotation);
+            arrow.gameObject.SetActive(true);
+            arrow.Init(arrowFlightSpeed, flightRadius, _pool);
+
             return arrow;
-        }
-
-        public void ReturnInPool(ArrowProjectile arrowProjectile)
-        {
-            _pool.Release(arrowProjectile);
         }
     }
 }

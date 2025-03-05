@@ -54,7 +54,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 
         private void InitPlayerCharacteristics()
         {
-            _player.SetPoolManager(_pool);
             _player.Init(_persistentPlayerData.PlayerData.CalculationFinalValue.Health, _persistentPlayerData.PlayerData.CalculationFinalValue.Armor,
             _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed,
             _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet, _iDataSaver);
