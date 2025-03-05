@@ -18,6 +18,11 @@ public class ArrowProjectile : BaseProjectile
         InitializeProjectile(_movement, pool, explosionHandler, ConfiguredLifetime);
         LaunchProjectile(targetPosition);
     }
+
+    public void Live()
+    {
+
+    }
     
     private void OnTriggerEnter(Collider other)
     {

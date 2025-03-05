@@ -8,7 +8,9 @@ namespace Weapons.RangedWeapon
     public class ArrowSpawner : MonoBehaviour
     {
         [SerializeField] private ArrowProjectile _arrowPrefab;
-        
+
+        private ProjectilePool<BaseProjectile> _pool;
+
         public PoolManager PoolManager { get; set; }
         
         public ArrowProjectile Spawn()
@@ -20,6 +22,7 @@ namespace Weapons.RangedWeapon
             
             ProjectilePool<BaseProjectile> pool = PoolManager.GetProjectilePool(_arrowPrefab);
             ArrowProjectile arrow = pool.Get() as ArrowProjectile;
+            _pool = pool;
             
             if (arrow != null)
             {
@@ -29,6 +32,11 @@ namespace Weapons.RangedWeapon
             }
             
             return arrow;
+        }
+
+        public void ReturnInPool(ArrowProjectile arrowProjectile)
+        {
+            _pool.Release(arrowProjectile);
         }
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 using Game.Scripts.Interfaces;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.ProjectileComponents;
+using System.Collections;
 
 namespace Weapons.RangedWeapon
 {
@@ -15,20 +16,21 @@ namespace Weapons.RangedWeapon
 
         public event Action ArrowTouched;
 
-        [field: SerializeField] public Transform StartPointToFly {  get; private set; }
+        [field: SerializeField] public Transform StartPointToFly { get; private set; }
         public PoolManager PoolManager { get; private set; }
         public BowData BowData => _bowData;
         public bool IsActiveState { get; private set; }
-        
+
         public void SetPoolManager(PoolManager poolManager)
         {
             PoolManager = poolManager;
+
             if (_arrowSpawner != null)
             {
                 _arrowSpawner.PoolManager = poolManager;
             }
         }
-        
+
         public void StartShoot()
         {
             Shoot();
@@ -38,25 +40,43 @@ namespace Weapons.RangedWeapon
         {
             if (!IsActiveState)
             {
-                if(_arrowProjectile != null)
+                if (_arrowProjectile != null)
                 {
                     _arrowProjectile.Touched -= OnTouched;
                 }
 
                 ArrowProjectile arrowProjectile = _arrowSpawner.Spawn();
-                
+
                 if (arrowProjectile != null)
                 {
                     Vector3 targetPos = StartPointToFly.position + StartPointToFly.forward * _bowData.AttackRadius;
                     ProjectilePool<BaseProjectile> pool = PoolManager.GetProjectilePool(arrowProjectile);
-                    
+
                     arrowProjectile.Launch(targetPos, pool, null);
-                    
+
                     _arrowProjectile = arrowProjectile;
-                    
+
                     _arrowProjectile.Touched += OnTouched;
                 }
+
+
+                StartCoroutine(FlyArrow());
             }
+        }
+
+        private IEnumerator FlyArrow()
+        {
+            float distanceTravelled = 0;
+
+            while (distanceTravelled < _bowData.AttackRadius)
+            {
+                float step = _arrowProjectile.Speed * Time.deltaTime;
+                distanceTravelled += step;
+
+                yield return null;
+            }
+
+            _arrowSpawner.ReturnInPool(_arrowProjectile);
         }
 
         public void OnTouched()

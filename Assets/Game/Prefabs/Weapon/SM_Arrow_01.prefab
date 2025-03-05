@@ -151,11 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9499d822541a5240ae12d4d72b7806f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectileEffectPrefab: {fileID: 0}
-  _explosionPrefab: {fileID: 0}
-  _speed: 10
+  _projectileEffectPrefab: {fileID: 198077887541981276, guid: 4cbee084c386e7e4b8e3919f92246d08, type: 3}
+  _explosionPrefab: {fileID: 19800000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
+  _speed: 20
   _lifetime: 10
-  _damage: 5
+  _damage: 1000
 --- !u!114 &-5824106832651795288
 MonoBehaviour:
   m_ObjectHideFlags: 0
