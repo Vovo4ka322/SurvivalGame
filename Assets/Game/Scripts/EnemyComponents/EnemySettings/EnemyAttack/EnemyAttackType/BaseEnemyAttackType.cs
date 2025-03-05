@@ -1,4 +1,4 @@
-namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType
+namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType
 {
     public abstract class BaseEnemyAttackType
     {

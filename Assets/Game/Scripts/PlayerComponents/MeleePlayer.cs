@@ -24,17 +24,17 @@ namespace Game.Scripts.PlayerComponents
             _sword.SetTotalDamage(_damage);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        /*private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.TryGetComponent(out Enemy enemy))
             {
                 if (IsActiveState)
                 {
-                    AddHealth(enemy.SetDamage());
+                    AddHealth(enemy.GetDamage());
                 }
                 else
                 {
-                    LoseHealth(enemy.SetDamage());
+                    LoseHealth(enemy.GetDamage());
                 }
 
                 if (Health.IsDead)
@@ -42,7 +42,7 @@ namespace Game.Scripts.PlayerComponents
                     Destroy(gameObject);
                 }
             }
-        }
+        }*/
 
         public void UpgradeCharacteristikByBloodlust(Bloodlust bloodlust)
         {

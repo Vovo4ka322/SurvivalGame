@@ -7,17 +7,17 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
     {
         private readonly Transform _transform;
         private readonly float _rotationSpeed;
-
+        
         public EnemyRotation(Transform transform, float rotationSpeed)
         {
             _transform = transform;
             _rotationSpeed = rotationSpeed;
         }
-
+        
         public void RotateTowards(Vector3 targetPosition)
         {
             Vector3 direction = (targetPosition - _transform.position).normalized;
-
+            
             if(direction != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(direction);

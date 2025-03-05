@@ -14,7 +14,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
         private ParticleSystem _currentEffect;
         private Coroutine _currentCoroutine;
         
-        public BaseEffectsEnemy(ICoroutineRunner coroutineRunner, EffectData effectData, EffectsPool pool)
+        protected BaseEffectsEnemy(ICoroutineRunner coroutineRunner, EffectData effectData, EffectsPool pool)
         {
             _coroutineRunner = coroutineRunner;
             _effectData = effectData;

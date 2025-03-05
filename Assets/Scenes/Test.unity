@@ -216,7 +216,7 @@ Transform:
   m_GameObject: {fileID: 402861271}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -136.20128, y: 50.99527, z: -118.64534}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -997,7 +997,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1347524057}
-  - component: {fileID: 1347524058}
   - component: {fileID: 1347524059}
   m_Layer: 0
   m_Name: NewEnemySpawner
@@ -1014,34 +1013,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347524055}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0.24, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
---- !u!65 &1347524058
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347524055}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 384.09814, y: 60, z: 384.9231}
-  m_Center: {x: -13.957338, y: 14.400002, z: -161.34576}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1347524059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1055,9 +1033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _easyEnemyDatas:
-  - {fileID: 11400000, guid: 66fe777a9c42db8489800d8c69715a9d, type: 2}
-  - {fileID: 11400000, guid: 1d2a4914505bf4da4aed0586932c8386, type: 2}
-  - {fileID: 11400000, guid: 4d99cb5518c20024cb65767693d64194, type: 2}
+  - {fileID: 11400000, guid: a8500f0cd850e4097a5a083f92b3c215, type: 2}
   _mediumEnemyDatas:
   - {fileID: 11400000, guid: 6278b9a0fd2da4be390c30cd44583b48, type: 2}
   - {fileID: 11400000, guid: 3b11b2457a8ca8847b33c18fa55523f5, type: 2}
@@ -1079,7 +1055,6 @@ MonoBehaviour:
   - {fileID: 2007146151}
   - {fileID: 592221510}
   _bossSpawnPoint: {fileID: 195885322}
-  _spawnZone: {fileID: 1347524058}
   _poolManager: {fileID: 402861274}
 --- !u!4 &1364680379 stripped
 Transform:
@@ -3862,7 +3837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 471923123672322053, guid: 5d1b34597db8ee544b1a08a76940206c, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 471923123672322053, guid: 5d1b34597db8ee544b1a08a76940206c, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3930,7 +3905,7 @@ PrefabInstance:
       objectReference: {fileID: 5912624495819647439, guid: b80a8fa4e6e34445aa332676329b1f74, type: 3}
     - target: {fileID: 5532723898670279016, guid: 5d1b34597db8ee544b1a08a76940206c, type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

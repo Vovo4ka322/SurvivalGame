@@ -37,7 +37,7 @@ namespace Game.Scripts.PlayerComponents
             _bow.ArrowTouched -= OnHealthRestored;
         }
     
-        private void OnCollisionEnter(Collision collision)
+        /*private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.TryGetComponent(out Enemy enemy))
             {
@@ -47,7 +47,7 @@ namespace Game.Scripts.PlayerComponents
                 }
                 else
                 {
-                    LoseHealth(enemy.SetDamage());
+                    LoseHealth(enemy.GetDamage());
                 }
     
                 if (Health.IsDead)
@@ -55,7 +55,7 @@ namespace Game.Scripts.PlayerComponents
                     Destroy(gameObject);
                 }
             }
-        }
+        }*/
     
         public void Shoot()
         {

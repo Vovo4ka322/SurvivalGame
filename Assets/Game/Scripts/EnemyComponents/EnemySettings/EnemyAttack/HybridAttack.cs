@@ -1,7 +1,7 @@
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.EnemyComponents.Interfaces;
 
-namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
+namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 {
     public class HybridAttack : IAttackBehavior
     {

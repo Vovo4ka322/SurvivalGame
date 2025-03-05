@@ -1,58 +1,55 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using Game.Scripts.EnemyComponents.Animations;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.EnemySettings.Effects;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.ProjectileComponents.CreateProjectiles;
-using Weapons;
 
 namespace Game.Scripts.EnemyComponents
 {
-    [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(EnemyEffects))]
     public class Enemy : Character
     {
         [SerializeField] private EnemyData _data;
         
-        private Player _player;
+        private Player _playerTransform;
         private Vector3 _targetPosition;
         
         private Animator _animator;
-        private EnemyAnimationController _animationController;
-        private Collider _collider;
+        private Coroutine _movementCoroutine;     
+        private NavMeshAgent _agent;
+        private EnemyAnimationState _animationState;
+        private EnemyAttackExecutor _attackExecutor;
         
         private IAttackBehavior _attackBehavior;
         private IEnemyMovement _movement;
         private IEnemyRotation _rotation;
         private IEnemyAttack _enemyAttack;
-        private IEnemyCollider _enemyCollider;
         private IEnemyEffects _enemyEffects;
+        private ICoroutineRunner _coroutineRunner;
         
         private BaseProjectileSpawner _projectileSpawner;
         private RangedProjectileSpawner _rangedSpawner;
         private HybridProjectileSpawner _hybridSpawner;
         
-        private ICoroutineRunner _coroutineRunner;
-        private Coroutine _movementCoroutine;     
-        private NavMeshAgent _agent;
-        
         private bool _spawnCompleted = false;
         private bool _isDying = false;
 
         public EnemyData Data => _data;
-        public Player Player => _player;
-        public Collider Collider => _collider;
-        public EnemyAnimationController AnimationAnimationController => _animationController;
+        public Player PlayerTransform => _playerTransform;
+        public EnemyAnimationState AnimationAnimationState => _animationState;
         public IEnemyAttack EnemyAttack => _enemyAttack;
         public IEnemyMovement Movement => _movement;
+        public IAttackBehavior AttackBehavior => _attackBehavior;
+        public bool SpawnCompleted => _spawnCompleted;
         
         public event Action<Enemy> Dead;
         public event Action<Enemy> Enabled;
@@ -61,8 +58,7 @@ namespace Game.Scripts.EnemyComponents
         {
             _animator = GetComponent<Animator>();
             _enemyEffects = GetComponent<EnemyEffects>();
-            _collider = GetComponent<Collider>();
-            _animationController = new EnemyAnimationController(_animator, _data.EnemyType);
+            _animationState = new EnemyAnimationState(_animator, _data.EnemyType);
             _rangedSpawner = GetComponent<RangedProjectileSpawner>();
             _hybridSpawner = GetComponent<HybridProjectileSpawner>();
             _agent = GetComponent<NavMeshAgent>();
@@ -77,7 +73,7 @@ namespace Game.Scripts.EnemyComponents
 
             if (_coroutineRunner != null && _movementCoroutine == null)
             {
-                _movementCoroutine = _coroutineRunner.StartCoroutine(AttackCoroutine());
+                _movementCoroutine = _coroutineRunner.StartCoroutine(_attackExecutor.AttackCoroutine());
             }
             
             Enabled?.Invoke(this);
@@ -104,13 +100,12 @@ namespace Game.Scripts.EnemyComponents
 
         public void InitializeComponents(Player player, EnemyData enemyData, EffectsPool pool, PoolManager poolManager, ICoroutineRunner coroutineRunner)
         {
-            _player = player;
+            _playerTransform = player;
             _data = enemyData;
             _coroutineRunner = coroutineRunner;
             
-            _animationController = new EnemyAnimationController(_animator, _data.EnemyType);
-            _enemyCollider = new EnemyCollider(this, _player);
-            _movement = new EnemyMovement(transform, _data.MoveSpeed, AnimationAnimationController, _agent);
+            _animationState = new EnemyAnimationState(_animator, _data.EnemyType);
+            _movement = new EnemyMover(AnimationAnimationState, _agent, _data.MoveSpeed);
             _rotation = new EnemyRotation(transform, _data.RotationSpeed);
             
             _enemyEffects.Initialize(_data, pool, coroutineRunner);
@@ -124,23 +119,24 @@ namespace Game.Scripts.EnemyComponents
                 _projectileSpawner = _hybridSpawner;
             }
             
-            _projectileSpawner?.Initialize(_data, _player, poolManager);
+            _projectileSpawner?.Initialize(_data, _playerTransform, poolManager);
             
-            _enemyAttack = new EnemyAttack(AnimationAnimationController, transform, _player, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationController.AttackVariantsCount);
+            _enemyAttack = new EnemyAttack(AnimationAnimationState, transform, _playerTransform, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationState.AttackVariantsCount);
+            _attackExecutor = new EnemyAttackExecutor(this);
             
-            SetAttackBehavior();
+            _attackExecutor.SetAttackBehavior();
             
-            _targetPosition = _player.transform.position;
+            _targetPosition = _playerTransform.transform.position;
             _spawnCompleted = false;
             _isDying = false;
             
-            AnimationAnimationController.Spawn();
+            AnimationAnimationState.Spawn();
             SpawnAnimationEnd();
             Health.InitMaxValue(_data.MaxHealth);
             
             if (_coroutineRunner != null && _movementCoroutine == null && gameObject.activeInHierarchy)
             {
-                _movementCoroutine = _coroutineRunner.StartCoroutine(AttackCoroutine());
+                _movementCoroutine = _coroutineRunner.StartCoroutine(_attackExecutor.AttackCoroutine());
             }
         }
         
@@ -159,7 +155,7 @@ namespace Game.Scripts.EnemyComponents
             _agent.enabled = false;
         }
         
-        public float SetDamage()
+        public float GetDamage()
         {
             return Data.Damage;
         }
@@ -171,7 +167,7 @@ namespace Game.Scripts.EnemyComponents
 
         public void AttackAnimationEnd()
         {
-            AnimationAnimationController?.ResetAttackState();
+            AnimationAnimationState?.ResetAttackState();
         }
         
         public void OnDeathAnimationEvent()
@@ -184,20 +180,11 @@ namespace Game.Scripts.EnemyComponents
             Dead?.Invoke(this);
         }
         
-        private void OnTriggerEnter(Collider other)
+        internal void SetAttackBehaviorInternal(IAttackBehavior attackBehavior)
         {
-            if (other.gameObject.TryGetComponent(out Weapon weapon))
-            {
-                Health.Lose(weapon.WeaponData.Damage);
-
-                if (Health.IsDead)
-                {
-                    _player.GetExperience(Data.Experience);
-                    _player.GetMoney(Data.Money);
-                }
-            }
+            _attackBehavior = attackBehavior;
         }
-
+        
         private void OnDead()
         {
             if(_isDying)
@@ -206,15 +193,15 @@ namespace Game.Scripts.EnemyComponents
             }
             
             _isDying = true;
-            _movement.StopMove();
+            _movement.Stop();
             _agent.enabled = false;
             
-            AnimationAnimationController.Death();
+            AnimationAnimationState.Death();
         }
         
         private void MoveAndRotate()
         {
-            if (_player == null)
+            if (_playerTransform == null)
                 return;
 
             if (!_agent.isActiveAndEnabled)
@@ -222,70 +209,27 @@ namespace Game.Scripts.EnemyComponents
                 return;
             }
 
-            _rotation.RotateTowards(_player.transform.position);
+            _rotation.RotateTowards(_playerTransform.transform.position);
 
-            if (!_spawnCompleted || AnimationAnimationController.IsAttacking)
+            if (!_spawnCompleted || AnimationAnimationState.IsAttacking)
             {
-                _movement.StopMove();
+                _movement.Stop();
                 return;
             }
             
-            Vector3 targetPos = (_data.BaseAttackType.Type == AttackType.Hybrid) ? _player.transform.position : (_targetPosition == Vector3.zero ? _player.transform.position : _targetPosition);
+            Vector3 targetPos = (_data.BaseAttackType.Type == AttackType.Hybrid) ? _playerTransform.transform.position : (_targetPosition == Vector3.zero ? _playerTransform.transform.position : _targetPosition);
             
             if (_agent.isActiveAndEnabled)
             {
-                _movement.Move(targetPos);
-                _movement.PlayMove();
+                _movement.ProcessMovement(targetPos, _spawnCompleted, AnimationAnimationState.IsAttacking);
+                _movement.StartMoving();
             }
             else
             {
-                _movement.StopMove();
+                _movement.Stop();
             }
         }
         
-        private void SetAttackBehavior()
-        {
-            switch (_data.BaseAttackType.Type)
-            {
-                case AttackType.Hybrid:
-                    HybridEnemyAttackType hybridAttackType = _data.BaseAttackType as HybridEnemyAttackType;
-                    
-                    if (hybridAttackType != null)
-                    {
-                        _attackBehavior = new HybridAttack(this, hybridAttackType);
-                    }
-                    else
-                    {
-                        _attackBehavior = new MeleeAttack(this);
-                    }
-                    break;
-                
-                case AttackType.Ranged:
-                    _attackBehavior = new RangedAttack(this);
-                    break;
-                
-                default:
-                    _attackBehavior = new MeleeAttack(this);
-                    break;
-            }
-        }
-        
-        private IEnumerator AttackCoroutine()
-        {
-            float updateInterval = 0.1f;
-        
-            while (true)
-            {
-                if(_player != null && _spawnCompleted && !AnimationAnimationController.IsAttacking)
-                {
-                    float distance = Vector3.Distance(transform.position, _player.transform.position);
-                    _attackBehavior.HandleAttack(distance);
-                }
-            
-                yield return new WaitForSeconds(updateInterval);
-            }
-        }
-
         private void OnDrawGizmosSelected()
         {
             if(_data != null)

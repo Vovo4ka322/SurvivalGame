@@ -4,14 +4,12 @@ namespace Game.Scripts.EnemyComponents.Interfaces
 {
     public interface IEnemyMovement
     {
-        public bool IsMoveAllowed { get; }
-        
-        public void Move(Vector3 targetPosition);
+        public void ProcessMovement(Vector3 targetPosition, bool spawnCompleted, bool isAttacking);
 
         public void CanMove(bool value);
         
-        public void PlayMove();
+        public void StartMoving();
         
-        public void StopMove();
+        public void Stop();
     }
 }
