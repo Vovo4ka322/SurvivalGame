@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.Interfaces;
+using Weapons;
 
 public class Arrow : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Arrow : MonoBehaviour
     private float _radius;
 
     public event Action Touched;
+
+    [field: SerializeField] public Weapon Weapon {  get; private set; }
 
     private void OnTriggerEnter(Collider other)
     {

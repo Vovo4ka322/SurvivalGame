@@ -3,7 +3,7 @@ using Game.Scripts.PoolComponents;
 
 namespace Weapons.RangedWeapon
 {
-    public class ArrowSpawner : MonoBehaviour
+    public class NewArrowSpawner : MonoBehaviour
     {
         [SerializeField] private Pool<Arrow> _pool;
 

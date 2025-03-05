@@ -816,7 +816,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2926935389670697166}
-  - component: {fileID: 7610228124961361861}
+  - component: {fileID: 3765277213241204909}
+  - component: {fileID: 8272301177289757110}
   m_Layer: 0
   m_Name: ArrowSpawner
   m_TagString: Untagged
@@ -839,7 +840,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4470627626758053538}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7610228124961361861
+--- !u!114 &3765277213241204909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -848,10 +849,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 3795698046052768557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d0681fe42f949f49b73bb025d5ced16, type: 3}
+  m_Script: {fileID: 11500000, guid: be6013416b5ddcf4884c1f5a02480cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _arrowPrefab: {fileID: -8698979764503146078, guid: 3328d5d74c357064087a925505b79caf, type: 3}
+  _pool: {fileID: 8272301177289757110}
+--- !u!114 &8272301177289757110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3795698046052768557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383af357c62a4e34dbdc32a811c68867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _object: {fileID: -4308487182582717776, guid: 3328d5d74c357064087a925505b79caf, type: 3}
 --- !u!1 &4061726420257293740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +1028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <WeaponData>k__BackingField: {fileID: 11400000, guid: 1f9129e463406ae42ba136861b885994, type: 2}
-  _arrowSpawner: {fileID: 7610228124961361861}
+  _arrowSpawner: {fileID: 3765277213241204909}
   _bowData: {fileID: 11400000, guid: 1f9129e463406ae42ba136861b885994, type: 2}
   <StartPointToFly>k__BackingField: {fileID: 2926935389670697166}
 --- !u!1 &4569977851703132312
@@ -1745,7 +1759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f2e07343f2e71458ed8b704c569945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _arrowSpawner: {fileID: 7610228124961361861}
+  _arrowSpawner: {fileID: 3765277213241204909}
   _bow: {fileID: 642284079440058142}
   _cooldown: {fileID: 6572972888070623901}
 --- !u!114 &6572972888070623901
