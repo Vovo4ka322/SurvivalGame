@@ -11,13 +11,13 @@ TagManager:
   - FadeObjects
   - Water
   - UI
-  - Arrow
+  - ProjectilePlayer
   - Enemy
   - Player
   - SkinRender
-  - Obstacle
-  - ColliderTriggerZones
-  - Projectile
+  - ObstacleObject
+  - ColliderTriggerZone
+  - ProjectileEnemy
   - Floor
   - 
   - 

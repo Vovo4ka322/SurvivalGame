@@ -30,15 +30,10 @@ namespace Game.Scripts.EnemyComponents
         [Header("Spawn References")]
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Transform _bossSpawnPoint;
-        [SerializeField] private Collider _spawnZone;
         [SerializeField] private PoolManager _poolManager;
         
         private Player _player;
         private ICoroutineRunner _coroutineRunner;
-        private Coroutine _easyWaveCoroutine;
-        private Coroutine _mediumWaveCoroutine;
-        private Coroutine _hardWaveCoroutine;
-        private Coroutine _bossCoroutine;
         
         private bool _playerInZone;
         
@@ -49,56 +44,10 @@ namespace Game.Scripts.EnemyComponents
 
         private void Start()
         {
-            _easyWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_easyEnemyDatas, _startDelayEasyWave, _easyWaveDuration));
-            _mediumWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_mediumEnemyDatas, _startDelayMediumWave, _mediumWaveDuration));
-            _hardWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_hardEnemyDatas, _startDelayHardWave, _hardWaveDuration));
-            _bossCoroutine = _coroutineRunner.StartCoroutine(CreateBoss(_bossSpawnDelay));
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if(other.TryGetComponent(out Player _) && !_playerInZone)
-            {
-                _playerInZone = true;
-                
-                _easyWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_easyEnemyDatas, _startDelayEasyWave, _easyWaveDuration));
-                _mediumWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_mediumEnemyDatas, _startDelayMediumWave, _mediumWaveDuration));
-                _hardWaveCoroutine = _coroutineRunner.StartCoroutine(CreateWave(_hardEnemyDatas, _startDelayHardWave, _hardWaveDuration));
-                _bossCoroutine = _coroutineRunner.StartCoroutine(CreateBoss(_bossSpawnDelay));
-            }
-        }
-        
-        private void OnTriggerExit(Collider other)
-        {
-            if(other.TryGetComponent(out Player _))
-            {
-                _playerInZone = false;
-
-                if(_easyWaveCoroutine != null)
-                {
-                    _coroutineRunner.StopCoroutine(_easyWaveCoroutine);
-                }
-
-                if(_mediumWaveCoroutine != null)
-                {
-                    _coroutineRunner.StopCoroutine(_mediumWaveCoroutine);
-                }
-
-                if(_hardWaveCoroutine != null)
-                {
-                    _coroutineRunner.StopCoroutine(_hardWaveCoroutine);
-                }
-
-                if(_bossCoroutine != null)
-                {
-                    _coroutineRunner.StopCoroutine(_bossCoroutine);
-                }
-                
-                _easyWaveCoroutine = null;
-                _mediumWaveCoroutine = null;
-                _hardWaveCoroutine = null;
-                _bossCoroutine = null;
-            }
+            _coroutineRunner.StartCoroutine(CreateWave(_easyEnemyDatas, _startDelayEasyWave, _easyWaveDuration));
+            _coroutineRunner.StartCoroutine(CreateWave(_mediumEnemyDatas, _startDelayMediumWave, _mediumWaveDuration));
+            _coroutineRunner.StartCoroutine(CreateWave(_hardEnemyDatas, _startDelayHardWave, _hardWaveDuration));
+            _coroutineRunner.StartCoroutine(CreateBoss(_bossSpawnDelay));
         }
         
         public void Init(Player player)
@@ -148,17 +97,6 @@ namespace Game.Scripts.EnemyComponents
                 int randIndex = Random.Range(0, _spawnPoints.Length);
                 
                 return _spawnPoints[randIndex].position;
-            }
-            
-            if(_spawnZone != null)
-            {
-                Bounds bounds = _spawnZone.bounds;
-                
-                float x = Random.Range(bounds.min.x, bounds.max.x);
-                float z = Random.Range(bounds.min.z, bounds.max.z);
-                float y = bounds.min.y;
-                
-                return new Vector3(x, y, z);
             }
             
             return Vector3.zero;

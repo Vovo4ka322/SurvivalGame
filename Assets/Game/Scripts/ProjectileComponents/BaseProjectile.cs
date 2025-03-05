@@ -33,11 +33,32 @@ namespace Game.Scripts.ProjectileComponents
             _projectileCollision = GetComponent<ProjectileCollisionHandler>();
         }
 
+        public abstract void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler);
+        
         public void SetOwner(Enemy owner)
         {
             Owner = owner;
         }
-
+        
+        public void Move()
+        {
+            _movementStrategy?.Move(this);
+        }
+        
+        public void ExplodeAndReturn()
+        {
+            _explosionHandler?.Explode(this);
+            ReturnToPool();
+        }
+        
+        public void PlayEffects()
+        {
+            if(_projectileEffectPrefab != null)
+            {
+                _projectileEffectPrefab.Play();
+            }
+        }
+        
         protected void InitializeProjectile(IProjectileMovement movement, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler, float lifetime)
         {
             _movementStrategy = movement;
@@ -54,17 +75,6 @@ namespace Game.Scripts.ProjectileComponents
             PlayEffects();
         }
         
-        public void Move()
-        {
-            _movementStrategy?.Move(this);
-        }
-        
-        public void ExplodeAndReturn()
-        {
-            _explosionHandler?.Explode(this);
-            ReturnToPool();
-        }
-        
         private void ReturnToPool()
         {
             _projectileEffectPrefab.Stop();
@@ -76,15 +86,5 @@ namespace Game.Scripts.ProjectileComponents
                 Pool.Release(this);
             }
         }
-        
-        public void PlayEffects()
-        {
-            if(_projectileEffectPrefab != null)
-            {
-                _projectileEffectPrefab.Play();
-            }
-        }
-        
-        public abstract void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler);
     }
 }

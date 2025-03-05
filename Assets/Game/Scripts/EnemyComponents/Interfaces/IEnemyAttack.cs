@@ -1,4 +1,4 @@
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 
 namespace Game.Scripts.EnemyComponents.Interfaces
 {

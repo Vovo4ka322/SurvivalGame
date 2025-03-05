@@ -1515,9 +1515,10 @@ GameObject:
   - component: {fileID: 6807883758234752247}
   - component: {fileID: 6487313203672448114}
   - component: {fileID: 5711821895363376358}
-  - component: {fileID: 3448124042601750510}
   - component: {fileID: 5788345710386418345}
   - component: {fileID: 1012465906298291168}
+  - component: {fileID: 3448124042601750510}
+  - component: {fileID: 7260687955270250258}
   - component: {fileID: 6202073512084129998}
   - component: {fileID: -6465538631191842184}
   m_Layer: 7
@@ -1588,18 +1589,6 @@ CapsuleCollider:
   m_Height: 1.8088512
   m_Direction: 1
   m_Center: {x: -0.010456085, y: 0.899498, z: 0}
---- !u!114 &3448124042601750510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7763379251990446391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dbb649e71e844a3ac75989a1eba5648, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5788345710386418345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,6 +1615,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: {fileID: 5788345710386418345}
   _data: {fileID: 11400000, guid: 1d2a4914505bf4da4aed0586932c8386, type: 2}
+--- !u!114 &3448124042601750510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763379251990446391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dbb649e71e844a3ac75989a1eba5648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7260687955270250258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763379251990446391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317871e693244dd39fc42e945d850f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: 1012465906298291168}
 --- !u!114 &6202073512084129998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1651,12 +1665,12 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0

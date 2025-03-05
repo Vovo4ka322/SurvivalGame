@@ -1,14 +1,15 @@
 using UnityEngine;
 using Game.Scripts.EnemyComponents.Animations;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.PlayerComponents;
 
-namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
+namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 {
     public class EnemyAttack : IEnemyAttack
     {
-        private readonly EnemyAnimationController _animationController;
+        private readonly Enemy _enemy;
+        private readonly EnemyAnimationState _animationState;
         private readonly BaseEnemyAttackType _attackType;
         private readonly Transform _enemyTransform;
         private readonly Player _player;
@@ -20,19 +21,20 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
         private float _lastAttackTime;
         private float _lastRangedAttackTime = -Mathf.Infinity;
 
-        public EnemyAttack(EnemyAnimationController animationController, Transform enemyTransform, Player player, float attackCooldown, BaseEnemyAttackType attackType, int attackVariants)
+        public EnemyAttack(EnemyAnimationState animationState, Transform enemyTransform, Player player, float attackCooldown, BaseEnemyAttackType attackType, int attackVariants)
         {
-            _animationController = animationController;
+            _animationState = animationState;
             _enemyTransform = enemyTransform;
             _player = player;
             _attackCooldown = attackCooldown;
             _attackType = attackType;
             _attackVariants = attackVariants;
+            _enemy = enemyTransform.GetComponent<Enemy>();
         }
         
         public void TryAttack()
         {
-            if(_animationController.IsAttacking)
+            if(_animationState.IsAttacking)
             {
                 return;
             }
@@ -56,20 +58,29 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
                     HybridEnemyAttackType hybridType = (HybridEnemyAttackType)_attackType;
                     float distance = Vector3.Distance(_enemyTransform.position, _player.transform.position);
                     
-                    if(distance <= hybridType.MeleeRange)
+                    if (_player != null && _enemy.Data.EnemyType == EnemyType.Boss)
                     {
                         _lastAttackTime = Time.time;
-                        int meleeVariant = Random.Range(3, 5);
+                        int meleeVariant = Random.Range(1, 5);
                         PerformMeleeAttack(meleeVariant);
                     }
-                    else if(distance <= hybridType.RangedRange)
+                    else
                     {
-                        if(Time.time >= _lastRangedAttackTime + hybridType.ReloadTimeProjectile)
+                        if(distance <= hybridType.MeleeRange)
                         {
-                            _lastRangedAttackTime = Time.time;
-                            int rangedAttackVariant = 5;
                             _lastAttackTime = Time.time;
-                            PerformRangedAttack(rangedAttackVariant);
+                            int meleeVariant = Random.Range(3, 5);
+                            PerformMeleeAttack(meleeVariant);
+                        }
+                        else if(distance <= hybridType.RangedRange)
+                        {
+                            if(Time.time >= _lastRangedAttackTime + hybridType.ReloadTimeProjectile)
+                            {
+                                _lastRangedAttackTime = Time.time;
+                                int rangedAttackVariant = 5;
+                                _lastAttackTime = Time.time;
+                                PerformRangedAttack(rangedAttackVariant);
+                            }
                         }
                     }
                 }
@@ -88,12 +99,12 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 
         private void PerformMeleeAttack(int attackVariant)
         {
-            _animationController.Attack(attackVariant);
+            _animationState.Attack(attackVariant);
         }
 
         private void PerformRangedAttack(int attackVariant)
         {
-            _animationController.Attack(attackVariant);
+            _animationState.Attack(attackVariant);
         }
         
         private int GetAttackVariant()

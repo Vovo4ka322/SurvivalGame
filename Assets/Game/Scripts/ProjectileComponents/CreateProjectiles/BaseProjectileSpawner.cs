@@ -1,6 +1,6 @@
 using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.ProjectileComponents.CollisionComponents;
@@ -28,7 +28,7 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
             _poolManager = poolManager;
         }
         
-        public BaseProjectile Create()
+        protected BaseProjectile Create()
         {
             if(_poolManager == null || _projectileSpawnPoint == null)
             {
@@ -57,7 +57,12 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
             
             return projectile;
         }
-
+        
+        protected IExplosionHandler CreateExplosionHandler()
+        {
+            return new ExplosionHandler(_poolManager, _explosionPrefab);
+        }
+        
         private BaseProjectile GetPrefabFromEnemyData(EnemyData data)
         {
             if(data.BaseAttackType is RangedEnemyAttackType ranged)
@@ -71,11 +76,6 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
             }
             
             return null;
-        }
-        
-        public IExplosionHandler CreateExplosionHandler()
-        {
-            return new ExplosionHandler(_poolManager, _explosionPrefab);
         }
     }
 }
