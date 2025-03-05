@@ -11,6 +11,7 @@ namespace Game.Scripts.PlayerComponents
 
         private int _level;
         private Dictionary<int, int> _levelRequirements;
+        private int _maxLevel = 9;
 
         public event Action LevelChanged;
 
@@ -34,6 +35,9 @@ namespace Game.Scripts.PlayerComponents
 
         private void UpLevel()
         {
+            if (_level >= _maxLevel)
+                return;
+
             if (_levelRequirements.TryGetValue(_level + 1, out int requiredExperience))
             {
                 while (Experience >= requiredExperience)

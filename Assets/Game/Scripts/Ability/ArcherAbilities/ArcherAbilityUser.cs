@@ -105,7 +105,7 @@ namespace Ability.ArcherAbilities
 
         public void UseFirstAbility()
         {
-            StartCoroutine(_multishot.UseAbility());
+            StartCoroutine(_multishot.UseAbility(_player.Damage));
         }
 
         public void UseSecondAbility()

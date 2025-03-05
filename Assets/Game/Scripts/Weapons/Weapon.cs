@@ -7,10 +7,8 @@ namespace  Weapons
     {
         [field: SerializeField] public WeaponData WeaponData { get; private set; }
 
-        public float TotalDamage { get; private set; } 
+        [field: SerializeField] public float TotalDamage { get; private set; } 
 
         public void SetTotalDamage(float totalDamage) => TotalDamage = totalDamage;
-
-        private BaseProjectile _projectile;
     }
 } 

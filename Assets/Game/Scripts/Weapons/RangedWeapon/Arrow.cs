@@ -1,43 +1,21 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Game.Scripts.EnemyComponents;
-using Game.Scripts.PoolComponents;
-using Game.Scripts.ProjectileComponents;
-using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
+using Game.Scripts.Interfaces;
+using Weapons;
 
-public class ArrowProjectile : BaseProjectile
+public class Arrow : MonoBehaviour
 {
-    private readonly IProjectileMovement _movement = new ArrowMovement();
-    
-    public event Action Touched;
-    
-    public override void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler)
-    {
-        Pool = pool;
-        
-        InitializeProjectile(_movement, pool, explosionHandler, ConfiguredLifetime);
-        LaunchProjectile(targetPosition);
-    }
-
-    public void Live()
-    {
-
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out Enemy _))
-        {
-            Touched?.Invoke();
-        }
-    }
-    /*private Vector3 _direction;
-    private IPoolReciver<ArrowProjectile> _poolReciver;
+    private Vector3 _direction;
+    private IPoolReciver<Arrow> _poolReciver;
     private Coroutine _coroutine;
     private float _speedFlight;
     private float _radius;
 
     public event Action Touched;
+
+    [field: SerializeField] public Weapon Weapon {  get; private set; }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -70,10 +48,10 @@ public class ArrowProjectile : BaseProjectile
         _poolReciver.Release(this);
     }
 
-    public void Init(float speedFlight, float radius, IPoolReciver<ArrowProjectile> arrowPool)
+    public void Init(float speedFlight, float radius, IPoolReciver<Arrow> arrowPool)
     {
         _speedFlight = speedFlight;
         _radius = radius;
         _poolReciver = arrowPool;
-    }*/
+    }
 }

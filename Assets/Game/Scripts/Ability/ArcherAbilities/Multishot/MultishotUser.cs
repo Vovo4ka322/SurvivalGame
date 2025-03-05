@@ -2,36 +2,33 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Game.Scripts.Interfaces;
-using Game.Scripts.PoolComponents;
-using Game.Scripts.ProjectileComponents;
 using Weapons.RangedWeapon;
 
 namespace Ability.ArcherAbilities.Multishot
 {
     public class MultishotUser : MonoBehaviour, ICooldownable
     {
-        [SerializeField] private ArrowSpawner _arrowSpawner;
+        [SerializeField] private NewArrowSpawner _arrowSpawner;
         [SerializeField] private Bow _bow;
         [SerializeField] private Cooldown _cooldown;
 
         private Multishot _multishotScriptableObject;
-        private ArrowProjectile _arrowProjectile;
-        
         private float _lastUsedTimer = 0;
         private bool _canUseFirstTime = true;
+        private Arrow _arrow;
 
         public event Action<float> Used;
-        
-        public float CooldownTime { get; private set; }
-        public PoolManager PoolManager { get; set; }
+
         public Multishot Multishot => _multishotScriptableObject;
+
+        public float CooldownTime { get; private set; }
 
         public void Upgrade(Multishot multishot)
         {
             _multishotScriptableObject = multishot;
         }
 
-        public IEnumerator UseAbility()
+        public IEnumerator UseAbility(float value)
         {
             float duration = 0;
 
@@ -43,7 +40,7 @@ namespace Ability.ArcherAbilities.Multishot
 
                     while (_cooldown.CanUse)
                     {
-                        CalculateArrowFlight();
+                        CalculateArrowFlight(value);
 
                         _cooldown.LaunchTimer(_multishotScriptableObject.Delay);
                     }
@@ -57,7 +54,6 @@ namespace Ability.ArcherAbilities.Multishot
 
                 StartCoroutine(StartCooldown());
                 _bow.SetFalseActiveState();
-                _bow.StartShoot();
             }
         }
 
@@ -74,12 +70,10 @@ namespace Ability.ArcherAbilities.Multishot
             }
         }
 
-        private void CalculateArrowFlight()
+        private void CalculateArrowFlight(float value)
         {
-            if(_arrowProjectile != null)
-            {
-                _arrowProjectile.Touched -= _bow.OnTouched;
-            }
+            if (_arrow != null)
+                _arrow.Touched -= _bow.OnTouched;
 
             int coefficient = 2;
             int oneArrow = 1;
@@ -91,20 +85,11 @@ namespace Ability.ArcherAbilities.Multishot
             for (int i = 0; i < _multishotScriptableObject.ArrowCount; i++)
             {
                 float tempRotation = startRotation - angleIncrease * i;
-                Vector3 direction = Quaternion.Euler(0, tempRotation, 0) * _bow.StartPointToFly.forward;
-                ArrowProjectile arrowProjectile = _arrowSpawner.Spawn();
-                
-                if (arrowProjectile != null)
-                {
-                    Vector3 targetPos = _bow.StartPointToFly.position + direction * _bow.BowData.AttackRadius;
-                    ProjectilePool<BaseProjectile> pool = PoolManager.GetProjectilePool(arrowProjectile);
-                    
-                    arrowProjectile.Launch(targetPos, pool, null);
-                    
-                    _arrowProjectile = arrowProjectile;
-                    
-                    _arrowProjectile.Touched += _bow.OnTouched;
-                }
+                Arrow arrow = _arrowSpawner.Spawn(_bow.BowData.ArrowFlightSpeed, _bow.BowData.AttackRadius);
+                arrow.StartFly(Quaternion.Euler(0, tempRotation, 0) * -_bow.StartPointToFly.forward, _bow.StartPointToFly.position);
+                arrow.Weapon.SetTotalDamage(value);
+                _arrow = arrow;
+                _arrow.Touched += _bow.OnTouched;
             }
         }
     }

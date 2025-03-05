@@ -1,63 +1,33 @@
 using System;
 using UnityEngine;
 using Game.Scripts.Interfaces;
-using Game.Scripts.PoolComponents;
-using Game.Scripts.ProjectileComponents;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace Weapons.RangedWeapon
 {
     public class Bow : Weapon, IActivable
     {
-        [SerializeField] private ArrowSpawner _arrowSpawner;
-        [SerializeField] private BowData _bowData;
+        [SerializeField] private NewArrowSpawner _arrowSpawner;
+        [SerializeField] private ArrowData _bowData;
 
-        private ArrowProjectile _arrowProjectile;
-        private Coroutine _arrowCreatorCoroutine;
+        private Arrow _arrow;
 
         public event Action ArrowTouched;
 
-        [field: SerializeField] public Transform StartPointToFly {  get; private set; }
-        public PoolManager PoolManager { get; private set; }
-        public BowData BowData => _bowData;
+        [field: SerializeField] public Transform StartPointToFly { get; private set; }
+
+        public ArrowData BowData => _bowData;
+
         public bool IsActiveState { get; private set; }
-        
-        public void SetPoolManager(PoolManager poolManager)
+
+        public void ArrowSetTotalDamage(float value)
         {
-            PoolManager = poolManager;
-            if (_arrowSpawner != null)
-            {
-                _arrowSpawner.PoolManager = poolManager;
-            }
-        }
-        
-        public void StartShoot()
-        {
-            Shoot();
+            _arrow.Weapon.SetTotalDamage(value);
         }
 
-        private void Shoot()
+        public void StartShoot(float value)
         {
-            if (!IsActiveState)
-            {
-                if(_arrowProjectile != null)
-                {
-                    _arrowProjectile.Touched -= OnTouched;
-                }
-
-                ArrowProjectile arrowProjectile = _arrowSpawner.Spawn();
-                
-                if (arrowProjectile != null)
-                {
-                    Vector3 targetPos = StartPointToFly.position + StartPointToFly.forward * _bowData.AttackRadius;
-                    ProjectilePool<BaseProjectile> pool = PoolManager.GetProjectilePool(arrowProjectile);
-                    
-                    arrowProjectile.Launch(targetPos, pool, null);
-                    
-                    _arrowProjectile = arrowProjectile;
-                    
-                    _arrowProjectile.Touched += OnTouched;
-                }
-            }
+            Shoot(value);
         }
 
         public void OnTouched()
@@ -68,5 +38,20 @@ namespace Weapons.RangedWeapon
         public bool SetTrueActiveState() => IsActiveState = true;
 
         public bool SetFalseActiveState() => IsActiveState = false;
+
+        private void Shoot(float value)
+        {
+            if (IsActiveState == false)
+            {
+                if (_arrow != null)
+                    _arrow.Touched -= OnTouched;
+
+                Arrow arrow = _arrowSpawner.Spawn(_bowData.ArrowFlightSpeed, _bowData.AttackRadius);
+                arrow.StartFly(StartPointToFly.forward, StartPointToFly.position);
+                _arrow = arrow;
+                _arrow.Weapon.SetTotalDamage(value);
+                _arrow.Touched += OnTouched;
+            }
+        }
     }
 }

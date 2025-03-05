@@ -12,11 +12,12 @@ namespace Game.Scripts.PlayerComponents
         [SerializeField] private Collider _collider;
         [SerializeField] private Bow _bow;
 
-        private float _damage;
         private float _evasionChance;
+
+        public float Damage {  get; private set; }
     
-        public float Damage { get; private set; }
         public float Coefficient { get; private set; }
+
         public bool IsWorking { get; private set; }
 
         private void OnEnable()
@@ -26,10 +27,14 @@ namespace Game.Scripts.PlayerComponents
 
         private void Start()
         {
-            _bow.StartShoot();
+            //Shoot();
             ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
-            _damage = GeneralDamage + _bow.WeaponData.Damage;
-            _bow.SetTotalDamage(_damage);
+            Damage = GeneralDamage + _bow.BowData.Damage;
+            //_bow.ArrowSetTotalDamage(_damage);
+            //Debug.Log(_bow.WeaponData.Damage + " _bow.WeaponData.Damage");
+            //Debug.Log(_damage + " _damage");
+
+            //_bow.StartShoot(_damage);
         }
     
         private void OnDisable()
@@ -59,7 +64,7 @@ namespace Game.Scripts.PlayerComponents
     
         public void Shoot()
         {
-            _bow.StartShoot();
+            _bow.StartShoot(Damage);
         }
     
         public float SetEvasion(Blur blur) => _evasionChance = blur.Evasion;
@@ -76,7 +81,7 @@ namespace Game.Scripts.PlayerComponents
         {
             if (IsWorking)
             {
-                AddHealth(_damage * Coefficient);
+                AddHealth(Damage * Coefficient);
             }
         }
     }
