@@ -26,7 +26,7 @@ namespace Ability.ArcherAbilities.InsatiableHunger
         {
             float duration = 0;
             vampirismable.SetCoefficient(_insatiableHunger.Vampirism);
-            Debug.Log(_insatiableHunger.Vampirism + " _insatiableHunger.Vampirism");
+
             if (Time.time >= _lastUsedTimer + _insatiableHunger.CooldownTime || _canUseFirstTime)
             {
                 while (duration < _insatiableHunger.Duration)

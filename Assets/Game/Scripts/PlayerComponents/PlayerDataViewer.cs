@@ -16,7 +16,7 @@ namespace Game.Scripts.PlayerComponents
 
         private void Start()
         {
-            _healthText.text = _player.Health.MaxValue.ToString();
+            ViewHealth(_player.Health.MaxValue);
         }
 
         private void OnDisable()
@@ -45,8 +45,10 @@ namespace Game.Scripts.PlayerComponents
         private void OnHealthChanged(float value)
         {
             _healthValueImage.fillAmount = Mathf.InverseLerp(0, _player.Health.MaxValue, value);
-            _healthText.text = value.ToString();
+            ViewHealth(value);
         }
+
+        private void ViewHealth(float value) => _healthText.text = value.ToString();
 
         private void OnExperienceChanged(float value) =>
             _ExpValueImage.fillAmount = Mathf.InverseLerp(_player.Level.Experience, 0, value);
