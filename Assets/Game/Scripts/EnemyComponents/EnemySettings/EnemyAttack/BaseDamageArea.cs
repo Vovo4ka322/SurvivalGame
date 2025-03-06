@@ -1,5 +1,6 @@
 using UnityEngine;
 using Game.Scripts.PlayerComponents;
+using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 {
@@ -9,9 +10,10 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         
         protected void DealDamageToCollider(Collider enemyCollider)
         {
-            if (enemyCollider.TryGetComponent(out Player player))
+            if (enemyCollider.TryGetComponent(out IDamagable player))
             {
-                player.LoseHealth(_enemy.GetDamage());
+                player.TakeDamage(_enemy.GetDamage());
+
             }
         }
     }

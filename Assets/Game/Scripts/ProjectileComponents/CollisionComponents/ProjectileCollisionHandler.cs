@@ -1,4 +1,5 @@
 using Game.Scripts.EnemyComponents;
+using Game.Scripts.Interfaces;
 using Game.Scripts.PlayerComponents;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
     {
         private BaseProjectile _projectile;
         private Collider _collider;
-        
+
         private bool _hasCollided = false;
 
         private void Awake()
@@ -41,21 +42,11 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
             _hasCollided = true;
             _collider.enabled = false;
 
-            if (_projectile is ArrowProjectile)
+            if (other.TryGetComponent(out IDamagable player))
             {
-                if (other.TryGetComponent(out Enemy enemy))
-                {
-                    enemy.Health.Lose(_projectile.Damage);
-                }
+                player.TakeDamage(_projectile.Damage);
             }
-            else
-            {
-                 if (other.TryGetComponent(out Player player))
-                 {
-                     player.LoseHealth(_projectile.Damage);
-                 }
-            }
-            
+
             _projectile.ExplodeAndReturn();
         }
     }

@@ -1,13 +1,11 @@
 using UnityEngine;
 using Ability.ArcherAbilities.Blur;
-using Game.Scripts.EnemyComponents;
 using Game.Scripts.Interfaces;
-using Game.Scripts.PlayerComponents.Animations;
 using Weapons.RangedWeapon;
 
 namespace Game.Scripts.PlayerComponents
 {
-    public class RangePlayer : Player, IVampirismable, IEvasionable
+    public class RangePlayer : Player, IVampirismable, IEvasionable, IDamagable
     {
         [SerializeField] private Collider _collider;
         [SerializeField] private Bow _bow;
@@ -27,41 +25,24 @@ namespace Game.Scripts.PlayerComponents
 
         private void Start()
         {
-            //Shoot();
             ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
             Damage = GeneralDamage + _bow.BowData.Damage;
-            //_bow.ArrowSetTotalDamage(_damage);
-            //Debug.Log(_bow.WeaponData.Damage + " _bow.WeaponData.Damage");
-            //Debug.Log(_damage + " _damage");
-
-            //_bow.StartShoot(_damage);
         }
     
         private void OnDisable()
         {
             _bow.ArrowTouched -= OnHealthRestored;
         }
-    
-        /*private void OnCollisionEnter(Collision collision)
+
+        public void TakeDamage(float value)
         {
-            if (collision.gameObject.TryGetComponent(out Enemy enemy))
-            {
-                if (TryDodge())
-                {
-                    Physics.IgnoreCollision(_collider, enemy.Collider);
-                }
-                else
-                {
-                    LoseHealth(enemy.GetDamage());
-                }
-    
-                if (Health.IsDead)
-                {
-                    Destroy(gameObject);
-                }
-            }
-        }*/
-    
+            if (!TryDodge())
+                LoseHealth(value);
+
+            if (Health.IsDead)
+                Destroy(gameObject);
+        }
+
         public void Shoot()
         {
             _bow.StartShoot(Damage);
@@ -80,9 +61,7 @@ namespace Game.Scripts.PlayerComponents
         private void OnHealthRestored()
         {
             if (IsWorking)
-            {
                 AddHealth(Damage * Coefficient);
-            }
         }
     }
 }
