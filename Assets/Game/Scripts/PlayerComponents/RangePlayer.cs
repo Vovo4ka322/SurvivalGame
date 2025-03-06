@@ -26,7 +26,7 @@ namespace Game.Scripts.PlayerComponents
         private void Start()
         {
             ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
-            Damage = GeneralDamage + _bow.BowData.Damage;
+            Damage = GeneralDamage + _bow.BowData.Damage;           
         }
     
         private void OnDisable()
