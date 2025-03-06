@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace Game.Scripts.PlayerComponents
 {
@@ -9,8 +10,14 @@ namespace Game.Scripts.PlayerComponents
         [SerializeField] private Image _ExpValueImage;
 
         [SerializeField] private Text _moneyText;
+        [SerializeField] private Text _healthText;
 
         private Player _player;
+
+        private void Start()
+        {
+            _healthText.text = _player.Health.MaxValue.ToString();
+        }
 
         private void OnDisable()
         {
@@ -35,8 +42,11 @@ namespace Game.Scripts.PlayerComponents
 
         private void OnMoneyChanged(int value) => _moneyText.text = value.ToString();
 
-        private void OnHealthChanged(float value) =>
+        private void OnHealthChanged(float value)
+        {
             _healthValueImage.fillAmount = Mathf.InverseLerp(0, _player.Health.MaxValue, value);
+            _healthText.text = value.ToString();
+        }
 
         private void OnExperienceChanged(float value) =>
             _ExpValueImage.fillAmount = Mathf.InverseLerp(_player.Level.Experience, 0, value);

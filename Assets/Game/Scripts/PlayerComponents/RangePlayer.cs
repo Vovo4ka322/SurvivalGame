@@ -49,7 +49,7 @@ namespace Game.Scripts.PlayerComponents
         }
     
         public float SetEvasion(Blur blur) => _evasionChance = blur.Evasion;
-    
+
         public bool TryDodge() => Random.value <= _evasionChance;
     
         public void SetCoefficient(float value) => Coefficient = value;
