@@ -5,10 +5,8 @@ using Game.Scripts.Interfaces;
 namespace Ability.ArcherAbilities.InsatiableHunger
 {
     [CreateAssetMenu(fileName = "InsatiableHunger", menuName = "Ability/Range/InsatiableHunger")]
-    public class InsatiableHunger : Ability, ICooldownable, IImagable
+    public class InsatiableHunger : Ability, ICooldownable
     {
-        [field: SerializeField] public Image Image { get; private set; }
-
         [field: SerializeField] public float CooldownTime {  get; private set; }
 
         [field: SerializeField] public float Vampirism { get; private set; }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 
 namespace Game.Scripts.MenuComponents
 {
@@ -29,6 +30,7 @@ namespace Game.Scripts.MenuComponents
 
         private void OnPlayClick()
         {
+            YandexGame.FullscreenShow();
             SceneManager.LoadScene(1);
         }
 
