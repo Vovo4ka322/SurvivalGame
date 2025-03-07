@@ -114,9 +114,7 @@ namespace Game.Scripts.EnemyComponents
                 enemy.TurnOffAgent();
 
                 if(enemy.Data.EnemyType == EnemyType.Boss)
-                {
                     BossDead?.Invoke();
-                }
             }
         }
     }
