@@ -5,7 +5,7 @@ namespace Game.Scripts.EnemyComponents
 {
     public class WaveTimerUI : MonoBehaviour
     {
-        private const string NameLastWave = "Boss";
+        private const string NameLastWave = "Босс";
         
         [SerializeField] private WaveCycle _waveCycle;
         [SerializeField] private Text _timerText;

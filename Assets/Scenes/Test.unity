@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18336698, g: 0.22897737, b: 0.30611938, a: 1}
+  m_IndirectSpecularColor: {r: 0.18336734, g: 0.22897793, b: 0.30612063, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1340,6 +1340,7 @@ MonoBehaviour:
   _virtualCamera: {fileID: 600381777}
   _enemySpawner: {fileID: 1347524059}
   _pool: {fileID: 402861274}
+  _enemyFactory: {fileID: 402861276}
 --- !u!4 &1266305342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4892733386000982, guid: 951659d72043e7843aad08d3ddc3012a, type: 3}
@@ -1450,9 +1451,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coroutineRunnerComponent: {fileID: 402861277}
-  _easyWaveDuration: 1260
-  _mediumWaveDuration: 840
-  _hardWaveDuration: 420
+  _easyWaveDuration: 5
+  _mediumWaveDuration: 5
+  _hardWaveDuration: 5
   _spawnInterval: 3
 --- !u!4 &1364680379 stripped
 Transform:
