@@ -73,7 +73,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         {
             if(_directAttackPoint != null)
             {
-                Gizmos.color = Color.blue;
+                Gizmos.color = Color.green;
                 Gizmos.matrix = Matrix4x4.TRS(_directAttackPoint.position, _directAttackPoint.rotation, Vector3.one);
                 Gizmos.DrawWireCube(Vector3.zero, _directAttackBoxSize);
                 Gizmos.matrix = Matrix4x4.identity;
@@ -81,13 +81,13 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 
             if(_areaAttackPoint1 != null)
             {
-                Gizmos.color = Color.red;
+                Gizmos.color = Color.cyan;
                 Gizmos.DrawWireSphere(_areaAttackPoint1.position, _areaDamageRadius1);
             }
 
             if(_areaAttackPoint2 != null)
             {
-                Gizmos.color = Color.red;
+                Gizmos.color = Color.magenta;
                 Gizmos.DrawWireSphere(_areaAttackPoint2.position, _areaDamageRadius2);
             }
         }*/

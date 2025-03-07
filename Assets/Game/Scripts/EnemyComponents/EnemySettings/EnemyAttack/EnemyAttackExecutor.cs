@@ -19,24 +19,32 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             {
                 case AttackType.Hybrid:
                     HybridEnemyAttackType hybridAttackType = _enemy.Data.BaseAttackType as HybridEnemyAttackType;
+                    
                     if (hybridAttackType != null)
                     {
-                        if (_enemy.Data.EnemyType == EnemyType.Boss)
-                        {
-                            _enemy.SetAttackBehaviorInternal(new BossAttack(_enemy, hybridAttackType));
-                        }
-                        else
-                        {
-                            _enemy.SetAttackBehaviorInternal(new HybridAttack(_enemy, hybridAttackType));
-                        }
+                        _enemy.SetAttackBehaviorInternal(new HybridAttack(_enemy, hybridAttackType));
                     }
                     else
                     {
                         _enemy.SetAttackBehaviorInternal(new MeleeAttack(_enemy));
                     }
+                    
                     break;
                 case AttackType.Ranged:
                     _enemy.SetAttackBehaviorInternal(new RangedAttack(_enemy));
+                    break;
+                case AttackType.Boss:
+                    BossEnemyAttackType bossAttackType = _enemy.Data.BaseAttackType as BossEnemyAttackType;
+                    
+                    if(bossAttackType != null)
+                    {
+                        _enemy.SetAttackBehaviorInternal(new BossAttack(_enemy, bossAttackType));
+                    }
+                    else
+                    {
+                        _enemy.SetAttackBehaviorInternal(new MeleeAttack(_enemy));
+                    }
+                    
                     break;
                 default:
                     _enemy.SetAttackBehaviorInternal(new MeleeAttack(_enemy));

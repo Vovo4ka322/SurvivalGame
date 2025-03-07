@@ -14,7 +14,8 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
         private AttackEffect _attackEffect;
         private ICoroutineRunner _coroutineRunner;
         
-        private readonly int _maxCountEffects = 3;
+        private readonly int _maxCountEffectsHybrid = 3;
+        private readonly int _maxCountEffectsBoss = 4;
         
         public void Initialize(EnemyData data, EffectsPool pool, ICoroutineRunner coroutineRunner)
         {
@@ -55,12 +56,27 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
                     
                     if(hybrid != null)
                     {
-                        if(hybrid.AttackEffects != null && hybrid.AttackEffects.Length >= _maxCountEffects)
+                        if(hybrid.AttackEffects != null && hybrid.AttackEffects.Length >= _maxCountEffectsHybrid)
                         {
-                            var attackEffects = new EffectData[] { hybrid.AttackEffects[0], hybrid.AttackEffects[1], hybrid.AttackEffects[2] };
+                            EffectData[] attackEffects = { hybrid.AttackEffects[0], hybrid.AttackEffects[1], hybrid.AttackEffects[2] };
                             
                             _attackEffect = new AttackEffect(_coroutineRunner, attackEffects, pool);
                             _reloadEffect = new SimpleEffect(_coroutineRunner, hybrid.AttackEffects[3], pool);
+                        }
+                    }
+                    
+                    break;
+                
+                case AttackType.Boss:
+                    BossEnemyAttackType boss = data.BaseAttackType as BossEnemyAttackType;
+                    
+                    if(boss != null)
+                    {
+                        if(boss.AttackEffects != null && boss.AttackEffects.Length >= _maxCountEffectsBoss)
+                        {
+                            EffectData[] attackEffects = {boss.AttackEffects[0], boss.AttackEffects[1], boss.AttackEffects[2], boss.AttackEffects[3]};
+                            
+                            _attackEffect = new AttackEffect(_coroutineRunner, attackEffects, pool);
                         }
                     }
                     

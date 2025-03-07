@@ -44,6 +44,8 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 return;
             }
             
+            float distance = Vector3.Distance(_enemyTransform.position, _player.transform.position);
+            
             if (Time.time >= _lastAttackTime + _attackCooldown)
             {
                 int attackVariant = GetAttackVariant();
@@ -61,32 +63,33 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 else if (_attackType.Type == AttackType.Hybrid)
                 {
                     HybridEnemyAttackType hybridType = (HybridEnemyAttackType)_attackType;
-                    float distance = Vector3.Distance(_enemyTransform.position, _player.transform.position);
                     
-                    if (_player != null && _enemy.Data.EnemyType == EnemyType.Boss)
+                    if(distance <= hybridType.MeleeRange)
+                    {
+                        _lastAttackTime = Time.time;
+                        int meleeVariant = Random.Range(3, 5);
+                        PerformMeleeAttack(meleeVariant);
+                    }
+                    else if(distance <= hybridType.RangedRange)
+                    {
+                        if(Time.time >= _lastRangedAttackTime + hybridType.ReloadTimeProjectile)
+                        {
+                            _lastRangedAttackTime = Time.time;
+                            int rangedAttackVariant = 5;
+                            _lastAttackTime = Time.time;
+                            PerformRangedAttack(rangedAttackVariant);
+                        }
+                    }
+                }
+                else if (_attackType.Type == AttackType.Boss)
+                {
+                    BossEnemyAttackType bossType = (BossEnemyAttackType)_attackType;
+                    
+                    if (distance <= bossType.MeleeRange)
                     {
                         _lastAttackTime = Time.time;
                         int meleeVariant = Random.Range(1, 5);
                         PerformMeleeAttack(meleeVariant);
-                    }
-                    else
-                    {
-                        if(distance <= hybridType.MeleeRange)
-                        {
-                            _lastAttackTime = Time.time;
-                            int meleeVariant = Random.Range(3, 5);
-                            PerformMeleeAttack(meleeVariant);
-                        }
-                        else if(distance <= hybridType.RangedRange)
-                        {
-                            if(Time.time >= _lastRangedAttackTime + hybridType.ReloadTimeProjectile)
-                            {
-                                _lastRangedAttackTime = Time.time;
-                                int rangedAttackVariant = 5;
-                                _lastAttackTime = Time.time;
-                                PerformRangedAttack(rangedAttackVariant);
-                            }
-                        }
                     }
                 }
             }

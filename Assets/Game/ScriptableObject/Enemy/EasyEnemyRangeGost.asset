@@ -16,13 +16,13 @@ MonoBehaviour:
   _enemyType: 0
   _baseAttackType:
     rid: 7027752993772535809
-  _maxHealth: 60
+  _maxHealth: 250
   _damage: 10
   _attackCooldown: 1
   _attackRange: 15
   _moveSpeed: 7
   _rotationSpeed: 100
-  _experience: 50
+  _experience: 8
   _gold: 2
   _points: 0
   _spawnEffect:

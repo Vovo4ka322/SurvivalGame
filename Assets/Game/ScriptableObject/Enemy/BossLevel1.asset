@@ -15,20 +15,20 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 353068189125618667, guid: 13087e211b7388945b22bab7dd93cb8f, type: 3}
   _enemyType: 3
   _baseAttackType:
-    rid: 7027752993772535814
-  _maxHealth: 1500
+    rid: 7027753040200859648
+  _maxHealth: 5000
   _damage: 50
   _attackCooldown: 2
   _attackRange: 1
   _moveSpeed: 2
-  _rotationSpeed: 0
+  _rotationSpeed: 100
   _experience: 100
   _gold: 50
   _points: 0
   _spawnEffect:
     _effect: {fileID: 6310166718828135386, guid: da15949b315977544bf75463b11a1b54, type: 3}
     _positionOffset: {x: 0, y: 0.2, z: 0}
-    _scale: {x: 0.7, y: 0.7, z: 0.7}
+    _scale: {x: 1.5, y: 1.5, z: 1.5}
     _rotationOffset: {x: 0, y: 0, z: 0}
   _hitEffect:
     _effect: {fileID: 198694231397964106, guid: 5d31a5b9b348544439d8079453188ecc, type: 3}
@@ -43,13 +43,13 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 7027752993772535814
-      type: {class: HybridEnemyAttackType, ns: Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType, asm: Assembly-CSharp}
+    - rid: 7027753040200859648
+      type: {class: BossEnemyAttackType, ns: Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType, asm: Assembly-CSharp}
       data:
         _attackEffect1:
           _effect: {fileID: 3407604102439438465, guid: 38874cea95e81344f8628e064bbef63e, type: 3}
           _positionOffset: {x: 0, y: 0.35, z: 1}
-          _scale: {x: 2, y: 2, z: 2}
+          _scale: {x: 2.5, y: 2.5, z: 4}
           _rotationOffset: {x: 0, y: 180, z: 0}
         _attackEffect2:
           _effect: {fileID: 4629116891520832364, guid: 15a2a89b5459d534894b0f7b460682f4, type: 3}
@@ -61,12 +61,10 @@ MonoBehaviour:
           _positionOffset: {x: 0, y: 0.05, z: 0}
           _scale: {x: 2, y: 2, z: 2}
           _rotationOffset: {x: 0, y: 0, z: 0}
-        _reloadEffect:
+        _attackEffect4:
           _effect: {fileID: 0}
           _positionOffset: {x: 0, y: 0, z: 0}
           _scale: {x: 0, y: 0, z: 0}
           _rotationOffset: {x: 0, y: 0, z: 0}
-        _projectilePrefab: {fileID: 0}
         _meleeRange: 5
-        _rangedRange: 5
-        _reloadTimeProjectile: 0
+        _rangedRange: 20

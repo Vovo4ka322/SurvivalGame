@@ -1,5 +1,6 @@
 using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
+using Game.Scripts.PlayerComponents;
 using Weapons;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
@@ -26,22 +27,19 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
             
             if (other.gameObject.TryGetComponent(out Weapon weapon))
             {
+                _enemy.LastAttacker = other.GetComponentInParent<Player>();
                 _enemy.Health.Lose(weapon.TotalDamage);
-
-                if (_enemy.Health.IsDead)
-                {
-                    _enemy.PlayerTransform.GetExperience(_enemy.Data.Experience);
-                    _enemy.PlayerTransform.GetMoney(_enemy.Data.Money);
-                }
                 
                 return;
             }
 
             MeleeDamageArea meleeDamageArea = _enemy.GetComponentInChildren<MeleeDamageArea>();
+            BossDamageArea bossDamageArea = _enemy.GetComponentInChildren<BossDamageArea>();
             
-            if (meleeDamageArea != null)
+            if (meleeDamageArea != null || bossDamageArea != null)
             {
                 meleeDamageArea.DealDamageIfEnabled(other);
+                bossDamageArea.DealMeleeDamageIfEnabled(other);
             }
         }
     }
