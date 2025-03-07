@@ -2,12 +2,11 @@ using UnityEngine;
 using Ability.MeleeAbilities.Bloodlust;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.Interfaces;
-using Game.Scripts.PlayerComponents.Animations;
 using Weapons.MeleeWeapon;
 
 namespace Game.Scripts.PlayerComponents
 {
-    public class MeleePlayer : Player, IActivable
+    public class MeleePlayer : Player, IActivable, IDamagable
     {
         [SerializeField] private Sword _sword;
 
@@ -24,25 +23,16 @@ namespace Game.Scripts.PlayerComponents
             _sword.SetTotalDamage(_damage);
         }
 
-        /*private void OnCollisionEnter(Collision collision)
+        public void TakeDamage(float value)
         {
-            if (collision.gameObject.TryGetComponent(out Enemy enemy))
-            {
-                if (IsActiveState)
-                {
-                    AddHealth(enemy.GetDamage());
-                }
-                else
-                {
-                    LoseHealth(enemy.GetDamage());
-                }
+            if (IsActiveState)
+                AddHealth(value);
+            else
+                LoseHealth(value);
 
-                if (Health.IsDead)
-                {
-                    Destroy(gameObject);
-                }
-            }
-        }*/
+            if (Health.IsDead)
+                Destroy(gameObject);
+        }
 
         public void UpgradeCharacteristikByBloodlust(Bloodlust bloodlust)
         {

@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Game.Scripts.PlayerComponents;
 using System.Collections.Generic;
+using YG;
 
 namespace Game.Scripts.MenuComponents
 {
@@ -83,6 +84,7 @@ namespace Game.Scripts.MenuComponents
 
         private void OnPlayerDeath()
         {
+            CallAd();
             Time.timeScale = 0;
 
             if (_defeatPanel != null)
@@ -120,5 +122,7 @@ namespace Game.Scripts.MenuComponents
                 _pausePanel.gameObject.SetActive(false);
             }
         }
+
+        private void CallAd() => YandexGame.FullscreenShow();
     }
 }
