@@ -50,6 +50,7 @@ namespace Game.Scripts.EnemyComponents
         public IEnemyMovement Movement => _movement;
         public IAttackBehavior AttackBehavior => _attackBehavior;
         public bool SpawnCompleted => _spawnCompleted;
+        public Player LastAttacker { get; set; }
         
         public event Action<Enemy> Dead;
         public event Action<Enemy> Enabled;
@@ -131,6 +132,11 @@ namespace Game.Scripts.EnemyComponents
             AnimationAnimationState.Spawn();
             Health.InitMaxValue(_data.MaxHealth);
             
+            if(_data.EnemyType == EnemyType.Boss)
+            {
+                SpawnAnimationEnd();
+            }
+            
             if (_coroutineRunner != null && _movementCoroutine == null && gameObject.activeInHierarchy)
             {
                 _movementCoroutine = _coroutineRunner.StartCoroutine(_attackExecutor.AttackCoroutine());
@@ -174,6 +180,12 @@ namespace Game.Scripts.EnemyComponents
         
         public void DeathAnimationEnd()
         {
+            if(LastAttacker != null)
+            {
+                LastAttacker.GetExperience(_data.Experience);
+                LastAttacker.GetMoney(_data.Money);
+            }
+            
             Dead?.Invoke(this);
         }
 
@@ -196,6 +208,7 @@ namespace Game.Scripts.EnemyComponents
             }
             
             _isDying = true;
+            _enemyEffects.StopSpawn();
             _coroutineRunner.StopCoroutine(_movementCoroutine);
             _movementCoroutine = null;
             _movement.Stop();
@@ -224,11 +237,11 @@ namespace Game.Scripts.EnemyComponents
                 return;
             }
             
-            Vector3 targetPos = (_data.BaseAttackType.Type == AttackType.Hybrid) ? _playerTransform.transform.position : (_targetPosition == Vector3.zero ? _playerTransform.transform.position : _targetPosition);
+            Vector3 transformPosition = (_data.BaseAttackType.Type == AttackType.Boss) ? _playerTransform.transform.position : ((_data.BaseAttackType.Type == AttackType.Hybrid) ? _playerTransform.transform.position : (_targetPosition == Vector3.zero ? _playerTransform.transform.position : _targetPosition));
             
             if (_agent.isActiveAndEnabled)
             {
-                _movement.ProcessMovement(targetPos, _spawnCompleted, AnimationAnimationState.IsAttacking);
+                _movement.ProcessMovement(transformPosition, _spawnCompleted, AnimationAnimationState.IsAttacking);
                 _movement.StartMoving();
             }
             else
@@ -252,6 +265,14 @@ namespace Game.Scripts.EnemyComponents
                         Gizmos.color = Color.blue;
                         Gizmos.DrawWireSphere(transform.position, hybrid.RangedRange);
                     }
+                }
+                else if (_data.BaseAttackType.Type == AttackType.Boss)
+                {
+                    BossEnemyAttackType boss = _data.BaseAttackType as BossEnemyAttackType;
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawWireSphere(transform.position, boss.MeleeRange);
+                    Gizmos.color = Color.blue;
+                    Gizmos.DrawWireSphere(transform.position, boss.RangedRange);
                 }
                 else
                 {

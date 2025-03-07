@@ -6,17 +6,17 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
     public class BossAttack : IAttackBehavior
     {
         private readonly Enemy _enemy;
-        private readonly HybridEnemyAttackType _hybridAttackType;
+        private readonly BossEnemyAttackType _bossAttackType;
 
-        public BossAttack(Enemy enemy, HybridEnemyAttackType hybridAttackType)
+        public BossAttack(Enemy enemy, BossEnemyAttackType bossAttackType)
         {
             _enemy = enemy;
-            _hybridAttackType = hybridAttackType;
+            _bossAttackType = bossAttackType;
         }
 
         public void HandleAttack(float distance)
         {
-            if (distance > _hybridAttackType.MeleeRange)
+            if (distance > _bossAttackType.MeleeRange)
             {
                 _enemy.Movement.CanMove(true);
             }

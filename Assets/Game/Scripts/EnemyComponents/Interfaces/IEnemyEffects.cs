@@ -7,6 +7,7 @@ namespace Game.Scripts.EnemyComponents.Interfaces
     {
         public void Initialize(EnemyData data, EffectsPool pool, ICoroutineRunner coroutineRunner);
         public void Spawn();
+        public void StopSpawn();
         public void Hit();
         public void Death();
         public void Reload();

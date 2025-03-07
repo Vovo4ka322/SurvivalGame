@@ -21,7 +21,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 
         public void ProcessMovement(Vector3 targetPosition, bool spawnCompleted, bool isAttacking)
         {
-            if (!spawnCompleted || isAttacking)
+            if (!spawnCompleted || isAttacking || !_canMove)
             {
                 Stop();
                 return;
