@@ -34,6 +34,11 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         
         public void TryAttack()
         {
+            if(_enemy.Health.IsDead)
+            {
+                return;
+            }
+            
             if(_animationState.IsAttacking)
             {
                 return;

@@ -4,6 +4,7 @@ using UnityEngine;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.ProjectileComponents;
+using Game.Scripts.SettingsComponents;
 
 namespace Game.Scripts.PoolComponents
 {

@@ -67,17 +67,39 @@ namespace Game.Scripts.EnemyComponents.Animations
         
         public void Move(bool isMoving)
         {
-            _animator.SetBool(AnimationDataParamsEnemy.Params.Walking, isMoving);
+            if(ParameterExists(AnimationDataParamsEnemy.Params.Walking))
+            {
+                _animator.SetBool(AnimationDataParamsEnemy.Params.Walking, isMoving);
+            }
         }
         
         public void TakeHit()
         {
-            _animator.SetTrigger(AnimationDataParamsEnemy.Params.TakeDamage);
+            if(ParameterExists(AnimationDataParamsEnemy.Params.TakeDamage))
+            {
+                _animator.SetTrigger(AnimationDataParamsEnemy.Params.TakeDamage);
+            }
         }
         
         public void Death()
         {
-            _animator.SetTrigger(AnimationDataParamsEnemy.Params.Dead);
+            if(ParameterExists(AnimationDataParamsEnemy.Params.Walking))
+            {
+                _animator.SetBool(AnimationDataParamsEnemy.Params.Walking, false);
+            }
+            
+            if (_attackMappings.TryGetValue(_enemyType, out var attackMap))
+            {
+                foreach (var triggerHash in attackMap.Values)
+                {
+                    if (ParameterExists(triggerHash))
+                    {
+                        _animator.ResetTrigger(triggerHash);
+                    }
+                }
+            }
+            
+            _animator.CrossFade("Dead", 0.1f);
         }
         
         public void Attack(int attackVariant)
@@ -102,6 +124,16 @@ namespace Game.Scripts.EnemyComponents.Animations
         public void ResetAttackState()
         {
             _isAttacking = false;
+        }
+        
+        private bool ParameterExists(int hash)
+        {
+            foreach (var parameter in _animator.parameters)
+            {
+                if (parameter.nameHash == hash)
+                    return true;
+            }
+            return false;
         }
     }
 }

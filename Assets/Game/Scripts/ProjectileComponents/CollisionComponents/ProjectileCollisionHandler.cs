@@ -6,19 +6,25 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
 {
     public class ProjectileCollisionHandler : MonoBehaviour
     {
+        private const string GorundNameLayer = "Floor";
+        
         private BaseProjectile _projectile;
         private Collider _collider;
         
         private bool _hasCollided = false;
+        private int _groundLayer;
 
         private void Awake()
         {
             _collider = GetComponent<Collider>();
+            _groundLayer = LayerMask.NameToLayer(GorundNameLayer);
         }
 
         public void Initialize(BaseProjectile projectile)
         {
             _projectile = projectile;
+            _hasCollided = false;
+            _collider.enabled = true; 
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -37,7 +43,15 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
             {
                 return;
             }
-
+            
+            if (other.gameObject.layer == _groundLayer)
+            {
+                _hasCollided = true;
+                _collider.enabled = false;
+                _projectile.ExplodeAndReturn();
+                return;
+            }
+            
             _hasCollided = true;
             _collider.enabled = false;
 

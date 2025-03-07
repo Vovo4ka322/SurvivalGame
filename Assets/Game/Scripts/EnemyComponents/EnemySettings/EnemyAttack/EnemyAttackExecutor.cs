@@ -50,11 +50,18 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             
             while (true)
             {
+                if(_enemy.Health.IsDead)
+                {
+                    yield break;
+                }
+                
                 if (_enemy.PlayerTransform != null && _enemy.SpawnCompleted && !_enemy.AnimationAnimationState.IsAttacking)
                 {
                     float distance = Vector3.Distance(_enemy.transform.position, _enemy.PlayerTransform.transform.position);
+                    
                     _enemy.AttackBehavior.HandleAttack(distance);
                 }
+                
                 yield return new WaitForSeconds(updateInterval);
             }
         }

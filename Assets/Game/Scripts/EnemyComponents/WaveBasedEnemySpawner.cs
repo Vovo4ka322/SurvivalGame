@@ -15,18 +15,6 @@ namespace Game.Scripts.EnemyComponents
         [SerializeField] private EnemyData[] _hardEnemyDatas;
         [SerializeField] private EnemyData _bossEnemyData;
         
-        [Header("Wave Durations (seconds)")]
-        [SerializeField] private float _easyWaveDuration = 21f * 60f;
-        [SerializeField] private float _mediumWaveDuration = 14f * 60f;
-        [SerializeField] private float _hardWaveDuration = 7f * 60f;
-        
-        [Header("Wave Start Delays (seconds)")]
-        [SerializeField] private float _startDelayEasyWave = 0f;
-        [SerializeField] private float _startDelayMediumWave = 7f * 60f;
-        [SerializeField] private float _startDelayHardWave = 14f * 60f;
-        [SerializeField] private float _bossSpawnDelay = 19f * 60f;
-        [SerializeField] private float _spawnInterval = 5f;
-        
         [Header("Spawn References")]
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Transform _bossSpawnPoint;
@@ -35,30 +23,52 @@ namespace Game.Scripts.EnemyComponents
         private Player _player;
         private ICoroutineRunner _coroutineRunner;
         
-        private bool _playerInZone;
-        
         private void Awake()
         {
             _coroutineRunner = _poolManager.GetComponent<ICoroutineRunner>();
         }
-
-        private void Start()
+        
+        public void StartWave(float waveDuration, int waveNumber, float spawnInterval)
         {
-            _coroutineRunner.StartCoroutine(CreateWave(_easyEnemyDatas, _startDelayEasyWave, _easyWaveDuration));
-            _coroutineRunner.StartCoroutine(CreateWave(_mediumEnemyDatas, _startDelayMediumWave, _mediumWaveDuration));
-            _coroutineRunner.StartCoroutine(CreateWave(_hardEnemyDatas, _startDelayHardWave, _hardWaveDuration));
-            _coroutineRunner.StartCoroutine(CreateBoss(_bossSpawnDelay));
+            if (waveNumber == 0)
+            {
+                CreateBoss();
+            }
+            else
+            {
+                EnemyData[] enemyDatas = GetEnemyDataByWaveNumber(waveNumber);
+                
+                _coroutineRunner.StartCoroutine(CreateWave(enemyDatas, waveDuration, spawnInterval));
+            }
         }
         
         public void Init(Player player)
         {
             _player = player;
         }
-
-        private IEnumerator CreateWave(EnemyData[] enemyDatas, float startDelay, float waveDuration)
+        
+        private void CreateBoss()
         {
-            yield return new WaitForSeconds(startDelay);
-            
+            _coroutineRunner.StartCoroutine(CreateBossCoroutine());
+        }
+        
+        private EnemyData[] GetEnemyDataByWaveNumber(int waveNumber)
+        {
+            switch (waveNumber)
+            {
+                case 1:
+                    return _easyEnemyDatas;
+                case 2:
+                    return _mediumEnemyDatas;
+                case 3:
+                    return _hardEnemyDatas;
+                default:
+                    return _easyEnemyDatas;
+            }
+        }
+        
+        private IEnumerator CreateWave(EnemyData[] enemyDatas, float waveDuration, float spawnInterval)
+        {
             float elapsed = 0f;
             
             while (elapsed < waveDuration)
@@ -74,15 +84,15 @@ namespace Game.Scripts.EnemyComponents
                 
                 _poolManager.EnemyFactory.SpawnEnemy(randomData, spawnPos, spawnRot, _player);
                 
-                yield return new WaitForSeconds(_spawnInterval);
+                yield return new WaitForSeconds(spawnInterval);
                 
-                elapsed += _spawnInterval;
+                elapsed += spawnInterval;
             }
         }
         
-        private IEnumerator CreateBoss(float delay)
+        private IEnumerator CreateBossCoroutine()
         {
-            yield return new WaitForSeconds(delay);
+            yield return null;
             
             if (_bossSpawnPoint != null && _bossEnemyData != null)
             {
