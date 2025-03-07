@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 using Game.Scripts.EnemyComponents.EnemySettings;
@@ -62,11 +63,25 @@ namespace Game.Scripts.EnemyComponents
             {
                 return;
             }
+            
+            float sampleRadius = 10f;
+            
+            if (NavMesh.SamplePosition(position, out NavMeshHit hit, sampleRadius, NavMesh.AllAreas))
+            {
+                enemyInstance.transform.position = hit.position;
 
-            NavMesh.SamplePosition(position, out NavMeshHit hit, float.MaxValue, NavMesh.AllAreas);
-
-            enemyInstance.transform.position = hit.position;
+                if(enemyInstance.TryGetComponent(out NavMeshAgent agent))
+                {
+                    agent.Warp(hit.position);
+                }
+            }
+            else
+            {
+                enemyInstance.transform.position = position;
+            }
+            
             enemyInstance.transform.rotation = rotation;
+            enemyInstance.ResetState();
             enemyInstance.InitializeComponents(player, enemyData, _effectsPool, _poolManager, _coroutineRunner);
             enemyInstance.TurnOnAgent();
             enemyInstance.Enabled += OnEnemyEnabled;

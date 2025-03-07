@@ -127,11 +127,8 @@ namespace Game.Scripts.EnemyComponents
             _attackExecutor.SetAttackBehavior();
             
             _targetPosition = _playerTransform.transform.position;
-            _spawnCompleted = false;
-            _isDying = false;
             
             AnimationAnimationState.Spawn();
-            SpawnAnimationEnd();
             Health.InitMaxValue(_data.MaxHealth);
             
             if (_coroutineRunner != null && _movementCoroutine == null && gameObject.activeInHierarchy)
@@ -179,6 +176,12 @@ namespace Game.Scripts.EnemyComponents
         {
             Dead?.Invoke(this);
         }
+
+        public void ResetState()
+        {
+            _isDying = false;
+            _spawnCompleted = false;
+        }
         
         internal void SetAttackBehaviorInternal(IAttackBehavior attackBehavior)
         {
@@ -193,6 +196,8 @@ namespace Game.Scripts.EnemyComponents
             }
             
             _isDying = true;
+            _coroutineRunner.StopCoroutine(_movementCoroutine);
+            _movementCoroutine = null;
             _movement.Stop();
             _agent.enabled = false;
             
@@ -201,8 +206,10 @@ namespace Game.Scripts.EnemyComponents
         
         private void MoveAndRotate()
         {
-            if (_playerTransform == null)
+            if(_playerTransform == null || Health.IsDead)
+            {
                 return;
+            }
 
             if (!_agent.isActiveAndEnabled)
             {

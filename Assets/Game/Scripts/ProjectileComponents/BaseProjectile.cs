@@ -24,7 +24,7 @@ namespace Game.Scripts.ProjectileComponents
         public float ConfiguredLifetime => _lifetime;
         public float Speed => _speed;
         public int Damage => _damage;
-        public float AimHeight { get; private set; } = 1.5f;
+        public float AimHeight { get; private set; } = 1f;
         public Enemy Owner { get; private set; }
 
         private void Awake()
