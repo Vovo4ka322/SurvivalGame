@@ -54,7 +54,7 @@ namespace Game.Scripts.PoolComponents
             
             return _projectilePools.GetValueOrDefault(prefab);
         }
-        
+
         private void InitializeEffectsPool()
         {
             _effectsPool = new EffectsPool();

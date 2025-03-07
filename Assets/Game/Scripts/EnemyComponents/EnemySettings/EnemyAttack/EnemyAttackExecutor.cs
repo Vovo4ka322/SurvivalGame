@@ -63,9 +63,9 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                     yield break;
                 }
                 
-                if (_enemy.PlayerTransform != null && _enemy.SpawnCompleted && !_enemy.AnimationAnimationState.IsAttacking)
+                if (_enemy.Player != null && _enemy.SpawnCompleted && !_enemy.AnimationAnimationState.IsAttacking)
                 {
-                    float distance = Vector3.Distance(_enemy.transform.position, _enemy.PlayerTransform.transform.position);
+                    float distance = Vector3.Distance(_enemy.transform.position, _enemy.Player.transform.position);
                     
                     _enemy.AttackBehavior.HandleAttack(distance);
                 }

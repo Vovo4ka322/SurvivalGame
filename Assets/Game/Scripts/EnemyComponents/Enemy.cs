@@ -20,7 +20,7 @@ namespace Game.Scripts.EnemyComponents
     {
         [SerializeField] private EnemyData _data;
         
-        private Player _playerTransform;
+        private Player _player;
         private Vector3 _targetPosition;
         
         private Animator _animator;
@@ -44,14 +44,13 @@ namespace Game.Scripts.EnemyComponents
         private bool _isDying = false;
 
         public EnemyData Data => _data;
-        public Player PlayerTransform => _playerTransform;
+        public Player Player => _player;
         public EnemyAnimationState AnimationAnimationState => _animationState;
         public IEnemyAttack EnemyAttack => _enemyAttack;
         public IEnemyMovement Movement => _movement;
         public IAttackBehavior AttackBehavior => _attackBehavior;
         public bool SpawnCompleted => _spawnCompleted;
-        public Player LastAttacker { get; set; }
-        
+
         public event Action<Enemy> Dead;
         public event Action<Enemy> Enabled;
 
@@ -101,7 +100,7 @@ namespace Game.Scripts.EnemyComponents
 
         public void InitializeComponents(Player player, EnemyData enemyData, EffectsPool pool, PoolManager poolManager, ICoroutineRunner coroutineRunner)
         {
-            _playerTransform = player;
+            _player = player;
             _data = enemyData;
             _coroutineRunner = coroutineRunner;
             
@@ -120,14 +119,14 @@ namespace Game.Scripts.EnemyComponents
                 _projectileSpawner = _hybridSpawner;
             }
             
-            _projectileSpawner?.Initialize(_data, _playerTransform, poolManager);
+            _projectileSpawner?.Initialize(_data, _player, poolManager);
             
-            _enemyAttack = new EnemyAttack(AnimationAnimationState, transform, _playerTransform, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationState.AttackVariantsCount);
+            _enemyAttack = new EnemyAttack(AnimationAnimationState, transform, _player, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationState.AttackVariantsCount);
             _attackExecutor = new EnemyAttackExecutor(this);
             
             _attackExecutor.SetAttackBehavior();
             
-            _targetPosition = _playerTransform.transform.position;
+            _targetPosition = _player.transform.position;
             
             AnimationAnimationState.Spawn();
             Health.InitMaxValue(_data.MaxHealth);
@@ -180,12 +179,12 @@ namespace Game.Scripts.EnemyComponents
         
         public void DeathAnimationEnd()
         {
-            if(LastAttacker != null)
+            if (_player != null)
             {
-                LastAttacker.GetExperience(_data.Experience);
-                LastAttacker.GetMoney(_data.Money);
+                _player.GetExperience(_data.Experience);
+                _player.GetMoney(_data.Money);
             }
-            
+
             Dead?.Invoke(this);
         }
 
@@ -219,7 +218,7 @@ namespace Game.Scripts.EnemyComponents
         
         private void MoveAndRotate()
         {
-            if(_playerTransform == null || Health.IsDead)
+            if(_player == null || Health.IsDead)
             {
                 return;
             }
@@ -229,7 +228,7 @@ namespace Game.Scripts.EnemyComponents
                 return;
             }
 
-            _rotation.RotateTowards(_playerTransform.transform.position);
+            _rotation.RotateTowards(_player.transform.position);
 
             if (!_spawnCompleted || AnimationAnimationState.IsAttacking)
             {
@@ -237,7 +236,7 @@ namespace Game.Scripts.EnemyComponents
                 return;
             }
             
-            Vector3 transformPosition = (_data.BaseAttackType.Type == AttackType.Boss) ? _playerTransform.transform.position : ((_data.BaseAttackType.Type == AttackType.Hybrid) ? _playerTransform.transform.position : (_targetPosition == Vector3.zero ? _playerTransform.transform.position : _targetPosition));
+            Vector3 transformPosition = (_data.BaseAttackType.Type == AttackType.Boss) ? _player.transform.position : ((_data.BaseAttackType.Type == AttackType.Hybrid) ? _player.transform.position : (_targetPosition == Vector3.zero ? _player.transform.position : _targetPosition));
             
             if (_agent.isActiveAndEnabled)
             {

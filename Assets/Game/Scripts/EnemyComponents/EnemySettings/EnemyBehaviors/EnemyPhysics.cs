@@ -27,7 +27,6 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
             
             if (other.gameObject.TryGetComponent(out Weapon weapon))
             {
-                _enemy.LastAttacker = other.GetComponentInParent<Player>();
                 _enemy.Health.Lose(weapon.TotalDamage);
                 
                 return;
