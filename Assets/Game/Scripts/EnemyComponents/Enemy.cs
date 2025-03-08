@@ -19,27 +19,27 @@ namespace Game.Scripts.EnemyComponents
     public class Enemy : Character
     {
         [SerializeField] private EnemyData _data;
-        
+
         private Player _player;
         private Vector3 _targetPosition;
-        
+
         private Animator _animator;
-        private Coroutine _movementCoroutine;     
+        private Coroutine _movementCoroutine;
         private NavMeshAgent _agent;
         private EnemyAnimationState _animationState;
         private EnemyAttackExecutor _attackExecutor;
-        
+
         private IAttackBehavior _attackBehavior;
         private IEnemyMovement _movement;
         private IEnemyRotation _rotation;
         private IEnemyAttack _enemyAttack;
         private IEnemyEffects _enemyEffects;
         private ICoroutineRunner _coroutineRunner;
-        
+
         private BaseProjectileSpawner _projectileSpawner;
         private RangedProjectileSpawner _rangedSpawner;
         private HybridProjectileSpawner _hybridSpawner;
-        
+
         private bool _spawnCompleted = false;
         private bool _isDying = false;
 
@@ -75,7 +75,7 @@ namespace Game.Scripts.EnemyComponents
             {
                 _movementCoroutine = _coroutineRunner.StartCoroutine(_attackExecutor.AttackCoroutine());
             }
-            
+
             Enabled?.Invoke(this);
         }
 
@@ -103,50 +103,51 @@ namespace Game.Scripts.EnemyComponents
             _player = player;
             _data = enemyData;
             _coroutineRunner = coroutineRunner;
-            
+
             _animationState = new EnemyAnimationState(_animator, _data.EnemyType);
             _movement = new EnemyMover(AnimationAnimationState, _agent, _data.MoveSpeed);
             _rotation = new EnemyRotation(transform, _data.RotationSpeed);
-            
+
             _enemyEffects.Initialize(_data, pool, coroutineRunner);
 
             if (_data.BaseAttackType.Type == AttackType.Ranged)
             {
                 _projectileSpawner = _rangedSpawner;
             }
-            else if(_data.BaseAttackType.Type == AttackType.Hybrid)
+            else if (_data.BaseAttackType.Type == AttackType.Hybrid)
             {
                 _projectileSpawner = _hybridSpawner;
             }
-            
+
             _projectileSpawner?.Initialize(_data, _player, poolManager);
-            
+
             _enemyAttack = new EnemyAttack(AnimationAnimationState, transform, _player, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationState.AttackVariantsCount);
             _attackExecutor = new EnemyAttackExecutor(this);
-            
+
             _attackExecutor.SetAttackBehavior();
-            
-            _targetPosition = _player.transform.position;
-            
+
+            if (_player != null)
+                _targetPosition = _player.transform.position;
+
             AnimationAnimationState.Spawn();
             Health.InitMaxValue(_data.MaxHealth);
-            
-            if(_data.EnemyType == EnemyType.Boss)
+
+            if (_data.EnemyType == EnemyType.Boss)
             {
                 SpawnAnimationEnd();
             }
-            
+
             if (_coroutineRunner != null && _movementCoroutine == null && gameObject.activeInHierarchy)
             {
                 _movementCoroutine = _coroutineRunner.StartCoroutine(_attackExecutor.AttackCoroutine());
             }
         }
-        
+
         public void SetTargetPosition(Vector3 target)
         {
             _targetPosition = target;
         }
-        
+
         public void TurnOnAgent()
         {
             _agent.enabled = true;
@@ -156,12 +157,12 @@ namespace Game.Scripts.EnemyComponents
         {
             _agent.enabled = false;
         }
-        
+
         public float GetDamage()
         {
             return Data.Damage;
         }
-        
+
         public void SpawnAnimationEnd()
         {
             _spawnCompleted = true;
@@ -171,12 +172,12 @@ namespace Game.Scripts.EnemyComponents
         {
             AnimationAnimationState?.ResetAttackState();
         }
-        
+
         public void OnDeathAnimationEvent()
         {
             _enemyEffects.Death();
         }
-        
+
         public void DeathAnimationEnd()
         {
             if (_player != null)
@@ -193,32 +194,32 @@ namespace Game.Scripts.EnemyComponents
             _isDying = false;
             _spawnCompleted = false;
         }
-        
+
         internal void SetAttackBehaviorInternal(IAttackBehavior attackBehavior)
         {
             _attackBehavior = attackBehavior;
         }
-        
+
         private void OnDead()
         {
-            if(_isDying)
+            if (_isDying)
             {
                 return;
             }
-            
+
             _isDying = true;
             _enemyEffects.StopSpawn();
             _coroutineRunner.StopCoroutine(_movementCoroutine);
             _movementCoroutine = null;
             _movement.Stop();
             _agent.enabled = false;
-            
+
             AnimationAnimationState.Death();
         }
-        
+
         private void MoveAndRotate()
         {
-            if(_player == null || Health.IsDead)
+            if (_player == null || Health.IsDead)
             {
                 return;
             }
@@ -235,9 +236,9 @@ namespace Game.Scripts.EnemyComponents
                 _movement.Stop();
                 return;
             }
-            
+
             Vector3 transformPosition = (_data.BaseAttackType.Type == AttackType.Boss) ? _player.transform.position : ((_data.BaseAttackType.Type == AttackType.Hybrid) ? _player.transform.position : (_targetPosition == Vector3.zero ? _player.transform.position : _targetPosition));
-            
+
             if (_agent.isActiveAndEnabled)
             {
                 _movement.ProcessMovement(transformPosition, _spawnCompleted, AnimationAnimationState.IsAttacking);
@@ -248,16 +249,16 @@ namespace Game.Scripts.EnemyComponents
                 _movement.Stop();
             }
         }
-        
+
         private void OnDrawGizmosSelected()
         {
-            if(_data != null)
+            if (_data != null)
             {
-                if(_data.BaseAttackType.Type == AttackType.Hybrid)
+                if (_data.BaseAttackType.Type == AttackType.Hybrid)
                 {
                     HybridEnemyAttackType hybrid = _data.BaseAttackType as HybridEnemyAttackType;
 
-                    if(hybrid != null)
+                    if (hybrid != null)
                     {
                         Gizmos.color = Color.red;
                         Gizmos.DrawWireSphere(transform.position, hybrid.MeleeRange);

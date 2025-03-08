@@ -73,7 +73,7 @@ namespace Ability.MeleeAbilities
 
         public void UseFirstAbility()
         {
-            StartCoroutine(_bladeFury.UseAbility(_player.transform));
+            StartCoroutine(_bladeFury.UseAbility(_player));
         }
 
         public void UseSecondAbility()
