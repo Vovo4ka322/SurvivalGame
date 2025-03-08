@@ -1582,9 +1582,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coroutineRunnerComponent: {fileID: 402861277}
-  _easyWaveDuration: 5
-  _mediumWaveDuration: 5
-  _hardWaveDuration: 5
+  _easyWaveDuration: 120
+  _mediumWaveDuration: 120
+  _hardWaveDuration: 120
   _spawnInterval: 3
 --- !u!4 &1364680379 stripped
 Transform:
