@@ -20,7 +20,10 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Enemy _))
+        {
+            ReturnToPool();
             Touched?.Invoke();
+        }
     }
 
     public void StartFly(Vector3 direction, Vector3 position)
@@ -30,6 +33,13 @@ public class Arrow : MonoBehaviour
         transform.forward = _direction;
 
         _coroutine = StartCoroutine(Fly());
+    }
+
+    public void Init(float speedFlight, float radius, IPoolReciver<Arrow> arrowPool)
+    {
+        _speedFlight = speedFlight;
+        _radius = radius;
+        _poolReciver = arrowPool;
     }
 
     private IEnumerator Fly()
@@ -45,13 +55,8 @@ public class Arrow : MonoBehaviour
             yield return null;
         }
 
-        _poolReciver.Release(this);
+        ReturnToPool();
     }
 
-    public void Init(float speedFlight, float radius, IPoolReciver<Arrow> arrowPool)
-    {
-        _speedFlight = speedFlight;
-        _radius = radius;
-        _poolReciver = arrowPool;
-    }
+    private void ReturnToPool() => _poolReciver.Release(this);
 }

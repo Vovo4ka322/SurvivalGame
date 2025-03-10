@@ -53,6 +53,7 @@ namespace Game.Scripts.EnemyComponents
 
         public event Action<Enemy> Dead;
         public event Action<Enemy> Enabled;
+        public event Action<float> Changed;
 
         private void Awake()
         {
@@ -141,6 +142,13 @@ namespace Game.Scripts.EnemyComponents
             {
                 _movementCoroutine = _coroutineRunner.StartCoroutine(_attackExecutor.AttackCoroutine());
             }
+        }
+
+        public void ChangeHealth(float value)
+        {
+            Health.Lose(value);
+
+            Changed?.Invoke(Health.Value);
         }
 
         public void SetTargetPosition(Vector3 target)
