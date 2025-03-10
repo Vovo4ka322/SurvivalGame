@@ -18,8 +18,8 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             
             if (distance > attackRange)
             {
-                Vector3 direction = (_enemy.transform.position - _enemy.PlayerTransform.transform.position).normalized;
-                Vector3 targetPosition = _enemy.PlayerTransform.transform.position + direction * attackRange;
+                Vector3 direction = (_enemy.transform.position - _enemy.Player.transform.position).normalized;
+                Vector3 targetPosition = _enemy.Player.transform.position + direction * attackRange;
                 
                 _enemy.SetTargetPosition(targetPosition);
                 _enemy.Movement.CanMove(true);

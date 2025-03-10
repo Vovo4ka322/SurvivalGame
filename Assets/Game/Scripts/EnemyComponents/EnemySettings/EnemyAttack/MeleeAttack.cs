@@ -15,7 +15,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         {
             if (distance > _enemy.Data.AttackRange)
             {
-                _enemy.SetTargetPosition(_enemy.PlayerTransform.transform.position);
+                _enemy.SetTargetPosition(_enemy.Player.transform.position);
                 _enemy.Movement.CanMove(true);
             }
             else

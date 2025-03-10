@@ -5,11 +5,12 @@ namespace Game.Scripts.EnemyComponents
 {
     public class WaveTimerUI : MonoBehaviour
     {
-        private const string NameLastWave = "Boss";
+        private const string NameLastWave = "Босс";
         
         [SerializeField] private WaveCycle _waveCycle;
         [SerializeField] private Text _timerText;
         [SerializeField] private Text _waveLabel;
+        [SerializeField] private Text _bossText;
         
         private float _time;
         private bool _isRunning;
@@ -55,7 +56,8 @@ namespace Game.Scripts.EnemyComponents
             if (waveNumber == 0)
             {
                 _isBossWave = true;
-                _waveLabel.text = NameLastWave;
+                _waveLabel.gameObject.SetActive(false);
+                _bossText.gameObject.SetActive(true);
                 _time = 0f;
             }
             else

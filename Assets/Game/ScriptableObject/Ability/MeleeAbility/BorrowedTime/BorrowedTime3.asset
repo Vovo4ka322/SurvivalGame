@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: BorrowedTime
   <Description>k__BackingField: 
-  <CooldownTime>k__BackingField: 10
-  <Duration>k__BackingField: 12
-  <KeyCode>k__BackingField: 50
+  <Duration>k__BackingField: 8
+  <CooldownTime>k__BackingField: 30

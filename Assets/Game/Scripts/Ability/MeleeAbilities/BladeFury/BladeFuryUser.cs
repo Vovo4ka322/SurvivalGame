@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Game.Scripts.Interfaces;
 using Game.Scripts.PlayerComponents.Animations;
+using Game.Scripts.PlayerComponents;
 
 namespace Ability.MeleeAbilities.BladeFury
 {
@@ -25,7 +26,7 @@ namespace Ability.MeleeAbilities.BladeFury
             _bladeFuryScriptableObject = bladeFury;
         }
 
-        public IEnumerator UseAbility(Transform player)
+        public IEnumerator UseAbility(MeleePlayer meleePlayer)
         {
             float duration = 0;
 
@@ -36,7 +37,8 @@ namespace Ability.MeleeAbilities.BladeFury
                     _animator.SetTrueBoolState(_animator.CanUseSkill1Hash);
                     _animator.SetFalseBoolState(_animator.IsAttack);
 
-                    player.Rotate(Vector3.up, _bladeFuryScriptableObject.TurnSpeed * Time.deltaTime);
+                    meleePlayer.SetSwordColliderTrue();
+                    meleePlayer.transform.Rotate(Vector3.up, _bladeFuryScriptableObject.TurnSpeed * Time.deltaTime);
                     duration += Time.deltaTime;
                     _lastUsedTimer = Time.time;
                     _canUseFirstTime = false;
