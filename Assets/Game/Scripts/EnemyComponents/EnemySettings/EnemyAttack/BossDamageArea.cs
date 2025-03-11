@@ -1,3 +1,4 @@
+using Game.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
@@ -18,6 +19,8 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         [SerializeField] private Transform _directAttackPoint;
         [SerializeField] private Vector3 _directAttackBoxSize = new Vector3(3f, 2f, 5f);
         [SerializeField] private LayerMask _directTargetLayer;
+        
+        private bool _hasHit = false;
 
         public void DealRadialDamage1()
         {
@@ -26,6 +29,11 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             foreach(Collider hit in hits)
             {
                 DealDamageToCollider(hit);
+            }
+            
+            if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.BossSoundEffects != null)
+            {
+                Enemy.SoundCollection.BossSoundEffects.PlayMeleeAttack1();
             }
         }
 
@@ -37,16 +45,27 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             {
                 DealDamageToCollider(hit);
             }
+            
+            if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.BossSoundEffects != null)
+            {
+                Enemy.SoundCollection.BossSoundEffects.PlayMeleeAttack1();
+            }
         }
 
         public void EnableMeleeDamageCollider()
         {
+            _hasHit = false;
             _meleeDamageCollider.enabled = true;
         }
 
         public void DisableMeleeDamageCollider()
         {
             _meleeDamageCollider.enabled = false;
+            
+            if (!_hasHit && Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.BossSoundEffects != null)
+            {
+                Enemy.SoundCollection.BossSoundEffects.PlayMeleeMissHit();
+            }
         }
 
         public void DealMeleeDamageIfEnabled(Collider other)
@@ -55,8 +74,18 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             {
                 return;
             }
-
-            DealDamageToCollider(other);
+            
+            if (other.TryGetComponent(out IDamagable _))
+            {
+                _hasHit = true;
+                
+                DealDamageToCollider(other);
+            
+                if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.BossSoundEffects != null)
+                {
+                    Enemy.SoundCollection.BossSoundEffects.PlayMeleeHit();
+                }
+            }
         }
 
         public void DealDirectDamage()
@@ -66,6 +95,11 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             foreach(Collider hit in hits)
             {
                 DealDamageToCollider(hit);
+            }
+            
+            if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.BossSoundEffects != null)
+            {
+                Enemy.SoundCollection.BossSoundEffects.PlayMeleeAttack2();
             }
         }
 

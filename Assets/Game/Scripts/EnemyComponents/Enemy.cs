@@ -8,6 +8,7 @@ using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors;
 using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.ProjectileComponents.CreateProjectiles;
@@ -28,6 +29,7 @@ namespace Game.Scripts.EnemyComponents
         private NavMeshAgent _agent;
         private EnemyAnimationState _animationState;
         private EnemyAttackExecutor _attackExecutor;
+        private SoundCollection _soundCollection;
         
         private IAttackBehavior _attackBehavior;
         private IEnemyMovement _movement;
@@ -46,6 +48,7 @@ namespace Game.Scripts.EnemyComponents
         public EnemyData Data => _data;
         public Player PlayerTransform => _playerTransform;
         public EnemyAnimationState AnimationAnimationState => _animationState;
+        public SoundCollection SoundCollection => _soundCollection;
         public IEnemyAttack EnemyAttack => _enemyAttack;
         public IEnemyMovement Movement => _movement;
         public IAttackBehavior AttackBehavior => _attackBehavior;
@@ -142,6 +145,22 @@ namespace Game.Scripts.EnemyComponents
                 _movementCoroutine = _coroutineRunner.StartCoroutine(_attackExecutor.AttackCoroutine());
             }
         }
+        
+        public void SetSoundCollection(SoundCollection soundCollection)
+        {
+            _soundCollection = soundCollection;
+            
+            if (_rangedSpawner != null)
+            {
+                _rangedSpawner.SetSoundCollection(soundCollection);
+            }
+    
+            if (_hybridSpawner != null)
+            {
+                _hybridSpawner.SetSoundCollection(soundCollection);
+            }
+        }
+
         
         public void SetTargetPosition(Vector3 target)
         {

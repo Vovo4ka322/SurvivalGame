@@ -1,3 +1,4 @@
+using Game.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
@@ -5,7 +6,9 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
     public class MeleeDamageArea : BaseDamageArea
     {
         [SerializeField] private Collider _damageCollider;
-
+        
+        private bool _hasHit = false;
+        
         private void Awake()
         {
             _damageCollider.enabled = false;
@@ -13,12 +16,18 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         
         public void EnableDamageCollider()
         {
+            _hasHit = false;
             _damageCollider.enabled = true;
         }
         
         public void DisableDamageCollider()
         {
             _damageCollider.enabled = false;
+            
+            if (!_hasHit && Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.MeleeSoundEffects != null)
+            {
+                Enemy.SoundCollection.MeleeSoundEffects.PlayMissHit();
+            }
         }
         
         public void DealDamageIfEnabled(Collider enemyCollider)
@@ -28,7 +37,17 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 return;
             }
         
-            DealDamageToCollider(enemyCollider);
+            if (enemyCollider.TryGetComponent(out IDamagable _))
+            {
+                _hasHit = true;
+                
+                DealDamageToCollider(enemyCollider);
+            
+                if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.MeleeSoundEffects != null)
+                {
+                    Enemy.SoundCollection.MeleeSoundEffects.PlayHit();
+                }
+            }
         }
     }
 }

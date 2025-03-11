@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.MusicComponents;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
 
@@ -9,6 +10,8 @@ namespace Game.Scripts.EnemyComponents
 {
     public class WaveBasedEnemySpawner : MonoBehaviour
     {
+        [SerializeField] private GameSceneAudio _gameSceneAudio;
+        
         [Header("Wave Data")]
         [SerializeField] private EnemyData[] _easyEnemyDatas;
         [SerializeField] private EnemyData[] _mediumEnemyDatas;
@@ -98,6 +101,8 @@ namespace Game.Scripts.EnemyComponents
             {
                 _poolManager.EnemyFactory.SpawnEnemy(_bossEnemyData, _bossSpawnPoint.position, _bossSpawnPoint.rotation, _player);
             }
+            
+            _gameSceneAudio.SwitchToBossMusic();
         }
         
         private Vector3 GetRandomSpawnPosition()
