@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using Game.Scripts.EnemyComponents;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.ProjectileComponents.CollisionComponents;
 using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
@@ -17,7 +15,6 @@ namespace Game.Scripts.ProjectileComponents
         [SerializeField] private int _damage;
         
         public ProjectilePool<BaseProjectile> Pool;
-        
         private IProjectileMovement _movementStrategy;
         private IExplosionHandler _explosionHandler;
         private ProjectileController _projectileController;
@@ -82,6 +79,7 @@ namespace Game.Scripts.ProjectileComponents
         {
             _projectileEffectPrefab.Stop();
             _movementStrategy?.Stop();
+            
             transform.localScale = Vector3.one;
 
             if(Pool != null)
