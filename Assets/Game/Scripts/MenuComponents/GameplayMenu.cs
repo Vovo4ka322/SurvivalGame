@@ -107,12 +107,12 @@ namespace Game.Scripts.MenuComponents
 
         private void OnPauseButtonClicked()
         {
+            CallAd();
             Time.timeScale = 0;
 
             if (_pausePanel != null)
             {
                 _pausePanel.gameObject.SetActive(true);
-                CallAd();
             }
 
             if (_continueButton != null)

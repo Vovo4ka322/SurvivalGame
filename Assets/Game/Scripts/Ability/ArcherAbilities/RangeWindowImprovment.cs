@@ -34,7 +34,7 @@ public class RangeWindowImprovment : MonoBehaviour
 
     private void PressAbilityUpgrade()
     {
-        Time.timeScale = 0f;
+        Time.timeScale = 0f;       
         _image.gameObject.SetActive(true);
     }
 
@@ -42,5 +42,6 @@ public class RangeWindowImprovment : MonoBehaviour
     {
         Time.timeScale = 1f;
         _image.gameObject.SetActive(false);
+        Debug.Log("CloseAbilityPanel");
     }
 }
