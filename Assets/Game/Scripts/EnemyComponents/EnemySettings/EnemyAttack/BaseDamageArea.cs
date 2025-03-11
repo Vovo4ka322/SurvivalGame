@@ -1,5 +1,4 @@
 using UnityEngine;
-using Game.Scripts.PlayerComponents;
 using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
@@ -7,6 +6,8 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
     public abstract class BaseDamageArea : MonoBehaviour
     {
         [SerializeField] private Enemy _enemy;
+
+        public Enemy Enemy => _enemy;
         
         protected void DealDamageToCollider(Collider enemyCollider)
         {

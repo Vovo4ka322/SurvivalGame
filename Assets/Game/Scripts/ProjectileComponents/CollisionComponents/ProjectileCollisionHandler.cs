@@ -1,7 +1,7 @@
 using Game.Scripts.EnemyComponents;
-using Game.Scripts.Interfaces;
-using Game.Scripts.PlayerComponents;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using UnityEngine;
+using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.ProjectileComponents.CollisionComponents
 {
@@ -40,21 +40,36 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
 
         private void HandleCollision(Collider other)
         {
+            if (other.TryGetComponent(out Enemy _))
+            {
+                return;
+            }
+            
             if (_hasCollided)
             {
                 return;
             }
             
+            _hasCollided = true;
+            _collider.enabled = false;
+
+            if (_projectile.Owner != null && _projectile.Owner.SoundCollection != null)
+            {
+                if (_projectile.Owner.Data.BaseAttackType.Type == AttackType.Ranged)
+                {
+                    _projectile.Owner.SoundCollection.RangedSoundEffects.PlayProjectileCollision();
+                }
+                else if (_projectile.Owner.Data.BaseAttackType.Type == AttackType.Hybrid)
+                {
+                    _projectile.Owner.SoundCollection.HybridSoundEffects.PlayProjectileCollision();
+                }
+            }
+            
             if (other.gameObject.layer == _groundLayer)
             {
-                _hasCollided = true;
-                _collider.enabled = false;
                 _projectile.ExplodeAndReturn();
                 return;
             }
-            
-            _hasCollided = true;
-            _collider.enabled = false;
 
             if (other.TryGetComponent(out IDamagable player))
             {

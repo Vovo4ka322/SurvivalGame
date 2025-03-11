@@ -8,6 +8,8 @@ namespace Game.Scripts.EnemyComponents.Animations
 {
     public class EnemyAnimationState : IEnemyAnimation
     {
+        private const string DeadAnimation = "Dead";
+        
         private readonly Animator _animator;
         private readonly EnemyType _enemyType;
         private readonly Dictionary<EnemyType, Dictionary<int, int>> _attackMappings;
@@ -99,7 +101,7 @@ namespace Game.Scripts.EnemyComponents.Animations
                 }
             }
             
-            _animator.CrossFade("Dead", 0.1f);
+            _animator.CrossFade(DeadAnimation, 0.1f);
         }
         
         public void Attack(int attackVariant)

@@ -1,4 +1,3 @@
-using Game.Scripts.ProjectileComponents;
 using UnityEngine;
 
 namespace  Weapons

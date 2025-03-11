@@ -1,6 +1,5 @@
 using UnityEngine;
 using Ability.MeleeAbilities.Bloodlust;
-using Game.Scripts.EnemyComponents;
 using Game.Scripts.Interfaces;
 using Weapons.MeleeWeapon;
 

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
 using System;
@@ -12,6 +12,8 @@ namespace Game.Scripts.EnemyComponents
 {
     public class EnemyFactory : MonoBehaviour
     {
+        [SerializeField] private SoundCollection _soundCollection;
+        
         private readonly Dictionary<EnemyData, EnemyPool> _enemyPools = new Dictionary<EnemyData, EnemyPool>();
         private readonly int _maxEnemiesInScene = 200;
 
@@ -85,6 +87,7 @@ namespace Game.Scripts.EnemyComponents
             
             enemyInstance.transform.rotation = rotation;
             enemyInstance.ResetState();
+            enemyInstance.SetSoundCollection(_soundCollection);
             enemyInstance.InitializeComponents(player, enemyData, _effectsPool, _poolManager, _coroutineRunner);
             enemyInstance.TurnOnAgent();
             enemyInstance.Enabled += OnEnemyEnabled;

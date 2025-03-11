@@ -16,6 +16,11 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             {
                 DealDamageToCollider(hit);
             }
+            
+            if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.HybridSoundEffects != null)
+            {
+                Enemy.SoundCollection.HybridSoundEffects.PlayMeleeAttack();
+            }
         }
         
         /*private void OnDrawGizmosSelected()

@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using Game.Scripts.Interfaces;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace Weapons.RangedWeapon
 {

@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using Game.Scripts.EnemyComponents;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.ProjectileComponents.CollisionComponents;
 using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
@@ -47,6 +49,7 @@ namespace Game.Scripts.ProjectileComponents
         
         public void ExplodeAndReturn()
         {
+            _movementStrategy?.Stop();
             _explosionHandler?.Explode(this);
             ReturnToPool();
         }

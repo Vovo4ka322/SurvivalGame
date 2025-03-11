@@ -792,12 +792,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afbe51cc2a74986b76dc646dc515e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: -3938159779145833789}
   _attackPoint: {fileID: 5664202573357572531}
-  _damageRadius: 4
   _targetLayer:
     serializedVersion: 2
     m_Bits: 256
-  _enemy: {fileID: -3938159779145833789}
+  _damageRadius: 4
 --- !u!114 &3458271535283400292
 MonoBehaviour:
   m_ObjectHideFlags: 0
