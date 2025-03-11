@@ -1,13 +1,13 @@
+using UnityEngine;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
-using UnityEngine;
 using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.ProjectileComponents.CollisionComponents
 {
     public class ProjectileCollisionHandler : MonoBehaviour
     {
-        private const string GorundNameLayer = "Floor";
+        private const string GroundNameLayer = "Floor";
         
         private BaseProjectile _projectile;
         private Collider _collider;
@@ -18,7 +18,7 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
         private void Awake()
         {
             _collider = GetComponent<Collider>();
-            _groundLayer = LayerMask.NameToLayer(GorundNameLayer);
+            _groundLayer = LayerMask.NameToLayer(GroundNameLayer);
         }
 
         public void Initialize(BaseProjectile projectile)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18336734, g: 0.22897793, b: 0.30612063, a: 1}
+  m_IndirectSpecularColor: {r: 0.18336698, g: 0.22897737, b: 0.30611938, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -302,7 +302,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7268693727737812182, guid: a2297d575644b474d9e3dfc19fcb48e8, type: 2}
   m_audioClip: {fileID: 8300000, guid: b37f55bc171054169b7d466ca517207f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3097,8 +3097,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameSceneAudio: {fileID: 1571634972}
   _easyEnemyDatas:
+  - {fileID: 11400000, guid: 1d2a4914505bf4da4aed0586932c8386, type: 2}
   - {fileID: 11400000, guid: 66fe777a9c42db8489800d8c69715a9d, type: 2}
-  - {fileID: 11400000, guid: 4d99cb5518c20024cb65767693d64194, type: 2}
   _mediumEnemyDatas:
   - {fileID: 11400000, guid: 6278b9a0fd2da4be390c30cd44583b48, type: 2}
   - {fileID: 11400000, guid: 3b11b2457a8ca8847b33c18fa55523f5, type: 2}

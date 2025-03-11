@@ -15,13 +15,14 @@ namespace Game.Scripts.ProjectileComponents
             if(direction != Vector3.zero)
             {
                 _targetDirection = direction.normalized * projectile.Speed;
+                Quaternion additionalRotation = Quaternion.Euler(0, 90, 0);
+                projectile.transform.rotation = Quaternion.LookRotation(direction) * additionalRotation;
             } 
             else
             {
                 _targetDirection = Vector3.up * projectile.Speed;
+                projectile.transform.rotation = Quaternion.LookRotation(Vector3.up);
             }
-            
-            projectile.PlayEffects();
         }
         
         public void Move(BaseProjectile projectile)
