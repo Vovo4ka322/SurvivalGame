@@ -53,10 +53,10 @@ namespace Game.Scripts.EnemyComponents
         public IEnemyMovement Movement => _movement;
         public IAttackBehavior AttackBehavior => _attackBehavior;
         public bool SpawnCompleted => _spawnCompleted;
-        public Player LastAttacker { get; set; }
-        
+
         public event Action<Enemy> Dead;
         public event Action<Enemy> Enabled;
+        public event Action<float> Changed;
 
         private void Awake()
         {
@@ -79,7 +79,7 @@ namespace Game.Scripts.EnemyComponents
             {
                 _movementCoroutine = _coroutineRunner.StartCoroutine(_attackExecutor.AttackCoroutine());
             }
-            
+
             Enabled?.Invoke(this);
         }
 
@@ -107,11 +107,11 @@ namespace Game.Scripts.EnemyComponents
             _playerTransform = player;
             _data = enemyData;
             _coroutineRunner = coroutineRunner;
-            
+
             _animationState = new EnemyAnimationState(_animator, _data.EnemyType);
             _movement = new EnemyMover(AnimationAnimationState, _agent, _data.MoveSpeed);
             _rotation = new EnemyRotation(transform, _data.RotationSpeed);
-            
+
             _enemyEffects.Initialize(_data, pool, coroutineRunner);
 
             if (_data.BaseAttackType.Type == AttackType.Ranged)
@@ -127,7 +127,7 @@ namespace Game.Scripts.EnemyComponents
             
             _enemyAttack = new EnemyAttack(AnimationAnimationState, transform, _playerTransform, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationState.AttackVariantsCount);
             _attackExecutor = new EnemyAttackExecutor(this);
-            
+
             _attackExecutor.SetAttackBehavior();
             
             _targetPosition = _playerTransform.transform.position;
@@ -160,8 +160,14 @@ namespace Game.Scripts.EnemyComponents
                 _hybridSpawner.SetSoundCollection(soundCollection);
             }
         }
-
         
+        public void ChangeHealth(float value)
+        {
+            Health.Lose(value);
+
+            Changed?.Invoke(Health.Value);
+        }
+
         public void SetTargetPosition(Vector3 target)
         {
             _targetPosition = target;
@@ -199,12 +205,12 @@ namespace Game.Scripts.EnemyComponents
         
         public void DeathAnimationEnd()
         {
-            if(LastAttacker != null)
+            if (_playerTransform != null)
             {
-                LastAttacker.GetExperience(_data.Experience);
-                LastAttacker.GetMoney(_data.Money);
+                _playerTransform.GetExperience(_data.Experience);
+                _playerTransform.GetMoney(_data.Money);
             }
-            
+
             Dead?.Invoke(this);
         }
 
@@ -221,7 +227,7 @@ namespace Game.Scripts.EnemyComponents
         
         private void OnDead()
         {
-            if(_isDying)
+            if (_isDying)
             {
                 return;
             }

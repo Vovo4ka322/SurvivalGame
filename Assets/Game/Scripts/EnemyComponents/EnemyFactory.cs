@@ -6,6 +6,7 @@ using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
+using System;
 
 namespace Game.Scripts.EnemyComponents
 {
@@ -23,6 +24,8 @@ namespace Game.Scripts.EnemyComponents
         private Transform _container;
 
         private int _activeEnemiesCount = 0;
+
+        public event Action BossDead;
 
         public bool CanSpawnMore => _maxEnemiesInScene <= 0 || _activeEnemiesCount < _maxEnemiesInScene;
 
@@ -112,6 +115,9 @@ namespace Game.Scripts.EnemyComponents
             {
                 pool.Release(enemy);
                 enemy.TurnOffAgent();
+
+                if(enemy.Data.EnemyType == EnemyType.Boss)
+                    BossDead?.Invoke();
             }
         }
     }

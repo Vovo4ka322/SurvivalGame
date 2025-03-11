@@ -18,11 +18,13 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private CinemachineVirtualCamera _virtualCamera;
         [SerializeField] private WaveBasedEnemySpawner _enemySpawner;
         [SerializeField] private PoolManager _pool;
+        [SerializeField] private EnemyFactory _enemyFactory;
         
         private Player _player;
         private Canvas _canvas;
         private Wallet _wallet;
         private WalletView _walletView;
+        private GameplayMenu _gameplayMenu;
 
         private IDataSaver _iDataSaver;
         private IPersistentData _persistentPlayerData;
@@ -34,6 +36,16 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             DoTestSpawn();
 
             _enemySpawner.Init(_player);
+        }
+
+        private void OnEnable()
+        {
+            _enemyFactory.BossDead += _gameplayMenu.OnPlayerWon;
+        }
+
+        private void OnDisable()
+        {
+            _enemyFactory.BossDead -= _gameplayMenu.OnPlayerWon;
         }
 
         private void DoTestSpawn()
@@ -74,6 +86,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             }
 
             GameplayMenu menu = _canvas.GetComponent<GameplayMenu>();
+            _gameplayMenu = menu;
 
             if (menu != null)
             {

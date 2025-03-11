@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: InsatiableHunger
   <Description>k__BackingField: 
-  <Image>k__BackingField: {fileID: 0}
-  <CooldownTime>k__BackingField: 16
-  <Vampirism>k__BackingField: 0.06
-  <Duration>k__BackingField: 5
+  <CooldownTime>k__BackingField: 35
+  <Vampirism>k__BackingField: 0.03
+  <Duration>k__BackingField: 7

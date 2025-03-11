@@ -16,6 +16,7 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Button _continueButton;
         [SerializeField] private Image _pausePanel;
         [SerializeField] private Image _defeatPanel;
+        [SerializeField] private Image _victoryPanel;
 
         private Player _player;
 
@@ -76,6 +77,12 @@ namespace Game.Scripts.MenuComponents
             }
         }
 
+        public void OnPlayerWon()
+        {
+            Time.timeScale = 0;
+            _victoryPanel.gameObject.SetActive(true);
+        }
+
         private void ExitToMenu()
         {
             Time.timeScale = 1.0f;
@@ -105,6 +112,7 @@ namespace Game.Scripts.MenuComponents
             if (_pausePanel != null)
             {
                 _pausePanel.gameObject.SetActive(true);
+                CallAd();
             }
 
             if (_continueButton != null)
