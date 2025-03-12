@@ -28,7 +28,7 @@ namespace Game.Scripts.PlayerComponents
             ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
             Damage = GeneralDamage + _bow.BowData.Damage;
         }
-
+        
         private void OnDisable()
         {
             _bow.ArrowTouched -= OnHealthRestored;
@@ -45,27 +45,34 @@ namespace Game.Scripts.PlayerComponents
 
         public void Shoot()
         {
+            SoundCollection?.RangedPlayerSoundEffects.PlayShoot();
             _bow.StartShoot(Damage);
         }
-
+        
+        public void Reload()
+        {
+            SoundCollection?.RangedPlayerSoundEffects.PlayReload();
+        }
+        
         public float SetEvasion(Blur blur) => _evasionChance = blur.Evasion;
-
+        
         public bool TryDodge() => Random.value <= _evasionChance;
-
+        
         public void SetCoefficient(float value) => Coefficient = value;
-
+        
         public bool SetTrueVampirismState() => IsWorking = true;
-
+        
         public bool SetFalseVampirismState() => IsWorking = false;
-
+        
         private void OnHealthRestored()
         {
+            SoundCollection?.RangedPlayerSoundEffects.PlayHit();
+            
             if (IsWorking)
             {
                 AddHealth(Damage * Coefficient);
                 Debug.Log(Damage * Coefficient + " Damage * Coefficient");
             }
-
         }
     }
 }

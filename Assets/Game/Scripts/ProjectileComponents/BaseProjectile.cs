@@ -6,6 +6,7 @@ using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
 
 namespace Game.Scripts.ProjectileComponents
 {
+    [RequireComponent(typeof(Collider))]
     public abstract class BaseProjectile : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _projectileEffectPrefab;
@@ -15,6 +16,8 @@ namespace Game.Scripts.ProjectileComponents
         [SerializeField] private int _damage;
         
         public ProjectilePool<BaseProjectile> Pool;
+        
+        private Collider _collider;
         private IProjectileMovement _movementStrategy;
         private IExplosionHandler _explosionHandler;
         private ProjectileController _projectileController;
@@ -30,9 +33,18 @@ namespace Game.Scripts.ProjectileComponents
         {
             _projectileController = GetComponent<ProjectileController>();
             _projectileCollision = GetComponent<ProjectileCollisionHandler>();
+            _collider = GetComponent<Collider>();
         }
-
+        
         public abstract void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler);
+        
+        public void SetColliderActive(bool active)
+        {
+            if (_collider != null)
+            {
+                _collider.enabled = active;
+            }
+        }
         
         public void SetOwner(Enemy owner)
         {

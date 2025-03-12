@@ -48,15 +48,15 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             
             if (Time.time >= _lastAttackTime + _attackCooldown)
             {
-                int attackVariant = GetAttackVariant();
-
                 if (_attackType.Type == AttackType.Melee)
                 {
+                    int attackVariant = GetAttackVariant();
                     _lastAttackTime = Time.time;
                     PerformMeleeAttack(attackVariant);
                 }
                 else if (_attackType.Type == AttackType.Ranged)
                 {
+                    int attackVariant = GetAttackVariant();
                     _lastAttackTime = Time.time;
                     PerformRangedAttack(attackVariant);
                 }
@@ -117,31 +117,63 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         
         private int GetAttackVariant()
         {
-            if (_attackVariants <= 1)
+            if(_attackType.Type == AttackType.Melee)
             {
-                _lastAttackVariant = 1;
+                int meleeVariants = 2;
                 
-                return 1;
-            }
-            
-            if (_lastAttackVariant < 1 || _lastAttackVariant > _attackVariants)
-            {
-                _lastAttackVariant = Random.Range(1, _attackVariants + 1);
+                if (meleeVariants <= 1)
+                {
+                    _lastAttackVariant = 1;
+                    
+                    return 1;
+                }
                 
-                return _lastAttackVariant;
+                if (_lastAttackVariant < 1 || _lastAttackVariant > meleeVariants)
+                {
+                    _lastAttackVariant = Random.Range(1, meleeVariants + 1);
+                    
+                    return _lastAttackVariant;
+                }
+                
+                int randomIndex = Random.Range(0, meleeVariants - 1);
+                int newVariant = randomIndex + 1;
+                
+                if (newVariant >= _lastAttackVariant)
+                {
+                    newVariant++;
+                }
+                
+                _lastAttackVariant = newVariant;
+                
+                return newVariant;
             }
-            
-            int randomIndex = Random.Range(0, _attackVariants - 1);
-            int newVariant = randomIndex + 1;
-            
-            if (newVariant >= _lastAttackVariant)
+            else
             {
-                newVariant++;
+                if (_attackVariants <= 1)
+                {
+                    _lastAttackVariant = 1;
+                    
+                    return 1;
+                }
+                if (_lastAttackVariant < 1 || _lastAttackVariant > _attackVariants)
+                {
+                    _lastAttackVariant = Random.Range(1, _attackVariants + 1);
+                    
+                    return _lastAttackVariant;
+                }
+                
+                int randomIndex = Random.Range(0, _attackVariants - 1);
+                int newVariant = randomIndex + 1;
+                
+                if (newVariant >= _lastAttackVariant)
+                {
+                    newVariant++;
+                }
+                
+                _lastAttackVariant = newVariant;
+                
+                return newVariant;
             }
-            
-            _lastAttackVariant = newVariant;
-            
-            return newVariant;
         }
     }
 }

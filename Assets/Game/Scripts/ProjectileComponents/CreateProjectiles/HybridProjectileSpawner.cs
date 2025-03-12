@@ -24,6 +24,7 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
                 return;
             }
             
+            _currentProjectile.SetColliderActive(false);
             SetStateProjectile(ProjectileSpawnPoint);
         }
     
@@ -34,6 +35,7 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
                 return;
             }
             
+            _currentProjectile.SetColliderActive(true);
             SetStateProjectile(null);
             
             if(TryGetComponent(out Enemy enemy))

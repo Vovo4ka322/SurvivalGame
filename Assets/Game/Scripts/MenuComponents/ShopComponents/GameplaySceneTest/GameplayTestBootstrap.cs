@@ -19,6 +19,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private WaveBasedEnemySpawner _enemySpawner;
         [SerializeField] private PoolManager _pool;
         [SerializeField] private EnemyFactory _enemyFactory;
+        [SerializeField] private SoundCollection _soundCollection;
         
         private Player _player;
         private Canvas _canvas;
@@ -60,7 +61,8 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             
             _virtualCamera.Follow = _player.transform;
             _virtualCamera.LookAt = _player.transform;
-
+            
+            _player.SetSoundCollection(_soundCollection);
             InitPlayerCharacteristics();
             InitUserInterface();
         }
