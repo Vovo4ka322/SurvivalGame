@@ -10,7 +10,7 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
         private BaseProjectile _currentProjectile;
         private SoundCollection _soundCollection;
         
-        public void SetSoundCollection(SoundCollection soundCollection)
+        public void SetSound(SoundCollection soundCollection)
         {
             _soundCollection = soundCollection;
         }

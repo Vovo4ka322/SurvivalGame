@@ -152,12 +152,12 @@ namespace Game.Scripts.EnemyComponents
             
             if (_rangedSpawner != null)
             {
-                _rangedSpawner.SetSoundCollection(soundCollection);
+                _rangedSpawner.SetSound(soundCollection);
             }
     
             if (_hybridSpawner != null)
             {
-                _hybridSpawner.SetSoundCollection(soundCollection);
+                _hybridSpawner.SetSound(soundCollection);
             }
         }
         
