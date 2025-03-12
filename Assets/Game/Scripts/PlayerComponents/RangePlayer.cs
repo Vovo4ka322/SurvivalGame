@@ -45,9 +45,15 @@ namespace Game.Scripts.PlayerComponents
 
         public void Shoot()
         {
+            SoundCollection?.RangedPlayerSoundEffects.PlayShoot();
             _bow.StartShoot(Damage);
         }
-    
+        
+        public void Reload()
+        {
+            SoundCollection?.RangedPlayerSoundEffects.PlayReload();
+        }
+        
         public float SetEvasion(Blur blur) => _evasionChance = blur.Evasion;
 
         public bool TryDodge() => Random.value <= _evasionChance;
@@ -60,8 +66,12 @@ namespace Game.Scripts.PlayerComponents
     
         private void OnHealthRestored()
         {
-            if (IsWorking)
+            SoundCollection?.RangedPlayerSoundEffects.PlayHit();
+
+            if(IsWorking)
+            {
                 AddHealth(Damage * Coefficient);
+            }
         }
     }
 }

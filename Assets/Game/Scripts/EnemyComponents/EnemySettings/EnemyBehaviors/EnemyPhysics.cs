@@ -1,7 +1,7 @@
 using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
-using Game.Scripts.PlayerComponents;
 using Weapons;
+using Weapons.MeleeWeapon;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 {
@@ -29,7 +29,11 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
             {
                 _enemy.ChangeHealth(weapon.TotalDamage);
                 //_enemy.Health.Lose(weapon.TotalDamage);
-
+                
+                if(weapon is Sword sword)
+                {
+                    sword.RegisterHit();
+                }
                 
                 return;
             }

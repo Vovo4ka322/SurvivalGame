@@ -9,7 +9,6 @@ namespace Game.Scripts.EnemyComponents.Animations
             private const string WalkParameter = "isWalk";
             private const string SpawnParameter = "onSpawn";
             private const string DeathParameter = "onDead";
-            private const string HitParameter = "onHit";
             private const string AttackAroundVariant1Parameter = "attackAroundVar1";
             private const string AttackAroundVariant2Parameter = "attackAroundVar2";
             private const string AttackProjectileParameter = "attackProjectile";
@@ -23,7 +22,6 @@ namespace Game.Scripts.EnemyComponents.Animations
             public static readonly int Walking = Animator.StringToHash(WalkParameter);
             public static readonly int Spawning = Animator.StringToHash(SpawnParameter);
             public static readonly int Dead = Animator.StringToHash(DeathParameter);
-            public static readonly int TakeDamage = Animator.StringToHash(HitParameter);
             public static readonly int AttackAroundVariant1 = Animator.StringToHash(AttackAroundVariant1Parameter);
             public static readonly int AttackAroundVariant2 = Animator.StringToHash(AttackAroundVariant2Parameter);
             public static readonly int AttackProjectile = Animator.StringToHash(AttackProjectileParameter);
