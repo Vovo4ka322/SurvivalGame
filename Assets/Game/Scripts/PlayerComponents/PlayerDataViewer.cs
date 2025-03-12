@@ -50,6 +50,6 @@ namespace Game.Scripts.PlayerComponents
         private void ViewHealth(float value) => _healthText.text = value.ToString();
 
         private void OnExperienceChanged(float value) =>
-            _expValueImage.fillAmount = Mathf.InverseLerp(_player.Level.Experience, 0, value);
+            _expValueImage.fillAmount = Mathf.InverseLerp(0, _player.Level.ShowMaxExperienceForLevel(), value);
     }
 }
