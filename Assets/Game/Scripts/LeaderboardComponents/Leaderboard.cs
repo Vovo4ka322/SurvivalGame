@@ -15,7 +15,7 @@ namespace Game.Scripts.LeaderboardComponents
         private const string AnonimDataRu = "??? ??????";
         private const string AnonimDataEn = "No data";
         private const string AnonimDataTr = "Veri yok";
-        private const string AnonimNameRu = "?????????";
+        private const string AnonimNameRu = "??????";
         private const string AnonimNameEn = "Anonymous";
         private const string AnonimNameTr = "Anonim";
         

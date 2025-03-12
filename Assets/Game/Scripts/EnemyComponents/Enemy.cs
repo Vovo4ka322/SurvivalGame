@@ -209,6 +209,7 @@ namespace Game.Scripts.EnemyComponents
             {
                 _playerTransform.GetExperience(_data.Experience);
                 _playerTransform.GetMoney(_data.Money);
+                _playerTransform.AddPoints(_data.Points);
             }
 
             Dead?.Invoke(this);
