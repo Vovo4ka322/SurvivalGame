@@ -12,8 +12,8 @@ namespace Game.Scripts.PlayerComponents
 
         private float _evasionChance;
 
-        public float Damage {  get; private set; }
-    
+        public float Damage { get; private set; }
+
         public float Coefficient { get; private set; }
 
         public bool IsWorking { get; private set; }
@@ -26,9 +26,9 @@ namespace Game.Scripts.PlayerComponents
         private void Start()
         {
             ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
-            Damage = GeneralDamage + _bow.BowData.Damage;           
+            Damage = GeneralDamage + _bow.BowData.Damage;
         }
-    
+
         private void OnDisable()
         {
             _bow.ArrowTouched -= OnHealthRestored;
@@ -47,21 +47,25 @@ namespace Game.Scripts.PlayerComponents
         {
             _bow.StartShoot(Damage);
         }
-    
+
         public float SetEvasion(Blur blur) => _evasionChance = blur.Evasion;
 
         public bool TryDodge() => Random.value <= _evasionChance;
-    
+
         public void SetCoefficient(float value) => Coefficient = value;
-    
+
         public bool SetTrueVampirismState() => IsWorking = true;
-    
+
         public bool SetFalseVampirismState() => IsWorking = false;
-    
+
         private void OnHealthRestored()
         {
             if (IsWorking)
+            {
                 AddHealth(Damage * Coefficient);
+                Debug.Log(Damage * Coefficient + " Damage * Coefficient");
+            }
+
         }
     }
 }

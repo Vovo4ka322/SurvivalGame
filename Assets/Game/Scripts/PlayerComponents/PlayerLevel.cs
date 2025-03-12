@@ -15,7 +15,7 @@ namespace Game.Scripts.PlayerComponents
 
         public event Action LevelChanged;
 
-        public int Experience { get; private set; }
+        [field: SerializeField] public int Experience { get; private set; }
 
         public void Init()
         {
@@ -26,6 +26,8 @@ namespace Game.Scripts.PlayerComponents
                 _levelRequirements.Add(i + 1, _requireExperience.ExperienceQuntity[i]);
             }
         }
+
+        public int ShowMaxExperienceForLevel() => _requireExperience.ExperienceQuntity[_level];
 
         public void GainExperience(int amount)
         {
