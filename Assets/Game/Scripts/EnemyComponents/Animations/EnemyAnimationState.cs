@@ -75,14 +75,6 @@ namespace Game.Scripts.EnemyComponents.Animations
             }
         }
         
-        public void TakeHit()
-        {
-            if(ParameterExists(AnimationDataParamsEnemy.Params.TakeDamage))
-            {
-                _animator.SetTrigger(AnimationDataParamsEnemy.Params.TakeDamage);
-            }
-        }
-        
         public void Death()
         {
             if(ParameterExists(AnimationDataParamsEnemy.Params.Walking))
@@ -133,8 +125,11 @@ namespace Game.Scripts.EnemyComponents.Animations
             foreach (var parameter in _animator.parameters)
             {
                 if (parameter.nameHash == hash)
+                {
                     return true;
+                }
             }
+            
             return false;
         }
     }

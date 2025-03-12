@@ -4,7 +4,6 @@ namespace Game.Scripts.EnemyComponents.Interfaces
     {
         public void Spawn();
         public void Move(bool isMoving);
-        public void TakeHit();
         public void Death();
         public void Attack(int attackVariant);
         public void ResetAttackState();
