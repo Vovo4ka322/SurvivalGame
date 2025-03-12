@@ -19,6 +19,7 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Image _victoryPanel;
 
         private Player _player;
+        private bool _isPause;
 
         private void OnEnable()
         {
@@ -83,6 +84,11 @@ namespace Game.Scripts.MenuComponents
             _victoryPanel.gameObject.SetActive(true);
         }
 
+        private void CallAd()
+        {
+            YandexGame.FullscreenShow();
+        }
+
         private void ExitToMenu()
         {
             Time.timeScale = 1.0f;
@@ -94,43 +100,29 @@ namespace Game.Scripts.MenuComponents
             CallAd();
             Time.timeScale = 0;
 
-            if (_defeatPanel != null)
-            {
-                _defeatPanel.gameObject.SetActive(true);
-            }
+            _defeatPanel.gameObject.SetActive(true);
+            _continueButton.interactable = false;
 
-            if (_continueButton != null)
-            {
-                _continueButton.interactable = false;
-            }
         }
 
         private void OnPauseButtonClicked()
         {
-            Time.timeScale = 0;
+            CallAd();
 
-            if (_pausePanel != null)
-            {
-                _pausePanel.gameObject.SetActive(true);
-                CallAd();
-            }
+            _pausePanel.gameObject.SetActive(true);
+            _continueButton.interactable = true;
 
-            if (_continueButton != null)
-            {
-                _continueButton.interactable = true;
-            }
+            _isPause = true;
+
+            if (_isPause)
+                Time.timeScale = 0;
         }
 
         private void OnContinueButtonClicked()
         {
             Time.timeScale = 1.0f;
-
-            if (_pausePanel != null)
-            {
-                _pausePanel.gameObject.SetActive(false);
-            }
+            _pausePanel.gameObject.SetActive(false);
+            _isPause = false;
         }
-
-        private void CallAd() => YandexGame.FullscreenShow();
     }
 }
