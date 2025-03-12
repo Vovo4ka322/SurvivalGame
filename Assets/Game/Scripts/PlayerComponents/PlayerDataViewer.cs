@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace Game.Scripts.PlayerComponents
 {
     public class PlayerDataViewer : MonoBehaviour
     {
         [SerializeField] private Image _healthValueImage;
-        [SerializeField] private Image _ExpValueImage;
+        [SerializeField] private Image _expValueImage;
 
         [SerializeField] private Text _moneyText;
         [SerializeField] private Text _healthText;
@@ -51,6 +50,6 @@ namespace Game.Scripts.PlayerComponents
         private void ViewHealth(float value) => _healthText.text = value.ToString();
 
         private void OnExperienceChanged(float value) =>
-            _ExpValueImage.fillAmount = Mathf.InverseLerp(_player.Level.Experience, 0, value);
+            _expValueImage.fillAmount = Mathf.InverseLerp(_player.Level.Experience, 0, value);
     }
 }
