@@ -73,7 +73,10 @@ namespace Ability.ArcherAbilities.Multishot
         private void CalculateArrowFlight(float value)
         {
             if (_arrow != null)
+            {
+                Debug.Log(1);
                 _arrow.Touched -= _bow.OnTouched;
+            }
 
             int coefficient = 2;
             int oneArrow = 1;
@@ -89,6 +92,7 @@ namespace Ability.ArcherAbilities.Multishot
                 arrow.StartFly(Quaternion.Euler(0, tempRotation, 0) * -_bow.StartPointToFly.forward, _bow.StartPointToFly.position);
                 arrow.Weapon.SetTotalDamage(value);
                 _arrow = arrow;
+                Debug.Log(2);
                 _arrow.Touched += _bow.OnTouched;
             }
         }

@@ -31,6 +31,7 @@ namespace Weapons.RangedWeapon
 
         public void OnTouched()
         {
+            Debug.Log("OnTouched()");
             ArrowTouched?.Invoke();
         }
 
@@ -43,12 +44,16 @@ namespace Weapons.RangedWeapon
             if (IsActiveState == false)
             {
                 if (_arrow != null)
+                {
+                    Debug.Log(3);
                     _arrow.Touched -= OnTouched;
+                }
 
                 Arrow arrow = _arrowSpawner.Spawn(_bowData.ArrowFlightSpeed, _bowData.AttackRadius);
                 arrow.StartFly(StartPointToFly.forward, StartPointToFly.position);
                 _arrow = arrow;
                 _arrow.Weapon.SetTotalDamage(value);
+                Debug.Log(4);
                 _arrow.Touched += OnTouched;
             }
         }
