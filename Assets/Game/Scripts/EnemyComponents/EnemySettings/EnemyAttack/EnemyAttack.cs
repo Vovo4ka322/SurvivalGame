@@ -107,6 +107,11 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 
         private void PerformMeleeAttack(int attackVariant)
         {
+            if(_enemy.Data.EnemyType == EnemyType.Boss && attackVariant == 2)
+            {
+                _enemy.LockTargetPosition(_player.transform.position);
+            }
+            
             _animationState.Attack(attackVariant);
         }
 

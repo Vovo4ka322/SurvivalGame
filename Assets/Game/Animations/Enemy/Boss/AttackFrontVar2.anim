@@ -88124,7 +88124,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.8333334
-    functionName: DealRadialDamage1
+    functionName: DealDirectDamage
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

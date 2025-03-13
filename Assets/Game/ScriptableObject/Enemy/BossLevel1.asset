@@ -49,17 +49,17 @@ MonoBehaviour:
         _attackEffect1:
           _effect: {fileID: 3407604102439438465, guid: 38874cea95e81344f8628e064bbef63e, type: 3}
           _positionOffset: {x: 0, y: 0.35, z: 1}
-          _scale: {x: 2.5, y: 2.5, z: 4}
+          _scale: {x: 3, y: 4, z: 6}
           _rotationOffset: {x: 0, y: 180, z: 0}
         _attackEffect2:
           _effect: {fileID: 4629116891520832364, guid: 15a2a89b5459d534894b0f7b460682f4, type: 3}
           _positionOffset: {x: 0.15, y: 0.05, z: 0.46}
-          _scale: {x: 2, y: 2, z: 2}
+          _scale: {x: 2.5, y: 1.5, z: 3}
           _rotationOffset: {x: 0, y: 180, z: 0}
         _attackEffect3:
           _effect: {fileID: 7342527539885507725, guid: 95d5266d3d5c14f619ea4c68bade048b, type: 3}
           _positionOffset: {x: 0, y: 0.05, z: 0}
-          _scale: {x: 2, y: 2, z: 2}
+          _scale: {x: 3.5, y: 2, z: 3.5}
           _rotationOffset: {x: 0, y: 0, z: 0}
         _attackEffect4:
           _effect: {fileID: 0}
@@ -67,4 +67,3 @@ MonoBehaviour:
           _scale: {x: 0, y: 0, z: 0}
           _rotationOffset: {x: 0, y: 0, z: 0}
         _meleeRange: 6
-        _rangedRange: 6

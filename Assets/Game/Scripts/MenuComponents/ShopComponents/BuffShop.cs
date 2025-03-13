@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
+using TMPro;
 
 namespace Game.Scripts.MenuComponents.ShopComponents
 {
@@ -23,15 +24,15 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         
         [Header("Text and button of purchase of every buffs buttons")]
         [SerializeField] private Button _healthBuffPurchaseButton;
-        [SerializeField] private Text _healthBuffDescription;
+        [SerializeField] private TextMeshProUGUI _healthBuffDescription;
         [SerializeField] private Button _armorBuffPurchaseButton;
-        [SerializeField] private Text _armorBuffDescription;
+        [SerializeField] private TextMeshProUGUI _armorBuffDescription;
         [SerializeField] private Button _damageBuffPurchaseButton;
-        [SerializeField] private Text _damageBuffDescription;
+        [SerializeField] private TextMeshProUGUI _damageBuffDescription;
         [SerializeField] private Button _attackSpeedBuffPurchaseButton;
-        [SerializeField] private Text _attackSpeedBuffDescription;
+        [SerializeField] private TextMeshProUGUI _attackSpeedBuffDescription;
         [SerializeField] private Button _movementSpeedBuffPurchaseButton;
-        [SerializeField] private Text _movementSpeedBuffDescription;
+        [SerializeField] private TextMeshProUGUI _movementSpeedBuffDescription;
         
         [SerializeField] private int _healthBuffPrice;
         [SerializeField] private int _armorBuffPrice;
@@ -49,7 +50,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         private IDataSaver _iDataSaver;
         private PlayerCharacteristicData _calculationFinalValue;
         private Dictionary<int, Button> _purchaseButtons;
-        private Dictionary<int, Text> _purchaseTexts;
+        private Dictionary<int, TextMeshProUGUI> _purchaseTexts;
         
         private int _healthBuffCounter;
         private int _armorBuffCounter;
@@ -262,13 +263,13 @@ namespace Game.Scripts.MenuComponents.ShopComponents
             Activate(_movementSpeedBuffPurchaseButton, _movementSpeedBuffDescription);
         }
         
-        private void Activate(Button button, Text text)
+        private void Activate(Button button, TextMeshProUGUI text)
         {
             button.gameObject.SetActive(true);
             text.gameObject.SetActive(true);
         }
         
-        private void Deactivate(Button button, Text text)
+        private void Deactivate(Button button, TextMeshProUGUI text)
         {
             button.gameObject.SetActive(false);
             text.gameObject.SetActive(false);

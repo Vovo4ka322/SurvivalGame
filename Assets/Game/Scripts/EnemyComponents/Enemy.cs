@@ -23,6 +23,7 @@ namespace Game.Scripts.EnemyComponents
         
         private Player _playerTransform;
         private Vector3 _targetPosition;
+        private Vector3 _lockedTargetPosition = Vector3.zero;
         
         private Animator _animator;
         private Coroutine _movementCoroutine;     
@@ -196,6 +197,21 @@ namespace Game.Scripts.EnemyComponents
         public void AttackAnimationEnd()
         {
             AnimationAnimationState?.ResetAttackState();
+            
+            if (_data.EnemyType == EnemyType.Boss)
+            {
+                ClearLockedTargetPosition();
+            }
+        }
+        
+        public void LockTargetPosition(Vector3 position)
+        {
+            _lockedTargetPosition = position;
+        }
+
+        public void ClearLockedTargetPosition()
+        {
+            _lockedTargetPosition = Vector3.zero;
         }
         
         public void OnDeathAnimationEvent()
@@ -255,19 +271,35 @@ namespace Game.Scripts.EnemyComponents
                 return;
             }
 
-            _rotation.RotateTowards(_playerTransform.transform.position);
+            if(_data.EnemyType != EnemyType.Boss || _lockedTargetPosition == Vector3.zero)
+            {
+                _rotation.RotateTowards(_playerTransform.transform.position);
+            }
 
             if (!_spawnCompleted || AnimationAnimationState.IsAttacking)
             {
                 _movement.Stop();
                 return;
             }
+
+            Vector3 targetPosition;
             
-            Vector3 transformPosition = (_data.BaseAttackType.Type == AttackType.Boss) ? _playerTransform.transform.position : ((_data.BaseAttackType.Type == AttackType.Hybrid) ? _playerTransform.transform.position : (_targetPosition == Vector3.zero ? _playerTransform.transform.position : _targetPosition));
+            if(_data.BaseAttackType.Type == AttackType.Boss)
+            {
+                targetPosition = (_lockedTargetPosition != Vector3.zero) ? _lockedTargetPosition : _playerTransform.transform.position;
+            }
+            else if(_data.BaseAttackType.Type == AttackType.Hybrid)
+            {
+                targetPosition = _playerTransform.transform.position;
+            }
+            else
+            {
+                targetPosition = (_targetPosition == Vector3.zero) ? _playerTransform.transform.position : _targetPosition;
+            }
             
             if (_agent.isActiveAndEnabled)
             {
-                _movement.ProcessMovement(transformPosition, _spawnCompleted, AnimationAnimationState.IsAttacking);
+                _movement.ProcessMovement(targetPosition, _spawnCompleted, AnimationAnimationState.IsAttacking);
                 _movement.StartMoving();
             }
             else
@@ -297,8 +329,6 @@ namespace Game.Scripts.EnemyComponents
                     BossEnemyAttackType boss = _data.BaseAttackType as BossEnemyAttackType;
                     Gizmos.color = Color.red;
                     Gizmos.DrawWireSphere(transform.position, boss.MeleeRange);
-                    Gizmos.color = Color.blue;
-                    Gizmos.DrawWireSphere(transform.position, boss.RangedRange);
                 }
                 else
                 {

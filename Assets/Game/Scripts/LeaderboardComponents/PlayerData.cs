@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Game.Scripts.LeaderboardComponents
 {
     public class PlayerData : MonoBehaviour
     {
-        [SerializeField] private Text _rankText;
-        [SerializeField] private Text _nameText;
-        [SerializeField] private Text _scoreText;
+        [SerializeField] private TextMeshProUGUI _rankText;
+        [SerializeField] private TextMeshProUGUI _nameText;
+        [SerializeField] private TextMeshProUGUI _scoreText;
         [SerializeField] private Image _marker;
         
         private string _rank;

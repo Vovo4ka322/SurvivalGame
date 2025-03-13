@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.WalletComponents
 {
     public class WalletView : MonoBehaviour
     {
-        [SerializeField] private Text _value;
+        [SerializeField] private TextMeshProUGUI _value;
 
         private Wallet _wallet;
 

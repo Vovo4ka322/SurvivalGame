@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Game.Scripts.PlayerComponents
 {
@@ -8,8 +9,8 @@ namespace Game.Scripts.PlayerComponents
         [SerializeField] private Image _healthValueImage;
         [SerializeField] private Image _expValueImage;
 
-        [SerializeField] private Text _moneyText;
-        [SerializeField] private Text _healthText;
+        [SerializeField] private TextMeshProUGUI _moneyText;
+        [SerializeField] private TextMeshProUGUI _healthText;
 
         private Player _player;
 

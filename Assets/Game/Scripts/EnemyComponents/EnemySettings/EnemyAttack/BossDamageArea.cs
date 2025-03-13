@@ -103,7 +103,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             }
         }
 
-        private void OnDrawGizmosSelected()
+        /*private void OnDrawGizmosSelected()
         {
             if(_directAttackPoint != null)
             {
@@ -124,6 +124,6 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 Gizmos.color = Color.magenta;
                 Gizmos.DrawWireSphere(_areaAttackPoint2.position, _areaDamageRadius2);
             }
-        }
+        }*/
     }
 }

@@ -2,13 +2,14 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
 {
     public class BuyButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
-        [SerializeField] private Text _text;
+        [SerializeField] private TextMeshProUGUI _text;
 
         [SerializeField] private Color _lockColor;
         [SerializeField] private Color _unlockColor;
