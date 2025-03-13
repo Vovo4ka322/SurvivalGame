@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335310467eb7d40479c58fe2ff422585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <WeaponData>k__BackingField: {fileID: 11400000, guid: 1f9129e463406ae42ba136861b885994,
-    type: 2}
+  <WeaponData>k__BackingField: {fileID: 11400000, guid: 1f9129e463406ae42ba136861b885994, type: 2}
+  <TotalDamage>k__BackingField: 0
 --- !u!114 &-4308487182582717776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,4 +163,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1627498e8d0606648a6be72f8fc87216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ArrowData>k__BackingField: {fileID: 11400000, guid: 1f9129e463406ae42ba136861b885994, type: 2}
   <Weapon>k__BackingField: {fileID: -492450486318325092}

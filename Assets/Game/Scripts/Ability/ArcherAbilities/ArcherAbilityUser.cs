@@ -54,6 +54,8 @@ namespace Ability.ArcherAbilities
                 { _secondLevel, _abilityDataSecondLevel },
                 { _thirdLevel, _abilityDataThirdLevel }
             };
+
+            _multishot.SetHandler(_player);
         }
 
         private void OnEnable()

@@ -5,7 +5,7 @@ using Weapons.RangedWeapon;
 
 namespace Game.Scripts.PlayerComponents
 {
-    public class RangePlayer : Player, IVampirismable, IEvasionable, IDamagable
+    public class RangePlayer : Player, IVampirismable, IEvasionable, IDamagable, IEnemyHitHandler
     {
         [SerializeField] private Collider _collider;
         [SerializeField] private Bow _bow;
@@ -18,20 +18,11 @@ namespace Game.Scripts.PlayerComponents
 
         public bool IsWorking { get; private set; }
 
-        private void OnEnable()
-        {
-            _bow.ArrowTouched += OnHealthRestored;
-        }
-
         private void Start()
         {
             ChangeAttackAnimationSpeed(AnimatorState.Speed, GeneralAttackSpeed);
             Damage = GeneralDamage + _bow.BowData.Damage;
-        }
-        
-        private void OnDisable()
-        {
-            _bow.ArrowTouched -= OnHealthRestored;
+            _bow.SetHandler(this);
         }
 
         public void TakeDamage(float value)
@@ -64,7 +55,7 @@ namespace Game.Scripts.PlayerComponents
         
         public bool SetFalseVampirismState() => IsWorking = false;
         
-        private void OnHealthRestored()
+        public void OnHealthRestored()
         {
             SoundCollection?.RangedPlayerSoundEffects.PlayHit();
             
@@ -75,4 +66,9 @@ namespace Game.Scripts.PlayerComponents
             }
         }
     }
+}
+
+public interface IEnemyHitHandler
+{
+    public void OnHealthRestored();
 }

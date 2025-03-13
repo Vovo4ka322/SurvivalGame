@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Game.Scripts.Interfaces;
+using UnityEngine.UIElements;
 
 namespace Weapons.RangedWeapon
 {
@@ -9,9 +10,7 @@ namespace Weapons.RangedWeapon
         [SerializeField] private NewArrowSpawner _arrowSpawner;
         [SerializeField] private ArrowData _bowData;
 
-        private Arrow _arrow;
-
-        public event Action ArrowTouched;
+        private IEnemyHitHandler _enemyHitHandler;
 
         [field: SerializeField] public Transform StartPointToFly { get; private set; }
 
@@ -19,20 +18,14 @@ namespace Weapons.RangedWeapon
 
         public bool IsActiveState { get; private set; }
 
-        public void ArrowSetTotalDamage(float value)
-        {
-            _arrow.Weapon.SetTotalDamage(value);
-        }
-
         public void StartShoot(float value)
         {
             Shoot(value);
         }
 
-        public void OnTouched()
+        public void SetHandler(IEnemyHitHandler enemyHitHandler)
         {
-            Debug.Log("OnTouched()");
-            ArrowTouched?.Invoke();
+            _enemyHitHandler = enemyHitHandler;
         }
 
         public bool SetTrueActiveState() => IsActiveState = true;
@@ -43,18 +36,10 @@ namespace Weapons.RangedWeapon
         {
             if (IsActiveState == false)
             {
-                if (_arrow != null)
-                {
-                    Debug.Log(3);
-                    _arrow.Touched -= OnTouched;
-                }
-
-                Arrow arrow = _arrowSpawner.Spawn(_bowData.ArrowFlightSpeed, _bowData.AttackRadius);
+                Arrow arrow = _arrowSpawner.Spawn();
                 arrow.StartFly(StartPointToFly.forward, StartPointToFly.position);
-                _arrow = arrow;
-                _arrow.Weapon.SetTotalDamage(value);
-                Debug.Log(4);
-                _arrow.Touched += OnTouched;
+                arrow.SetHandler(_enemyHitHandler);
+                arrow.Weapon.SetTotalDamage(value);
             }
         }
     }
