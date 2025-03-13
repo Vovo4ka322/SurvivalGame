@@ -1,19 +1,38 @@
 using UnityEngine;
 using Game.Scripts.PoolComponents;
+using System.Collections.Generic;
 
 namespace Weapons.RangedWeapon
 {
-    public class NewArrowSpawner : MonoBehaviour
+    public class NewArrowSpawner : MonoBehaviour, IArrowPoolReturner
     {
-        [SerializeField] private Pool<Arrow> _pool;
+        [SerializeField] private Arrow _arrowPrefab;
+        [SerializeField] private PoolSettings _poolSettings;
 
-        public Arrow Spawn(float arrowFlightSpeed, float flightRadius)
+        private ArrowPool _arrowPool;
+
+        private void Awake()
         {
-            Arrow arrow = _pool.Get(transform, transform.rotation);
-            arrow.gameObject.SetActive(true);
-            arrow.Init(arrowFlightSpeed, flightRadius, _pool);
+            _arrowPool = new(_arrowPrefab, _poolSettings, null);
+        }
+
+        public Arrow Spawn()
+        {
+            Arrow arrow = _arrowPool.Get();
+            arrow.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            arrow.SetReturner(this);
 
             return arrow;
         }
+
+        public void OnPoolReturned(Arrow arrow)
+        {
+            _arrowPool.Release(arrow);
+        }
     }
+}
+
+public interface IArrowPoolReturner
+{
+    public void OnPoolReturned(Arrow arrow);
 }
