@@ -250,6 +250,7 @@ namespace Game.Scripts.EnemyComponents
             }
             
             _isDying = true;
+            _hybridSpawner?.CancelPreparedProjectile();
             _enemyEffects.StopSpawn();
             _coroutineRunner.StopCoroutine(_movementCoroutine);
             _movementCoroutine = null;

@@ -1070,8 +1070,8 @@ MonoBehaviour:
   _enemyFactory: {fileID: 402861276}
   _defaultPoolSettings:
     _collectionCheck: 0
-    _initialCapacity: 10
-    _maxPoolSize: 20
+    _initialCapacity: 20
+    _maxPoolSize: 30
   _enemyDatas:
   - {fileID: 11400000, guid: 66fe777a9c42db8489800d8c69715a9d, type: 2}
   - {fileID: 11400000, guid: 1d2a4914505bf4da4aed0586932c8386, type: 2}
@@ -3726,8 +3726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameSceneAudio: {fileID: 1571634972}
   _easyEnemyDatas:
-  - {fileID: 11400000, guid: 66fe777a9c42db8489800d8c69715a9d, type: 2}
-  - {fileID: 11400000, guid: 1d2a4914505bf4da4aed0586932c8386, type: 2}
+  - {fileID: 11400000, guid: 4d99cb5518c20024cb65767693d64194, type: 2}
   _mediumEnemyDatas:
   - {fileID: 11400000, guid: 6278b9a0fd2da4be390c30cd44583b48, type: 2}
   - {fileID: 11400000, guid: 3b11b2457a8ca8847b33c18fa55523f5, type: 2}
@@ -3973,10 +3972,10 @@ RectTransform:
   - {fileID: 400726676}
   m_Father: {fileID: 962077159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.027, y: 0.80100006}
-  m_AnchorMax: {x: 0.18100001, y: 0.8905928}
-  m_AnchoredPosition: {x: -3.2999268, y: 1.2766724}
-  m_SizeDelta: {x: 7, y: 1.6341553}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -120}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1538437607
 MonoBehaviour:

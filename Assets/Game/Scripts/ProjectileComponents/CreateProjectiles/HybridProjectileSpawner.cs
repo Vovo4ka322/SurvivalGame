@@ -14,9 +14,23 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
         {
             _soundCollection = soundCollection;
         }
-
+        
+        public void CancelPreparedProjectile()
+        {
+            if(_currentProjectile != null)
+            {
+                _currentProjectile.ExplodeAndReturn();
+                _currentProjectile = null;
+            }
+        }
+        
         public void PrepareStone()
         {
+            if (_currentProjectile != null && _currentProjectile.gameObject.activeSelf)
+            {
+                return;
+            }
+            
             _currentProjectile = Create();
             
             if(_currentProjectile == null)

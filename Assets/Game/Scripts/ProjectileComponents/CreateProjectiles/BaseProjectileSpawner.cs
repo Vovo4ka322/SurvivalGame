@@ -54,7 +54,6 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
             projectile.transform.rotation = _projectileSpawnPoint.rotation;
             projectile.transform.localScale = _projectileSpawnPoint.localScale;
             projectile.gameObject.SetActive(true);
-            
             return projectile;
         }
         
