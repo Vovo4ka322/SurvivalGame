@@ -65,10 +65,7 @@ namespace Game.Scripts.ProjectileComponents
         
         public void PlayEffects()
         {
-            if(_projectileEffectPrefab != null)
-            {
-                _projectileEffectPrefab.Play();
-            }
+            _projectileEffectPrefab?.Play();
         }
         
         protected void InitializeProjectile(IProjectileMovement movement, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler, float lifetime)
@@ -87,17 +84,22 @@ namespace Game.Scripts.ProjectileComponents
             PlayEffects();
         }
         
+        private void ResetState()
+        {
+            transform.SetParent(null);
+            transform.localScale = Vector3.one;
+            _movementStrategy?.Stop();
+            SetColliderActive(false);
+            Owner = null;
+            _projectileController?.ResetController();
+        }
+        
         private void ReturnToPool()
         {
-            _projectileEffectPrefab.Stop();
-            _movementStrategy?.Stop();
-            
-            transform.localScale = Vector3.one;
-
-            if(Pool != null)
-            {
-                Pool.Release(this);
-            }
+            _projectileEffectPrefab?.Stop();
+            ResetState();
+            Pool?.Release(this);
+            gameObject.SetActive(false);
         }
     }
 }

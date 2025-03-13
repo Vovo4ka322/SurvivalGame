@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.Common
 {
     public class ValueView<T> : MonoBehaviour where T : IConvertible
     {
-        [SerializeField] private Text _text;
+        [SerializeField] private TextMeshProUGUI _text;
 
         public void Show(T value)
         {

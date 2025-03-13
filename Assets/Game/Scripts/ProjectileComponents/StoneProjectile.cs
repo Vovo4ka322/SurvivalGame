@@ -6,12 +6,11 @@ namespace Game.Scripts.ProjectileComponents
 {
     public class StoneProjectile : BaseProjectile
     {
-        private readonly IProjectileMovement _movement = new StoneMovement();
-        
         public override void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler)
         {
+            IProjectileMovement movement = new StoneMovement();
             Pool = pool;
-            InitializeProjectile(_movement, pool, explosionHandler, ConfiguredLifetime);
+            InitializeProjectile(movement, pool, explosionHandler, ConfiguredLifetime);
             LaunchProjectile(targetPosition);
         }
     }

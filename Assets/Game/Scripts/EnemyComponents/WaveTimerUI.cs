@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 namespace Game.Scripts.EnemyComponents
 {
@@ -8,9 +8,9 @@ namespace Game.Scripts.EnemyComponents
         private const string NameLastWave = "Босс";
         
         [SerializeField] private WaveCycle _waveCycle;
-        [SerializeField] private Text _timerText;
-        [SerializeField] private Text _waveLabel;
-        [SerializeField] private Text _bossText;
+        [SerializeField] private TextMeshProUGUI _timerText;
+        [SerializeField] private TextMeshProUGUI _waveLabel;
+        [SerializeField] private TextMeshProUGUI _bossText;
         
         private float _time;
         private bool _isRunning;

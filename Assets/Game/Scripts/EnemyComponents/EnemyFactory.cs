@@ -47,13 +47,13 @@ namespace Game.Scripts.EnemyComponents
             }
         }
 
-        public void SpawnEnemy(EnemyData enemyData, Vector3 position, Quaternion rotation, Player player)
+        public Enemy SpawnEnemy(EnemyData enemyData, Vector3 position, Quaternion rotation, Player player)
         {
             EnemyPool pool;
 
             if (enemyData == null || !CanSpawnMore)
             {
-                return;
+                return null;
             }
 
             if (!_enemyPools.TryGetValue(enemyData, out pool))
@@ -66,7 +66,7 @@ namespace Game.Scripts.EnemyComponents
 
             if (enemyInstance == null)
             {
-                return;
+                return null;
             }
             
             float sampleRadius = 10f;
@@ -92,6 +92,8 @@ namespace Game.Scripts.EnemyComponents
             enemyInstance.TurnOnAgent();
             enemyInstance.Enabled += OnEnemyEnabled;
             enemyInstance.Dead += OnEnemyDisabled;
+            
+            return enemyInstance;
         }
 
         private void OnEnemyEnabled(Enemy enemy)

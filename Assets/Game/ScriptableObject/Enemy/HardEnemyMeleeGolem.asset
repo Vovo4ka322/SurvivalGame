@@ -24,7 +24,7 @@ MonoBehaviour:
   _rotationSpeed: 100
   _experience: 40
   _gold: 3
-  _points: 0
+  _points: 20
   _spawnEffect:
     _effect: {fileID: 4684349252908813259, guid: 3dd5ac5b63b86814db5023e5d0d00f3c, type: 3}
     _positionOffset: {x: 0, y: 0.3, z: 0}

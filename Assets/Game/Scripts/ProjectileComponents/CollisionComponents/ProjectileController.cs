@@ -43,5 +43,11 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
                 _projectile.Move();
             }
         }
+        
+        public void ResetController()
+        {
+            _isLaunched = false;
+            _lifeTimer = 0f;
+        }
     }
 }

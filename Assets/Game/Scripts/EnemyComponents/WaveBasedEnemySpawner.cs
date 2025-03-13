@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.Interfaces;
+using Game.Scripts.HealthComponents;
 using Game.Scripts.MusicComponents;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
@@ -17,6 +18,7 @@ namespace Game.Scripts.EnemyComponents
         [SerializeField] private EnemyData[] _mediumEnemyDatas;
         [SerializeField] private EnemyData[] _hardEnemyDatas;
         [SerializeField] private EnemyData _bossEnemyData;
+        [SerializeField] private BossHealthViewer _bossHealthViewer;
         
         [Header("Spawn References")]
         [SerializeField] private Transform[] _spawnPoints;
@@ -99,7 +101,13 @@ namespace Game.Scripts.EnemyComponents
             
             if (_bossSpawnPoint != null && _bossEnemyData != null)
             {
-                _poolManager.EnemyFactory.SpawnEnemy(_bossEnemyData, _bossSpawnPoint.position, _bossSpawnPoint.rotation, _player);
+                Enemy boss = _poolManager.EnemyFactory.SpawnEnemy(_bossEnemyData, _bossSpawnPoint.position, _bossSpawnPoint.rotation, _player);
+                
+                if (_bossHealthViewer != null)
+                {
+                    _bossHealthViewer.gameObject.SetActive(true);
+                    _bossHealthViewer.Set(boss);
+                }
             }
             
             _gameSceneAudio.SwitchToBossMusic();

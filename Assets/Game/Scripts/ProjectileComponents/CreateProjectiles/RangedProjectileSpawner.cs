@@ -8,7 +8,7 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
     {
         private SoundCollection _soundCollection;
 
-        public void SetSoundCollection(SoundCollection collection)
+        public void SetSound(SoundCollection collection)
         {
             _soundCollection = collection;
         }
