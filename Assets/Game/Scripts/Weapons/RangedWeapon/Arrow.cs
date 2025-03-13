@@ -8,22 +8,32 @@ using Weapons;
 public class Arrow : MonoBehaviour
 {
     private Vector3 _direction;
-    private IPoolReciver<Arrow> _poolReciver;
     private Coroutine _coroutine;
-    private float _speedFlight;
-    private float _radius;
+    private IArrowPoolReturner _arrowPool;
+    private IEnemyHitHandler _enemyHitHandler;
 
-    public event Action Touched;
+    [field: SerializeField] public ArrowData ArrowData { get; private set; }
 
-    [field: SerializeField] public Weapon Weapon {  get; private set; }
+    [field: SerializeField] public Weapon Weapon { get; private set; }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Enemy _))
         {
-            ReturnToPool();
-            Touched?.Invoke();
+            _enemyHitHandler.OnHealthRestored();
         }
+
+        _arrowPool.OnPoolReturned(this);
+    }
+
+    public void SetReturner(IArrowPoolReturner arrowPoolReturner)
+    {
+        _arrowPool = arrowPoolReturner;
+    }
+
+    public void SetHandler(IEnemyHitHandler enemyHitHandler)
+    {
+        _enemyHitHandler = enemyHitHandler;
     }
 
     public void StartFly(Vector3 direction, Vector3 position)
@@ -35,28 +45,19 @@ public class Arrow : MonoBehaviour
         _coroutine = StartCoroutine(Fly());
     }
 
-    public void Init(float speedFlight, float radius, IPoolReciver<Arrow> arrowPool)
-    {
-        _speedFlight = speedFlight;
-        _radius = radius;
-        _poolReciver = arrowPool;
-    }
-
     private IEnumerator Fly()
     {
         float distanceTravelled = 0;
 
-        while (distanceTravelled < _radius)
+        while (distanceTravelled < ArrowData.AttackRadius)
         {
-            float step = _speedFlight * Time.deltaTime;
+            float step = ArrowData.ArrowFlightSpeed * Time.deltaTime;
             transform.position += _direction * step;
             distanceTravelled += step;
 
             yield return null;
         }
 
-        ReturnToPool();
+        _arrowPool.OnPoolReturned(this);
     }
-
-    private void ReturnToPool() => _poolReciver.Release(this);
 }
