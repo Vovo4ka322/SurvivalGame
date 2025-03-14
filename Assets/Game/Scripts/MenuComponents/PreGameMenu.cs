@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Game.Scripts.MusicComponents;
 using YG;
 
 namespace Game.Scripts.MenuComponents
@@ -10,7 +11,8 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private MainMenu _mainMenu;
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _returnToMainMenuButton;
-
+        [SerializeField] private GameAudioPlayback _mainMenuAudio;
+        
         private void OnEnable()
         {
             _playButton.onClick.AddListener(OnPlayClick);
@@ -31,6 +33,13 @@ namespace Game.Scripts.MenuComponents
         private void OnPlayClick()
         {
             YandexGame.FullscreenShow();
+
+            if(_mainMenuAudio != null)
+            {
+                _mainMenuAudio.StopBackgroundMusic();
+                Destroy(_mainMenuAudio.gameObject); 
+            }
+            
             SceneManager.LoadScene(1);
         }
 

@@ -5,11 +5,8 @@ namespace Game.Scripts.MusicComponents
 {
     public class SoundMixerSettings : MonoBehaviour
     {
-        private const string AllVolumeParam = "AllSoundVolume";
-        private const string MusicVolumeParam = "MusicVolume";
-        private const string EffectsVolumeParam = "EffectsVolume";
-        
-        [SerializeField] private GameAudioPlayback _gameAudioPlayback;
+        [SerializeField] private AudioParameterNames _audioParams;
+        [SerializeField] private AudioGameSettings _audioGameSettings;
         [SerializeField] private Slider _generalSoundSlider;
         [SerializeField] private Slider _musicSoundSlider;
         [SerializeField] private Slider _effectSoundSlider;
@@ -29,18 +26,18 @@ namespace Game.Scripts.MusicComponents
 
         private void OnDestroy()
         {
-            _muteToggle.onValueChanged.RemoveListener(OnMuteToggleChanged);
+            _muteToggle?.onValueChanged.RemoveListener(OnMuteToggleChanged);
         }
         
-        public void Initialize()
+        private void Initialize()
         {
-            InitializeSlider(AllVolumeParam, _generalSoundSlider, _defaultVolume);
-            InitializeSlider(MusicVolumeParam, _musicSoundSlider, _defaultVolume);
-            InitializeSlider(EffectsVolumeParam, _effectSoundSlider, _defaultVolume);
+            InitializeSlider(_audioParams.AllSoundVolume, _generalSoundSlider, _defaultVolume);
+            InitializeSlider(_audioParams.MusicVolume, _musicSoundSlider, _defaultVolume);
+            InitializeSlider(_audioParams.EffectsVolume, _effectSoundSlider, _defaultVolume);
             
-            _generalSoundSlider.onValueChanged.AddListener(volume => _gameAudioPlayback.SetVolume(AllVolumeParam, volume));
-            _musicSoundSlider.onValueChanged.AddListener(volume => _gameAudioPlayback.SetVolume(MusicVolumeParam, volume));
-            _effectSoundSlider.onValueChanged.AddListener(volume => _gameAudioPlayback.SetVolume(EffectsVolumeParam, volume));
+            _generalSoundSlider.onValueChanged.AddListener(volume => _audioGameSettings.SetVolume(_audioParams.AllSoundVolume, volume));
+            _musicSoundSlider.onValueChanged.AddListener(volume => _audioGameSettings.SetVolume(_audioParams.MusicVolume, volume));
+            _effectSoundSlider.onValueChanged.AddListener(volume => _audioGameSettings.SetVolume(_audioParams.EffectsVolume, volume));
             
             _muteToggle.onValueChanged.AddListener(OnMuteToggleChanged);
         }
@@ -49,7 +46,8 @@ namespace Game.Scripts.MusicComponents
         {
             float volume = PlayerPrefs.GetFloat(parameterName, defaultVol);
             slider.value = volume;
-            _gameAudioPlayback.SetVolume(parameterName, volume);
+            
+            _audioGameSettings.SetVolume(parameterName, volume);
         } 
         
         private void OnMuteToggleChanged(bool isMuted)
@@ -60,15 +58,15 @@ namespace Game.Scripts.MusicComponents
                 _prevMusicVolume = _musicSoundSlider.value;
                 _prevEffectVolume = _effectSoundSlider.value;
                 
-                _gameAudioPlayback.SetVolume(AllVolumeParam, _minValue);
-                _gameAudioPlayback.SetVolume(MusicVolumeParam, _minValue);
-                _gameAudioPlayback.SetVolume(EffectsVolumeParam, _minValue);
+                _audioGameSettings.SetVolume(_audioParams.AllSoundVolume, _minValue);
+                _audioGameSettings.SetVolume(_audioParams.MusicVolume, _minValue);
+                _audioGameSettings.SetVolume(_audioParams.EffectsVolume, _minValue);
             }
             else
             {
-                _gameAudioPlayback.SetVolume(AllVolumeParam, _prevGeneralVolume);
-                _gameAudioPlayback.SetVolume(MusicVolumeParam, _prevMusicVolume);
-                _gameAudioPlayback.SetVolume(EffectsVolumeParam, _prevEffectVolume);
+                _audioGameSettings.SetVolume(_audioParams.AllSoundVolume, _prevGeneralVolume);
+                _audioGameSettings.SetVolume(_audioParams.MusicVolume, _prevMusicVolume);
+                _audioGameSettings.SetVolume(_audioParams.EffectsVolume, _prevEffectVolume);
             }
         }
     }

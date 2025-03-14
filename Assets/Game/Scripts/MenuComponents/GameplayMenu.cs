@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Game.Scripts.PlayerComponents;
 using System.Collections.Generic;
+using Game.Scripts.MusicComponents;
 using YG;
 
 namespace Game.Scripts.MenuComponents
@@ -17,21 +18,19 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Image _pausePanel;
         [SerializeField] private Image _defeatPanel;
         [SerializeField] private Image _victoryPanel;
-
+        
+        [SerializeField] private AudioParameterNames _audioParams;
+        [SerializeField] private Slider _musicVolumeSlider;
+        [SerializeField] private Slider _effectsVolumeSlider;
+        
+        private AudioGameSettings _audioGameSettings;
+        private GameSceneAudio _gameSceneAudio;
         private Player _player;
-        private bool _isPause;
 
         private void OnEnable()
         {
-            if (_pauseButton != null)
-            {
-                _pauseButton.onClick.AddListener(OnPauseButtonClicked);
-            }
-
-            if (_continueButton != null)
-            {
-                _continueButton.onClick.AddListener(OnContinueButtonClicked);
-            }
+            _pauseButton?.onClick.AddListener(OnPauseButtonClicked);
+            _continueButton?.onClick.AddListener(OnContinueButtonClicked);
 
             if (_menuBackButton != null)
             {
@@ -40,20 +39,16 @@ namespace Game.Scripts.MenuComponents
                     _menuBackButton[i].onClick.AddListener(ExitToMenu);
                 }
             }
+            
+            _musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeChanged);
+            _effectsVolumeSlider.onValueChanged.AddListener(OnEffectsVolumeChanged);
         }
 
         private void OnDisable()
         {
-            if (_pauseButton != null)
-            {
-                _pauseButton.onClick.RemoveListener(OnPauseButtonClicked);
-            }
-
-            if (_continueButton != null)
-            {
-                _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
-            }
-
+            _pauseButton?.onClick.RemoveListener(OnPauseButtonClicked);
+            _continueButton?.onClick.RemoveListener(OnContinueButtonClicked);
+            
             if (_menuBackButton != null)
             {
                 for (int i = 0; i < _menuBackButton.Count; i++)
@@ -66,6 +61,19 @@ namespace Game.Scripts.MenuComponents
             {
                 _player.Death -= OnPlayerDeath;
             }
+            
+            _musicVolumeSlider.onValueChanged.RemoveListener(OnMusicVolumeChanged);
+            _effectsVolumeSlider.onValueChanged.RemoveListener(OnEffectsVolumeChanged);
+        }
+        
+        public void SetGameSceneAudio(GameSceneAudio sceneAudio)
+        {
+            _gameSceneAudio = sceneAudio;
+        }
+        
+        public void SetAudioGameSettings(AudioGameSettings audioSettings)
+        {
+            _audioGameSettings = audioSettings;
         }
 
         public void Init(Player player)
@@ -81,6 +89,7 @@ namespace Game.Scripts.MenuComponents
         public void OnPlayerWon()
         {
             Time.timeScale = 0;
+            
             _victoryPanel.gameObject.SetActive(true);
         }
 
@@ -91,18 +100,27 @@ namespace Game.Scripts.MenuComponents
 
         private void ExitToMenu()
         {
+            if (_gameSceneAudio != null)
+            {
+                _gameSceneAudio.StopAllMusic();
+                
+                Destroy(_gameSceneAudio.gameObject);
+            }
+            
             Time.timeScale = 1.0f;
+            
             SceneManager.LoadScene(MenuSceneName);
         }
 
         private void OnPlayerDeath()
         {
             CallAd();
+            
             Time.timeScale = 0;
 
             _defeatPanel.gameObject.SetActive(true);
+            
             _continueButton.interactable = false;
-
         }
 
         private void OnPauseButtonClicked()
@@ -111,18 +129,34 @@ namespace Game.Scripts.MenuComponents
 
             _pausePanel.gameObject.SetActive(true);
             _continueButton.interactable = true;
-
-            _isPause = true;
-
-            if (_isPause)
-                Time.timeScale = 0;
+            
+            Time.timeScale = 0;
+            
+            _musicVolumeSlider.gameObject.SetActive(true);
+            _effectsVolumeSlider.gameObject.SetActive(true);
+            
+            _musicVolumeSlider.value = PlayerPrefs.GetFloat(_audioParams.MusicVolume, 0.75f);
+            _effectsVolumeSlider.value = PlayerPrefs.GetFloat(_audioParams.EffectsVolume, 0.75f);
         }
 
         private void OnContinueButtonClicked()
         {
             Time.timeScale = 1.0f;
+            
             _pausePanel.gameObject.SetActive(false);
-            _isPause = false;
+            
+            _musicVolumeSlider.gameObject.SetActive(false);
+            _effectsVolumeSlider.gameObject.SetActive(false);
+        }
+        
+        private void OnMusicVolumeChanged(float value)
+        {
+            _audioGameSettings.SetVolume(_audioParams.MusicVolume, value);
+        }
+
+        private void OnEffectsVolumeChanged(float value)
+        {
+            _audioGameSettings.SetVolume(_audioParams.EffectsVolume, value);
         }
     }
 }

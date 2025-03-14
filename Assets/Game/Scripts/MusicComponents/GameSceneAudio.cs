@@ -6,8 +6,7 @@ namespace Game.Scripts.MusicComponents
 {
     public class GameSceneAudio : MonoBehaviour
     {
-        private const string AllVolumeParam = "AllSoundVolume";
-        
+        [SerializeField] private AudioParameterNames _audioParams;
         [SerializeField] private AudioSource _waveMusicSource;
         [SerializeField] private AudioSource _bossMusicSource;
         [SerializeField] private AudioMixer _audioMixer;
@@ -15,10 +14,15 @@ namespace Game.Scripts.MusicComponents
         private readonly float _mutedVolume = -80f;
         
         private float _originalVolume;
-
+        
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        
         private void Start()
         {
-            if(!_audioMixer.GetFloat(AllVolumeParam, out _originalVolume))
+            if(!_audioMixer.GetFloat(_audioParams.AllSoundVolume, out _originalVolume))
             {
                 _originalVolume = 0f;
             }
@@ -37,17 +41,11 @@ namespace Game.Scripts.MusicComponents
                 _bossMusicSource.Play();
             }
         }
-
-        private void OnApplicationFocus(bool hasFocus)
+        
+        public void StopAllMusic()
         {
-            if(hasFocus)
-            {
-                _audioMixer.SetFloat(AllVolumeParam, _originalVolume);
-            }
-            else
-            {
-                _audioMixer.SetFloat(AllVolumeParam, _mutedVolume);
-            }
+            _waveMusicSource?.Stop();
+            _bossMusicSource?.Stop();
         }
         
         public void SwitchToBossMusic(float fadeDuration = 2f)
@@ -55,9 +53,20 @@ namespace Game.Scripts.MusicComponents
             StartCoroutine(CrossfadeMusic(_waveMusicSource, _bossMusicSource, fadeDuration));
         }
         
-        public void SwitchToWaveMusic(float fadeDuration = 2f)
+        private void OnApplicationFocus(bool hasFocus)
         {
-            StartCoroutine(CrossfadeMusic(_bossMusicSource, _waveMusicSource, fadeDuration));
+            if(hasFocus)
+            {
+                _waveMusicSource?.UnPause();
+                _bossMusicSource?.UnPause();
+                _audioMixer.SetFloat(_audioParams.AllSoundVolume, _originalVolume);
+            }
+            else
+            {
+                _waveMusicSource?.Pause();
+                _bossMusicSource?.Pause();
+                _audioMixer.SetFloat(_audioParams.AllSoundVolume, _mutedVolume);
+            }
         }
         
         private IEnumerator CrossfadeMusic(AudioSource fromSource, AudioSource toSource, float duration)

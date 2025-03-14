@@ -4,13 +4,14 @@ using Cinemachine;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
+using Game.Scripts.MusicComponents;
 using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.PoolComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {
-    public class GameplayTestBootstrap : MonoBehaviour
+    public class GameplayBootstrap : MonoBehaviour
     {
         [SerializeField] private Transform _characterSpawnPoint;
         [SerializeField] private GeneralPlayerFactory _generalPlayerFactory;
@@ -20,6 +21,8 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private PoolManager _pool;
         [SerializeField] private EnemyFactory _enemyFactory;
         [SerializeField] private SoundCollection _soundCollection;
+        [SerializeField] private AudioGameSettings _audioGameSettings;
+        [SerializeField] private GameSceneAudio _gameSceneAudio;
         
         private Player _player;
         private Canvas _canvas;
@@ -33,7 +36,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         private void Awake()
         {
             InitializeData();
-
             DoTestSpawn();
 
             _enemySpawner.Init(_player);
@@ -93,6 +95,8 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             if (menu != null)
             {
                 menu.Init(_player);
+                menu.SetAudioGameSettings(_audioGameSettings);
+                menu.SetGameSceneAudio(_gameSceneAudio);
             }
             else
             {

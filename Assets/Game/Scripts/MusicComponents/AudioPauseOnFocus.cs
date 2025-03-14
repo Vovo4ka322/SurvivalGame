@@ -5,16 +5,16 @@ namespace Game.Scripts.MusicComponents
 {
     public class AudioPauseOnFocus : MonoBehaviour
     {
-        private const string AllVolume = "AllSoundVolume";
-        
         [SerializeField] private AudioMixer _audioMixer;
+        [SerializeField] private AudioParameterNames _audioParameterNames;
         
         private readonly float _mutedVolume = -80f;
+        
         private float _originalVolume = 0f;
         
         private void Start()
         {
-            if (!_audioMixer.GetFloat(AllVolume, out _originalVolume))
+            if (!_audioMixer.GetFloat(_audioParameterNames.AllSoundVolume, out _originalVolume))
             {
                 _originalVolume = 0f;
             }
@@ -24,11 +24,11 @@ namespace Game.Scripts.MusicComponents
         {
             if (hasFocus)
             {
-                _audioMixer.SetFloat(AllVolume, _originalVolume);
+                _audioMixer.SetFloat(_audioParameterNames.AllSoundVolume, _originalVolume);
             }
             else
             {
-                _audioMixer.SetFloat(AllVolume, _mutedVolume);
+                _audioMixer.SetFloat(_audioParameterNames.AllSoundVolume, _mutedVolume);
             }
         }
     }
