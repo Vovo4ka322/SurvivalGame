@@ -23,6 +23,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private SoundCollection _soundCollection;
         [SerializeField] private AudioGameSettings _audioGameSettings;
         [SerializeField] private GameSceneAudio _gameSceneAudio;
+        [SerializeField] private WaveCycle _waveCycle; 
         
         private Player _player;
         private Canvas _canvas;
@@ -97,6 +98,8 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
                 menu.Init(_player);
                 menu.SetAudioGameSettings(_audioGameSettings);
                 menu.SetGameSceneAudio(_gameSceneAudio);
+                _enemySpawner.SetBossHealthViewer(menu.BossHealthViewer);
+                menu.WaveTimerUI?.SetWaveCycle(_waveCycle);
             }
             else
             {
