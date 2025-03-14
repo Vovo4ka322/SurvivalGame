@@ -630,13 +630,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: {fileID: 5836170873408538237}
-  _baseHealth: 100
-  _baseArmor: 20
-  _baseDamage: 10
-  _baseAttackSpeed: 1
-  _baseMoveSpeed: 8
+  _baseHealth: 150
+  _baseArmor: 40
+  _baseDamage: 30
+  _baseAttackSpeed: 1.2
+  _baseMoveSpeed: 9
   _level:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
+    <Experience>k__BackingField: 0
   <CharacterType>k__BackingField: 0
   <AnimatorState>k__BackingField: {fileID: 9203238919027719053}
   <PlayerMovement>k__BackingField: {fileID: 4510874001069546984}

@@ -1364,11 +1364,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: {fileID: 8338153158691119295}
-  _baseHealth: 100
-  _baseArmor: 20
-  _baseDamage: 10
+  _baseHealth: 90
+  _baseArmor: 10
+  _baseDamage: 5
   _baseAttackSpeed: 1
-  _baseMoveSpeed: 8
+  _baseMoveSpeed: 7
   _level:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
     <Experience>k__BackingField: 0
