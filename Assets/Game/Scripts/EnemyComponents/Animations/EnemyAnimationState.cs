@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings;
@@ -12,6 +11,7 @@ namespace Game.Scripts.EnemyComponents.Animations
         
         private readonly Animator _animator;
         private readonly EnemyType _enemyType;
+        private readonly AnimatorParameterChecker _parameterChecker;
         private readonly Dictionary<EnemyType, Dictionary<int, int>> _attackMappings;
         
         private bool _isAttacking = false;
@@ -20,6 +20,7 @@ namespace Game.Scripts.EnemyComponents.Animations
         {
             _animator = animator;
             _enemyType = enemyType;
+            _parameterChecker = new AnimatorParameterChecker(_animator);
             
             _attackMappings = new()
             {
@@ -69,7 +70,7 @@ namespace Game.Scripts.EnemyComponents.Animations
         
         public void Move(bool isMoving)
         {
-            if(ParameterExists(AnimationDataParamsEnemy.Params.Walking))
+            if(_parameterChecker.HasParameter(AnimationDataParamsEnemy.Params.Walking))
             {
                 _animator.SetBool(AnimationDataParamsEnemy.Params.Walking, isMoving);
             }
@@ -77,7 +78,7 @@ namespace Game.Scripts.EnemyComponents.Animations
         
         public void Death()
         {
-            if(ParameterExists(AnimationDataParamsEnemy.Params.Walking))
+            if(_parameterChecker.HasParameter(AnimationDataParamsEnemy.Params.Walking))
             {
                 _animator.SetBool(AnimationDataParamsEnemy.Params.Walking, false);
             }
@@ -86,7 +87,7 @@ namespace Game.Scripts.EnemyComponents.Animations
             {
                 foreach (var triggerHash in attackMap.Values)
                 {
-                    if (ParameterExists(triggerHash))
+                    if (_parameterChecker.HasParameter(triggerHash))
                     {
                         _animator.ResetTrigger(triggerHash);
                     }
@@ -109,28 +110,11 @@ namespace Game.Scripts.EnemyComponents.Animations
             {
                 _animator.SetTrigger(triggerHash);
             }
-            else
-            {
-                throw new ArgumentException("The wrong attack option");
-            }
         }
         
         public void ResetAttackState()
         {
             _isAttacking = false;
-        }
-        
-        private bool ParameterExists(int hash)
-        {
-            foreach (var parameter in _animator.parameters)
-            {
-                if (parameter.nameHash == hash)
-                {
-                    return true;
-                }
-            }
-            
-            return false;
         }
     }
 }

@@ -51,7 +51,7 @@ namespace Game.Scripts.EnemyComponents
             _timerText.text = FormatTime(_time);
         }
         
-        public void StartTimer(float waveDuration, int waveNumber)
+        private void StartTimer(float waveDuration, int waveNumber)
         {
             if (waveNumber == 0)
             {

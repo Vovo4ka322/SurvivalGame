@@ -16,15 +16,25 @@ namespace Game.Scripts.MusicComponents
                 _backgroundMusic.Play();
             }
         }
-
-        public void SetVolume(string parameterName, float volume)
+        
+        public void StopBackgroundMusic()
         {
-            float clampedVolume = Mathf.Clamp(volume, 0.0001f, 1f);
-            float dbVolume = Mathf.Log10(clampedVolume) * 20;
-
-            _audioMixer.SetFloat(parameterName, dbVolume);
-            PlayerPrefs.SetFloat(parameterName, volume);
-            PlayerPrefs.Save(); 
+            _backgroundMusic?.Stop();
+        }
+        
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            if (_backgroundMusic != null)
+            {
+                if (hasFocus)
+                {
+                    _backgroundMusic.UnPause();
+                }
+                else
+                {
+                    _backgroundMusic.Pause();
+                }
+            }
         }
     }
 }
