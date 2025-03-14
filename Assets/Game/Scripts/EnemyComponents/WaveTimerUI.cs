@@ -5,26 +5,15 @@ namespace Game.Scripts.EnemyComponents
 {
     public class WaveTimerUI : MonoBehaviour
     {
-        private const string NameLastWave = "Босс";
-        
-        [SerializeField] private WaveCycle _waveCycle;
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private TextMeshProUGUI _waveLabel;
         [SerializeField] private TextMeshProUGUI _bossText;
         
+        private WaveCycle _waveCycle;
+        
         private float _time;
         private bool _isRunning;
         private bool _isBossWave;
-
-        private void OnEnable()
-        {
-            _waveCycle.OnWaveStart += StartTimer;
-        }
-
-        private void OnDisable()
-        {
-            _waveCycle.OnWaveStart -= StartTimer;
-        }
         
         private void Update()
         {
@@ -49,6 +38,21 @@ namespace Game.Scripts.EnemyComponents
             }
         
             _timerText.text = FormatTime(_time);
+        }
+        
+        public void SetWaveCycle(WaveCycle waveCycle)
+        {
+            if(_waveCycle != null)
+            {
+                _waveCycle.OnWaveStart -= StartTimer;
+            }
+            
+            _waveCycle = waveCycle;
+
+            if(_waveCycle != null)
+            {
+                _waveCycle.OnWaveStart += StartTimer;
+            }
         }
         
         private void StartTimer(float waveDuration, int waveNumber)

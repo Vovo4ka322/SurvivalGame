@@ -18,13 +18,13 @@ namespace Game.Scripts.EnemyComponents
         [SerializeField] private EnemyData[] _mediumEnemyDatas;
         [SerializeField] private EnemyData[] _hardEnemyDatas;
         [SerializeField] private EnemyData _bossEnemyData;
-        [SerializeField] private BossHealthViewer _bossHealthViewer;
         
         [Header("Spawn References")]
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Transform _bossSpawnPoint;
         [SerializeField] private PoolManager _poolManager;
         
+        private BossHealthViewer _bossHealthViewer;
         private Player _player;
         private ICoroutineRunner _coroutineRunner;
         
@@ -45,6 +45,11 @@ namespace Game.Scripts.EnemyComponents
                 
                 _coroutineRunner.StartCoroutine(CreateWave(enemyDatas, waveDuration, spawnInterval));
             }
+        }
+        
+        public void SetBossHealthViewer(BossHealthViewer bossHealthViewer)
+        {
+            _bossHealthViewer = bossHealthViewer;
         }
         
         public void Init(Player player)

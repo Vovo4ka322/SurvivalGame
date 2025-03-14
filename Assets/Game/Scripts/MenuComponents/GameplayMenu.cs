@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Game.Scripts.PlayerComponents;
 using System.Collections.Generic;
+using Game.Scripts.EnemyComponents;
+using Game.Scripts.HealthComponents;
 using Game.Scripts.MusicComponents;
+using Game.Scripts.PlayerComponents;
 using YG;
 
 namespace Game.Scripts.MenuComponents
@@ -18,7 +20,10 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Image _pausePanel;
         [SerializeField] private Image _defeatPanel;
         [SerializeField] private Image _victoryPanel;
+        [SerializeField] private BossHealthViewer _bossHealthViewer;
+        [SerializeField] private WaveTimerUI _waveTimerUI;
         
+        [Header("Audio Settings")]
         [SerializeField] private AudioParameterNames _audioParams;
         [SerializeField] private Slider _musicVolumeSlider;
         [SerializeField] private Slider _effectsVolumeSlider;
@@ -26,7 +31,10 @@ namespace Game.Scripts.MenuComponents
         private AudioGameSettings _audioGameSettings;
         private GameSceneAudio _gameSceneAudio;
         private Player _player;
-
+        
+        public BossHealthViewer BossHealthViewer => _bossHealthViewer;
+        public WaveTimerUI WaveTimerUI => _waveTimerUI;
+        
         private void OnEnable()
         {
             _pauseButton?.onClick.AddListener(OnPauseButtonClicked);
