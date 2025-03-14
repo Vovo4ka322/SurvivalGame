@@ -12,6 +12,7 @@ namespace Game.Scripts.PlayerComponents
         private float _movementVisualizationCoefficient = 0.2f;
         private float _attackSpeed;
         private float _damage;
+        private int _coefficient = 1;
 
         public bool IsActiveState { get; private set; }
 
@@ -40,7 +41,7 @@ namespace Game.Scripts.PlayerComponents
             _attackSpeed = bloodlust.AttackSpeed + GeneralAttackSpeed;
 
             ChangeAttackAnimationSpeed(AnimatorState.Speed, _attackSpeed);
-            ChangeMovementAnimationSpeed(AnimatorState.MovementSpeed, _movementVisualizationCoefficient);
+            ChangeMovementAnimationSpeed(AnimatorState.MovementSpeed, _movementVisualizationCoefficient + _coefficient);
             _movementVisualizationCoefficient += _movementVisualizationCoefficient;
         }
         
