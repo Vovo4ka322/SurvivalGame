@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.Scripts.BuffComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
 {
-    public class BuffImprovmentViewer : MonoBehaviour
+    public class BuffImprovementViewer : MonoBehaviour
     {
         [SerializeField] private BuffShop _buffShop;
-
-        [SerializeField] private List<Image> _healthBuffUpgraders;
-        [SerializeField] private List<Image> _armorBuffUpgraders;
-        [SerializeField] private List<Image> _damageBuffUpgraders;
-        [SerializeField] private List<Image> _attackSpeedBuffUpgraders;
-        [SerializeField] private List<Image> _movementSpeedBuffUpgraders;
+        [SerializeField] private List<Image> _healthBuffUpgrades;
+        [SerializeField] private List<Image> _armorBuffUpgrades;
+        [SerializeField] private List<Image> _damageBuffUpgrades;
+        [SerializeField] private List<Image> _attackSpeedBuffUpgrades;
+        [SerializeField] private List<Image> _movementSpeedBuffUpgrades;
 
         private PlayerCharacteristicData _calculationFinalValue;
 
@@ -38,11 +38,11 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
         {
             _calculationFinalValue = calculationFinalValue;
 
-            UpdateValue(_healthBuffUpgraders, _calculationFinalValue.HealthLevelImprovment);
-            UpdateValue(_armorBuffUpgraders, _calculationFinalValue.ArmorLevelImprovment);
-            UpdateValue(_damageBuffUpgraders, _calculationFinalValue.DamageLevelImprovment);
-            UpdateValue(_attackSpeedBuffUpgraders, _calculationFinalValue.AttackSpeedLevelImprovment);
-            UpdateValue(_movementSpeedBuffUpgraders, _calculationFinalValue.MovementSpeedLevelImprovment);
+            UpdateValue(_healthBuffUpgrades, _calculationFinalValue.HealthLevelImprovment);
+            UpdateValue(_armorBuffUpgrades, _calculationFinalValue.ArmorLevelImprovment);
+            UpdateValue(_damageBuffUpgrades, _calculationFinalValue.DamageLevelImprovment);
+            UpdateValue(_attackSpeedBuffUpgrades, _calculationFinalValue.AttackSpeedLevelImprovment);
+            UpdateValue(_movementSpeedBuffUpgrades, _calculationFinalValue.MovementSpeedLevelImprovment);
         }
         
         private void UpdateValue(List<Image> image, int value)
@@ -60,7 +60,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
                 return;
             }
             
-            Upgrade(_healthBuffUpgraders, _calculationFinalValue.HealthLevelImprovment);
+            Upgrade(_healthBuffUpgrades, _calculationFinalValue.HealthLevelImprovment);
         }
         
         private void OnArmorBuffUpgraded()
@@ -70,7 +70,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
                 return;
             }
             
-            Upgrade(_armorBuffUpgraders, _calculationFinalValue.ArmorLevelImprovment);
+            Upgrade(_armorBuffUpgrades, _calculationFinalValue.ArmorLevelImprovment);
         }
         
         private void OnDamageBuffUpgraded()
@@ -80,7 +80,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
                 return;
             }
             
-            Upgrade(_damageBuffUpgraders, _calculationFinalValue.DamageLevelImprovment);
+            Upgrade(_damageBuffUpgrades, _calculationFinalValue.DamageLevelImprovment);
         }
         
         private void OnAttackSpeedBuffUpgraded()
@@ -88,7 +88,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
             if(IsFull(_calculationFinalValue.AttackSpeedLevelImprovment))
                 return;
 
-            Upgrade(_attackSpeedBuffUpgraders, _calculationFinalValue.AttackSpeedLevelImprovment);
+            Upgrade(_attackSpeedBuffUpgrades, _calculationFinalValue.AttackSpeedLevelImprovment);
         }
 
         private void OnMovementSpeedBuffUpgraded()
@@ -96,7 +96,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
             if(IsFull(_calculationFinalValue.MovementSpeedLevelImprovment))
                 return;
 
-            Upgrade(_movementSpeedBuffUpgraders, _calculationFinalValue.MovementSpeedLevelImprovment);
+            Upgrade(_movementSpeedBuffUpgrades, _calculationFinalValue.MovementSpeedLevelImprovment);
         }
 
         private bool IsFull(int value) => _buffShop.MaxCount == value;
