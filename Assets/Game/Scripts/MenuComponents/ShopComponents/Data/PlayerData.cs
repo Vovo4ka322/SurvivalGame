@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.Scripts.BuffComponents;
 using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 using Newtonsoft.Json;
 
@@ -7,14 +8,13 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
 {
     public class PlayerData
     {
+        private readonly List<CharacterSkins> _openCharacterSkins;
+        private readonly PlayerCharacteristicData _calculationFinalValue;
+        
         private CharacterSkins _selectedCharacterSkins;
-
-        private List<CharacterSkins> _openCharacterSkins;
-
+        
         private int _money;
-
-        private PlayerCharacteristicData _calculationFinalValue;
-
+        
         public PlayerData()
         {
             _money = 0;

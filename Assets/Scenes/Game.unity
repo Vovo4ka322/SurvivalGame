@@ -2958,7 +2958,7 @@ MonoBehaviour:
   _easyWaveDuration: 300
   _mediumWaveDuration: 300
   _hardWaveDuration: 300
-  _spawnInterval: 1
+  _spawnInterval: 2
 --- !u!4 &1364680379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3247752919534563013, guid: b92d0688375e04c0b94239a3f985b9be, type: 3}

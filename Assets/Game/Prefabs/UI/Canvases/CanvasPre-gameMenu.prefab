@@ -200,19 +200,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2357060478614256673}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Ability.MeleeAbilities.MeleeAbilityUser, Assembly-CSharp
-        m_MethodName: UseFirstAbility
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &6789578831071494466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4850,36 +4838,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buffShop: {fileID: 4504051370234988629}
-  _healthBuffUpgraders:
-  - {fileID: 2858632304760022064}
-  - {fileID: 9023565285644521320}
-  - {fileID: 588863285892353036}
-  - {fileID: 1477423197220565902}
-  - {fileID: 6988233475476243482}
-  _armorBuffUpgraders:
-  - {fileID: 1871101477028643012}
-  - {fileID: 6398641838569114515}
-  - {fileID: 4338412643239209929}
-  - {fileID: 6210021373475840532}
-  - {fileID: 3625956007897440018}
-  _damageBuffUpgraders:
-  - {fileID: 4656232137268646987}
-  - {fileID: 2854322540274665115}
-  - {fileID: 2782344860715403325}
-  - {fileID: 6016741507133299402}
-  - {fileID: 5664056245042120359}
-  _attackSpeedBuffUpgraders:
-  - {fileID: 7511247757755612381}
-  - {fileID: 4250009915745600980}
-  - {fileID: 1511163259707605001}
-  - {fileID: 3465075894999743224}
-  - {fileID: 2304674998754579458}
-  _movementSpeedBuffUpgraders:
-  - {fileID: 6023393667823978069}
-  - {fileID: 7654486797048867063}
-  - {fileID: 7895511003569499790}
-  - {fileID: 8362518036778864825}
-  - {fileID: 6099062815823116044}
+  _healthBuffUpgrades: []
+  _armorBuffUpgrades: []
+  _damageBuffUpgrades: []
+  _attackSpeedBuffUpgrades: []
+  _movementSpeedBuffUpgrades: []
 --- !u!1 &3784258941050387153
 GameObject:
   m_ObjectHideFlags: 0
@@ -6761,11 +6724,11 @@ RectTransform:
   - {fileID: 3423873094109839095}
   m_Father: {fileID: 1881343292801470857}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -40, y: 40}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 130, y: 20}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5698644917940441611
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6787,7 +6750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.12156863, g: 0.16862746, b: 0.18039216, a: 1}
+  m_Color: {r: 0.22352941, g: 0.39215687, b: 0.43529412, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7810,7 +7773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.12156863, g: 0.16862746, b: 0.18039216, a: 1}
+  m_Color: {r: 0.22312212, g: 0.3917942, b: 0.4339623, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8278,7 +8241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3fa0a9dbf540d24895d6929633d8dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buffImprovment: {fileID: 4751840507874844108}
+  _buffImprovement: {fileID: 4751840507874844108}
   _buffPanel: {fileID: 6093749296459745321}
   _openerPanelButton: {fileID: 1838838140417270658}
   _leaverPanelButton: {fileID: 5224028671446871127}
@@ -8297,11 +8260,6 @@ MonoBehaviour:
   _attackSpeedBuffDescription: {fileID: 8430225640828659999}
   _movementSpeedBuffPurchaseButton: {fileID: 2458075329361883645}
   _movementSpeedBuffDescription: {fileID: 5861341743390660666}
-  _healthBuffPrice: 400
-  _armorBuffPrice: 400
-  _damageBuffPrice: 400
-  _attackSpeedBuffPrice: 400
-  _movementSpeedBuffPrice: 400
 --- !u!1 &6401539822681679287
 GameObject:
   m_ObjectHideFlags: 0
@@ -11814,16 +11772,32 @@ PrefabInstance:
       value: ModelPanel
       objectReference: {fileID: 0}
     - target: {fileID: 4420721832774250867, guid: 44a7ae4743e86bd4da055f137f629bd5, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420721832774250867, guid: 44a7ae4743e86bd4da055f137f629bd5, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420721832774250867, guid: 44a7ae4743e86bd4da055f137f629bd5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420721832774250867, guid: 44a7ae4743e86bd4da055f137f629bd5, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420721832774250867, guid: 44a7ae4743e86bd4da055f137f629bd5, type: 3}
       propertyPath: m_SizeDelta.x
       value: 310
       objectReference: {fileID: 0}
     - target: {fileID: 4420721832774250867, guid: 44a7ae4743e86bd4da055f137f629bd5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 4420721832774250867, guid: 44a7ae4743e86bd4da055f137f629bd5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 130
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4486766313050564457, guid: 44a7ae4743e86bd4da055f137f629bd5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -12199,6 +12173,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2293400691979095862}
     m_Modifications:
+    - target: {fileID: 1728895625895009704, guid: 4b0336b5f6bbe492bb89884b5d66eec9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2932913181431475605, guid: 4b0336b5f6bbe492bb89884b5d66eec9, type: 3}
       propertyPath: en
       value: Back

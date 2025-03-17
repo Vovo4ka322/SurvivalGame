@@ -3,6 +3,7 @@ using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.Viewers;
 using Game.Scripts.MenuComponents.ShopComponents.Visitors;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
+using Game.Scripts.BuffComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents
 {
@@ -10,7 +11,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
     {
         [SerializeField] private Shop _shop;
         [SerializeField] private WalletView _walletView;
-        [SerializeField] private BuffImprovmentViewer _improvmentViewer;
+        [SerializeField] private BuffImprovementViewer _improvementViewer;
 
         private IDataSaver _iDataSaver;
         private IPersistentData _persistentPlayerData;
@@ -45,7 +46,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         {
             _calculationFinalValue = _persistentPlayerData.PlayerData.CalculationFinalValue;
     
-            _improvmentViewer.Init(_calculationFinalValue);
+            _improvementViewer.Init(_calculationFinalValue);
         }
     
         private void InitializeShop()
