@@ -13,9 +13,8 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private RectTransform _abilityInterface;
         [SerializeField] private Button _pauseButton;
         
-        private readonly bool _isFinished = false;
-        
         private Coroutine _hideCoroutine;
+        private bool _isFinished = false;
         
         private void Awake()
         {
@@ -42,7 +41,7 @@ namespace Game.Scripts.MenuComponents
             {
                 _tutorialPanel.gameObject.SetActive(true);
                 
-                StartCoroutine(HideAfterDelay());
+                _hideCoroutine = StartCoroutine(HideAfterDelay());
             }
         }
         
@@ -82,6 +81,7 @@ namespace Game.Scripts.MenuComponents
         
         private void Continue()
         {
+            _isFinished = true;
             Time.timeScale = 1;
             _tutorialPanel.gameObject.SetActive(false);
             _abilityInterface.gameObject.SetActive(true);
