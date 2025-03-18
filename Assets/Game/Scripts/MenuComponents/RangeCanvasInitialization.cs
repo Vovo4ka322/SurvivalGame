@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Game.Scripts.AbilityComponents.ArcherAbilities;
 using Game.Scripts.PlayerComponents;
 
 namespace Game.Scripts.MenuComponents

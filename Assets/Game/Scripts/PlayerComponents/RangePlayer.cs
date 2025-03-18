@@ -1,5 +1,5 @@
 using UnityEngine;
-using Ability.ArcherAbilities.Blur;
+using Game.Scripts.AbilityComponents.ArcherAbilities.BlurAbility;
 using Game.Scripts.Interfaces;
 using Weapons.RangedWeapon;
 

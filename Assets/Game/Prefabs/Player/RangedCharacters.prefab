@@ -1734,7 +1734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2831595341814838573}
   _bow: {fileID: 642284079440058142}
-  _multishot: {fileID: 6363741710594834875}
+  _multiShot: {fileID: 6363741710594834875}
   _insatiableHunger: {fileID: 7196561204553145808}
   _abilityDataFirstLevel: {fileID: 11400000, guid: b4a7139fe38b3af4e9372cf0564a2e54, type: 2}
   _abilityDataSecondLevel: {fileID: 11400000, guid: a639916da716fa24d8b16739f2a6c1fe, type: 2}

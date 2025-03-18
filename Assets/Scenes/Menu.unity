@@ -738,6 +738,7 @@ MonoBehaviour:
   _shakeStrength: {x: 0.1, y: 0.1, z: 0}
   _shakeVibrato: 10
   _shakeRandomness: 90
+  _buffParticle: {fileID: 5160567109481781542, guid: 5afe87201404349edb697b7ef32bb9f6, type: 3}
 --- !u!4 &514854710
 Transform:
   m_ObjectHideFlags: 0

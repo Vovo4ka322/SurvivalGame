@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.HealthComponents;
 using Game.Scripts.MusicComponents;
@@ -22,6 +22,8 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Image _victoryPanel;
         [SerializeField] private BossHealthViewer _bossHealthViewer;
         [SerializeField] private WaveTimerUI _waveTimerUI;
+        [SerializeField] private GameTutorial _tutorialPanel;
+        [SerializeField] private PlayerPanel _playerPanel;
         
         [Header("Audio Settings")]
         [SerializeField] private AudioParameterNames _audioParams;
@@ -145,6 +147,16 @@ namespace Game.Scripts.MenuComponents
             
             _musicVolumeSlider.value = PlayerPrefs.GetFloat(_audioParams.MusicVolume, 0.75f);
             _effectsVolumeSlider.value = PlayerPrefs.GetFloat(_audioParams.EffectsVolume, 0.75f);
+
+            if(_bossHealthViewer != null && _bossHealthViewer.Boss != null)
+            {
+                _bossHealthViewer?.gameObject.SetActive(false);
+            }
+
+            _tutorialPanel?.Pause();
+            _pauseButton?.gameObject.SetActive(false);
+            _waveTimerUI?.gameObject.SetActive(false);
+            _playerPanel?.gameObject.SetActive(false);
         }
 
         private void OnContinueButtonClicked()
@@ -155,6 +167,16 @@ namespace Game.Scripts.MenuComponents
             
             _musicVolumeSlider.gameObject.SetActive(false);
             _effectsVolumeSlider.gameObject.SetActive(false);
+
+            if(_bossHealthViewer != null && _bossHealthViewer.Boss != null)
+            {
+                _bossHealthViewer.gameObject.SetActive(true);
+            }
+
+            _tutorialPanel?.Resume();
+            _pauseButton?.gameObject.SetActive(true);
+            _waveTimerUI?.gameObject.SetActive(true);
+            _playerPanel?.gameObject.SetActive(true);
         }
         
         private void OnMusicVolumeChanged(float value)

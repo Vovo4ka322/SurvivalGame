@@ -11,6 +11,8 @@ namespace Game.Scripts.HealthComponents
         [SerializeField] private TextMeshProUGUI _healthText;
         
         private Enemy _boss;
+        
+        public Enemy Boss => _boss;
 
         public void Set(Enemy boss)
         {

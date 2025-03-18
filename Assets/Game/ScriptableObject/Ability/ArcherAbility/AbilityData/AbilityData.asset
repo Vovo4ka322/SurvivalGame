@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2dac1d5cf0e224e8c54b21195b4982, type: 3}
   m_Name: AbilityData
   m_EditorClassIdentifier: 
-  <Multishot>k__BackingField: {fileID: 11400000, guid: de050334db0e89e45ab45154a1f6ec2b, type: 2}
-  <InsatiableHunger>k__BackingField: {fileID: 11400000, guid: bbc54e2ac3ace814d96d050137a54885, type: 2}
-  <Blur>k__BackingField: {fileID: 11400000, guid: bf98db53edc19424980fd289805a683f, type: 2}
+  <MultiShotScriptableObject>k__BackingField: {fileID: 11400000, guid: de050334db0e89e45ab45154a1f6ec2b, type: 2}
+  <InsatiableHungerScriptableObject>k__BackingField: {fileID: 11400000, guid: bbc54e2ac3ace814d96d050137a54885, type: 2}
+  <BlurScriptableObject>k__BackingField: {fileID: 11400000, guid: bf98db53edc19424980fd289805a683f, type: 2}
