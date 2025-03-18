@@ -34,6 +34,7 @@ namespace Game.Scripts.MenuComponents
         {
             YandexGame.FullscreenShow();
 
+
             if(_mainMenuAudio != null)
             {
                 _mainMenuAudio.StopBackgroundMusic();

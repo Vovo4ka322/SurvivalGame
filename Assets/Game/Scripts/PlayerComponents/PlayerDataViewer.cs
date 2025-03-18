@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 namespace Game.Scripts.PlayerComponents
 {
@@ -48,7 +49,7 @@ namespace Game.Scripts.PlayerComponents
             ViewHealth(value);
         }
 
-        private void ViewHealth(float value) => _healthText.text = value.ToString();
+        private void ViewHealth(float value) => _healthText.text = Convert.ToInt32(value).ToString();
 
         private void OnExperienceChanged(float value) =>
             _expValueImage.fillAmount = Mathf.InverseLerp(0, _player.Level.ShowMaxExperienceForLevel(), value);

@@ -16,6 +16,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         [SerializeField] private Button _openerPanelButton;
         [SerializeField] private Button _leaverPanelButton;
         [SerializeField] private ButtonAnimation _buttonAnimation;
+        [SerializeField] private ParticleSystem _buffParticle;
         
         [Header("Buffs buttons")]
         [SerializeField] private Button _healthBuffButton;
@@ -44,7 +45,14 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         [SerializeField] private TextMeshProUGUI _damageBuffPriceText;
         [SerializeField] private TextMeshProUGUI _attackSpeedBuffPriceText;
         [SerializeField] private TextMeshProUGUI _movementSpeedBuffPriceText;
-        
+
+        [Header("Cost texts of each buff")]
+        [SerializeField] private TextMeshProUGUI _healthBuffCost;
+        [SerializeField] private TextMeshProUGUI _armorBuffCost;
+        [SerializeField] private TextMeshProUGUI _damageBuffCost;
+        [SerializeField] private TextMeshProUGUI _attackSpeedBuffCost;
+        [SerializeField] private TextMeshProUGUI _movementSpeedBuffCost;
+
         private readonly int _startBuffPrice = 50;
         
         private Wallet _wallet;
@@ -65,7 +73,15 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         public event Action MovementSpeedUpgraded;
         
         public int MaxCount { get; private set; } = 5;
-
+        
+        private void Awake()
+        {
+            if (_buffParticle != null && ! _buffParticle.gameObject.scene.isLoaded)
+            {
+                _buffParticle = Instantiate(_buffParticle);
+            }
+        }
+        
         private void OnEnable()
         {
             _healthBuffButton.onClick.AddListener(OnHealthBuffClick);
@@ -212,25 +228,36 @@ namespace Game.Scripts.MenuComponents.ShopComponents
             OnBuffClick(_movementSpeedBuffButton, _movementSpeedBuffPurchaseButton, _movementSpeedBuffDescription, level => UpdatePriceText(_movementSpeedBuffPriceText, level), _calculationFinalValue.MovementSpeedLevelImprovment);
         }
         
-        private void Activate(Button button, TextMeshProUGUI text)
+        private void Activate(Button button, TextMeshProUGUI text, TextMeshProUGUI text2)
         {
             button.gameObject.SetActive(true);
             text.gameObject.SetActive(true);
+            text2.gameObject.SetActive(true);
         }
         
-        private void Deactivate(Button button, TextMeshProUGUI text)
+        private void Deactivate(Button button, TextMeshProUGUI text, TextMeshProUGUI text2)
         {
             button.gameObject.SetActive(false);
             text.gameObject.SetActive(false);
+            text2.gameObject.SetActive(false);
+        }
+
+        private void Deactivate(int improvementLevel, Button button, TextMeshProUGUI text)
+        {
+            if(improvementLevel >= MaxCount)
+            {
+                button.gameObject.SetActive(false);
+                text.gameObject.SetActive(false);
+            }
         }
         
         private void DeactivateAllViewers()
         {
-            Deactivate(_healthBuffPurchaseButton, _healthBuffDescription);
-            Deactivate(_armorBuffPurchaseButton, _armorBuffDescription);
-            Deactivate(_damageBuffPurchaseButton, _damageBuffDescription);
-            Deactivate(_attackSpeedBuffPurchaseButton, _attackSpeedBuffDescription);
-            Deactivate(_movementSpeedBuffPurchaseButton, _movementSpeedBuffDescription);
+            Deactivate(_healthBuffPurchaseButton, _healthBuffDescription, _healthBuffCost);
+            Deactivate(_armorBuffPurchaseButton, _armorBuffDescription, _armorBuffCost);
+            Deactivate(_damageBuffPurchaseButton, _damageBuffDescription, _damageBuffCost);
+            Deactivate(_attackSpeedBuffPurchaseButton, _attackSpeedBuffDescription, _attackSpeedBuffCost);
+            Deactivate(_movementSpeedBuffPurchaseButton, _movementSpeedBuffDescription, _movementSpeedBuffCost);
         }
         
         private bool IsEnough(int price) => _wallet.IsEnough(price);
