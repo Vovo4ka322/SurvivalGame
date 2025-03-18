@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Scripts.MenuComponents
 {
@@ -8,21 +9,35 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private TutorialPanel _tutorialPanel;
         [SerializeField] private float _displayTime = 5f;
         [SerializeField] private float _fadeDuration = 1f;
+        [SerializeField] private Button _continueButton;
+        [SerializeField] private RectTransform _abilityInterface;
+        [SerializeField] private Button _pauseButton;
 
-        private void Start()
+        private void Awake()
         {
             if (_tutorialPanel != null)
             {
                 _tutorialPanel.gameObject.SetActive(true);
-                
-                StartCoroutine(HideAfterDelay());
+                Time.timeScale = 0;
             }
         }
 
-        private IEnumerator HideAfterDelay()
+        private void OnEnable()
         {
-            yield return new WaitForSeconds(_displayTime);
-            yield return StartCoroutine(_tutorialPanel.FadeOut(_fadeDuration));
+            _continueButton.onClick.AddListener(Continue);
+        }
+
+        private void OnDisable()
+        {
+            _continueButton.onClick.RemoveListener(Continue);
+        }
+
+        private void Continue()
+        {
+            Time.timeScale = 1;
+            _tutorialPanel.gameObject.SetActive(false);
+            _abilityInterface.gameObject.SetActive(true);
+            _pauseButton.gameObject.SetActive(true);
         }
     }
 }
