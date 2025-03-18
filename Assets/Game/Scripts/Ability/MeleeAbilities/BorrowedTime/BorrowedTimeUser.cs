@@ -24,27 +24,25 @@ namespace Ability.MeleeAbilities.BorrowedTime
 
         public IEnumerator UseAbility(IActivable healable)
         {
-            Debug.Log(_borrowedTimeScriptableObject.CooldownTime + " Cooldown");
-            float duration = 0;
-
-            if (Time.time >= _lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime || _canUseFirstTime)
+            if (_borrowedTimeScriptableObject != null)
             {
-                while (duration < _borrowedTimeScriptableObject.Duration)//где-то тут на время действия способности добавить партикл
+                float duration = 0;
+
+                if (Time.time >= _lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime || _canUseFirstTime)
                 {
-                    healable.SetTrueActiveState();
-                    duration += Time.deltaTime;
-                    _lastUsedTimer = Time.time;
-                    _canUseFirstTime = false;
+                    while (duration < _borrowedTimeScriptableObject.Duration)
+                    {
+                        healable.SetTrueActiveState();
+                        duration += Time.deltaTime;
+                        _lastUsedTimer = Time.time;
+                        _canUseFirstTime = false;
 
-                    yield return null;
+                        yield return null;
+                    }
+
+                    StartCoroutine(StartCooldown());
+                    healable.SetFalseActiveState();
                 }
-
-                StartCoroutine(StartCooldown());
-                healable.SetFalseActiveState();
-            }
-            else
-            {
-                Debug.Log("Осталось " + (_lastUsedTimer + _borrowedTimeScriptableObject.CooldownTime - Time.time));
             }
         }
 
