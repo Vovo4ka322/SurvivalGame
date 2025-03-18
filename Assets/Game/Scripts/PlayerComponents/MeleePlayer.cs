@@ -1,5 +1,5 @@
 using UnityEngine;
-using Ability.MeleeAbilities.Bloodlust;
+using Game.Scripts.AbilityComponents.MeleeAbilities.BloodLustAbility;
 using Game.Scripts.Interfaces;
 using Weapons.MeleeWeapon;
 
@@ -35,7 +35,7 @@ namespace Game.Scripts.PlayerComponents
                 Destroy(gameObject);
         }
 
-        public void UpgradeCharacteristikByBloodlust(Bloodlust bloodlust)
+        public void UpgradeCharacteristikByBloodlust(BloodLust bloodlust)
         {
             PlayerMovement.ChangeMoveSpeed(bloodlust.MovementSpeed);
             _attackSpeed = bloodlust.AttackSpeed + GeneralAttackSpeed;

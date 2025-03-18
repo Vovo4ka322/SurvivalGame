@@ -13,9 +13,37 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
         [SerializeField] private int _shakeVibrato = 10;
         [SerializeField] private float _shakeRandomness = 90f;
 
+        [SerializeField] private ParticleSystem _buffParticle;
+        
         private readonly Dictionary<Transform, Vector3> _childOriginalScales = new Dictionary<Transform, Vector3>();
         
         private Vector3 _originalParentScale;
+        
+        private void Awake()
+        {
+            if (_buffParticle != null && ! _buffParticle.gameObject.scene.isLoaded)
+            {
+                _buffParticle = Instantiate(_buffParticle);
+            }
+        }
+        
+        public void SetSelectedBuffButton(ref Button currentSelectedBuffButton, Button newButton)
+        {
+            if(newButton == null || currentSelectedBuffButton == newButton)
+            {
+                return;
+            }
+            
+            if(_buffParticle != null)
+            {
+                _buffParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                _buffParticle.transform.SetParent(newButton.transform, false);
+                _buffParticle.transform.localPosition = Vector3.zero;
+                _buffParticle.Play();
+            }
+
+            currentSelectedBuffButton = newButton;
+        }
         
         public void PlayPressedAnimation(Button button)
         {

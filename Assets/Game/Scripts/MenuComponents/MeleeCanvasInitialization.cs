@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Ability;
+using Game.Scripts.AbilityComponents.MeleeAbilities;
 using Game.Scripts.PlayerComponents;
 
 namespace Game.Scripts.MenuComponents

@@ -16,7 +16,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         [SerializeField] private Button _openerPanelButton;
         [SerializeField] private Button _leaverPanelButton;
         [SerializeField] private ButtonAnimation _buttonAnimation;
-        [SerializeField] private ParticleSystem _buffParticle;
         
         [Header("Buffs buttons")]
         [SerializeField] private Button _healthBuffButton;
@@ -66,14 +65,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         public event Action MovementSpeedUpgraded;
         
         public int MaxCount { get; private set; } = 5;
-
-        private void Awake()
-        {
-            if (_buffParticle != null && ! _buffParticle.gameObject.scene.isLoaded)
-            {
-                _buffParticle = Instantiate(_buffParticle);
-            }
-        }
 
         private void OnEnable()
         {
@@ -126,209 +117,99 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         
         private int GetBuffPrice(int currentLevel) => (currentLevel + 1) * _startBuffPrice;
         
-        private void UpdateHealthBuffPriceText(int currentLevel)
+        private void UpdatePriceText(TextMeshProUGUI priceText, int level)
         {
-            _healthBuffPriceText.text = $"{GetBuffPrice(currentLevel)}";
+            priceText.text = GetBuffPrice(level).ToString();
         }
-    
-        private void UpdateArmorBuffPriceText(int currentLevel)
+        
+        private void PurchaseBuff(ref int buffCounter, int persistentLevel, Button purchaseButton, Action<int> initLevel, Action upgradeBuff, Action onUpgraded, Action<int> updateCalculationLevel, Action updateCalculationValue, Action<int> updatePriceText)
         {
-            _armorBuffPriceText.text = $"{GetBuffPrice(currentLevel)}";
-        }
-    
-        private void UpdateDamageBuffPriceText(int currentLevel)
-        {
-            _damageBuffPriceText.text = $"{GetBuffPrice(currentLevel)}";
-        }
-    
-        private void UpdateAttackSpeedBuffPriceText(int currentLevel)
-        {
-            _attackSpeedBuffPriceText.text = $"{GetBuffPrice(currentLevel)}";
-        }
-    
-        private void UpdateMovementSpeedBuffPriceText(int currentLevel)
-        {
-            _movementSpeedBuffPriceText.text = $"{GetBuffPrice(currentLevel)}";
+            if (persistentLevel != 0)
+            {
+                buffCounter = persistentLevel;
+            }
+
+            int price = GetBuffPrice(buffCounter);
+
+            if (!IsEnough(price))
+            {
+                _buttonAnimation.PlayTryPressedAnimation(purchaseButton);
+                return;
+            }
+
+            _buttonAnimation.PlayPressedAnimation(purchaseButton);
+            initLevel(buffCounter);
+            upgradeBuff();
+            SpendMoney(price);
+            buffCounter++;
+            onUpgraded?.Invoke();
+            updateCalculationLevel(buffCounter);
+            updateCalculationValue();
+            _iDataSaver.Save();
+            updatePriceText(buffCounter);
         }
         
         private void OnBuyDamageBuff()
         {
-            if(_calculationFinalValue.DamageLevelImprovment != 0)
-            {
-                _damageBuffCounter = _calculationFinalValue.DamageLevelImprovment;
-            }
-            
-            int price = GetBuffPrice(_damageBuffCounter);
-            
-            if(!IsEnough(price))
-            {
-                _buttonAnimation.PlayTryPressedAnimation(_damageBuffPurchaseButton);
-                return;
-            }
-            
-            _buttonAnimation.PlayPressedAnimation(_damageBuffPurchaseButton);
-            
-            _buffImprovement.InitDamageLevel(_damageBuffCounter);
-            _buffImprovement.UpgradeDamage();
-            SpendMoney(price);
-            _damageBuffCounter++;
-            DamageUpgraded?.Invoke();
-            _calculationFinalValue.InitLevelDamage(_damageBuffCounter);
-            _calculationFinalValue.InitDamage(_buffImprovement.DamageBuff.Value);
-            _iDataSaver.Save();
-            UpdateDamageBuffPriceText(_damageBuffCounter);
+            PurchaseBuff(ref _damageBuffCounter, _calculationFinalValue.DamageLevelImprovment, _damageBuffPurchaseButton, level => _buffImprovement.InitDamageLevel(level), () => _buffImprovement.UpgradeDamage(), () => DamageUpgraded?.Invoke(),
+                level => _calculationFinalValue.InitLevelDamage(level), () => _calculationFinalValue.InitDamage(_buffImprovement.DamageBuff.Value), level => UpdatePriceText(_damageBuffPriceText, level));
         }
         
         private void OnBuyHealthBuff()
         {
-            if(_calculationFinalValue.HealthLevelImprovment != 0)
-            {
-                _healthBuffCounter = _calculationFinalValue.HealthLevelImprovment;
-            }
-            
-            int price = GetBuffPrice(_healthBuffCounter);
-            
-            if(!IsEnough(price))
-            {
-                _buttonAnimation.PlayTryPressedAnimation(_healthBuffPurchaseButton);
-                return;
-            }
-            
-            _buttonAnimation.PlayPressedAnimation(_healthBuffPurchaseButton);
-            
-            _buffImprovement.InitHealthLevel(_healthBuffCounter);
-            _buffImprovement.UpgradeHealth();
-            SpendMoney(price);
-            _healthBuffCounter++;
-            HealthUpgraded?.Invoke();
-            _calculationFinalValue.InitLevelHealth(_healthBuffCounter);
-            _calculationFinalValue.InitHealth(_buffImprovement.HealthBuff.Value);
-            _iDataSaver.Save();
-            UpdateHealthBuffPriceText(_healthBuffCounter);
+            PurchaseBuff(ref _healthBuffCounter, _calculationFinalValue.HealthLevelImprovment, _healthBuffPurchaseButton, level => _buffImprovement.InitHealthLevel(level), () => _buffImprovement.UpgradeHealth(), () => HealthUpgraded?.Invoke(),
+                level => _calculationFinalValue.InitLevelHealth(level), () => _calculationFinalValue.InitHealth(_buffImprovement.HealthBuff.Value), level => UpdatePriceText(_healthBuffPriceText, level));
         }
         
         private void OnBuyArmorBuff()
         {
-            if(_calculationFinalValue.ArmorLevelImprovment != 0)
-            {
-                _armorBuffCounter = _calculationFinalValue.ArmorLevelImprovment;
-            }
-            
-            int price = GetBuffPrice(_armorBuffCounter);
-            
-            if(!IsEnough(price))
-            {
-                _buttonAnimation.PlayTryPressedAnimation(_armorBuffPurchaseButton);
-                return;
-            }
-        
-            _buttonAnimation.PlayPressedAnimation(_armorBuffPurchaseButton);
-            
-            _buffImprovement.InitArmorLevel(_armorBuffCounter);
-            _buffImprovement.UpgradeArmor();
-            SpendMoney(price);
-            _armorBuffCounter++;
-            ArmorUpgraded?.Invoke();
-            _calculationFinalValue.InitLevelArmor(_armorBuffCounter);
-            _calculationFinalValue.InitArmor(_buffImprovement.ArmorBuff.Value);
-            _iDataSaver.Save();
-            UpdateArmorBuffPriceText(_armorBuffCounter);
+            PurchaseBuff(ref _armorBuffCounter, _calculationFinalValue.ArmorLevelImprovment, _armorBuffPurchaseButton, level => _buffImprovement.InitArmorLevel(level), () => _buffImprovement.UpgradeArmor(), () => ArmorUpgraded?.Invoke(),
+                level => _calculationFinalValue.InitLevelArmor(level), () => _calculationFinalValue.InitArmor(_buffImprovement.ArmorBuff.Value), level => UpdatePriceText(_armorBuffPriceText, level));
         }
         
         private void OnBuyAttackSpeedBuff()
         {
-            if(_calculationFinalValue.AttackSpeedLevelImprovment != 0)
-            {
-                _attackSpeedBuffCounter = _calculationFinalValue.AttackSpeedLevelImprovment;
-            }
-            
-            int price = GetBuffPrice(_attackSpeedBuffCounter);
-            
-            if(!IsEnough(price))
-            {
-                _buttonAnimation.PlayTryPressedAnimation(_attackSpeedBuffPurchaseButton);
-                return;
-            }
-        
-            _buttonAnimation.PlayPressedAnimation(_attackSpeedBuffPurchaseButton);
-            
-            _buffImprovement.InitAttackSpeedLevel(_attackSpeedBuffCounter);
-            _buffImprovement.UpgradeAttackSpeed();
-            SpendMoney(price);
-            _attackSpeedBuffCounter++;
-            AttackSpeedUpgraded?.Invoke();
-            _calculationFinalValue.InitLevelAttackSpeed(_attackSpeedBuffCounter);
-            _calculationFinalValue.InitAttackSpeed(_buffImprovement.AttackSpeedBuff.Value);
-            _iDataSaver.Save();
-            UpdateAttackSpeedBuffPriceText(_attackSpeedBuffCounter);
+            PurchaseBuff(ref _attackSpeedBuffCounter, _calculationFinalValue.AttackSpeedLevelImprovment, _attackSpeedBuffPurchaseButton, level => _buffImprovement.InitAttackSpeedLevel(level), () => _buffImprovement.UpgradeAttackSpeed(), () => AttackSpeedUpgraded?.Invoke(),
+                level => _calculationFinalValue.InitLevelAttackSpeed(level), () => _calculationFinalValue.InitAttackSpeed(_buffImprovement.AttackSpeedBuff.Value), level => UpdatePriceText(_attackSpeedBuffPriceText, level));
         }
         
         private void OnBuyMovementSpeedBuff()
         {
-            if(_calculationFinalValue.MovementSpeedLevelImprovment != 0)
-            {
-                _movementSpeedBuffCounter = _calculationFinalValue.MovementSpeedLevelImprovment;
-            }
-            
-            int price = GetBuffPrice(_movementSpeedBuffCounter);
-            
-            if(!IsEnough(price))
-            {
-                _buttonAnimation.PlayTryPressedAnimation(_movementSpeedBuffPurchaseButton);
-                return;
-            }
+            PurchaseBuff(ref _movementSpeedBuffCounter, _calculationFinalValue.MovementSpeedLevelImprovment, _movementSpeedBuffPurchaseButton, level => _buffImprovement.InitMovementSpeedLevel(level), () => _buffImprovement.UpgradeMovementSpeed(), () => MovementSpeedUpgraded?.Invoke(),
+                level => _calculationFinalValue.InitLevelMovementSpeed(level), () => _calculationFinalValue.InitMovementSpeed(_buffImprovement.MovementSpeedBuff.Value), level => UpdatePriceText(_movementSpeedBuffPriceText, level));
+        }
         
-            _buttonAnimation.PlayPressedAnimation(_movementSpeedBuffPurchaseButton);
-            
-            _buffImprovement.InitMovementSpeedLevel(_movementSpeedBuffCounter);
-            _buffImprovement.UpgradeMovementSpeed();
-            SpendMoney(price);
-            _movementSpeedBuffCounter++;
-            MovementSpeedUpgraded?.Invoke();
-            _calculationFinalValue.InitLevelMovementSpeed(_movementSpeedBuffCounter);
-            _calculationFinalValue.InitMovementSpeed(_buffImprovement.MovementSpeedBuff.Value);
-            _iDataSaver.Save();
-            UpdateMovementSpeedBuffPriceText(_movementSpeedBuffCounter);
+        private void OnBuffClick(Button buffButton, Button purchaseButton, TextMeshProUGUI descriptionText, Action<int> updatePriceText, int persistentLevel)
+        {
+            _buttonAnimation.SetSelectedBuffButton(ref _currentSelectedBuffButton, buffButton);
+            DeactivateAllViewers();
+            Activate(purchaseButton, descriptionText);
+            updatePriceText(persistentLevel);
         }
         
         private void OnDamageBuffClick()
         {
-            SetSelectedBuffButton(_damageBuffButton);
-            DeactivateAllViewers();
-            Activate(_damageBuffPurchaseButton, _damageBuffDescription);
-            UpdateDamageBuffPriceText(_calculationFinalValue.DamageLevelImprovment);
+            OnBuffClick(_damageBuffButton, _damageBuffPurchaseButton, _damageBuffDescription, level => UpdatePriceText(_damageBuffPriceText, level), _calculationFinalValue.DamageLevelImprovment);
         }
         
         private void OnHealthBuffClick()
         {
-            SetSelectedBuffButton(_healthBuffButton);
-            DeactivateAllViewers();
-            Activate(_healthBuffPurchaseButton, _healthBuffDescription);
-            UpdateHealthBuffPriceText(_calculationFinalValue.HealthLevelImprovment);
+            OnBuffClick(_healthBuffButton, _healthBuffPurchaseButton, _healthBuffDescription, level => UpdatePriceText(_healthBuffPriceText, level), _calculationFinalValue.HealthLevelImprovment);
         }
         
         private void OnArmorBuffClick()
         {
-            SetSelectedBuffButton(_armorBuffButton);
-            DeactivateAllViewers();
-            Activate(_armorBuffPurchaseButton, _armorBuffDescription);
-            UpdateArmorBuffPriceText(_calculationFinalValue.ArmorLevelImprovment);
+            OnBuffClick(_armorBuffButton, _armorBuffPurchaseButton, _armorBuffDescription, level => UpdatePriceText(_armorBuffPriceText, level), _calculationFinalValue.ArmorLevelImprovment);
         }
         
         private void OnAttackSpeedBuffClick()
         {
-            SetSelectedBuffButton(_attackSpeedBuffButton);
-            DeactivateAllViewers();
-            Activate(_attackSpeedBuffPurchaseButton, _attackSpeedBuffDescription);
-            UpdateAttackSpeedBuffPriceText(_calculationFinalValue.AttackSpeedLevelImprovment);
+            OnBuffClick(_attackSpeedBuffButton, _attackSpeedBuffPurchaseButton, _attackSpeedBuffDescription, level => UpdatePriceText(_attackSpeedBuffPriceText, level), _calculationFinalValue.AttackSpeedLevelImprovment);
         }
         
         private void OnMovementSpeedBuffClick()
         {
-            SetSelectedBuffButton(_movementSpeedBuffButton);
-            DeactivateAllViewers();
-            Activate(_movementSpeedBuffPurchaseButton, _movementSpeedBuffDescription);
-            UpdateMovementSpeedBuffPriceText(_calculationFinalValue.MovementSpeedLevelImprovment);
+            OnBuffClick(_movementSpeedBuffButton, _movementSpeedBuffPurchaseButton, _movementSpeedBuffDescription, level => UpdatePriceText(_movementSpeedBuffPriceText, level), _calculationFinalValue.MovementSpeedLevelImprovment);
         }
         
         private void Activate(Button button, TextMeshProUGUI text)
@@ -355,28 +236,5 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         private bool IsEnough(int price) => _wallet.IsEnough(price);
         
         private void SpendMoney(int amount) => _wallet.Spend(amount);
-
-        private void SetSelectedBuffButton(Button newButton)
-        {
-            if(newButton == null)
-            {
-                return;
-            }
-
-            if(_currentSelectedBuffButton == newButton)
-            {
-                return;
-            }
-
-            if(_buffParticle != null)
-            {
-                _buffParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-                _buffParticle.transform.SetParent(newButton.transform, false);
-                _buffParticle.transform.localPosition = Vector3.zero;
-                _buffParticle.Play();
-            }
-
-            _currentSelectedBuffButton = newButton;
-        }
     }
 }

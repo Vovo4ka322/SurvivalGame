@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using Game.Scripts.AbilityComponents.ArcherAbilities;
+using Game.Scripts.AbilityComponents.MeleeAbilities;
 using Game.Scripts.PlayerComponents;
 
 namespace Game.Scripts.MenuComponents
@@ -26,7 +28,7 @@ namespace Game.Scripts.MenuComponents
 
             if(characterType == CharacterType.Melee)
             {
-                MeleeWindowImprovment meleeWindow = canvas.GetComponent<MeleeWindowImprovment>();
+                MeleeWindowImprovement meleeWindow = canvas.GetComponent<MeleeWindowImprovement>();
                 MeleeAbilityViewer meleeAbility = canvas.GetComponent<MeleeAbilityViewer>();
                 MeleeCanvasInitialization meleeCanvasInit = canvas.GetComponent<MeleeCanvasInitialization>();
 
@@ -36,7 +38,7 @@ namespace Game.Scripts.MenuComponents
             }
             else if(characterType == CharacterType.Range)
             {
-                RangeWindowImprovment rangeWindow = canvas.GetComponent<RangeWindowImprovment>();
+                RangeWindowImprovement rangeWindow = canvas.GetComponent<RangeWindowImprovement>();
                 RangeAbilityViewer rangeAbility = canvas.GetComponent<RangeAbilityViewer>();
                 RangeCanvasInitialization rangeCanvasInit = canvas.GetComponent<RangeCanvasInitialization>();
 
