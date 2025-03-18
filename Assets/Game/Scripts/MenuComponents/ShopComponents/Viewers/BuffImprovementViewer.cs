@@ -99,7 +99,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
             Upgrade(_movementSpeedBuffUpgrades, _calculationFinalValue.MovementSpeedLevelImprovment);
         }
 
-        private bool IsFull(int value) => _buffShop.MaxCount == value;
+        private bool IsFull(int value) => _buffShop.MaxCount <= value;
 
         private void Upgrade(List<Image> images, int index)
         {
