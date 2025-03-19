@@ -617,6 +617,9 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 8192
+  _joystickForMovement: {fileID: 0}
+  _joystickForRotation: {fileID: 0}
+  _isJoystickActive: 0
 --- !u!114 &7584807702275972672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,7 +637,7 @@ MonoBehaviour:
   _baseArmor: 40
   _baseDamage: 30
   _baseAttackSpeed: 1.2
-  _baseMoveSpeed: 9
+  _baseMoveSpeed: 6
   _level:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
     <Experience>k__BackingField: 0

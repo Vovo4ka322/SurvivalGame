@@ -18,9 +18,9 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
         
         private Vector3 _originalParentScale;
         
-        private void Awake()
+        private void Start()
         {
-            if (_buffParticle != null && ! _buffParticle.gameObject.scene.isLoaded)
+            if (_buffParticle != null)
             {
                 _buffParticle = Instantiate(_buffParticle);
             }
