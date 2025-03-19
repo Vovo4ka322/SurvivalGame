@@ -17,7 +17,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
         
         public PlayerData()
         {
-            _money = 30000;
+            _money = 0;
 
             _calculationFinalValue = new PlayerCharacteristicData();
 
