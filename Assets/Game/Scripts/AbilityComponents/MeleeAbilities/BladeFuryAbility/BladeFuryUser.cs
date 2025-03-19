@@ -28,28 +28,31 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility
 
         public IEnumerator UseAbility(MeleePlayer meleePlayer)
         {
-            float duration = 0;
-
-            if (Time.time >= _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime || _canUseFirstTime)
+            if (_bladeFuryScriptableObject != null)
             {
-                while (duration < _bladeFuryScriptableObject.Duration)
+                float duration = 0;
+
+                if (Time.time >= _lastUsedTimer + _bladeFuryScriptableObject.CooldownTime || _canUseFirstTime)
                 {
-                    _animator.SetTrueBoolState(_animator.CanUseSkill1Hash);
-                    _animator.SetFalseBoolState(_animator.IsAttack);
+                    while (duration < _bladeFuryScriptableObject.Duration)
+                    {
+                        _animator.SetTrueBoolState(_animator.CanUseSkill1Hash);
+                        _animator.SetFalseBoolState(_animator.IsAttack);
 
-                    meleePlayer.SetSwordColliderTrue();
-                    meleePlayer.transform.Rotate(Vector3.up, _bladeFuryScriptableObject.TurnSpeed * Time.deltaTime);
-                    duration += Time.deltaTime;
-                    _lastUsedTimer = Time.time;
-                    _canUseFirstTime = false;
+                        meleePlayer.SetSwordColliderTrue();
+                        meleePlayer.transform.Rotate(Vector3.up, _bladeFuryScriptableObject.TurnSpeed * Time.deltaTime);
+                        duration += Time.deltaTime;
+                        _lastUsedTimer = Time.time;
+                        _canUseFirstTime = false;
 
-                    yield return null;
+                        yield return null;
+                    }
+
+                    _animator.SetFalseBoolState(_animator.CanUseSkill1Hash);
+                    _animator.SetTrueBoolState(_animator.IsAttack);
+
+                    StartCoroutine(StartCooldown());
                 }
-
-                _animator.SetFalseBoolState(_animator.CanUseSkill1Hash);
-                _animator.SetTrueBoolState(_animator.IsAttack);
-
-                StartCoroutine(StartCooldown());
             }
         }
 

@@ -12,11 +12,18 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Canvas _meleeCanvas;
         [SerializeField] private Canvas _rangeCanvas;
 
+        private bool _isJoysctickActive;
+        private Canvas _canvas;
+
+        public Joystick MovementJoystick { get; private set; }
+
+        public Joystick RotationJoystick { get; private set; }
+
         public Canvas Create(CharacterType characterType, Player player)
         {
             Canvas prefab = GetPrefab(characterType);
 
-            if(prefab == null)
+            if (prefab == null)
             {
                 throw new ArgumentException("There was no Prefab of Canvas for the type of character: {characterType}");
             }
@@ -26,7 +33,7 @@ namespace Game.Scripts.MenuComponents
 
             healthViewer.Init(player);
 
-            if(characterType == CharacterType.Melee)
+            if (characterType == CharacterType.Melee)
             {
                 MeleeWindowImprovement meleeWindow = canvas.GetComponent<MeleeWindowImprovement>();
                 MeleeAbilityViewer meleeAbility = canvas.GetComponent<MeleeAbilityViewer>();
@@ -35,8 +42,10 @@ namespace Game.Scripts.MenuComponents
                 meleeWindow.Init(player);
                 meleeAbility.Init(player);
                 meleeCanvasInit.InitButtons(player);
+
+                _canvas = canvas;
             }
-            else if(characterType == CharacterType.Range)
+            else if (characterType == CharacterType.Range)
             {
                 RangeWindowImprovement rangeWindow = canvas.GetComponent<RangeWindowImprovement>();
                 RangeAbilityViewer rangeAbility = canvas.GetComponent<RangeAbilityViewer>();
@@ -45,14 +54,29 @@ namespace Game.Scripts.MenuComponents
                 rangeWindow.Init(player);
                 rangeAbility.Init(player);
                 rangeCanvasInit.InitButtons(player);
+
+                _canvas = canvas;
             }
 
             return canvas;
         }
 
+        public void Init(bool isJoysctickActive)
+        {
+            _isJoysctickActive = isJoysctickActive;
+
+            if (_isJoysctickActive)
+            {
+                MovementJoystick = _canvas.GetComponent<JoystickData>().MovementJoystick;
+                RotationJoystick = _canvas.GetComponent<JoystickData>().RotationJoystick;
+                MovementJoystick.gameObject.SetActive(true);
+                RotationJoystick.gameObject.SetActive(true);
+            }
+        }
+
         private Canvas GetPrefab(CharacterType characterType)
         {
-            switch(characterType)
+            switch (characterType)
             {
                 case CharacterType.Melee:
                     return _meleeCanvas;
