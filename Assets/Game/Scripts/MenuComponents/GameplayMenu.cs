@@ -98,6 +98,8 @@ namespace Game.Scripts.MenuComponents
 
         public void OnPlayerWon()
         {
+            CallAd();
+
             Time.timeScale = 0;
             
             _victoryPanel.gameObject.SetActive(true);

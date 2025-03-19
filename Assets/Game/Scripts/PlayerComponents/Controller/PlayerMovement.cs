@@ -20,6 +20,7 @@ namespace Game.Scripts.PlayerComponents.Controller
         private Camera _camera;
         private Vector3 _moveDirection;
         private Vector3 _direction;
+        private bool _isSkillWorking;
 
         private void Awake()
         {
@@ -32,6 +33,9 @@ namespace Game.Scripts.PlayerComponents.Controller
             HandleRotation();
         }
 
+        public void SetStateSkillWorkingTrue() => _isSkillWorking = true;
+        public void SetStateSkillWorkingFalse() => _isSkillWorking = false;
+
         public void InitJoysticks(bool isJoystickActive, Joystick joystickForMovement, Joystick joystickForRotation)
         {
             _isJoystickActive = isJoystickActive;
@@ -41,7 +45,7 @@ namespace Game.Scripts.PlayerComponents.Controller
 
         public void Init(float movementSpeed)
         {
-            _moveSpeed = movementSpeed;       
+            _moveSpeed = movementSpeed;
         }
 
         public void ChangeMoveSpeed(float amount)
@@ -85,31 +89,34 @@ namespace Game.Scripts.PlayerComponents.Controller
 
         private void HandleRotation()
         {
-            Ray ray = _camera.ScreenPointToRay(_controller.Rotation);
-
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, _layerMask))
+            if (_isSkillWorking == false)
             {
-                Vector3 direction;
+                Ray ray = _camera.ScreenPointToRay(_controller.Rotation);
 
-                if (_isJoystickActive)
+                if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, _layerMask))
                 {
-                    direction = _joystickForRotation.Direction;
-                    direction.x = _joystickForRotation.Horizontal;
-                    direction.z = _joystickForRotation.Vertical;
-                    direction.y = 0;
-                }
-                else
-                {
-                    direction = hitInfo.point - transform.position;
-                    direction.y = 0;
-                }
+                    Vector3 direction;
 
-                _direction = hitInfo.point;
+                    if (_isJoystickActive)
+                    {
+                        direction = _joystickForRotation.Direction;
+                        direction.x = _joystickForRotation.Horizontal;
+                        direction.z = _joystickForRotation.Vertical;
+                        direction.y = 0;
+                    }
+                    else
+                    {
+                        direction = hitInfo.point - transform.position;
+                        direction.y = 0;
+                    }
 
-                if (direction != Vector3.zero)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(direction);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _turnSpeed);
+                    _direction = hitInfo.point;
+
+                    if (direction != Vector3.zero)
+                    {
+                        Quaternion targetRotation = Quaternion.LookRotation(direction);
+                        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _turnSpeed);
+                    }
                 }
             }
         }
