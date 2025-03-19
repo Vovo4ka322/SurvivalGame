@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Game.Scripts.PlayerComponents.Animations;
 
 namespace Game.Scripts.PlayerComponents.Controller

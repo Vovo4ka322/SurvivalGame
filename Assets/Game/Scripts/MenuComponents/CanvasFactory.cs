@@ -12,11 +12,10 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Canvas _meleeCanvas;
         [SerializeField] private Canvas _rangeCanvas;
 
-        private bool _isJoysctickActive;
+        private bool _isJoystickActive;
         private Canvas _canvas;
 
         public Joystick MovementJoystick { get; private set; }
-
         public Joystick RotationJoystick { get; private set; }
 
         public Canvas Create(CharacterType characterType, Player player)
@@ -61,11 +60,11 @@ namespace Game.Scripts.MenuComponents
             return canvas;
         }
 
-        public void Init(bool isJoysctickActive)
+        public void Init(bool isJoystickActive)
         {
-            _isJoysctickActive = isJoysctickActive;
+            _isJoystickActive = isJoystickActive;
 
-            if (_isJoysctickActive)
+            if (_isJoystickActive)
             {
                 MovementJoystick = _canvas.GetComponent<JoystickData>().MovementJoystick;
                 RotationJoystick = _canvas.GetComponent<JoystickData>().RotationJoystick;

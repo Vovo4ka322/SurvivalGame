@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +11,7 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Button _continueButton;
         [SerializeField] private RectTransform _abilityInterface;
         [SerializeField] private Button _pauseButton;
-
+        
         private void Awake()
         {
             if (_tutorialPanel != null)
@@ -21,7 +20,7 @@ namespace Game.Scripts.MenuComponents
                 Time.timeScale = 0;
             }
         }
-
+        
         private void OnEnable()
         {
             _continueButton.onClick.AddListener(Continue);
@@ -31,7 +30,7 @@ namespace Game.Scripts.MenuComponents
         {
             _continueButton.onClick.RemoveListener(Continue);
         }
-
+        
         private void Continue()
         {
             Time.timeScale = 1;
