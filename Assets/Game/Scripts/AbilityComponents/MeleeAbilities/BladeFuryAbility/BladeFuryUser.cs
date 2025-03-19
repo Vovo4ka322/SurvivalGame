@@ -39,6 +39,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility
                         _animator.SetTrueBoolState(_animator.CanUseSkill1Hash);
                         _animator.SetFalseBoolState(_animator.IsAttack);
 
+                        meleePlayer.PlayerMovement.SetStateSkillWorkingTrue();
                         meleePlayer.SetSwordColliderTrue();
                         meleePlayer.transform.Rotate(Vector3.up, _bladeFuryScriptableObject.TurnSpeed * Time.deltaTime);
                         duration += Time.deltaTime;
@@ -50,6 +51,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility
 
                     _animator.SetFalseBoolState(_animator.CanUseSkill1Hash);
                     _animator.SetTrueBoolState(_animator.IsAttack);
+                    meleePlayer.PlayerMovement.SetStateSkillWorkingFalse();
 
                     StartCoroutine(StartCooldown());
                 }
