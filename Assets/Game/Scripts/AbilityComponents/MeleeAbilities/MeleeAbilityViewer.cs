@@ -115,7 +115,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             Upgrade(_thirdAbilityImprovements, _bloodLustImprovement);
             _bloodLustImprovement++;
             
-            if(_borrowedTimeImprovement == 1)
+            if(_bloodLustImprovement == 1)
             {
                 _iconUtility.SetIconDimmed(_thirdAbility, false);
             }

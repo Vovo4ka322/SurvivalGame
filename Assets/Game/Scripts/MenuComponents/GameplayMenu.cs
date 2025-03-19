@@ -153,7 +153,6 @@ namespace Game.Scripts.MenuComponents
                 _bossHealthViewer?.gameObject.SetActive(false);
             }
 
-            _tutorialPanel?.Pause();
             _pauseButton?.gameObject.SetActive(false);
             _waveTimerUI?.gameObject.SetActive(false);
             _playerPanel?.gameObject.SetActive(false);
@@ -173,7 +172,6 @@ namespace Game.Scripts.MenuComponents
                 _bossHealthViewer.gameObject.SetActive(true);
             }
 
-            _tutorialPanel?.Resume();
             _pauseButton?.gameObject.SetActive(true);
             _waveTimerUI?.gameObject.SetActive(true);
             _playerPanel?.gameObject.SetActive(true);

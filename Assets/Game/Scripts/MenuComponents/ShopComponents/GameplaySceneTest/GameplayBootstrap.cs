@@ -8,6 +8,7 @@ using Game.Scripts.MusicComponents;
 using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.PoolComponents;
+using YG;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {
@@ -23,23 +24,34 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private SoundCollection _soundCollection;
         [SerializeField] private AudioGameSettings _audioGameSettings;
         [SerializeField] private GameSceneAudio _gameSceneAudio;
-        [SerializeField] private WaveCycle _waveCycle; 
-        
+        [SerializeField] private WaveCycle _waveCycle;
+
         private Player _player;
         private Canvas _canvas;
         private Wallet _wallet;
         private WalletView _walletView;
         private GameplayMenu _gameplayMenu;
+        private bool _isJoystickActive;
 
         private IDataSaver _iDataSaver;
         private IPersistentData _persistentPlayerData;
 
         private void Awake()
         {
+            if (YandexGame.EnvironmentData.isDesktop)
+            {
+                _isJoystickActive = false;
+            }
+            else if (YandexGame.EnvironmentData.isMobile || YandexGame.EnvironmentData.isTablet)
+            {
+                _isJoystickActive = true;
+            }
+
             InitializeData();
-            DoTestSpawn();
+            Spawn();
 
             _enemySpawner.Init(_player);
+
         }
 
         private void OnEnable()
@@ -52,22 +64,25 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             _enemyFactory.BossDead -= _gameplayMenu.OnPlayerWon;
         }
 
-        private void DoTestSpawn()
+        private void Spawn()
         {
             _wallet = new(_persistentPlayerData);
             _player = _generalPlayerFactory.Get(_persistentPlayerData.PlayerData.SelectedCharacterSkin, _characterSpawnPoint.position);
-            
+
             if (_player == null)
             {
                 throw new ArgumentException("The player is not created! Check GeneralPlayerFactory and PersistentData.");
             }
-            
+
             _virtualCamera.Follow = _player.transform;
             _virtualCamera.LookAt = _player.transform;
-            
+
             _player.SetSoundCollection(_soundCollection);
             InitPlayerCharacteristics();
             InitUserInterface();
+
+            if (_isJoystickActive)
+                _player.InitJoysticks(_isJoystickActive, _canvasFactory.MovementJoystick, _canvasFactory.RotationJoystick);
         }
 
         private void InitPlayerCharacteristics()
@@ -85,6 +100,10 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             }
 
             _canvas = _canvasFactory.Create(_player.CharacterType, _player);
+
+            if (_isJoystickActive)
+                _canvasFactory.Init(_isJoystickActive);
+
             if (_canvas == null)
             {
                 throw new ArgumentException("The creation of Canvas ended with an error.");

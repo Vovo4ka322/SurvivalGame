@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Game.Scripts.PlayerComponents.Animations;
 
 namespace Game.Scripts.PlayerComponents.Controller
@@ -10,24 +11,37 @@ namespace Game.Scripts.PlayerComponents.Controller
         [SerializeField] private float _turnSpeed;
         [SerializeField] private LayerMask _layerMask;
 
+        [SerializeField] private Joystick _joystickForMovement;
+        [SerializeField] private Joystick _joystickForRotation;
+
+        [SerializeField] private bool _isJoystickActive;
+
         private float _moveSpeed;
         private Camera _camera;
         private Vector3 _moveDirection;
+        private Vector3 _direction;
 
         private void Awake()
         {
             _camera = Camera.main;
         }
-        
+
         private void Update()
         {
             HandleMovement();
             HandleRotation();
         }
 
+        public void InitJoysticks(bool isJoystickActive, Joystick joystickForMovement, Joystick joystickForRotation)
+        {
+            _isJoystickActive = isJoystickActive;
+            _joystickForMovement = joystickForMovement;
+            _joystickForRotation = joystickForRotation;
+        }
+
         public void Init(float movementSpeed)
         {
-            _moveSpeed = movementSpeed;
+            _moveSpeed = movementSpeed;       
         }
 
         public void ChangeMoveSpeed(float amount)
@@ -37,8 +51,19 @@ namespace Game.Scripts.PlayerComponents.Controller
 
         private void HandleMovement()
         {
-            float horizontal = _controller.Movement.x;
-            float vertical = _controller.Movement.y;
+            float horizontal;
+            float vertical;
+
+            if (_isJoystickActive)
+            {
+                horizontal = _joystickForMovement.Horizontal;
+                vertical = _joystickForMovement.Vertical;
+            }
+            else
+            {
+                horizontal = _controller.Movement.x;
+                vertical = _controller.Movement.y;
+            }
 
             Vector3 forward = _camera.transform.forward;
             Vector3 right = _camera.transform.right;
@@ -47,17 +72,16 @@ namespace Game.Scripts.PlayerComponents.Controller
             right.y = 0f;
             forward.Normalize();
             right.Normalize();
-            
+
             _moveDirection = forward * vertical + right * horizontal;
             _moveDirection = _moveDirection.normalized;
-            
+
             float speedDelta = _moveSpeed * Time.deltaTime;
             transform.position += _moveDirection * speedDelta;
-            
+
             _controllerAnimations.PlayMove(_moveDirection);
         }
 
-        Vector3 _dir;
 
         private void HandleRotation()
         {
@@ -65,10 +89,22 @@ namespace Game.Scripts.PlayerComponents.Controller
 
             if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, _layerMask))
             {
-                Vector3 direction = hitInfo.point - transform.position;
-                direction.y = 0;
+                Vector3 direction;
 
-                _dir = hitInfo.point;
+                if (_isJoystickActive)
+                {
+                    direction = _joystickForRotation.Direction;
+                    direction.x = _joystickForRotation.Horizontal;
+                    direction.z = _joystickForRotation.Vertical;
+                    direction.y = 0;
+                }
+                else
+                {
+                    direction = hitInfo.point - transform.position;
+                    direction.y = 0;
+                }
+
+                _direction = hitInfo.point;
 
                 if (direction != Vector3.zero)
                 {
@@ -81,7 +117,7 @@ namespace Game.Scripts.PlayerComponents.Controller
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(_dir, 0.5f);
+            Gizmos.DrawSphere(_direction, 0.5f);
         }
     }
 }
