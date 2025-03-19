@@ -12,7 +12,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
         [SerializeField] private Vector3 _shakeStrength = new Vector3(0.1f, 0.1f, 0f);
         [SerializeField] private int _shakeVibrato = 10;
         [SerializeField] private float _shakeRandomness = 90f;
-
         [SerializeField] private ParticleSystem _buffParticle;
         
         private readonly Dictionary<Transform, Vector3> _childOriginalScales = new Dictionary<Transform, Vector3>();
