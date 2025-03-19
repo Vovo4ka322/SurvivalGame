@@ -2063,6 +2063,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -45
       objectReference: {fileID: 0}
+    - target: {fileID: 5594354726754443197, guid: ab82b27b62de048d4a81be0372b9ef34, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5876829946651126421, guid: ab82b27b62de048d4a81be0372b9ef34, type: 3}
       propertyPath: m_MaxValue
       value: 1
@@ -6214,6 +6218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 5UpgradeFalse
       objectReference: {fileID: 0}
+    - target: {fileID: 5650563356188448116, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5668845113991555026, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
       propertyPath: en
       value: 'Increases the amount of damage. '
@@ -6597,6 +6605,10 @@ PrefabInstance:
     - target: {fileID: 7249203359578371855, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
       propertyPath: processTranslateLabel
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277448671433629518, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7293485478199246599, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
       propertyPath: m_AnchorMax.y
