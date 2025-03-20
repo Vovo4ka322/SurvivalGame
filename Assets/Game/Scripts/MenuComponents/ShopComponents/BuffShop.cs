@@ -129,7 +129,13 @@ namespace Game.Scripts.MenuComponents.ShopComponents
 
         private void OnBuffPanelOpened() => _buffPanel.gameObject.SetActive(true);
 
-        private void OnBuffPanelClosed() => _buffPanel.gameObject.SetActive(false);
+        private void OnBuffPanelClosed()
+        {
+            _buffPanel.gameObject.SetActive(false);
+            _buttonAnimation.ResetSelectedBuffButton(ref _currentSelectedBuffButton);
+            
+            DeactivateAllViewers();
+        }
 
         private int GetBuffPrice(int currentLevel) => _startBuffPrice + (currentLevel * _priceIncrement);
 

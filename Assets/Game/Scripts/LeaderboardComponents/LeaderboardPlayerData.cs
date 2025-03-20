@@ -4,7 +4,7 @@ using TMPro;
 
 namespace Game.Scripts.LeaderboardComponents
 {
-    public class PlayerData : MonoBehaviour
+    public class LeaderboardPlayerData : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _rankText;
         [SerializeField] private TextMeshProUGUI _nameText;
