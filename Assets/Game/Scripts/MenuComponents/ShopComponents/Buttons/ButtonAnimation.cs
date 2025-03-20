@@ -44,6 +44,22 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
             currentSelectedBuffButton = newButton;
         }
         
+        public void ResetSelectedBuffButton(ref Button currentSelectedBuffButton)
+        {
+            if (currentSelectedBuffButton == null)
+            {
+                return;
+            }
+
+            if (_buffParticle != null)
+            {
+                _buffParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                _buffParticle.transform.SetParent(null);
+            }
+
+            currentSelectedBuffButton = null;
+        }
+        
         public void PlayPressedAnimation(Button button)
         {
             if(button == null)

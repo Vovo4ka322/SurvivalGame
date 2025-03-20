@@ -39,7 +39,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
         public int Money
         {
             get => _money;
-
             set
             {
                 if (value < 0)
