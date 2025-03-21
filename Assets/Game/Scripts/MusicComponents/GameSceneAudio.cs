@@ -53,7 +53,7 @@ namespace Game.Scripts.MusicComponents
             StartCoroutine(CrossfadeMusic(_waveMusicSource, _bossMusicSource, fadeDuration));
         }
         
-        private void OnApplicationFocus(bool hasFocus)
+        private void OnApplicationPause(bool hasFocus)
         {
             if(hasFocus)
             {

@@ -15,7 +15,8 @@ mergeInto(LibraryManager.library,
 		OpenAuthDialog();
 	},
 	
-	RequestAuth_js: function (sendback) {
+	RequestAuth_js: function (sendback)
+	{
         InitPlayer(sendback);
     }
 });

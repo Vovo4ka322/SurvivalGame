@@ -75,8 +75,8 @@ MonoBehaviour:
   _projectileEffectPrefab: {fileID: 8534990135004221716}
   _explosionPrefab: {fileID: 5567487543081949024, guid: 399dd9eb690984764bafb98571a7b002, type: 3}
   _speed: 20
-  _lifetime: 5
-  _damage: 10
+  _lifetime: 7
+  _damage: 20
 --- !u!114 &1453112712551909915
 MonoBehaviour:
   m_ObjectHideFlags: 0
