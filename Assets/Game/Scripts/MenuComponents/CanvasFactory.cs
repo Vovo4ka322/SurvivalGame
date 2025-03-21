@@ -3,6 +3,7 @@ using UnityEngine;
 using Game.Scripts.AbilityComponents.ArcherAbilities;
 using Game.Scripts.AbilityComponents.MeleeAbilities;
 using Game.Scripts.PlayerComponents;
+using Game.Scripts.PlayerComponents.Controller;
 
 namespace Game.Scripts.MenuComponents
 {

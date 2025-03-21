@@ -12,22 +12,22 @@ namespace Game.Scripts.LeaderboardComponents
         private const string Ru = "ru";
         private const string En = "en";
         private const string Tr = "tr";
-        private const string AnonimDataRu = "??? ??????";
-        private const string AnonimDataEn = "No data";
-        private const string AnonimDataTr = "Veri yok";
-        private const string AnonimNameRu = "??????";
-        private const string AnonimNameEn = "Anonymous";
-        private const string AnonimNameTr = "Anonim";
+        private const string AnonymousDataRu = "??? ??????";
+        private const string AnonymousDataEn = "No data";
+        private const string AnonymousDataTr = "Veri yok";
+        private const string AnonymousNameRu = "??????";
+        private const string AnonymousNameEn = "Anonymous";
+        private const string AnonymousNameTr = "Anonim";
         
         [SerializeField] private GridLayoutGroup _gridLayout;
         [SerializeField] private VerticalLayoutGroup _currentPlayerLayoutGroup;
-        [SerializeField] private PlayerData _playerData;
-        [SerializeField] private PlayerData _currentPlayerDataPrefab;
+        [SerializeField] private LeaderboardPlayerData _leaderboardPlayerData;
+        [SerializeField] private LeaderboardPlayerData _currentLeaderboardPlayerDataPrefab;
         [SerializeField] private int _maxPlayer = 7;
         
-        private readonly List<PlayerData> _playerDataEntries = new List<PlayerData>();
+        private readonly List<LeaderboardPlayerData> _playerDataEntries = new List<LeaderboardPlayerData>();
         
-        private PlayerData _currentPlayerEntry;
+        private LeaderboardPlayerData _currentLeaderboardPlayerEntry;
         
         private void OnEnable()
         {
@@ -57,34 +57,34 @@ namespace Game.Scripts.LeaderboardComponents
                 return;
             }
             
-            foreach (PlayerData entry in _playerDataEntries)
+            foreach (LeaderboardPlayerData entry in _playerDataEntries)
             {
                 Destroy(entry.gameObject);
             }
             
             _playerDataEntries.Clear();
             
-            if (_currentPlayerEntry != null)
+            if (_currentLeaderboardPlayerEntry != null)
             {
-                Destroy(_currentPlayerEntry.gameObject);
+                Destroy(_currentLeaderboardPlayerEntry.gameObject);
                 
-                _currentPlayerEntry = null;
+                _currentLeaderboardPlayerEntry = null;
             }
             
             if (lbData.entries == null || lbData.entries.Length == 0)
             {
                 string noDataMessage = YandexGame.savesData.language switch
                 {
-                    Ru => AnonimDataRu,
-                    En => AnonimDataEn,
-                    Tr => AnonimDataTr,
+                    Ru => AnonymousDataRu,
+                    En => AnonymousDataEn,
+                    Tr => AnonymousDataTr,
                     _ => "...",
                 };
                 
-                PlayerData playerData = Instantiate(_playerData, _gridLayout.transform);
-                playerData.SetData("-", noDataMessage, "-", false);
-                playerData.UpdateEntries();
-                _playerDataEntries.Add(playerData);
+                LeaderboardPlayerData leaderboardPlayerData = Instantiate(_leaderboardPlayerData, _gridLayout.transform);
+                leaderboardPlayerData.SetData("-", noDataMessage, "-", false);
+                leaderboardPlayerData.UpdateEntries();
+                _playerDataEntries.Add(leaderboardPlayerData);
             }
             else
             {
@@ -93,15 +93,15 @@ namespace Game.Scripts.LeaderboardComponents
                 for (int i = 0; i < players.Length; i++)
                 {
                     LBPlayerData player = players[i];
-                    PlayerData playerData = Instantiate(_playerData, _gridLayout.transform);
+                    LeaderboardPlayerData leaderboardPlayerData = Instantiate(_leaderboardPlayerData, _gridLayout.transform);
                     
                     string playerName = string.IsNullOrEmpty(player.name) ? GetAnonimName() : LBMethods.AnonimName(player.name);
                     bool isCurrentUser = player.uniqueID == YandexGame.playerId;
                     
-                    playerData.SetData(player.rank.ToString(), playerName, player.score.ToString(), isCurrentUser);
-                    playerData.UpdateEntries();
+                    leaderboardPlayerData.SetData(player.rank.ToString(), playerName, player.score.ToString(), isCurrentUser);
+                    leaderboardPlayerData.UpdateEntries();
                     
-                    _playerDataEntries.Add(playerData);
+                    _playerDataEntries.Add(leaderboardPlayerData);
                 }
                 
                 if (lbData.thisPlayer != null)
@@ -110,9 +110,9 @@ namespace Game.Scripts.LeaderboardComponents
                     string currentPlayerScore = lbData.thisPlayer.score.ToString();
                     string currentPlayerRank = lbData.thisPlayer.rank.ToString();
                     
-                    _currentPlayerEntry = Instantiate(_currentPlayerDataPrefab, _currentPlayerLayoutGroup.transform);
-                    _currentPlayerEntry.SetData(currentPlayerRank, currentPlayerName, currentPlayerScore, true);
-                    _currentPlayerEntry.UpdateEntries();
+                    _currentLeaderboardPlayerEntry = Instantiate(_currentLeaderboardPlayerDataPrefab, _currentPlayerLayoutGroup.transform);
+                    _currentLeaderboardPlayerEntry.SetData(currentPlayerRank, currentPlayerName, currentPlayerScore, true);
+                    _currentLeaderboardPlayerEntry.UpdateEntries();
                 }
             }
         }
@@ -121,10 +121,10 @@ namespace Game.Scripts.LeaderboardComponents
         {
             return YandexGame.savesData.language switch
             {
-                Ru => AnonimNameRu,
-                En => AnonimNameEn,
-                Tr => AnonimNameTr,
-                _ => AnonimNameEn,
+                Ru => AnonymousNameRu,
+                En => AnonymousNameEn,
+                Tr => AnonymousNameTr,
+                _ => AnonymousNameEn,
             };
         }
     }

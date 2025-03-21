@@ -17,42 +17,43 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         [SerializeField] private Button _leaverPanelButton;
         [SerializeField] private ButtonAnimation _buttonAnimation;
 
-        [Header("Buffs buttons")] [SerializeField]
-        private Button _healthBuffButton;
+        [Header("Buffs buttons")]
+        [SerializeField] private Button _healthBuffButton;
         [SerializeField] private Button _armorBuffButton;
         [SerializeField] private Button _damageBuffButton;
         [SerializeField] private Button _attackSpeedBuffButton;
         [SerializeField] private Button _movementSpeedBuffButton;
 
-        [Header("Purchase buttons")] [SerializeField]
-        private Button _healthBuffPurchaseButton;
+        [Header("Purchase buttons")]
+        [SerializeField] private Button _healthBuffPurchaseButton;
         [SerializeField] private Button _armorBuffPurchaseButton;
         [SerializeField] private Button _damageBuffPurchaseButton;
         [SerializeField] private Button _attackSpeedBuffPurchaseButton;
         [SerializeField] private Button _movementSpeedBuffPurchaseButton;
 
-        [Header("Description texts of each buff")] [SerializeField]
-        private TextMeshProUGUI _healthBuffDescription;
+        [Header("Description texts of each buff")]
+        [SerializeField] private TextMeshProUGUI _healthBuffDescription;
         [SerializeField] private TextMeshProUGUI _armorBuffDescription;
         [SerializeField] private TextMeshProUGUI _damageBuffDescription;
         [SerializeField] private TextMeshProUGUI _attackSpeedBuffDescription;
         [SerializeField] private TextMeshProUGUI _movementSpeedBuffDescription;
 
-        [Header("Price texts for each buff")] [SerializeField]
-        private TextMeshProUGUI _healthBuffPriceText;
+        [Header("Price texts for each buff")]
+        [SerializeField] private TextMeshProUGUI _healthBuffPriceText;
         [SerializeField] private TextMeshProUGUI _armorBuffPriceText;
         [SerializeField] private TextMeshProUGUI _damageBuffPriceText;
         [SerializeField] private TextMeshProUGUI _attackSpeedBuffPriceText;
         [SerializeField] private TextMeshProUGUI _movementSpeedBuffPriceText;
 
-        [Header("Cost texts of each buff")] [SerializeField]
-        private TextMeshProUGUI _healthBuffCost;
+        [Header("Cost texts of each buff")]
+        [SerializeField] private TextMeshProUGUI _healthBuffCost;
         [SerializeField] private TextMeshProUGUI _armorBuffCost;
         [SerializeField] private TextMeshProUGUI _damageBuffCost;
         [SerializeField] private TextMeshProUGUI _attackSpeedBuffCost;
         [SerializeField] private TextMeshProUGUI _movementSpeedBuffCost;
         
-        private readonly int _startBuffPrice = 50;
+        private readonly int _startBuffPrice = 100;
+        private readonly int _priceIncrement = 100;
 
         private Wallet _wallet;
         private IDataSaver _iDataSaver;
@@ -128,9 +129,15 @@ namespace Game.Scripts.MenuComponents.ShopComponents
 
         private void OnBuffPanelOpened() => _buffPanel.gameObject.SetActive(true);
 
-        private void OnBuffPanelClosed() => _buffPanel.gameObject.SetActive(false);
+        private void OnBuffPanelClosed()
+        {
+            _buffPanel.gameObject.SetActive(false);
+            _buttonAnimation.ResetSelectedBuffButton(ref _currentSelectedBuffButton);
+            
+            DeactivateAllViewers();
+        }
 
-        private int GetBuffPrice(int currentLevel) => (currentLevel + 1) * _startBuffPrice;
+        private int GetBuffPrice(int currentLevel) => _startBuffPrice + (currentLevel * _priceIncrement);
 
         private void UpdateBuffPriceText(TextMeshProUGUI priceText, int currentLevel) => priceText.text = $"{GetBuffPrice(currentLevel)}";
 
@@ -140,8 +147,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
 
         private bool IsFull(int value) => MaxCount <= value;
 
-        private void BuyBuff(ref int buffCounter, int currentImprovement, Button purchaseButton, TextMeshProUGUI priceText, TextMeshProUGUI costText, Action initLevel, Action upgrade, Action upgradeEvent, Action<int> updateLevelCalculation,
-            Action<int> updateBuffCalculation)
+        private void BuyBuff(ref int buffCounter, int currentImprovement, Button purchaseButton, TextMeshProUGUI priceText, TextMeshProUGUI costText, Action initLevel, Action upgrade, Action upgradeEvent, Action<int> updateLevelCalculation, Action<int> updateBuffCalculation)
         {
             buffCounter = currentImprovement;
 

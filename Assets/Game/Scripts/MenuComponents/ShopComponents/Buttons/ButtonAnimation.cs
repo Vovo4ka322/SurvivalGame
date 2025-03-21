@@ -18,9 +18,9 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
         
         private Vector3 _originalParentScale;
         
-        private void Awake()
+        private void Start()
         {
-            if (_buffParticle != null && ! _buffParticle.gameObject.scene.isLoaded)
+            if (_buffParticle != null)
             {
                 _buffParticle = Instantiate(_buffParticle);
             }
@@ -42,6 +42,22 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
             }
 
             currentSelectedBuffButton = newButton;
+        }
+        
+        public void ResetSelectedBuffButton(ref Button currentSelectedBuffButton)
+        {
+            if (currentSelectedBuffButton == null)
+            {
+                return;
+            }
+
+            if (_buffParticle != null)
+            {
+                _buffParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                _buffParticle.transform.SetParent(null);
+            }
+
+            currentSelectedBuffButton = null;
         }
         
         public void PlayPressedAnimation(Button button)
