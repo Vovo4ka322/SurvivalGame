@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace Game.Scripts.MenuComponents
 {
@@ -23,16 +24,18 @@ namespace Game.Scripts.MenuComponents
         
         private void OnEnable()
         {
-            _continueButton.onClick.AddListener(Continue);
+            _continueButton.onClick.AddListener(OnContinueClicked);
         }
 
         private void OnDisable()
         {
-            _continueButton.onClick.RemoveListener(Continue);
+            _continueButton.onClick.RemoveListener(OnContinueClicked);
         }
         
-        private void Continue()
+        private void OnContinueClicked()
         {
+            YandexGame.FullscreenShow();
+            
             Time.timeScale = 1;
             _tutorialPanel.gameObject.SetActive(false);
             _abilityInterface.gameObject.SetActive(true);
