@@ -1927,7 +1927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3157483472541429372, guid: caf9732433f4dc044845763962493607, type: 3}
       propertyPath: closingADValues.timeScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2955,9 +2955,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coroutineRunnerComponent: {fileID: 402861277}
-  _easyWaveDuration: 300
-  _mediumWaveDuration: 300
-  _hardWaveDuration: 300
+  _easyWaveDuration: 90
+  _mediumWaveDuration: 90
+  _hardWaveDuration: 90
   _spawnInterval: 2
 --- !u!4 &1364680379 stripped
 Transform:

@@ -98,8 +98,6 @@ namespace Game.Scripts.MenuComponents
 
         public void OnPlayerWon()
         {
-            CallAd();
-
             Time.timeScale = 0;
             
             _victoryPanel.gameObject.SetActive(true);
@@ -118,7 +116,9 @@ namespace Game.Scripts.MenuComponents
                 
                 Destroy(_gameSceneAudio.gameObject);
             }
-            
+
+            CallAd();
+
             Time.timeScale = 1.0f;
             
             SceneManager.LoadScene(MenuSceneName);
@@ -126,8 +126,6 @@ namespace Game.Scripts.MenuComponents
 
         private void OnPlayerDeath()
         {
-            CallAd();
-            
             Time.timeScale = 0;
 
             _defeatPanel.gameObject.SetActive(true);
@@ -137,8 +135,6 @@ namespace Game.Scripts.MenuComponents
 
         private void OnPauseButtonClicked()
         {
-            CallAd();
-
             _pausePanel.gameObject.SetActive(true);
             _continueButton.interactable = true;
             
@@ -162,6 +158,8 @@ namespace Game.Scripts.MenuComponents
 
         private void OnContinueButtonClicked()
         {
+            CallAd();
+
             Time.timeScale = 1.0f;
             
             _pausePanel.gameObject.SetActive(false);

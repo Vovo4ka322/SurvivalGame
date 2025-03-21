@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Game.Scripts.EnemyComponents.Interfaces;
+using YG;
 
 namespace Game.Scripts.EnemyComponents
 {
     public class WaveCycle : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour _coroutineRunnerComponent;
-        
+
         [Header("Wave Durations (seconds)")]
         [SerializeField] private float _easyWaveDuration = 21f * 60f;
         [SerializeField] private float _mediumWaveDuration = 14f * 60f;

@@ -32,10 +32,7 @@ namespace Game.Scripts.MenuComponents
 
         private void OnPlayClick()
         {
-            YandexGame.FullscreenShow();
-
-
-            if(_mainMenuAudio != null)
+            if (_mainMenuAudio != null)
             {
                 _mainMenuAudio.StopBackgroundMusic();
                 Destroy(_mainMenuAudio.gameObject); 
