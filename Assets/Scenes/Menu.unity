@@ -4767,6 +4767,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4137874049564770994, guid: f31bcd9e7a3654d1ab0dc34377bb7952, type: 3}
+      propertyPath: _leaderboardPlayerData
+      value: 
+      objectReference: {fileID: -3765539985232203992, guid: 22a6dab9e38ed4b169a31e44a1eb9e9e, type: 3}
+    - target: {fileID: 4137874049564770994, guid: f31bcd9e7a3654d1ab0dc34377bb7952, type: 3}
+      propertyPath: _currentLeaderboardPlayerDataPrefab
+      value: 
+      objectReference: {fileID: 4117962622207092932, guid: 6a4e4656958f14e6e86e9a2b701e586f, type: 3}
     - target: {fileID: 4328220257206516867, guid: f31bcd9e7a3654d1ab0dc34377bb7952, type: 3}
       propertyPath: m_Camera
       value: 

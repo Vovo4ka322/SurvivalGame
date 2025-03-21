@@ -20,7 +20,7 @@ namespace Game.Scripts.MusicComponents
             }
         }
         
-        private void OnApplicationFocus(bool hasFocus)
+        private void OnApplicationPause(bool hasFocus)
         {
             if (hasFocus)
             {
