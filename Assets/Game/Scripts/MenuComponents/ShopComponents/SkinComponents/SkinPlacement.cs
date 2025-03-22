@@ -31,13 +31,5 @@ namespace Game.Scripts.MenuComponents.ShopComponents.SkinComponents
             
             _currentModel.PlayIdle();
         }
-        
-        public void DestroyModel()
-        {
-            if(_currentModel != null)
-            {
-                Destroy(_currentModel.gameObject);
-            }
-        }
     }
 }

@@ -89,42 +89,34 @@ namespace Game.Scripts.PlayerComponents.Controller
 
         private void HandleRotation()
         {
-            if (_isSkillWorking == false)
+            if(_isSkillWorking)
+            {
+                return;
+            }
+            
+            Vector3 direction = Vector3.zero;
+            
+            if (_isJoystickActive)
+            {
+                direction = new Vector3(_joystickForRotation.Horizontal, 0, _joystickForRotation.Vertical);
+            }
+            else
             {
                 Ray ray = _camera.ScreenPointToRay(_controller.Rotation);
-
+                
                 if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, _layerMask))
                 {
-                    Vector3 direction;
-
-                    if (_isJoystickActive)
-                    {
-                        direction = _joystickForRotation.Direction;
-                        direction.x = _joystickForRotation.Horizontal;
-                        direction.z = _joystickForRotation.Vertical;
-                        direction.y = 0;
-                    }
-                    else
-                    {
-                        direction = hitInfo.point - transform.position;
-                        direction.y = 0;
-                    }
-
+                    direction = hitInfo.point - transform.position;
+                    direction.y = 0f;
                     _direction = hitInfo.point;
-
-                    if (direction != Vector3.zero)
-                    {
-                        Quaternion targetRotation = Quaternion.LookRotation(direction);
-                        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _turnSpeed);
-                    }
                 }
             }
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(_direction, 0.5f);
+            
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _turnSpeed);
+            }
         }
     }
 }

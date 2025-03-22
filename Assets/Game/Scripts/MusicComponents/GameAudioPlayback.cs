@@ -22,7 +22,7 @@ namespace Game.Scripts.MusicComponents
             _backgroundMusic?.Stop();
         }
         
-        private void OnApplicationPause(bool hasFocus)
+        private void OnApplicationFocus(bool hasFocus)
         {
             if (_backgroundMusic != null)
             {

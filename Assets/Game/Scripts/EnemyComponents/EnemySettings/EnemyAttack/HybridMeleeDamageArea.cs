@@ -8,28 +8,18 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         [SerializeField] private LayerMask _targetLayer;
         [SerializeField] private float _damageRadius = 3f;
         
+        private readonly Collider[] _areaBuffer = new Collider[10];
+        
         public void DealAreaDamage()
         {
-            Collider[] hits = Physics.OverlapSphere(_attackPoint.position, _damageRadius, _targetLayer);
+            int hitCount = Physics.OverlapSphereNonAlloc(_attackPoint.position, _damageRadius, _areaBuffer, _targetLayer);
             
-            foreach (Collider hit in hits)
+            for (int i = 0; i < hitCount; i++)
             {
-                DealDamageToCollider(hit);
+                DealDamageToCollider(_areaBuffer[i]);
             }
-            
-            if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.HybridSoundEffects != null)
-            {
-                Enemy.SoundCollection.HybridSoundEffects.PlayMeleeAttack();
-            }
-        }
         
-        /*private void OnDrawGizmosSelected()
-        {
-            if (_attackPoint != null)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(_attackPoint.position, _damageRadius);
-            }
-        }*/
+            Enemy?.SoundCollection?.HybridSoundEffects?.PlayMeleeAttack();
+        }
     }
 }

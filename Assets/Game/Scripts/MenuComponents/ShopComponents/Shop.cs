@@ -135,10 +135,10 @@ namespace Game.Scripts.MenuComponents.ShopComponents
             _iDataSaver.Save();
         }
 
-        private void UpdateCameraTransform(Transform transform)
+        private void UpdateCameraTransform(Transform cameraTransform)
         {
-            _modelCamera.transform.position = transform.position;
-            _modelCamera.transform.rotation = transform.rotation;
+            _modelCamera.transform.position = cameraTransform.position;
+            _modelCamera.transform.rotation = cameraTransform.rotation;
         }
 
         private void SelectSkin()

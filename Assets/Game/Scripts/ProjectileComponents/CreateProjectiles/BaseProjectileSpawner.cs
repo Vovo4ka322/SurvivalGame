@@ -16,6 +16,8 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
         private Player _player;
         private EnemyData _enemyData;
         private PoolManager _poolManager;
+        private BaseProjectile _cachedProjectilePrefab;
+        private ProjectilePool<BaseProjectile> _cachedProjectilePool;
         
         public Player Player => _player;
         public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
@@ -26,6 +28,13 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
             _enemyData = data;
             _player = player;
             _poolManager = poolManager;
+            
+            _cachedProjectilePrefab = GetPrefabFromEnemyData(_enemyData);
+            
+            if(_cachedProjectilePrefab != null)
+            {
+                _cachedProjectilePool = _poolManager.GetProjectilePool(_cachedProjectilePrefab);
+            }
         }
         
         protected BaseProjectile Create()
@@ -35,17 +44,9 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
                 return null;
             }
             
-            BaseProjectile projectilePrefab = GetPrefabFromEnemyData(_enemyData);
-            ProjectilePool<BaseProjectile> pool = _poolManager.GetProjectilePool(projectilePrefab);
+            BaseProjectile projectile = _cachedProjectilePool.Get();
             
-            if(projectilePrefab == null || pool == null)
-            {
-                return null;
-            }
-            
-            BaseProjectile projectile = pool.Get();
-            
-            if (projectile == null)
+            if(projectile == null)
             {
                 return null;
             }
