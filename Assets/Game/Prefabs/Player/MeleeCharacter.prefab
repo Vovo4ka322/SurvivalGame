@@ -637,7 +637,7 @@ MonoBehaviour:
   _baseArmor: 40
   _baseDamage: 30
   _baseAttackSpeed: 1.2
-  _baseMoveSpeed: 6
+  _baseMoveSpeed: 8
   _level:
     _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
     <Experience>k__BackingField: 0
