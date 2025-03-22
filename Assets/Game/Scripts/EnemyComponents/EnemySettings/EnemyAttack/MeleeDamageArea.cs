@@ -24,9 +24,9 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         {
             _damageCollider.enabled = false;
             
-            if (!_hasHit && Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.MeleeSoundEffects != null)
+            if (!_hasHit)
             {
-                Enemy.SoundCollection.MeleeSoundEffects.PlayMissHit();
+                Enemy?.SoundCollection?.MeleeSoundEffects?.PlayMissHit();
             }
         }
         
@@ -43,10 +43,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 
                 DealDamageToCollider(enemyCollider);
             
-                if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.MeleeSoundEffects != null)
-                {
-                    Enemy.SoundCollection.MeleeSoundEffects.PlayHit();
-                }
+                Enemy?.SoundCollection?.MeleeSoundEffects?.PlayHit();
             }
         }
     }

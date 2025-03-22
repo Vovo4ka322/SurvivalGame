@@ -9,7 +9,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Visitors
 
         public SkinSelector(IPersistentData persistentData) => _persistentData = persistentData;
 
-        public void Visit(CharacterSkinItem characterSkinItem)
-            => _persistentData.PlayerData.SelectedCharacterSkin = characterSkinItem.SkinType;
+        public void Visit(CharacterSkinItem characterSkinItem) => _persistentData.PlayerData.SelectedCharacterSkin = characterSkinItem.SkinType;
     }
 }

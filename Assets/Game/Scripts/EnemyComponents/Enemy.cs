@@ -308,35 +308,5 @@ namespace Game.Scripts.EnemyComponents
                 _movement.Stop();
             }
         }
-        
-        private void OnDrawGizmosSelected()
-        {
-            if(_data != null)
-            {
-                if(_data.BaseAttackType.Type == AttackType.Hybrid)
-                {
-                    HybridEnemyAttackType hybrid = _data.BaseAttackType as HybridEnemyAttackType;
-
-                    if(hybrid != null)
-                    {
-                        Gizmos.color = Color.red;
-                        Gizmos.DrawWireSphere(transform.position, hybrid.MeleeRange);
-                        Gizmos.color = Color.blue;
-                        Gizmos.DrawWireSphere(transform.position, hybrid.RangedRange);
-                    }
-                }
-                else if (_data.BaseAttackType.Type == AttackType.Boss)
-                {
-                    BossEnemyAttackType boss = _data.BaseAttackType as BossEnemyAttackType;
-                    Gizmos.color = Color.red;
-                    Gizmos.DrawWireSphere(transform.position, boss.MeleeRange);
-                }
-                else
-                {
-                    Gizmos.color = Color.yellow;
-                    Gizmos.DrawWireSphere(transform.position, _data.AttackRange);
-                }
-            }
-        }
     }
 }

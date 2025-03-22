@@ -20,36 +20,34 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         [SerializeField] private Vector3 _directAttackBoxSize = new Vector3(3f, 2f, 5f);
         [SerializeField] private LayerMask _directTargetLayer;
         
+        private readonly Collider[] _radialBuffer1 = new Collider[10];
+        private readonly Collider[] _radialBuffer2 = new Collider[10];
+        private readonly Collider[] _directBuffer = new Collider[10];
+        
         private bool _hasHit = false;
 
         public void DealRadialDamage1()
         {
-            Collider[] hits = Physics.OverlapSphere(_areaAttackPoint1.position, _areaDamageRadius1, _areaTargetLayer);
-
-            foreach(Collider hit in hits)
+            int hitCount = Physics.OverlapSphereNonAlloc(_areaAttackPoint1.position, _areaDamageRadius1, _radialBuffer1, _areaTargetLayer);
+            
+            for (int i = 0; i < hitCount; i++)
             {
-                DealDamageToCollider(hit);
+                DealDamageToCollider(_radialBuffer1[i]);
             }
             
-            if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.BossSoundEffects != null)
-            {
-                Enemy.SoundCollection.BossSoundEffects.PlayMeleeAttack1();
-            }
+            Enemy?.SoundCollection?.BossSoundEffects?.PlayMeleeAttack1();
         }
 
         public void DealRadialDamage2()
         {
-            Collider[] hits = Physics.OverlapSphere(_areaAttackPoint2.position, _areaDamageRadius2, _areaTargetLayer);
-
-            foreach(Collider hit in hits)
+            int hitCount = Physics.OverlapSphereNonAlloc(_areaAttackPoint2.position, _areaDamageRadius2, _radialBuffer2, _areaTargetLayer);
+            
+            for (int i = 0; i < hitCount; i++)
             {
-                DealDamageToCollider(hit);
+                DealDamageToCollider(_radialBuffer2[i]);
             }
             
-            if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.BossSoundEffects != null)
-            {
-                Enemy.SoundCollection.BossSoundEffects.PlayMeleeAttack1();
-            }
+            Enemy?.SoundCollection?.BossSoundEffects?.PlayMeleeAttack1();
         }
 
         public void EnableMeleeDamageCollider()
@@ -62,9 +60,9 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         {
             _meleeDamageCollider.enabled = false;
             
-            if (!_hasHit && Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.BossSoundEffects != null)
+            if (!_hasHit)
             {
-                Enemy.SoundCollection.BossSoundEffects.PlayMeleeMissHit();
+                Enemy?.SoundCollection?.BossSoundEffects?.PlayMeleeMissHit();
             }
         }
 
@@ -81,49 +79,20 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 
                 DealDamageToCollider(other);
             
-                if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.BossSoundEffects != null)
-                {
-                    Enemy.SoundCollection.BossSoundEffects.PlayMeleeHit();
-                }
+                Enemy?.SoundCollection?.BossSoundEffects?.PlayMeleeHit();
             }
         }
 
         public void DealDirectDamage()
         {
-            Collider[] hits = Physics.OverlapBox(_directAttackPoint.position, _directAttackBoxSize * 0.5f, _directAttackPoint.rotation, _directTargetLayer);
-
-            foreach(Collider hit in hits)
+            int hitCount = Physics.OverlapBoxNonAlloc(_directAttackPoint.position, _directAttackBoxSize * 0.5f, _directBuffer, _directAttackPoint.rotation, _directTargetLayer);
+            
+            for (int i = 0; i < hitCount; i++)
             {
-                DealDamageToCollider(hit);
+                DealDamageToCollider(_directBuffer[i]);
             }
             
-            if (Enemy != null && Enemy.SoundCollection != null && Enemy.SoundCollection.BossSoundEffects != null)
-            {
-                Enemy.SoundCollection.BossSoundEffects.PlayMeleeAttack2();
-            }
+            Enemy?.SoundCollection?.BossSoundEffects?.PlayMeleeAttack2();
         }
-
-        /*private void OnDrawGizmosSelected()
-        {
-            if(_directAttackPoint != null)
-            {
-                Gizmos.color = Color.green;
-                Gizmos.matrix = Matrix4x4.TRS(_directAttackPoint.position, _directAttackPoint.rotation, Vector3.one);
-                Gizmos.DrawWireCube(Vector3.zero, _directAttackBoxSize);
-                Gizmos.matrix = Matrix4x4.identity;
-            }
-
-            if(_areaAttackPoint1 != null)
-            {
-                Gizmos.color = Color.cyan;
-                Gizmos.DrawWireSphere(_areaAttackPoint1.position, _areaDamageRadius1);
-            }
-
-            if(_areaAttackPoint2 != null)
-            {
-                Gizmos.color = Color.magenta;
-                Gizmos.DrawWireSphere(_areaAttackPoint2.position, _areaDamageRadius2);
-            }
-        }*/
     }
 }

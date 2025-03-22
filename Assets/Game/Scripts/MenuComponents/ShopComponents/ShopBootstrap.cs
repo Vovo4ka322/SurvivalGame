@@ -23,7 +23,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         {
             InitializeData();
             InitializeWallet();
-            InitializeImprovmentViewer();
+            InitializeImprovementViewer();
             InitializeShop();
         }
 
@@ -42,7 +42,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
             _walletView.Initialize(_wallet);
         }
     
-        private void InitializeImprovmentViewer()
+        private void InitializeImprovementViewer()
         {
             _calculationFinalValue = _persistentPlayerData.PlayerData.CalculationFinalValue;
     
