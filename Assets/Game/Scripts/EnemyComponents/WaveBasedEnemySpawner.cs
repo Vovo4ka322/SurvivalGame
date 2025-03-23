@@ -52,6 +52,13 @@ namespace Game.Scripts.EnemyComponents
             _bossHealthViewer = bossHealthViewer;
         }
         
+        public void InitEnemyDatas(EnemyData[] easyEnemyDatas, EnemyData[] mediumEnemyDatas, EnemyData[] hardEnemyDatas)
+        {
+            _easyEnemyDatas = easyEnemyDatas;
+            _mediumEnemyDatas = mediumEnemyDatas;
+            _hardEnemyDatas = hardEnemyDatas;
+        }
+
         public void Init(Player player)
         {
             _player = player;

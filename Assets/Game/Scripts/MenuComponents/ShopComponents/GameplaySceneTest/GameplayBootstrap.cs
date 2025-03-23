@@ -9,6 +9,7 @@ using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.PoolComponents;
 using YG;
+using Complexity;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {
@@ -25,6 +26,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private AudioGameSettings _audioGameSettings;
         [SerializeField] private GameSceneAudio _gameSceneAudio;
         [SerializeField] private WaveCycle _waveCycle;
+        [SerializeField] private DifficultlyData _difficultlyData;
 
         private Player _player;
         private Canvas _canvas;
@@ -51,6 +53,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             Spawn();
 
             _enemySpawner.Init(_player);
+            //_enemySpawner.InitEnemyDatas();
 
         }
 
