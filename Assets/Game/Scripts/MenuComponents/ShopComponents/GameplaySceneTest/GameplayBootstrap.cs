@@ -73,13 +73,18 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             {
                 throw new ArgumentException("The player is not created! Check GeneralPlayerFactory and PersistentData.");
             }
-
+            
             _virtualCamera.Follow = _player.transform;
             _virtualCamera.LookAt = _player.transform;
 
             _player.SetSoundCollection(_soundCollection);
             InitPlayerCharacteristics();
             InitUserInterface();
+            
+            if (_player is MeleePlayer meleePlayer)
+            {
+                meleePlayer.GetSword()?.SetPoolManager(_pool);
+            }
 
             if (_isJoystickActive)
                 _player.InitJoysticks(_isJoystickActive, _canvasFactory.MovementJoystick, _canvasFactory.RotationJoystick);

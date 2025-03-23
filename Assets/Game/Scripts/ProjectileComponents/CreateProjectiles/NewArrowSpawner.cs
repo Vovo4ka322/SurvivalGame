@@ -1,6 +1,6 @@
 using UnityEngine;
 using Game.Scripts.PoolComponents;
-using System.Collections.Generic;
+using Game.Scripts.Weapons.RangedWeapon;
 
 namespace Weapons.RangedWeapon
 {

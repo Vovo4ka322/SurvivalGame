@@ -1,63 +1,63 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Game.Scripts.EnemyComponents;
-using Game.Scripts.Interfaces;
-using Weapons;
 
-public class Arrow : MonoBehaviour
+namespace Game.Scripts.Weapons.RangedWeapon
 {
-    private Vector3 _direction;
-    private Coroutine _coroutine;
-    private IArrowPoolReturner _arrowPool;
-    private IEnemyHitHandler _enemyHitHandler;
-
-    [field: SerializeField] public ArrowData ArrowData { get; private set; }
-
-    [field: SerializeField] public Weapon Weapon { get; private set; }
-
-    private void OnTriggerEnter(Collider other)
+    public class Arrow : MonoBehaviour
     {
-        if (other.gameObject.TryGetComponent(out Enemy _))
+        private Vector3 _direction;
+        private Coroutine _coroutine;
+        private IArrowPoolReturner _arrowPool;
+        private IEnemyHitHandler _enemyHitHandler;
+    
+        [field: SerializeField] public ArrowData ArrowData { get; private set; }
+    
+        [field: SerializeField] public Weapon Weapon { get; private set; }
+    
+        private void OnTriggerEnter(Collider other)
         {
-            _enemyHitHandler.OnHealthRestored();
+            if (other.gameObject.TryGetComponent(out Enemy _))
+            {
+                _enemyHitHandler.OnHealthRestored();
+            }
+    
+            _arrowPool.OnPoolReturned(this);
         }
-
-        _arrowPool.OnPoolReturned(this);
-    }
-
-    public void SetReturner(IArrowPoolReturner arrowPoolReturner)
-    {
-        _arrowPool = arrowPoolReturner;
-    }
-
-    public void SetHandler(IEnemyHitHandler enemyHitHandler)
-    {
-        _enemyHitHandler = enemyHitHandler;
-    }
-
-    public void StartFly(Vector3 direction, Vector3 position)
-    {
-        transform.position = position;
-        _direction = direction.normalized;
-        transform.forward = _direction;
-
-        _coroutine = StartCoroutine(Fly());
-    }
-
-    private IEnumerator Fly()
-    {
-        float distanceTravelled = 0;
-
-        while (distanceTravelled < ArrowData.AttackRadius)
+    
+        public void SetReturner(IArrowPoolReturner arrowPoolReturner)
         {
-            float step = ArrowData.ArrowFlightSpeed * Time.deltaTime;
-            transform.position += _direction * step;
-            distanceTravelled += step;
-
-            yield return null;
+            _arrowPool = arrowPoolReturner;
         }
-
-        _arrowPool.OnPoolReturned(this);
+    
+        public void SetHandler(IEnemyHitHandler enemyHitHandler)
+        {
+            _enemyHitHandler = enemyHitHandler;
+        }
+    
+        public void StartFly(Vector3 direction, Vector3 position)
+        {
+            transform.position = position;
+            _direction = direction.normalized;
+            transform.forward = _direction;
+    
+            _coroutine = StartCoroutine(Fly());
+        }
+    
+        private IEnumerator Fly()
+        {
+            float distanceTravelled = 0;
+    
+            while (distanceTravelled < ArrowData.AttackRadius)
+            {
+                float step = ArrowData.ArrowFlightSpeed * Time.deltaTime;
+                transform.position += _direction * step;
+                distanceTravelled += step;
+    
+                yield return null;
+            }
+    
+            _arrowPool.OnPoolReturned(this);
+        }
     }
 }

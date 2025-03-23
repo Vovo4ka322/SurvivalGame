@@ -1,7 +1,7 @@
 using UnityEngine;
 using Game.Scripts.AbilityComponents.MeleeAbilities.BloodLustAbility;
 using Game.Scripts.Interfaces;
-using Weapons.MeleeWeapon;
+using Game.Scripts.Weapons.MeleeWeapon;
 
 namespace Game.Scripts.PlayerComponents
 {
@@ -9,10 +9,11 @@ namespace Game.Scripts.PlayerComponents
     {
         [SerializeField] private Sword _sword;
         
+        private readonly int _coefficient = 1;
+        
         private float _movementVisualizationCoefficient = 0.2f;
         private float _attackSpeed;
         private float _damage;
-        private int _coefficient = 1;
 
         public bool IsActiveState { get; private set; }
 
@@ -23,7 +24,12 @@ namespace Game.Scripts.PlayerComponents
             _sword.SetTotalDamage(_damage);
             _sword.SetPlayer(this);
         }
-
+        
+        public Sword GetSword()
+        {
+            return _sword;
+        }
+        
         public void TakeDamage(float value)
         {
             if (IsActiveState)

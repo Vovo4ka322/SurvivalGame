@@ -1,4 +1,7 @@
-﻿public enum WeaponType
+﻿namespace Game.Scripts.Weapons
 {
-    Ranged, Melee
+    public enum WeaponType
+    {
+        Ranged, Melee
+    }
 }
