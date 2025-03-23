@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8af5ea50d801b4d9a43b766f361ef3, type: 3}
+  m_Name: Hard
+  m_EditorClassIdentifier: 
+  <EasyEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: 6ff2b31230ea66144ac486193086a0e2, type: 2}
+  <EasyEnemyRangeGost>k__BackingField: {fileID: 11400000, guid: c139b028f2bad2641865e64006edaf5e, type: 2}
+  <MediumEnemyMeleeDemon>k__BackingField: {fileID: 11400000, guid: 48635aa34cac89043b02222c0d4b73d7, type: 2}
+  <MediumEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: 6280febbf7719194c874980428bb025f, type: 2}
+  <HardEnemyMeleeGolem>k__BackingField: {fileID: 11400000, guid: 13359f89133bab047830c23e5937b075, type: 2}
+  <HardEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: 98f4bf6ef97699b4db479a0f1b803d84, type: 2}
+  <BossLevel1>k__BackingField: {fileID: 11400000, guid: 93a4c4dc6af10534bb7b52b59b5911c0, type: 2}
