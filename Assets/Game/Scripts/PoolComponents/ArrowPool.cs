@@ -1,4 +1,4 @@
-using Unity.Entities;
+using Game.Scripts.Weapons.RangedWeapon;
 using UnityEngine;
 
 namespace Game.Scripts.PoolComponents

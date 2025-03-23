@@ -1,7 +1,7 @@
 using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
-using Weapons;
-using Weapons.MeleeWeapon;
+using Game.Scripts.Weapons;
+using Game.Scripts.Weapons.MeleeWeapon;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 {
@@ -25,10 +25,11 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
                 return;
             }
             
-            if (other.gameObject.TryGetComponent(out Weapon weapon))
+            Weapon weapon = other.gameObject.GetComponentInParent<Weapon>();
+            
+            if (weapon != null)
             {
                 _enemy.ChangeHealth(weapon.TotalDamage);
-                //_enemy.Health.Lose(weapon.TotalDamage);
                 
                 if(weapon is Sword sword)
                 {

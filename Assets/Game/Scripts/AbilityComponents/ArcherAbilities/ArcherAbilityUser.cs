@@ -5,7 +5,7 @@ using Game.Scripts.AbilityComponents.ArcherAbilities.InsatiableHungerAbility;
 using Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility;
 using Game.Scripts.Interfaces;
 using Game.Scripts.PlayerComponents;
-using Weapons.RangedWeapon;
+using Game.Scripts.Weapons.RangedWeapon;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {

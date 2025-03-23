@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Cinemachine;
+using Game.Scripts.DifficultyLevel;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
@@ -9,7 +10,6 @@ using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.PoolComponents;
 using YG;
-using Complexity;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {
@@ -76,13 +76,18 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             {
                 throw new ArgumentException("The player is not created! Check GeneralPlayerFactory and PersistentData.");
             }
-
+            
             _virtualCamera.Follow = _player.transform;
             _virtualCamera.LookAt = _player.transform;
 
             _player.SetSoundCollection(_soundCollection);
             InitPlayerCharacteristics();
             InitUserInterface();
+            
+            if (_player is MeleePlayer meleePlayer)
+            {
+                meleePlayer.GetSword()?.SetPoolManager(_pool);
+            }
 
             if (_isJoystickActive)
                 _player.InitJoysticks(_isJoystickActive, _canvasFactory.MovementJoystick, _canvasFactory.RotationJoystick);

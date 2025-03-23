@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Game.Scripts.Interfaces;
+using Game.Scripts.Weapons.RangedWeapon;
 using Weapons.RangedWeapon;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility

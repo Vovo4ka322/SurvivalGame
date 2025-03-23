@@ -1,9 +1,8 @@
-using System;
 using UnityEngine;
 using Game.Scripts.Interfaces;
-using UnityEngine.UIElements;
+using Weapons.RangedWeapon;
 
-namespace Weapons.RangedWeapon
+namespace Game.Scripts.Weapons.RangedWeapon
 {
     public class Bow : Weapon, IActivable
     {
