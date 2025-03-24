@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18336698, g: 0.22897737, b: 0.30611938, a: 1}
+  m_IndirectSpecularColor: {r: 0.18336734, g: 0.22897793, b: 0.30612063, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2862,7 +2862,7 @@ GameObject:
   - component: {fileID: 1247322573}
   - component: {fileID: 1247322574}
   m_Layer: 0
-  m_Name: EntryPoint
+  m_Name: Bootstrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2906,7 +2906,7 @@ MonoBehaviour:
   _audioGameSettings: {fileID: 1571634974}
   _gameSceneAudio: {fileID: 1571634972}
   _waveCycle: {fileID: 1347524061}
-  _difficultlyData: {fileID: 0}
+  _difficultlySetter: {fileID: 1347524062}
 --- !u!4 &1266305342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4892733386000982, guid: 951659d72043e7843aad08d3ddc3012a, type: 3}
@@ -2939,6 +2939,7 @@ GameObject:
   - component: {fileID: 1347524060}
   - component: {fileID: 1347524059}
   - component: {fileID: 1347524061}
+  - component: {fileID: 1347524062}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -3022,6 +3023,20 @@ MonoBehaviour:
   _mediumWaveDuration: 300
   _hardWaveDuration: 300
   _spawnInterval: 1.3
+--- !u!114 &1347524062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347524055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdea7a520abf2c4f9132eda6b3f75ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _difficultlyData: {fileID: 11400000, guid: c6c176382d8d34f4ba3afcf6244447bc, type: 2}
+  <CurrentDifficultyLevel>k__BackingField: {fileID: 0}
 --- !u!4 &1364680379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3247752919534563013, guid: b92d0688375e04c0b94239a3f985b9be, type: 3}

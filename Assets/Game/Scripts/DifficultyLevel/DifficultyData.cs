@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Game.Scripts.DifficultyLevel
 {
     [CreateAssetMenu(fileName = "DifficultyData", menuName = "DifficultyData")]
-    public class DifficultlyData : ScriptableObject
+    public class DifficultyData : ScriptableObject
     {
         [field: SerializeField] public DifficultyLevel EasyLevel { get; private set; }
         [field: SerializeField] public DifficultyLevel MediumLevel { get; private set; }

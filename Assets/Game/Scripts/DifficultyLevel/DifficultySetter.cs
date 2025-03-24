@@ -5,14 +5,14 @@ namespace Game.Scripts.DifficultyLevel
 {
     public class DifficultySetter : MonoBehaviour
     {
-        [SerializeField] private DifficultlyData _difficultlyData;
+        [SerializeField] private DifficultyData _difficultlyData;
 
         [field: SerializeField] public DifficultyLevel CurrentDifficultyLevel { get; private set; }
 
         public void Init()
         {
-            var savedDiff = PlayerPrefs.GetInt("Difficulty", 1);
-            SetDifficult((Difficults)savedDiff);
+            int savedDifficulty = PlayerPrefs.GetInt("Difficulty", 1);
+            SetDifficult((Difficults)savedDifficulty);
         }
 
         public DifficultyLevel SetDifficult(Difficults difficults)
