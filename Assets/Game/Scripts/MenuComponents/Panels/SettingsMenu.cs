@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Scripts.MenuComponents
+namespace Game.Scripts.MenuComponents.Panels
 {
     public class SettingsMenu : MonoBehaviour
     {

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using YG;
 
-namespace Game.Scripts.MenuComponents
+namespace Game.Scripts.MenuComponents.Panels
 {
     public class GameTutorial : MonoBehaviour
     {

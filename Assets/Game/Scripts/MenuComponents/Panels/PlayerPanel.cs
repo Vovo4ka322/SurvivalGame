@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Scripts.MenuComponents
+namespace Game.Scripts.MenuComponents.Panels
 {
     public class PlayerPanel : MonoBehaviour
     {

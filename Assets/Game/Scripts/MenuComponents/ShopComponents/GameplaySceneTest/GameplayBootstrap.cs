@@ -3,6 +3,7 @@ using UnityEngine;
 using Cinemachine;
 using Game.Scripts.DifficultyLevel;
 using Game.Scripts.EnemyComponents;
+using Game.Scripts.MenuComponents.Panels;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
 using Game.Scripts.MusicComponents;
