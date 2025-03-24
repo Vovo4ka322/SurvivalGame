@@ -1,9 +1,9 @@
 using UnityEngine;
+using Game.Scripts.BuffComponents;
+using Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
-using Game.Scripts.MenuComponents.ShopComponents.Viewers;
 using Game.Scripts.MenuComponents.ShopComponents.Visitors;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
-using Game.Scripts.BuffComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents
 {

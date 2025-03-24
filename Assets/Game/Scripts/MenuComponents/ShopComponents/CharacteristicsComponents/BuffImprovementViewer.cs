@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Game.Scripts.BuffComponents;
 
-namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
+namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 {
     public class BuffImprovementViewer : MonoBehaviour
     {
@@ -45,11 +45,16 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
             UpdateValue(_movementSpeedBuffUpgrades, _calculationFinalValue.MovementSpeedLevelImprovment);
         }
         
-        private void UpdateValue(List<Image> image, int value)
+        private void UpdateValue(List<Image> images, int value)
         {
+            foreach(Image image in images)
+            {
+                image.gameObject.SetActive(false);
+            }
+            
             for(int i = 0; i < value; i++)
             {
-                Upgrade(image, i);
+                Upgrade(images, i);
             }
         }
         
@@ -104,6 +109,20 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
         private void Upgrade(List<Image> images, int index)
         {
             images[index].gameObject.SetActive(true);
+        }
+        
+        public void ResetUpgrades()
+        {
+            foreach (Image image in _healthBuffUpgrades)
+                image.gameObject.SetActive(false);
+            foreach (Image image in _armorBuffUpgrades)
+                image.gameObject.SetActive(false);
+            foreach (Image image in _damageBuffUpgrades)
+                image.gameObject.SetActive(false);
+            foreach (Image image in _attackSpeedBuffUpgrades)
+                image.gameObject.SetActive(false);
+            foreach (Image image in _movementSpeedBuffUpgrades)
+                image.gameObject.SetActive(false);
         }
     }
 }

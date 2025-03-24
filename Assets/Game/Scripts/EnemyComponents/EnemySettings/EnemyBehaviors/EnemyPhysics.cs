@@ -42,9 +42,12 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
             MeleeDamageArea meleeDamageArea = _enemy.GetComponentInChildren<MeleeDamageArea>();
             BossDamageArea bossDamageArea = _enemy.GetComponentInChildren<BossDamageArea>();
             
-            if (meleeDamageArea != null || bossDamageArea != null)
+            if (meleeDamageArea != null)
             {
                 meleeDamageArea.DealDamageIfEnabled(other);
+            }
+            else if (bossDamageArea != null)
+            {
                 bossDamageArea.DealMeleeDamageIfEnabled(other);
             }
         }

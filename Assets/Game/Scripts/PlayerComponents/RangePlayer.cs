@@ -13,9 +13,7 @@ namespace Game.Scripts.PlayerComponents
         private float _evasionChance;
 
         public float Damage { get; private set; }
-
         public float Coefficient { get; private set; }
-
         public bool IsWorking { get; private set; }
 
         private void Start()
@@ -45,7 +43,7 @@ namespace Game.Scripts.PlayerComponents
             SoundCollection?.RangedPlayerSoundEffects.PlayReload();
         }
         
-        public float SetEvasion(Blur blur) => _evasionChance = blur.Evasion;
+        public void SetEvasion(Blur blur) => _evasionChance = blur.Evasion;
         
         public bool TryDodge() => Random.value <= _evasionChance;
         
@@ -66,9 +64,4 @@ namespace Game.Scripts.PlayerComponents
             }
         }
     }
-}
-
-public interface IEnemyHitHandler
-{
-    public void OnHealthRestored();
 }

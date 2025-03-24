@@ -1195,11 +1195,11 @@ GameObject:
   - component: {fileID: 5434420615157604619}
   - component: {fileID: 5279937380686958188}
   - component: {fileID: 7630110499433319217}
+  - component: {fileID: -1600266406523707398}
   - component: {fileID: 5724800005171902683}
   - component: {fileID: 7069792902265588062}
   - component: {fileID: 8338153158691119295}
   - component: {fileID: 2831595341814838573}
-  - component: {fileID: -1600266406523707398}
   m_Layer: 8
   m_Name: RangedCharacters
   m_TagString: Untagged
@@ -1309,6 +1309,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14684837054d4484ab587fc84ef531f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1600266406523707398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5394476936092203337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c762615ca73ea4cbf0b26de235a10b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 9063522759143292268}
 --- !u!114 &5724800005171902683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1339,6 +1352,9 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 8192
+  _joystickForMovement: {fileID: 0}
+  _joystickForRotation: {fileID: 0}
+  _isJoystickActive: 0
 --- !u!114 &8338153158691119295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,14 +1380,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Health>k__BackingField: {fileID: 8338153158691119295}
+  _level:
+    _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
+    <Experience>k__BackingField: 0
   _baseHealth: 90
   _baseArmor: 10
   _baseDamage: 5
   _baseAttackSpeed: 1
   _baseMoveSpeed: 7
-  _level:
-    _requireExperience: {fileID: 11400000, guid: 81d951489586f3248b0350cd9a818c5e, type: 2}
-    <Experience>k__BackingField: 0
   <CharacterType>k__BackingField: 1
   <AnimatorState>k__BackingField: {fileID: -1600266406523707398}
   <PlayerMovement>k__BackingField: {fileID: 7069792902265588062}
@@ -1382,19 +1398,6 @@ MonoBehaviour:
   <GeneralMovementSpeed>k__BackingField: 0
   _collider: {fileID: 5434420615157604619}
   _bow: {fileID: 642284079440058142}
---- !u!114 &-1600266406523707398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5394476936092203337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21c762615ca73ea4cbf0b26de235a10b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 9063522759143292268}
 --- !u!1 &5728127761556997828
 GameObject:
   m_ObjectHideFlags: 0

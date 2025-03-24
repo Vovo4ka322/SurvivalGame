@@ -1,46 +1,29 @@
 using UnityEngine;
 using DG.Tweening;
+using Game.Scripts.MenuComponents.Panels;
 
 namespace Game.Scripts.LeaderboardComponents
 {
-    public class LeaderboardViewer : MonoBehaviour
+    public class LeaderboardViewer : PanelViewerBase
     {
-        [Header("Setting animations")]
-        [SerializeField] private RectTransform _leaderBoardPanel;
-        [SerializeField] private float _animationDuration = 0.5f;
-        [SerializeField] private Ease _easeType = Ease.OutCubic;
-        
-        private bool _isShown = false;
-        
-        private void Awake()
+        protected override void InitializePanel()
         {
-            _leaderBoardPanel.localScale = new Vector3(1, 0, 1);
-        }
-        
-        public void OnToggleButtonClick()
-        {
-            if (_isShown)
-            {
-                HideLeaderBoard();
-            }
-            else
-            {
-                ShowLeaderBoard();
-            }
-        }
-        
-        private void ShowLeaderBoard()
-        {
-            _leaderBoardPanel.DOScaleY(1, _animationDuration).SetEase(_easeType);
-
-            _isShown = true;
+            Panel.localScale = new Vector3(1, 0, 1);
         }
 
-        private void HideLeaderBoard()
+        protected override void ShowPanelAnimation()
         {
-            _leaderBoardPanel.DOScaleY(0, _animationDuration).SetEase(_easeType);
+            Panel.DOScaleY(1, AnimationDuration).SetEase(EaseType);
+        }
 
-            _isShown = false;
+        protected override void HidePanelAnimation()
+        {
+            Panel.DOScaleY(0, AnimationDuration).SetEase(EaseType);
+        }
+        
+        public void ToggleLeaderboardPanel()
+        {
+            TogglePanel();
         }
     }
 }

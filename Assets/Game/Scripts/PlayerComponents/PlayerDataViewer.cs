@@ -1,23 +1,32 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 namespace Game.Scripts.PlayerComponents
 {
     public class PlayerDataViewer : MonoBehaviour
     {
-        [SerializeField] private Image _healthValueImage;
-        [SerializeField] private Image _expValueImage;
+        [Header("UI health elements")]
+        [SerializeField] private Slider _healthSlider;
+        [SerializeField] private TextMeshProUGUI _healthText;
+    
+        [Header("UI elements for experience")]
+        [SerializeField] private Slider _expSlider;
+        [SerializeField] private TextMeshProUGUI _expText;
 
         [SerializeField] private TextMeshProUGUI _moneyText;
-        [SerializeField] private TextMeshProUGUI _healthText;
 
         private Player _player;
 
         private void Start()
         {
-            ViewHealth(_player.Health.MaxValue);
+            if (_player != null)
+            {
+                InitializeSliders();
+                ViewHealth(_player.Health.Value);
+                ViewExp(_player.Level.Experience);
+            }
         }
 
         private void OnDisable()
@@ -30,28 +39,60 @@ namespace Game.Scripts.PlayerComponents
         public void Init(Player player)
         {
             _player = player;
-
-            SubsctibeToEvents();
+            
+            SubscribeToEvents();
+            InitializeSliders();
+            ViewHealth(_player.Health.Value);
+            ViewExp(_player.Level.Experience);
         }
 
-        private void SubsctibeToEvents()
+        private void InitializeSliders()
+        {
+            _healthSlider.minValue = 0;
+            _healthSlider.maxValue = _player.Health.MaxValue;
+            _healthSlider.value = _player.Health.Value;
+            
+            _expSlider.minValue = 0;
+            _expSlider.maxValue = _player.Level.ShowMaxExperienceForLevel();
+            _expSlider.value = _player.Level.Experience;
+        }
+
+        private void SubscribeToEvents()
         {
             _player.HealthChanged += OnHealthChanged;
             _player.ExperienceChanged += OnExperienceChanged;
             _player.MoneyChanged += OnMoneyChanged;
         }
 
-        private void OnMoneyChanged(int value) => _moneyText.text = value.ToString();
+        private void OnMoneyChanged(int value)
+        {
+            _moneyText.text = value.ToString();
+        }
 
         private void OnHealthChanged(float value)
         {
-            _healthValueImage.fillAmount = Mathf.InverseLerp(0, _player.Health.MaxValue, value);
+            _healthSlider.value = value;
+            
             ViewHealth(value);
         }
 
-        private void ViewHealth(float value) => _healthText.text = Convert.ToInt32(value).ToString();
+        private void OnExperienceChanged(float value)
+        {
+            _expSlider.value = value;
+            
+            ViewExp(value);
+        }
 
-        private void OnExperienceChanged(float value) =>
-            _expValueImage.fillAmount = Mathf.InverseLerp(0, _player.Level.ShowMaxExperienceForLevel(), value);
+        private void ViewHealth(float currentHealth)
+        {
+            _healthText.text = $"{Convert.ToInt32(currentHealth)} / {Convert.ToInt32(_player.Health.MaxValue)}";
+        }
+
+        private void ViewExp(float currentExp)
+        {
+            int maxExp = _player.Level.ShowMaxExperienceForLevel();
+            
+            _expText.text = $"{Convert.ToInt32(currentExp)} / {maxExp}";
+        }
     }
 }

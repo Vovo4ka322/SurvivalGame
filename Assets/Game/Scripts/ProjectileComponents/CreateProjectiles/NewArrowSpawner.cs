@@ -1,8 +1,9 @@
 using UnityEngine;
+using Game.Scripts.Interfaces;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.Weapons.RangedWeapon;
 
-namespace Weapons.RangedWeapon
+namespace Game.Scripts.ProjectileComponents.CreateProjectiles
 {
     public class NewArrowSpawner : MonoBehaviour, IArrowPoolReturner
     {
@@ -30,9 +31,4 @@ namespace Weapons.RangedWeapon
             _arrowPool.Release(arrow);
         }
     }
-}
-
-public interface IArrowPoolReturner
-{
-    public void OnPoolReturned(Arrow arrow);
 }
