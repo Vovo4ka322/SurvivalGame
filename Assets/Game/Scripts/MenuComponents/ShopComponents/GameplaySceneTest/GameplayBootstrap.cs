@@ -28,7 +28,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private GameSceneAudio _gameSceneAudio;
         [SerializeField] private WaveCycle _waveCycle;
         [SerializeField] private DifficultlyData _difficultlyData;
-
+        
         private Player _player;
         private Canvas _canvas;
         private Wallet _wallet;
@@ -54,8 +54,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             Spawn();
 
             _enemySpawner.Init(_player);
-            //_enemySpawner.InitEnemyDatas();
-
         }
 
         private void OnEnable()

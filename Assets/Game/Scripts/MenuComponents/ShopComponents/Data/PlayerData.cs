@@ -47,6 +47,16 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
                 _money = value;
             }
         }
+        
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public static PlayerData FromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<PlayerData>(json);
+        }
 
         public void OpenCharacterSkin(CharacterSkins skin)
         {

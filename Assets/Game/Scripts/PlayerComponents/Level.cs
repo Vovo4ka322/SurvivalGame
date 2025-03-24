@@ -8,6 +8,6 @@ namespace Game.Scripts.PlayerComponents
     {
         [SerializeField] private List<int> _requireExperiences = new();
 
-        public IReadOnlyList<int> ExperienceQuntity => _requireExperiences;
+        public IReadOnlyList<int> ExperienceQuantity => _requireExperiences;
     }
 }
