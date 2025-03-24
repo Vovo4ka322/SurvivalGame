@@ -11,6 +11,7 @@ using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.PoolComponents;
 using YG;
+using Game.Scripts.EnemyComponents.EnemySettings;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {
@@ -27,7 +28,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private AudioGameSettings _audioGameSettings;
         [SerializeField] private GameSceneAudio _gameSceneAudio;
         [SerializeField] private WaveCycle _waveCycle;
-        [SerializeField] private DifficultlyData _difficultlyData;
+        [SerializeField] private DifficultySetter _difficultlySetter;
 
         private Player _player;
         private Canvas _canvas;
@@ -54,8 +55,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             Spawn();
 
             _enemySpawner.Init(_player);
-            //_enemySpawner.InitEnemyDatas();
-
+            InitEnemyDifficult();
         }
 
         private void OnEnable()
@@ -77,14 +77,14 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             {
                 throw new ArgumentException("The player is not created! Check GeneralPlayerFactory and PersistentData.");
             }
-            
+
             _virtualCamera.Follow = _player.transform;
             _virtualCamera.LookAt = _player.transform;
 
             _player.SetSoundCollection(_soundCollection);
             InitPlayerCharacteristics();
             InitUserInterface();
-            
+
             if (_player is MeleePlayer meleePlayer)
             {
                 meleePlayer.GetSword()?.SetPoolManager(_pool);
@@ -136,6 +136,33 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 
             _walletView = _canvas.GetComponentInChildren<WalletView>();
             _walletView.Initialize(_wallet);
+        }
+
+        private void InitEnemyDifficult()
+        {
+            _difficultlySetter.Init();
+
+            EnemyData[] easyEnemyDatas =
+            {
+                _difficultlySetter.CurrentDifficultyLevel.EasyEnemyMeleeSkeleton,
+                _difficultlySetter.CurrentDifficultyLevel.EasyEnemyRangeGost
+            };
+
+            EnemyData[] mediumEnemyDatas =
+            {
+                _difficultlySetter.CurrentDifficultyLevel.MediumEnemyMeleeDemon,
+                _difficultlySetter.CurrentDifficultyLevel.MediumEnemyMeleeSkeleton
+            };
+
+            EnemyData[] hardEnemyDatas =
+            {
+                _difficultlySetter.CurrentDifficultyLevel.HardEnemyMeleeGolem,
+                _difficultlySetter.CurrentDifficultyLevel.HardEnemyMeleeSkeleton
+            };
+
+            EnemyData bossData = _difficultlySetter.CurrentDifficultyLevel.BossLevel1;
+
+            _enemySpawner.InitEnemyDatas(easyEnemyDatas, mediumEnemyDatas, hardEnemyDatas, bossData);
         }
 
         private void InitializeData()
