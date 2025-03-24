@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using Game.Scripts.EnemyComponents;
+using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.Weapons.RangedWeapon
 {
@@ -12,13 +13,13 @@ namespace Game.Scripts.Weapons.RangedWeapon
         private IEnemyHitHandler _enemyHitHandler;
     
         [field: SerializeField] public ArrowData ArrowData { get; private set; }
-    
         [field: SerializeField] public Weapon Weapon { get; private set; }
     
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out Enemy _))
+            if (other.gameObject.TryGetComponent(out Enemy enemy))
             {
+                enemy.ChangeHealth(Weapon.TotalDamage);
                 _enemyHitHandler.OnHealthRestored();
             }
     
