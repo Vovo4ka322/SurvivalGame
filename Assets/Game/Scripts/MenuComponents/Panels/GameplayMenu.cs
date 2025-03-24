@@ -8,7 +8,7 @@ using Game.Scripts.MusicComponents;
 using Game.Scripts.PlayerComponents;
 using YG;
 
-namespace Game.Scripts.MenuComponents
+namespace Game.Scripts.MenuComponents.Panels
 {
     public class GameplayMenu : MonoBehaviour
     {

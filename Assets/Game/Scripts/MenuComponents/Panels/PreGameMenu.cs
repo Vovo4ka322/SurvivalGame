@@ -2,9 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Game.Scripts.MusicComponents;
-using YG;
 
-namespace Game.Scripts.MenuComponents
+namespace Game.Scripts.MenuComponents.Panels
 {
     public class PreGameMenu : MonoBehaviour
     {

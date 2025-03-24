@@ -5,7 +5,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.WalletComponents
 {
     public class Wallet
     {
-        private IPersistentData _persistentData;
+        private readonly IPersistentData _persistentData;
         
         public event Action<int> CoinsChanged;
         
