@@ -11,7 +11,8 @@ namespace Game.Scripts.DifficultyLevel
 
         public void Init()
         {
-            int savedDifficulty = PlayerPrefs.GetInt("Difficulty", 1);
+            int defaultValue = 1;
+            int savedDifficulty = PlayerPrefs.GetInt("Difficulty", defaultValue);
             SetDifficult((Difficults)savedDifficulty);
         }
 
