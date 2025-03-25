@@ -61,7 +61,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
     
         private void LoadDataOrInit()
         {
-            if(_iDataSaver.TryLoad() == false)
+            if (_iDataSaver.TryLoad() == false || _persistentPlayerData.PlayerData == null)
             {
                 _persistentPlayerData.PlayerData = new PlayerData();
             }

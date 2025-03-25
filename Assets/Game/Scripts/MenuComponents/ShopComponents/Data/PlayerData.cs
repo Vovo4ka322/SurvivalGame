@@ -17,7 +17,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
         
         public PlayerData()
         {
-            _money = 20000;
+            _money = 0;
 
             _calculationFinalValue = new PlayerCharacteristicData();
 
@@ -48,16 +48,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
             }
         }
         
-        public string ToJson()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
-
-        public static PlayerData FromJson(string json)
-        {
-            return JsonConvert.DeserializeObject<PlayerData>(json);
-        }
-
         public void OpenCharacterSkin(CharacterSkins skin)
         {
             if (_openCharacterSkins.Contains(skin))
