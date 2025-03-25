@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +12,7 @@ namespace Game.Scripts.BuffComponents
         [SerializeField] private BuffKeeper _buffKeeperFourthLevel;
         [SerializeField] private BuffKeeper _buffKeeperFifthLevel;
 
+        private readonly int _maxValue = 5;
         private readonly int _firstLevel = 1;
         private readonly int _secondLevel = 2;
         private readonly int _thirdLevel = 3;
@@ -32,14 +32,11 @@ namespace Game.Scripts.BuffComponents
         private int _counterForMovementSpeedBuff;
         private int _counterForAttackSpeedBuff;
         
-        public int MaxValue { get; private set; } = 5;
         public HealthBuff HealthBuff { get; private set; }
         public ArmorBuff ArmorBuff { get; private set; }
         public DamageBuff DamageBuff { get; private set; }
         public MovementSpeedBuff MovementSpeedBuff { get; private set; }
         public AttackSpeedBuff AttackSpeedBuff { get; private set; }
-        
-        public event Action<float> HealthValueChanged;
         
         private void Awake()
         {
@@ -191,11 +188,9 @@ namespace Game.Scripts.BuffComponents
             HealthBuff = _buffKeepers[level].HealthBuffScriptableObject;
             
             _counterForHealthBuff++;
-            
-            HealthValueChanged?.Invoke(HealthBuff.Value);
         }
 
-        private bool IsMaxValue(int value) => value == MaxValue;
+        private bool IsMaxValue(int value) => value == _maxValue;
 
         private bool IsTrue(int counter, int numberOfUpgrade) => counter == numberOfUpgrade;
     }

@@ -87,6 +87,12 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             _wallet = wallet;
             _iDataSaver = iDataSaver;
             _calculationFinalValue = persistentData.PlayerData.CalculationFinalValue;
+            
+            _buffCounters[BuffType.Health] = _calculationFinalValue.HealthLevelImprovment;
+            _buffCounters[BuffType.Armor] = _calculationFinalValue.ArmorLevelImprovment;
+            _buffCounters[BuffType.Damage] = _calculationFinalValue.DamageLevelImprovment;
+            _buffCounters[BuffType.AttackSpeed] = _calculationFinalValue.AttackSpeedLevelImprovment;
+            _buffCounters[BuffType.MovementSpeed] = _calculationFinalValue.MovementSpeedLevelImprovment;
         }
 
         private void OnBuffPanelOpened()
@@ -400,7 +406,18 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
         
         private int GetBuffPrice(int currentLevel) => (currentLevel + 1) * _startBuffPrice;
         
-        private int GetCurrentBuffLevel(BuffType buffType) => _buffCounters[buffType];
+        private int GetCurrentBuffLevel(BuffType buffType)
+        {
+            return buffType switch
+            {
+                BuffType.Health => _calculationFinalValue.HealthLevelImprovment,
+                BuffType.Armor => _calculationFinalValue.ArmorLevelImprovment,
+                BuffType.Damage => _calculationFinalValue.DamageLevelImprovment,
+                BuffType.AttackSpeed => _calculationFinalValue.AttackSpeedLevelImprovment,
+                BuffType.MovementSpeed => _calculationFinalValue.MovementSpeedLevelImprovment,
+                _ => 0,
+            };
+        }
         
         private int GetLevelFromCalc(BuffType buffType)
         {
