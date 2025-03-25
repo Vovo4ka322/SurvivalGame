@@ -34,6 +34,7 @@ namespace Game.Scripts.PlayerComponents
             _player.HealthChanged -= OnHealthChanged;
             _player.ExperienceChanged -= OnExperienceChanged;
             _player.MoneyChanged -= OnMoneyChanged;
+            _player.Level.LevelChanged -= OnLevelChanged;
         }
 
         public void Init(Player player)
@@ -62,6 +63,7 @@ namespace Game.Scripts.PlayerComponents
             _player.HealthChanged += OnHealthChanged;
             _player.ExperienceChanged += OnExperienceChanged;
             _player.MoneyChanged += OnMoneyChanged;
+            _player.Level.LevelChanged += OnLevelChanged;
         }
 
         private void OnMoneyChanged(int value)
@@ -81,6 +83,12 @@ namespace Game.Scripts.PlayerComponents
             _expSlider.value = value;
             
             ViewExp(value);
+        }
+        
+        private void OnLevelChanged()
+        {
+            _expSlider.maxValue = _player.Level.ShowMaxExperienceForLevel();
+            ViewExp(_player.Level.Experience);
         }
 
         private void ViewHealth(float currentHealth)
