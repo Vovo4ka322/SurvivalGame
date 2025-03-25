@@ -11,6 +11,7 @@ using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.PoolComponents;
 using YG;
+using Game.Scripts.EnemyComponents.EnemySettings;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {
@@ -27,7 +28,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private AudioGameSettings _audioGameSettings;
         [SerializeField] private GameSceneAudio _gameSceneAudio;
         [SerializeField] private WaveCycle _waveCycle;
-        [SerializeField] private DifficultlyData _difficultlyData;
+        [SerializeField] private DifficultySetter _difficultlySetter;
         
         private Player _player;
         private Canvas _canvas;
@@ -54,6 +55,8 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             Spawn();
 
             _enemySpawner.Init(_player);
+            _difficultlySetter.Init();
+            InitEnemyDifficulty();
         }
 
         private void OnEnable()
@@ -134,6 +137,31 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 
             _walletView = _canvas.GetComponentInChildren<WalletView>();
             _walletView.Initialize(_wallet);
+        }
+
+        private void InitEnemyDifficulty()
+        {
+            EnemyData[] easyEnemies =
+            {
+                _difficultlySetter.CurrentDifficultyLevel.EasyEnemyMeleeSkeleton,
+                _difficultlySetter.CurrentDifficultyLevel.EasyEnemyRangeGost
+            };
+
+            EnemyData[] mediumEnemies =
+            {
+                _difficultlySetter.CurrentDifficultyLevel.MediumEnemyMeleeDemon,
+                _difficultlySetter.CurrentDifficultyLevel.MediumEnemyMeleeSkeleton
+            };
+
+            EnemyData[] hardEnemies =
+            {
+                _difficultlySetter.CurrentDifficultyLevel.HardEnemyMeleeSkeleton,
+                _difficultlySetter.CurrentDifficultyLevel.HardEnemyMeleeGolem
+            };
+
+            EnemyData boss = _difficultlySetter.CurrentDifficultyLevel.BossLevel1;
+
+            _enemySpawner.InitEnemyDatas(easyEnemies, mediumEnemies, hardEnemies, boss);
         }
 
         private void InitializeData()
