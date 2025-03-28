@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType
 {
     [Serializable]
-    public class HybridEnemyAttackSetter : EnemyAttackTypeSetter
+    public class HybridAttack : EnemyAttackType
     {
         [SerializeField] private EffectData _attackEffect1;
         [SerializeField] private EffectData _attackEffect2;

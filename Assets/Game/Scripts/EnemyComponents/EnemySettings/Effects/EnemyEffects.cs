@@ -32,7 +32,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
             switch (data.BaseAttackType.Type)
             {
                 case AttackType.Melee:
-                    MeleeEnemyAttackSetter melee = data.BaseAttackType as MeleeEnemyAttackSetter;
+                    MeleeAttack melee = data.BaseAttackType as MeleeAttack;
 
                     if (melee?.AttackEffects != null)
                     {
@@ -42,7 +42,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
                     break;
 
                 case AttackType.Ranged:
-                    RangeEnemyAttackSetter ranged = data.BaseAttackType as RangeEnemyAttackSetter;
+                    RangeAttack ranged = data.BaseAttackType as RangeAttack;
 
                     if (ranged?.ReloadEffect != null)
                     {
@@ -52,7 +52,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
                     break;
 
                 case AttackType.Hybrid:
-                    HybridEnemyAttackSetter hybrid = data.BaseAttackType as HybridEnemyAttackSetter;
+                    HybridAttack hybrid = data.BaseAttackType as HybridAttack;
 
                     if (hybrid != null)
                     {
@@ -68,7 +68,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
                     break;
 
                 case AttackType.Boss:
-                    BossAttackSetter boss = data.BaseAttackType as BossAttackSetter;
+                    BossAttack boss = data.BaseAttackType as BossAttack;
 
                     if (boss != null)
                     {

@@ -6,6 +6,6 @@ namespace Game.Scripts.EnemyComponents.Interfaces
     {
         public void TryAttack();
         
-        public bool IsHybridProjectileReady(HybridEnemyAttackSetter hybridType, float distance);
+        public bool IsHybridProjectileReady(HybridAttack hybridType, float distance);
     }
 }

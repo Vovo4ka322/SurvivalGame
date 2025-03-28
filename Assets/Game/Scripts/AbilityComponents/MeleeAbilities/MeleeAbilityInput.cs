@@ -6,7 +6,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 {
     public class MeleeAbilityInput : MonoBehaviour
     {
-        [SerializeField] private MeleePlayerAbility _meleeAbilityUser;
+        [SerializeField] private MeleePlayerAbility _meleePlayerAbility;
         [SerializeField] private PlayerController _playerController;
 
         private Button _firstAbilityUse;
@@ -17,28 +17,28 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
         private void Start()
         {
-            _firstAbilityUse.onClick.AddListener(_meleeAbilityUser.UseFirstAbility);
-            _secondAbilityUse.onClick.AddListener(_meleeAbilityUser.UseSecondAbility);
-            _firstUpgradeButton.onClick.AddListener(_meleeAbilityUser.UpgradeFirstAbility);
-            _secondUpgradeButton.onClick.AddListener(_meleeAbilityUser.UpgradeSecondAbility);
-            _thirdUpgradeButton.onClick.AddListener(_meleeAbilityUser.UpgradeThirdAbility);
+            _firstAbilityUse.onClick.AddListener(_meleePlayerAbility.UseFirstAbility);
+            _secondAbilityUse.onClick.AddListener(_meleePlayerAbility.UseSecondAbility);
+            _firstUpgradeButton.onClick.AddListener(_meleePlayerAbility.UpgradeFirstAbility);
+            _secondUpgradeButton.onClick.AddListener(_meleePlayerAbility.UpgradeSecondAbility);
+            _thirdUpgradeButton.onClick.AddListener(_meleePlayerAbility.UpgradeThirdAbility);
         }
 
         private void Update()
         {
             if (_playerController.FirstAbilityKeyPressed)
-                _meleeAbilityUser.UseFirstAbility();
+                _meleePlayerAbility.UseFirstAbility();
             else if (_playerController.SecondAbilityKeyPressed)
-                _meleeAbilityUser.UseSecondAbility();
+                _meleePlayerAbility.UseSecondAbility();
         }
 
         private void OnDisable()
         {
-            _firstAbilityUse.onClick.RemoveListener(_meleeAbilityUser.UseFirstAbility);
-            _secondAbilityUse.onClick.RemoveListener(_meleeAbilityUser.UseSecondAbility);
-            _firstUpgradeButton.onClick.RemoveListener(_meleeAbilityUser.UpgradeFirstAbility);
-            _secondUpgradeButton.onClick.RemoveListener(_meleeAbilityUser.UpgradeSecondAbility);
-            _thirdUpgradeButton.onClick.RemoveListener(_meleeAbilityUser.UpgradeThirdAbility);
+            _firstAbilityUse.onClick.RemoveListener(_meleePlayerAbility.UseFirstAbility);
+            _secondAbilityUse.onClick.RemoveListener(_meleePlayerAbility.UseSecondAbility);
+            _firstUpgradeButton.onClick.RemoveListener(_meleePlayerAbility.UpgradeFirstAbility);
+            _secondUpgradeButton.onClick.RemoveListener(_meleePlayerAbility.UpgradeSecondAbility);
+            _thirdUpgradeButton.onClick.RemoveListener(_meleePlayerAbility.UpgradeThirdAbility);
         }
 
         public void Init(Button firstAbilityUse, Button secondAbilityUse, Button firstUpgradeButton, Button secondUpgradeButton, Button thirdUpgradeButton)

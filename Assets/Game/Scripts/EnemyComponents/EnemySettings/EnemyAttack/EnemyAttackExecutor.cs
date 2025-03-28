@@ -18,7 +18,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             switch (_enemy.Data.BaseAttackType.Type)
             {
                 case AttackType.Hybrid:
-                    EnemyAttackType.HybridEnemyAttackSetter hybridAttackType = _enemy.Data.BaseAttackType as EnemyAttackType.HybridEnemyAttackSetter;
+                    EnemyAttackType.HybridAttack hybridAttackType = _enemy.Data.BaseAttackType as EnemyAttackType.HybridAttack;
 
                     if (hybridAttackType != null)
                     {
@@ -34,7 +34,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                     _enemy.SetAttackBehaviorInternal(new RangedAttack(_enemy));
                     break;
                 case AttackType.Boss:
-                    EnemyAttackType.BossAttackSetter bossAttackType = _enemy.Data.BaseAttackType as EnemyAttackType.BossAttackSetter;
+                    EnemyAttackType.BossAttack bossAttackType = _enemy.Data.BaseAttackType as EnemyAttackType.BossAttack;
 
                     if (bossAttackType != null)
                     {
