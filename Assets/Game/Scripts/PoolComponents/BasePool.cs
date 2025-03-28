@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts.PoolComponents
 {
-    public abstract class BasePool<T>
+    public class BasePool<T>
         where T : Component
     {
         private readonly Stack<T> _pool = new Stack<T>();

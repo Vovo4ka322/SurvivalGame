@@ -24,7 +24,7 @@ namespace Game.Scripts.PoolComponents
         [SerializeField] private List<ParticleSystem> _effectPrefabs;
 
         private EffectsPool _effectsPool;
-        private Dictionary<BaseProjectile, ProjectilePool<BaseProjectile>> _projectilePools;
+        private Dictionary<BaseProjectile, BasePool<BaseProjectile>> _projectilePools;
 
         public EnemyFactory EnemyFactory => _enemyFactory;
         public EffectsPool EffectsPool => _effectsPool;
@@ -45,7 +45,7 @@ namespace Game.Scripts.PoolComponents
             InitializeProjectilePools();
         }
 
-        public ProjectilePool<BaseProjectile> GetProjectilePool(BaseProjectile prefab)
+        public BasePool<BaseProjectile> GetProjectilePool(BaseProjectile prefab)
         {
             if (prefab == null)
             {
@@ -68,13 +68,13 @@ namespace Game.Scripts.PoolComponents
 
         private void InitializeProjectilePools()
         {
-            _projectilePools = new Dictionary<BaseProjectile, ProjectilePool<BaseProjectile>>();
+            _projectilePools = new Dictionary<BaseProjectile, BasePool<BaseProjectile>>();
 
             foreach (BaseProjectile prefab in _projectilePrefabs)
             {
                 if (prefab != null && !_projectilePools.ContainsKey(prefab))
                 {
-                    var pool = new ProjectilePool<BaseProjectile>(prefab, _defaultPoolSettings, transform);
+                    var pool = new BasePool<BaseProjectile>(prefab, _defaultPoolSettings, transform);
 
                     _projectilePools.Add(prefab, pool);
                 }

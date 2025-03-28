@@ -15,7 +15,7 @@ namespace Game.Scripts.ProjectileComponents
         [SerializeField] private float _lifetime;
         [SerializeField] private int _damage;
 
-        public ProjectilePool<BaseProjectile> Pool;
+        public BasePool<BaseProjectile> Pool;
 
         private Collider _collider;
         private IProjectileMovement _movementStrategy;
@@ -36,7 +36,7 @@ namespace Game.Scripts.ProjectileComponents
             _collider = GetComponent<Collider>();
         }
 
-        public abstract void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler);
+        public abstract void Launch(Vector3 targetPosition, BasePool<BaseProjectile> pool, IExplosionHandler explosionHandler);
 
         public void SetColliderActive(bool active)
         {
@@ -68,7 +68,7 @@ namespace Game.Scripts.ProjectileComponents
             _projectileEffectPrefab?.Play();
         }
 
-        protected void InitializeProjectile(IProjectileMovement movement, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler, float lifetime)
+        protected void InitializeProjectile(IProjectileMovement movement, BasePool<BaseProjectile> pool, IExplosionHandler explosionHandler, float lifetime)
         {
             _movementStrategy = movement;
             Pool = pool;
