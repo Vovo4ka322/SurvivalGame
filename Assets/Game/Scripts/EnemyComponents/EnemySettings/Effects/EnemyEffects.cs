@@ -25,9 +25,9 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
             }
 
             _coroutineRunner = coroutineRunner;
-            _spawnEffect = new SimpleEffect(_coroutineRunner, data.SpawnEffect, pool);
-            _hitEffect = new SimpleEffect(_coroutineRunner, data.HitEffect, pool);
-            _deathEffect = new SimpleEffect(_coroutineRunner, data.DeathEffect, pool);
+            _spawnEffect = new BaseEffectsEnemy(_coroutineRunner, data.SpawnEffect, pool);
+            _hitEffect = new BaseEffectsEnemy(_coroutineRunner, data.HitEffect, pool);
+            _deathEffect = new BaseEffectsEnemy(_coroutineRunner, data.DeathEffect, pool);
 
             switch (data.BaseAttackType.Type)
             {
@@ -46,7 +46,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
 
                     if (ranged?.ReloadEffect != null)
                     {
-                        _reloadEffect = new SimpleEffect(_coroutineRunner, ranged.ReloadEffect, pool);
+                        _reloadEffect = new BaseEffectsEnemy(_coroutineRunner, ranged.ReloadEffect, pool);
                     }
 
                     break;
@@ -61,7 +61,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
                             EffectData[] attackEffects = { hybrid.AttackEffects[0], hybrid.AttackEffects[1], hybrid.AttackEffects[2] };
 
                             _attackEffect = new AttackEffect(_coroutineRunner, attackEffects, pool);
-                            _reloadEffect = new SimpleEffect(_coroutineRunner, hybrid.AttackEffects[3], pool);
+                            _reloadEffect = new BaseEffectsEnemy(_coroutineRunner, hybrid.AttackEffects[3], pool);
                         }
                     }
 
