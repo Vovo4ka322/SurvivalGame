@@ -4,7 +4,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Common
 {
     public class Rotator : MonoBehaviour
     {
-        [SerializeField, Range(0, 10)] private float _rotationSpeed;
+        [SerializeField][Range(0, 10)] private float _rotationSpeed;
 
         private float _currentRotation = 0;
 

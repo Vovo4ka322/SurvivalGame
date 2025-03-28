@@ -7,7 +7,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.SkinComponents
     {
         private const string IdleAnimation = "IdleForMenu";
         private const string AttackAnimation = "isAttack";
-        
+
         private Animator _animator;
 
         private void Awake()

@@ -8,9 +8,9 @@ namespace Game.Scripts.PlayerComponents
     public class PlayerLevel
     {
         [SerializeField] private Level _requireExperience;
-        
+
         private Dictionary<int, int> _levelRequirements;
-        
+
         private int _level;
         private int _maxLevel = 9;
 
@@ -33,13 +33,13 @@ namespace Game.Scripts.PlayerComponents
         public void GainExperience(int amount)
         {
             Experience += amount;
-            
+
             UpLevel();
         }
 
         private void UpLevel()
         {
-            if(_level >= _maxLevel)
+            if (_level >= _maxLevel)
             {
                 return;
             }
@@ -50,9 +50,9 @@ namespace Game.Scripts.PlayerComponents
                 {
                     _level++;
                     Experience = 0;
-                    
+
                     LevelChanged?.Invoke();
-                    
+
                     requiredExperience = _levelRequirements[_level + 1];
                 }
             }

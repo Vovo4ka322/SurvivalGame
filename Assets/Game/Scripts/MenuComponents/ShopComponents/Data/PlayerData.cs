@@ -10,11 +10,10 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
     {
         private readonly List<CharacterSkins> _openCharacterSkins;
         private readonly PlayerCharacteristicData _calculationFinalValue;
-        
+
         private CharacterSkins _selectedCharacterSkins;
-        
         private int _money;
-        
+
         public PlayerData()
         {
             _money = 0;
@@ -47,18 +46,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
                 _money = value;
             }
         }
-        
-        public void OpenCharacterSkin(CharacterSkins skin)
-        {
-            if (_openCharacterSkins.Contains(skin))
-                throw new ArgumentException(nameof(skin));
-
-            _openCharacterSkins.Add(skin);
-        }
-
-        public IEnumerable<CharacterSkins> OpenCharacterSkins => _openCharacterSkins;
-
-        public PlayerCharacteristicData CalculationFinalValue => _calculationFinalValue;
 
         public CharacterSkins SelectedCharacterSkin
         {
@@ -70,6 +57,18 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
 
                 _selectedCharacterSkins = value;
             }
+        }
+
+        public IEnumerable<CharacterSkins> OpenCharacterSkins => _openCharacterSkins;
+
+        public PlayerCharacteristicData CalculationFinalValue => _calculationFinalValue;
+
+        public void OpenCharacterSkin(CharacterSkins skin)
+        {
+            if (_openCharacterSkins.Contains(skin))
+                throw new ArgumentException(nameof(skin));
+
+            _openCharacterSkins.Add(skin);
         }
     }
 }

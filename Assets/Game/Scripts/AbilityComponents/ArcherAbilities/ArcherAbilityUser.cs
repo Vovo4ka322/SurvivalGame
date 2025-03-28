@@ -21,18 +21,18 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
         [SerializeField] private RangeAbilityData _abilityDataSecondLevel;
         [SerializeField] private RangeAbilityData _abilityDataThirdLevel;
 
+        private int _counterForInsatiableHunger = 0;
+        private int _counterForMultiShot = 0;
+        private int _counterForBlur = 0;
+
+        private Dictionary<int, RangeAbilityData> _abilitiesDatas;
+
         private readonly int _firstLevel = 1;
         private readonly int _secondLevel = 2;
         private readonly int _thirdLevel = 3;
         private readonly int _firstUpgrade = 0;
         private readonly int _secondUpgrade = 1;
         private readonly int _thirdUpgrade = 2;
-
-        private int _counterForInsatiableHunger = 0;
-        private int _counterForMultiShot = 0;
-        private int _counterForBlur = 0;
-
-        private Dictionary<int, RangeAbilityData> _abilitiesDatas;
 
         public event Action LevelChanged;
         public event Action MultiShotUpgraded;
@@ -70,11 +70,11 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 
         public RangeAbilityData GetAbilityDataForLevel(int level)
         {
-            if(_abilitiesDatas.ContainsKey(level))
+            if (_abilitiesDatas.ContainsKey(level))
             {
                 return _abilitiesDatas[level];
             }
-            
+
             return null;
         }
 
@@ -149,7 +149,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 
         private void UpgradeBlur(int level)
         {
-            if(IsMaxValue(_counterForBlur))
+            if (IsMaxValue(_counterForBlur))
                 return;
 
             _player.SetEvasion(_abilitiesDatas[level].BlurScriptableObject);

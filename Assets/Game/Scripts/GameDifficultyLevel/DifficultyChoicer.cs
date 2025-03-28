@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class DifficultyChoicer : MonoBehaviour
 {
     [SerializeField] private Button _button;
-    [SerializeField] private DifficultySetter _difficultySetter;
+    [SerializeField] private GameDifficultySetter _difficultySetter;
 
     [SerializeField] private TextMeshProUGUI _easyDifficultyText;
     [SerializeField] private TextMeshProUGUI _mediumDifficultyText;
@@ -34,17 +34,17 @@ public class DifficultyChoicer : MonoBehaviour
 
     private void ShowText()
     {
-        if(_difficults == Difficults.Easy)
+        if (_difficults == Difficults.Easy)
         {
             Deactivate();
             Activate(_easyDifficultyText);
         }
-        else if(_difficults == Difficults.Medium)
+        else if (_difficults == Difficults.Medium)
         {
             Deactivate();
             Activate(_mediumDifficultyText);
         }
-        else if(_difficults== Difficults.Hard)
+        else if (_difficults == Difficults.Hard)
         {
             Deactivate();
             Activate(_hardDifficultyText);

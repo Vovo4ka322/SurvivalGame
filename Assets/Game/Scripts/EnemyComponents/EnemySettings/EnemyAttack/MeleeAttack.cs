@@ -5,12 +5,12 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
     public class MeleeAttack : IAttackBehavior
     {
         private readonly Enemy _enemy;
-        
+
         public MeleeAttack(Enemy enemy)
         {
             _enemy = enemy;
         }
-        
+
         public void HandleAttack(float distance)
         {
             if (distance > _enemy.Data.AttackRange)

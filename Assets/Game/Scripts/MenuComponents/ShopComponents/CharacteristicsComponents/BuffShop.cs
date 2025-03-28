@@ -21,10 +21,16 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
         [SerializeField] private Button _resetBuffButton;
         [SerializeField] private ButtonAnimation _buttonAnimation;
         [SerializeField] private ParticleSystem _buffParticle;
-        
+
         [Header("UI Configurations")]
         [SerializeField] private List<BuffUIConfig> _buffUIConfigs;
 
+        private Wallet _wallet;
+        private IDataSaver _iDataSaver;
+        private PlayerCharacteristicData _calculationFinalValue;
+        private Button _currentSelectedBuffButton;
+
+        private readonly int _startBuffPrice = 100;
         private readonly Dictionary<BuffType, int> _buffCounters = new Dictionary<BuffType, int>
         {
             { BuffType.Health, 0 },
@@ -33,12 +39,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             { BuffType.AttackSpeed, 0 },
             { BuffType.MovementSpeed, 0 }
         };
-        private readonly int _startBuffPrice = 100;
-
-        private Wallet _wallet;
-        private IDataSaver _iDataSaver;
-        private PlayerCharacteristicData _calculationFinalValue;
-        private Button _currentSelectedBuffButton;
 
         public event Action HealthUpgraded;
         public event Action ArmorUpgraded;
@@ -50,7 +50,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 
         private void Awake()
         {
-            if(_buffParticle != null && !_buffParticle.gameObject.scene.isLoaded)
+            if (_buffParticle != null && !_buffParticle.gameObject.scene.isLoaded)
             {
                 _buffParticle = Instantiate(_buffParticle);
             }
@@ -58,12 +58,12 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 
         private void OnEnable()
         {
-            foreach(BuffUIConfig config in _buffUIConfigs)
+            foreach (BuffUIConfig config in _buffUIConfigs)
             {
                 config.BuffButton.onClick.AddListener(() => OnBuffButtonClick(config));
                 config.PurchaseButton.onClick.AddListener(() => OnBuyBuff(config.BuffType));
             }
-            
+
             _openerPanelButton.onClick.AddListener(OnBuffPanelOpened);
             _leaverPanelButton.onClick.AddListener(OnBuffPanelClosed);
             _resetBuffButton.onClick.AddListener(OnResetBuffs);
@@ -71,12 +71,12 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 
         private void OnDisable()
         {
-            foreach(BuffUIConfig config in _buffUIConfigs)
+            foreach (BuffUIConfig config in _buffUIConfigs)
             {
                 config.BuffButton.onClick.RemoveAllListeners();
                 config.PurchaseButton.onClick.RemoveAllListeners();
             }
-            
+
             _openerPanelButton.onClick.RemoveListener(OnBuffPanelOpened);
             _leaverPanelButton.onClick.RemoveListener(OnBuffPanelClosed);
             _resetBuffButton.onClick.RemoveListener(OnResetBuffs);
@@ -87,7 +87,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             _wallet = wallet;
             _iDataSaver = iDataSaver;
             _calculationFinalValue = persistentData.PlayerData.CalculationFinalValue;
-            
+
             _buffCounters[BuffType.Health] = _calculationFinalValue.HealthLevelImprovment;
             _buffCounters[BuffType.Armor] = _calculationFinalValue.ArmorLevelImprovment;
             _buffCounters[BuffType.Damage] = _calculationFinalValue.DamageLevelImprovment;
@@ -110,7 +110,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 
         private void ResetParticle()
         {
-            if(_buffParticle != null)
+            if (_buffParticle != null)
             {
                 _buffParticle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 _buffParticle.gameObject.SetActive(false);
@@ -120,9 +120,9 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 
         private void ActivateParticle(Button targetButton)
         {
-            if(_buffParticle != null)
+            if (_buffParticle != null)
             {
-                if(!_buffParticle.gameObject.activeSelf)
+                if (!_buffParticle.gameObject.activeSelf)
                 {
                     _buffParticle.gameObject.SetActive(true);
                 }
@@ -145,7 +145,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 
         private void SetSelectedBuffButton(Button newButton)
         {
-            if(newButton == null || _currentSelectedBuffButton == newButton)
+            if (newButton == null || _currentSelectedBuffButton == newButton)
             {
                 return;
             }
@@ -170,7 +170,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 
         private void DeactivateIfMax(int currentLevel, Button purchaseButton, TextMeshProUGUI costText)
         {
-            if(currentLevel >= MaxCount)
+            if (currentLevel >= MaxCount)
             {
                 purchaseButton.gameObject.SetActive(false);
                 costText.gameObject.SetActive(false);
@@ -179,7 +179,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 
         private void DeactivateAllViewers()
         {
-            foreach(BuffUIConfig config in _buffUIConfigs)
+            foreach (BuffUIConfig config in _buffUIConfigs)
             {
                 Deactivate(config.PurchaseButton, config.Description, config.CostText);
             }
@@ -197,7 +197,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             int counter = _buffCounters[buffType];
             int levelFromCalc = GetLevelFromCalc(buffType);
 
-            if(IsFull(counter))
+            if (IsFull(counter))
             {
                 return;
             }
@@ -205,7 +205,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             int price = GetBuffPrice(counter);
             BuffUIConfig config = _buffUIConfigs.First(c => c.BuffType == buffType);
 
-            if(!IsEnough(price))
+            if (!IsEnough(price))
             {
                 _buttonAnimation.PlayTryPressedAnimation(config.PurchaseButton);
 
@@ -213,7 +213,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             }
 
             _buttonAnimation.PlayPressedAnimation(config.PurchaseButton);
-            
+
             InitBuffLevel(buffType, counter);
             UpgradeBuff(buffType);
             SpendMoney(price);
@@ -225,10 +225,10 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             UpdatePriceText(config.PriceText, _buffCounters[buffType]);
             DeactivateIfMax(GetLevelFromCalc(buffType), config.PurchaseButton, config.CostText);
         }
-        
+
         private void InvokeBuffUpgradedEvent(BuffType buffType)
         {
-            switch(buffType)
+            switch (buffType)
             {
                 case BuffType.Health:
                     HealthUpgraded?.Invoke();
@@ -252,10 +252,10 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
                     break;
             }
         }
-        
+
         private void UpdateCalcLevel(BuffType buffType, int newLevel)
         {
-            switch(buffType)
+            switch (buffType)
             {
                 case BuffType.Health:
                     _calculationFinalValue.InitLevelHealth(newLevel);
@@ -279,10 +279,10 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
                     break;
             }
         }
-        
+
         private void UpdateCalcBuffValue(BuffType buffType, float buffValue)
         {
-            switch(buffType)
+            switch (buffType)
             {
                 case BuffType.Health:
                     _calculationFinalValue.InitHealth(buffValue);
@@ -306,10 +306,10 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
                     break;
             }
         }
-        
+
         private void InitBuffLevel(BuffType buffType, int currentLevel)
         {
-            switch(buffType)
+            switch (buffType)
             {
                 case BuffType.Health:
                     _buffImprovement.InitHealthLevel(currentLevel);
@@ -333,10 +333,10 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
                     break;
             }
         }
-        
+
         private void UpgradeBuff(BuffType buffType)
         {
-            switch(buffType)
+            switch (buffType)
             {
                 case BuffType.Health:
                     _buffImprovement.UpgradeHealth();
@@ -360,37 +360,37 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
                     break;
             }
         }
-        
+
         private void OnResetBuffs()
         {
             foreach (BuffType key in _buffCounters.Keys.ToList())
             {
                 _buffCounters[key] = 0;
             }
-            
+
             UpdateCalcLevel(BuffType.Health, 0);
             UpdateCalcLevel(BuffType.Armor, 0);
             UpdateCalcLevel(BuffType.Damage, 0);
             UpdateCalcLevel(BuffType.AttackSpeed, 0);
             UpdateCalcLevel(BuffType.MovementSpeed, 0);
-        
+
             UpdateCalcBuffValue(BuffType.Health, 0f);
             UpdateCalcBuffValue(BuffType.Armor, 0f);
             UpdateCalcBuffValue(BuffType.Damage, 0f);
             UpdateCalcBuffValue(BuffType.AttackSpeed, 0f);
             UpdateCalcBuffValue(BuffType.MovementSpeed, 0f);
-            
+
             foreach (BuffUIConfig config in _buffUIConfigs)
             {
                 UpdatePriceText(config.PriceText, 0);
             }
-            
+
             _iDataSaver.Save();
             _currentSelectedBuffButton = null;
             DeactivateAllViewers();
             _buffImprovementViewer.ResetUpgrades();
         }
-        
+
         private float GetBuffValue(BuffType buffType)
         {
             return buffType switch
@@ -403,9 +403,9 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
                 _ => 0f,
             };
         }
-        
+
         private int GetBuffPrice(int currentLevel) => (currentLevel + 1) * _startBuffPrice;
-        
+
         private int GetCurrentBuffLevel(BuffType buffType)
         {
             return buffType switch
@@ -418,7 +418,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
                 _ => 0,
             };
         }
-        
+
         private int GetLevelFromCalc(BuffType buffType)
         {
             return buffType switch
@@ -431,9 +431,9 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
                 _ => 0,
             };
         }
-        
+
         private bool IsEnough(int price) => _wallet.IsEnough(price);
-        
+
         private bool IsFull(int value) => value >= MaxCount;
     }
 }

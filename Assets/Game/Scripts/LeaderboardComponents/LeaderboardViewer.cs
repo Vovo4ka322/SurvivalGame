@@ -20,7 +20,7 @@ namespace Game.Scripts.LeaderboardComponents
         {
             Panel.DOScaleY(0, AnimationDuration).SetEase(EaseType);
         }
-        
+
         public void ToggleLeaderboardPanel()
         {
             TogglePanel();

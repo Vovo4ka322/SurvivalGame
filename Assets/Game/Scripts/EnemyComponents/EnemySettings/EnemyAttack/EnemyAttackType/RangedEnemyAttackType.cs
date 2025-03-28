@@ -9,8 +9,8 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType
     public class RangedEnemyAttackType : BaseEnemyAttackType
     {
         [SerializeField] private EffectData _reloadEffect;
-        [SerializeField] private BaseProjectile _projectilePrefab; 
-        
+        [SerializeField] private BaseProjectile _projectilePrefab;
+
         public override AttackType Type => AttackType.Ranged;
         public EffectData ReloadEffect => _reloadEffect;
         public BaseProjectile ProjectilePrefab => _projectilePrefab;

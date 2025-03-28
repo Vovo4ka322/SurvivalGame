@@ -6,7 +6,7 @@ namespace Game.Scripts.MusicComponents.EffectSounds
     {
         [SerializeField] private AudioSource _projectileLaunchClip;
         [SerializeField] private AudioSource _projectileCollisionClip;
-        
+
         public void PlayProjectileLaunch() => _projectileLaunchClip.Play();
 
         public void PlayProjectileCollision() => _projectileCollisionClip.Play();

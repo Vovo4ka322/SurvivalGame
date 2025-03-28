@@ -12,27 +12,27 @@ namespace Game.Scripts.EnemyComponents
     public class WaveBasedEnemySpawner : MonoBehaviour
     {
         [SerializeField] private GameSceneAudio _gameSceneAudio;
-        
+
         [Header("Wave Data")]
         [SerializeField] private EnemyData[] _easyEnemyDatas;
         [SerializeField] private EnemyData[] _mediumEnemyDatas;
         [SerializeField] private EnemyData[] _hardEnemyDatas;
         [SerializeField] private EnemyData _bossEnemyData;
-        
+
         [Header("Spawn References")]
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Transform _bossSpawnPoint;
         [SerializeField] private PoolManager _poolManager;
-        
+
         private BossHealthViewer _bossHealthViewer;
         private Player _player;
         private ICoroutineRunner _coroutineRunner;
-        
+
         private void Awake()
         {
             _coroutineRunner = _poolManager.GetComponent<ICoroutineRunner>();
         }
-        
+
         public void StartWave(float waveDuration, int waveNumber, float spawnInterval)
         {
             if (waveNumber == 0)
@@ -42,16 +42,16 @@ namespace Game.Scripts.EnemyComponents
             else
             {
                 EnemyData[] enemyDatas = GetEnemyDataByWaveNumber(waveNumber);
-                
+
                 _coroutineRunner.StartCoroutine(CreateWave(enemyDatas, waveDuration, spawnInterval));
             }
         }
-        
+
         public void SetBossHealthViewer(BossHealthViewer bossHealthViewer)
         {
             _bossHealthViewer = bossHealthViewer;
         }
-        
+
         public void InitEnemyDatas(EnemyData[] easyEnemyDatas, EnemyData[] mediumEnemyDatas, EnemyData[] hardEnemyDatas, EnemyData boss)
         {
             _easyEnemyDatas = easyEnemyDatas;
@@ -64,12 +64,12 @@ namespace Game.Scripts.EnemyComponents
         {
             _player = player;
         }
-        
+
         private void CreateBoss()
         {
             _coroutineRunner.StartCoroutine(CreateBossCoroutine());
         }
-        
+
         private EnemyData[] GetEnemyDataByWaveNumber(int waveNumber)
         {
             switch (waveNumber)
@@ -84,57 +84,57 @@ namespace Game.Scripts.EnemyComponents
                     return _easyEnemyDatas;
             }
         }
-        
+
         private IEnumerator CreateWave(EnemyData[] enemyDatas, float waveDuration, float spawnInterval)
         {
             float elapsed = 0f;
-            
+
             while (elapsed < waveDuration)
             {
                 while (!_poolManager.EnemyFactory.CanSpawnMore)
                 {
                     yield return null;
                 }
-                
+
                 EnemyData randomData = enemyDatas[Random.Range(0, enemyDatas.Length)];
                 Vector3 spawnPos = GetRandomSpawnPosition();
                 Quaternion spawnRot = Quaternion.identity;
-                
+
                 _poolManager.EnemyFactory.SpawnEnemy(randomData, spawnPos, spawnRot, _player);
-                
+
                 yield return new WaitForSeconds(spawnInterval);
-                
+
                 elapsed += spawnInterval;
             }
         }
-        
+
         private IEnumerator CreateBossCoroutine()
         {
             yield return null;
-            
+
             if (_bossSpawnPoint != null && _bossEnemyData != null)
             {
                 Enemy boss = _poolManager.EnemyFactory.SpawnEnemy(_bossEnemyData, _bossSpawnPoint.position, _bossSpawnPoint.rotation, _player);
-                
+
                 if (_bossHealthViewer != null)
                 {
                     _bossHealthViewer.gameObject.SetActive(true);
                     _bossHealthViewer.Set(boss);
                 }
             }
-            
+
             _gameSceneAudio.SwitchToBossMusic();
         }
-        
+
         private Vector3 GetRandomSpawnPosition()
         {
-            if(_spawnPoints != null && _spawnPoints.Length > 0)
+            if (_spawnPoints != null && _spawnPoints.Length > 0)
             {
                 int randIndex = Random.Range(0, _spawnPoints.Length);
-                
+
                 return _spawnPoints[randIndex].position;
             }
-            
+
             return Vector3.zero;
         }
     }

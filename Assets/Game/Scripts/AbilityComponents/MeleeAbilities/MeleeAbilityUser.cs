@@ -19,18 +19,18 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
         [SerializeField] private MeleeAbilityData _abilityDataSecondLevel;
         [SerializeField] private MeleeAbilityData _abilityDataThirdLevel;
 
+        private int _counterForBorrowedTime = 0;
+        private int _counterForBladeFury = 0;
+        private int _counterForBloodLust = 0;
+
+        private Dictionary<int, MeleeAbilityData> _abilitiesDatas;
+
         private readonly int _firstLevel = 1;
         private readonly int _secondLevel = 2;
         private readonly int _thirdLevel = 3;
         private readonly int _firstUpgrade = 0;
         private readonly int _secondUpgrade = 1;
         private readonly int _thirdUpgrade = 2;
-
-        private int _counterForBorrowedTime = 0;
-        private int _counterForBladeFury = 0;
-        private int _counterForBloodLust = 0;
-
-        private Dictionary<int, MeleeAbilityData> _abilitiesDatas;
 
         public event Action LevelChanged;
         public event Action BladeFuryUpgraded;
@@ -65,17 +65,17 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
         {
             _player.Level.LevelChanged -= OpenUpgraderWindow;
         }
-        
+
         public MeleeAbilityData GetAbilityDataForLevel(int level)
         {
-            if(_abilitiesDatas.ContainsKey(level))
+            if (_abilitiesDatas.ContainsKey(level))
             {
                 return _abilitiesDatas[level];
             }
-            
+
             return null;
         }
-        
+
         public void OpenUpgraderWindow()
         {
             LevelChanged?.Invoke();
@@ -106,7 +106,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             if (IsTrue(_counterForBorrowedTime, _firstUpgrade))
                 UpgradeBorrowedTime(_firstLevel);
             else if (IsTrue(_counterForBorrowedTime, _secondUpgrade))
-                UpgradeBorrowedTime((_secondLevel));
+                UpgradeBorrowedTime(_secondLevel);
             else if (IsTrue(_counterForBorrowedTime, _thirdUpgrade))
                 UpgradeBorrowedTime(_thirdLevel);
         }

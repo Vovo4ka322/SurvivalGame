@@ -8,7 +8,7 @@ namespace Game.Scripts.MusicComponents.EffectSounds
         [SerializeField] private AudioSource _meleeMissClip;
 
         public void PlayHit() => _meleeHitClip.Play();
-        
+
         public void PlayMissHit() => _meleeMissClip.Play();
     }
 }

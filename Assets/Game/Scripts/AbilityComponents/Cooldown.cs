@@ -13,7 +13,7 @@ namespace Game.Scripts.AbilityComponents
 
         private IEnumerator StartTimer(float time)
         {
-            WaitForSeconds duration = new(time);
+            WaitForSeconds duration = new (time);
 
             CanUse = false;
 

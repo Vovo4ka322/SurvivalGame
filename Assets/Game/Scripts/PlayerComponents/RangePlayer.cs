@@ -37,26 +37,26 @@ namespace Game.Scripts.PlayerComponents
             SoundCollection?.RangedPlayerSoundEffects.PlayShoot();
             _bow.StartShoot(Damage);
         }
-        
+
         public void Reload()
         {
             SoundCollection?.RangedPlayerSoundEffects.PlayReload();
         }
-        
+
         public void SetEvasion(Blur blur) => _evasionChance = blur.Evasion;
-        
+
         public bool TryDodge() => Random.value <= _evasionChance;
-        
+
         public void SetCoefficient(float value) => Coefficient = value;
-        
+
         public bool SetTrueVampirismState() => IsWorking = true;
-        
+
         public bool SetFalseVampirismState() => IsWorking = false;
-        
+
         public void OnHealthRestored()
         {
             SoundCollection?.RangedPlayerSoundEffects.PlayHit();
-            
+
             if (IsWorking)
             {
                 AddHealth(Damage * Coefficient);

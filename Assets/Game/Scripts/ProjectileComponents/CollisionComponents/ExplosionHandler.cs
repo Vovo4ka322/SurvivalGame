@@ -21,7 +21,7 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
             if (_poolManager != null && _explosionPrefab != null)
             {
                 ParticleSystem explosion = _poolManager.EffectsPool.Get(_explosionPrefab, projectile.transform.position, projectile.transform.rotation);
-                
+
                 if (explosion != null)
                 {
                     _poolManager.CoroutineRunner.StartCoroutine(ReturnEffectToPool(explosion));
@@ -31,13 +31,13 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
 
         private IEnumerator ReturnEffectToPool(ParticleSystem effect)
         {
-            if(effect == null)
+            if (effect == null)
             {
                 yield break;
             }
 
             yield return new WaitWhile(() => effect.IsAlive(true));
-            
+
             _poolManager.EffectsPool.Release(_explosionPrefab, effect);
         }
     }

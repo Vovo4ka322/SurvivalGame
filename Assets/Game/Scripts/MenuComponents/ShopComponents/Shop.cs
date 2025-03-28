@@ -96,11 +96,11 @@ namespace Game.Scripts.MenuComponents.ShopComponents
             _skinPlacement.InstantiateModel(_previewedItem.Model);
             _openSkinsChecker.Visit(_previewedItem.Item);
 
-            if(_openSkinsChecker.IsOpened)
+            if (_openSkinsChecker.IsOpened)
             {
                 _selectedSkinChecker.Visit(_previewedItem.Item);
 
-                if(_selectedSkinChecker.IsSelected)
+                if (_selectedSkinChecker.IsSelected)
                 {
                     ShowSelectedText();
 
@@ -117,7 +117,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
 
         private void OnBuyButtonClick()
         {
-            if(_wallet.IsEnough(_previewedItem.Price))
+            if (_wallet.IsEnough(_previewedItem.Price))
             {
                 _wallet.Spend(_previewedItem.Price);
                 _skinUnlocker.Visit(_previewedItem.Item);
@@ -171,7 +171,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
             _buyButton.gameObject.SetActive(true);
             _buyButton.UpdateText(price);
 
-            if(_wallet.IsEnough(price))
+            if (_wallet.IsEnough(price))
             {
                 _buyButton.Unlock();
             }

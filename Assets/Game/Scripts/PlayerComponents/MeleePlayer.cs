@@ -8,12 +8,12 @@ namespace Game.Scripts.PlayerComponents
     public class MeleePlayer : Player, IActivable, IDamagable
     {
         [SerializeField] private Sword _sword;
-        
-        private readonly int _coefficient = 1;
-        
+
         private float _movementVisualizationCoefficient = 0.2f;
         private float _attackSpeed;
         private float _damage;
+
+        private readonly int _coefficient = 1;
 
         public bool IsActiveState { get; private set; }
 
@@ -24,12 +24,12 @@ namespace Game.Scripts.PlayerComponents
             _sword.SetTotalDamage(_damage);
             _sword.SetPlayer(this);
         }
-        
+
         public Sword GetSword()
         {
             return _sword;
         }
-        
+
         public void TakeDamage(float value)
         {
             if (IsActiveState)
@@ -50,7 +50,7 @@ namespace Game.Scripts.PlayerComponents
             ChangeMovementAnimationSpeed(AnimatorState.MovementSpeed, _movementVisualizationCoefficient + _coefficient);
             _movementVisualizationCoefficient += _movementVisualizationCoefficient;
         }
-        
+
         public void PlayHitSound()
         {
             SoundCollection?.MeleePlayerSoundEffects.PlayHit();

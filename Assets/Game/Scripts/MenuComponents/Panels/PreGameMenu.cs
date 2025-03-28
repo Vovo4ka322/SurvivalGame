@@ -11,7 +11,7 @@ namespace Game.Scripts.MenuComponents.Panels
         [SerializeField] private Button _playButton;
         [SerializeField] private Button _returnToMainMenuButton;
         [SerializeField] private GameAudioPlayback _mainMenuAudio;
-        
+
         private void OnEnable()
         {
             _playButton.onClick.AddListener(OnPlayClick);
@@ -34,9 +34,9 @@ namespace Game.Scripts.MenuComponents.Panels
             if (_mainMenuAudio != null)
             {
                 _mainMenuAudio.StopBackgroundMusic();
-                Destroy(_mainMenuAudio.gameObject); 
+                Destroy(_mainMenuAudio.gameObject);
             }
-            
+
             SceneManager.LoadScene(1);
         }
 

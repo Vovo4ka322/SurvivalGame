@@ -17,13 +17,13 @@ namespace Game.Scripts.MenuComponents.Panels
         {
             _menuCanvas.gameObject.SetActive(true);
         }
-        
+
         private void OnEnable()
         {
             _choicePlayerButton.onClick.AddListener(OpenPreGameMenu);
             _settingsButton.onClick.AddListener(OpenSettingsMenu);
         }
-        
+
         private void OnDisable()
         {
             _choicePlayerButton.onClick.RemoveListener(OpenPreGameMenu);
@@ -32,18 +32,18 @@ namespace Game.Scripts.MenuComponents.Panels
 
         private void Start()
         {
-            if(_gameAudioPlayback != null)
+            if (_gameAudioPlayback != null)
             {
                 _gameAudioPlayback.PlayBackgroundMusic();
             }
         }
-        
+
         private void OpenPreGameMenu()
         {
             gameObject.SetActive(false);
             _preGameMenu.Show();
         }
-        
+
         private void OpenSettingsMenu()
         {
             gameObject.SetActive(false);

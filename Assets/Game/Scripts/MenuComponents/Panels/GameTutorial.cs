@@ -12,7 +12,7 @@ namespace Game.Scripts.MenuComponents.Panels
         [SerializeField] private Button _continueButton;
         [SerializeField] private RectTransform _abilityInterface;
         [SerializeField] private Button _pauseButton;
-        
+
         private void Awake()
         {
             if (_tutorialPanel != null)
@@ -21,7 +21,7 @@ namespace Game.Scripts.MenuComponents.Panels
                 Time.timeScale = 0;
             }
         }
-        
+
         private void OnEnable()
         {
             _continueButton.onClick.AddListener(OnContinueClicked);
@@ -31,11 +31,11 @@ namespace Game.Scripts.MenuComponents.Panels
         {
             _continueButton.onClick.RemoveListener(OnContinueClicked);
         }
-        
+
         private void OnContinueClicked()
         {
             YandexGame.FullscreenShow();
-            
+
             Time.timeScale = 1;
             _tutorialPanel.gameObject.SetActive(false);
             _abilityInterface.gameObject.SetActive(true);

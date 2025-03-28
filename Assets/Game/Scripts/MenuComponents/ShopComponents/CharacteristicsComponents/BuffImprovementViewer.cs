@@ -33,7 +33,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             _buffShop.AttackSpeedUpgraded -= OnAttackSpeedBuffUpgraded;
             _buffShop.MovementSpeedUpgraded -= OnMovementSpeedBuffUpgraded;
         }
-        
+
         public void Init(PlayerCharacteristicData calculationFinalValue)
         {
             _calculationFinalValue = calculationFinalValue;
@@ -44,53 +44,53 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             UpdateValue(_attackSpeedBuffUpgrades, _calculationFinalValue.AttackSpeedLevelImprovment);
             UpdateValue(_movementSpeedBuffUpgrades, _calculationFinalValue.MovementSpeedLevelImprovment);
         }
-        
+
         private void UpdateValue(List<Image> images, int value)
         {
-            foreach(Image image in images)
+            foreach (Image image in images)
             {
                 image.gameObject.SetActive(false);
             }
-            
-            for(int i = 0; i < value; i++)
+
+            for (int i = 0; i < value; i++)
             {
                 Upgrade(images, i);
             }
         }
-        
+
         private void OnHealthBuffUpgraded()
         {
-            if(IsFull(_calculationFinalValue.HealthLevelImprovment))
+            if (IsFull(_calculationFinalValue.HealthLevelImprovment))
             {
                 return;
             }
-            
+
             Upgrade(_healthBuffUpgrades, _calculationFinalValue.HealthLevelImprovment);
         }
-        
+
         private void OnArmorBuffUpgraded()
         {
-            if(IsFull(_calculationFinalValue.ArmorLevelImprovment))
+            if (IsFull(_calculationFinalValue.ArmorLevelImprovment))
             {
                 return;
             }
-            
+
             Upgrade(_armorBuffUpgrades, _calculationFinalValue.ArmorLevelImprovment);
         }
-        
+
         private void OnDamageBuffUpgraded()
         {
-            if(IsFull(_calculationFinalValue.DamageLevelImprovment))
+            if (IsFull(_calculationFinalValue.DamageLevelImprovment))
             {
                 return;
             }
-            
+
             Upgrade(_damageBuffUpgrades, _calculationFinalValue.DamageLevelImprovment);
         }
-        
+
         private void OnAttackSpeedBuffUpgraded()
         {
-            if(IsFull(_calculationFinalValue.AttackSpeedLevelImprovment))
+            if (IsFull(_calculationFinalValue.AttackSpeedLevelImprovment))
                 return;
 
             Upgrade(_attackSpeedBuffUpgrades, _calculationFinalValue.AttackSpeedLevelImprovment);
@@ -98,7 +98,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 
         private void OnMovementSpeedBuffUpgraded()
         {
-            if(IsFull(_calculationFinalValue.MovementSpeedLevelImprovment))
+            if (IsFull(_calculationFinalValue.MovementSpeedLevelImprovment))
                 return;
 
             Upgrade(_movementSpeedBuffUpgrades, _calculationFinalValue.MovementSpeedLevelImprovment);
@@ -110,7 +110,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
         {
             images[index].gameObject.SetActive(true);
         }
-        
+
         public void ResetUpgrades()
         {
             foreach (Image image in _healthBuffUpgrades)

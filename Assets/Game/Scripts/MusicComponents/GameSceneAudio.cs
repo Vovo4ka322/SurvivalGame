@@ -11,51 +11,51 @@ namespace Game.Scripts.MusicComponents
         [SerializeField] private AudioSource _bossMusicSource;
         [SerializeField] private AudioMixer _audioMixer;
 
-        private readonly float _mutedVolume = -80f;
-        
         private float _originalVolume;
-        
+
+        private readonly float _mutedVolume = -80f;
+
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
         }
-        
+
         private void Start()
         {
-            if(!_audioMixer.GetFloat(_audioParams.AllSoundVolume, out _originalVolume))
+            if (!_audioMixer.GetFloat(_audioParams.AllSoundVolume, out _originalVolume))
             {
                 _originalVolume = 0f;
             }
-            
-            if(_waveMusicSource != null)
+
+            if (_waveMusicSource != null)
             {
                 _waveMusicSource.loop = true;
                 _waveMusicSource.volume = 1f;
                 _waveMusicSource.Play();
             }
 
-            if(_bossMusicSource != null)
+            if (_bossMusicSource != null)
             {
                 _bossMusicSource.loop = true;
                 _bossMusicSource.volume = 0f;
                 _bossMusicSource.Play();
             }
         }
-        
+
         public void StopAllMusic()
         {
             _waveMusicSource?.Stop();
             _bossMusicSource?.Stop();
         }
-        
+
         public void SwitchToBossMusic(float fadeDuration = 2f)
         {
             StartCoroutine(CrossfadeMusic(_waveMusicSource, _bossMusicSource, fadeDuration));
         }
-        
+
         private void OnApplicationPause(bool hasFocus)
         {
-            if(hasFocus)
+            if (hasFocus)
             {
                 _waveMusicSource?.UnPause();
                 _bossMusicSource?.UnPause();
@@ -68,19 +68,19 @@ namespace Game.Scripts.MusicComponents
                 _audioMixer.SetFloat(_audioParams.AllSoundVolume, _mutedVolume);
             }
         }
-        
+
         private IEnumerator CrossfadeMusic(AudioSource fromSource, AudioSource toSource, float duration)
         {
             float time = 0f;
             float fromInitialVolume = fromSource.volume;
             float toInitialVolume = toSource.volume;
-            
-            if(!toSource.isPlaying)
+
+            if (!toSource.isPlaying)
             {
                 toSource.Play();
             }
 
-            while(time < duration)
+            while (time < duration)
             {
                 time += Time.deltaTime;
                 float t = time / duration;

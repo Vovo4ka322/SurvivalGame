@@ -8,16 +8,16 @@ namespace Game.Scripts.EnemyComponents
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private TextMeshProUGUI _waveLabel;
         [SerializeField] private TextMeshProUGUI _bossText;
-        
+
         private WaveCycle _waveCycle;
-        
+
         private float _time;
         private bool _isRunning;
         private bool _isBossWave;
-        
+
         private void Update()
         {
-            if(!_isRunning)
+            if (!_isRunning)
             {
                 return;
             }
@@ -29,32 +29,32 @@ namespace Game.Scripts.EnemyComponents
             else
             {
                 _time -= Time.deltaTime;
-                
+
                 if (_time <= 0)
                 {
                     _time = 0;
                     _isRunning = false;
                 }
             }
-        
+
             _timerText.text = FormatTime(_time);
         }
-        
+
         public void SetWaveCycle(WaveCycle waveCycle)
         {
-            if(_waveCycle != null)
+            if (_waveCycle != null)
             {
                 _waveCycle.OnWaveStart -= StartTimer;
             }
-            
+
             _waveCycle = waveCycle;
 
-            if(_waveCycle != null)
+            if (_waveCycle != null)
             {
                 _waveCycle.OnWaveStart += StartTimer;
             }
         }
-        
+
         private void StartTimer(float waveDuration, int waveNumber)
         {
             if (waveNumber == 0)
@@ -70,9 +70,10 @@ namespace Game.Scripts.EnemyComponents
                 _waveLabel.text = $"{waveNumber}";
                 _time = waveDuration;
             }
+
             _isRunning = true;
         }
-        
+
         private string FormatTime(float time)
         {
             int minutes = Mathf.FloorToInt(time / 60f);

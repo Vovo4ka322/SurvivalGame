@@ -55,11 +55,11 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
         private void UpdateUpgradeTexts()
         {
             int currentBladeFury = _meleeAbilityUser.CurrentBladeFuryLevel;
-            
+
             if (currentBladeFury == 0)
             {
                 MeleeAbilityData nextDataBladeFury = _meleeAbilityUser.GetAbilityDataForLevel(1);
-                
+
                 if (nextDataBladeFury != null)
                 {
                     _bladeFuryDurationDisplay.SetText(0, nextDataBladeFury.BladeFuryScriptableObject.Duration);
@@ -70,7 +70,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             {
                 MeleeAbilityData currentDataBladeFury = _meleeAbilityUser.GetAbilityDataForLevel(currentBladeFury);
                 MeleeAbilityData nextDataBladeFury = _meleeAbilityUser.GetAbilityDataForLevel(currentBladeFury + 1);
-                
+
                 if (currentDataBladeFury != null)
                 {
                     float currentDuration = currentDataBladeFury.BladeFuryScriptableObject.Duration;
@@ -84,11 +84,11 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             }
 
             int currentBorrowedTime = _meleeAbilityUser.CurrentBorrowedTimeLevel;
-            
+
             if (currentBorrowedTime == 0)
             {
                 MeleeAbilityData nextDataBorrowedTime = _meleeAbilityUser.GetAbilityDataForLevel(1);
-                
+
                 if (nextDataBorrowedTime != null)
                 {
                     _borrowedTimeDurationDisplay.SetText(0, nextDataBorrowedTime.BorrowedTimeScriptableObject.Duration);
@@ -99,7 +99,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             {
                 MeleeAbilityData currentDataBorrowedTime = _meleeAbilityUser.GetAbilityDataForLevel(currentBorrowedTime);
                 MeleeAbilityData nextDataBorrowedTime = _meleeAbilityUser.GetAbilityDataForLevel(currentBorrowedTime + 1);
-                
+
                 if (currentDataBorrowedTime != null)
                 {
                     float currentDuration = currentDataBorrowedTime.BorrowedTimeScriptableObject.Duration;
@@ -113,11 +113,11 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             }
 
             int currentBloodLust = _meleeAbilityUser.CurrentBloodLustLevel;
-            
+
             if (currentBloodLust == 0)
             {
                 MeleeAbilityData nextDataBloodLust = _meleeAbilityUser.GetAbilityDataForLevel(1);
-                
+
                 if (nextDataBloodLust != null)
                 {
                     _bloodLustMovementSpeedDisplay.SetText(0, nextDataBloodLust.BloodLustScriptableObject.MovementSpeed);
@@ -128,7 +128,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             {
                 MeleeAbilityData currentDataBloodLust = _meleeAbilityUser.GetAbilityDataForLevel(currentBloodLust);
                 MeleeAbilityData nextDataBloodLust = _meleeAbilityUser.GetAbilityDataForLevel(currentBloodLust + 1);
-                
+
                 if (currentDataBloodLust != null)
                 {
                     float currentMovementSpeed = currentDataBloodLust.BloodLustScriptableObject.MovementSpeed;

@@ -7,11 +7,11 @@ namespace Game.Scripts.MusicComponents
     {
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private AudioParameterNames _audioParameterNames;
-        
-        private readonly float _mutedVolume = -80f;
-        
+
         private float _originalVolume = 0f;
-        
+
+        private readonly float _mutedVolume = -80f;
+
         private void Start()
         {
             if (!_audioMixer.GetFloat(_audioParameterNames.AllSoundVolume, out _originalVolume))
@@ -19,7 +19,7 @@ namespace Game.Scripts.MusicComponents
                 _originalVolume = 0f;
             }
         }
-        
+
         private void OnApplicationFocus(bool hasFocus)
         {
             if (hasFocus)

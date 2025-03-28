@@ -17,12 +17,11 @@ namespace Game.Scripts.EnemyComponents
         [SerializeField] private float _spawnInterval = 5f;
 
         private ICoroutineRunner _coroutineRunner;
-
         private int _currentWaveIndex = 0;
 
-        public float SpawnInterval => _spawnInterval;
-        
         public event Action<float, int> OnWaveStart;
+
+        public float SpawnInterval => _spawnInterval;
 
         private void Awake()
         {
@@ -36,7 +35,7 @@ namespace Game.Scripts.EnemyComponents
 
         private IEnumerator ExecuteWaves()
         {
-            while(_currentWaveIndex < 3)
+            while (_currentWaveIndex < 3)
             {
                 float duration = GetCurrentWaveDuration();
 
@@ -46,7 +45,7 @@ namespace Game.Scripts.EnemyComponents
 
                 _currentWaveIndex++;
             }
-            
+
             OnWaveStart?.Invoke(0, 0);
         }
 
@@ -54,14 +53,14 @@ namespace Game.Scripts.EnemyComponents
         {
             float elapsed = 0f;
 
-            while(elapsed < duration)
+            while (elapsed < duration)
             {
                 yield return new WaitForSeconds(_spawnInterval);
 
                 elapsed += _spawnInterval;
             }
         }
-        
+
         private float GetCurrentWaveDuration()
         {
             switch (_currentWaveIndex)

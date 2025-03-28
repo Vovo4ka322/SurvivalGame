@@ -7,6 +7,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents
     {
         [field: SerializeField] public SkinModel Model { get; private set; }
         [field: SerializeField] public Sprite Image { get; private set; }
-        [field: SerializeField, Range(0, 10000)] public int Price { get; private set; }
+        [field: SerializeField] public int Price { get; private set; }
     }
 }

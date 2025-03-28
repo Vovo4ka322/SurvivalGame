@@ -7,9 +7,9 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Visitors
     {
         private readonly IPersistentData _persistentData;
 
-        public bool IsSelected { get; private set; }
-
         public SelectedSkinChecker(IPersistentData persistentData) => _persistentData = persistentData;
+
+        public bool IsSelected { get; private set; }
 
         public void Visit(CharacterSkinItem characterSkinItem)
         {

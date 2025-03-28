@@ -6,7 +6,7 @@ namespace Game.Scripts.PoolComponents
     public class EffectsPool
     {
         private readonly Dictionary<ParticleSystem, BasePool<ParticleSystem>> _effectPools = new Dictionary<ParticleSystem, BasePool<ParticleSystem>>();
-        
+
         private PoolSettings _poolSettings;
         private Transform _container;
 
@@ -27,13 +27,13 @@ namespace Game.Scripts.PoolComponents
 
         public ParticleSystem Get(ParticleSystem prefab, Vector3 position, Quaternion rotation)
         {
-            if(prefab == null || !_effectPools.TryGetValue(prefab, out var pool))
+            if (prefab == null || !_effectPools.TryGetValue(prefab, out var pool))
             {
                 return null;
             }
 
             ParticleSystem instance = pool.Get();
-            
+
             if (instance != null)
             {
                 instance.transform.position = position;
@@ -42,13 +42,13 @@ namespace Game.Scripts.PoolComponents
                 instance.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 instance.Play();
             }
-            
+
             return instance;
         }
 
         public void Release(ParticleSystem prefab, ParticleSystem effect)
         {
-            if(prefab == null || !_effectPools.ContainsKey(prefab))
+            if (prefab == null || !_effectPools.ContainsKey(prefab))
             {
                 return;
             }

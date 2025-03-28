@@ -34,12 +34,12 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 
         public void TryAttack()
         {
-            if(_enemy.Health.IsDead)
+            if (_enemy.Health.IsDead)
             {
                 return;
             }
 
-            if(_animationState.IsAttacking)
+            if (_animationState.IsAttacking)
             {
                 return;
             }
@@ -47,33 +47,33 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             Vector3 diff = _enemyTransform.position - _player.transform.position;
             float sqrDistance = diff.sqrMagnitude;
 
-            if(Time.time >= _lastAttackTime + _attackCooldown)
+            if (Time.time >= _lastAttackTime + _attackCooldown)
             {
-                if(_attackType.Type == AttackType.Melee)
+                if (_attackType.Type == AttackType.Melee)
                 {
                     int attackVariant = GetAttackVariant();
                     _lastAttackTime = Time.time;
                     PerformMeleeAttack(attackVariant);
                 }
-                else if(_attackType.Type == AttackType.Ranged)
+                else if (_attackType.Type == AttackType.Ranged)
                 {
                     int attackVariant = GetAttackVariant();
                     _lastAttackTime = Time.time;
                     PerformRangedAttack(attackVariant);
                 }
-                else if(_attackType.Type == AttackType.Hybrid)
+                else if (_attackType.Type == AttackType.Hybrid)
                 {
                     HybridEnemyAttackType hybridType = (HybridEnemyAttackType)_attackType;
 
-                    if(sqrDistance <= hybridType.MeleeRange * hybridType.MeleeRange)
+                    if (sqrDistance <= hybridType.MeleeRange * hybridType.MeleeRange)
                     {
                         _lastAttackTime = Time.time;
                         int meleeVariant = Random.Range(3, 5);
                         PerformMeleeAttack(meleeVariant);
                     }
-                    else if(sqrDistance <= hybridType.RangedRange * hybridType.RangedRange)
+                    else if (sqrDistance <= hybridType.RangedRange * hybridType.RangedRange)
                     {
-                        if(Time.time >= _lastRangedAttackTime + hybridType.ReloadTimeProjectile)
+                        if (Time.time >= _lastRangedAttackTime + hybridType.ReloadTimeProjectile)
                         {
                             _lastRangedAttackTime = Time.time;
                             int rangedAttackVariant = 5;
@@ -82,11 +82,11 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                         }
                     }
                 }
-                else if(_attackType.Type == AttackType.Boss)
+                else if (_attackType.Type == AttackType.Boss)
                 {
                     BossEnemyAttackType bossType = (BossEnemyAttackType)_attackType;
 
-                    if(sqrDistance <= bossType.MeleeRange * bossType.MeleeRange)
+                    if (sqrDistance <= bossType.MeleeRange * bossType.MeleeRange)
                     {
                         _lastAttackTime = Time.time;
                         int meleeVariant = Random.Range(1, 5);
@@ -98,9 +98,9 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 
         public bool IsHybridProjectileReady(HybridEnemyAttackType hybridType, float distance)
         {
-            if(_attackType.Type == AttackType.Hybrid)
+            if (_attackType.Type == AttackType.Hybrid)
             {
-                return (distance <= hybridType.RangedRange && distance > hybridType.MeleeRange && Time.time >= _lastRangedAttackTime + hybridType.ReloadTimeProjectile);
+                return distance <= hybridType.RangedRange && distance > hybridType.MeleeRange && Time.time >= _lastRangedAttackTime + hybridType.ReloadTimeProjectile;
             }
 
             return false;
@@ -108,7 +108,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 
         private void PerformMeleeAttack(int attackVariant)
         {
-            if(_enemy.Data.EnemyType == EnemyType.Boss && attackVariant == 2)
+            if (_enemy.Data.EnemyType == EnemyType.Boss && attackVariant == 2)
             {
                 _enemy.LockTargetPosition(_player.transform.position);
             }
@@ -123,18 +123,18 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 
         private int GetAttackVariant()
         {
-            if(_attackType.Type == AttackType.Melee)
+            if (_attackType.Type == AttackType.Melee)
             {
                 int meleeVariants = 2;
 
-                if(meleeVariants <= 1)
+                if (meleeVariants <= 1)
                 {
                     _lastAttackVariant = 1;
 
                     return 1;
                 }
 
-                if(_lastAttackVariant < 1 || _lastAttackVariant > meleeVariants)
+                if (_lastAttackVariant < 1 || _lastAttackVariant > meleeVariants)
                 {
                     _lastAttackVariant = Random.Range(1, meleeVariants + 1);
 
@@ -144,7 +144,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 int randomIndex = Random.Range(0, meleeVariants - 1);
                 int newVariant = randomIndex + 1;
 
-                if(newVariant >= _lastAttackVariant)
+                if (newVariant >= _lastAttackVariant)
                 {
                     newVariant++;
                 }
@@ -155,14 +155,14 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             }
             else
             {
-                if(_attackVariants <= 1)
+                if (_attackVariants <= 1)
                 {
                     _lastAttackVariant = 1;
 
                     return 1;
                 }
 
-                if(_lastAttackVariant < 1 || _lastAttackVariant > _attackVariants)
+                if (_lastAttackVariant < 1 || _lastAttackVariant > _attackVariants)
                 {
                     _lastAttackVariant = Random.Range(1, _attackVariants + 1);
 
@@ -172,7 +172,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 int randomIndex = Random.Range(0, _attackVariants - 1);
                 int newVariant = randomIndex + 1;
 
-                if(newVariant >= _lastAttackVariant)
+                if (newVariant >= _lastAttackVariant)
                 {
                     newVariant++;
                 }

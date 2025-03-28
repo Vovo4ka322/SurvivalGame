@@ -12,30 +12,31 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
         {
             _soundCollection = collection;
         }
+
         public void SpawnMagic()
         {
-            if(Player == null)
+            if (Player == null)
             {
                 return;
             }
-            
+
             BaseProjectile projectile = Create();
 
-            if(projectile == null)
+            if (projectile == null)
             {
                 return;
             }
-            
+
             if (TryGetComponent(out Enemy enemy))
             {
                 projectile.SetOwner(enemy);
             }
-            
+
             IExplosionHandler explosionHandler = CreateExplosionHandler();
-            
+
             projectile.Launch(Player.transform.position, ProjectilePool, explosionHandler);
 
-            if(_soundCollection != null && _soundCollection.RangedSoundEffects != null)
+            if (_soundCollection != null && _soundCollection.RangedSoundEffects != null)
             {
                 _soundCollection.RangedSoundEffects.PlayProjectileLaunch();
             }

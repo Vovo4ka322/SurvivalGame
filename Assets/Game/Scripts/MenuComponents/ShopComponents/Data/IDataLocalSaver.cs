@@ -22,18 +22,18 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
         {
             string[] files = Directory.GetFiles(SavePath, FileNamePattern);
 
-            if(files.Length > 0)
+            if (files.Length > 0)
             {
                 PlayerSaveData loadedData = null;
 
-                foreach(string file in files)
+                foreach (string file in files)
                 {
                     try
                     {
                         string json = File.ReadAllText(file);
                         loadedData = JsonConvert.DeserializeObject<PlayerSaveData>(json);
 
-                        if(loadedData != null)
+                        if (loadedData != null)
                         {
                             break;
                         }
@@ -44,12 +44,12 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
                     }
                 }
 
-                if(loadedData == null)
+                if (loadedData == null)
                 {
                     return false;
                 }
 
-                if(loadedData.Version < CurrentVersion)
+                if (loadedData.Version < CurrentVersion)
                 {
                     loadedData = MigrateData(loadedData);
 
@@ -73,36 +73,36 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
 
             File.WriteAllText(CurrentFilePath, json);
         }
-        
+
         private void Save(PlayerSaveData saveData)
         {
             string json = JsonConvert.SerializeObject(saveData, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
             File.WriteAllText(CurrentFilePath, json);
         }
-        
+
         private PlayerSaveData MigrateData(PlayerSaveData oldData)
         {
-            if(oldData.Version == 1)
+            if (oldData.Version == 1)
             {
                 oldData.Version = 2;
             }
-            
-            if(oldData.Version == 2)
+
+            if (oldData.Version == 2)
             {
                 oldData.Version = 3;
             }
-            
+
             return oldData;
         }
-        
+
         private void CleanupOldFiles()
         {
             string[] files = Directory.GetFiles(SavePath, FileNamePattern);
 
-            foreach(string file in files)
+            foreach (string file in files)
             {
-                if(!file.EndsWith(CurrentFileName))
+                if (!file.EndsWith(CurrentFileName))
                 {
                     File.Delete(file);
                 }

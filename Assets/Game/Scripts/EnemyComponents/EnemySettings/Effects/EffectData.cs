@@ -10,7 +10,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
         [SerializeField] private Vector3 _positionOffset;
         [SerializeField] private Vector3 _scale;
         [SerializeField] private Vector3 _rotationOffset;
-        
+
         public EffectData(ParticleSystem effect, Vector3 positionOffset, Vector3 scale, Vector3 rotationOffset)
         {
             _effect = effect;
@@ -18,7 +18,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
             _scale = scale;
             _rotationOffset = rotationOffset;
         }
-        
+
         public ParticleSystem EffectPrefab => _effect;
         public Vector3 PositionOffset => _positionOffset;
         public Vector3 RotationOffset => _rotationOffset;

@@ -14,8 +14,8 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
         [SerializeField] private Color _lockColor;
         [SerializeField] private Color _unlockColor;
 
-        [SerializeField, Range(0, 1)] private float _lockAnimationDuration = 0.4f;
-        [SerializeField, Range(0.5f, 5)] private float _lockAnimationStrength = 2f;
+        [SerializeField][Range(0, 1)] private float _lockAnimationDuration = 0.4f;
+        [SerializeField][Range(0.5f, 5)] private float _lockAnimationStrength = 2f;
 
         private bool _isLock;
 
@@ -41,7 +41,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
 
         private void OnButtonClick()
         {
-            if(_isLock)
+            if (_isLock)
             {
                 transform.DOShakePosition(_lockAnimationDuration, _lockAnimationStrength);
 

@@ -19,7 +19,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             {
                 case AttackType.Hybrid:
                     HybridEnemyAttackType hybridAttackType = _enemy.Data.BaseAttackType as HybridEnemyAttackType;
-                    
+
                     if (hybridAttackType != null)
                     {
                         _enemy.SetAttackBehaviorInternal(new HybridAttack(_enemy, hybridAttackType));
@@ -28,15 +28,15 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                     {
                         _enemy.SetAttackBehaviorInternal(new MeleeAttack(_enemy));
                     }
-                    
+
                     break;
                 case AttackType.Ranged:
                     _enemy.SetAttackBehaviorInternal(new RangedAttack(_enemy));
                     break;
                 case AttackType.Boss:
                     BossEnemyAttackType bossAttackType = _enemy.Data.BaseAttackType as BossEnemyAttackType;
-                    
-                    if(bossAttackType != null)
+
+                    if (bossAttackType != null)
                     {
                         _enemy.SetAttackBehaviorInternal(new BossAttack(_enemy, bossAttackType));
                     }
@@ -44,7 +44,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                     {
                         _enemy.SetAttackBehaviorInternal(new MeleeAttack(_enemy));
                     }
-                    
+
                     break;
                 default:
                     _enemy.SetAttackBehaviorInternal(new MeleeAttack(_enemy));
@@ -55,21 +55,21 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         public IEnumerator AttackCoroutine()
         {
             float updateInterval = 0.1f;
-            
+
             while (true)
             {
-                if(_enemy.Health.IsDead)
+                if (_enemy.Health.IsDead)
                 {
                     yield break;
                 }
-                
+
                 if (_enemy.PlayerTransform != null && _enemy.SpawnCompleted && !_enemy.AnimationAnimationState.IsAttacking)
                 {
                     float distance = Vector3.Distance(_enemy.transform.position, _enemy.PlayerTransform.transform.position);
-                    
+
                     _enemy.AttackBehavior.HandleAttack(distance);
                 }
-                
+
                 yield return new WaitForSeconds(updateInterval);
             }
         }

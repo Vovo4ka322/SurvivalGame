@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 namespace Game.Scripts.DifficultyLevel
 {
-    public class DifficultySetter : MonoBehaviour
+    public class GameDifficultySetter : MonoBehaviour
     {
         [SerializeField] private DifficultyData _difficultlyData;
 
-        [field: SerializeField] public DifficultyLevel CurrentDifficultyLevel { get; private set; }
+        [field: SerializeField] public GameDifficultyLevel CurrentDifficultyLevel { get; private set; }
 
         public void Init()
         {
@@ -16,14 +16,14 @@ namespace Game.Scripts.DifficultyLevel
             SetDifficult((Difficults)savedDifficulty);
         }
 
-        public DifficultyLevel SetDifficult(Difficults difficults)
+        public GameDifficultyLevel SetDifficult(Difficults difficults)
         {
             PlayerPrefs.SetInt("Difficulty", (int)difficults);
             CurrentDifficultyLevel = Set(difficults);
             return CurrentDifficultyLevel;
         }
 
-        private DifficultyLevel Set(Difficults difficults)
+        private GameDifficultyLevel Set(Difficults difficults)
         {
             switch (difficults)
             {

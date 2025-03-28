@@ -19,7 +19,7 @@ namespace Game.Scripts.MenuComponents.Panels
         {
             Panel.DOScale(Vector3.zero, AnimationDuration).SetEase(EaseType);
         }
-        
+
         public void ToggleDifficultyPanel()
         {
             TogglePanel();

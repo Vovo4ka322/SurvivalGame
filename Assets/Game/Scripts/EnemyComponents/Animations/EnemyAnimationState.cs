@@ -8,20 +8,20 @@ namespace Game.Scripts.EnemyComponents.Animations
     public class EnemyAnimationState : IEnemyAnimation
     {
         private const string DeadAnimation = "Dead";
-        
+
         private readonly Animator _animator;
         private readonly EnemyType _enemyType;
         private readonly AnimatorParameterChecker _parameterChecker;
         private readonly Dictionary<EnemyType, Dictionary<int, int>> _attackMappings;
-        
+
         private bool _isAttacking = false;
-        
+
         public EnemyAnimationState(Animator animator, EnemyType enemyType)
         {
             _animator = animator;
             _enemyType = enemyType;
             _parameterChecker = new AnimatorParameterChecker(_animator);
-            
+
             _attackMappings = new()
             {
                 {
@@ -59,30 +59,30 @@ namespace Game.Scripts.EnemyComponents.Animations
                 }
             };
         }
-        
+
         public bool IsAttacking => _isAttacking;
         public int AttackVariantsCount => _attackMappings[_enemyType].Count;
-        
+
         public void Spawn()
         {
             _animator.SetTrigger(AnimationDataParamsEnemy.Params.Spawning);
         }
-        
+
         public void Move(bool isMoving)
         {
-            if(_parameterChecker.HasParameter(AnimationDataParamsEnemy.Params.Walking))
+            if (_parameterChecker.HasParameter(AnimationDataParamsEnemy.Params.Walking))
             {
                 _animator.SetBool(AnimationDataParamsEnemy.Params.Walking, isMoving);
             }
         }
-        
+
         public void Death()
         {
-            if(_parameterChecker.HasParameter(AnimationDataParamsEnemy.Params.Walking))
+            if (_parameterChecker.HasParameter(AnimationDataParamsEnemy.Params.Walking))
             {
                 _animator.SetBool(AnimationDataParamsEnemy.Params.Walking, false);
             }
-            
+
             if (_attackMappings.TryGetValue(_enemyType, out var attackMap))
             {
                 foreach (var triggerHash in attackMap.Values)
@@ -93,25 +93,25 @@ namespace Game.Scripts.EnemyComponents.Animations
                     }
                 }
             }
-            
+
             _animator.CrossFade(DeadAnimation, 0.1f);
         }
-        
+
         public void Attack(int attackVariant)
         {
-            if(_isAttacking)
+            if (_isAttacking)
             {
                 return;
             }
-            
+
             _isAttacking = true;
-            
+
             if (_attackMappings.TryGetValue(_enemyType, out var attackMap) && attackMap.TryGetValue(attackVariant, out var triggerHash))
             {
                 _animator.SetTrigger(triggerHash);
             }
         }
-        
+
         public void ResetAttackState()
         {
             _isAttacking = false;

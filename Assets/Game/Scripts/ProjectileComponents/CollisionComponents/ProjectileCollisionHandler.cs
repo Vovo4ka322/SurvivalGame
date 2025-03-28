@@ -8,7 +8,7 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
     public class ProjectileCollisionHandler : MonoBehaviour
     {
         private const string GroundNameLayer = "Floor";
-        
+
         private BaseProjectile _projectile;
         private Collider _collider;
 
@@ -25,7 +25,7 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
         {
             _projectile = projectile;
             _hasCollided = false;
-            _collider.enabled = true; 
+            _collider.enabled = true;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -44,12 +44,12 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
             {
                 return;
             }
-            
+
             if (_hasCollided)
             {
                 return;
             }
-            
+
             _hasCollided = true;
             _collider.enabled = false;
 
@@ -64,7 +64,7 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
                     _projectile.Owner.SoundCollection.HybridSoundEffects.PlayProjectileCollision();
                 }
             }
-            
+
             if (other.gameObject.layer == _groundLayer)
             {
                 _projectile.ExplodeAndReturn();

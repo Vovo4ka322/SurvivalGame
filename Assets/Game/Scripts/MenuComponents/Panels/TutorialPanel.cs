@@ -5,7 +5,7 @@ namespace Game.Scripts.MenuComponents.Panels
     public class TutorialPanel : MonoBehaviour
     {
         [SerializeField] private CanvasGroup _canvasGroup;
-        
+
         public void Show()
         {
             _canvasGroup.alpha = 1;

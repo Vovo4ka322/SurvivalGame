@@ -10,11 +10,11 @@ namespace Game.Scripts.MusicComponents.EffectSounds
         [SerializeField] private AudioSource _meleeAttack2Clip;
 
         public void PlayMeleeHit() => _hitClip.Play();
-        
+
         public void PlayMeleeMissHit() => _missHitClip.Play();
-        
+
         public void PlayMeleeAttack1() => _meleeAttack1Clip.Play();
-        
+
         public void PlayMeleeAttack2() => _meleeAttack2Clip.Play();
     }
 }

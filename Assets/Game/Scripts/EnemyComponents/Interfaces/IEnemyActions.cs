@@ -10,9 +10,9 @@ namespace Game.Scripts.EnemyComponents.Interfaces
         public IEnemyAttack EnemyAttack { get; }
         public EnemyData Data { get; }
         public Player Player { get; }
-        
+
         public void SetTargetPosition(Vector3 target);
-        
+
         public float GetDamage();
     }
 }

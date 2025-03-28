@@ -2,6 +2,7 @@
 {
     public enum WeaponType
     {
-        Ranged, Melee
+        Ranged,
+        Melee
     }
 }

@@ -18,22 +18,22 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
         [SerializeField] private IntValueView _priceView;
 
         private Image _backgroundImage;
-        
+
+        public event Action<ShopItemView> Click;
+
         public CharacterSkinItem Item { get; private set; }
         public bool IsLock { get; private set; }
         public int Price => Item.Price;
         public SkinModel Model => Item.Model;
-        
-        public event Action<ShopItemView> Click;
 
         public void Initialize(CharacterSkinItem item)
         {
             _backgroundImage = GetComponent<Image>();
-            
+
             Item = item;
             _backgroundImage.sprite = _standardBackground;
             _contentImage.sprite = item.Image;
-            
+
             _priceView.Show(Price);
         }
 
@@ -45,7 +45,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
         public void Lock()
         {
             IsLock = true;
-            
+
             _lockImage.gameObject.SetActive(IsLock);
             _priceView.Show(Price);
         }
@@ -53,7 +53,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
         public void Unlock()
         {
             IsLock = false;
-            
+
             _lockImage.gameObject.SetActive(IsLock);
             _priceView.Hide();
         }

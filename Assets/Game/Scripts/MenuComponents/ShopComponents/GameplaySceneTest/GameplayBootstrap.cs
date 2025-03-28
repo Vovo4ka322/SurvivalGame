@@ -28,8 +28,8 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
         [SerializeField] private AudioGameSettings _audioGameSettings;
         [SerializeField] private GameSceneAudio _gameSceneAudio;
         [SerializeField] private WaveCycle _waveCycle;
-        [SerializeField] private DifficultySetter _difficultlySetter;
-        
+        [SerializeField] private GameDifficultySetter _difficultlySetter;
+
         private Player _player;
         private Canvas _canvas;
         private Wallet _wallet;
@@ -78,14 +78,14 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             {
                 throw new ArgumentException("The player is not created! Check GeneralPlayerFactory and PersistentData.");
             }
-            
+
             _virtualCamera.Follow = _player.transform;
             _virtualCamera.LookAt = _player.transform;
 
             _player.SetSoundCollection(_soundCollection);
             InitPlayerCharacteristics();
             InitUserInterface();
-            
+
             if (_player is MeleePlayer meleePlayer)
             {
                 meleePlayer.GetSword()?.SetPoolManager(_pool);

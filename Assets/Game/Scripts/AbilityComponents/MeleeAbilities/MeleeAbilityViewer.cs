@@ -12,11 +12,11 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
         [SerializeField] private Image _firstAbility;
         [SerializeField] private Image _secondAbility;
         [SerializeField] private Image _thirdAbility;
-        
+
         [Header("Cooldown Images")]
         [SerializeField] private Image _firstAbilityCooldown;
         [SerializeField] private Image _secondAbilityCooldown;
-        
+
         [Header("Upgrade Images")]
         [SerializeField] private List<Image> _firstAbilityImprovements;
         [SerializeField] private List<Image> _secondAbilityImprovements;
@@ -24,7 +24,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
         private MeleeAbilityUser _meleeAbilityUser;
         private IconUtility _iconUtility;
-        
+
         private int _bladeFuryImprovement = 0;
         private int _borrowedTimeImprovement = 0;
         private int _bloodLustImprovement = 0;
@@ -42,9 +42,9 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
         {
             _meleeAbilityUser = player.GetComponentInChildren<MeleeAbilityUser>();
             _iconUtility = new IconUtility();
-            
+
             SubscribeToEvents();
-            
+
             _iconUtility.SetIconDimmed(_firstAbility, true);
             _iconUtility.SetIconDimmed(_secondAbility, true);
             _iconUtility.SetIconDimmed(_thirdAbility, true);
@@ -81,13 +81,13 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
         private void OnBladeFuryUpgraded()
         {
-            if(_bladeFuryImprovement == _meleeAbilityUser.MaxValue)
+            if (_bladeFuryImprovement == _meleeAbilityUser.MaxValue)
                 return;
 
             Upgrade(_firstAbilityImprovements, _bladeFuryImprovement);
             _bladeFuryImprovement++;
 
-            if(_bladeFuryImprovement == 1)
+            if (_bladeFuryImprovement == 1)
             {
                 _iconUtility.SetIconDimmed(_firstAbility, false);
             }
@@ -95,13 +95,13 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
         private void OnBorrowedTimeUpgraded()
         {
-            if(_borrowedTimeImprovement == _meleeAbilityUser.MaxValue)
+            if (_borrowedTimeImprovement == _meleeAbilityUser.MaxValue)
                 return;
 
             Upgrade(_secondAbilityImprovements, _borrowedTimeImprovement);
             _borrowedTimeImprovement++;
 
-            if(_borrowedTimeImprovement == 1)
+            if (_borrowedTimeImprovement == 1)
             {
                 _iconUtility.SetIconDimmed(_secondAbility, false);
             }
@@ -109,13 +109,13 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
         private void OnBloodLustUpgraded()
         {
-            if(_bloodLustImprovement == _meleeAbilityUser.MaxValue)
+            if (_bloodLustImprovement == _meleeAbilityUser.MaxValue)
                 return;
 
             Upgrade(_thirdAbilityImprovements, _bloodLustImprovement);
             _bloodLustImprovement++;
-            
-            if(_bloodLustImprovement == 1)
+
+            if (_bloodLustImprovement == 1)
             {
                 _iconUtility.SetIconDimmed(_thirdAbility, false);
             }

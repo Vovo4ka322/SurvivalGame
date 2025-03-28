@@ -14,15 +14,15 @@ namespace Game.Scripts.ProjectileComponents
         [SerializeField] private float _speed;
         [SerializeField] private float _lifetime;
         [SerializeField] private int _damage;
-        
+
         public ProjectilePool<BaseProjectile> Pool;
-        
+
         private Collider _collider;
         private IProjectileMovement _movementStrategy;
         private IExplosionHandler _explosionHandler;
         private ProjectileController _projectileController;
         private ProjectileCollisionHandler _projectileCollision;
-        
+
         public float ConfiguredLifetime => _lifetime;
         public float Speed => _speed;
         public int Damage => _damage;
@@ -35,9 +35,9 @@ namespace Game.Scripts.ProjectileComponents
             _projectileCollision = GetComponent<ProjectileCollisionHandler>();
             _collider = GetComponent<Collider>();
         }
-        
+
         public abstract void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler);
-        
+
         public void SetColliderActive(bool active)
         {
             if (_collider != null)
@@ -45,45 +45,45 @@ namespace Game.Scripts.ProjectileComponents
                 _collider.enabled = active;
             }
         }
-        
+
         public void SetOwner(Enemy owner)
         {
             Owner = owner;
         }
-        
+
         public void Move()
         {
             _movementStrategy?.Move(this);
         }
-        
+
         public void ExplodeAndReturn()
         {
             _movementStrategy?.Stop();
             _explosionHandler?.Explode(this);
             ReturnToPool();
         }
-        
+
         public void PlayEffects()
         {
             _projectileEffectPrefab?.Play();
         }
-        
+
         protected void InitializeProjectile(IProjectileMovement movement, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler, float lifetime)
         {
             _movementStrategy = movement;
             Pool = pool;
             _explosionHandler = explosionHandler;
-            
+
             _projectileController.Initialize(this, lifetime);
             _projectileCollision.Initialize(this);
         }
-        
+
         protected void LaunchProjectile(Vector3 targetPosition)
         {
             _movementStrategy?.Launch(this, targetPosition);
             PlayEffects();
         }
-        
+
         private void ResetState()
         {
             transform.SetParent(null);
@@ -93,7 +93,7 @@ namespace Game.Scripts.ProjectileComponents
             Owner = null;
             _projectileController?.ResetController();
         }
-        
+
         private void ReturnToPool()
         {
             _projectileEffectPrefab?.Stop();

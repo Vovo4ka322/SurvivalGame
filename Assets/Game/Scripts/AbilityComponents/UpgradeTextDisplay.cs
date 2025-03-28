@@ -32,10 +32,10 @@ namespace Game.Scripts.AbilityComponents
                 _maxValueText.gameObject.SetActive(true);
             }
         }
-        
+
         private string FormatValue(float value)
         {
-            if(Mathf.Approximately(value, Mathf.Round(value)))
+            if (Mathf.Approximately(value, Mathf.Round(value)))
             {
                 return Mathf.RoundToInt(value).ToString();
             }

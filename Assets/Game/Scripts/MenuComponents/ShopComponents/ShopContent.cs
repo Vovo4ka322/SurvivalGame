@@ -17,7 +17,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents
         {
             var characterCkinsDuplicates = _characterSkinItems.GroupBy(item => item.SkinType).Where(array => array.Count() > 1);
 
-            if(characterCkinsDuplicates.Count() > 0)
+            if (characterCkinsDuplicates.Count() > 0)
             {
                 throw new InvalidOperationException(nameof(_characterSkinItems));
             }

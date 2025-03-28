@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts
 {
-    public class GameInitializer : MonoBehaviour
+    public class EnemyWaveStarter : MonoBehaviour
     {
         [SerializeField] private WaveCycle _waveCycle;
         [SerializeField] private WaveBasedEnemySpawner _spawner;

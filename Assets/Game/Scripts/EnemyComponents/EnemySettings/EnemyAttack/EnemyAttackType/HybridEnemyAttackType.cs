@@ -16,9 +16,15 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType
         [SerializeField] private float _meleeRange = 3f;
         [SerializeField] private float _rangedRange = 6f;
         [SerializeField] private float _reloadTimeProjectile = 3f;
-        
+
         public override AttackType Type => AttackType.Hybrid;
-        public EffectData[] AttackEffects => new[] { _attackEffect1, _attackEffect2, _attackEffect3, _reloadEffect };
+        public EffectData[] AttackEffects => new[]
+        {
+            _attackEffect1,
+            _attackEffect2,
+            _attackEffect3,
+            _reloadEffect
+        };
         public BaseProjectile ProjectilePrefab => _projectilePrefab;
         public float MeleeRange => _meleeRange;
         public float RangedRange => _rangedRange;

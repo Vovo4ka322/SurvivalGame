@@ -5,10 +5,10 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
     public class ProjectileController : MonoBehaviour
     {
         private BaseProjectile _projectile;
-        
+
         private float _lifeTimer;
         private bool _isLaunched = false;
-        
+
         public void Initialize(BaseProjectile projectile, float lifetime)
         {
             _projectile = projectile;
@@ -18,21 +18,21 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
 
         private void Update()
         {
-            if(!_isLaunched)
+            if (!_isLaunched)
             {
                 return;
             }
-            
+
             if (_projectile.Owner != null && _projectile.Owner.Health != null && _projectile.Owner.Health.IsDead)
             {
                 _projectile.ExplodeAndReturn();
                 _isLaunched = false;
-                
+
                 return;
             }
 
             _lifeTimer -= Time.deltaTime;
-            
+
             if (_lifeTimer <= 0)
             {
                 _projectile.ExplodeAndReturn();
@@ -43,7 +43,7 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
                 _projectile.Move();
             }
         }
-        
+
         public void ResetController()
         {
             _isLaunched = false;

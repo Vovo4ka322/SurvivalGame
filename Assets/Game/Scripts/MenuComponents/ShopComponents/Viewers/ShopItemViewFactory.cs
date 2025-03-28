@@ -22,7 +22,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
 
         private class ShopItemVisitor : IShopItemVisitor
         {
-            ShopItemView _characterSkinItemPrefab;
+            private ShopItemView _characterSkinItemPrefab;
 
             public ShopItemVisitor(ShopItemView generalCharacterSkinItemPrefab)
             {

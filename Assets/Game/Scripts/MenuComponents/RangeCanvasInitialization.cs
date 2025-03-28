@@ -16,7 +16,7 @@ namespace Game.Scripts.MenuComponents
 
         public void InitButtons(Player player)
         {
-            player.GetComponentInChildren<RangeAbilityInput>().Init(_firstMeleeAbilityUse, _secondMeleeAbilityUse, 
+            player.GetComponentInChildren<RangeAbilityInput>().Init(_firstMeleeAbilityUse, _secondMeleeAbilityUse,
                 _firstMeleeUpgradeButton, _secondMeleeUpgradeButton, _thirdMeleeUpgradeButton);
         }
     }

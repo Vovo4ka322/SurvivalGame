@@ -7,21 +7,21 @@ namespace Game.Scripts.MusicComponents
     {
         [SerializeField] private AudioSource _backgroundMusic;
         [SerializeField] private AudioMixer _audioMixer;
-        
+
         public void PlayBackgroundMusic()
         {
-            if(_backgroundMusic != null)
+            if (_backgroundMusic != null)
             {
                 _backgroundMusic.loop = true;
                 _backgroundMusic.Play();
             }
         }
-        
+
         public void StopBackgroundMusic()
         {
             _backgroundMusic?.Stop();
         }
-        
+
         private void OnApplicationFocus(bool hasFocus)
         {
             if (_backgroundMusic != null)

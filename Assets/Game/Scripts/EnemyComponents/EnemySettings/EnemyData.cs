@@ -8,12 +8,12 @@ namespace Game.Scripts.EnemyComponents.EnemySettings
     public class EnemyData : ScriptableObject
     {
         [SerializeField] private Enemy _enemyPrefab;
-        
+
         [Header("Setting type")]
         [SerializeField] private EnemyType _enemyType;
         [SerializeReference] private BaseEnemyAttackType _baseAttackType;
-        
-        [Header("Setting parameters")] 
+
+        [Header("Setting parameters")]
         [SerializeField] private float _maxHealth;
         [SerializeField] private float _damage;
         [SerializeField] private float _attackCooldown;
@@ -23,12 +23,12 @@ namespace Game.Scripts.EnemyComponents.EnemySettings
         [SerializeField] private int _experience;
         [SerializeField] private int _gold;
         [SerializeField] private int _points;
-        
+
         [Header("Effects")]
         [SerializeField] private EffectData _spawnEffect;
         [SerializeField] private EffectData _hitEffect;
         [SerializeField] private EffectData _deathEffect;
-        
+
         public EnemyType EnemyType => _enemyType;
         public Enemy EnemyPrefab => _enemyPrefab;
         public EffectData SpawnEffect => _spawnEffect;

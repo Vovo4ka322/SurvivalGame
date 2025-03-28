@@ -10,7 +10,7 @@ namespace Game.Scripts.PlayerComponents
         [Header("UI health elements")]
         [SerializeField] private Slider _healthSlider;
         [SerializeField] private TextMeshProUGUI _healthText;
-    
+
         [Header("UI elements for experience")]
         [SerializeField] private Slider _expSlider;
         [SerializeField] private TextMeshProUGUI _expText;
@@ -40,7 +40,7 @@ namespace Game.Scripts.PlayerComponents
         public void Init(Player player)
         {
             _player = player;
-            
+
             SubscribeToEvents();
             InitializeSliders();
             ViewHealth(_player.Health.Value);
@@ -52,7 +52,7 @@ namespace Game.Scripts.PlayerComponents
             _healthSlider.minValue = 0;
             _healthSlider.maxValue = _player.Health.MaxValue;
             _healthSlider.value = _player.Health.Value;
-            
+
             _expSlider.minValue = 0;
             _expSlider.maxValue = _player.Level.ShowMaxExperienceForLevel();
             _expSlider.value = _player.Level.Experience;
@@ -74,17 +74,17 @@ namespace Game.Scripts.PlayerComponents
         private void OnHealthChanged(float value)
         {
             _healthSlider.value = value;
-            
+
             ViewHealth(value);
         }
 
         private void OnExperienceChanged(float value)
         {
             _expSlider.value = value;
-            
+
             ViewExp(value);
         }
-        
+
         private void OnLevelChanged()
         {
             _expSlider.maxValue = _player.Level.ShowMaxExperienceForLevel();
@@ -99,7 +99,7 @@ namespace Game.Scripts.PlayerComponents
         private void ViewExp(float currentExp)
         {
             int maxExp = _player.Level.ShowMaxExperienceForLevel();
-            
+
             _expText.text = $"{Convert.ToInt32(currentExp)} / {maxExp}";
         }
     }

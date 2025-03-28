@@ -57,11 +57,11 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
         {
             int currentMultiShot = _archerAbilityUser.CurrentMultiShotLevel;
 
-            if(currentMultiShot == 0)
+            if (currentMultiShot == 0)
             {
                 RangeAbilityData nextDataMultiShot = _archerAbilityUser.GetAbilityDataForLevel(1);
 
-                if(nextDataMultiShot != null)
+                if (nextDataMultiShot != null)
                 {
                     _multiShotDurationDisplay.SetText(0, nextDataMultiShot.MultiShotScriptableObject.Duration);
                     _multiShotCooldownDisplay.SetText(0, nextDataMultiShot.MultiShotScriptableObject.CooldownTime);
@@ -73,7 +73,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
                 RangeAbilityData currentDataMultiShot = _archerAbilityUser.GetAbilityDataForLevel(currentMultiShot);
                 RangeAbilityData nextDataMultiShot = _archerAbilityUser.GetAbilityDataForLevel(currentMultiShot + 1);
 
-                if(currentDataMultiShot != null)
+                if (currentDataMultiShot != null)
                 {
                     float currentDuration = currentDataMultiShot.MultiShotScriptableObject.Duration;
                     float? nextDuration = nextDataMultiShot != null ? nextDataMultiShot.MultiShotScriptableObject.Duration : null;
@@ -91,11 +91,11 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 
             int currentInsatiableHunger = _archerAbilityUser.CurrentInsatiableHunger;
 
-            if(currentInsatiableHunger == 0)
+            if (currentInsatiableHunger == 0)
             {
                 RangeAbilityData nextDataInsatiableHunger = _archerAbilityUser.GetAbilityDataForLevel(1);
 
-                if(nextDataInsatiableHunger != null)
+                if (nextDataInsatiableHunger != null)
                 {
                     _insatiableHungerDurationDisplay.SetText(0, nextDataInsatiableHunger.InsatiableHungerScriptableObject.Duration);
                     _insatiableHungerCooldownDisplay.SetText(0, nextDataInsatiableHunger.InsatiableHungerScriptableObject.CooldownTime);
@@ -107,7 +107,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
                 RangeAbilityData currentDataInsatiableHunger = _archerAbilityUser.GetAbilityDataForLevel(currentInsatiableHunger);
                 RangeAbilityData nextDataInsatiableHunger = _archerAbilityUser.GetAbilityDataForLevel(currentInsatiableHunger + 1);
 
-                if(currentDataInsatiableHunger != null)
+                if (currentDataInsatiableHunger != null)
                 {
                     float currentDuration = currentDataInsatiableHunger.InsatiableHungerScriptableObject.Duration;
                     float? nextDuration = nextDataInsatiableHunger != null ? nextDataInsatiableHunger.InsatiableHungerScriptableObject.Duration : null;
@@ -125,11 +125,11 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 
             int currentBlur = _archerAbilityUser.CurrentBlurLevel;
 
-            if(currentBlur == 0)
+            if (currentBlur == 0)
             {
                 RangeAbilityData nextDataBlur = _archerAbilityUser.GetAbilityDataForLevel(1);
 
-                if(nextDataBlur != null)
+                if (nextDataBlur != null)
                 {
                     _blurChanceEvasionDisplay.SetText(0, nextDataBlur.BlurScriptableObject.Evasion);
                 }
@@ -139,7 +139,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
                 RangeAbilityData currentDataBlur = _archerAbilityUser.GetAbilityDataForLevel(currentBlur);
                 RangeAbilityData nextDataBlur = _archerAbilityUser.GetAbilityDataForLevel(currentBlur + 1);
 
-                if(currentDataBlur != null)
+                if (currentDataBlur != null)
                 {
                     float currentEvasion = currentDataBlur.BlurScriptableObject.Evasion;
                     float? nextEvasion = nextDataBlur != null ? nextDataBlur.BlurScriptableObject.Evasion : null;

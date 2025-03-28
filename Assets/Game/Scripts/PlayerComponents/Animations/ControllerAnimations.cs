@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Game.Scripts.PlayerComponents.Animations
 {
     [RequireComponent(typeof(Animator))]
-    public class ControllerAnimations: MonoBehaviour
+    public class ControllerAnimations : MonoBehaviour
     {
         private Animator _animator;
 
@@ -11,7 +11,7 @@ namespace Game.Scripts.PlayerComponents.Animations
         {
             _animator = GetComponent<Animator>();
         }
-        
+
         public void PlayMove(Vector3 moveDirection)
         {
             Vector3 relativeDirection = transform.InverseTransformDirection(moveDirection);

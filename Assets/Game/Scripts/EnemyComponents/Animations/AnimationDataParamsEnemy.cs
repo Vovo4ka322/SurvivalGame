@@ -18,7 +18,7 @@ namespace Game.Scripts.EnemyComponents.Animations
             private const string AttackFrontVariant2Parameter = "attackFrontVar2";
             private const string AttackGroundParameter = "attackGround";
             private const string AttackJumpParameter = "attackJump";
-            
+
             public static readonly int Walking = Animator.StringToHash(WalkParameter);
             public static readonly int Spawning = Animator.StringToHash(SpawnParameter);
             public static readonly int Dead = Animator.StringToHash(DeathParameter);

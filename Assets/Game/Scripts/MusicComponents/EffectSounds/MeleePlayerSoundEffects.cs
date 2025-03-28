@@ -6,9 +6,9 @@ namespace Game.Scripts.MusicComponents.EffectSounds
     {
         [SerializeField] private AudioSource _hitClip;
         [SerializeField] private AudioSource _missHitClip;
-        
+
         public void PlayHit() => _hitClip.Play();
-        
+
         public void PlayMissHit() => _missHitClip.Play();
     }
 }

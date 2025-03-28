@@ -10,12 +10,12 @@ namespace Game.Scripts.LeaderboardComponents
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private TextMeshProUGUI _scoreText;
         [SerializeField] private Image _marker;
-        
+
         private string _rank;
         private string _name;
         private string _score;
         private bool _thisPlayer;
-        
+
         public void SetData(string rankUser, string nameUser, string score, bool isThisPlayer)
         {
             _rank = rankUser;
@@ -23,7 +23,7 @@ namespace Game.Scripts.LeaderboardComponents
             _score = score;
             _thisPlayer = isThisPlayer;
         }
-        
+
         public void UpdateEntries()
         {
             if (_rankText != null && _rank != null && _nameText != null && _name != null && _scoreText != null && _score != null)
@@ -32,7 +32,7 @@ namespace Game.Scripts.LeaderboardComponents
                 _nameText.text = _name;
                 _scoreText.text = _score;
             }
-            
+
             if (_marker != null)
             {
                 _marker.gameObject.SetActive(_thisPlayer);

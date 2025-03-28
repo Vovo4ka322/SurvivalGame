@@ -19,7 +19,6 @@ namespace Game.Scripts.PlayerComponents.Controller
         private float _moveSpeed;
         private Camera _camera;
         private Vector3 _moveDirection;
-        private Vector3 _direction;
         private bool _isSkillWorking;
 
         private void Awake()
@@ -34,6 +33,7 @@ namespace Game.Scripts.PlayerComponents.Controller
         }
 
         public void SetStateSkillWorkingTrue() => _isSkillWorking = true;
+
         public void SetStateSkillWorkingFalse() => _isSkillWorking = false;
 
         public void InitJoysticks(bool isJoystickActive, Joystick joystickForMovement, Joystick joystickForRotation)
@@ -86,16 +86,15 @@ namespace Game.Scripts.PlayerComponents.Controller
             _controllerAnimations.PlayMove(_moveDirection);
         }
 
-
         private void HandleRotation()
         {
-            if(_isSkillWorking)
+            if (_isSkillWorking)
             {
                 return;
             }
-            
+
             Vector3 direction = Vector3.zero;
-            
+
             if (_isJoystickActive)
             {
                 direction = new Vector3(_joystickForRotation.Horizontal, 0, _joystickForRotation.Vertical);
@@ -103,15 +102,14 @@ namespace Game.Scripts.PlayerComponents.Controller
             else
             {
                 Ray ray = _camera.ScreenPointToRay(_controller.Rotation);
-                
+
                 if (Physics.Raycast(ray, out RaycastHit hitInfo, float.MaxValue, _layerMask))
                 {
                     direction = hitInfo.point - transform.position;
                     direction.y = 0f;
-                    _direction = hitInfo.point;
                 }
             }
-            
+
             if (direction != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(direction);

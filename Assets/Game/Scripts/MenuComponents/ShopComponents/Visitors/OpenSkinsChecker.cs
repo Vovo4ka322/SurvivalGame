@@ -9,12 +9,12 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Visitors
     {
         private IPersistentData _persistentData;
 
+        public OpenSkinsChecker(IPersistentData persistentData) => _persistentData = persistentData;
+
         public event Action MeleeCharacterOpened;
         public event Action RangeCharacterOpened;
 
         public bool IsOpened { get; private set; }
-
-        public OpenSkinsChecker(IPersistentData persistentData) => _persistentData = persistentData;
 
         public void Visit(CharacterSkinItem characterSkinItem)
         {

@@ -2,6 +2,6 @@ namespace Game.Scripts.Interfaces
 {
     public interface IDamageCausable
     {
-        public float Damage {  get; }
+        public float Damage { get; }
     }
 }

@@ -11,10 +11,10 @@ namespace Game.Scripts.PoolComponents
     public class PoolManager : MonoBehaviour
     {
         private const string CoroutineRunnerName = "CoroutineRunner";
-        
+
         [SerializeField] private CoroutineRunner _coroutineRunner;
         [SerializeField] private EnemyFactory _enemyFactory;
-        
+
         [Header("Pool Settings")]
         [SerializeField] private PoolSettings _defaultPoolSettings;
 
@@ -22,7 +22,7 @@ namespace Game.Scripts.PoolComponents
         [SerializeField] private List<EnemyData> _enemyDatas;
         [SerializeField] private List<BaseProjectile> _projectilePrefabs;
         [SerializeField] private List<ParticleSystem> _effectPrefabs;
-        
+
         private EffectsPool _effectsPool;
         private Dictionary<BaseProjectile, ProjectilePool<BaseProjectile>> _projectilePools;
 
@@ -36,10 +36,10 @@ namespace Game.Scripts.PoolComponents
             {
                 GameObject coroutineRunnerObj = new GameObject(CoroutineRunnerName);
                 _coroutineRunner = coroutineRunnerObj.AddComponent<CoroutineRunner>();
-                
+
                 DontDestroyOnLoad(coroutineRunnerObj);
             }
-            
+
             InitializeEffectsPool();
             InitializeEnemyFactory();
             InitializeProjectilePools();
@@ -51,7 +51,7 @@ namespace Game.Scripts.PoolComponents
             {
                 throw new ArgumentException("GetProjectilePool was called with a null prefab.");
             }
-            
+
             return _projectilePools.GetValueOrDefault(prefab);
         }
 
@@ -69,13 +69,13 @@ namespace Game.Scripts.PoolComponents
         private void InitializeProjectilePools()
         {
             _projectilePools = new Dictionary<BaseProjectile, ProjectilePool<BaseProjectile>>();
-            
+
             foreach (BaseProjectile prefab in _projectilePrefabs)
             {
                 if (prefab != null && !_projectilePools.ContainsKey(prefab))
                 {
                     var pool = new ProjectilePool<BaseProjectile>(prefab, _defaultPoolSettings, transform);
-                    
+
                     _projectilePools.Add(prefab, pool);
                 }
             }
