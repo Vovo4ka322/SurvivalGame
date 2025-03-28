@@ -25,10 +25,6 @@
 
 # Visual Studio cache directory
 .vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
 
 # Gradle cache directory
 .gradle/
@@ -75,6 +71,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Crash reports
-*.dmp
-crash_reports/
+.idea/
+.DS_Store
+.gitattributes
+.vsconfig
+mono_crash*.json

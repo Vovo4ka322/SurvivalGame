@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7519bef8-d226-4733-b033-bf9482904593" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/PlayerComponents/Controller/PlayerInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/PlayerComponents/Controller/PlayerInput.cs" afterDir="false" />
-    </list>
+    <list default="true" id="7519bef8-d226-4733-b033-bf9482904593" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,8 +31,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Scripts/EnemyComponents/EnemySettings/EnemyAttack/EnemyAttackType/BaseEnemyAttackType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/nikolajzalivalov/RiderProjects/SurvivalGame/Assets/Game/Scripts/PlayerComponents/Controller/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Scripts/PlayerComponents/Controller/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -76,8 +74,17 @@
       <workItem from="1734983885716" duration="4000" />
       <workItem from="1734983998268" duration="47000" />
       <workItem from="1735463188626" duration="257000" />
-      <workItem from="1743164294659" duration="851000" />
+      <workItem from="1743164294659" duration="1172000" />
     </task>
+    <task id="LOCAL-00001" summary="fix &amp;.gitignore">
+      <option name="closed" value="true" />
+      <created>1743165901565</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743165901565</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,5 +108,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="fix &amp;.gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix &amp;.gitignore" />
   </component>
 </project>
