@@ -25,6 +25,10 @@
 
 # Visual Studio cache directory
 .vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
 # Gradle cache directory
 .gradle/
@@ -70,3 +74,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Crash reports
+*.dmp
+crash_reports/
