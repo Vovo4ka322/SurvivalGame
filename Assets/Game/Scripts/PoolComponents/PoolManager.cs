@@ -1,10 +1,10 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.ProjectileComponents;
 using Game.Scripts.SettingsComponents;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Game.Scripts.PoolComponents
 {

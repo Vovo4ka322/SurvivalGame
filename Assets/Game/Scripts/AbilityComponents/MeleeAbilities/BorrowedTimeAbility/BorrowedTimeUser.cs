@@ -1,7 +1,7 @@
-using Game.Scripts.Interfaces;
 using System;
 using System.Collections;
 using UnityEngine;
+using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities.BorrowedTimeAbility
 {
@@ -14,7 +14,6 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities.BorrowedTimeAbility
         public event Action<float> Used;
 
         public float CooldownTime { get; private set; }
-
         public BorrowedTime BorrowedTime => _borrowedTimeScriptableObject;
 
         public void Upgrade(BorrowedTime borrowedTime)

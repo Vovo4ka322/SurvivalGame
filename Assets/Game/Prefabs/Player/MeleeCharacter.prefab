@@ -1479,10 +1479,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6189254596397018554}
-  - component: {fileID: 1995067901147801484}
+  - component: {fileID: 6730301331121983364}
   - component: {fileID: 8186953799004668606}
   - component: {fileID: 6490000133360846382}
-  - component: {fileID: 127803526166217667}
+  - component: {fileID: 8489990305992742674}
   m_Layer: 8
   m_Name: Ability
   m_TagString: Untagged
@@ -1505,7 +1505,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1080909026436119285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1995067901147801484
+--- !u!114 &6730301331121983364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5347861177593914333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfab08fec2c082545a2fc2fc4c703c8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fa74bea75794db28cc73af564c14ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 7584807702275972672}
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 9203238919027719053}
---- !u!114 &127803526166217667
+--- !u!114 &8489990305992742674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1557,10 +1557,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5347861177593914333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41a9cc928cab7a489a43d20900de604, type: 3}
+  m_Script: {fileID: 11500000, guid: 46c4438ee30743ada212941bb558a699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meleeAbilityUser: {fileID: 1995067901147801484}
+  _abilityUser: {fileID: 6730301331121983364}
   _playerController: {fileID: 7519599698617544181}
 --- !u!1 &5549891462825818031
 GameObject:

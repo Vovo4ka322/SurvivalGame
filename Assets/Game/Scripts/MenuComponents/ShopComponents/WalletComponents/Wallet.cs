@@ -1,5 +1,5 @@
-using Game.Scripts.MenuComponents.ShopComponents.Data;
 using System;
+using Game.Scripts.MenuComponents.ShopComponents.Data;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.WalletComponents
 {

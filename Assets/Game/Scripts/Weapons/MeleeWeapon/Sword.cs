@@ -1,7 +1,7 @@
-using Game.Scripts.PlayerComponents;
-using Game.Scripts.PoolComponents;
 using System.Collections;
 using UnityEngine;
+using Game.Scripts.PlayerComponents;
+using Game.Scripts.PoolComponents;
 
 namespace Game.Scripts.Weapons.MeleeWeapon
 {

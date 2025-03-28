@@ -6,7 +6,6 @@ namespace Game.Scripts.Weapons
     public class ArrowData : WeaponData
     {
         [field: SerializeField] public int ArrowFlightSpeed { get; private set; }
-
         [field: SerializeField] public float AttackRadius { get; private set; }
     }
 }

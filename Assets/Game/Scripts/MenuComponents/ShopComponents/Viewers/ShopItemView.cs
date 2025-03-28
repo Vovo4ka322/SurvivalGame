@@ -1,9 +1,9 @@
-using Game.Scripts.MenuComponents.ShopComponents.Common;
-using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Game.Scripts.MenuComponents.ShopComponents.Common;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.Viewers
 {

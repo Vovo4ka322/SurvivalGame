@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Scripts.DifficultyLevel
+namespace Game.Scripts.GameDifficultyLevel
 {
     [CreateAssetMenu(fileName = "DifficultyData", menuName = "DifficultyData")]
     public class DifficultyData : ScriptableObject

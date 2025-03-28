@@ -1,5 +1,5 @@
-using Game.Scripts.Interfaces;
 using UnityEngine;
+using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility
 {
@@ -7,9 +7,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility
     public class BladeFury : CharacterAbility, IDurationable, ICooldownable
     {
         [field: SerializeField] public float TurnSpeed { get; private set; }
-
         [field: SerializeField] public float Duration { get; private set; }
-
         [field: SerializeField] public float CooldownTime { get; private set; }
     }
 }

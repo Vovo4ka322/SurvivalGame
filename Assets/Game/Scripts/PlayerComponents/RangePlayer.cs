@@ -1,7 +1,7 @@
+using UnityEngine;
 using Game.Scripts.AbilityComponents.ArcherAbilities.BlurAbility;
 using Game.Scripts.Interfaces;
 using Game.Scripts.Weapons.RangedWeapon;
-using UnityEngine;
 
 namespace Game.Scripts.PlayerComponents
 {

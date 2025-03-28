@@ -1,34 +1,15 @@
-using Game.Scripts.MenuComponents;
 using Game.Scripts.PlayerComponents;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {
-    public class RangeAbilityViewer : MonoBehaviour
+    public class RangeAbilityViewer : AbilityViewerBase
     {
-        [Header("Images Abilities")]
-        [SerializeField] private Image _firstAbility;
-        [SerializeField] private Image _secondAbility;
-        [SerializeField] private Image _thirdAbility;
-
-        [Header("Cooldown Images")]
-        [SerializeField] private Image _firstAbilityCooldown;
-        [SerializeField] private Image _secondAbilityCooldown;
-
-        [Header("Upgrade Images")]
-        [SerializeField] private List<Image> _firstAbilityImprovements;
-        [SerializeField] private List<Image> _secondAbilityImprovements;
-        [SerializeField] private List<Image> _thirdAbilityImprovements;
-
         private ArcherAbilityUser _archerAbilityUser;
-        private IconUtility _iconUtility;
-
+        
         private int _multiShotImprovement = 0;
         private int _insatiableHungerImprovement = 0;
         private int _blurImprovement = 0;
-
+        
         private void OnDisable()
         {
             _archerAbilityUser.MultiShotUser.Used -= OnMultiShotChanged;
@@ -37,19 +18,14 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             _archerAbilityUser.InsatiableHungerUpgraded -= OnInsatiableHungerUpgraded;
             _archerAbilityUser.BlurUpgraded -= OnBlurUpgraded;
         }
-
+        
         public void Init(Player player)
         {
             _archerAbilityUser = player.GetComponentInChildren<ArcherAbilityUser>();
-            _iconUtility = new IconUtility();
-
+            SetInitialIconsDimmed();
             SubscribeToEvents();
-
-            _iconUtility.SetIconDimmed(_firstAbility, true);
-            _iconUtility.SetIconDimmed(_secondAbility, true);
-            _iconUtility.SetIconDimmed(_thirdAbility, true);
         }
-
+        
         private void SubscribeToEvents()
         {
             _archerAbilityUser.MultiShotUser.Used += OnMultiShotChanged;
@@ -58,67 +34,30 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             _archerAbilityUser.InsatiableHungerUpgraded += OnInsatiableHungerUpgraded;
             _archerAbilityUser.BlurUpgraded += OnBlurUpgraded;
         }
-
+        
         private void OnMultiShotChanged(float value)
         {
-            Change(_firstAbilityCooldown, _archerAbilityUser.MultiShotUser.MultiShot.CooldownTime, value);
+            Change(FirstAbilityCooldown, _archerAbilityUser.MultiShotUser.MultiShot.CooldownTime, value);
         }
-
+        
         private void OnInsatiableHungerChanged(float value)
         {
-            Change(_secondAbilityCooldown, _archerAbilityUser.InsatiableHunger.InsatiableHunger.CooldownTime, value);
+            Change(SecondAbilityCooldown, _archerAbilityUser.InsatiableHunger.InsatiableHunger.CooldownTime, value);
         }
-
-        private void Change(Image image, float cooldown, float value)
-        {
-            image.fillAmount = Mathf.InverseLerp(0, cooldown, value);
-        }
-
-        private void Upgrade(List<Image> images, int index)
-        {
-            images[index].gameObject.SetActive(true);
-        }
-
+        
         private void OnMultiShotUpgraded()
         {
-            if (_multiShotImprovement == _archerAbilityUser.MaxValue)
-                return;
-
-            Upgrade(_firstAbilityImprovements, _multiShotImprovement);
-            _multiShotImprovement++;
-
-            if (_multiShotImprovement == 1)
-            {
-                _iconUtility.SetIconDimmed(_firstAbility, false);
-            }
+            Upgrade(FirstAbilityImprovements, ref _multiShotImprovement, _archerAbilityUser.MaxValue, FirstAbility);
         }
-
+        
         private void OnInsatiableHungerUpgraded()
         {
-            if (_insatiableHungerImprovement == _archerAbilityUser.MaxValue)
-                return;
-
-            Upgrade(_secondAbilityImprovements, _insatiableHungerImprovement);
-            _insatiableHungerImprovement++;
-
-            if (_insatiableHungerImprovement == 1)
-            {
-                _iconUtility.SetIconDimmed(_secondAbility, false);
-            }
+            Upgrade(SecondAbilityImprovements, ref _insatiableHungerImprovement, _archerAbilityUser.MaxValue, SecondAbility);
         }
-
+        
         private void OnBlurUpgraded()
         {
-            if (_blurImprovement == _archerAbilityUser.MaxValue)
-                return;
-
-            Upgrade(_thirdAbilityImprovements, _blurImprovement);
-            _blurImprovement++;
-
-            if (_blurImprovement == 1)
-            {
-                _iconUtility.SetIconDimmed(_thirdAbility, false);
-            }
+            Upgrade(ThirdAbilityImprovements, ref _blurImprovement, _archerAbilityUser.MaxValue, ThirdAbility);
         }
     }
 }

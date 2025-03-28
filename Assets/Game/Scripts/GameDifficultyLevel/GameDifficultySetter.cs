@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
-namespace Game.Scripts.DifficultyLevel
+namespace Game.Scripts.GameDifficultyLevel
 {
     public class GameDifficultySetter : MonoBehaviour
     {
@@ -13,13 +12,16 @@ namespace Game.Scripts.DifficultyLevel
         {
             int defaultValue = 1;
             int savedDifficulty = PlayerPrefs.GetInt("Difficulty", defaultValue);
+            
             SetDifficult((Difficults)savedDifficulty);
         }
 
         public GameDifficultyLevel SetDifficult(Difficults difficults)
         {
             PlayerPrefs.SetInt("Difficulty", (int)difficults);
+            
             CurrentDifficultyLevel = Set(difficults);
+            
             return CurrentDifficultyLevel;
         }
 

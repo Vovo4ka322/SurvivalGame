@@ -1,7 +1,9 @@
+using System;
+using UnityEngine;
 using Cinemachine;
-using Game.Scripts.DifficultyLevel;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.EnemyComponents.EnemySettings;
+using Game.Scripts.GameDifficultyLevel;
 using Game.Scripts.MenuComponents.Panels;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
@@ -9,8 +11,6 @@ using Game.Scripts.MusicComponents;
 using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.PoolComponents;
-using System;
-using UnityEngine;
 using YG;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
@@ -149,7 +149,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             EnemyData[] easyEnemies =
             {
                 _difficultlySetter.CurrentDifficultyLevel.EasyEnemyMeleeSkeleton,
-                _difficultlySetter.CurrentDifficultyLevel.EasyEnemyRangeGost,
+                _difficultlySetter.CurrentDifficultyLevel.EasyEnemyRangeGhost,
             };
 
             EnemyData[] mediumEnemies =

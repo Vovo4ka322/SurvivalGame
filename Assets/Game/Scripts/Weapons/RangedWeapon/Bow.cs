@@ -1,6 +1,6 @@
+using UnityEngine;
 using Game.Scripts.Interfaces;
 using Game.Scripts.ProjectileComponents.CreateProjectiles;
-using UnityEngine;
 
 namespace Game.Scripts.Weapons.RangedWeapon
 {
@@ -12,10 +12,8 @@ namespace Game.Scripts.Weapons.RangedWeapon
         private IEnemyHitHandler _enemyHitHandler;
 
         [field: SerializeField] public Transform StartPointToFly { get; private set; }
-
-        public ArrowData BowData => _bowData;
-
         public bool IsActiveState { get; private set; }
+        public ArrowData BowData => _bowData;
 
         public void StartShoot(float value)
         {

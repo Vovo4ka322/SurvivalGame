@@ -14,13 +14,13 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
         private ParticleSystem _currentEffect;
         private Coroutine _currentCoroutine;
 
-        protected BaseEffectsEnemy(ICoroutineRunner coroutineRunner, EffectData effectData, EffectsPool pool)
+        public BaseEffectsEnemy(ICoroutineRunner coroutineRunner, EffectData effectData, EffectsPool pool)
         {
             _coroutineRunner = coroutineRunner;
             _effectData = effectData;
             _pool = pool;
         }
-
+        
         public void Play(Transform ownerTransform)
         {
             if (_effectData.EffectPrefab == null || _pool == null)

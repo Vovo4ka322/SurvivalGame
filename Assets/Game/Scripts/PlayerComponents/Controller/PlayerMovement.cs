@@ -1,5 +1,5 @@
-using Game.Scripts.PlayerComponents.Animations;
 using UnityEngine;
+using Game.Scripts.PlayerComponents.Animations;
 
 namespace Game.Scripts.PlayerComponents.Controller
 {
@@ -12,7 +12,6 @@ namespace Game.Scripts.PlayerComponents.Controller
 
         [SerializeField] private Joystick _joystickForMovement;
         [SerializeField] private Joystick _joystickForRotation;
-
         [SerializeField] private bool _isJoystickActive;
 
         private float _moveSpeed;

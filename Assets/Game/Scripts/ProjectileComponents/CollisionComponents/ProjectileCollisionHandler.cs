@@ -1,7 +1,7 @@
+using UnityEngine;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.Interfaces;
-using UnityEngine;
 
 namespace Game.Scripts.ProjectileComponents.CollisionComponents
 {
