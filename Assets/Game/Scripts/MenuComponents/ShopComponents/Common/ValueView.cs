@@ -1,6 +1,6 @@
 using System;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.Common
 {

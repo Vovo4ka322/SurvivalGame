@@ -1,7 +1,7 @@
-﻿using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
-using Game.Scripts.PlayerComponents;
-using System;
+﻿using System;
 using UnityEngine;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
+using Game.Scripts.PlayerComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {

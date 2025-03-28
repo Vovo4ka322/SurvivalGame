@@ -1,63 +1,63 @@
-using Game.Scripts.DifficultyLevel;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class DifficultyChoicer : MonoBehaviour
+namespace Game.Scripts.GameDifficultyLevel
 {
-    [SerializeField] private Button _button;
-    [SerializeField] private GameDifficultySetter _difficultySetter;
-
-    [SerializeField] private TextMeshProUGUI _easyDifficultyText;
-    [SerializeField] private TextMeshProUGUI _mediumDifficultyText;
-    [SerializeField] private TextMeshProUGUI _hardDifficultyText;
-
-    [SerializeField] private Difficults _difficults;
-
-    private void OnEnable()
+    public class DifficultyChoicer : MonoBehaviour
     {
-        _button.onClick.AddListener(SetDifficultsEnemy);
-    }
-
-    private void OnDisable()
-    {
-        _button.onClick?.RemoveListener(SetDifficultsEnemy);
-    }
-
-    private void SetDifficultsEnemy()
-    {
-        _difficultySetter.SetDifficult(_difficults);
-        ShowText();
-    }
-
-    private void ShowText()
-    {
-        if (_difficults == Difficults.Easy)
+        [SerializeField] private Button _button;
+        [SerializeField] private GameDifficultySetter _difficultySetter;
+        [SerializeField] private TextMeshProUGUI _easyDifficultyText;
+        [SerializeField] private TextMeshProUGUI _mediumDifficultyText;
+        [SerializeField] private TextMeshProUGUI _hardDifficultyText;
+        [SerializeField] private Difficults _difficults;
+    
+        private void OnEnable()
         {
-            Deactivate();
-            Activate(_easyDifficultyText);
+            _button.onClick.AddListener(SetDifficultsEnemy);
         }
-        else if (_difficults == Difficults.Medium)
+    
+        private void OnDisable()
         {
-            Deactivate();
-            Activate(_mediumDifficultyText);
+            _button.onClick?.RemoveListener(SetDifficultsEnemy);
         }
-        else if (_difficults == Difficults.Hard)
+    
+        private void SetDifficultsEnemy()
         {
-            Deactivate();
-            Activate(_hardDifficultyText);
+            _difficultySetter.SetDifficult(_difficults);
+            ShowText();
         }
-    }
-
-    private void Deactivate()
-    {
-        _easyDifficultyText.gameObject.SetActive(false);
-        _mediumDifficultyText.gameObject.SetActive(false);
-        _hardDifficultyText.gameObject.SetActive(false);
-    }
-
-    private void Activate(TextMeshProUGUI text)
-    {
-        text.gameObject.SetActive(true);
+    
+        private void ShowText()
+        {
+            if (_difficults == Difficults.Easy)
+            {
+                Deactivate();
+                Activate(_easyDifficultyText);
+            }
+            else if (_difficults == Difficults.Medium)
+            {
+                Deactivate();
+                Activate(_mediumDifficultyText);
+            }
+            else if (_difficults == Difficults.Hard)
+            {
+                Deactivate();
+                Activate(_hardDifficultyText);
+            }
+        }
+    
+        private void Deactivate()
+        {
+            _easyDifficultyText.gameObject.SetActive(false);
+            _mediumDifficultyText.gameObject.SetActive(false);
+            _hardDifficultyText.gameObject.SetActive(false);
+        }
+    
+        private void Activate(TextMeshProUGUI text)
+        {
+            text.gameObject.SetActive(true);
+        }
     }
 }

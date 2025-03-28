@@ -1,5 +1,5 @@
-using Game.Scripts.Interfaces;
 using UnityEngine;
+using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility
 {

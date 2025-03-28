@@ -1,5 +1,5 @@
-using Game.Scripts.Interfaces;
 using UnityEngine;
+using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.Weapons
 {
@@ -7,7 +7,6 @@ namespace Game.Scripts.Weapons
     public class WeaponData : ScriptableObject, IDamageCausable
     {
         [field: SerializeField] public WeaponType WeaponType { get; private set; }
-
         [field: SerializeField] public float Damage { get; private set; }
     }
 }

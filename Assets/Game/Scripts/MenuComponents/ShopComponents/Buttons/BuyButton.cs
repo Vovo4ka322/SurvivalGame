@@ -1,8 +1,8 @@
-using DG.Tweening;
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+using TMPro;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
 {

@@ -1,27 +1,8 @@
-﻿using Game.Scripts.AbilityComponents.ArcherAbilities;
-using Game.Scripts.PlayerComponents;
-using UnityEngine;
-using UnityEngine.UI;
+using Game.Scripts.AbilityComponents.ArcherAbilities;
 
 namespace Game.Scripts.MenuComponents
 {
-    public class RangeCanvasInitialization : MonoBehaviour
+    public class RangeCanvasInitialization : AbilityCanvasInitialization<RangeAbilityInput>
     {
-        [Header("Range buttons")]
-        [SerializeField] private Button _firstMeleeAbilityUse;
-        [SerializeField] private Button _secondMeleeAbilityUse;
-        [SerializeField] private Button _firstMeleeUpgradeButton;
-        [SerializeField] private Button _secondMeleeUpgradeButton;
-        [SerializeField] private Button _thirdMeleeUpgradeButton;
-
-        public void InitButtons(Player player)
-        {
-            player.GetComponentInChildren<RangeAbilityInput>().Init(
-                _firstMeleeAbilityUse,
-                _secondMeleeAbilityUse,
-                _firstMeleeUpgradeButton,
-                _secondMeleeUpgradeButton,
-                _thirdMeleeUpgradeButton);
-        }
     }
 }

@@ -1,9 +1,9 @@
-using Game.Scripts.Interfaces;
-using Game.Scripts.PlayerComponents.Animations;
-using Game.Scripts.PlayerComponents;
 using System;
 using System.Collections;
 using UnityEngine;
+using Game.Scripts.Interfaces;
+using Game.Scripts.PlayerComponents.Animations;
+using Game.Scripts.PlayerComponents;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility
 {
@@ -18,7 +18,6 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility
         public event Action<float> Used;
 
         public float CooldownTime { get; private set; }
-
         public BladeFury BladeFury => _bladeFuryScriptableObject;
 
         public void Upgrade(BladeFury bladeFury)

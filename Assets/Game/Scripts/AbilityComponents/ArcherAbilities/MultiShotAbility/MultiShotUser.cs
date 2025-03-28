@@ -1,9 +1,9 @@
-using Game.Scripts.Interfaces;
-using Game.Scripts.ProjectileComponents.CreateProjectiles;
-using Game.Scripts.Weapons.RangedWeapon;
 using System;
 using System.Collections;
 using UnityEngine;
+using Game.Scripts.Interfaces;
+using Game.Scripts.ProjectileComponents.CreateProjectiles;
+using Game.Scripts.Weapons.RangedWeapon;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility
 {
@@ -21,7 +21,6 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility
         public event Action<float> Used;
 
         public MultiShot MultiShot => _multiShotScriptableObject;
-
         public float CooldownTime { get; private set; }
 
         public void Upgrade(MultiShot multiShot)

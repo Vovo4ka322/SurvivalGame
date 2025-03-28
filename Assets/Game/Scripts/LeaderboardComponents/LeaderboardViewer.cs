@@ -1,6 +1,6 @@
+using UnityEngine;
 using DG.Tweening;
 using Game.Scripts.MenuComponents.Panels;
-using UnityEngine;
 
 namespace Game.Scripts.LeaderboardComponents
 {
