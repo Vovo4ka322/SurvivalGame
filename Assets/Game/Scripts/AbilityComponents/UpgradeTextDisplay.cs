@@ -1,6 +1,6 @@
 using System;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Scripts.AbilityComponents

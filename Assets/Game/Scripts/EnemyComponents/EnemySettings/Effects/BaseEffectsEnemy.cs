@@ -1,7 +1,7 @@
-using System.Collections;
-using UnityEngine;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.PoolComponents;
+using System.Collections;
+using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
 {

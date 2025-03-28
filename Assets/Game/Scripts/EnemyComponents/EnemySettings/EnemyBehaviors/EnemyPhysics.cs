@@ -1,7 +1,7 @@
-using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
 using Game.Scripts.Weapons;
 using Game.Scripts.Weapons.MeleeWeapon;
+using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 {

@@ -1,6 +1,6 @@
-using UnityEngine;
 using Game.Scripts.Interfaces;
 using Game.Scripts.ProjectileComponents.CreateProjectiles;
+using UnityEngine;
 
 namespace Game.Scripts.Weapons.RangedWeapon
 {

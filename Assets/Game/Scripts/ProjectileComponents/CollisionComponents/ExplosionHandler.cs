@@ -1,7 +1,7 @@
-using System.Collections;
-using UnityEngine;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
+using System.Collections;
+using UnityEngine;
 
 namespace Game.Scripts.ProjectileComponents.CollisionComponents
 {

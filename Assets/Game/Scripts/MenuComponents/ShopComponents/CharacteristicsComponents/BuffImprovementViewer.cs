@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Game.Scripts.BuffComponents;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Scripts.BuffComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 {

@@ -1,8 +1,7 @@
+using Game.Scripts.EnemyComponents.Interfaces;
 using System;
 using System.Collections;
 using UnityEngine;
-using Game.Scripts.EnemyComponents.Interfaces;
-using YG;
 
 namespace Game.Scripts.EnemyComponents
 {

@@ -1,5 +1,5 @@
-using UnityEngine;
 using Game.Scripts.Interfaces;
+using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities.BorrowedTimeAbility
 {

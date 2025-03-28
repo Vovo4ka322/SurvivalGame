@@ -1,6 +1,6 @@
-using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings.Effects;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
+using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings
 {

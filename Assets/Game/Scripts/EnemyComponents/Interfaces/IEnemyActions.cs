@@ -1,6 +1,6 @@
-using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.PlayerComponents;
+using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.Interfaces
 {

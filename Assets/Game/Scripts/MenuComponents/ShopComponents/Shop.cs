@@ -1,6 +1,3 @@
-using System.Linq;
-using UnityEngine;
-using UnityEngine.UI;
 using Game.Scripts.MenuComponents.ShopComponents.Buttons;
 using Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
@@ -8,6 +5,9 @@ using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 using Game.Scripts.MenuComponents.ShopComponents.Viewers;
 using Game.Scripts.MenuComponents.ShopComponents.Visitors;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Scripts.MenuComponents.ShopComponents
 {

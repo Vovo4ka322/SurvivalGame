@@ -1,9 +1,9 @@
-using System;
-using System.Collections;
-using UnityEngine;
 using Game.Scripts.Interfaces;
 using Game.Scripts.PlayerComponents.Animations;
 using Game.Scripts.PlayerComponents;
+using System;
+using System.Collections;
+using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility
 {

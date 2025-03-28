@@ -1,5 +1,4 @@
-﻿using Game.Scripts.MenuComponents.ShopComponents.Visitors;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.SkinComponents
 {

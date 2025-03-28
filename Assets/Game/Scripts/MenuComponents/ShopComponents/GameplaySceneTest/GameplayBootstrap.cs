@@ -1,8 +1,7 @@
-using System;
-using UnityEngine;
 using Cinemachine;
 using Game.Scripts.DifficultyLevel;
 using Game.Scripts.EnemyComponents;
+using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.MenuComponents.Panels;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
@@ -10,8 +9,9 @@ using Game.Scripts.MusicComponents;
 using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.PoolComponents;
+using System;
+using UnityEngine;
 using YG;
-using Game.Scripts.EnemyComponents.EnemySettings;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 {

@@ -1,9 +1,9 @@
-using System;
-using UnityEngine;
 using Game.Scripts.AbilityComponents.ArcherAbilities;
 using Game.Scripts.AbilityComponents.MeleeAbilities;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.PlayerComponents.Controller;
+using System;
+using UnityEngine;
 
 namespace Game.Scripts.MenuComponents
 {
