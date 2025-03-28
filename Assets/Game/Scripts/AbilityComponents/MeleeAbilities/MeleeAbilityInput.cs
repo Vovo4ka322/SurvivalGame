@@ -6,7 +6,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 {
     public class MeleeAbilityInput : MonoBehaviour
     {
-        [SerializeField] private MeleeAbilityUser _meleeAbilityUser;
+        [SerializeField] private MeleePlayerAbility _meleeAbilityUser;
         [SerializeField] private PlayerController _playerController;
 
         private Button _firstAbilityUse;

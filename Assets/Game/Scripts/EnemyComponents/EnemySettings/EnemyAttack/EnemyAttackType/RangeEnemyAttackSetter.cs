@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType
 {
     [Serializable]
-    public class RangedEnemyAttackType : BaseEnemyAttackType
+    public class RangeEnemyAttackSetter : EnemyAttackTypeSetter
     {
         [SerializeField] private EffectData _reloadEffect;
         [SerializeField] private BaseProjectile _projectilePrefab;

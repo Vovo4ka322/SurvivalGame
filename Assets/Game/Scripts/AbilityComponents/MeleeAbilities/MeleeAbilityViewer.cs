@@ -22,7 +22,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
         [SerializeField] private List<Image> _secondAbilityImprovements;
         [SerializeField] private List<Image> _thirdAbilityImprovements;
 
-        private MeleeAbilityUser _meleeAbilityUser;
+        private MeleePlayerAbility _meleeAbilityUser;
         private IconUtility _iconUtility;
 
         private int _bladeFuryImprovement = 0;
@@ -40,7 +40,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
         public void Init(Player player)
         {
-            _meleeAbilityUser = player.GetComponentInChildren<MeleeAbilityUser>();
+            _meleeAbilityUser = player.GetComponentInChildren<MeleePlayerAbility>();
             _iconUtility = new IconUtility();
 
             SubscribeToEvents();

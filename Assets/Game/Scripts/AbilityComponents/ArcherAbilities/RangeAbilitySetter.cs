@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {
-    [CreateAssetMenu(fileName = "AbilityData", menuName = "Ability/Range/AbilityData")]
-    public class RangeAbilityData : ScriptableObject
+    [CreateAssetMenu(fileName = "RangeAbilitySetter", menuName = "Ability/Range/AbilityData")]
+    public class RangeAbilitySetter : ScriptableObject
     {
         [field: SerializeField] public MultiShot MultiShotScriptableObject { get; private set; }
         [field: SerializeField] public InsatiableHunger InsatiableHungerScriptableObject { get; private set; }

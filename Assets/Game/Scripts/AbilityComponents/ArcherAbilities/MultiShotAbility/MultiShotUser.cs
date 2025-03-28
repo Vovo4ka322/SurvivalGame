@@ -24,7 +24,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility
 
         public float CooldownTime { get; private set; }
 
-        public void Upgrade(MultiShot multiShot)
+        public void ReplaceValue(MultiShot multiShot)
         {
             _multiShotScriptableObject = multiShot;
         }

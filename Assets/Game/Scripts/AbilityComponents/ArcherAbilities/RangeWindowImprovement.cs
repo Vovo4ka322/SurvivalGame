@@ -15,7 +15,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
         [SerializeField] private UpgradeTextDisplay _insatiableHungerVampirismDisplay;
         [SerializeField] private UpgradeTextDisplay _blurChanceEvasionDisplay;
 
-        private ArcherAbilityUser _archerAbilityUser;
+        private RangePlayerAbility _archerAbilityUser;
 
         private void OnDisable()
         {
@@ -27,7 +27,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 
         public void Init(Player player)
         {
-            _archerAbilityUser = player.GetComponentInChildren<ArcherAbilityUser>();
+            _archerAbilityUser = player.GetComponentInChildren<RangePlayerAbility>();
 
             SubscribeToEvents();
         }
@@ -59,7 +59,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 
             if (currentMultiShot == 0)
             {
-                RangeAbilityData nextDataMultiShot = _archerAbilityUser.GetAbilityDataForLevel(1);
+                RangeAbilitySetter nextDataMultiShot = _archerAbilityUser.GetAbilityDataForLevel(1);
 
                 if (nextDataMultiShot != null)
                 {
@@ -70,8 +70,8 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             }
             else
             {
-                RangeAbilityData currentDataMultiShot = _archerAbilityUser.GetAbilityDataForLevel(currentMultiShot);
-                RangeAbilityData nextDataMultiShot = _archerAbilityUser.GetAbilityDataForLevel(currentMultiShot + 1);
+                RangeAbilitySetter currentDataMultiShot = _archerAbilityUser.GetAbilityDataForLevel(currentMultiShot);
+                RangeAbilitySetter nextDataMultiShot = _archerAbilityUser.GetAbilityDataForLevel(currentMultiShot + 1);
 
                 if (currentDataMultiShot != null)
                 {
@@ -93,7 +93,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 
             if (currentInsatiableHunger == 0)
             {
-                RangeAbilityData nextDataInsatiableHunger = _archerAbilityUser.GetAbilityDataForLevel(1);
+                RangeAbilitySetter nextDataInsatiableHunger = _archerAbilityUser.GetAbilityDataForLevel(1);
 
                 if (nextDataInsatiableHunger != null)
                 {
@@ -104,8 +104,8 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             }
             else
             {
-                RangeAbilityData currentDataInsatiableHunger = _archerAbilityUser.GetAbilityDataForLevel(currentInsatiableHunger);
-                RangeAbilityData nextDataInsatiableHunger = _archerAbilityUser.GetAbilityDataForLevel(currentInsatiableHunger + 1);
+                RangeAbilitySetter currentDataInsatiableHunger = _archerAbilityUser.GetAbilityDataForLevel(currentInsatiableHunger);
+                RangeAbilitySetter nextDataInsatiableHunger = _archerAbilityUser.GetAbilityDataForLevel(currentInsatiableHunger + 1);
 
                 if (currentDataInsatiableHunger != null)
                 {
@@ -127,7 +127,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 
             if (currentBlur == 0)
             {
-                RangeAbilityData nextDataBlur = _archerAbilityUser.GetAbilityDataForLevel(1);
+                RangeAbilitySetter nextDataBlur = _archerAbilityUser.GetAbilityDataForLevel(1);
 
                 if (nextDataBlur != null)
                 {
@@ -136,8 +136,8 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             }
             else
             {
-                RangeAbilityData currentDataBlur = _archerAbilityUser.GetAbilityDataForLevel(currentBlur);
-                RangeAbilityData nextDataBlur = _archerAbilityUser.GetAbilityDataForLevel(currentBlur + 1);
+                RangeAbilitySetter currentDataBlur = _archerAbilityUser.GetAbilityDataForLevel(currentBlur);
+                RangeAbilitySetter nextDataBlur = _archerAbilityUser.GetAbilityDataForLevel(currentBlur + 1);
 
                 if (currentDataBlur != null)
                 {

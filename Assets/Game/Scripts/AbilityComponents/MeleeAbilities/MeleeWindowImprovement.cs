@@ -14,7 +14,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
         [SerializeField] private UpgradeTextDisplay _bloodLustMovementSpeedDisplay;
         [SerializeField] private UpgradeTextDisplay _bloodLustAttackSpeedDisplay;
 
-        private MeleeAbilityUser _meleeAbilityUser;
+        private MeleePlayerAbility _meleeAbilityUser;
 
         private void OnDisable()
         {
@@ -26,7 +26,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
         public void Init(Player player)
         {
-            _meleeAbilityUser = player.GetComponentInChildren<MeleeAbilityUser>();
+            _meleeAbilityUser = player.GetComponentInChildren<MeleePlayerAbility>();
 
             SubscribeToEvents();
         }
@@ -58,7 +58,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
             if (currentBladeFury == 0)
             {
-                MeleeAbilityData nextDataBladeFury = _meleeAbilityUser.GetAbilityDataForLevel(1);
+                MeleeAbilitySetter nextDataBladeFury = _meleeAbilityUser.GetAbilityDataForLevel(1);
 
                 if (nextDataBladeFury != null)
                 {
@@ -68,8 +68,8 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             }
             else
             {
-                MeleeAbilityData currentDataBladeFury = _meleeAbilityUser.GetAbilityDataForLevel(currentBladeFury);
-                MeleeAbilityData nextDataBladeFury = _meleeAbilityUser.GetAbilityDataForLevel(currentBladeFury + 1);
+                MeleeAbilitySetter currentDataBladeFury = _meleeAbilityUser.GetAbilityDataForLevel(currentBladeFury);
+                MeleeAbilitySetter nextDataBladeFury = _meleeAbilityUser.GetAbilityDataForLevel(currentBladeFury + 1);
 
                 if (currentDataBladeFury != null)
                 {
@@ -87,7 +87,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
             if (currentBorrowedTime == 0)
             {
-                MeleeAbilityData nextDataBorrowedTime = _meleeAbilityUser.GetAbilityDataForLevel(1);
+                MeleeAbilitySetter nextDataBorrowedTime = _meleeAbilityUser.GetAbilityDataForLevel(1);
 
                 if (nextDataBorrowedTime != null)
                 {
@@ -97,8 +97,8 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             }
             else
             {
-                MeleeAbilityData currentDataBorrowedTime = _meleeAbilityUser.GetAbilityDataForLevel(currentBorrowedTime);
-                MeleeAbilityData nextDataBorrowedTime = _meleeAbilityUser.GetAbilityDataForLevel(currentBorrowedTime + 1);
+                MeleeAbilitySetter currentDataBorrowedTime = _meleeAbilityUser.GetAbilityDataForLevel(currentBorrowedTime);
+                MeleeAbilitySetter nextDataBorrowedTime = _meleeAbilityUser.GetAbilityDataForLevel(currentBorrowedTime + 1);
 
                 if (currentDataBorrowedTime != null)
                 {
@@ -116,7 +116,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
             if (currentBloodLust == 0)
             {
-                MeleeAbilityData nextDataBloodLust = _meleeAbilityUser.GetAbilityDataForLevel(1);
+                MeleeAbilitySetter nextDataBloodLust = _meleeAbilityUser.GetAbilityDataForLevel(1);
 
                 if (nextDataBloodLust != null)
                 {
@@ -126,8 +126,8 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             }
             else
             {
-                MeleeAbilityData currentDataBloodLust = _meleeAbilityUser.GetAbilityDataForLevel(currentBloodLust);
-                MeleeAbilityData nextDataBloodLust = _meleeAbilityUser.GetAbilityDataForLevel(currentBloodLust + 1);
+                MeleeAbilitySetter currentDataBloodLust = _meleeAbilityUser.GetAbilityDataForLevel(currentBloodLust);
+                MeleeAbilitySetter nextDataBloodLust = _meleeAbilityUser.GetAbilityDataForLevel(currentBloodLust + 1);
 
                 if (currentDataBloodLust != null)
                 {

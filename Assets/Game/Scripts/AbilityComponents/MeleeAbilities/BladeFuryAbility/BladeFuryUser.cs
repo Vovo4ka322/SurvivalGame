@@ -21,7 +21,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility
 
         public BladeFury BladeFury => _bladeFuryScriptableObject;
 
-        public void Upgrade(BladeFury bladeFury)
+        public void ReplaceValue(BladeFury bladeFury)
         {
             _bladeFuryScriptableObject = bladeFury;
         }

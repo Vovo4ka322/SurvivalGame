@@ -17,7 +17,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities.BorrowedTimeAbility
 
         public BorrowedTime BorrowedTime => _borrowedTimeScriptableObject;
 
-        public void Upgrade(BorrowedTime borrowedTime)
+        public void ReplaceValue(BorrowedTime borrowedTime)
         {
             _borrowedTimeScriptableObject = borrowedTime;
         }

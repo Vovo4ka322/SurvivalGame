@@ -5,7 +5,7 @@ using Game.Scripts.EnemyComponents.EnemySettings.Effects;
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType
 {
     [Serializable]
-    public class MeleeEnemyAttackType : BaseEnemyAttackType
+    public class MeleeEnemyAttackSetter : EnemyAttackTypeSetter
     {
         [SerializeField] private EffectData _attackEffect1;
         [SerializeField] private EffectData _attackEffect2;

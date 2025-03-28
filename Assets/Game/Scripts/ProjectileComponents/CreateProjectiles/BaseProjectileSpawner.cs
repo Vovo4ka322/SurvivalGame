@@ -65,12 +65,12 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
 
         private BaseProjectile GetPrefabFromEnemyData(EnemyData data)
         {
-            if (data.BaseAttackType is RangedEnemyAttackType ranged)
+            if (data.BaseAttackType is RangeEnemyAttackSetter ranged)
             {
                 return ranged.ProjectilePrefab;
             }
 
-            if (data.BaseAttackType is HybridEnemyAttackType hybrid)
+            if (data.BaseAttackType is HybridEnemyAttackSetter hybrid)
             {
                 return hybrid.ProjectilePrefab;
             }

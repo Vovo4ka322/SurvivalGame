@@ -10,7 +10,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
     {
         private readonly Enemy _enemy;
         private readonly EnemyAnimationState _animationState;
-        private readonly BaseEnemyAttackType _attackType;
+        private readonly EnemyAttackTypeSetter _attackType;
         private readonly Transform _enemyTransform;
         private readonly Player _player;
 
@@ -21,7 +21,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         private float _lastAttackTime;
         private float _lastRangedAttackTime = -Mathf.Infinity;
 
-        public EnemyAttack(EnemyAnimationState animationState, Transform enemyTransform, Player player, float attackCooldown, BaseEnemyAttackType attackType, int attackVariants)
+        public EnemyAttack(EnemyAnimationState animationState, Transform enemyTransform, Player player, float attackCooldown, EnemyAttackTypeSetter attackType, int attackVariants)
         {
             _animationState = animationState;
             _enemyTransform = enemyTransform;
@@ -63,7 +63,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 }
                 else if (_attackType.Type == AttackType.Hybrid)
                 {
-                    HybridEnemyAttackType hybridType = (HybridEnemyAttackType)_attackType;
+                    EnemyAttackType.HybridEnemyAttackSetter hybridType = (EnemyAttackType.HybridEnemyAttackSetter)_attackType;
 
                     if (sqrDistance <= hybridType.MeleeRange * hybridType.MeleeRange)
                     {
@@ -84,7 +84,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 }
                 else if (_attackType.Type == AttackType.Boss)
                 {
-                    BossEnemyAttackType bossType = (BossEnemyAttackType)_attackType;
+                    EnemyAttackType.BossAttackSetter bossType = (EnemyAttackType.BossAttackSetter)_attackType;
 
                     if (sqrDistance <= bossType.MeleeRange * bossType.MeleeRange)
                     {
@@ -96,7 +96,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
             }
         }
 
-        public bool IsHybridProjectileReady(HybridEnemyAttackType hybridType, float distance)
+        public bool IsHybridProjectileReady(EnemyAttackType.HybridEnemyAttackSetter hybridType, float distance)
         {
             if (_attackType.Type == AttackType.Hybrid)
             {

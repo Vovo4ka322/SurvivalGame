@@ -17,7 +17,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities.InsatiableHungerAbility
 
         public InsatiableHunger InsatiableHunger => _insatiableHunger;
 
-        public void Upgrade(InsatiableHunger insatiableHunger)
+        public void ReplaceValue(InsatiableHunger insatiableHunger)
         {
             _insatiableHunger = insatiableHunger;
         }

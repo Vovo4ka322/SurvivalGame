@@ -6,7 +6,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {
     public class RangeAbilityInput : MonoBehaviour
     {
-        [SerializeField] private ArcherAbilityUser _rangeAbilityUser;
+        [SerializeField] private RangePlayerAbility _rangeAbilityUser;
         [SerializeField] private PlayerController _playerController;
 
         private Button _firstAbilityUse;

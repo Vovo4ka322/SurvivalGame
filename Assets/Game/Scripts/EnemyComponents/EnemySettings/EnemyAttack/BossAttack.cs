@@ -6,9 +6,9 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
     public class BossAttack : IAttackBehavior
     {
         private readonly Enemy _enemy;
-        private readonly BossEnemyAttackType _bossAttackType;
+        private readonly EnemyAttackType.BossAttackSetter _bossAttackType;
 
-        public BossAttack(Enemy enemy, BossEnemyAttackType bossAttackType)
+        public BossAttack(Enemy enemy, EnemyAttackType.BossAttackSetter bossAttackType)
         {
             _enemy = enemy;
             _bossAttackType = bossAttackType;

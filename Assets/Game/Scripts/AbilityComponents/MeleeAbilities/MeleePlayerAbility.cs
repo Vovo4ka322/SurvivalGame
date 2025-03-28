@@ -8,22 +8,22 @@ using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities
 {
-    public class MeleeAbilityUser : MonoBehaviour, IAbilityUser
+    public class MeleePlayerAbility : MonoBehaviour, IAbilityUser
     {
         [SerializeField] private MeleePlayer _player;
         [SerializeField] private BorrowedTimeUser _borrowedTime;
         [SerializeField] private BladeFuryUser _bladeFury;
 
         [Header("Level of abilities")]
-        [SerializeField] private MeleeAbilityData _abilityDataFirstLevel;
-        [SerializeField] private MeleeAbilityData _abilityDataSecondLevel;
-        [SerializeField] private MeleeAbilityData _abilityDataThirdLevel;
+        [SerializeField] private MeleeAbilitySetter _abilityDataFirstLevel;
+        [SerializeField] private MeleeAbilitySetter _abilityDataSecondLevel;
+        [SerializeField] private MeleeAbilitySetter _abilityDataThirdLevel;
 
         private int _counterForBorrowedTime = 0;
         private int _counterForBladeFury = 0;
         private int _counterForBloodLust = 0;
 
-        private Dictionary<int, MeleeAbilityData> _abilitiesDatas;
+        private Dictionary<int, MeleeAbilitySetter> _abilitiesDatas;
 
         private readonly int _firstLevel = 1;
         private readonly int _secondLevel = 2;
@@ -48,7 +48,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
         private void Awake()
         {
-            _abilitiesDatas = new Dictionary<int, MeleeAbilityData>
+            _abilitiesDatas = new Dictionary<int, MeleeAbilitySetter>
             {
                 { _firstLevel, _abilityDataFirstLevel },
                 { _secondLevel, _abilityDataSecondLevel },
@@ -66,7 +66,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             _player.Level.LevelChanged -= OpenUpgraderWindow;
         }
 
-        public MeleeAbilityData GetAbilityDataForLevel(int level)
+        public MeleeAbilitySetter GetAbilityDataForLevel(int level)
         {
             if (_abilitiesDatas.ContainsKey(level))
             {
@@ -130,7 +130,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             if (IsMaxValue(_counterForBladeFury))
                 return;
 
-            _bladeFury.Upgrade(_abilitiesDatas[level].BladeFuryScriptableObject);
+            _bladeFury.ReplaceValue(_abilitiesDatas[level].BladeFuryScriptableObject);
             _counterForBladeFury++;
             BladeFuryUpgraded?.Invoke();
         }
@@ -140,7 +140,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             if (IsMaxValue(_counterForBorrowedTime))
                 return;
 
-            _borrowedTime.Upgrade(_abilitiesDatas[level].BorrowedTimeScriptableObject);
+            _borrowedTime.ReplaceValue(_abilitiesDatas[level].BorrowedTimeScriptableObject);
             _counterForBorrowedTime++;
             BorrowedTimeIUpgraded?.Invoke();
         }
@@ -150,7 +150,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             if (IsMaxValue(_counterForBloodLust))
                 return;
 
-            _player.UpgradeCharacteristikByBloodlust(_abilitiesDatas[level].BloodLustScriptableObject);
+            _player.ReplaceCharacteristikByBloodlust(_abilitiesDatas[level].BloodLustScriptableObject);
             _counterForBloodLust++;
             BloodLustIUpgraded?.Invoke();
         }

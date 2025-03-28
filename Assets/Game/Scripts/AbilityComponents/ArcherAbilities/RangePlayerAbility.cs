@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {
-    public class ArcherAbilityUser : MonoBehaviour, IAbilityUser
+    public class RangePlayerAbility : MonoBehaviour, IAbilityUser
     {
         [SerializeField] private RangePlayer _player;
         [SerializeField] private Bow _bow;
@@ -17,15 +17,15 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
         [SerializeField] private InsatiableHungerUser _insatiableHunger;
 
         [Header("Level of abilities")]
-        [SerializeField] private RangeAbilityData _abilityDataFirstLevel;
-        [SerializeField] private RangeAbilityData _abilityDataSecondLevel;
-        [SerializeField] private RangeAbilityData _abilityDataThirdLevel;
+        [SerializeField] private RangeAbilitySetter _abilityDataFirstLevel;
+        [SerializeField] private RangeAbilitySetter _abilityDataSecondLevel;
+        [SerializeField] private RangeAbilitySetter _abilityDataThirdLevel;
 
         private int _counterForInsatiableHunger = 0;
         private int _counterForMultiShot = 0;
         private int _counterForBlur = 0;
 
-        private Dictionary<int, RangeAbilityData> _abilitiesDatas;
+        private Dictionary<int, RangeAbilitySetter> _abilitiesDatas;
 
         private readonly int _firstLevel = 1;
         private readonly int _secondLevel = 2;
@@ -48,7 +48,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 
         private void Awake()
         {
-            _abilitiesDatas = new Dictionary<int, RangeAbilityData>
+            _abilitiesDatas = new Dictionary<int, RangeAbilitySetter>
             {
                 { _firstLevel, _abilityDataFirstLevel },
                 { _secondLevel, _abilityDataSecondLevel },
@@ -68,7 +68,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             _player.Level.LevelChanged -= OpenUpgraderWindow;
         }
 
-        public RangeAbilityData GetAbilityDataForLevel(int level)
+        public RangeAbilitySetter GetAbilityDataForLevel(int level)
         {
             if (_abilitiesDatas.ContainsKey(level))
             {
@@ -132,7 +132,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             if (IsMaxValue(_counterForMultiShot))
                 return;
 
-            _multiShot.Upgrade(_abilitiesDatas[level].MultiShotScriptableObject);
+            _multiShot.ReplaceValue(_abilitiesDatas[level].MultiShotScriptableObject);
             _counterForMultiShot++;
             MultiShotUpgraded?.Invoke();
         }
@@ -142,7 +142,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             if (IsMaxValue(_counterForInsatiableHunger))
                 return;
 
-            _insatiableHunger.Upgrade(_abilitiesDatas[level].InsatiableHungerScriptableObject);
+            _insatiableHunger.ReplaceValue(_abilitiesDatas[level].InsatiableHungerScriptableObject);
             _counterForInsatiableHunger++;
             InsatiableHungerUpgraded?.Invoke();
         }

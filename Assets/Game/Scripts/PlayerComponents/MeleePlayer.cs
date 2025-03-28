@@ -41,7 +41,7 @@ namespace Game.Scripts.PlayerComponents
                 Destroy(gameObject);
         }
 
-        public void UpgradeCharacteristikByBloodlust(BloodLust bloodlust)
+        public void ReplaceCharacteristikByBloodlust(BloodLust bloodlust)
         {
             PlayerMovement.ChangeMoveSpeed(bloodlust.MovementSpeed);
             _attackSpeed = bloodlust.AttackSpeed + GeneralAttackSpeed;

@@ -62,71 +62,71 @@ namespace Game.Scripts.BuffComponents
 
         public void UpgradeHealth()
         {
-            if (IsTrue(_counterForHealthBuff, _firstUpgrade))
+            if (IsValueEqual(_counterForHealthBuff, _firstUpgrade))
                 InitHealth(_firstLevel);
-            else if (IsTrue(_counterForHealthBuff, _secondUpgrade))
+            else if (IsValueEqual(_counterForHealthBuff, _secondUpgrade))
                 InitHealth(_secondLevel);
-            else if (IsTrue(_counterForHealthBuff, _thirdUpgrade))
+            else if (IsValueEqual(_counterForHealthBuff, _thirdUpgrade))
                 InitHealth(_thirdLevel);
-            else if (IsTrue(_counterForHealthBuff, _fourthUpgrade))
+            else if (IsValueEqual(_counterForHealthBuff, _fourthUpgrade))
                 InitHealth(_fourthLevel);
-            else if (IsTrue(_counterForHealthBuff, _fifthUpgrade))
+            else if (IsValueEqual(_counterForHealthBuff, _fifthUpgrade))
                 InitHealth(_fifthLevel);
         }
 
         public void UpgradeArmor()
         {
-            if (IsTrue(_counterForArmorBuff, _firstUpgrade))
+            if (IsValueEqual(_counterForArmorBuff, _firstUpgrade))
                 InitArmor(_firstLevel);
-            else if (IsTrue(_counterForArmorBuff, _secondUpgrade))
+            else if (IsValueEqual(_counterForArmorBuff, _secondUpgrade))
                 InitArmor(_secondLevel);
-            else if (IsTrue(_counterForArmorBuff, _thirdUpgrade))
+            else if (IsValueEqual(_counterForArmorBuff, _thirdUpgrade))
                 InitArmor(_thirdLevel);
-            else if (IsTrue(_counterForArmorBuff, _fourthUpgrade))
+            else if (IsValueEqual(_counterForArmorBuff, _fourthUpgrade))
                 InitArmor(_fourthLevel);
-            else if (IsTrue(_counterForArmorBuff, _fifthUpgrade))
+            else if (IsValueEqual(_counterForArmorBuff, _fifthUpgrade))
                 InitArmor(_fifthLevel);
         }
 
         public void UpgradeDamage()
         {
-            if (IsTrue(_counterForDamageBuff, _firstUpgrade))
+            if (IsValueEqual(_counterForDamageBuff, _firstUpgrade))
                 InitDamage(_firstLevel);
-            else if (IsTrue(_counterForDamageBuff, _secondUpgrade))
+            else if (IsValueEqual(_counterForDamageBuff, _secondUpgrade))
                 InitDamage(_secondLevel);
-            else if (IsTrue(_counterForDamageBuff, _thirdUpgrade))
+            else if (IsValueEqual(_counterForDamageBuff, _thirdUpgrade))
                 InitDamage(_thirdLevel);
-            else if (IsTrue(_counterForDamageBuff, _fourthUpgrade))
+            else if (IsValueEqual(_counterForDamageBuff, _fourthUpgrade))
                 InitDamage(_fourthLevel);
-            else if (IsTrue(_counterForDamageBuff, _fifthUpgrade))
+            else if (IsValueEqual(_counterForDamageBuff, _fifthUpgrade))
                 InitDamage(_fifthLevel);
         }
 
         public void UpgradeAttackSpeed()
         {
-            if (IsTrue(_counterForAttackSpeedBuff, _firstUpgrade))
+            if (IsValueEqual(_counterForAttackSpeedBuff, _firstUpgrade))
                 InitAttackSpeed(_firstLevel);
-            else if (IsTrue(_counterForAttackSpeedBuff, _secondUpgrade))
+            else if (IsValueEqual(_counterForAttackSpeedBuff, _secondUpgrade))
                 InitAttackSpeed(_secondLevel);
-            else if (IsTrue(_counterForAttackSpeedBuff, _thirdUpgrade))
+            else if (IsValueEqual(_counterForAttackSpeedBuff, _thirdUpgrade))
                 InitAttackSpeed(_thirdLevel);
-            else if (IsTrue(_counterForAttackSpeedBuff, _fourthUpgrade))
+            else if (IsValueEqual(_counterForAttackSpeedBuff, _fourthUpgrade))
                 InitAttackSpeed(_fourthLevel);
-            else if (IsTrue(_counterForAttackSpeedBuff, _fifthUpgrade))
+            else if (IsValueEqual(_counterForAttackSpeedBuff, _fifthUpgrade))
                 InitAttackSpeed(_fifthLevel);
         }
 
         public void UpgradeMovementSpeed()
         {
-            if (IsTrue(_counterForMovementSpeedBuff, _firstUpgrade))
+            if (IsValueEqual(_counterForMovementSpeedBuff, _firstUpgrade))
                 InitMovementSpeed(_firstLevel);
-            else if (IsTrue(_counterForMovementSpeedBuff, _secondUpgrade))
+            else if (IsValueEqual(_counterForMovementSpeedBuff, _secondUpgrade))
                 InitMovementSpeed(_secondLevel);
-            else if (IsTrue(_counterForMovementSpeedBuff, _thirdUpgrade))
+            else if (IsValueEqual(_counterForMovementSpeedBuff, _thirdUpgrade))
                 InitMovementSpeed(_thirdLevel);
-            else if (IsTrue(_counterForMovementSpeedBuff, _fourthUpgrade))
+            else if (IsValueEqual(_counterForMovementSpeedBuff, _fourthUpgrade))
                 InitMovementSpeed(_fourthLevel);
-            else if (IsTrue(_counterForMovementSpeedBuff, _fifthUpgrade))
+            else if (IsValueEqual(_counterForMovementSpeedBuff, _fifthUpgrade))
                 InitMovementSpeed(_fifthLevel);
         }
 
@@ -192,6 +192,6 @@ namespace Game.Scripts.BuffComponents
 
         private bool IsMaxValue(int value) => value == _maxValue;
 
-        private bool IsTrue(int counter, int numberOfUpgrade) => counter == numberOfUpgrade;
+        private bool IsValueEqual(int counter, int numberOfUpgrade) => counter == numberOfUpgrade;
     }
 }

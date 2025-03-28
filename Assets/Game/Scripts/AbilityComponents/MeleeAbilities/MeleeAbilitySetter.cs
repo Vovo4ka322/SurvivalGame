@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities
 {
-    [CreateAssetMenu(fileName = "AbilityData", menuName = "Ability/Melee/AbilityData")]
-    public class MeleeAbilityData : ScriptableObject
+    [CreateAssetMenu(fileName = "MeleeAbilitySetter", menuName = "Ability/Melee/AbilityData")]
+    public class MeleeAbilitySetter : ScriptableObject
     {
         [field: SerializeField] public BorrowedTime BorrowedTimeScriptableObject { get; private set; }
         [field: SerializeField] public BladeFury BladeFuryScriptableObject { get; private set; }

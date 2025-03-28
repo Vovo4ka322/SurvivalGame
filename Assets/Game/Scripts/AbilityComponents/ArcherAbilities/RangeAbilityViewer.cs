@@ -22,7 +22,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
         [SerializeField] private List<Image> _secondAbilityImprovements;
         [SerializeField] private List<Image> _thirdAbilityImprovements;
 
-        private ArcherAbilityUser _archerAbilityUser;
+        private RangePlayerAbility _archerAbilityUser;
         private IconUtility _iconUtility;
 
         private int _multiShotImprovement = 0;
@@ -40,7 +40,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 
         public void Init(Player player)
         {
-            _archerAbilityUser = player.GetComponentInChildren<ArcherAbilityUser>();
+            _archerAbilityUser = player.GetComponentInChildren<RangePlayerAbility>();
             _iconUtility = new IconUtility();
 
             SubscribeToEvents();
