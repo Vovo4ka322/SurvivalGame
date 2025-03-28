@@ -11,8 +11,8 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility
     {
         [SerializeField] private NewArrowSpawner _arrowSpawner;
         [SerializeField] private Bow _bow;
-        [SerializeField] private Cooldown _cooldown;
 
+        private Cooldown _cooldown;
         private MultiShot _multiShotScriptableObject;
         private float _lastUsedTimer = 0;
         private bool _canUseFirstTime = true;
@@ -23,6 +23,11 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility
         public MultiShot MultiShot => _multiShotScriptableObject;
 
         public float CooldownTime { get; private set; }
+
+        private void Awake()
+        {
+            _cooldown = new Cooldown();
+        }
 
         public void ReplaceValue(MultiShot multiShot)
         {
@@ -48,7 +53,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility
                     {
                         CalculateArrowFlight(value);
 
-                        _cooldown.LaunchTimer(_multiShotScriptableObject.Delay);
+                        _cooldown.StartTimer(_multiShotScriptableObject.Delay);
                     }
 
                     duration += Time.deltaTime;

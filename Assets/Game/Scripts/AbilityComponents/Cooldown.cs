@@ -3,15 +3,11 @@ using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents
 {
-    public class Cooldown : MonoBehaviour
+    public class Cooldown
     {
-        public bool CanUse { get; private set; }
+        public bool CanUse { get; private set; } = true;
 
-        private void Awake() => CanUse = true;
-
-        public void LaunchTimer(float time) => StartCoroutine(StartTimer(time));
-
-        private IEnumerator StartTimer(float time)
+        public IEnumerator StartTimer(float time)
         {
             WaitForSeconds duration = new (time);
 
