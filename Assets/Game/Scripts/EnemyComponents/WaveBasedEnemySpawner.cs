@@ -1,11 +1,11 @@
-using System.Collections;
-using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.HealthComponents;
 using Game.Scripts.MusicComponents;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
+using System.Collections;
+using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents
 {

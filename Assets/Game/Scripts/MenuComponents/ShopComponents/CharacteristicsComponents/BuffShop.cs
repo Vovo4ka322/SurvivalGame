@@ -1,13 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.UI;
 using Game.Scripts.BuffComponents;
 using Game.Scripts.MenuComponents.ShopComponents.Buttons;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 {
@@ -37,7 +37,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             { BuffType.Armor, 0 },
             { BuffType.Damage, 0 },
             { BuffType.AttackSpeed, 0 },
-            { BuffType.MovementSpeed, 0 }
+            { BuffType.MovementSpeed, 0 },
         };
 
         public event Action HealthUpgraded;

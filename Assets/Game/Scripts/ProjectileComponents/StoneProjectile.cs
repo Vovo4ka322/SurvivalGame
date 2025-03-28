@@ -1,6 +1,6 @@
-using UnityEngine;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
+using UnityEngine;
 
 namespace Game.Scripts.ProjectileComponents
 {

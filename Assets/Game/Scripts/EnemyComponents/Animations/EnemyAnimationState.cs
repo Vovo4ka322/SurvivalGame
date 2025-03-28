@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.Interfaces;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.Animations
 {
@@ -22,20 +22,20 @@ namespace Game.Scripts.EnemyComponents.Animations
             _enemyType = enemyType;
             _parameterChecker = new AnimatorParameterChecker(_animator);
 
-            _attackMappings = new()
+            _attackMappings = new ()
             {
                 {
                     EnemyType.Easy, new Dictionary<int, int>
                     {
                         { 1, AnimationDataParamsEnemy.Params.AttackVar1 },
-                        { 2, AnimationDataParamsEnemy.Params.AttackVar2 }
+                        { 2, AnimationDataParamsEnemy.Params.AttackVar2 },
                     }
                 },
                 {
                     EnemyType.Medium, new Dictionary<int, int>
                     {
                         { 1, AnimationDataParamsEnemy.Params.AttackVar1 },
-                        { 2, AnimationDataParamsEnemy.Params.AttackVar2 }
+                        { 2, AnimationDataParamsEnemy.Params.AttackVar2 },
                     }
                 },
                 {
@@ -45,7 +45,7 @@ namespace Game.Scripts.EnemyComponents.Animations
                         { 2, AnimationDataParamsEnemy.Params.AttackVar2 },
                         { 3, AnimationDataParamsEnemy.Params.AttackAroundVariant1 },
                         { 4, AnimationDataParamsEnemy.Params.AttackAroundVariant2 },
-                        { 5, AnimationDataParamsEnemy.Params.AttackProjectile }
+                        { 5, AnimationDataParamsEnemy.Params.AttackProjectile },
                     }
                 },
                 {
@@ -54,9 +54,9 @@ namespace Game.Scripts.EnemyComponents.Animations
                         { 1, AnimationDataParamsEnemy.Params.AttackFrontVariant1 },
                         { 2, AnimationDataParamsEnemy.Params.AttackFrontVariant2 },
                         { 3, AnimationDataParamsEnemy.Params.AttackGround },
-                        { 4, AnimationDataParamsEnemy.Params.AttackJump }
+                        { 4, AnimationDataParamsEnemy.Params.AttackJump },
                     }
-                }
+                },
             };
         }
 

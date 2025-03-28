@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 using Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility;
 using Game.Scripts.AbilityComponents.MeleeAbilities.BorrowedTimeAbility;
 using Game.Scripts.Interfaces;
 using Game.Scripts.PlayerComponents;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities
 {
@@ -52,7 +52,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             {
                 { _firstLevel, _abilityDataFirstLevel },
                 { _secondLevel, _abilityDataSecondLevel },
-                { _thirdLevel, _abilityDataThirdLevel }
+                { _thirdLevel, _abilityDataThirdLevel },
             };
         }
 

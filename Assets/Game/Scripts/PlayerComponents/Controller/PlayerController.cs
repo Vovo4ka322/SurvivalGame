@@ -16,7 +16,7 @@ namespace Game.Scripts.PlayerComponents.Controller
 
         private void Awake()
         {
-            _playerInput = new();
+            _playerInput = new ();
         }
 
         private void OnEnable()

@@ -1,7 +1,7 @@
-using UnityEngine;
 using Game.Scripts.AbilityComponents.ArcherAbilities.BlurAbility;
 using Game.Scripts.AbilityComponents.ArcherAbilities.InsatiableHungerAbility;
 using Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility;
+using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {

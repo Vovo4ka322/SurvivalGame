@@ -1,5 +1,5 @@
-using UnityEngine;
 using Game.Scripts.PlayerComponents.Controller;
+using UnityEngine;
 using YG;
 
 namespace Game.Scripts.MenuComponents

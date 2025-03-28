@@ -1,8 +1,8 @@
-using UnityEngine;
 using Game.Scripts.EnemyComponents.Animations;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.PlayerComponents;
+using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 {

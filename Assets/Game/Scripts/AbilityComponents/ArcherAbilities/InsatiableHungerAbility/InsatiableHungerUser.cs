@@ -1,7 +1,7 @@
+using Game.Scripts.Interfaces;
 using System;
 using System.Collections;
 using UnityEngine;
-using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities.InsatiableHungerAbility
 {

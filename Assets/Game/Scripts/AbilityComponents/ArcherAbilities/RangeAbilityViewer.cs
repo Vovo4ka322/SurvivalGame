@@ -1,8 +1,8 @@
+using Game.Scripts.MenuComponents;
+using Game.Scripts.PlayerComponents;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Scripts.MenuComponents;
-using Game.Scripts.PlayerComponents;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {

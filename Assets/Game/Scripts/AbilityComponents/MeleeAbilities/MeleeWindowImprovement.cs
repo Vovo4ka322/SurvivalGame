@@ -1,6 +1,6 @@
+using Game.Scripts.PlayerComponents;
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Scripts.PlayerComponents;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities
 {

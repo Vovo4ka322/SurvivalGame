@@ -1,5 +1,5 @@
-using UnityEngine;
 using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
+using UnityEngine;
 
 namespace Game.Scripts.ProjectileComponents
 {

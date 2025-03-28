@@ -1,7 +1,7 @@
-using System.Collections;
-using UnityEngine;
 using Game.Scripts.EnemyComponents;
 using Game.Scripts.Interfaces;
+using System.Collections;
+using UnityEngine;
 
 namespace Game.Scripts.Weapons.RangedWeapon
 {

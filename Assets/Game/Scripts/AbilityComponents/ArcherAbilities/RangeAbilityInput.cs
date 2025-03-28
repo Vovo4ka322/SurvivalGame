@@ -1,6 +1,6 @@
+using Game.Scripts.PlayerComponents.Controller;
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Scripts.PlayerComponents.Controller;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {

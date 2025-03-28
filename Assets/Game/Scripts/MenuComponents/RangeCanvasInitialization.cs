@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using Game.Scripts.AbilityComponents.ArcherAbilities;
+﻿using Game.Scripts.AbilityComponents.ArcherAbilities;
 using Game.Scripts.PlayerComponents;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Scripts.MenuComponents
 {
@@ -16,8 +16,12 @@ namespace Game.Scripts.MenuComponents
 
         public void InitButtons(Player player)
         {
-            player.GetComponentInChildren<RangeAbilityInput>().Init(_firstMeleeAbilityUse, _secondMeleeAbilityUse,
-                _firstMeleeUpgradeButton, _secondMeleeUpgradeButton, _thirdMeleeUpgradeButton);
+            player.GetComponentInChildren<RangeAbilityInput>().Init(
+                _firstMeleeAbilityUse,
+                _secondMeleeAbilityUse,
+                _firstMeleeUpgradeButton,
+                _secondMeleeUpgradeButton,
+                _thirdMeleeUpgradeButton);
         }
     }
 }

@@ -1,10 +1,10 @@
+using Game.Scripts.MenuComponents.ShopComponents.Viewers;
+using Game.Scripts.MenuComponents.ShopComponents.Visitors;
+using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Game.Scripts.MenuComponents.ShopComponents.Viewers;
-using Game.Scripts.MenuComponents.ShopComponents.Visitors;
-using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 
 namespace Game.Scripts.MenuComponents.ShopComponents
 {

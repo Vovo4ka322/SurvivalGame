@@ -1,12 +1,12 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Game.Scripts.EnemyComponents
 {

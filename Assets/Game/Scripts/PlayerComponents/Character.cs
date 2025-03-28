@@ -1,5 +1,5 @@
-using UnityEngine;
 using Game.Scripts.HealthComponents;
+using UnityEngine;
 
 namespace Game.Scripts.PlayerComponents
 {

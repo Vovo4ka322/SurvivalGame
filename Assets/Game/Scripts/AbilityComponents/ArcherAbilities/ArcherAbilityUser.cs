@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 using Game.Scripts.AbilityComponents.ArcherAbilities.InsatiableHungerAbility;
 using Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility;
 using Game.Scripts.Interfaces;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.Weapons.RangedWeapon;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {
@@ -52,7 +52,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             {
                 { _firstLevel, _abilityDataFirstLevel },
                 { _secondLevel, _abilityDataSecondLevel },
-                { _thirdLevel, _abilityDataThirdLevel }
+                { _thirdLevel, _abilityDataThirdLevel },
             };
 
             _multiShot.SetHandler(_player);

@@ -4,6 +4,6 @@
     {
         Easy,
         Medium,
-        Hard
+        Hard,
     }
 }

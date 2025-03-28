@@ -1,7 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
 using Game.Scripts.EnemyComponents;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Scripts.HealthComponents
 {
