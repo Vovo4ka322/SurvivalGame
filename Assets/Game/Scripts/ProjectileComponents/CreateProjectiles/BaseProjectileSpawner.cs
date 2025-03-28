@@ -17,11 +17,11 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
         private EnemyData _enemyData;
         private PoolManager _poolManager;
         private BaseProjectile _cachedProjectilePrefab;
-        private ProjectilePool<BaseProjectile> _cachedProjectilePool;
+        private BasePool<BaseProjectile> _cachedProjectilePool;
 
         public Player Player => _player;
         public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
-        public ProjectilePool<BaseProjectile> ProjectilePool => _poolManager.GetProjectilePool(GetPrefabFromEnemyData(_enemyData));
+        public BasePool<BaseProjectile> ProjectilePool => _poolManager.GetProjectilePool(GetPrefabFromEnemyData(_enemyData));
 
         public void Initialize(EnemyData data, Player player, PoolManager poolManager)
         {

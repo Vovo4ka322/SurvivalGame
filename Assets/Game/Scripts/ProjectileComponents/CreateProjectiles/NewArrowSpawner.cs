@@ -10,7 +10,7 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
         [SerializeField] private Arrow _arrowPrefab;
         [SerializeField] private PoolSettings _poolSettings;
 
-        private ArrowPool _arrowPool;
+        private BasePool<Arrow> _arrowPool;
 
         private void Awake()
         {

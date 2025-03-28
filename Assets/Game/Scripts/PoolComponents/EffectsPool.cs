@@ -19,7 +19,7 @@ namespace Game.Scripts.PoolComponents
             {
                 if (prefab != null && !_effectPools.ContainsKey(prefab))
                 {
-                    var pool = new ParticleSystemPool<ParticleSystem>(prefab, _poolSettings, _container);
+                    var pool = new BasePool<ParticleSystem>(prefab, _poolSettings, _container);
                     _effectPools.Add(prefab, pool);
                 }
             }
