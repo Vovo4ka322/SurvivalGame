@@ -11,8 +11,8 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
     public class MeleePlayerAbility : MonoBehaviour, IAbilityUser
     {
         [SerializeField] private MeleePlayer _player;
-        [SerializeField] private BorrowedTimeUser _borrowedTime;
-        [SerializeField] private BladeFuryUser _bladeFury;
+        [SerializeField] private BorrowedTimeAbility.BorrowedTimeAbility _borrowedTime;
+        [SerializeField] private BladeFuryAbility.BladeFuryAbility _bladeFury;
 
         [Header("Level of abilities")]
         [SerializeField] private MeleeAbilitySetter _abilityDataFirstLevel;
@@ -39,9 +39,9 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
 
         public int MaxValue { get; private set; } = 3;
 
-        public BorrowedTimeUser BorrowedTime => _borrowedTime;
+        public BorrowedTimeAbility.BorrowedTimeAbility BorrowedTime => _borrowedTime;
 
-        public BladeFuryUser BladeFury => _bladeFury;
+        public BladeFuryAbility.BladeFuryAbility BladeFury => _bladeFury;
         public int CurrentBladeFuryLevel => _counterForBladeFury;
         public int CurrentBorrowedTimeLevel => _counterForBorrowedTime;
         public int CurrentBloodLustLevel => _counterForBloodLust;

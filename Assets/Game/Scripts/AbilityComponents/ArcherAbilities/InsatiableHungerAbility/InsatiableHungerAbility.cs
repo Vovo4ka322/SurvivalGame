@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities.InsatiableHungerAbility
 {
-    public class InsatiableHungerUser : MonoBehaviour
+    public class InsatiableHungerAbility : MonoBehaviour
     {
         private InsatiableHunger _insatiableHunger;
         private float _lastUsedTimer = 0;

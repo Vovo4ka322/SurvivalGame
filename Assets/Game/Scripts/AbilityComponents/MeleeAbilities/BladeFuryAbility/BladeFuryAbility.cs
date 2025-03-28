@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility
 {
-    public class BladeFuryUser : MonoBehaviour, ICooldownable
+    public class BladeFuryAbility : MonoBehaviour, ICooldownable
     {
         [SerializeField] private AnimatorStatePlayer _animator;
 

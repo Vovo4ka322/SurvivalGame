@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility
 {
-    public class MultiShotUser : MonoBehaviour, ICooldownable
+    public class MultiShotAbility : MonoBehaviour, ICooldownable
     {
         [SerializeField] private NewArrowSpawner _arrowSpawner;
         [SerializeField] private Bow _bow;

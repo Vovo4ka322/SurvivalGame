@@ -13,8 +13,8 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
     {
         [SerializeField] private RangePlayer _player;
         [SerializeField] private Bow _bow;
-        [SerializeField] private MultiShotUser _multiShot;
-        [SerializeField] private InsatiableHungerUser _insatiableHunger;
+        [SerializeField] private MultiShotAbility.MultiShotAbility _multiShot;
+        [SerializeField] private InsatiableHungerAbility.InsatiableHungerAbility _insatiableHunger;
 
         [Header("Level of abilities")]
         [SerializeField] private RangeAbilitySetter _abilityDataFirstLevel;
@@ -40,8 +40,8 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
         public event Action BlurUpgraded;
 
         public int MaxValue { get; private set; } = 3;
-        public MultiShotUser MultiShotUser => _multiShot;
-        public InsatiableHungerUser InsatiableHunger => _insatiableHunger;
+        public MultiShotAbility.MultiShotAbility MultiShotUser => _multiShot;
+        public InsatiableHungerAbility.InsatiableHungerAbility InsatiableHunger => _insatiableHunger;
         public int CurrentMultiShotLevel => _counterForMultiShot;
         public int CurrentInsatiableHunger => _counterForInsatiableHunger;
         public int CurrentBlurLevel => _counterForBlur;

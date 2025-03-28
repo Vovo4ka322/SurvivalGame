@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities.BorrowedTimeAbility
 {
-    public class BorrowedTimeUser : MonoBehaviour, ICooldownable
+    public class BorrowedTimeAbility : MonoBehaviour, ICooldownable
     {
         private BorrowedTime _borrowedTimeScriptableObject;
         private float _lastUsedTimer = 0;
