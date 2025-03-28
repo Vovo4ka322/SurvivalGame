@@ -6,6 +6,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
         Armor,
         Damage,
         AttackSpeed,
-        MovementSpeed
+        MovementSpeed,
     }
 }

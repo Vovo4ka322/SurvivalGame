@@ -37,7 +37,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
             { BuffType.Armor, 0 },
             { BuffType.Damage, 0 },
             { BuffType.AttackSpeed, 0 },
-            { BuffType.MovementSpeed, 0 }
+            { BuffType.MovementSpeed, 0 },
         };
 
         public event Action HealthUpgraded;

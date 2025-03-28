@@ -71,7 +71,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 
         private void Spawn()
         {
-            _wallet = new(_persistentPlayerData);
+            _wallet = new (_persistentPlayerData);
             _player = _generalPlayerFactory.Get(_persistentPlayerData.PlayerData.SelectedCharacterSkin, _characterSpawnPoint.position);
 
             if (_player == null)
@@ -97,9 +97,14 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
 
         private void InitPlayerCharacteristics()
         {
-            _player.Init(_persistentPlayerData.PlayerData.CalculationFinalValue.Health, _persistentPlayerData.PlayerData.CalculationFinalValue.Armor,
-            _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed,
-            _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, _wallet, _iDataSaver);
+            _player.Init(
+                _persistentPlayerData.PlayerData.CalculationFinalValue.Health, 
+                _persistentPlayerData.PlayerData.CalculationFinalValue.Armor, 
+                _persistentPlayerData.PlayerData.CalculationFinalValue.Damage, 
+                _persistentPlayerData.PlayerData.CalculationFinalValue.AttackSpeed, 
+                _persistentPlayerData.PlayerData.CalculationFinalValue.MovementSpeed, 
+                _wallet, 
+                _iDataSaver);
         }
 
         private void InitUserInterface()
@@ -144,19 +149,19 @@ namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
             EnemyData[] easyEnemies =
             {
                 _difficultlySetter.CurrentDifficultyLevel.EasyEnemyMeleeSkeleton,
-                _difficultlySetter.CurrentDifficultyLevel.EasyEnemyRangeGost
+                _difficultlySetter.CurrentDifficultyLevel.EasyEnemyRangeGost,
             };
 
             EnemyData[] mediumEnemies =
             {
                 _difficultlySetter.CurrentDifficultyLevel.MediumEnemyMeleeDemon,
-                _difficultlySetter.CurrentDifficultyLevel.MediumEnemyMeleeSkeleton
+                _difficultlySetter.CurrentDifficultyLevel.MediumEnemyMeleeSkeleton,
             };
 
             EnemyData[] hardEnemies =
             {
                 _difficultlySetter.CurrentDifficultyLevel.HardEnemyMeleeSkeleton,
-                _difficultlySetter.CurrentDifficultyLevel.HardEnemyMeleeGolem
+                _difficultlySetter.CurrentDifficultyLevel.HardEnemyMeleeGolem,
             };
 
             EnemyData boss = _difficultlySetter.CurrentDifficultyLevel.BossLevel1;

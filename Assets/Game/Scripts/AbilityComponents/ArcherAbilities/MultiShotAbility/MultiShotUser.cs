@@ -1,9 +1,9 @@
-using System;
-using System.Collections;
-using UnityEngine;
 using Game.Scripts.Interfaces;
 using Game.Scripts.ProjectileComponents.CreateProjectiles;
 using Game.Scripts.Weapons.RangedWeapon;
+using System;
+using System.Collections;
+using UnityEngine;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotAbility
 {

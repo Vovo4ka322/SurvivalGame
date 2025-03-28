@@ -52,7 +52,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             {
                 { _firstLevel, _abilityDataFirstLevel },
                 { _secondLevel, _abilityDataSecondLevel },
-                { _thirdLevel, _abilityDataThirdLevel }
+                { _thirdLevel, _abilityDataThirdLevel },
             };
         }
 
