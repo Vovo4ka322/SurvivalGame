@@ -16,7 +16,7 @@ namespace Game.Scripts.AbilityComponents
         
         protected abstract void UpdateUpgradeTexts();
         
-        protected void PressAbilityUpgrade()
+        protected void PressPlayerAbilityUpgrade()
         {
             UpdateUpgradeTexts();
             
@@ -25,7 +25,7 @@ namespace Game.Scripts.AbilityComponents
             _abilityPanel.gameObject.SetActive(true);
         }
         
-        protected void CloseAbilityPanel()
+        protected void ClosePlayerAbilityPanel()
         {
             Time.timeScale = 1f;
             

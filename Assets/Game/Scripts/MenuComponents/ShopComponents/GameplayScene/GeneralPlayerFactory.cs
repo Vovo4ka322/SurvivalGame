@@ -3,7 +3,7 @@ using UnityEngine;
 using Game.Scripts.MenuComponents.ShopComponents.SkinComponents;
 using Game.Scripts.PlayerComponents;
 
-namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
+namespace Game.Scripts.MenuComponents.ShopComponents.GameplayScene
 {
     [CreateAssetMenu(fileName = "CharactersFactory", menuName = "GameplayExample/CharactersFactory")]
     public class GeneralPlayerFactory : ScriptableObject

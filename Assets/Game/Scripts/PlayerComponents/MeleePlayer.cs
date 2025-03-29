@@ -1,5 +1,5 @@
 using UnityEngine;
-using Game.Scripts.AbilityComponents.MeleeAbilities.BloodLustAbility;
+using Game.Scripts.AbilityComponents.MeleeAbilities.BloodLustComponents;
 using Game.Scripts.Interfaces;
 using Game.Scripts.Weapons.MeleeWeapon;
 

@@ -5,6 +5,6 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType
         Melee,
         Ranged,
         Hybrid,
-        Boss
+        Boss,
     }
 }

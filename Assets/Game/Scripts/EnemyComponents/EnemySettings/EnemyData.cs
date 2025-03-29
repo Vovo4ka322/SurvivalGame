@@ -11,7 +11,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings
 
         [Header("Setting type")]
         [SerializeField] private EnemyType _enemyType;
-        [SerializeReference] private BaseEnemyAttackType _baseAttackType;
+        [SerializeReference] private EnemyAttackType _baseAttackType;
 
         [Header("Setting parameters")]
         [SerializeField] private float _maxHealth;
@@ -34,7 +34,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings
         public EffectData SpawnEffect => _spawnEffect;
         public EffectData HitEffect => _hitEffect;
         public EffectData DeathEffect => _deathEffect;
-        public BaseEnemyAttackType BaseAttackType => _baseAttackType;
+        public EnemyAttackType BaseAttackType => _baseAttackType;
         public float MoveSpeed => _moveSpeed;
         public float RotationSpeed => _rotationSpeed;
         public float Damage => _damage;

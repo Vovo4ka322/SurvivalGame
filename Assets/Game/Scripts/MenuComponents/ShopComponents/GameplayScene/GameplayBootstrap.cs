@@ -13,7 +13,7 @@ using Game.Scripts.PlayerComponents;
 using Game.Scripts.PoolComponents;
 using YG;
 
-namespace Game.Scripts.MenuComponents.ShopComponents.GameplaySceneTest
+namespace Game.Scripts.MenuComponents.ShopComponents.GameplayScene
 {
     public class GameplayBootstrap : MonoBehaviour
     {

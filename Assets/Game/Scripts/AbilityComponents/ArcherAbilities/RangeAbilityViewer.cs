@@ -4,7 +4,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {
     public class RangeAbilityViewer : AbilityViewerBase
     {
-        private ArcherAbilityUser _archerAbilityUser;
+        private RangePlayerAbility _rangePlayerAbility;
         
         private int _multiShotImprovement = 0;
         private int _insatiableHungerImprovement = 0;
@@ -12,52 +12,52 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
         
         private void OnDisable()
         {
-            _archerAbilityUser.MultiShotUser.Used -= OnMultiShotChanged;
-            _archerAbilityUser.InsatiableHunger.Used -= OnInsatiableHungerChanged;
-            _archerAbilityUser.MultiShotUpgraded -= OnMultiShotUpgraded;
-            _archerAbilityUser.InsatiableHungerUpgraded -= OnInsatiableHungerUpgraded;
-            _archerAbilityUser.BlurUpgraded -= OnBlurUpgraded;
+            _rangePlayerAbility.MultiShotUser.Used -= OnMultiShotChanged;
+            _rangePlayerAbility.InsatiableHunger.Used -= OnInsatiableHungerChanged;
+            _rangePlayerAbility.MultiShotUpgraded -= OnMultiShotUpgraded;
+            _rangePlayerAbility.InsatiableHungerUpgraded -= OnInsatiableHungerUpgraded;
+            _rangePlayerAbility.BlurUpgraded -= OnBlurUpgraded;
         }
         
         public void Init(Player player)
         {
-            _archerAbilityUser = player.GetComponentInChildren<ArcherAbilityUser>();
+            _rangePlayerAbility = player.GetComponentInChildren<RangePlayerAbility>();
             SetInitialIconsDimmed();
             SubscribeToEvents();
         }
         
         private void SubscribeToEvents()
         {
-            _archerAbilityUser.MultiShotUser.Used += OnMultiShotChanged;
-            _archerAbilityUser.InsatiableHunger.Used += OnInsatiableHungerChanged;
-            _archerAbilityUser.MultiShotUpgraded += OnMultiShotUpgraded;
-            _archerAbilityUser.InsatiableHungerUpgraded += OnInsatiableHungerUpgraded;
-            _archerAbilityUser.BlurUpgraded += OnBlurUpgraded;
+            _rangePlayerAbility.MultiShotUser.Used += OnMultiShotChanged;
+            _rangePlayerAbility.InsatiableHunger.Used += OnInsatiableHungerChanged;
+            _rangePlayerAbility.MultiShotUpgraded += OnMultiShotUpgraded;
+            _rangePlayerAbility.InsatiableHungerUpgraded += OnInsatiableHungerUpgraded;
+            _rangePlayerAbility.BlurUpgraded += OnBlurUpgraded;
         }
         
         private void OnMultiShotChanged(float value)
         {
-            Change(FirstAbilityCooldown, _archerAbilityUser.MultiShotUser.MultiShot.CooldownTime, value);
+            Change(FirstAbilityCooldown, _rangePlayerAbility.MultiShotUser.MultiShot.CooldownTime, value);
         }
         
         private void OnInsatiableHungerChanged(float value)
         {
-            Change(SecondAbilityCooldown, _archerAbilityUser.InsatiableHunger.InsatiableHunger.CooldownTime, value);
+            Change(SecondAbilityCooldown, _rangePlayerAbility.InsatiableHunger.InsatiableHunger.CooldownTime, value);
         }
         
         private void OnMultiShotUpgraded()
         {
-            Upgrade(FirstAbilityImprovements, ref _multiShotImprovement, _archerAbilityUser.MaxValue, FirstAbility);
+            Upgrade(FirstAbilityImprovements, ref _multiShotImprovement, _rangePlayerAbility.MaxValue, FirstAbility);
         }
         
         private void OnInsatiableHungerUpgraded()
         {
-            Upgrade(SecondAbilityImprovements, ref _insatiableHungerImprovement, _archerAbilityUser.MaxValue, SecondAbility);
+            Upgrade(SecondAbilityImprovements, ref _insatiableHungerImprovement, _rangePlayerAbility.MaxValue, SecondAbility);
         }
         
         private void OnBlurUpgraded()
         {
-            Upgrade(ThirdAbilityImprovements, ref _blurImprovement, _archerAbilityUser.MaxValue, ThirdAbility);
+            Upgrade(ThirdAbilityImprovements, ref _blurImprovement, _rangePlayerAbility.MaxValue, ThirdAbility);
         }
     }
 }

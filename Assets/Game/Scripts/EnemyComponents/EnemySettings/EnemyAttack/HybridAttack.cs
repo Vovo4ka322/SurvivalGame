@@ -6,9 +6,9 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
     public class HybridAttack : IAttackBehavior
     {
         private readonly Enemy _enemy;
-        private readonly HybridEnemyAttackType _hybridAttackType;
+        private readonly EnemyAttackType.HybridAttack _hybridAttackType;
 
-        public HybridAttack(Enemy enemy, HybridEnemyAttackType hybridAttackType)
+        public HybridAttack(Enemy enemy, EnemyAttackType.HybridAttack hybridAttackType)
         {
             _enemy = enemy;
             _hybridAttackType = hybridAttackType;

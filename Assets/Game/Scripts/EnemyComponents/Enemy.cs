@@ -127,7 +127,7 @@ namespace Game.Scripts.EnemyComponents
 
             _projectileSpawner?.Initialize(_data, _playerTransform, poolManager);
 
-            _enemyAttack = new EnemyAttack(AnimationAnimationState, transform, _playerTransform, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationState.AttackVariantsCount);
+            _enemyAttack = new EnemySettings.EnemyAttack.EnemyAttack(AnimationAnimationState, transform, _playerTransform, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationState.AttackVariantsCount);
             _attackExecutor = new EnemyAttackExecutor(this);
 
             _attackExecutor.SetAttackBehavior();

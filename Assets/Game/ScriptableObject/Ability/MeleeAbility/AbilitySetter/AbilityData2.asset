@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a0d3b2ae4498f418c00ee51d51fee5, type: 3}
+  m_Name: AbilityData2
+  m_EditorClassIdentifier: 
+  <BorrowedTimeScriptableObject>k__BackingField: {fileID: 11400000, guid: 029a95f8ecfe77149afa7b378328e053, type: 2}
+  <BladeFuryScriptableObject>k__BackingField: {fileID: 11400000, guid: 330a420058724c04d939de338da65f61, type: 2}
+  <BloodLustScriptableObject>k__BackingField: {fileID: 11400000, guid: 9488327d36a4c7342a0ee9d14421e2f8, type: 2}
