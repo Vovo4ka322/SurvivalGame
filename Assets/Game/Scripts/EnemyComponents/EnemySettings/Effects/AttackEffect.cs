@@ -22,7 +22,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
 
             for (int i = 0; i < attackEffects.Length; i++)
             {
-                _effects[i] = new SimpleEffect(coroutineRunner, attackEffects[i], pool);
+                _effects[i] = new BaseEffectsEnemy(coroutineRunner, attackEffects[i], pool);
             }
         }
 

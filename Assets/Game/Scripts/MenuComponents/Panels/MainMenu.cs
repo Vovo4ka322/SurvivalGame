@@ -1,6 +1,6 @@
-using Game.Scripts.MusicComponents;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.Scripts.MusicComponents;
 
 namespace Game.Scripts.MenuComponents.Panels
 {

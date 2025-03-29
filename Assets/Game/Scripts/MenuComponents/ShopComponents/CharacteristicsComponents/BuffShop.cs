@@ -1,13 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
 using Game.Scripts.BuffComponents;
 using Game.Scripts.MenuComponents.ShopComponents.Buttons;
 using Game.Scripts.MenuComponents.ShopComponents.Data;
 using Game.Scripts.MenuComponents.ShopComponents.WalletComponents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 {

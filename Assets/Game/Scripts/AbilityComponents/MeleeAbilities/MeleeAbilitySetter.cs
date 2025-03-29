@@ -1,7 +1,7 @@
-using Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryAbility;
-using Game.Scripts.AbilityComponents.MeleeAbilities.BloodLustAbility;
-using Game.Scripts.AbilityComponents.MeleeAbilities.BorrowedTimeAbility;
 using UnityEngine;
+using Game.Scripts.AbilityComponents.MeleeAbilities.BladeFuryComponents;
+using Game.Scripts.AbilityComponents.MeleeAbilities.BloodLustComponents;
+using Game.Scripts.AbilityComponents.MeleeAbilities.BorrowedTimeComponents;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities
 {

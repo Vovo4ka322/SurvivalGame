@@ -1,7 +1,7 @@
-using Game.Scripts.AbilityComponents.MeleeAbilities.BloodLustAbility;
+using UnityEngine;
+using Game.Scripts.AbilityComponents.MeleeAbilities.BloodLustComponents;
 using Game.Scripts.Interfaces;
 using Game.Scripts.Weapons.MeleeWeapon;
-using UnityEngine;
 
 namespace Game.Scripts.PlayerComponents
 {
@@ -9,12 +9,12 @@ namespace Game.Scripts.PlayerComponents
     {
         [SerializeField] private Sword _sword;
 
+        private readonly int _coefficient = 1;
+        
         private float _movementVisualizationCoefficient = 0.2f;
         private float _attackSpeed;
         private float _damage;
-
-        private readonly int _coefficient = 1;
-
+        
         public bool IsActiveState { get; private set; }
 
         private void Start()
@@ -41,10 +41,10 @@ namespace Game.Scripts.PlayerComponents
                 Destroy(gameObject);
         }
 
-        public void ReplaceCharacteristikByBloodlust(BloodLust bloodlust)
+        public void UpgradeCharacteristikByBloodLust(BloodLust bloodLust)
         {
-            PlayerMovement.ChangeMoveSpeed(bloodlust.MovementSpeed);
-            _attackSpeed = bloodlust.AttackSpeed + GeneralAttackSpeed;
+            PlayerMovement.ChangeMoveSpeed(bloodLust.MovementSpeed);
+            _attackSpeed = bloodLust.AttackSpeed + GeneralAttackSpeed;
 
             ChangeAttackAnimationSpeed(AnimatorState.Speed, _attackSpeed);
             ChangeMovementAnimationSpeed(AnimatorState.MovementSpeed, _movementVisualizationCoefficient + _coefficient);

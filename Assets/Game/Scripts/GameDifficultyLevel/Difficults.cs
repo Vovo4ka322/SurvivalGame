@@ -1,4 +1,4 @@
-﻿namespace Game.Scripts.DifficultyLevel
+﻿namespace Game.Scripts.GameDifficultyLevel
 {
     public enum Difficults
     {

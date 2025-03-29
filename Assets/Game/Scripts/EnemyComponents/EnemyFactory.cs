@@ -21,7 +21,7 @@ namespace Game.Scripts.EnemyComponents
         private Transform _container;
         private int _activeEnemiesCount = 0;
 
-        private readonly Dictionary<EnemyData, EnemyPool> _enemyPools = new Dictionary<EnemyData, EnemyPool>();
+        private readonly Dictionary<EnemyData, BasePool<Enemy>> _enemyPools = new Dictionary<EnemyData, BasePool<Enemy>>();
         private readonly int _maxEnemiesInScene = 200;
 
         public event Action BossDead;
@@ -40,7 +40,7 @@ namespace Game.Scripts.EnemyComponents
             {
                 if (data != null && !_enemyPools.ContainsKey(data))
                 {
-                    EnemyPool pool = new EnemyPool(data.EnemyPrefab, poolSettings, container);
+                    BasePool<Enemy> pool = new BasePool<Enemy>(data.EnemyPrefab, poolSettings, container);
                     _enemyPools.Add(data, pool);
                 }
             }
@@ -48,7 +48,7 @@ namespace Game.Scripts.EnemyComponents
 
         public Enemy SpawnEnemy(EnemyData enemyData, Vector3 position, Quaternion rotation, Player player)
         {
-            EnemyPool pool;
+            BasePool<Enemy> pool;
 
             if (enemyData == null || !CanSpawnMore)
             {
@@ -57,7 +57,7 @@ namespace Game.Scripts.EnemyComponents
 
             if (!_enemyPools.TryGetValue(enemyData, out pool))
             {
-                pool = new EnemyPool(enemyData.EnemyPrefab, _poolSettings, _container);
+                pool = new BasePool<Enemy>(enemyData.EnemyPrefab, _poolSettings, _container);
                 _enemyPools.Add(enemyData, pool);
             }
 
@@ -112,7 +112,7 @@ namespace Game.Scripts.EnemyComponents
                 _activeEnemiesCount = 0;
             }
 
-            if (_enemyPools.TryGetValue(enemy.Data, out EnemyPool pool))
+            if (_enemyPools.TryGetValue(enemy.Data, out BasePool<Enemy> pool))
             {
                 pool.Release(enemy);
                 enemy.TurnOffAgent();

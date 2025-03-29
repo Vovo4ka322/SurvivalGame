@@ -1,7 +1,7 @@
+using UnityEngine;
 using Game.Scripts.Interfaces;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.Weapons.RangedWeapon;
-using UnityEngine;
 
 namespace Game.Scripts.ProjectileComponents.CreateProjectiles
 {
@@ -10,7 +10,7 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
         [SerializeField] private Arrow _arrowPrefab;
         [SerializeField] private PoolSettings _poolSettings;
 
-        private ArrowPool _arrowPool;
+        private BasePool<Arrow> _arrowPool;
 
         private void Awake()
         {

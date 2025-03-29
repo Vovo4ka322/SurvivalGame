@@ -1,10 +1,10 @@
+using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.ProjectileComponents.CollisionComponents;
 using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
-using UnityEngine;
 
 namespace Game.Scripts.ProjectileComponents.CreateProjectiles
 {
@@ -17,11 +17,11 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
         private EnemyData _enemyData;
         private PoolManager _poolManager;
         private BaseProjectile _cachedProjectilePrefab;
-        private ProjectilePool<BaseProjectile> _cachedProjectilePool;
+        private BasePool<BaseProjectile> _cachedProjectilePool;
 
         public Player Player => _player;
         public Transform ProjectileSpawnPoint => _projectileSpawnPoint;
-        public ProjectilePool<BaseProjectile> ProjectilePool => _poolManager.GetProjectilePool(GetPrefabFromEnemyData(_enemyData));
+        public BasePool<BaseProjectile> ProjectilePool => _poolManager.GetProjectilePool(GetPrefabFromEnemyData(_enemyData));
 
         public void Initialize(EnemyData data, Player player, PoolManager poolManager)
         {

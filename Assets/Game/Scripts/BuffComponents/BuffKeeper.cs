@@ -1,4 +1,5 @@
 using UnityEngine;
+using Game.Scripts.BuffComponents.BuffVariants;
 
 namespace Game.Scripts.BuffComponents
 {

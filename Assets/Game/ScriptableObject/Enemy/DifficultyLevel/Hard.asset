@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hard
   m_EditorClassIdentifier: 
   <EasyEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: 6ff2b31230ea66144ac486193086a0e2, type: 2}
-  <EasyEnemyRangeGost>k__BackingField: {fileID: 11400000, guid: c139b028f2bad2641865e64006edaf5e, type: 2}
+  <EasyEnemyRangeGhost>k__BackingField: {fileID: 11400000, guid: e1717c300aa12b74f942eaa676977d1a, type: 2}
   <MediumEnemyMeleeDemon>k__BackingField: {fileID: 11400000, guid: 48635aa34cac89043b02222c0d4b73d7, type: 2}
   <MediumEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: 6280febbf7719194c874980428bb025f, type: 2}
   <HardEnemyMeleeGolem>k__BackingField: {fileID: 11400000, guid: 13359f89133bab047830c23e5937b075, type: 2}

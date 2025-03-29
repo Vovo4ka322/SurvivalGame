@@ -1,5 +1,5 @@
-using Game.Scripts.MenuComponents.ShopComponents.Common;
 using UnityEngine;
+using Game.Scripts.MenuComponents.ShopComponents.Common;
 
 namespace Game.Scripts.MenuComponents.ShopComponents.SkinComponents
 {

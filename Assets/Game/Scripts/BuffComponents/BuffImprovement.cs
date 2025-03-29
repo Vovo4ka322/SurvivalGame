@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Scripts.BuffComponents.BuffVariants;
 
 namespace Game.Scripts.BuffComponents
 {
@@ -21,16 +23,12 @@ namespace Game.Scripts.BuffComponents
         private int _counterForAttackSpeedBuff;
 
         private readonly int _maxValue = 5;
+        
         private readonly int _firstLevel = 1;
         private readonly int _secondLevel = 2;
         private readonly int _thirdLevel = 3;
         private readonly int _fourthLevel = 4;
         private readonly int _fifthLevel = 5;
-        private readonly int _firstUpgrade = 0;
-        private readonly int _secondUpgrade = 1;
-        private readonly int _thirdUpgrade = 2;
-        private readonly int _fourthUpgrade = 3;
-        private readonly int _fifthUpgrade = 4;
 
         public HealthBuff HealthBuff { get; private set; }
         public ArmorBuff ArmorBuff { get; private set; }
@@ -59,139 +57,52 @@ namespace Game.Scripts.BuffComponents
         public void InitAttackSpeedLevel(int attackSpeedLevel) => _counterForAttackSpeedBuff = attackSpeedLevel;
 
         public void InitMovementSpeedLevel(int movementSpeedLevel) => _counterForMovementSpeedBuff = movementSpeedLevel;
-
-        public void UpgradeHealth()
+        
+        public void UpgradeHealth() => UpgradeBuff(ref _counterForHealthBuff, InitHealth);
+        
+        public void UpgradeArmor() => UpgradeBuff(ref _counterForArmorBuff, InitArmor);
+        
+        public void UpgradeDamage() => UpgradeBuff(ref _counterForDamageBuff, InitDamage);
+        
+        public void UpgradeAttackSpeed() => UpgradeBuff(ref _counterForAttackSpeedBuff, InitAttackSpeed);
+        
+        public void UpgradeMovementSpeed() => UpgradeBuff(ref _counterForMovementSpeedBuff, InitMovementSpeed);
+        
+        private void UpgradeBuff(ref int counter, Action<int> initAction)
         {
-            if (IsValueEqual(_counterForHealthBuff, _firstUpgrade))
-                InitHealth(_firstLevel);
-            else if (IsValueEqual(_counterForHealthBuff, _secondUpgrade))
-                InitHealth(_secondLevel);
-            else if (IsValueEqual(_counterForHealthBuff, _thirdUpgrade))
-                InitHealth(_thirdLevel);
-            else if (IsValueEqual(_counterForHealthBuff, _fourthUpgrade))
-                InitHealth(_fourthLevel);
-            else if (IsValueEqual(_counterForHealthBuff, _fifthUpgrade))
-                InitHealth(_fifthLevel);
+            if (counter >= _maxValue)
+                return;
+
+            int level = counter + 1;
+            
+            initAction(level);
+            
+            counter++;
         }
-
-        public void UpgradeArmor()
+        
+        private void InitHealth(int level)
         {
-            if (IsValueEqual(_counterForArmorBuff, _firstUpgrade))
-                InitArmor(_firstLevel);
-            else if (IsValueEqual(_counterForArmorBuff, _secondUpgrade))
-                InitArmor(_secondLevel);
-            else if (IsValueEqual(_counterForArmorBuff, _thirdUpgrade))
-                InitArmor(_thirdLevel);
-            else if (IsValueEqual(_counterForArmorBuff, _fourthUpgrade))
-                InitArmor(_fourthLevel);
-            else if (IsValueEqual(_counterForArmorBuff, _fifthUpgrade))
-                InitArmor(_fifthLevel);
-        }
-
-        public void UpgradeDamage()
-        {
-            if (IsValueEqual(_counterForDamageBuff, _firstUpgrade))
-                InitDamage(_firstLevel);
-            else if (IsValueEqual(_counterForDamageBuff, _secondUpgrade))
-                InitDamage(_secondLevel);
-            else if (IsValueEqual(_counterForDamageBuff, _thirdUpgrade))
-                InitDamage(_thirdLevel);
-            else if (IsValueEqual(_counterForDamageBuff, _fourthUpgrade))
-                InitDamage(_fourthLevel);
-            else if (IsValueEqual(_counterForDamageBuff, _fifthUpgrade))
-                InitDamage(_fifthLevel);
-        }
-
-        public void UpgradeAttackSpeed()
-        {
-            if (IsValueEqual(_counterForAttackSpeedBuff, _firstUpgrade))
-                InitAttackSpeed(_firstLevel);
-            else if (IsValueEqual(_counterForAttackSpeedBuff, _secondUpgrade))
-                InitAttackSpeed(_secondLevel);
-            else if (IsValueEqual(_counterForAttackSpeedBuff, _thirdUpgrade))
-                InitAttackSpeed(_thirdLevel);
-            else if (IsValueEqual(_counterForAttackSpeedBuff, _fourthUpgrade))
-                InitAttackSpeed(_fourthLevel);
-            else if (IsValueEqual(_counterForAttackSpeedBuff, _fifthUpgrade))
-                InitAttackSpeed(_fifthLevel);
-        }
-
-        public void UpgradeMovementSpeed()
-        {
-            if (IsValueEqual(_counterForMovementSpeedBuff, _firstUpgrade))
-                InitMovementSpeed(_firstLevel);
-            else if (IsValueEqual(_counterForMovementSpeedBuff, _secondUpgrade))
-                InitMovementSpeed(_secondLevel);
-            else if (IsValueEqual(_counterForMovementSpeedBuff, _thirdUpgrade))
-                InitMovementSpeed(_thirdLevel);
-            else if (IsValueEqual(_counterForMovementSpeedBuff, _fourthUpgrade))
-                InitMovementSpeed(_fourthLevel);
-            else if (IsValueEqual(_counterForMovementSpeedBuff, _fifthUpgrade))
-                InitMovementSpeed(_fifthLevel);
+            HealthBuff = _buffKeepers[level].HealthBuffScriptableObject;
         }
 
         private void InitArmor(int level)
         {
-            if (IsMaxValue(_counterForArmorBuff))
-            {
-                return;
-            }
-
             ArmorBuff = _buffKeepers[level].ArmorBuffScriptableObject;
-
-            _counterForArmorBuff++;
         }
 
         private void InitDamage(int level)
         {
-            if (IsMaxValue(_counterForDamageBuff))
-            {
-                return;
-            }
-
             DamageBuff = _buffKeepers[level].DamageBuffScriptableObject;
-
-            _counterForDamageBuff++;
         }
 
         private void InitMovementSpeed(int level)
         {
-            if (IsMaxValue(_counterForMovementSpeedBuff))
-            {
-                return;
-            }
-
             MovementSpeedBuff = _buffKeepers[level].MovementSpeedBuffScriptableObject;
-
-            _counterForMovementSpeedBuff++;
         }
 
         private void InitAttackSpeed(int level)
         {
-            if (IsMaxValue(_counterForAttackSpeedBuff))
-            {
-                return;
-            }
-
             AttackSpeedBuff = _buffKeepers[level].AttackSpeedBuffScriptableObject;
-
-            _counterForAttackSpeedBuff++;
         }
-
-        private void InitHealth(int level)
-        {
-            if (IsMaxValue(_counterForHealthBuff))
-            {
-                return;
-            }
-
-            HealthBuff = _buffKeepers[level].HealthBuffScriptableObject;
-
-            _counterForHealthBuff++;
-        }
-
-        private bool IsMaxValue(int value) => value == _maxValue;
-
-        private bool IsValueEqual(int counter, int numberOfUpgrade) => counter == numberOfUpgrade;
     }
 }

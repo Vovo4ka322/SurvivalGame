@@ -1,6 +1,6 @@
+using UnityEngine;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.ProjectileComponents.ProjectileInterfaces;
-using UnityEngine;
 
 namespace Game.Scripts.ProjectileComponents
 {
@@ -8,7 +8,7 @@ namespace Game.Scripts.ProjectileComponents
     {
         private readonly IProjectileMovement _movement = new MagicMovement();
 
-        public override void Launch(Vector3 targetPosition, ProjectilePool<BaseProjectile> pool, IExplosionHandler explosionHandler)
+        public override void Launch(Vector3 targetPosition, BasePool<BaseProjectile> pool, IExplosionHandler explosionHandler)
         {
             Pool = pool;
             InitializeProjectile(_movement, pool, explosionHandler, ConfiguredLifetime);

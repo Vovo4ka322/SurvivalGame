@@ -1,11 +1,11 @@
-using Game.Scripts.EnemyComponents;
-using Game.Scripts.HealthComponents;
-using Game.Scripts.MusicComponents;
-using Game.Scripts.PlayerComponents;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Game.Scripts.EnemyComponents;
+using Game.Scripts.HealthComponents;
+using Game.Scripts.MusicComponents;
+using Game.Scripts.PlayerComponents;
 using YG;
 
 namespace Game.Scripts.MenuComponents.Panels

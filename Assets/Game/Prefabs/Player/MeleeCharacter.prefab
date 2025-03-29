@@ -1480,9 +1480,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6189254596397018554}
   - component: {fileID: 8186953799004668606}
-  - component: {fileID: 6490000133360846382}
-  - component: {fileID: 127803526166217667}
-  - component: {fileID: 3399433340245881281}
+  - component: {fileID: 8489990305992742674}
+  - component: {fileID: 208040476779547488}
+  - component: {fileID: 4940700829930294428}
   m_Layer: 8
   m_Name: Ability
   m_TagString: Untagged
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41650866bfe649844a003774237a30bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6490000133360846382
+--- !u!114 &8489990305992742674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1526,25 +1526,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5347861177593914333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e54493e053d50840ad7303bd1473315, type: 3}
+  m_Script: {fileID: 11500000, guid: 46c4438ee30743ada212941bb558a699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 9203238919027719053}
---- !u!114 &127803526166217667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5347861177593914333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41a9cc928cab7a489a43d20900de604, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _meleePlayerAbility: {fileID: 3399433340245881281}
+  _abilityUser: {fileID: 208040476779547488}
   _playerController: {fileID: 7519599698617544181}
---- !u!114 &3399433340245881281
+--- !u!114 &208040476779547488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1558,10 +1545,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 7584807702275972672}
   _borrowedTime: {fileID: 8186953799004668606}
-  _bladeFury: {fileID: 6490000133360846382}
+  _bladeFury: {fileID: 4940700829930294428}
   _abilityDataFirstLevel: {fileID: 11400000, guid: 914ebbcaf88879749a0327284030706e, type: 2}
   _abilityDataSecondLevel: {fileID: 11400000, guid: c2d0f8973b7ba7e48a9e2729409d6ab0, type: 2}
   _abilityDataThirdLevel: {fileID: 11400000, guid: c6d704aa222d2814d98cbc632079fddd, type: 2}
+--- !u!114 &4940700829930294428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5347861177593914333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07542c80c5a4b7a4ca31a40b0b0c620d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 9203238919027719053}
 --- !u!1 &5549891462825818031
 GameObject:
   m_ObjectHideFlags: 0
