@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fd276333c30fb44af47adbf81505e0, type: 3}
   m_Name: Easy
   m_EditorClassIdentifier: 
-  <EasyEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: 5ffe72dde9620984e87ab68c28350e9a, type: 2}
-  <EasyEnemyRangeGhost>k__BackingField: {fileID: 11400000, guid: e1717c300aa12b74f942eaa676977d1a, type: 2}
-  <MediumEnemyMeleeDemon>k__BackingField: {fileID: 11400000, guid: 5c724a62a1b59ac45aa89bbbd78282ed, type: 2}
-  <MediumEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: 2df1e0c4bb9b44a4fbb408f56bf86170, type: 2}
-  <HardEnemyMeleeGolem>k__BackingField: {fileID: 11400000, guid: bc489a21bd5614542932b4281ccf0979, type: 2}
-  <HardEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: e9f562e75a722dc41b39cd959a5b0da4, type: 2}
-  <BossLevel1>k__BackingField: {fileID: 11400000, guid: 19db961ba20f93f4daed4bff219fee67, type: 2}
+  <EasyEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: ef8ed4105c855954b863cdfb806af33f, type: 2}
+  <EasyEnemyRangeGhost>k__BackingField: {fileID: 11400000, guid: 16eaacb484d0e694f86b8733f1d90c49, type: 2}
+  <MediumEnemyMeleeDemon>k__BackingField: {fileID: 11400000, guid: bb105fccffb0ace4296aa63b6eef3a07, type: 2}
+  <MediumEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: 9230b81767b0b4141a68c8318b21a71f, type: 2}
+  <HardEnemyMeleeGolem>k__BackingField: {fileID: 11400000, guid: 371fa72bc8131e64e85c2af3af6cdc78, type: 2}
+  <HardEnemyMeleeSkeleton>k__BackingField: {fileID: 11400000, guid: 6e048a1459c04874cab67e7f314ddd76, type: 2}
+  <BossLevel1>k__BackingField: {fileID: 11400000, guid: 91a8b9ba745c6a0439d5dc1288b24433, type: 2}

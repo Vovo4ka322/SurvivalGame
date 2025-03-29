@@ -47,14 +47,14 @@ MonoBehaviour:
       type: {class: HybridAttack, ns: Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType, asm: Assembly-CSharp}
       data:
         _attackEffect1:
-          _effect: {fileID: 0}
-          _positionOffset: {x: 0, y: 0, z: 0}
-          _scale: {x: 0, y: 0, z: 0}
+          _effect: {fileID: 6606941648507250266, guid: f9f412af9cbae3047acd0d634dbc4356, type: 3}
+          _positionOffset: {x: 0.1, y: 0.05, z: 0.5}
+          _scale: {x: 1, y: 1, z: 1}
           _rotationOffset: {x: 0, y: 0, z: 0}
         _attackEffect2:
-          _effect: {fileID: 0}
-          _positionOffset: {x: 0, y: 0, z: 0}
-          _scale: {x: 0, y: 0, z: 0}
+          _effect: {fileID: 4181101764326029094, guid: 9430365d95bc1aa458a9168bf9c29c74, type: 3}
+          _positionOffset: {x: 0, y: 0.05, z: 0}
+          _scale: {x: 1, y: 1, z: 1}
           _rotationOffset: {x: 0, y: 0, z: 0}
         _attackEffect3:
           _effect: {fileID: 0}
@@ -62,11 +62,11 @@ MonoBehaviour:
           _scale: {x: 0, y: 0, z: 0}
           _rotationOffset: {x: 0, y: 0, z: 0}
         _reloadEffect:
-          _effect: {fileID: 0}
-          _positionOffset: {x: 0, y: 0, z: 0}
-          _scale: {x: 0, y: 0, z: 0}
-          _rotationOffset: {x: 0, y: 0, z: 0}
-        _projectilePrefab: {fileID: 0}
+          _effect: {fileID: 2204101624071371257, guid: 53abc05996cb14289a59144ec1141241, type: 3}
+          _positionOffset: {x: -0.15, y: 0.05, z: 0.6}
+          _scale: {x: 1, y: 1, z: 1}
+          _rotationOffset: {x: -90, y: 0, z: 0}
+        _projectilePrefab: {fileID: 2900653260687765090, guid: 61fee2faf5a7642b59c439a9bc4d6ff9, type: 3}
         _meleeRange: 3
         _rangedRange: 6
         _reloadTimeProjectile: 3

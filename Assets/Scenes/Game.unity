@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18336698, g: 0.22897737, b: 0.30611938, a: 1}
+  m_IndirectSpecularColor: {r: 0.18336734, g: 0.22897793, b: 0.30612063, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2915,15 +2915,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameSceneAudio: {fileID: 1571634972}
   _easyEnemyDatas:
-  - {fileID: 11400000, guid: 1d2a4914505bf4da4aed0586932c8386, type: 2}
-  - {fileID: 11400000, guid: 66fe777a9c42db8489800d8c69715a9d, type: 2}
+  - {fileID: 11400000, guid: bcfa348ea05533343a47037c6c88f82c, type: 2}
+  - {fileID: 11400000, guid: f354918a15ec46c49b3db4ba4bb240cf, type: 2}
   _mediumEnemyDatas:
-  - {fileID: 11400000, guid: 6278b9a0fd2da4be390c30cd44583b48, type: 2}
-  - {fileID: 11400000, guid: 3b11b2457a8ca8847b33c18fa55523f5, type: 2}
+  - {fileID: 11400000, guid: 5fb290282c99dfc48a45a5f0bd3b89a3, type: 2}
+  - {fileID: 11400000, guid: 95ca8c1ac0beb1744a1b937391787daf, type: 2}
   _hardEnemyDatas:
-  - {fileID: 11400000, guid: 4d99cb5518c20024cb65767693d64194, type: 2}
-  - {fileID: 11400000, guid: 71f11c4ebdd1040ff99808b01f117898, type: 2}
-  _bossEnemyData: {fileID: 11400000, guid: a8500f0cd850e4097a5a083f92b3c215, type: 2}
+  - {fileID: 11400000, guid: 0a789e9dd3d638e48864f88c2699dee8, type: 2}
+  - {fileID: 11400000, guid: d11e1e4f65a609443b20c6b67a4268f6, type: 2}
+  _bossEnemyData: {fileID: 11400000, guid: 3e50efd1da0c646488bea3a17ae3245e, type: 2}
   _spawnPoints:
   - {fileID: 1284350826}
   - {fileID: 1516492347}
