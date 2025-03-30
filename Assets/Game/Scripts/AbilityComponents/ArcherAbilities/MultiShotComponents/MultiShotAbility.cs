@@ -51,8 +51,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities.MultiShotComponents
                     while (_cooldown.CanUse)
                     {
                         CalculateArrowFlight(value);
-
-                        _cooldown.StartTimer(_multiShotScriptableObject.Delay);
+                        StartCoroutine(_cooldown.StartTimer(_multiShotScriptableObject.Delay));
                     }
 
                     duration += Time.deltaTime;
