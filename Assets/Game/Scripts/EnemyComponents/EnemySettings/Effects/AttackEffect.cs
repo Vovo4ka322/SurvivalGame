@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.PoolComponents;
@@ -9,20 +11,28 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
     {
         private readonly BaseEffectsEnemy[] _effects;
 
-        public AttackEffect(ICoroutineRunner coroutineRunner, EffectData[] attackEffects, EffectsPool pool)
+        public AttackEffect(ICoroutineRunner coroutineRunner, IEnumerable<EffectData> attackEffects, EffectsPool pool)
         {
-            if (attackEffects == null || attackEffects.Length == 0)
+            if (attackEffects == null)
             {
                 _effects = Array.Empty<BaseEffectsEnemy>();
 
                 return;
             }
 
-            _effects = new BaseEffectsEnemy[attackEffects.Length];
-
-            for (int i = 0; i < attackEffects.Length; i++)
+            List<EffectData> effectsList = attackEffects.ToList();
+            
+            if (effectsList.Count == 0)
             {
-                _effects[i] = new BaseEffectsEnemy(coroutineRunner, attackEffects[i], pool);
+                _effects = Array.Empty<BaseEffectsEnemy>();
+                return;
+            }
+            
+            _effects = new BaseEffectsEnemy[effectsList.Count];
+            
+            for (int i = 0; i < effectsList.Count; i++)
+            {
+                _effects[i] = new BaseEffectsEnemy(coroutineRunner, effectsList[i], pool);
             }
         }
 

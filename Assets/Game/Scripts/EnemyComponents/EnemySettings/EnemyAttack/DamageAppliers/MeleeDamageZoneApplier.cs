@@ -1,0 +1,50 @@
+using UnityEngine;
+using Game.Scripts.Interfaces;
+
+namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.DamageAppliers
+{
+    public class MeleeDamageZoneApplier : BaseDamageZoneApplier
+    {
+        [SerializeField] private Collider _damageCollider;
+
+        private bool _hasHit = false;
+
+        private void Awake()
+        {
+            _damageCollider.enabled = false;
+        }
+
+        public void EnableDamageCollider()
+        {
+            _hasHit = false;
+            _damageCollider.enabled = true;
+        }
+
+        public void DisableDamageCollider()
+        {
+            _damageCollider.enabled = false;
+
+            if (!_hasHit)
+            {
+                Enemy?.SoundCollection?.MeleeSoundEffects?.PlayMissHit();
+            }
+        }
+
+        public void DealDamageIfEnabled(Collider enemyCollider)
+        {
+            if (!_damageCollider.enabled)
+            {
+                return;
+            }
+
+            if (enemyCollider.TryGetComponent(out IDamagable _))
+            {
+                _hasHit = true;
+
+                DealDamageToCollider(enemyCollider);
+
+                Enemy?.SoundCollection?.MeleeSoundEffects?.PlayHit();
+            }
+        }
+    }
+}

@@ -195,7 +195,6 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
         private void OnBuyBuff(BuffType buffType)
         {
             int counter = _buffCounters[buffType];
-            int levelFromCalc = GetLevelFromCalc(buffType);
 
             if (IsFull(counter))
             {

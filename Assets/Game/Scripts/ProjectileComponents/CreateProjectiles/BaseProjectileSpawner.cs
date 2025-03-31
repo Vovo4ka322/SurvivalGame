@@ -1,6 +1,6 @@
 using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackData;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.ProjectileComponents.CollisionComponents;
@@ -65,12 +65,12 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
 
         private BaseProjectile GetPrefabFromEnemyData(EnemyData data)
         {
-            if (data.BaseAttackType is RangeAttack ranged)
+            if (data.BaseAttackData is RangeAttackData ranged)
             {
                 return ranged.ProjectilePrefab;
             }
 
-            if (data.BaseAttackType is HybridAttack hybrid)
+            if (data.BaseAttackData is HybridAttackData hybrid)
             {
                 return hybrid.ProjectilePrefab;
             }

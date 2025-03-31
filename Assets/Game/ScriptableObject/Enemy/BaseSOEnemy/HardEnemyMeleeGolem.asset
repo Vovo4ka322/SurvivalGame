@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: -3938159779145833789, guid: 93c0dd75ddc1c9f4dabe9f061ef19748, type: 3}
   _enemyType: 2
-  _baseAttackType:
-    rid: 7027752993772535808
+  _baseAttackData:
+    rid: 7027753583259942928
   _maxHealth: 1200
   _damage: 30
   _attackCooldown: 1
@@ -43,26 +43,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 7027752993772535808
-      type: {class: HybridEnemyAttackType, ns: Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType, asm: Assembly-CSharp}
+    - rid: 7027753583259942928
+      type: {class: HybridAttackData, ns: Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackData, asm: Assembly-CSharp}
       data:
-        _attackEffect1:
-          _effect: {fileID: 6606941648507250266, guid: f9f412af9cbae3047acd0d634dbc4356, type: 3}
+        _attackType: 2
+        _attackEffects:
+        - _effect: {fileID: 6606941648507250266, guid: f9f412af9cbae3047acd0d634dbc4356, type: 3}
           _positionOffset: {x: 0.1, y: 0.05, z: 0.5}
           _scale: {x: 1, y: 1, z: 1}
           _rotationOffset: {x: 0, y: 0, z: 0}
-        _attackEffect2:
-          _effect: {fileID: 4181101764326029094, guid: 9430365d95bc1aa458a9168bf9c29c74, type: 3}
+        - _effect: {fileID: 4181101764326029094, guid: 9430365d95bc1aa458a9168bf9c29c74, type: 3}
           _positionOffset: {x: 0, y: 0.05, z: 0}
           _scale: {x: 1, y: 1, z: 1}
           _rotationOffset: {x: 0, y: 0, z: 0}
-        _attackEffect3:
-          _effect: {fileID: 0}
-          _positionOffset: {x: 0, y: 0, z: 0}
-          _scale: {x: 0, y: 0, z: 0}
-          _rotationOffset: {x: 0, y: 0, z: 0}
-        _reloadEffect:
-          _effect: {fileID: 2204101624071371257, guid: 53abc05996cb14289a59144ec1141241, type: 3}
+        - _effect: {fileID: 2204101624071371257, guid: 53abc05996cb14289a59144ec1141241, type: 3}
           _positionOffset: {x: -0.15, y: 0.05, z: 0.6}
           _scale: {x: 1, y: 1, z: 1}
           _rotationOffset: {x: -90, y: 0, z: 0}

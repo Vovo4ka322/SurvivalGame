@@ -1,6 +1,6 @@
 using UnityEngine;
 using Game.Scripts.EnemyComponents;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackData;
 using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.ProjectileComponents.CollisionComponents
@@ -55,11 +55,11 @@ namespace Game.Scripts.ProjectileComponents.CollisionComponents
 
             if (_projectile.Owner != null && _projectile.Owner.SoundCollection != null)
             {
-                if (_projectile.Owner.Data.BaseAttackType.Type == AttackType.Ranged)
+                if (_projectile.Owner.Data.BaseAttackData.AttackType == AttackType.Ranged)
                 {
                     _projectile.Owner.SoundCollection.RangedSoundEffects.PlayProjectileCollision();
                 }
-                else if (_projectile.Owner.Data.BaseAttackType.Type == AttackType.Hybrid)
+                else if (_projectile.Owner.Data.BaseAttackData.AttackType == AttackType.Hybrid)
                 {
                     _projectile.Owner.SoundCollection.HybridSoundEffects.PlayProjectileCollision();
                 }
