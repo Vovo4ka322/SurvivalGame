@@ -8,14 +8,14 @@ using Game.Scripts.PlayerComponents;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities
 {
-    public class MeleePlayerAbility : AbilityUserBase<MeleeAbilitySetter>, IAbilityUser
+    public class MeleePlayerAbility : AbilityUserBase<MeleeAbilitySet>, IAbilityUser
     {
         [SerializeField] private MeleePlayer _player;
         [SerializeField] private BorrowedTimeAbility _borrowedTime;
         [SerializeField] private BladeFuryAbility _bladeFury;
-        [SerializeField] private MeleeAbilitySetter _abilityDataFirstLevel;
-        [SerializeField] private MeleeAbilitySetter _abilityDataSecondLevel;
-        [SerializeField] private MeleeAbilitySetter _abilityDataThirdLevel;
+        [SerializeField] private MeleeAbilitySet _abilityDataFirstLevel;
+        [SerializeField] private MeleeAbilitySet _abilityDataSecondLevel;
+        [SerializeField] private MeleeAbilitySet _abilityDataThirdLevel;
         
         private int _counterForBladeFury = 0;
         private int _counterForBorrowedTime = 0;
@@ -33,7 +33,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
         
         private void Awake()
         {
-            AbilitiesDatas = new Dictionary<int, MeleeAbilitySetter> { { FirstLevel, _abilityDataFirstLevel }, { SecondLevel, _abilityDataSecondLevel }, { ThirdLevel, _abilityDataThirdLevel }, };
+            AbilitiesDatas = new Dictionary<int, MeleeAbilitySet> { { FirstLevel, _abilityDataFirstLevel }, { SecondLevel, _abilityDataSecondLevel }, { ThirdLevel, _abilityDataThirdLevel }, };
         }
         
         private void OnEnable()

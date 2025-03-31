@@ -9,15 +9,15 @@ using Game.Scripts.Weapons.RangedWeapon;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {
-    public class RangePlayerAbility : AbilityUserBase<RangeAbilitySetter>, IAbilityUser
+    public class RangePlayerAbility : AbilityUserBase<RangeAbilitySet>, IAbilityUser
     {
         [SerializeField] private RangePlayer _player;
         [SerializeField] private Bow _bow;
         [SerializeField] private MultiShotAbility _multiShot;
         [SerializeField] private InsatiableHungerAbility _insatiableHunger;
-        [SerializeField] private RangeAbilitySetter _abilityDataFirstLevel;
-        [SerializeField] private RangeAbilitySetter _abilityDataSecondLevel;
-        [SerializeField] private RangeAbilitySetter _abilityDataThirdLevel;
+        [SerializeField] private RangeAbilitySet _abilityDataFirstLevel;
+        [SerializeField] private RangeAbilitySet _abilityDataSecondLevel;
+        [SerializeField] private RangeAbilitySet _abilityDataThirdLevel;
         
         private int _counterForMultiShot = 0;
         private int _counterForInsatiableHunger = 0;
@@ -36,7 +36,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
         
         private void Awake()
         {
-            AbilitiesDatas = new Dictionary<int, RangeAbilitySetter> { { FirstLevel, _abilityDataFirstLevel }, { SecondLevel, _abilityDataSecondLevel }, { ThirdLevel, _abilityDataThirdLevel }, };
+            AbilitiesDatas = new Dictionary<int, RangeAbilitySet> { { FirstLevel, _abilityDataFirstLevel }, { SecondLevel, _abilityDataSecondLevel }, { ThirdLevel, _abilityDataThirdLevel }, };
             
             _multiShot.SetHandler(_player);
         }

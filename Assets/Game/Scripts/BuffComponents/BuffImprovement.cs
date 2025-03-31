@@ -1,21 +1,15 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Game.Scripts.BuffComponents.BuffVariants;
 
 namespace Game.Scripts.BuffComponents
 {
     public class BuffImprovement : MonoBehaviour
     {
-        [Header("BuffKeeperLevel")]
-        [SerializeField] private BuffKeeper _buffKeeperFirstLevel;
-        [SerializeField] private BuffKeeper _buffKeeperSecondLevel;
-        [SerializeField] private BuffKeeper _buffKeeperThirdLevel;
-        [SerializeField] private BuffKeeper _buffKeeperFourthLevel;
-        [SerializeField] private BuffKeeper _buffKeeperFifthLevel;
+        [SerializeField] private List<BuffKeeper> _buffKeepersList;
 
         private Dictionary<int, BuffKeeper> _buffKeepers;
-
+        
         private int _counterForHealthBuff;
         private int _counterForArmorBuff;
         private int _counterForDamageBuff;
@@ -24,28 +18,23 @@ namespace Game.Scripts.BuffComponents
 
         private readonly int _maxValue = 5;
         
-        private readonly int _firstLevel = 1;
-        private readonly int _secondLevel = 2;
-        private readonly int _thirdLevel = 3;
-        private readonly int _fourthLevel = 4;
-        private readonly int _fifthLevel = 5;
-
-        public HealthBuff HealthBuff { get; private set; }
-        public ArmorBuff ArmorBuff { get; private set; }
-        public DamageBuff DamageBuff { get; private set; }
-        public MovementSpeedBuff MovementSpeedBuff { get; private set; }
-        public AttackSpeedBuff AttackSpeedBuff { get; private set; }
-
+        public Buff HealthBuff { get; private set; }
+        public Buff ArmorBuff { get; private set; }
+        public Buff DamageBuff { get; private set; }
+        public Buff MovementSpeedBuff { get; private set; }
+        public Buff AttackSpeedBuff { get; private set; }
+        
         private void Awake()
         {
-            _buffKeepers = new Dictionary<int, BuffKeeper>
+            _buffKeepers = new Dictionary<int, BuffKeeper>();
+            
+            foreach (BuffKeeper keeper in _buffKeepersList)
             {
-                { _firstLevel, _buffKeeperFirstLevel },
-                { _secondLevel, _buffKeeperSecondLevel },
-                { _thirdLevel, _buffKeeperThirdLevel },
-                { _fourthLevel, _buffKeeperFourthLevel },
-                { _fifthLevel, _buffKeeperFifthLevel },
-            };
+                if (!_buffKeepers.ContainsKey(keeper.Level))
+                {
+                    _buffKeepers.Add(keeper.Level, keeper);
+                }
+            }
         }
 
         public void InitHealthLevel(int healthLevel) => _counterForHealthBuff = healthLevel;
@@ -82,27 +71,27 @@ namespace Game.Scripts.BuffComponents
         
         private void InitHealth(int level)
         {
-            HealthBuff = _buffKeepers[level].HealthBuffScriptableObject;
+            HealthBuff = _buffKeepers[level].GetBuff(BuffType.Health);
         }
 
         private void InitArmor(int level)
         {
-            ArmorBuff = _buffKeepers[level].ArmorBuffScriptableObject;
+            ArmorBuff = _buffKeepers[level].GetBuff(BuffType.Armor);
         }
 
         private void InitDamage(int level)
         {
-            DamageBuff = _buffKeepers[level].DamageBuffScriptableObject;
+            DamageBuff = _buffKeepers[level].GetBuff(BuffType.Damage);
         }
 
         private void InitMovementSpeed(int level)
         {
-            MovementSpeedBuff = _buffKeepers[level].MovementSpeedBuffScriptableObject;
+            MovementSpeedBuff = _buffKeepers[level].GetBuff(BuffType.MovementSpeed);
         }
 
         private void InitAttackSpeed(int level)
         {
-            AttackSpeedBuff = _buffKeepers[level].AttackSpeedBuffScriptableObject;
+            AttackSpeedBuff = _buffKeepers[level].GetBuff(BuffType.AttackSpeed);
         }
     }
 }

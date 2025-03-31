@@ -4,8 +4,9 @@ using UnityEngine.AI;
 using Game.Scripts.EnemyComponents.Animations;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.EnemySettings.Effects;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.DamageAppliers;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackBehaviors;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackData;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.MusicComponents.EffectSounds;
@@ -116,18 +117,18 @@ namespace Game.Scripts.EnemyComponents
 
             _enemyEffects.Initialize(_data, pool, coroutineRunner);
 
-            if (_data.BaseAttackType.Type == AttackType.Ranged)
+            if (_data.BaseAttackData.AttackType == AttackType.Ranged)
             {
                 _projectileSpawner = _rangedSpawner;
             }
-            else if (_data.BaseAttackType.Type == AttackType.Hybrid)
+            else if (_data.BaseAttackData.AttackType == AttackType.Hybrid)
             {
                 _projectileSpawner = _hybridSpawner;
             }
 
             _projectileSpawner?.Initialize(_data, _playerTransform, poolManager);
 
-            _enemyAttack = new EnemySettings.EnemyAttack.EnemyAttack(AnimationAnimationState, transform, _playerTransform, _data.AttackCooldown, _data.BaseAttackType, AnimationAnimationState.AttackVariantsCount);
+            _enemyAttack = new BaseEnemyAttackBehaviors(AnimationAnimationState, transform, _playerTransform, _data.AttackCooldown, _data.BaseAttackData, AnimationAnimationState.AttackVariantsCount);
             _attackExecutor = new EnemyAttackExecutor(this);
 
             _attackExecutor.SetAttackBehavior();
@@ -286,11 +287,11 @@ namespace Game.Scripts.EnemyComponents
 
             Vector3 targetPosition;
 
-            if (_data.BaseAttackType.Type == AttackType.Boss)
+            if (_data.BaseAttackData.AttackType == AttackType.Boss)
             {
                 targetPosition = (_lockedTargetPosition != Vector3.zero) ? _lockedTargetPosition : _playerTransform.transform.position;
             }
-            else if (_data.BaseAttackType.Type == AttackType.Hybrid)
+            else if (_data.BaseAttackData.AttackType == AttackType.Hybrid)
             {
                 targetPosition = _playerTransform.transform.position;
             }

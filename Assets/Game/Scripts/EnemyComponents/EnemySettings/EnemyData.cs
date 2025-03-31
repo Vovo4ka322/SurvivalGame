@@ -1,6 +1,6 @@
 using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings.Effects;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
+using Game.Scripts.EnemyComponents.Interfaces;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings
 {
@@ -11,7 +11,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings
 
         [Header("Setting type")]
         [SerializeField] private EnemyType _enemyType;
-        [SerializeReference] private EnemyAttackType _baseAttackType;
+        [SerializeReference] private IEnemyAttackData _baseAttackData;
 
         [Header("Setting parameters")]
         [SerializeField] private float _maxHealth;
@@ -34,7 +34,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings
         public EffectData SpawnEffect => _spawnEffect;
         public EffectData HitEffect => _hitEffect;
         public EffectData DeathEffect => _deathEffect;
-        public EnemyAttackType BaseAttackType => _baseAttackType;
+        public IEnemyAttackData BaseAttackData => _baseAttackData;
         public float MoveSpeed => _moveSpeed;
         public float RotationSpeed => _rotationSpeed;
         public float Damage => _damage;

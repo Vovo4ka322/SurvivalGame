@@ -1,28 +1,28 @@
 using UnityEngine;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.DamageAppliers;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 {
     public class DamageColliderTrigger : MonoBehaviour
     {
-        private MeleeDamageArea _meleeDamageArea;
-        private BossDamageArea _bossDamageArea;
+        private MeleeDamageZoneApplier _meleeDamageZoneApplier;
+        private BossDamageZoneApplier _bossDamageZoneApplier;
 
         private void Awake()
         {
-            _meleeDamageArea = GetComponentInParent<MeleeDamageArea>();
-            _bossDamageArea = GetComponentInParent<BossDamageArea>();
+            _meleeDamageZoneApplier = GetComponentInParent<MeleeDamageZoneApplier>();
+            _bossDamageZoneApplier = GetComponentInParent<BossDamageZoneApplier>();
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (_meleeDamageArea != null)
+            if (_meleeDamageZoneApplier != null)
             {
-                _meleeDamageArea.DealDamageIfEnabled(other);
+                _meleeDamageZoneApplier.DealDamageIfEnabled(other);
             }
-            else if (_bossDamageArea != null)
+            else if (_bossDamageZoneApplier != null)
             {
-                _bossDamageArea.DealMeleeDamageIfEnabled(other);
+                _bossDamageZoneApplier.DealMeleeDamageIfEnabled(other);
             }
         }
     }

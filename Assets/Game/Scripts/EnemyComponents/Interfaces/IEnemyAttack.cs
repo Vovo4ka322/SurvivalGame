@@ -1,4 +1,4 @@
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackData;
 
 namespace Game.Scripts.EnemyComponents.Interfaces
 {
@@ -6,6 +6,6 @@ namespace Game.Scripts.EnemyComponents.Interfaces
     {
         public void TryAttack();
         
-        public bool IsHybridProjectileReady(HybridAttack hybridType, float distance);
+        public bool IsHybridProjectileReady(HybridAttackData hybridType, float distance);
     }
 }

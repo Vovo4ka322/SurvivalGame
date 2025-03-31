@@ -1,5 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackData;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.PoolComponents;
 
@@ -29,10 +30,10 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
             _hitEffect = new BaseEffectsEnemy(_coroutineRunner, data.HitEffect, pool);
             _deathEffect = new BaseEffectsEnemy(_coroutineRunner, data.DeathEffect, pool);
 
-            switch (data.BaseAttackType.Type)
+            switch (data.BaseAttackData.AttackType)
             {
                 case AttackType.Melee:
-                    MeleeAttack melee = data.BaseAttackType as MeleeAttack;
+                    MeleeAttackData melee = data.BaseAttackData as MeleeAttackData;
 
                     if (melee?.AttackEffects != null)
                     {
@@ -41,7 +42,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
 
                     break;
                 case AttackType.Ranged:
-                    RangeAttack ranged = data.BaseAttackType as RangeAttack;
+                    RangeAttackData ranged = data.BaseAttackData as RangeAttackData;
 
                     if (ranged?.ReloadEffect != null)
                     {
@@ -50,28 +51,32 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
 
                     break;
                 case AttackType.Hybrid:
-                    HybridAttack hybrid = data.BaseAttackType as HybridAttack;
+                    HybridAttackData hybrid = data.BaseAttackData as HybridAttackData;
 
                     if (hybrid != null)
                     {
-                        if (hybrid.AttackEffects != null && hybrid.AttackEffects.Length >= _maxCountEffectsHybrid)
+                        if (hybrid.AttackEffects != null && hybrid.AttackEffects.Count >= _maxCountEffectsHybrid)
                         {
-                            EffectData[] attackEffects = { hybrid.AttackEffects[0], hybrid.AttackEffects[1], hybrid.AttackEffects[2] };
-
+                            List<EffectData> attackEffects = new List<EffectData>
+                            {
+                                hybrid.AttackEffects[0],
+                                hybrid.AttackEffects[1],
+                            };
+                            
                             _attackEffect = new AttackEffect(_coroutineRunner, attackEffects, pool);
-                            _reloadEffect = new BaseEffectsEnemy(_coroutineRunner, hybrid.AttackEffects[3], pool);
+                            _reloadEffect = new BaseEffectsEnemy(_coroutineRunner, hybrid.AttackEffects[2], pool);
                         }
                     }
 
                     break;
                 case AttackType.Boss:
-                    BossAttack boss = data.BaseAttackType as BossAttack;
+                    BossAttackData boss = data.BaseAttackData as BossAttackData;
 
                     if (boss != null)
                     {
-                        if (boss.AttackEffects != null && boss.AttackEffects.Length >= _maxCountEffectsBoss)
+                        if (boss.AttackEffects != null && boss.AttackEffects.Count >= _maxCountEffectsBoss)
                         {
-                            EffectData[] attackEffects =
+                            List<EffectData> attackEffects = new List<EffectData>
                             {
                                 boss.AttackEffects[0],
                                 boss.AttackEffects[1],

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 1012465906298291168, guid: c3e685015c6b04f8abaaf3708f00a926, type: 3}
   _enemyType: 0
-  _baseAttackType:
-    rid: 7027752993772535809
+  _baseAttackData:
+    rid: 7027753583259942926
   _maxHealth: 250
   _damage: 10
   _attackCooldown: 2
@@ -43,9 +43,10 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 7027752993772535809
-      type: {class: RangedEnemyAttackType, ns: Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType, asm: Assembly-CSharp}
+    - rid: 7027753583259942926
+      type: {class: RangeAttackData, ns: Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackData, asm: Assembly-CSharp}
       data:
+        _attackType: 1
         _reloadEffect:
           _effect: {fileID: 2459771594855473819, guid: 03be0a2ec8733ac428ca09da018c21b5, type: 3}
           _positionOffset: {x: 0, y: 1.26, z: 0.6}

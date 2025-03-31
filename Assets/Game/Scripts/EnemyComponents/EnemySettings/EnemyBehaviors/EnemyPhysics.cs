@@ -1,5 +1,5 @@
 using UnityEngine;
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.DamageAppliers;
 using Game.Scripts.Weapons;
 using Game.Scripts.Weapons.MeleeWeapon;
 
@@ -10,7 +10,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
     {
         [SerializeField] private Enemy _enemy;
 
-        private MeleeDamageArea _damageArea;
+        private MeleeDamageZoneApplier _damageZoneApplier;
         private Collider _collider;
 
         private void Awake()
@@ -39,16 +39,16 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
                 return;
             }
 
-            MeleeDamageArea meleeDamageArea = _enemy.GetComponentInChildren<MeleeDamageArea>();
-            BossDamageArea bossDamageArea = _enemy.GetComponentInChildren<BossDamageArea>();
+            MeleeDamageZoneApplier meleeDamageZoneApplier = _enemy.GetComponentInChildren<MeleeDamageZoneApplier>();
+            BossDamageZoneApplier bossDamageZoneApplier = _enemy.GetComponentInChildren<BossDamageZoneApplier>();
 
-            if (meleeDamageArea != null)
+            if (meleeDamageZoneApplier != null)
             {
-                meleeDamageArea.DealDamageIfEnabled(other);
+                meleeDamageZoneApplier.DealDamageIfEnabled(other);
             }
-            else if (bossDamageArea != null)
+            else if (bossDamageZoneApplier != null)
             {
-                bossDamageArea.DealMeleeDamageIfEnabled(other);
+                bossDamageZoneApplier.DealMeleeDamageIfEnabled(other);
             }
         }
     }
