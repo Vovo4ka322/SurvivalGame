@@ -42,28 +42,28 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             
             if(currentBladeFury == 0)
             {
-                MeleeAbilitySet nextDataBladeFury = _meleePlayerAbility.GetAbilityDataForLevel(1);
+                AbilitySet nextDataBladeFury = _meleePlayerAbility.GetAbilityDataForLevel(1);
                 
                 if(nextDataBladeFury != null)
                 {
-                    _bladeFuryDurationDisplay.SetText(0, nextDataBladeFury.BladeFuryScriptableObject.Duration);
-                    _bladeFuryCooldownDisplay.SetText(0, nextDataBladeFury.BladeFuryScriptableObject.CooldownTime);
+                    _bladeFuryDurationDisplay.SetText(0, nextDataBladeFury.BladeFury.Duration);
+                    _bladeFuryCooldownDisplay.SetText(0, nextDataBladeFury.BladeFury.CooldownTime);
                 }
             }
             else
             {
-                MeleeAbilitySet currentDataBladeFury = _meleePlayerAbility.GetAbilityDataForLevel(currentBladeFury);
-                MeleeAbilitySet nextDataBladeFury = _meleePlayerAbility.GetAbilityDataForLevel(currentBladeFury + 1);
+                AbilitySet currentDataBladeFury = _meleePlayerAbility.GetAbilityDataForLevel(currentBladeFury);
+                AbilitySet nextDataBladeFury = _meleePlayerAbility.GetAbilityDataForLevel(currentBladeFury + 1);
                 
                 if(currentDataBladeFury != null)
                 {
-                    float currentDuration = currentDataBladeFury.BladeFuryScriptableObject.Duration;
-                    float? nextDuration = nextDataBladeFury != null ? nextDataBladeFury.BladeFuryScriptableObject.Duration : null;
+                    float currentDuration = currentDataBladeFury.BladeFury.Duration;
+                    float? nextDuration = nextDataBladeFury != null ? nextDataBladeFury.BladeFury.Duration : null;
                     
                     _bladeFuryDurationDisplay.SetText(currentDuration, nextDuration);
                     
-                    float currentCooldown = currentDataBladeFury.BladeFuryScriptableObject.CooldownTime;
-                    float? nextCooldown = nextDataBladeFury != null ? nextDataBladeFury.BladeFuryScriptableObject.CooldownTime : null;
+                    float currentCooldown = currentDataBladeFury.BladeFury.CooldownTime;
+                    float? nextCooldown = nextDataBladeFury != null ? nextDataBladeFury.BladeFury.CooldownTime : null;
                     
                     _bladeFuryCooldownDisplay.SetText(currentCooldown, nextCooldown);
                 }
@@ -73,28 +73,28 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             
             if(currentBorrowedTime == 0)
             {
-                MeleeAbilitySet nextDataBorrowedTime = _meleePlayerAbility.GetAbilityDataForLevel(1);
+                AbilitySet nextDataBorrowedTime = _meleePlayerAbility.GetAbilityDataForLevel(1);
                 
                 if(nextDataBorrowedTime != null)
                 {
-                    _borrowedTimeDurationDisplay.SetText(0, nextDataBorrowedTime.BorrowedTimeScriptableObject.Duration);
-                    _borrowedTimeCooldownDisplay.SetText(0, nextDataBorrowedTime.BorrowedTimeScriptableObject.CooldownTime);
+                    _borrowedTimeDurationDisplay.SetText(0, nextDataBorrowedTime.BorrowedTime.Duration);
+                    _borrowedTimeCooldownDisplay.SetText(0, nextDataBorrowedTime.BorrowedTime.CooldownTime);
                 }
             }
             else
             {
-                MeleeAbilitySet currentDataBorrowedTime = _meleePlayerAbility.GetAbilityDataForLevel(currentBorrowedTime);
-                MeleeAbilitySet nextDataBorrowedTime = _meleePlayerAbility.GetAbilityDataForLevel(currentBorrowedTime + 1);
+                AbilitySet currentDataBorrowedTime = _meleePlayerAbility.GetAbilityDataForLevel(currentBorrowedTime);
+                AbilitySet nextDataBorrowedTime = _meleePlayerAbility.GetAbilityDataForLevel(currentBorrowedTime + 1);
                 
                 if(currentDataBorrowedTime != null)
                 {
-                    float currentDuration = currentDataBorrowedTime.BorrowedTimeScriptableObject.Duration;
-                    float? nextDuration = nextDataBorrowedTime != null ? nextDataBorrowedTime.BorrowedTimeScriptableObject.Duration : null;
+                    float currentDuration = currentDataBorrowedTime.BorrowedTime.Duration;
+                    float? nextDuration = nextDataBorrowedTime != null ? nextDataBorrowedTime.BorrowedTime.Duration : null;
                     
                     _borrowedTimeDurationDisplay.SetText(currentDuration, nextDuration);
                     
-                    float currentCooldown = currentDataBorrowedTime.BorrowedTimeScriptableObject.CooldownTime;
-                    float? nextCooldown = nextDataBorrowedTime != null ? nextDataBorrowedTime.BorrowedTimeScriptableObject.CooldownTime : null;
+                    float currentCooldown = currentDataBorrowedTime.BorrowedTime.CooldownTime;
+                    float? nextCooldown = nextDataBorrowedTime != null ? nextDataBorrowedTime.BorrowedTime.CooldownTime : null;
                     
                     _borrowedTimeCooldownDisplay.SetText(currentCooldown, nextCooldown);
                 }
@@ -104,28 +104,28 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
             
             if(currentBloodLust == 0)
             {
-                MeleeAbilitySet nextDataBloodLust = _meleePlayerAbility.GetAbilityDataForLevel(1);
+                AbilitySet nextDataBloodLust = _meleePlayerAbility.GetAbilityDataForLevel(1);
                 
                 if(nextDataBloodLust != null)
                 {
-                    _bloodLustMovementSpeedDisplay.SetText(0, nextDataBloodLust.BloodLustScriptableObject.MovementSpeed);
-                    _bloodLustAttackSpeedDisplay.SetText(0, nextDataBloodLust.BloodLustScriptableObject.AttackSpeed);
+                    _bloodLustMovementSpeedDisplay.SetText(0, nextDataBloodLust.BloodLust.MovementSpeed);
+                    _bloodLustAttackSpeedDisplay.SetText(0, nextDataBloodLust.BloodLust.AttackSpeed);
                 }
             }
             else
             {
-                MeleeAbilitySet currentDataBloodLust = _meleePlayerAbility.GetAbilityDataForLevel(currentBloodLust);
-                MeleeAbilitySet nextDataBloodLust = _meleePlayerAbility.GetAbilityDataForLevel(currentBloodLust + 1);
+                AbilitySet currentDataBloodLust = _meleePlayerAbility.GetAbilityDataForLevel(currentBloodLust);
+                AbilitySet nextDataBloodLust = _meleePlayerAbility.GetAbilityDataForLevel(currentBloodLust + 1);
                 
                 if(currentDataBloodLust != null)
                 {
-                    float currentMovementSpeed = currentDataBloodLust.BloodLustScriptableObject.MovementSpeed;
-                    float? nextMovementSpeed = nextDataBloodLust != null ? nextDataBloodLust.BloodLustScriptableObject.MovementSpeed : null;
+                    float currentMovementSpeed = currentDataBloodLust.BloodLust.MovementSpeed;
+                    float? nextMovementSpeed = nextDataBloodLust != null ? nextDataBloodLust.BloodLust.MovementSpeed : null;
                     
                     _bloodLustMovementSpeedDisplay.SetText(currentMovementSpeed, nextMovementSpeed);
                     
-                    float currentAttackSpeed = currentDataBloodLust.BloodLustScriptableObject.AttackSpeed;
-                    float? nextAttackSpeed = nextDataBloodLust != null ? nextDataBloodLust.BloodLustScriptableObject.AttackSpeed : null;
+                    float currentAttackSpeed = currentDataBloodLust.BloodLust.AttackSpeed;
+                    float? nextAttackSpeed = nextDataBloodLust != null ? nextDataBloodLust.BloodLust.AttackSpeed : null;
                     
                     _bloodLustAttackSpeedDisplay.SetText(currentAttackSpeed, nextAttackSpeed);
                 }

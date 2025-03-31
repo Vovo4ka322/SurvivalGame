@@ -43,34 +43,34 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             
             if(currentMultiShot == 0)
             {
-                RangeAbilitySet nextDataMultiShot = _rangePlayerAbility.GetAbilityDataForLevel(1);
+                AbilitySet nextDataMultiShot = _rangePlayerAbility.GetAbilityDataForLevel(1);
                 
                 if(nextDataMultiShot != null)
                 {
-                    _multiShotDurationDisplay.SetText(0, nextDataMultiShot.MultiShotScriptableObject.Duration);
-                    _multiShotCooldownDisplay.SetText(0, nextDataMultiShot.MultiShotScriptableObject.CooldownTime);
-                    _multiShotArrowCountDisplay.SetText(0, nextDataMultiShot.MultiShotScriptableObject.ArrowCount);
+                    _multiShotDurationDisplay.SetText(0, nextDataMultiShot.MultiShot.Duration);
+                    _multiShotCooldownDisplay.SetText(0, nextDataMultiShot.MultiShot.CooldownTime);
+                    _multiShotArrowCountDisplay.SetText(0, nextDataMultiShot.MultiShot.ArrowCount);
                 }
             }
             else
             {
-                RangeAbilitySet currentDataMultiShot = _rangePlayerAbility.GetAbilityDataForLevel(currentMultiShot);
-                RangeAbilitySet nextDataMultiShot = _rangePlayerAbility.GetAbilityDataForLevel(currentMultiShot + 1);
+                AbilitySet currentDataMultiShot = _rangePlayerAbility.GetAbilityDataForLevel(currentMultiShot);
+                AbilitySet nextDataMultiShot = _rangePlayerAbility.GetAbilityDataForLevel(currentMultiShot + 1);
                 
                 if(currentDataMultiShot != null)
                 {
-                    float currentDuration = currentDataMultiShot.MultiShotScriptableObject.Duration;
-                    float? nextDuration = nextDataMultiShot != null ? nextDataMultiShot.MultiShotScriptableObject.Duration : null;
+                    float currentDuration = currentDataMultiShot.MultiShot.Duration;
+                    float? nextDuration = nextDataMultiShot != null ? nextDataMultiShot.MultiShot.Duration : null;
                     
                     _multiShotDurationDisplay.SetText(currentDuration, nextDuration);
                     
-                    float currentCooldown = currentDataMultiShot.MultiShotScriptableObject.CooldownTime;
-                    float? nextCooldown = nextDataMultiShot != null ? nextDataMultiShot.MultiShotScriptableObject.CooldownTime : null;
+                    float currentCooldown = currentDataMultiShot.MultiShot.CooldownTime;
+                    float? nextCooldown = nextDataMultiShot != null ? nextDataMultiShot.MultiShot.CooldownTime : null;
                     
                     _multiShotCooldownDisplay.SetText(currentCooldown, nextCooldown);
                     
-                    float currentArrowCount = currentDataMultiShot.MultiShotScriptableObject.ArrowCount;
-                    float? nextArrowCount = nextDataMultiShot != null ? nextDataMultiShot.MultiShotScriptableObject.ArrowCount : null;
+                    float currentArrowCount = currentDataMultiShot.MultiShot.ArrowCount;
+                    float? nextArrowCount = nextDataMultiShot != null ? nextDataMultiShot.MultiShot.ArrowCount : null;
                     
                     _multiShotArrowCountDisplay.SetText(currentArrowCount, nextArrowCount);
                 }
@@ -80,34 +80,34 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             
             if(currentInsatiableHunger == 0)
             {
-                RangeAbilitySet nextDataInsatiableHunger = _rangePlayerAbility.GetAbilityDataForLevel(1);
+                AbilitySet nextDataInsatiableHunger = _rangePlayerAbility.GetAbilityDataForLevel(1);
                 
                 if(nextDataInsatiableHunger != null)
                 {
-                    _insatiableHungerDurationDisplay.SetText(0, nextDataInsatiableHunger.InsatiableHungerScriptableObject.Duration);
-                    _insatiableHungerCooldownDisplay.SetText(0, nextDataInsatiableHunger.InsatiableHungerScriptableObject.CooldownTime);
-                    _insatiableHungerVampirismDisplay.SetText(0, nextDataInsatiableHunger.InsatiableHungerScriptableObject.Vampirism);
+                    _insatiableHungerDurationDisplay.SetText(0, nextDataInsatiableHunger.InsatiableHunger.Duration);
+                    _insatiableHungerCooldownDisplay.SetText(0, nextDataInsatiableHunger.InsatiableHunger.CooldownTime);
+                    _insatiableHungerVampirismDisplay.SetText(0, nextDataInsatiableHunger.InsatiableHunger.Vampirism);
                 }
             }
             else
             {
-                RangeAbilitySet currentDataInsatiableHunger = _rangePlayerAbility.GetAbilityDataForLevel(currentInsatiableHunger);
-                RangeAbilitySet nextDataInsatiableHunger = _rangePlayerAbility.GetAbilityDataForLevel(currentInsatiableHunger + 1);
+                AbilitySet currentDataInsatiableHunger = _rangePlayerAbility.GetAbilityDataForLevel(currentInsatiableHunger);
+                AbilitySet nextDataInsatiableHunger = _rangePlayerAbility.GetAbilityDataForLevel(currentInsatiableHunger + 1);
                 
                 if(currentDataInsatiableHunger != null)
                 {
-                    float currentDuration = currentDataInsatiableHunger.InsatiableHungerScriptableObject.Duration;
-                    float? nextDuration = nextDataInsatiableHunger != null ? nextDataInsatiableHunger.InsatiableHungerScriptableObject.Duration : null;
+                    float currentDuration = currentDataInsatiableHunger.InsatiableHunger.Duration;
+                    float? nextDuration = nextDataInsatiableHunger != null ? nextDataInsatiableHunger.InsatiableHunger.Duration : null;
                     
                     _insatiableHungerDurationDisplay.SetText(currentDuration, nextDuration);
                     
-                    float currentCooldown = currentDataInsatiableHunger.InsatiableHungerScriptableObject.CooldownTime;
-                    float? nextCooldown = nextDataInsatiableHunger != null ? nextDataInsatiableHunger.InsatiableHungerScriptableObject.CooldownTime : null;
+                    float currentCooldown = currentDataInsatiableHunger.InsatiableHunger.CooldownTime;
+                    float? nextCooldown = nextDataInsatiableHunger != null ? nextDataInsatiableHunger.InsatiableHunger.CooldownTime : null;
                     
                     _insatiableHungerCooldownDisplay.SetText(currentCooldown, nextCooldown);
                     
-                    float currentVampirism = currentDataInsatiableHunger.InsatiableHungerScriptableObject.Vampirism;
-                    float? nextVampirism = nextDataInsatiableHunger != null ? nextDataInsatiableHunger.InsatiableHungerScriptableObject.Vampirism : null;
+                    float currentVampirism = currentDataInsatiableHunger.InsatiableHunger.Vampirism;
+                    float? nextVampirism = nextDataInsatiableHunger != null ? nextDataInsatiableHunger.InsatiableHunger.Vampirism : null;
                     
                     _insatiableHungerVampirismDisplay.SetText(currentVampirism, nextVampirism);
                 }
@@ -117,22 +117,22 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
             
             if(currentBlur == 0)
             {
-                RangeAbilitySet nextDataBlur = _rangePlayerAbility.GetAbilityDataForLevel(1);
+                AbilitySet nextDataBlur = _rangePlayerAbility.GetAbilityDataForLevel(1);
                 
                 if(nextDataBlur != null)
                 {
-                    _blurChanceEvasionDisplay.SetText(0, nextDataBlur.BlurScriptableObject.Evasion);
+                    _blurChanceEvasionDisplay.SetText(0, nextDataBlur.Blur.Evasion);
                 }
             }
             else
             {
-                RangeAbilitySet currentDataBlur = _rangePlayerAbility.GetAbilityDataForLevel(currentBlur);
-                RangeAbilitySet nextDataBlur = _rangePlayerAbility.GetAbilityDataForLevel(currentBlur + 1);
+                AbilitySet currentDataBlur = _rangePlayerAbility.GetAbilityDataForLevel(currentBlur);
+                AbilitySet nextDataBlur = _rangePlayerAbility.GetAbilityDataForLevel(currentBlur + 1);
                 
                 if(currentDataBlur != null)
                 {
-                    float currentEvasion = currentDataBlur.BlurScriptableObject.Evasion;
-                    float? nextEvasion = nextDataBlur != null ? nextDataBlur.BlurScriptableObject.Evasion : null;
+                    float currentEvasion = currentDataBlur.Blur.Evasion;
+                    float? nextEvasion = nextDataBlur != null ? nextDataBlur.Blur.Evasion : null;
                     
                     _blurChanceEvasionDisplay.SetText(currentEvasion, nextEvasion);
                 }

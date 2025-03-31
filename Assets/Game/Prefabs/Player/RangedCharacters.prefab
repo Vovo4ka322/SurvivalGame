@@ -1737,9 +1737,9 @@ MonoBehaviour:
   _bow: {fileID: 642284079440058142}
   _multiShot: {fileID: 6363741710594834875}
   _insatiableHunger: {fileID: 1155842114423313428}
-  _abilityDataFirstLevel: {fileID: 11400000, guid: b4a7139fe38b3af4e9372cf0564a2e54, type: 2}
-  _abilityDataSecondLevel: {fileID: 11400000, guid: a639916da716fa24d8b16739f2a6c1fe, type: 2}
-  _abilityDataThirdLevel: {fileID: 11400000, guid: 57706fafe4a52bf4984a76a470f93f37, type: 2}
+  _abilityDataFirstLevel: {fileID: 11400000, guid: c8adeb2bde3fd41a6a0360efb9adc4eb, type: 2}
+  _abilityDataSecondLevel: {fileID: 11400000, guid: b957327b5d7b64f808d092bd1ab7f124, type: 2}
+  _abilityDataThirdLevel: {fileID: 11400000, guid: e9115050c046f4d208817bd6ad6ff8bb, type: 2}
 --- !u!114 &6363741710594834875
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27f3a2c3997842469786b9b97dbdb0b, type: 3}
   m_Name: BuffKeeper 4
   m_EditorClassIdentifier: 
-  <ArmorBuffScriptableObject>k__BackingField: {fileID: 11400000, guid: aba6bb571fac2de4fafe86141c867d04, type: 2}
-  <HealthBuffScriptableObject>k__BackingField: {fileID: 11400000, guid: c39a3f367fff78f45bac2839deb76e43, type: 2}
-  <DamageBuffScriptableObject>k__BackingField: {fileID: 11400000, guid: 6edbfa7417b35ff4cb6cfb980d946480, type: 2}
-  <AttackSpeedBuffScriptableObject>k__BackingField: {fileID: 11400000, guid: 60f058c07ae3306469fb4323af0e1d25, type: 2}
-  <MovementSpeedBuffScriptableObject>k__BackingField: {fileID: 11400000, guid: 6b646028d798b114b80b0ef2be5ef246, type: 2}
+  _buffs:
+  - {fileID: 11400000, guid: 88f97a571a8b247c48f31ac6db9b7e0e, type: 2}
+  - {fileID: 11400000, guid: 41acb12b5fd814ccbbc7e66d93f645c8, type: 2}
+  - {fileID: 11400000, guid: 7dcbc767742184f518772f39511cd493, type: 2}
+  - {fileID: 11400000, guid: e01ab3f054bd04922ae29b8c903da4f6, type: 2}
+  - {fileID: 11400000, guid: e47be38ccffe54a3e881137755b518e6, type: 2}
+  _level: 4
