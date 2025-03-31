@@ -8,14 +8,14 @@ using Game.Scripts.PlayerComponents;
 
 namespace Game.Scripts.AbilityComponents.MeleeAbilities
 {
-    public class MeleePlayerAbility : AbilityUserBase<MeleeAbilitySet>, IAbilityUser
+    public class MeleePlayerAbility : AbilityUserBase<AbilitySet>, IAbilityUser
     {
         [SerializeField] private MeleePlayer _player;
         [SerializeField] private BorrowedTimeAbility _borrowedTime;
         [SerializeField] private BladeFuryAbility _bladeFury;
-        [SerializeField] private MeleeAbilitySet _abilityDataFirstLevel;
-        [SerializeField] private MeleeAbilitySet _abilityDataSecondLevel;
-        [SerializeField] private MeleeAbilitySet _abilityDataThirdLevel;
+        [SerializeField] private AbilitySet _abilityDataFirstLevel;
+        [SerializeField] private AbilitySet _abilityDataSecondLevel;
+        [SerializeField] private AbilitySet _abilityDataThirdLevel;
         
         private int _counterForBladeFury = 0;
         private int _counterForBorrowedTime = 0;
@@ -33,7 +33,7 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
         
         private void Awake()
         {
-            AbilitiesDatas = new Dictionary<int, MeleeAbilitySet> { { FirstLevel, _abilityDataFirstLevel }, { SecondLevel, _abilityDataSecondLevel }, { ThirdLevel, _abilityDataThirdLevel }, };
+            AbilitiesDatas = new Dictionary<int, AbilitySet> { { FirstLevel, _abilityDataFirstLevel }, { SecondLevel, _abilityDataSecondLevel }, { ThirdLevel, _abilityDataThirdLevel }, };
         }
         
         private void OnEnable()
@@ -58,17 +58,17 @@ namespace Game.Scripts.AbilityComponents.MeleeAbilities
         
         public override void UpgradeFirstAbility()
         {
-            TryUpgradeAbility(ref _counterForBladeFury, FirstLevel, SecondLevel, ThirdLevel, data => data.BladeFuryScriptableObject, _bladeFury.ReplaceValue, BladeFuryUpgraded);
+            TryUpgradeAbility(ref _counterForBladeFury, FirstLevel, SecondLevel, ThirdLevel, data => data.BladeFury, _bladeFury.ReplaceValue, BladeFuryUpgraded);
         }
         
         public override void UpgradeSecondAbility()
         {
-            TryUpgradeAbility(ref _counterForBorrowedTime, FirstLevel, SecondLevel, ThirdLevel, data => data.BorrowedTimeScriptableObject, _borrowedTime.ReplaceValue, BorrowedTimeIUpgraded);
+            TryUpgradeAbility(ref _counterForBorrowedTime, FirstLevel, SecondLevel, ThirdLevel, data => data.BorrowedTime, _borrowedTime.ReplaceValue, BorrowedTimeIUpgraded);
         }
         
         public override void UpgradeThirdAbility()
         {
-            TryUpgradeAbility(ref _counterForBloodLust, FirstLevel, SecondLevel, ThirdLevel, data => data.BloodLustScriptableObject, scriptableObject => _player.UpgradeCharacteristikByBloodLust(scriptableObject), BloodLustIUpgraded);
+            TryUpgradeAbility(ref _counterForBloodLust, FirstLevel, SecondLevel, ThirdLevel, data => data.BloodLust, scriptableObject => _player.UpgradeCharacteristikByBloodLust(scriptableObject), BloodLustIUpgraded);
         }
     }
 }

@@ -1546,9 +1546,9 @@ MonoBehaviour:
   _player: {fileID: 7584807702275972672}
   _borrowedTime: {fileID: 8186953799004668606}
   _bladeFury: {fileID: 4940700829930294428}
-  _abilityDataFirstLevel: {fileID: 11400000, guid: 914ebbcaf88879749a0327284030706e, type: 2}
-  _abilityDataSecondLevel: {fileID: 11400000, guid: c2d0f8973b7ba7e48a9e2729409d6ab0, type: 2}
-  _abilityDataThirdLevel: {fileID: 11400000, guid: c6d704aa222d2814d98cbc632079fddd, type: 2}
+  _abilityDataFirstLevel: {fileID: 11400000, guid: c8adeb2bde3fd41a6a0360efb9adc4eb, type: 2}
+  _abilityDataSecondLevel: {fileID: 11400000, guid: b957327b5d7b64f808d092bd1ab7f124, type: 2}
+  _abilityDataThirdLevel: {fileID: 11400000, guid: e9115050c046f4d208817bd6ad6ff8bb, type: 2}
 --- !u!114 &4940700829930294428
 MonoBehaviour:
   m_ObjectHideFlags: 0

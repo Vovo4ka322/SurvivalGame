@@ -9,15 +9,15 @@ using Game.Scripts.Weapons.RangedWeapon;
 
 namespace Game.Scripts.AbilityComponents.ArcherAbilities
 {
-    public class RangePlayerAbility : AbilityUserBase<RangeAbilitySet>, IAbilityUser
+    public class RangePlayerAbility : AbilityUserBase<AbilitySet>, IAbilityUser
     {
         [SerializeField] private RangePlayer _player;
         [SerializeField] private Bow _bow;
         [SerializeField] private MultiShotAbility _multiShot;
         [SerializeField] private InsatiableHungerAbility _insatiableHunger;
-        [SerializeField] private RangeAbilitySet _abilityDataFirstLevel;
-        [SerializeField] private RangeAbilitySet _abilityDataSecondLevel;
-        [SerializeField] private RangeAbilitySet _abilityDataThirdLevel;
+        [SerializeField] private AbilitySet _abilityDataFirstLevel;
+        [SerializeField] private AbilitySet _abilityDataSecondLevel;
+        [SerializeField] private AbilitySet _abilityDataThirdLevel;
         
         private int _counterForMultiShot = 0;
         private int _counterForInsatiableHunger = 0;
@@ -36,7 +36,7 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
         
         private void Awake()
         {
-            AbilitiesDatas = new Dictionary<int, RangeAbilitySet> { { FirstLevel, _abilityDataFirstLevel }, { SecondLevel, _abilityDataSecondLevel }, { ThirdLevel, _abilityDataThirdLevel }, };
+            AbilitiesDatas = new Dictionary<int, AbilitySet> { { FirstLevel, _abilityDataFirstLevel }, { SecondLevel, _abilityDataSecondLevel }, { ThirdLevel, _abilityDataThirdLevel }, };
             
             _multiShot.SetHandler(_player);
         }
@@ -63,17 +63,17 @@ namespace Game.Scripts.AbilityComponents.ArcherAbilities
         
         public override void UpgradeFirstAbility()
         {
-            TryUpgradeAbility(ref _counterForMultiShot, FirstLevel, SecondLevel, ThirdLevel, data => data.MultiShotScriptableObject, _multiShot.ReplaceValue, MultiShotUpgraded);
+            TryUpgradeAbility(ref _counterForMultiShot, FirstLevel, SecondLevel, ThirdLevel, data => data.MultiShot, _multiShot.ReplaceValue, MultiShotUpgraded);
         }
 
         public override void UpgradeSecondAbility()
         {
-            TryUpgradeAbility(ref _counterForInsatiableHunger, FirstLevel, SecondLevel, ThirdLevel, data => data.InsatiableHungerScriptableObject, _insatiableHunger.ReplaceValue, InsatiableHungerUpgraded);
+            TryUpgradeAbility(ref _counterForInsatiableHunger, FirstLevel, SecondLevel, ThirdLevel, data => data.InsatiableHunger, _insatiableHunger.ReplaceValue, InsatiableHungerUpgraded);
         }
 
         public override void UpgradeThirdAbility()
         {
-            TryUpgradeAbility(ref _counterForBlur, FirstLevel, SecondLevel, ThirdLevel, data => data.BlurScriptableObject, scriptableObject => _player.SetEvasion(scriptableObject), BlurUpgraded);
+            TryUpgradeAbility(ref _counterForBlur, FirstLevel, SecondLevel, ThirdLevel, data => data.Blur, scriptableObject => _player.SetEvasion(scriptableObject), BlurUpgraded);
         }
     }
 }
