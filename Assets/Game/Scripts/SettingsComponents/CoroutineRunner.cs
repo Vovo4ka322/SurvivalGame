@@ -18,10 +18,5 @@ namespace Game.Scripts.SettingsComponents
                 StopCoroutine(coroutine);
             }
         }
-
-        void ICoroutineRunner.StopAllCoroutines()
-        {
-            StopAllCoroutines();
-        }
     }
 }

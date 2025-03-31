@@ -1,7 +1,7 @@
-using Game.Scripts.EnemyComponents.Animations;
-using Game.Scripts.EnemyComponents.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
+using Game.Scripts.EnemyComponents.Animations;
+using Game.Scripts.EnemyComponents.Interfaces;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 {

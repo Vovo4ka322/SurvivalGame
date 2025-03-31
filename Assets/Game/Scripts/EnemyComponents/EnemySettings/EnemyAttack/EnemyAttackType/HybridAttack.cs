@@ -1,7 +1,7 @@
-using Game.Scripts.EnemyComponents.EnemySettings.Effects;
-using Game.Scripts.ProjectileComponents;
 using System;
 using UnityEngine;
+using Game.Scripts.EnemyComponents.EnemySettings.Effects;
+using Game.Scripts.ProjectileComponents;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType
 {

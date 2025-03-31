@@ -1,6 +1,6 @@
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using System.Collections;
 using UnityEngine;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 {
@@ -32,6 +32,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                     break;
                 case AttackType.Ranged:
                     _enemy.SetAttackBehaviorInternal(new RangedAttack(_enemy));
+                    
                     break;
                 case AttackType.Boss:
                     EnemyAttackType.BossAttack bossAttackType = _enemy.Data.BaseAttackType as EnemyAttackType.BossAttack;
@@ -48,6 +49,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                     break;
                 default:
                     _enemy.SetAttackBehaviorInternal(new MeleeAttack(_enemy));
+                    
                     break;
             }
         }

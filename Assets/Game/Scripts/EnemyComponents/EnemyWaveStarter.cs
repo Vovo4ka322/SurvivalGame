@@ -1,7 +1,6 @@
-using Game.Scripts.EnemyComponents;
 using UnityEngine;
 
-namespace Game.Scripts
+namespace Game.Scripts.EnemyComponents
 {
     public class EnemyWaveStarter : MonoBehaviour
     {

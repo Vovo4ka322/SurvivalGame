@@ -1,8 +1,8 @@
+using UnityEngine;
 using Game.Scripts.EnemyComponents.Animations;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.PlayerComponents;
-using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 {
@@ -53,12 +53,14 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                 {
                     int attackVariant = GetAttackVariant();
                     _lastAttackTime = Time.time;
+                    
                     PerformMeleeAttack(attackVariant);
                 }
                 else if (_attackType.Type == AttackType.Ranged)
                 {
                     int attackVariant = GetAttackVariant();
                     _lastAttackTime = Time.time;
+                    
                     PerformRangedAttack(attackVariant);
                 }
                 else if (_attackType.Type == AttackType.Hybrid)
@@ -69,6 +71,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                     {
                         _lastAttackTime = Time.time;
                         int meleeVariant = Random.Range(3, 5);
+                        
                         PerformMeleeAttack(meleeVariant);
                     }
                     else if (sqrDistance <= hybridType.RangedRange * hybridType.RangedRange)
@@ -78,6 +81,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                             _lastRangedAttackTime = Time.time;
                             int rangedAttackVariant = 5;
                             _lastAttackTime = Time.time;
+                            
                             PerformRangedAttack(rangedAttackVariant);
                         }
                     }
@@ -90,6 +94,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
                     {
                         _lastAttackTime = Time.time;
                         int meleeVariant = Random.Range(1, 5);
+                        
                         PerformMeleeAttack(meleeVariant);
                     }
                 }
