@@ -1,3 +1,6 @@
+using System;
+using UnityEngine;
+using UnityEngine.AI;
 using Game.Scripts.EnemyComponents.Animations;
 using Game.Scripts.EnemyComponents.EnemySettings;
 using Game.Scripts.EnemyComponents.EnemySettings.Effects;
@@ -9,9 +12,6 @@ using Game.Scripts.MusicComponents.EffectSounds;
 using Game.Scripts.PoolComponents;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.ProjectileComponents.CreateProjectiles;
-using System;
-using UnityEngine;
-using UnityEngine.AI;
 
 namespace Game.Scripts.EnemyComponents
 {

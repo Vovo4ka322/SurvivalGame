@@ -1,21 +1,21 @@
+using UnityEngine;
 using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackType;
 using Game.Scripts.EnemyComponents.Interfaces;
 using Game.Scripts.PoolComponents;
-using UnityEngine;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
 {
     public class EnemyEffects : MonoBehaviour, IEnemyEffects
     {
+        private readonly int _maxCountEffectsHybrid = 3;
+        private readonly int _maxCountEffectsBoss = 4;
+        
         private BaseEffectsEnemy _spawnEffect;
         private BaseEffectsEnemy _hitEffect;
         private BaseEffectsEnemy _deathEffect;
         private BaseEffectsEnemy _reloadEffect;
         private AttackEffect _attackEffect;
         private ICoroutineRunner _coroutineRunner;
-
-        private readonly int _maxCountEffectsHybrid = 3;
-        private readonly int _maxCountEffectsBoss = 4;
 
         public void Initialize(EnemyData data, EffectsPool pool, ICoroutineRunner coroutineRunner)
         {
@@ -40,7 +40,6 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
                     }
 
                     break;
-
                 case AttackType.Ranged:
                     RangeAttack ranged = data.BaseAttackType as RangeAttack;
 
@@ -50,7 +49,6 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
                     }
 
                     break;
-
                 case AttackType.Hybrid:
                     HybridAttack hybrid = data.BaseAttackType as HybridAttack;
 
@@ -66,7 +64,6 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
                     }
 
                     break;
-
                 case AttackType.Boss:
                     BossAttack boss = data.BaseAttackType as BossAttack;
 

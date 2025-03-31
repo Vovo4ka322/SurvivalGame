@@ -8,7 +8,5 @@ namespace Game.Scripts.EnemyComponents.Interfaces
         public Coroutine StartCoroutine(IEnumerator coroutine);
 
         public void StopCoroutine(Coroutine coroutine);
-
-        public void StopAllCoroutines();
     }
 }

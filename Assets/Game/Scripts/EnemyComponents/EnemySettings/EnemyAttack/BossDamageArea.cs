@@ -1,5 +1,5 @@
-using Game.Scripts.Interfaces;
 using UnityEngine;
+using Game.Scripts.Interfaces;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
 {
@@ -19,13 +19,13 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack
         [SerializeField] private Transform _directAttackPoint;
         [SerializeField] private Vector3 _directAttackBoxSize = new Vector3(3f, 2f, 5f);
         [SerializeField] private LayerMask _directTargetLayer;
-
-        private bool _hasHit = false;
-
+        
         private readonly Collider[] _radialBuffer1 = new Collider[10];
         private readonly Collider[] _radialBuffer2 = new Collider[10];
         private readonly Collider[] _directBuffer = new Collider[10];
 
+        private bool _hasHit = false;
+        
         public void DealRadialDamage1()
         {
             int hitCount = Physics.OverlapSphereNonAlloc(_areaAttackPoint1.position, _areaDamageRadius1, _radialBuffer1, _areaTargetLayer);

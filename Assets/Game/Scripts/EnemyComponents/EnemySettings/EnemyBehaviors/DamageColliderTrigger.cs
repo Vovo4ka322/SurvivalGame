@@ -1,5 +1,5 @@
-using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
 using UnityEngine;
+using Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack;
 
 namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyBehaviors
 {

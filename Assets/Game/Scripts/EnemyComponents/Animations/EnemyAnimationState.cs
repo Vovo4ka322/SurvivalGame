@@ -1,7 +1,7 @@
-using Game.Scripts.EnemyComponents.EnemySettings;
-using Game.Scripts.EnemyComponents.Interfaces;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Scripts.EnemyComponents.EnemySettings;
+using Game.Scripts.EnemyComponents.Interfaces;
 
 namespace Game.Scripts.EnemyComponents.Animations
 {
