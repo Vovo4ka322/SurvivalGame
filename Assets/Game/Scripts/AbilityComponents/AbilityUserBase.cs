@@ -14,9 +14,9 @@ namespace Game.Scripts.AbilityComponents
         private readonly int _secondUpgrade = 1;
         private readonly int _thirdUpgrade = 2;
         
-        public event Action LevelChanged;
-
         public Dictionary<int, TAbilityData> AbilitiesDatas;
+        
+        public event Action LevelChanged;
         
         public int MaxValue { get; private set; } = 3;
         public int FirstLevel => _firstLevel;

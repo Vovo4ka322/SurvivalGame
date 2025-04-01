@@ -13374,12 +13374,12 @@ GameObject:
   - component: {fileID: 2482448428413619669}
   - component: {fileID: 7949957636109075515}
   - component: {fileID: 6199330893535408427}
-  - component: {fileID: 3219074839228503038}
-  - component: {fileID: 2474155593935940330}
+  - component: {fileID: 5482085144874113323}
+  - component: {fileID: 3692574209048398406}
   - component: {fileID: 7362053833610073916}
   - component: {fileID: 7459384661894237378}
   - component: {fileID: 162968354928987115}
-  - component: {fileID: 2462523131602959216}
+  - component: {fileID: 378337257903426539}
   m_Layer: 5
   m_Name: CanvasForMelee
   m_TagString: Untagged
@@ -13483,7 +13483,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
---- !u!114 &3219074839228503038
+--- !u!114 &5482085144874113323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13492,41 +13492,54 @@ MonoBehaviour:
   m_GameObject: {fileID: 8387669823902090145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aed8758699baac4ea4973fbd367d40a, type: 3}
+  m_Script: {fileID: 11500000, guid: 81316daa12c6450dbacb0744b420a8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _abilityPanel: {fileID: 1399029924816905289}
-  _bladeFuryDurationDisplay:
-    _arrowImage: {fileID: 125958146388746464}
-    _currentText: {fileID: 6597809810678855462}
-    _nextText: {fileID: 3465122953488774567}
-    _maxValueText: {fileID: 6532670222750622004}
-  _bladeFuryCooldownDisplay:
-    _arrowImage: {fileID: 5976678518248349517}
-    _currentText: {fileID: 9041949115407894631}
-    _nextText: {fileID: 683372010993386953}
-    _maxValueText: {fileID: 4302054029157503024}
-  _borrowedTimeDurationDisplay:
-    _arrowImage: {fileID: 1916645264370566481}
-    _currentText: {fileID: 2751949611351829664}
-    _nextText: {fileID: 1479161254504890435}
-    _maxValueText: {fileID: 6886729073372455470}
-  _borrowedTimeCooldownDisplay:
-    _arrowImage: {fileID: 6472585032770717107}
-    _currentText: {fileID: 4462102804499861166}
-    _nextText: {fileID: 5120655428028606261}
-    _maxValueText: {fileID: 9067279067851743951}
-  _bloodLustMovementSpeedDisplay:
-    _arrowImage: {fileID: 5135424471032481329}
-    _currentText: {fileID: 2989395544441812092}
-    _nextText: {fileID: 8658970669187948057}
-    _maxValueText: {fileID: 1919318188633459467}
-  _bloodLustAttackSpeedDisplay:
-    _arrowImage: {fileID: 3361464344532723223}
-    _currentText: {fileID: 4808181859035205218}
-    _nextText: {fileID: 7033816805828376089}
-    _maxValueText: {fileID: 6501973543281982078}
---- !u!114 &2474155593935940330
+  _upgradeConfigs:
+  - _nameAbilityType: 0
+    _fieldDisplays:
+    - _property: 0
+      _display:
+        _arrowImage: {fileID: 125958146388746464}
+        _currentText: {fileID: 6597809810678855462}
+        _nextText: {fileID: 3465122953488774567}
+        _maxValueText: {fileID: 6532670222750622004}
+    - _property: 1
+      _display:
+        _arrowImage: {fileID: 5976678518248349517}
+        _currentText: {fileID: 9041949115407894631}
+        _nextText: {fileID: 683372010993386953}
+        _maxValueText: {fileID: 4302054029157503024}
+  - _nameAbilityType: 1
+    _fieldDisplays:
+    - _property: 0
+      _display:
+        _arrowImage: {fileID: 1916645264370566481}
+        _currentText: {fileID: 2751949611351829664}
+        _nextText: {fileID: 1479161254504890435}
+        _maxValueText: {fileID: 6886729073372455470}
+    - _property: 1
+      _display:
+        _arrowImage: {fileID: 6472585032770717107}
+        _currentText: {fileID: 4462102804499861166}
+        _nextText: {fileID: 5120655428028606261}
+        _maxValueText: {fileID: 9067279067851743951}
+  - _nameAbilityType: 2
+    _fieldDisplays:
+    - _property: 2
+      _display:
+        _arrowImage: {fileID: 5135424471032481329}
+        _currentText: {fileID: 2989395544441812092}
+        _nextText: {fileID: 8658970669187948057}
+        _maxValueText: {fileID: 1919318188633459467}
+    - _property: 3
+      _display:
+        _arrowImage: {fileID: 3361464344532723223}
+        _currentText: {fileID: 4808181859035205218}
+        _nextText: {fileID: 7033816805828376089}
+        _maxValueText: {fileID: 6501973543281982078}
+--- !u!114 &3692574209048398406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13535,7 +13548,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8387669823902090145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4a0cb97d5f4495b2ba85a49c584530, type: 3}
+  m_Script: {fileID: 11500000, guid: e59aa95deeb948ec9ae063a2b9718d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _firstAbility: {fileID: 7675656010200784044}
@@ -13614,7 +13627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementJoystick>k__BackingField: {fileID: 5662522484508337007}
   <RotationJoystick>k__BackingField: {fileID: 828442021504095580}
---- !u!114 &2462523131602959216
+--- !u!114 &378337257903426539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13623,7 +13636,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8387669823902090145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e1b5c648115414399bdab6bce02467f, type: 3}
+  m_Script: {fileID: 11500000, guid: ae98114adf654deba0875a339001e134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _firstAbilityUse: {fileID: 3733209413635521229}

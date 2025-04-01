@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -935,8 +935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMPComponent: {fileID: 790114905}
-  uniqueFontTMP: {fileID: 0}
   textLComponent: {fileID: 0}
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
@@ -1807,8 +1805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMPComponent: {fileID: 1054092854}
-  uniqueFontTMP: {fileID: 0}
   textLComponent: {fileID: 0}
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
@@ -2602,8 +2598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMPComponent: {fileID: 1750817063}
-  uniqueFontTMP: {fileID: 0}
   textLComponent: {fileID: 0}
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
@@ -4633,6 +4627,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 4751840507874844108, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
+      propertyPath: _buffKeepersList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4751840507874844108, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
+      propertyPath: _buffKeepersList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 13243de06420d44489012d0eed3be34e, type: 2}
+    - target: {fileID: 4751840507874844108, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
+      propertyPath: _buffKeepersList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: a7388d6ae4fe47943a2fcfbc1ef68f0d, type: 2}
+    - target: {fileID: 4751840507874844108, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
+      propertyPath: _buffKeepersList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bd057550d2568449a99dd85651451c2, type: 2}
+    - target: {fileID: 4751840507874844108, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
+      propertyPath: _buffKeepersList.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: f95073aa86e18694f96f00098c9ecd32, type: 2}
+    - target: {fileID: 4751840507874844108, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
+      propertyPath: _buffKeepersList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fb9873984e000b41b0ecf4e2a04fbe8, type: 2}
     - target: {fileID: 4780571529647365207, guid: d4b4e460a430245c0824d816f58e939e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0

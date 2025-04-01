@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
-using Game.Scripts.AbilityComponents.ArcherAbilities;
-using Game.Scripts.AbilityComponents.MeleeAbilities;
+using Game.Scripts.AbilityComponents;
 using Game.Scripts.PlayerComponents;
 using Game.Scripts.PlayerComponents.Controller;
 
@@ -13,8 +12,8 @@ namespace Game.Scripts.MenuComponents
         [SerializeField] private Canvas _meleeCanvas;
         [SerializeField] private Canvas _rangeCanvas;
 
-        private bool _isJoystickActive;
         private Canvas _canvas;
+        private bool _isJoystickActive;
 
         public Joystick MovementJoystick { get; private set; }
         public Joystick RotationJoystick { get; private set; }
@@ -22,41 +21,18 @@ namespace Game.Scripts.MenuComponents
         public Canvas Create(CharacterType characterType, Player player)
         {
             Canvas prefab = GetPrefab(characterType);
-
-            if (prefab == null)
-            {
-                throw new ArgumentException("There was no Prefab of Canvas for the type of character: {characterType}");
-            }
-
             Canvas canvas = Instantiate(prefab);
             PlayerDataViewer healthViewer = canvas.GetComponent<PlayerDataViewer>();
 
             healthViewer.Init(player);
-
-            if (characterType == CharacterType.Melee)
-            {
-                MeleeWindowImprovement meleeWindow = canvas.GetComponent<MeleeWindowImprovement>();
-                MeleeAbilityViewer meleeAbility = canvas.GetComponent<MeleeAbilityViewer>();
-                MeleeCanvasInitialization meleeCanvasInit = canvas.GetComponent<MeleeCanvasInitialization>();
-
-                meleeWindow.Init(player);
-                meleeAbility.Init(player);
-                meleeCanvasInit.InitButtons(player);
-
-                _canvas = canvas;
-            }
-            else if (characterType == CharacterType.Range)
-            {
-                RangeWindowImprovement rangeWindow = canvas.GetComponent<RangeWindowImprovement>();
-                RangeAbilityViewer rangeAbility = canvas.GetComponent<RangeAbilityViewer>();
-                RangeCanvasInitialization rangeCanvasInit = canvas.GetComponent<RangeCanvasInitialization>();
-
-                rangeWindow.Init(player);
-                rangeAbility.Init(player);
-                rangeCanvasInit.InitButtons(player);
-
-                _canvas = canvas;
-            }
+            
+            AbilityWindowImprovement windowImprovement = canvas.GetComponent<AbilityWindowImprovement>();
+            AbilityViewer abilityViewer= canvas.GetComponent<AbilityViewer>();
+            AbilityButtonsInitializer abilityButtonsInitializer = canvas.GetComponent<AbilityButtonsInitializer>();
+            
+            windowImprovement?.Init(player);
+            abilityViewer?.Init(player);
+            abilityButtonsInitializer?.InitButtons(player);
 
             return canvas;
         }
@@ -82,7 +58,6 @@ namespace Game.Scripts.MenuComponents
                     return _meleeCanvas;
                 case CharacterType.Range:
                     return _rangeCanvas;
-
                 default:
                     throw new ArgumentException($"The wrong meaning {nameof(characterType)}: {characterType}");
             }
