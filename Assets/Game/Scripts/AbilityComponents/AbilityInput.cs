@@ -5,17 +5,23 @@ using Game.Scripts.PlayerComponents.Controller;
 
 namespace Game.Scripts.AbilityComponents
 {
-    public abstract class AbilityInput<TAbilityUser> : MonoBehaviour
-        where TAbilityUser : IAbilityUser
+     public class AbilityInput : MonoBehaviour
     {
-        [SerializeField] protected TAbilityUser _abilityUser;
-        [SerializeField] protected PlayerController _playerController;
+        [SerializeField] private MonoBehaviour _abilityUserMono;
+        [SerializeField] private PlayerController _playerController;
+        
+        private IAbilityUser _abilityUser;
         
         private Button _firstAbilityUse;
         private Button _secondAbilityUse;
         private Button _firstUpgradeButton;
         private Button _secondUpgradeButton;
         private Button _thirdUpgradeButton;
+        
+        private void Awake()
+        {
+            _abilityUser = _abilityUserMono as IAbilityUser;
+        }
         
         protected virtual void OnDisable()
         {
@@ -30,9 +36,9 @@ namespace Game.Scripts.AbilityComponents
         protected virtual void Update()
         {
             if(_playerController.FirstAbilityKeyPressed)
-                _abilityUser.UseFirstAbility();
+                _abilityUser?.UseFirstAbility();
             else if(_playerController.SecondAbilityKeyPressed)
-                _abilityUser.UseSecondAbility();
+                _abilityUser?.UseSecondAbility();
         }
         
         public void Init(Button firstAbilityUse, Button secondAbilityUse, Button firstUpgradeButton, Button secondUpgradeButton, Button thirdUpgradeButton)

@@ -6953,12 +6953,12 @@ GameObject:
   - component: {fileID: 798769298870693667}
   - component: {fileID: 9106443526552151623}
   - component: {fileID: 727544211575337484}
-  - component: {fileID: 7364934101432225351}
-  - component: {fileID: 5948469537441535170}
+  - component: {fileID: 8896669696213165427}
+  - component: {fileID: 1814510225770734927}
   - component: {fileID: 4378841938814683397}
   - component: {fileID: 7175878829567834354}
   - component: {fileID: 6967947268238362133}
-  - component: {fileID: 536426109509146066}
+  - component: {fileID: 2387623024019443432}
   m_Layer: 5
   m_Name: CanvasForRange
   m_TagString: Untagged
@@ -7061,7 +7061,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
---- !u!114 &7364934101432225351
+--- !u!114 &8896669696213165427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7070,7 +7070,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3384846362283121868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e831ba4b164427be51dd21e946574a, type: 3}
+  m_Script: {fileID: 11500000, guid: e59aa95deeb948ec9ae063a2b9718d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _firstAbility: {fileID: 1791657869333061607}
@@ -7090,7 +7090,7 @@ MonoBehaviour:
   - {fileID: 8289895945430368110}
   - {fileID: 9034379275161938299}
   - {fileID: 3781614820763622061}
---- !u!114 &5948469537441535170
+--- !u!114 &1814510225770734927
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7099,45 +7099,59 @@ MonoBehaviour:
   m_GameObject: {fileID: 3384846362283121868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50382a7c771245389ce80c03cc8a08bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 81316daa12c6450dbacb0744b420a8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _abilityPanel: {fileID: 4367750577992415524}
-  _multiShotDurationDisplay:
-    _arrowImage: {fileID: 7838764281077484242}
-    _currentText: {fileID: 5335241082963501037}
-    _nextText: {fileID: 1473280231283746065}
-    _maxValueText: {fileID: 8750660089166695696}
-  _multiShotCooldownDisplay:
-    _arrowImage: {fileID: 7610588392036672165}
-    _currentText: {fileID: 4638423349719984266}
-    _nextText: {fileID: 32951706393695132}
-    _maxValueText: {fileID: 8711466419744740885}
-  _multiShotArrowCountDisplay:
-    _arrowImage: {fileID: 1027320593430748684}
-    _currentText: {fileID: 2433529946115022821}
-    _nextText: {fileID: 2956872165157054729}
-    _maxValueText: {fileID: 6789432295457999595}
-  _insatiableHungerDurationDisplay:
-    _arrowImage: {fileID: 193487236246045481}
-    _currentText: {fileID: 7783869108247455482}
-    _nextText: {fileID: 5340841132901694397}
-    _maxValueText: {fileID: 8071750677089548208}
-  _insatiableHungerCooldownDisplay:
-    _arrowImage: {fileID: 7798633083778046672}
-    _currentText: {fileID: 1398116888096650634}
-    _nextText: {fileID: 3397930758995872061}
-    _maxValueText: {fileID: 8297965277942162938}
-  _insatiableHungerVampirismDisplay:
-    _arrowImage: {fileID: 5024276403772445093}
-    _currentText: {fileID: 5792378865930305811}
-    _nextText: {fileID: 5529980547163326424}
-    _maxValueText: {fileID: 4269110648835307304}
-  _blurChanceEvasionDisplay:
-    _arrowImage: {fileID: 7676665230855686694}
-    _currentText: {fileID: 5129316325794676196}
-    _nextText: {fileID: 4591105259090282909}
-    _maxValueText: {fileID: 8222258356392213826}
+  _upgradeConfigs:
+  - _nameAbilityType: 3
+    _fieldDisplays:
+    - _property: 0
+      _display:
+        _arrowImage: {fileID: 7838764281077484242}
+        _currentText: {fileID: 5335241082963501037}
+        _nextText: {fileID: 1473280231283746065}
+        _maxValueText: {fileID: 8750660089166695696}
+    - _property: 1
+      _display:
+        _arrowImage: {fileID: 7610588392036672165}
+        _currentText: {fileID: 4638423349719984266}
+        _nextText: {fileID: 32951706393695132}
+        _maxValueText: {fileID: 8711466419744740885}
+    - _property: 4
+      _display:
+        _arrowImage: {fileID: 1027320593430748684}
+        _currentText: {fileID: 2433529946115022821}
+        _nextText: {fileID: 2956872165157054729}
+        _maxValueText: {fileID: 6789432295457999595}
+  - _nameAbilityType: 4
+    _fieldDisplays:
+    - _property: 0
+      _display:
+        _arrowImage: {fileID: 193487236246045481}
+        _currentText: {fileID: 7783869108247455482}
+        _nextText: {fileID: 5340841132901694397}
+        _maxValueText: {fileID: 8071750677089548208}
+    - _property: 1
+      _display:
+        _arrowImage: {fileID: 7798633083778046672}
+        _currentText: {fileID: 1398116888096650634}
+        _nextText: {fileID: 3397930758995872061}
+        _maxValueText: {fileID: 8297965277942162938}
+    - _property: 5
+      _display:
+        _arrowImage: {fileID: 5024276403772445093}
+        _currentText: {fileID: 5792378865930305811}
+        _nextText: {fileID: 5529980547163326424}
+        _maxValueText: {fileID: 4269110648835307304}
+  - _nameAbilityType: 5
+    _fieldDisplays:
+    - _property: 6
+      _display:
+        _arrowImage: {fileID: 7676665230855686694}
+        _currentText: {fileID: 5129316325794676196}
+        _nextText: {fileID: 4591105259090282909}
+        _maxValueText: {fileID: 8222258356392213826}
 --- !u!114 &4378841938814683397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7197,7 +7211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementJoystick>k__BackingField: {fileID: 2698234019292880704}
   <RotationJoystick>k__BackingField: {fileID: 161324825842800074}
---- !u!114 &536426109509146066
+--- !u!114 &2387623024019443432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7206,7 +7220,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3384846362283121868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 515d48f1fe0f4909b500af488ca5c8f7, type: 3}
+  m_Script: {fileID: 11500000, guid: ae98114adf654deba0875a339001e134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _firstAbilityUse: {fileID: 1998946839133383655}

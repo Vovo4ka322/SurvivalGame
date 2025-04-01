@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-namespace Game.Scripts.AbilityComponents
+namespace Game.Scripts.AbilityComponents.AbilityUpgrades
 {
     [Serializable]
     public class UpgradeTextDisplay

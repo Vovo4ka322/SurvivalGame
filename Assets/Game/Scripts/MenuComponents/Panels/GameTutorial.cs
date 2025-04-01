@@ -7,10 +7,8 @@ namespace Game.Scripts.MenuComponents.Panels
     public class GameTutorial : MonoBehaviour
     {
         [SerializeField] private TutorialPanel _tutorialPanel;
-        [SerializeField] private float _displayTime = 5f;
-        [SerializeField] private float _fadeDuration = 1f;
-        [SerializeField] private Button _continueButton;
         [SerializeField] private RectTransform _abilityInterface;
+        [SerializeField] private Button _continueButton;
         [SerializeField] private Button _pauseButton;
 
         private void Awake()
