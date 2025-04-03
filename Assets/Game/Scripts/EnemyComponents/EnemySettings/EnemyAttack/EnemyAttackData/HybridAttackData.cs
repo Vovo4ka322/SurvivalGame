@@ -10,7 +10,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackData
     [Serializable]
     public class HybridAttackData : IEnemyAttackData
     {
-        [SerializeField, HideInInspector] private AttackType _attackType = AttackType.Hybrid;
+        [SerializeField] [HideInInspector] private AttackType _attackType = AttackType.Hybrid;
         [SerializeField] private List<EffectData> _attackEffects = new List<EffectData>();
         [SerializeField] private BaseProjectile _projectilePrefab;
         [SerializeField] private float _meleeRange = 3f;

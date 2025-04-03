@@ -13,6 +13,17 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
 {
     public class BuffShop : MonoBehaviour
     {
+        private readonly int _startBuffPrice = 100;
+
+        private readonly Dictionary<BuffType, int> _buffCounters = new Dictionary<BuffType, int>
+        {
+            { BuffType.Health, 0 },
+            { BuffType.Armor, 0 },
+            { BuffType.Damage, 0 },
+            { BuffType.AttackSpeed, 0 },
+            { BuffType.MovementSpeed, 0 },
+        };
+
         [SerializeField] private BuffImprovement _buffImprovement;
         [SerializeField] private BuffImprovementViewer _buffImprovementViewer;
         [SerializeField] private Image _buffPanel;
@@ -22,23 +33,13 @@ namespace Game.Scripts.MenuComponents.ShopComponents.CharacteristicsComponents
         [SerializeField] private ButtonAnimation _buttonAnimation;
         [SerializeField] private ParticleSystem _buffParticle;
 
-        [Header("UI Configurations")]
+        [Header("UI Configurations")] 
         [SerializeField] private List<BuffUIConfig> _buffUIConfigs;
 
         private Wallet _wallet;
         private IDataSaver _iDataSaver;
         private PlayerCharacteristicData _calculationFinalValue;
         private Button _currentSelectedBuffButton;
-
-        private readonly int _startBuffPrice = 100;
-        private readonly Dictionary<BuffType, int> _buffCounters = new Dictionary<BuffType, int>
-        {
-            { BuffType.Health, 0 },
-            { BuffType.Armor, 0 },
-            { BuffType.Damage, 0 },
-            { BuffType.AttackSpeed, 0 },
-            { BuffType.MovementSpeed, 0 },
-        };
 
         public event Action HealthUpgraded;
         public event Action ArmorUpgraded;

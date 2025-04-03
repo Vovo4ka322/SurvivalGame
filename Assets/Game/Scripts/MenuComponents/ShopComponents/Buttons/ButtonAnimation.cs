@@ -7,6 +7,8 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
 {
     public class ButtonAnimation : MonoBehaviour
     {
+        private readonly Dictionary<Transform, Vector3> _childOriginalScales = new Dictionary<Transform, Vector3>();
+        
         [SerializeField] private float _pressedScaleFactor = 0.9f;
         [SerializeField] private float _animationDuration = 0.1f;
         [SerializeField] private Vector3 _shakeStrength = new Vector3(0.1f, 0.1f, 0f);
@@ -15,9 +17,7 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Buttons
         [SerializeField] private ParticleSystem _buffParticle;
 
         private Vector3 _originalParentScale;
-
-        private readonly Dictionary<Transform, Vector3> _childOriginalScales = new Dictionary<Transform, Vector3>();
-
+        
         private void Start()
         {
             if (_buffParticle != null)

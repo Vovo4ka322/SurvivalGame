@@ -71,17 +71,23 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
             PlayerSaveData saveData = new PlayerSaveData()
             {
                 Version = CurrentVersion,
-                Data = _persistentData.PlayerData
+                Data = _persistentData.PlayerData,
             };
 
-            string json = JsonConvert.SerializeObject(saveData, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+            string json = JsonConvert.SerializeObject(saveData, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            });
 
             File.WriteAllText(CurrentFilePath, json);
         }
 
         private void Save(PlayerSaveData saveData)
         {
-            string json = JsonConvert.SerializeObject(saveData, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+            string json = JsonConvert.SerializeObject(saveData, Formatting.Indented, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            });
 
             File.WriteAllText(CurrentFilePath, json);
         }

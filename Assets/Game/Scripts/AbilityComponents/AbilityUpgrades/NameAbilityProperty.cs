@@ -8,6 +8,6 @@ namespace Game.Scripts.AbilityComponents.AbilityUpgrades
         AttackSpeed,
         ArrowCount,
         Vampirism,
-        Evasion
+        Evasion,
     }
 }

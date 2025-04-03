@@ -6,6 +6,8 @@ namespace Game.Scripts.BuffComponents
 {
     public class BuffImprovement : MonoBehaviour
     {
+        private readonly int _maxValue = 5;
+        
         [SerializeField] private List<BuffKeeper> _buffKeepersList;
 
         private Dictionary<int, BuffKeeper> _buffKeepers;
@@ -15,8 +17,6 @@ namespace Game.Scripts.BuffComponents
         private int _counterForDamageBuff;
         private int _counterForMovementSpeedBuff;
         private int _counterForAttackSpeedBuff;
-
-        private readonly int _maxValue = 5;
         
         public Buff HealthBuff { get; private set; }
         public Buff ArmorBuff { get; private set; }

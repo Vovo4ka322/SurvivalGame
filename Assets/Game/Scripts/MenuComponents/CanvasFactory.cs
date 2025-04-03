@@ -25,11 +25,11 @@ namespace Game.Scripts.MenuComponents
             PlayerDataViewer healthViewer = canvas.GetComponent<PlayerDataViewer>();
 
             healthViewer.Init(player);
-            
+
             AbilityWindowImprovement windowImprovement = canvas.GetComponent<AbilityWindowImprovement>();
-            AbilityViewer abilityViewer= canvas.GetComponent<AbilityViewer>();
+            AbilityViewer abilityViewer = canvas.GetComponent<AbilityViewer>();
             AbilityButtonsInitializer abilityButtonsInitializer = canvas.GetComponent<AbilityButtonsInitializer>();
-            
+
             windowImprovement?.Init(player);
             abilityViewer?.Init(player);
             abilityButtonsInitializer?.InitButtons(player);

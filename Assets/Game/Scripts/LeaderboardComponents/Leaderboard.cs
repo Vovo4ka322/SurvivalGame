@@ -18,6 +18,8 @@ namespace Game.Scripts.LeaderboardComponents
         private const string AnonymousNameRu = "??????";
         private const string AnonymousNameEn = "Anonymous";
         private const string AnonymousNameTr = "Anonim";
+        
+        private readonly List<LeaderboardPlayerData> _playerDataEntries = new List<LeaderboardPlayerData>();
 
         [SerializeField] private GridLayoutGroup _gridLayout;
         [SerializeField] private VerticalLayoutGroup _currentPlayerLayoutGroup;
@@ -26,8 +28,6 @@ namespace Game.Scripts.LeaderboardComponents
         [SerializeField] private int _maxPlayer = 7;
 
         private LeaderboardPlayerData _currentLeaderboardPlayerEntry;
-
-        private readonly List<LeaderboardPlayerData> _playerDataEntries = new List<LeaderboardPlayerData>();
 
         private void OnEnable()
         {

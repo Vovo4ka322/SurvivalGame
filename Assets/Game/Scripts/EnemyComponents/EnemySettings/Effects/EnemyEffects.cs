@@ -81,7 +81,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.Effects
                                 boss.AttackEffects[0],
                                 boss.AttackEffects[1],
                                 boss.AttackEffects[2],
-                                boss.AttackEffects[3]
+                                boss.AttackEffects[3],
                             };
 
                             _attackEffect = new AttackEffect(_coroutineRunner, attackEffects, pool);

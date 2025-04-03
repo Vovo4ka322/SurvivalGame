@@ -5,6 +5,10 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.DamageAppliers
 {
     public class BossDamageZoneApplier : BaseDamageZoneApplier
     {
+        private readonly Collider[] _radialBuffer1 = new Collider[10];
+        private readonly Collider[] _radialBuffer2 = new Collider[10];
+        private readonly Collider[] _directBuffer = new Collider[10];
+        
         [Header("Radius attacks")]
         [SerializeField] private Transform _areaAttackPoint1;
         [SerializeField] private Transform _areaAttackPoint2;
@@ -20,10 +24,6 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.DamageAppliers
         [SerializeField] private Vector3 _directAttackBoxSize = new Vector3(3f, 2f, 5f);
         [SerializeField] private LayerMask _directTargetLayer;
         
-        private readonly Collider[] _radialBuffer1 = new Collider[10];
-        private readonly Collider[] _radialBuffer2 = new Collider[10];
-        private readonly Collider[] _directBuffer = new Collider[10];
-
         private bool _hasHit = false;
         
         public void DealRadialDamage1()

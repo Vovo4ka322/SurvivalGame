@@ -12,18 +12,18 @@ namespace Game.Scripts.EnemyComponents
 {
     public class EnemyFactory : MonoBehaviour
     {
+        private readonly Dictionary<EnemyData, BasePool<Enemy>> _enemyPools = new Dictionary<EnemyData, BasePool<Enemy>>();
+        private readonly int _maxEnemiesInScene = 200;
+        
         [SerializeField] private SoundCollection _soundCollection;
-
+        
         private ICoroutineRunner _coroutineRunner;
         private PoolManager _poolManager;
         private EffectsPool _effectsPool;
         private PoolSettings _poolSettings;
         private Transform _container;
         private int _activeEnemiesCount = 0;
-
-        private readonly Dictionary<EnemyData, BasePool<Enemy>> _enemyPools = new Dictionary<EnemyData, BasePool<Enemy>>();
-        private readonly int _maxEnemiesInScene = 200;
-
+        
         public event Action BossDead;
 
         public bool CanSpawnMore => _maxEnemiesInScene <= 0 || _activeEnemiesCount < _maxEnemiesInScene;

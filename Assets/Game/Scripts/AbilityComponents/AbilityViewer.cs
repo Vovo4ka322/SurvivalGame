@@ -10,16 +10,16 @@ namespace Game.Scripts.AbilityComponents
 {
     public class AbilityViewer : MonoBehaviour
     {
-        [Header("Ability Images")]
+        [Header("Ability Images")] 
         [SerializeField] private Image _firstAbility;
         [SerializeField] private Image _secondAbility;
         [SerializeField] private Image _thirdAbility;
 
-        [Header("Cooldown Images")]
+        [Header("Cooldown Images")] 
         [SerializeField] private Image _firstAbilityCooldown;
         [SerializeField] private Image _secondAbilityCooldown;
 
-        [Header("Upgrade Images")]
+        [Header("Upgrade Images")] 
         [SerializeField] private List<Image> _firstAbilityImprovements;
         [SerializeField] private List<Image> _secondAbilityImprovements;
         [SerializeField] private List<Image> _thirdAbilityImprovements;
@@ -42,7 +42,7 @@ namespace Game.Scripts.AbilityComponents
         {
             _meleeAbility = player.GetComponentInChildren<MeleePlayerAbility>();
 
-            if(_meleeAbility != null)
+            if (_meleeAbility != null)
             {
                 _characterType = CharacterType.Melee;
                 SetInitialIconsDimmed();
@@ -53,7 +53,7 @@ namespace Game.Scripts.AbilityComponents
 
             _rangeAbility = player.GetComponentInChildren<RangePlayerAbility>();
 
-            if(_rangeAbility != null)
+            if (_rangeAbility != null)
             {
                 _characterType = CharacterType.Range;
                 SetInitialIconsDimmed();
@@ -65,7 +65,7 @@ namespace Game.Scripts.AbilityComponents
 
         private void OnDisable()
         {
-            if(_characterType == CharacterType.Melee)
+            if (_characterType == CharacterType.Melee)
             {
                 _meleeAbility.BladeFury.Used -= OnFirstChanged;
                 _meleeAbility.BorrowedTime.Used -= OnSecondChanged;
@@ -73,7 +73,7 @@ namespace Game.Scripts.AbilityComponents
                 _meleeAbility.BorrowedTimeIUpgraded -= OnSecondUpgraded;
                 _meleeAbility.BloodLustIUpgraded -= OnThirdUpgraded;
             }
-            else if(_characterType == CharacterType.Range)
+            else if (_characterType == CharacterType.Range)
             {
                 _rangeAbility.MultiShotUser.Used -= OnFirstChanged;
                 _rangeAbility.InsatiableHunger.Used -= OnSecondChanged;
@@ -97,17 +97,17 @@ namespace Game.Scripts.AbilityComponents
 
         private void Upgrade(List<Image> images, ref int improvementCounter, int maxValue, Image abilityIcon)
         {
-            if(improvementCounter == maxValue)
+            if (improvementCounter == maxValue)
                 return;
 
             images[improvementCounter].gameObject.SetActive(true);
-            
+
             improvementCounter++;
 
-            if(improvementCounter == 1)
+            if (improvementCounter == 1)
                 _iconUtility.SetIconDimmed(abilityIcon, false);
         }
-        
+
         private void SubscribeMeleeEvents()
         {
             _meleeAbility.BladeFury.Used += OnFirstChanged;
@@ -116,7 +116,7 @@ namespace Game.Scripts.AbilityComponents
             _meleeAbility.BorrowedTimeIUpgraded += OnSecondUpgraded;
             _meleeAbility.BloodLustIUpgraded += OnThirdUpgraded;
         }
-        
+
         private void SubscribeRangeEvents()
         {
             _rangeAbility.MultiShotUser.Used += OnFirstChanged;
@@ -125,14 +125,14 @@ namespace Game.Scripts.AbilityComponents
             _rangeAbility.InsatiableHungerUpgraded += OnSecondUpgraded;
             _rangeAbility.BlurUpgraded += OnThirdUpgraded;
         }
-        
+
         private void OnFirstChanged(float value)
         {
-            if(_characterType == CharacterType.Melee)
+            if (_characterType == CharacterType.Melee)
             {
                 Change(_firstAbilityCooldown, _meleeAbility.BladeFury.BladeFury.CooldownTime, value);
             }
-            else if(_characterType == CharacterType.Range)
+            else if (_characterType == CharacterType.Range)
             {
                 Change(_firstAbilityCooldown, _rangeAbility.MultiShotUser.MultiShot.CooldownTime, value);
             }
@@ -140,11 +140,11 @@ namespace Game.Scripts.AbilityComponents
 
         private void OnSecondChanged(float value)
         {
-            if(_characterType == CharacterType.Melee)
+            if (_characterType == CharacterType.Melee)
             {
                 Change(_secondAbilityCooldown, _meleeAbility.BorrowedTime.BorrowedTime.CooldownTime, value);
             }
-            else if(_characterType == CharacterType.Range)
+            else if (_characterType == CharacterType.Range)
             {
                 Change(_secondAbilityCooldown, _rangeAbility.InsatiableHunger.InsatiableHunger.CooldownTime, value);
             }
@@ -152,11 +152,11 @@ namespace Game.Scripts.AbilityComponents
 
         private void OnFirstUpgraded()
         {
-            if(_characterType == CharacterType.Melee)
+            if (_characterType == CharacterType.Melee)
             {
                 Upgrade(_firstAbilityImprovements, ref _firstImprovement, _meleeAbility.MaxValue, _firstAbility);
             }
-            else if(_characterType == CharacterType.Range)
+            else if (_characterType == CharacterType.Range)
             {
                 Upgrade(_firstAbilityImprovements, ref _firstImprovement, _rangeAbility.MaxValue, _firstAbility);
             }
@@ -164,11 +164,11 @@ namespace Game.Scripts.AbilityComponents
 
         private void OnSecondUpgraded()
         {
-            if(_characterType == CharacterType.Melee)
+            if (_characterType == CharacterType.Melee)
             {
                 Upgrade(_secondAbilityImprovements, ref _secondImprovement, _meleeAbility.MaxValue, _secondAbility);
             }
-            else if(_characterType == CharacterType.Range)
+            else if (_characterType == CharacterType.Range)
             {
                 Upgrade(_secondAbilityImprovements, ref _secondImprovement, _rangeAbility.MaxValue, _secondAbility);
             }
@@ -176,11 +176,11 @@ namespace Game.Scripts.AbilityComponents
 
         private void OnThirdUpgraded()
         {
-            if(_characterType == CharacterType.Melee)
+            if (_characterType == CharacterType.Melee)
             {
                 Upgrade(_thirdAbilityImprovements, ref _thirdImprovement, _meleeAbility.MaxValue, _thirdAbility);
             }
-            else if(_characterType == CharacterType.Range)
+            else if (_characterType == CharacterType.Range)
             {
                 Upgrade(_thirdAbilityImprovements, ref _thirdImprovement, _rangeAbility.MaxValue, _thirdAbility);
             }

@@ -4,12 +4,12 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.DamageAppliers
 {
     public class HybridMeleeDamageZoneApplier : BaseDamageZoneApplier
     {
+        private readonly Collider[] _areaBuffer = new Collider[10];
+        
         [SerializeField] private Transform _attackPoint;
         [SerializeField] private LayerMask _targetLayer;
         [SerializeField] private float _damageRadius = 3f;
-
-        private readonly Collider[] _areaBuffer = new Collider[10];
-
+        
         public void DealAreaDamage()
         {
             int hitCount = Physics.OverlapSphereNonAlloc(_attackPoint.position, _damageRadius, _areaBuffer, _targetLayer);

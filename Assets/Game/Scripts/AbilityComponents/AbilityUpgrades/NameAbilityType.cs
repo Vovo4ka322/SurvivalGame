@@ -7,6 +7,6 @@ namespace Game.Scripts.AbilityComponents.AbilityUpgrades
         BloodLust,
         MultiShot,
         InsatiableHunger,
-        Blur
+        Blur,
     }
 }

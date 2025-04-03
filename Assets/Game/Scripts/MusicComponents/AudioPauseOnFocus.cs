@@ -5,12 +5,12 @@ namespace Game.Scripts.MusicComponents
 {
     public class AudioPauseOnFocus : MonoBehaviour
     {
+        private readonly float _mutedVolume = -80f;
+
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private AudioParameterNames _audioParameterNames;
 
         private float _originalVolume = 0f;
-
-        private readonly float _mutedVolume = -80f;
 
         private void Start()
         {

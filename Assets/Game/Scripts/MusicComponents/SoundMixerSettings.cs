@@ -5,6 +5,9 @@ namespace Game.Scripts.MusicComponents
 {
     public class SoundMixerSettings : MonoBehaviour
     {
+        private readonly float _minValue = 0.0001f;
+        private readonly float _defaultVolume = 0.75f;
+
         [SerializeField] private AudioParameterNames _audioParams;
         [SerializeField] private AudioGameSettings _audioGameSettings;
         [SerializeField] private Slider _generalSoundSlider;
@@ -15,9 +18,6 @@ namespace Game.Scripts.MusicComponents
         private float _prevGeneralVolume;
         private float _prevMusicVolume;
         private float _prevEffectVolume;
-
-        private readonly float _minValue = 0.0001f;
-        private readonly float _defaultVolume = 0.75f;
 
         private void Awake()
         {
@@ -35,9 +35,12 @@ namespace Game.Scripts.MusicComponents
             InitializeSlider(_audioParams.MusicVolume, _musicSoundSlider, _defaultVolume);
             InitializeSlider(_audioParams.EffectsVolume, _effectSoundSlider, _defaultVolume);
 
-            _generalSoundSlider.onValueChanged.AddListener(volume => _audioGameSettings.SetVolume(_audioParams.AllSoundVolume, volume));
-            _musicSoundSlider.onValueChanged.AddListener(volume => _audioGameSettings.SetVolume(_audioParams.MusicVolume, volume));
-            _effectSoundSlider.onValueChanged.AddListener(volume => _audioGameSettings.SetVolume(_audioParams.EffectsVolume, volume));
+            _generalSoundSlider.onValueChanged.AddListener(volume =>
+                _audioGameSettings.SetVolume(_audioParams.AllSoundVolume, volume));
+            _musicSoundSlider.onValueChanged.AddListener(volume =>
+                _audioGameSettings.SetVolume(_audioParams.MusicVolume, volume));
+            _effectSoundSlider.onValueChanged.AddListener(volume =>
+                _audioGameSettings.SetVolume(_audioParams.EffectsVolume, volume));
 
             _muteToggle.onValueChanged.AddListener(OnMuteToggleChanged);
         }

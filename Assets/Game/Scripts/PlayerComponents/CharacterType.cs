@@ -3,6 +3,6 @@
     public enum CharacterType
     {
         Melee,
-        Range
+        Range,
     }
 }

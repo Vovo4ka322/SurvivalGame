@@ -22,16 +22,23 @@ namespace Game.Scripts.MenuComponents.ShopComponents.Data
 
             _selectedCharacterSkins = CharacterSkins.FirstMeleeSkin;
 
-            _openCharacterSkins = new() { _selectedCharacterSkins };
+            _openCharacterSkins = new List<CharacterSkins>()
+            {
+                _selectedCharacterSkins,
+            };
         }
 
         [JsonConstructor]
-        public PlayerData(int money, CharacterSkins characterSkins, List<CharacterSkins> openCharacterSkins, PlayerCharacteristicData calculationFinalValue)
+        public PlayerData(
+            int money,
+            CharacterSkins characterSkins,
+            List<CharacterSkins> openCharacterSkins,
+            PlayerCharacteristicData calculationFinalValue)
         {
             Money = money;
 
             _selectedCharacterSkins = characterSkins;
-            _openCharacterSkins = new(openCharacterSkins);
+            _openCharacterSkins = new List<CharacterSkins>(openCharacterSkins);
             _calculationFinalValue = calculationFinalValue;
         }
 

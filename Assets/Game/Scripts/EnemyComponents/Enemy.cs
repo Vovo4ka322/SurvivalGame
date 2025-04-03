@@ -60,7 +60,6 @@ namespace Game.Scripts.EnemyComponents
         public IAttackBehavior AttackBehavior => _attackBehavior;
         public bool SpawnCompleted => _spawnCompleted;
 
-
         private void Awake()
         {
             _animator = GetComponent<Animator>();

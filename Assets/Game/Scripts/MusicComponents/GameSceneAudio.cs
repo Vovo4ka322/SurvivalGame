@@ -6,14 +6,14 @@ namespace Game.Scripts.MusicComponents
 {
     public class GameSceneAudio : MonoBehaviour
     {
+        private readonly float _mutedVolume = -80f;
+
         [SerializeField] private AudioParameterNames _audioParams;
         [SerializeField] private AudioSource _waveMusicSource;
         [SerializeField] private AudioSource _bossMusicSource;
         [SerializeField] private AudioMixer _audioMixer;
 
         private float _originalVolume;
-
-        private readonly float _mutedVolume = -80f;
 
         private void Awake()
         {

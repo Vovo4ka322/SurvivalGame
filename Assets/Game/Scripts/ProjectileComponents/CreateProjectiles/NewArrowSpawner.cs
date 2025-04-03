@@ -14,7 +14,7 @@ namespace Game.Scripts.ProjectileComponents.CreateProjectiles
 
         private void Awake()
         {
-            _arrowPool = new(_arrowPrefab, _poolSettings, null);
+            _arrowPool = new BasePool<Arrow>(_arrowPrefab, _poolSettings, null);
         }
 
         public Arrow Spawn()

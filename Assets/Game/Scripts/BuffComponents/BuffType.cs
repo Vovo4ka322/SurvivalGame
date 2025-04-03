@@ -6,6 +6,6 @@ namespace Game.Scripts.BuffComponents
         AttackSpeed,
         Damage,
         Health,
-        MovementSpeed
+        MovementSpeed,
     }
 }

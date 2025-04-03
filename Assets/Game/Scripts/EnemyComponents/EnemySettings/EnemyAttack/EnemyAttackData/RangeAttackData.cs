@@ -9,7 +9,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackData
     [Serializable]
     public class RangeAttackData : IEnemyAttackData
     {
-        [SerializeField, HideInInspector] private AttackType _attackType = AttackType.Ranged;
+        [SerializeField] [HideInInspector] private AttackType _attackType = AttackType.Ranged;
         [SerializeField] private EffectData _reloadEffect;
         [SerializeField] private BaseProjectile _projectilePrefab;
 

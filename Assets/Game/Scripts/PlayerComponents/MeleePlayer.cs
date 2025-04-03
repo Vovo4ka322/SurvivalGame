@@ -7,14 +7,14 @@ namespace Game.Scripts.PlayerComponents
 {
     public class MeleePlayer : Player, IActivable, IDamagable
     {
+        private readonly int _coefficient = 1;
+
         [SerializeField] private Sword _sword;
 
-        private readonly int _coefficient = 1;
-        
         private float _movementVisualizationCoefficient = 0.2f;
         private float _attackSpeed;
         private float _damage;
-        
+
         public bool IsActiveState { get; private set; }
 
         private void Start()

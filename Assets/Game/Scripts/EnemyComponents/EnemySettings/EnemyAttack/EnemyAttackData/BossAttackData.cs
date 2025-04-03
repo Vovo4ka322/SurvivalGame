@@ -9,7 +9,7 @@ namespace Game.Scripts.EnemyComponents.EnemySettings.EnemyAttack.EnemyAttackData
     [Serializable]
     public class BossAttackData : IEnemyAttackData
     {
-        [SerializeField, HideInInspector] private AttackType _attackType = AttackType.Boss;
+        [SerializeField] [HideInInspector] private AttackType _attackType = AttackType.Boss;
         [SerializeField] private List<EffectData> _attackEffects = new List<EffectData>();
         [SerializeField] private float _meleeRange = 3f;
 

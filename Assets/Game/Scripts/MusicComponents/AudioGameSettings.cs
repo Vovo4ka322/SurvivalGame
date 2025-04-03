@@ -6,11 +6,11 @@ namespace Game.Scripts.MusicComponents
 {
     public class AudioGameSettings : MonoBehaviour
     {
-        [SerializeField] private AudioMixer _audioMixer;
-        [SerializeField] private AudioParameterNames _audioParams;
-
         private readonly float _defaultVolume = 0.75f;
         private readonly float _fadeDuration = 2f;
+
+        [SerializeField] private AudioMixer _audioMixer;
+        [SerializeField] private AudioParameterNames _audioParams;
 
         private void Awake()
         {
